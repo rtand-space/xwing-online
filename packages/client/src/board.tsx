@@ -413,13 +413,7 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
 
         const tokens = tokenCounts(s);
         const tokenSpan = (tokens.length - 1) * 12;
-
-        // name tag on the rear edge of the base (opposite facing); text stays upright
         const name = s.id.replace(/-/g, ' ');
-        const labelW = name.length * 7.5 + 12;
-        const a = (s.pos.angle * Math.PI) / 180;
-        const lcx = s.pos.x - Math.sin(a) * (w / 2 - 9);
-        const lcy = -s.pos.y + Math.cos(a) * (w / 2 - 9);
 
         return (
           <g
@@ -448,6 +442,17 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
                 stroke={active ? 3.5 : highlight ? 3 : 2}
                 active={active}
               />
+              {/* name on the rear edge, in the plate's frame (rotates with the base) */}
+              <text
+                x={0}
+                y={w / 2 - 5}
+                textAnchor="middle"
+                textLength={w - 8}
+                lengthAdjust="spacingAndGlyphs"
+                className="shipLabel"
+              >
+                {name}
+              </text>
             </g>
 
             {/* token shapes above the base */}
@@ -460,21 +465,6 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
                 cy={-s.pos.y - w / 2 - 12}
               />
             ))}
-
-            {/* name tag on the rear of the base */}
-            <rect
-              x={lcx - labelW / 2}
-              y={lcy - 8}
-              width={labelW}
-              height={16}
-              rx={8}
-              fill="rgba(5,7,15,0.72)"
-              stroke={color}
-              strokeOpacity={0.45}
-            />
-            <text x={lcx} y={lcy + 4} textAnchor="middle" className="shipLabel">
-              {name}
-            </text>
           </g>
         );
       })}
