@@ -36,3 +36,8 @@ export function viewFromLog(log: GameEvent[], viewerId: string): PlayerView {
 export function pendingPlayer(log: GameEvent[]): string | null {
   return replay(log).pending[0]?.playerId ?? null;
 }
+
+/** Log safe to share with both players — drops the only private event (a set dial). */
+export function publicLog(log: GameEvent[]): GameEvent[] {
+  return log.filter((e) => e.type !== 'DialSet');
+}

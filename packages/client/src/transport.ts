@@ -1,4 +1,4 @@
-import type { Command, GameConfig, PlayerView } from '@xwing/engine';
+import type { Command, GameConfig, GameEvent, PlayerView } from '@xwing/engine';
 
 const SERVER = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:8787';
 const WS = SERVER.replace(/^http/, 'ws');
@@ -37,7 +37,7 @@ export interface Connection {
 }
 
 interface Handlers {
-  onView: (view: PlayerView) => void;
+  onView: (view: PlayerView, log: GameEvent[]) => void;
   onRejection: (message: string) => void;
   onClose: () => void;
 }
@@ -48,9 +48,10 @@ export function connect(code: string, guestId: string, handlers: Handlers): Conn
     const msg = JSON.parse(e.data as string) as {
       type: string;
       view?: PlayerView;
+      log?: GameEvent[];
       rejection?: string;
     };
-    if (msg.type === 'view' && msg.view) handlers.onView(msg.view);
+    if (msg.type === 'view' && msg.view) handlers.onView(msg.view, msg.log ?? []);
     else if (msg.type === 'rejection' && msg.rejection) handlers.onRejection(msg.rejection);
   });
   ws.addEventListener('close', handlers.onClose);

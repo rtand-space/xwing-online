@@ -35,6 +35,7 @@ const colorOf = (view: PlayerView | null, id: string | null): string | null => {
 export function useActiveGame(): ActiveGame {
   const onlineStatus = useOnline((s) => s.status);
   const onlineView = useOnline((s) => s.view);
+  const onlineLog = useOnline((s) => s.log);
   const onlineSeat = useOnline((s) => s.seat);
   const onlineSend = useOnline((s) => s.send);
   const isHost = useOnline((s) => s.isHost);
@@ -74,7 +75,7 @@ export function useActiveGame(): ActiveGame {
       unlock: () => undefined,
       statusLabel: status,
       activeColor: colorOf(view, pendingPlayer),
-      log: null,
+      log: onlineLog,
       isHost,
       code,
       onlineError,

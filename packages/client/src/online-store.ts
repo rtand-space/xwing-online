@@ -1,4 +1,4 @@
-import type { Command, GameConfig, PlayerView } from '@xwing/engine';
+import type { Command, GameConfig, GameEvent, PlayerView } from '@xwing/engine';
 import { create } from 'zustand';
 import { getGuestId } from './identity';
 import { subscribePush } from './push';
@@ -29,6 +29,7 @@ const recall = (): ActiveGame | null => {
 interface OnlineStore {
   status: Status;
   view: PlayerView | null;
+  log: GameEvent[];
   seat: string | null;
   code: string | null;
   isHost: boolean;
@@ -48,7 +49,7 @@ const randomCode = (): string => Math.random().toString(36).slice(2, 8);
 export const useOnline = create<OnlineStore>((set, get) => {
   const open = (code: string, guestId: string): Connection =>
     connect(code, guestId, {
-      onView: (view) => set({ view, status: 'playing', rejection: null }),
+      onView: (view, log) => set({ view, log, status: 'playing', rejection: null }),
       onRejection: (rejection) => set({ rejection }),
       onClose: () => {
         if (get().status === 'playing') set({ status: 'error', error: 'Disconnected' });
@@ -58,6 +59,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
   return {
     status: 'idle',
     view: null,
+    log: [],
     seat: null,
     code: null,
     isHost: false,
@@ -67,7 +69,15 @@ export const useOnline = create<OnlineStore>((set, get) => {
     host: async (config) => {
       const guestId = getGuestId();
       const code = randomCode();
-      set({ status: 'connecting', code, isHost: true, view: null, error: null, rejection: null });
+      set({
+        status: 'connecting',
+        code,
+        isHost: true,
+        view: null,
+        log: [],
+        error: null,
+        rejection: null,
+      });
       const { playerId } = await hostGame(code, { ...config, id: code }, guestId);
       remember({ code, isHost: true });
       set({ seat: playerId });
@@ -77,7 +87,15 @@ export const useOnline = create<OnlineStore>((set, get) => {
 
     join: async (code) => {
       const guestId = getGuestId();
-      set({ status: 'connecting', code, isHost: false, view: null, error: null, rejection: null });
+      set({
+        status: 'connecting',
+        code,
+        isHost: false,
+        view: null,
+        log: [],
+        error: null,
+        rejection: null,
+      });
       const res = await joinGame(code, guestId);
       if (res.error) {
         set({ status: 'error', error: res.error });
@@ -104,6 +122,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
         isHost: saved.isHost,
         seat: playerId,
         view: null,
+        log: [],
         error: null,
         rejection: null,
       });
@@ -120,6 +139,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
       set({
         status: 'idle',
         view: null,
+        log: [],
         seat: null,
         code: null,
         isHost: false,

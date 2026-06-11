@@ -99,7 +99,7 @@ function GamePanel({ ag }: { ag: ActiveGame }): ReactElement {
 
 function LogTab({ ag }: { ag: ActiveGame }): ReactElement {
   if (!ag.log) {
-    return <p className="muted">The event log is available in hot-seat games.</p>;
+    return <p className="muted">Start a game to see the event log.</p>;
   }
   const lines = ag.log
     .map(formatEvent)

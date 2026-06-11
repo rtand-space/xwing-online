@@ -1,6 +1,6 @@
 import { buildPushPayload, type PushSubscription } from '@block65/webcrypto-web-push';
 import type { Command, GameConfig, GameEvent } from '@xwing/engine';
-import { applyCommand, createLog, pendingPlayer, viewFromLog } from './game-store';
+import { applyCommand, createLog, pendingPlayer, publicLog, viewFromLog } from './game-store';
 import { json } from './http';
 import type { Env } from './index';
 
@@ -124,7 +124,11 @@ export class GameDO {
     server.serializeAttachment({ viewer } satisfies SocketMeta);
 
     const log = await this.log();
-    if (log) server.send(JSON.stringify({ type: 'view', view: viewFromLog(log, viewer) }));
+    if (log) {
+      server.send(
+        JSON.stringify({ type: 'view', view: viewFromLog(log, viewer), log: publicLog(log) }),
+      );
+    }
     return new Response(null, { status: 101, webSocket: client });
   }
 
@@ -199,10 +203,13 @@ export class GameDO {
   }
 
   private broadcast(log: GameEvent[]): void {
+    const shared = publicLog(log);
     for (const ws of this.state.getWebSockets()) {
       const meta = ws.deserializeAttachment() as SocketMeta | null;
       try {
-        ws.send(JSON.stringify({ type: 'view', view: viewFromLog(log, meta?.viewer ?? '') }));
+        ws.send(
+          JSON.stringify({ type: 'view', view: viewFromLog(log, meta?.viewer ?? ''), log: shared }),
+        );
       } catch {
         /* socket gone; ignore */
       }
