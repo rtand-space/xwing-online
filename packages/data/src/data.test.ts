@@ -92,3 +92,27 @@ describe('XWS format', () => {
     expect(game.state.ships).toHaveLength(2);
   });
 });
+
+describe('expanded roster', () => {
+  it('loads A-wing and TIE Interceptor and builds them', async () => {
+    const { allShips, pilotChoices, toShipInit } = await import('./index');
+    expect(allShips().map((s) => s.xws)).toEqual([
+      't65xwing',
+      'tieln',
+      'rz1awing',
+      'tieinterceptor',
+    ]);
+    expect(pilotChoices('Rebel Alliance').length).toBeGreaterThanOrEqual(4);
+
+    const awing = toShipInit(
+      'rz1awing',
+      'greensquadronpilot',
+      'rebel',
+      { x: 0, y: 0, angle: 0 },
+      'a1',
+    );
+    expect(awing.actionBar).toContain('boost');
+    expect(awing.primaryAttack).toBe(2);
+    expect(awing.dialOptions.length).toBeGreaterThan(10);
+  });
+});

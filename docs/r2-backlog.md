@@ -13,7 +13,7 @@ Status: ☐ not started · ◐ in progress · ☑ done
 
 ## R2-M1 — Data layer & points
 - ☑ **T-D1** Squad/loadout points model in `@xwing/data`: pilots gain `loadout` + slot bar; `squadPoints()` and `validateSquad()` (single faction, 3–8 ships, ≤20 pts, limited rules). _Loadout-cost validation lands with T-B2 (upgrade data)._
-- ☐ **T-D2** Roster expansion: vendor a broader set of **ability-less, front-arc** ships/pilots from xwing-data2 (real stats/dials/points) so lists are meaningful.
+- ◐ **T-D2** Roster expansion: added RZ-1 A-wing (Rebel) + TIE/in Interceptor (Imperial) — ability-less, front-arc, real stats/dials/points. More ships + a full xwing-data2 pull still to come.
 - ☐ **T-D3** Versioned points snapshot: pull XWA community points on a schedule, cache a pinned version, surface the data version; pin each game to its version.
 
 ## R2-M2 — Squad builder UI

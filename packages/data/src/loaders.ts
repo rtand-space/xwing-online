@@ -1,8 +1,12 @@
+import rz1awing from './cards/rz1awing.json';
 import t65xwing from './cards/t65xwing.json';
+import tieinterceptor from './cards/tieinterceptor.json';
 import tieln from './cards/tieln.json';
 import type { PilotData, ShipData } from './types';
 
-const SHIPS: ShipData[] = [t65xwing as unknown as ShipData, tieln as unknown as ShipData];
+const SHIPS: ShipData[] = [t65xwing, tieln, rz1awing, tieinterceptor].map(
+  (s) => s as unknown as ShipData,
+);
 const byXws = new Map(SHIPS.map((s) => [s.xws, s]));
 
 export function allShips(): ShipData[] {
