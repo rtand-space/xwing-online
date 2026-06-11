@@ -1,6 +1,8 @@
-import type { GameConfig, Player, Position } from '@xwing/engine';
+import type { GameConfig, Player, Position, ShipInit } from '@xwing/engine';
 import { allShips } from './loaders';
 import { squadToShipInits, type XwsSquad } from './xws';
+
+export type Side = 'rebel' | 'imperial';
 
 /** Faction names as they appear in the card data, keyed by XWS side id. */
 export const FACTIONS = { rebel: 'Rebel Alliance', imperial: 'Galactic Empire' } as const;
@@ -120,4 +122,9 @@ export function buildConfig(
 
 export function presetConfig(preset: Preset, seed: string, id = 'game'): GameConfig {
   return buildConfig(preset.rebel, preset.imperial, seed, id);
+}
+
+/** One squad → one side's ship inits, laid out for that side (for online assembly). */
+export function sideShipInits(squad: XwsSquad, side: Side): ShipInit[] {
+  return squadToShipInits(squad, side, layout(squad.pilots.length, side));
 }

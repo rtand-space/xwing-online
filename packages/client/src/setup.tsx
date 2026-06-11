@@ -5,6 +5,9 @@ import {
   PRESETS,
   presetConfig,
   pilotChoices,
+  SQUAD_POINT_CAP,
+  type Side,
+  validateSquad,
   type XwsSquad,
   XWS_FACTION,
 } from '@xwing/data';
@@ -12,27 +15,36 @@ import { type ReactElement, useState } from 'react';
 import { useOnline } from './online-store';
 import { useGame } from './store';
 
-const MAX_SHIPS = 6;
+const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
 
+const factionName = (side: Side) => (side === 'rebel' ? FACTIONS.rebel : FACTIONS.imperial);
+const xwsFaction = (side: Side) => (side === 'rebel' ? XWS_FACTION.rebel : XWS_FACTION.imperial);
+const toSquad = (side: Side, picks: PilotChoice[]): XwsSquad => ({
+  faction: xwsFaction(side),
+  pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+});
+
 function SquadColumn({
-  title,
-  options,
+  side,
   picks,
   setPicks,
 }: {
-  title: string;
-  options: PilotChoice[];
+  side: Side;
   picks: PilotChoice[];
   setPicks: (p: PilotChoice[]) => void;
 }): ReactElement {
+  const v = validateSquad(toSquad(side, picks));
   return (
     <div className="col">
       <div className="colHead">
-        {title} <span className="muted">({picks.length})</span>
+        {side === 'rebel' ? 'Rebel' : 'Imperial'}{' '}
+        <span className="muted">
+          ({v.points}/{SQUAD_POINT_CAP})
+        </span>
       </div>
       <div className="opts">
-        {options.map((o) => (
+        {pilotChoices(factionName(side)).map((o) => (
           <button
             key={o.pilotXws}
             className="btn sm"
@@ -64,11 +76,47 @@ function SquadColumn({
   );
 }
 
-/** Quick start: preset hot-seat matches + online host/join. (Side panel → Game tab.) */
+/** A single-faction squad builder used for online host/join. */
+function OnlineSquad({
+  side,
+  label,
+  disabled,
+  onSubmit,
+}: {
+  side: Side;
+  label: string;
+  disabled?: boolean;
+  onSubmit: (squad: XwsSquad) => void;
+}): ReactElement {
+  const [picks, setPicks] = useState<PilotChoice[]>([]);
+  const squad = toSquad(side, picks);
+  const v = validateSquad(squad);
+  return (
+    <div className="panelStack">
+      <SquadColumn side={side} picks={picks} setPicks={setPicks} />
+      {picks.length > 0 &&
+        !v.valid &&
+        v.errors.map((e, i) => (
+          <div key={i} className="reject">
+            {e}
+          </div>
+        ))}
+      <button
+        className="btn primary"
+        disabled={disabled || !v.valid}
+        onClick={() => onSubmit(squad)}
+      >
+        {label}
+      </button>
+    </div>
+  );
+}
+
+/** Game tab (no game): quick presets, host online (Rebel), join online (Imperial). */
 export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
-  const hostOnline = useOnline((s) => s.host);
-  const joinOnline = useOnline((s) => s.join);
+  const host = useOnline((s) => s.host);
+  const join = useOnline((s) => s.join);
   const [code, setCode] = useState(() => new URLSearchParams(location.search).get('game') ?? '');
 
   return (
@@ -83,15 +131,10 @@ export function QuickPlay(): ReactElement {
         ))}
       </div>
 
-      <div className="section">Online — share a code</div>
-      <div className="presetList">
-        {PRESETS.map((p) => (
-          <button key={p.id} className="preset" onClick={() => hostOnline(presetConfig(p, seed()))}>
-            <div className="presetName">Host: {p.name}</div>
-            <div className="presetDesc">{p.description}</div>
-          </button>
-        ))}
-      </div>
+      <div className="section">Host online — you play Rebel</div>
+      <OnlineSquad side="rebel" label="Host game" onSubmit={(s) => void host(s)} />
+
+      <div className="section">Join online — you play Imperial</div>
       <div className="joinRow">
         <input
           className="joinInput"
@@ -99,61 +142,39 @@ export function QuickPlay(): ReactElement {
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-        <button
-          className="btn primary"
-          disabled={!code.trim()}
-          onClick={() => joinOnline(code.trim())}
-        >
-          Join
-        </button>
       </div>
+      <OnlineSquad
+        side="imperial"
+        label={code.trim() ? 'Join game' : 'Enter a code first'}
+        disabled={!code.trim()}
+        onSubmit={(s) => void join(code.trim(), s)}
+      />
     </div>
   );
 }
 
-/** Build a custom hot-seat match. (Side panel → Squad tab; R2 grows this into the full builder.) */
+/** Squad tab (no game): build both squads for a custom hot-seat match. */
 export function SquadBuilder(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const [rebel, setRebel] = useState<PilotChoice[]>([]);
   const [imperial, setImperial] = useState<PilotChoice[]>([]);
-
-  const toSquad = (faction: string, picks: PilotChoice[]): XwsSquad => ({
-    faction,
-    pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
-  });
-  const canStart = rebel.length > 0 && imperial.length > 0;
+  const rebelSquad = toSquad('rebel', rebel);
+  const imperialSquad = toSquad('imperial', imperial);
+  const canStart = validateSquad(rebelSquad).valid && validateSquad(imperialSquad).valid;
 
   return (
     <div className="panelStack">
-      <div className="section">Build your own (hot-seat)</div>
+      <div className="section">Custom hot-seat — both squads, 3–8 ships, ≤20 pts each</div>
       <div className="builder">
-        <SquadColumn
-          title="Rebel"
-          options={pilotChoices(FACTIONS.rebel)}
-          picks={rebel}
-          setPicks={setRebel}
-        />
-        <SquadColumn
-          title="Imperial"
-          options={pilotChoices(FACTIONS.imperial)}
-          picks={imperial}
-          setPicks={setImperial}
-        />
+        <SquadColumn side="rebel" picks={rebel} setPicks={setRebel} />
+        <SquadColumn side="imperial" picks={imperial} setPicks={setImperial} />
       </div>
       <button
         className="btn primary start"
         disabled={!canStart}
-        onClick={() =>
-          startGame(
-            buildConfig(
-              toSquad(XWS_FACTION.rebel, rebel),
-              toSquad(XWS_FACTION.imperial, imperial),
-              seed(),
-            ),
-          )
-        }
+        onClick={() => startGame(buildConfig(rebelSquad, imperialSquad, seed()))}
       >
-        {canStart ? 'Start battle' : 'Add a ship to each side'}
+        {canStart ? 'Start battle' : 'Each side needs a legal squad'}
       </button>
     </div>
   );

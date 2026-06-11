@@ -1,13 +1,14 @@
 import { buildPushPayload, type PushSubscription } from '@block65/webcrypto-web-push';
-import type { Command, GameConfig, GameEvent } from '@xwing/engine';
+import type { Command, GameConfig, GameEvent, ShipInit } from '@xwing/engine';
 import { applyCommand, createLog, pendingPlayer, publicLog, viewFromLog } from './game-store';
 import { json } from './http';
 import type { Env } from './index';
 
 const LOG_KEY = 'log';
-const SEATS_KEY = 'seats'; // guestId -> playerId
-const PLAYERS_KEY = 'players'; // playerId[]
-const SUBS_KEY = 'subs'; // playerId -> PushSubscription
+const SEATS_KEY = 'seats'; // guestId -> side
+const SIDES_KEY = 'sides'; // side -> ShipInit[]
+const SEED_KEY = 'seed';
+const SUBS_KEY = 'subs'; // side -> PushSubscription
 
 interface SocketMeta {
   viewer: string;
@@ -36,31 +37,56 @@ export class GameDO {
   private async subs(): Promise<Record<string, PushSubscription>> {
     return (await this.state.storage.get<Record<string, PushSubscription>>(SUBS_KEY)) ?? {};
   }
+  private async sides(): Promise<Record<string, ShipInit[]>> {
+    return (await this.state.storage.get<Record<string, ShipInit[]>>(SIDES_KEY)) ?? {};
+  }
 
   async fetch(req: Request): Promise<Response> {
     const url = new URL(req.url);
     const sub = url.pathname.split('/').filter(Boolean)[2]; // /games/:id[/join|/commands|/ws|/seat]
     const guestId = url.searchParams.get('guestId') ?? '';
+    const code = url.pathname.split('/').filter(Boolean)[1] ?? '';
 
     if (sub === 'ws') return this.handleUpgrade(req, guestId);
 
+    // Host opens a lobby with their side's ships; the game starts once both sides are in.
     if (req.method === 'POST' && !sub) {
       if (await this.log()) return json({ error: 'Game already exists' }, 409);
-      const { config, guestId: host } = (await req.json()) as {
-        config: GameConfig;
+      const {
+        guestId: host,
+        side,
+        ships,
+        seed,
+      } = (await req.json()) as {
         guestId: string;
+        side: string;
+        ships: ShipInit[];
+        seed: string;
       };
-      const playerIds = config.players.map((p) => p.id);
-      await this.state.storage.put(LOG_KEY, createLog(config));
-      await this.state.storage.put(PLAYERS_KEY, playerIds);
-      await this.state.storage.put(SEATS_KEY, host ? { [host]: playerIds[0]! } : {});
-      await this.indexGame(config);
-      return json({ ok: true, playerId: playerIds[0] ?? null });
+      await this.state.storage.put(SEED_KEY, seed);
+      await this.state.storage.put(SIDES_KEY, { [side]: ships });
+      await this.state.storage.put(SEATS_KEY, { [host]: side });
+      return json({ ok: true, playerId: side });
     }
 
+    // Joiner brings the opposing side's ships; assemble + start when both are present.
     if (req.method === 'POST' && sub === 'join') {
-      const { guestId: joiner } = (await req.json()) as { guestId: string };
-      return json(await this.seat(joiner));
+      const { guestId: joiner, ships } = (await req.json()) as {
+        guestId: string;
+        ships: ShipInit[];
+      };
+      const seats = await this.seats();
+      if (seats[joiner]) return json({ playerId: seats[joiner] });
+      const sides = await this.sides();
+      const hostSide = Object.keys(sides)[0];
+      if (!hostSide) return json({ error: 'No such game' }, 404);
+      const open = hostSide === 'rebel' ? 'imperial' : 'rebel';
+      sides[open] = ships;
+      seats[joiner] = open;
+      await this.state.storage.put(SIDES_KEY, sides);
+      await this.state.storage.put(SEATS_KEY, seats);
+      await this.assembleIfReady(code, sides);
+      return json({ playerId: open });
     }
 
     // Register a web-push subscription for the sender's seat.
@@ -99,18 +125,24 @@ export class GameDO {
     return json({ error: 'Method not allowed' }, 405);
   }
 
-  /** Bind a guest to an open seat (idempotent); returns their player id or an error. */
-  private async seat(guestId: string): Promise<{ playerId?: string; error?: string }> {
-    if (!guestId) return { error: 'Missing guestId' };
-    const seats = await this.seats();
-    if (seats[guestId]) return { playerId: seats[guestId] };
-    const players = (await this.state.storage.get<string[]>(PLAYERS_KEY)) ?? [];
-    const taken = new Set(Object.values(seats));
-    const open = players.find((p) => !taken.has(p));
-    if (!open) return { error: 'Game is full' };
-    seats[guestId] = open;
-    await this.state.storage.put(SEATS_KEY, seats);
-    return { playerId: open };
+  /** Once both sides have submitted squads, build the game and notify connected sockets. */
+  private async assembleIfReady(code: string, sides: Record<string, ShipInit[]>): Promise<void> {
+    if (await this.log()) return;
+    if (!sides.rebel || !sides.imperial) return;
+    const seed = (await this.state.storage.get<string>(SEED_KEY)) ?? 's';
+    const config: GameConfig = {
+      id: code,
+      seed,
+      players: [
+        { id: 'rebel', name: 'Rebel' },
+        { id: 'imperial', name: 'Imperial' },
+      ],
+      ships: [...sides.rebel, ...sides.imperial],
+    };
+    const log = createLog(config);
+    await this.state.storage.put(LOG_KEY, log);
+    await this.indexGame(config);
+    this.broadcast(log);
   }
 
   private async handleUpgrade(req: Request, guestId: string): Promise<Response> {
@@ -124,11 +156,11 @@ export class GameDO {
     server.serializeAttachment({ viewer } satisfies SocketMeta);
 
     const log = await this.log();
-    if (log) {
-      server.send(
-        JSON.stringify({ type: 'view', view: viewFromLog(log, viewer), log: publicLog(log) }),
-      );
-    }
+    server.send(
+      log
+        ? JSON.stringify({ type: 'view', view: viewFromLog(log, viewer), log: publicLog(log) })
+        : JSON.stringify({ type: 'lobby' }),
+    );
     return new Response(null, { status: 101, webSocket: client });
   }
 

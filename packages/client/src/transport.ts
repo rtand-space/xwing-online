@@ -1,27 +1,32 @@
-import type { Command, GameConfig, GameEvent, PlayerView } from '@xwing/engine';
+import type { Command, GameEvent, PlayerView, ShipInit } from '@xwing/engine';
 
 const SERVER = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:8787';
 const WS = SERVER.replace(/^http/, 'ws');
 
+/** Open a lobby with the host's side + ships; the game starts once the joiner brings theirs. */
 export async function hostGame(
   code: string,
-  config: GameConfig,
+  side: string,
+  ships: ShipInit[],
+  seed: string,
   guestId: string,
 ): Promise<{ playerId: string | null }> {
   const r = await fetch(`${SERVER}/games/${code}`, {
     method: 'POST',
-    body: JSON.stringify({ config, guestId }),
+    body: JSON.stringify({ guestId, side, ships, seed }),
   });
   return r.json() as Promise<{ playerId: string | null }>;
 }
 
+/** Join a lobby with the opposing side's ships; the server assembles + starts the game. */
 export async function joinGame(
   code: string,
+  ships: ShipInit[],
   guestId: string,
 ): Promise<{ playerId?: string; error?: string }> {
   const r = await fetch(`${SERVER}/games/${code}/join`, {
     method: 'POST',
-    body: JSON.stringify({ guestId }),
+    body: JSON.stringify({ guestId, ships }),
   });
   return r.json() as Promise<{ playerId?: string; error?: string }>;
 }
@@ -38,6 +43,7 @@ export interface Connection {
 
 interface Handlers {
   onView: (view: PlayerView, log: GameEvent[]) => void;
+  onLobby: () => void;
   onRejection: (message: string) => void;
   onClose: () => void;
 }
@@ -52,6 +58,7 @@ export function connect(code: string, guestId: string, handlers: Handlers): Conn
       rejection?: string;
     };
     if (msg.type === 'view' && msg.view) handlers.onView(msg.view, msg.log ?? []);
+    else if (msg.type === 'lobby') handlers.onLobby();
     else if (msg.type === 'rejection' && msg.rejection) handlers.onRejection(msg.rejection);
   });
   ws.addEventListener('close', handlers.onClose);

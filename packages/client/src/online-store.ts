@@ -1,10 +1,11 @@
-import type { Command, GameConfig, GameEvent, PlayerView } from '@xwing/engine';
+import { sideShipInits, type XwsSquad } from '@xwing/data';
+import type { Command, GameEvent, PlayerView } from '@xwing/engine';
 import { create } from 'zustand';
 import { getGuestId } from './identity';
 import { subscribePush } from './push';
 import { type Connection, connect, getSeat, hostGame, joinGame } from './transport';
 
-type Status = 'idle' | 'connecting' | 'playing' | 'error';
+type Status = 'idle' | 'connecting' | 'lobby' | 'playing' | 'error';
 
 const ACTIVE_KEY = 'xwing:activeGame';
 
@@ -35,9 +36,10 @@ interface OnlineStore {
   isHost: boolean;
   rejection: string | null;
   error: string | null;
-  host: (config: GameConfig) => Promise<void>;
-  join: (code: string) => Promise<void>;
-  /** Reconnect to a game still in progress after a page refresh. */
+  /** Host plays Rebel; brings their squad and opens the lobby. */
+  host: (squad: XwsSquad) => Promise<void>;
+  /** Joiner plays Imperial; brings their squad and starts the game. */
+  join: (code: string, squad: XwsSquad) => Promise<void>;
   resume: () => Promise<void>;
   send: (command: Command) => void;
   leave: () => void;
@@ -50,9 +52,11 @@ export const useOnline = create<OnlineStore>((set, get) => {
   const open = (code: string, guestId: string): Connection =>
     connect(code, guestId, {
       onView: (view, log) => set({ view, log, status: 'playing', rejection: null }),
+      onLobby: () => set({ status: 'lobby' }),
       onRejection: (rejection) => set({ rejection }),
       onClose: () => {
-        if (get().status === 'playing') set({ status: 'error', error: 'Disconnected' });
+        const s = get().status;
+        if (s === 'playing' || s === 'lobby') set({ status: 'error', error: 'Disconnected' });
       },
     });
 
@@ -66,26 +70,26 @@ export const useOnline = create<OnlineStore>((set, get) => {
     rejection: null,
     error: null,
 
-    host: async (config) => {
+    host: async (squad) => {
       const guestId = getGuestId();
       const code = randomCode();
       set({
         status: 'connecting',
         code,
         isHost: true,
+        seat: 'rebel',
         view: null,
         log: [],
         error: null,
         rejection: null,
       });
-      const { playerId } = await hostGame(code, { ...config, id: code }, guestId);
+      await hostGame(code, 'rebel', sideShipInits(squad, 'rebel'), String(Date.now()), guestId);
       remember({ code, isHost: true });
-      set({ seat: playerId });
       conn = open(code, guestId);
       void subscribePush(code, guestId);
     },
 
-    join: async (code) => {
+    join: async (code, squad) => {
       const guestId = getGuestId();
       set({
         status: 'connecting',
@@ -96,13 +100,13 @@ export const useOnline = create<OnlineStore>((set, get) => {
         error: null,
         rejection: null,
       });
-      const res = await joinGame(code, guestId);
+      const res = await joinGame(code, sideShipInits(squad, 'imperial'), guestId);
       if (res.error) {
         set({ status: 'error', error: res.error });
         return;
       }
+      set({ seat: res.playerId ?? 'imperial' });
       remember({ code, isHost: false });
-      set({ seat: res.playerId ?? null });
       conn = open(code, guestId);
       void subscribePush(code, guestId);
     },
@@ -127,7 +131,6 @@ export const useOnline = create<OnlineStore>((set, get) => {
         rejection: null,
       });
       conn = open(saved.code, guestId);
-      void subscribePush(saved.code, guestId);
     },
 
     send: (command) => conn?.send(command),

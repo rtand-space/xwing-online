@@ -17,9 +17,9 @@ Status: ☐ not started · ◐ in progress · ☑ done
 - ☐ **T-D3** Versioned points snapshot: pull XWA community points on a schedule, cache a pinned version, surface the data version; pin each game to its version.
 
 ## R2-M2 — Squad builder UI
-- ☐ **T-B1** Faction picker + pilot list with squad-point meter (running total / 20).
+- ☑ **T-B1** Faction pilot list with a squad-point meter + live `validateSquad` errors.
 - ☐ **T-B2** Per-pilot loadout: slot bar, equip upgrades against the loadout meter (effects deferred to R3/R4), limited/unique enforcement.
-- ☐ **T-B3** Save/name squads locally; start a game from a built squad (both sides).
+- ☑ **T-B3** Start a game from built squads — **each side brings its own**: hot-seat builds both; online is a lobby (host=Rebel opens with their squad, joiner=Imperial brings theirs, the DO assembles the game once both are in). _Save/name squads + host-picks-side are follow-ons._
 
 ## R2-M3 — XWS interop
 - ☐ **T-X1** Paste-import an XWS squad (validate, surface errors).

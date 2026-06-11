@@ -63,7 +63,9 @@ export function useActiveGame(): ActiveGame {
         }`
       : onlineStatus === 'error'
         ? `Online · ${onlineError ?? 'disconnected'}`
-        : 'Online · connecting…';
+        : onlineStatus === 'lobby'
+          ? 'Online · waiting for opponent'
+          : 'Online · connecting…';
     return {
       mode: 'online',
       online: true,
