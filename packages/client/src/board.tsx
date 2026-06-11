@@ -411,17 +411,15 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
         const active = s.id === activeId;
         const highlight = highlightIds.includes(s.id);
 
-        const total = s.maxHull + s.maxShields;
-        const hullW = total ? (w * s.hull) / total : 0;
-        const shieldW = total ? (w * s.shields) / total : 0;
-        const barX = s.pos.x - w / 2;
-        const barY = -s.pos.y + w / 2 + 6;
         const tokens = tokenCounts(s);
         const tokenSpan = (tokens.length - 1) * 12;
 
+        // name tag on the rear edge of the base (opposite facing); text stays upright
         const name = s.id.replace(/-/g, ' ');
-        const labelW = name.length * 7.5 + 14;
-        const labelY = barY + 9;
+        const labelW = name.length * 7.5 + 12;
+        const a = (s.pos.angle * Math.PI) / 180;
+        const lcx = s.pos.x - Math.sin(a) * (w / 2 - 9);
+        const lcy = -s.pos.y + Math.cos(a) * (w / 2 - 9);
 
         return (
           <g
@@ -463,23 +461,18 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
               />
             ))}
 
-            {/* hull (faction) + shield (blue) bar below the base */}
-            <rect x={barX} y={barY} width={w} height={4} rx={2} fill="rgba(255,255,255,0.14)" />
-            <rect x={barX} y={barY} width={hullW} height={4} rx={2} fill={color} />
-            <rect x={barX + hullW} y={barY} width={shieldW} height={4} rx={2} fill="#9bd2ff" />
-
-            {/* name tag attached under the base */}
+            {/* name tag on the rear of the base */}
             <rect
-              x={s.pos.x - labelW / 2}
-              y={labelY}
+              x={lcx - labelW / 2}
+              y={lcy - 8}
               width={labelW}
-              height={17}
+              height={16}
               rx={8}
               fill="rgba(5,7,15,0.72)"
               stroke={color}
               strokeOpacity={0.45}
             />
-            <text x={s.pos.x} y={labelY + 12.5} textAnchor="middle" className="shipLabel">
+            <text x={lcx} y={lcy + 4} textAnchor="middle" className="shipLabel">
               {name}
             </text>
           </g>
