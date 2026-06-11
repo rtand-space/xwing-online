@@ -1,4 +1,5 @@
 import { GameDO } from './game-do';
+import { cors, json, withCors } from './http';
 
 export { GameDO };
 
@@ -7,15 +8,14 @@ export interface Env {
   DB: D1Database;
 }
 
-const json = (body: unknown, status = 200): Response =>
-  new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
-
 /**
  * Routes /games/:id/* to that game's Durable Object, and /index/:id to the
- * cross-game D1 metadata.
+ * cross-game D1 metadata. Adds CORS so the browser client can call it cross-origin.
  */
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
+    if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
+
     const parts = new URL(req.url).pathname.split('/').filter(Boolean);
 
     if (parts[0] === 'index' && parts[1]) {
@@ -31,9 +31,10 @@ export default {
 
     if (parts[0] === 'games' && parts[1]) {
       const stub = env.GAME.get(env.GAME.idFromName(parts[1]));
-      return stub.fetch(req);
+      const res = await stub.fetch(req);
+      return res.status === 101 ? res : withCors(res); // don't wrap WebSocket upgrades
     }
 
-    return new Response('Not found', { status: 404 });
+    return withCors(new Response('Not found', { status: 404 }));
   },
 };
