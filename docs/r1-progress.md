@@ -53,9 +53,9 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 ## M5 — Transport + persistence (Cloudflare)
 
 - ☑ **T5.1** Durable Object per game — `@xwing/server`: `GameDO` (SQLite-backed) persists the event log; HTTP intake creates a game, validates commands against authoritative state + `pending`, and serves redacted per-viewer snapshots. Verified locally via `wrangler dev` (no account). Engine logic stays pure in `game-store.ts`.
-- ☐ **T5.2** WebSocket sync + hibernation
-- ☐ **T5.3** HTTPS command intake (async)
-- ☐ **T5.4** Reconnection
+- ☑ **T5.2** WebSocket sync + hibernation — hibernatable WS (`acceptWebSocket`, handler methods, `serializeAttachment`, ping/pong auto-response); commands broadcast a redacted view per viewer. Verified: 2 live clients sync, opponent dial stays hidden. _Full snapshots, not yet diffs._
+- ☑ **T5.3** HTTPS command intake (async) — same `applyAndBroadcast` path; an HTTP-posted command advances the game identically and updates live sockets.
+- ☑ **T5.4** Reconnection — on WS connect (or GET) the DO sends a fresh redacted snapshot, so a dropped client resumes correct state. _Events-since-index is a later optimization._
 - ☐ **T5.5** Client transport layer
 - ☐ **T5.6** D1 cross-game schema
 
