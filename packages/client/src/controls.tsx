@@ -89,11 +89,11 @@ export function Controls({
 
   if (!p || !ship) return <div className="muted">Resolving…</div>;
 
+  const name = ship.id.replace(/-/g, ' ');
+
   return (
     <div className="controls">
-      <div className="panelHead">
-        <span className="tag">{ship.id}</span> {labelFor(p.type)}
-      </div>
+      <div className="panelHead">{labelFor(p.type, name)}</div>
 
       {p.type === 'set-dial' && (
         <ManeuverDial
@@ -189,15 +189,15 @@ export function Controls({
   );
 }
 
-function labelFor(type: PlayerView['pending'][number]['type']): string {
+function labelFor(type: PlayerView['pending'][number]['type'], name: string): string {
   switch (type) {
     case 'set-dial':
-      return 'Set your maneuver';
+      return `Set dial for ${name}`;
     case 'execute-maneuver':
-      return 'Reveal & move';
+      return `Reveal & move ${name}`;
     case 'perform-action':
-      return 'Choose an action';
+      return `${name}: choose an action`;
     case 'declare-attack':
-      return 'Declare attack';
+      return `${name}: declare attack`;
   }
 }
