@@ -218,6 +218,13 @@ body {
   gap: 8px;
   margin-top: 8px;
 }
+.inviteRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
 .joinInput {
   flex: 1;
   font: inherit;

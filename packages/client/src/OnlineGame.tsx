@@ -1,13 +1,18 @@
+import type { PlayerView } from '@xwing/engine';
 import type { ReactElement } from 'react';
 import { previewFor, SvgBoard } from './board';
 import { Controls } from './controls';
 import { useOnline } from './online-store';
+
+const otherSeat = (view: PlayerView, seat: string | null): string | null =>
+  view.players.find((p) => p.id !== seat)?.id ?? null;
 
 export function OnlineGame(): ReactElement {
   const status = useOnline((s) => s.status);
   const view = useOnline((s) => s.view);
   const seat = useOnline((s) => s.seat);
   const code = useOnline((s) => s.code);
+  const isHost = useOnline((s) => s.isHost);
   const rejection = useOnline((s) => s.rejection);
   const error = useOnline((s) => s.error);
   const send = useOnline((s) => s.send);
@@ -76,6 +81,25 @@ export function OnlineGame(): ReactElement {
         </section>
 
         <aside className="side">
+          {isHost && code && !view.gameOver && (
+            <div className="panel">
+              <div className="panelHead">Invite a friend</div>
+              <p className="muted">They join as the opposing side.</p>
+              <div className="codeBox">{shareUrl}</div>
+              <div className="inviteRow">
+                <span className="muted">
+                  code: <strong>{code}</strong>
+                </span>
+                <button
+                  className="btn sm"
+                  onClick={() => void navigator.clipboard?.writeText(shareUrl)}
+                >
+                  Copy link
+                </button>
+              </div>
+            </div>
+          )}
+
           {view.gameOver ? (
             <div className="panel">
               <div className="panelHead">Game over</div>
@@ -94,14 +118,8 @@ export function OnlineGame(): ReactElement {
             </>
           ) : (
             <div className="panel">
-              <div className="panelHead">Waiting for opponent…</div>
-              {code && (
-                <>
-                  <p className="muted">Share this to invite them:</p>
-                  <div className="codeBox">{shareUrl}</div>
-                  <div className="codeBox">code: {code}</div>
-                </>
-              )}
+              <div className="panelHead">Waiting for {nameOf(otherSeat(view, seat))}…</div>
+              <p className="muted">It’s their turn.</p>
             </div>
           )}
         </aside>

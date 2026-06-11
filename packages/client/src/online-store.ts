@@ -10,6 +10,7 @@ interface OnlineStore {
   view: PlayerView | null;
   seat: string | null;
   code: string | null;
+  isHost: boolean;
   rejection: string | null;
   error: string | null;
   host: (config: GameConfig) => Promise<void>;
@@ -36,13 +37,14 @@ export const useOnline = create<OnlineStore>((set, get) => {
     view: null,
     seat: null,
     code: null,
+    isHost: false,
     rejection: null,
     error: null,
 
     host: async (config) => {
       const guestId = getGuestId();
       const code = randomCode();
-      set({ status: 'connecting', code, view: null, error: null, rejection: null });
+      set({ status: 'connecting', code, isHost: true, view: null, error: null, rejection: null });
       const { playerId } = await hostGame(code, { ...config, id: code }, guestId);
       set({ seat: playerId });
       conn = open(code, guestId);
@@ -50,7 +52,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
 
     join: async (code) => {
       const guestId = getGuestId();
-      set({ status: 'connecting', code, view: null, error: null, rejection: null });
+      set({ status: 'connecting', code, isHost: false, view: null, error: null, rejection: null });
       const res = await joinGame(code, guestId);
       if (res.error) {
         set({ status: 'error', error: res.error });
@@ -65,7 +67,15 @@ export const useOnline = create<OnlineStore>((set, get) => {
     leave: () => {
       conn?.close();
       conn = null;
-      set({ status: 'idle', view: null, seat: null, code: null, rejection: null, error: null });
+      set({
+        status: 'idle',
+        view: null,
+        seat: null,
+        code: null,
+        isHost: false,
+        rejection: null,
+        error: null,
+      });
     },
   };
 });
