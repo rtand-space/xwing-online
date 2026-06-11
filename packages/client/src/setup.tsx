@@ -13,6 +13,7 @@ import { useOnline } from './online-store';
 import { useGame } from './store';
 
 const MAX_SHIPS = 6;
+const seed = (): string => String(Date.now());
 
 function SquadColumn({
   title,
@@ -63,74 +64,29 @@ function SquadColumn({
   );
 }
 
-export function SetupPanel(): ReactElement {
+/** Quick start: preset hot-seat matches + online host/join. (Side panel → Game tab.) */
+export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const hostOnline = useOnline((s) => s.host);
   const joinOnline = useOnline((s) => s.join);
-  const [rebel, setRebel] = useState<PilotChoice[]>([]);
-  const [imperial, setImperial] = useState<PilotChoice[]>([]);
   const [code, setCode] = useState(() => new URLSearchParams(location.search).get('game') ?? '');
-
-  const toSquad = (faction: string, picks: PilotChoice[]): XwsSquad => ({
-    faction,
-    pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
-  });
-
-  const canStart = rebel.length > 0 && imperial.length > 0;
-  const startCustom = () =>
-    startGame(
-      buildConfig(
-        toSquad(XWS_FACTION.rebel, rebel),
-        toSquad(XWS_FACTION.imperial, imperial),
-        String(Date.now()),
-      ),
-    );
 
   return (
     <div className="panelStack">
-      <div className="panelHead">New game</div>
-
       <div className="section">Quick match (hot-seat)</div>
       <div className="presetList">
         {PRESETS.map((p) => (
-          <button
-            key={p.id}
-            className="preset"
-            onClick={() => startGame(presetConfig(p, String(Date.now())))}
-          >
+          <button key={p.id} className="preset" onClick={() => startGame(presetConfig(p, seed()))}>
             <div className="presetName">{p.name}</div>
             <div className="presetDesc">{p.description}</div>
           </button>
         ))}
       </div>
 
-      <div className="section">Build your own</div>
-      <div className="builder">
-        <SquadColumn
-          title="Rebel"
-          options={pilotChoices(FACTIONS.rebel)}
-          picks={rebel}
-          setPicks={setRebel}
-        />
-        <SquadColumn
-          title="Imperial"
-          options={pilotChoices(FACTIONS.imperial)}
-          picks={imperial}
-          setPicks={setImperial}
-        />
-      </div>
-      <button className="btn primary start" disabled={!canStart} onClick={startCustom}>
-        {canStart ? 'Start battle' : 'Add a ship to each side'}
-      </button>
-
       <div className="section">Online — share a code</div>
       <div className="presetList">
         {PRESETS.map((p) => (
-          <button
-            key={p.id}
-            className="preset"
-            onClick={() => hostOnline(presetConfig(p, String(Date.now())))}
-          >
+          <button key={p.id} className="preset" onClick={() => hostOnline(presetConfig(p, seed()))}>
             <div className="presetName">Host: {p.name}</div>
             <div className="presetDesc">{p.description}</div>
           </button>
@@ -151,6 +107,54 @@ export function SetupPanel(): ReactElement {
           Join
         </button>
       </div>
+    </div>
+  );
+}
+
+/** Build a custom hot-seat match. (Side panel → Squad tab; R2 grows this into the full builder.) */
+export function SquadBuilder(): ReactElement {
+  const startGame = useGame((s) => s.startGame);
+  const [rebel, setRebel] = useState<PilotChoice[]>([]);
+  const [imperial, setImperial] = useState<PilotChoice[]>([]);
+
+  const toSquad = (faction: string, picks: PilotChoice[]): XwsSquad => ({
+    faction,
+    pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+  });
+  const canStart = rebel.length > 0 && imperial.length > 0;
+
+  return (
+    <div className="panelStack">
+      <div className="section">Build your own (hot-seat)</div>
+      <div className="builder">
+        <SquadColumn
+          title="Rebel"
+          options={pilotChoices(FACTIONS.rebel)}
+          picks={rebel}
+          setPicks={setRebel}
+        />
+        <SquadColumn
+          title="Imperial"
+          options={pilotChoices(FACTIONS.imperial)}
+          picks={imperial}
+          setPicks={setImperial}
+        />
+      </div>
+      <button
+        className="btn primary start"
+        disabled={!canStart}
+        onClick={() =>
+          startGame(
+            buildConfig(
+              toSquad(XWS_FACTION.rebel, rebel),
+              toSquad(XWS_FACTION.imperial, imperial),
+              seed(),
+            ),
+          )
+        }
+      >
+        {canStart ? 'Start battle' : 'Add a ship to each side'}
+      </button>
     </div>
   );
 }

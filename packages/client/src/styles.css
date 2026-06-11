@@ -92,10 +92,126 @@ body {
   display: flex;
   align-items: center;
   gap: 7px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
   font-family: ui-monospace, monospace;
   font-size: 12px;
   color: var(--ink-soft);
+}
+.stepper {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 14px;
+}
+.step {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  padding: 2px 8px;
+  border: 1px solid transparent;
+  border-radius: 99px;
+}
+.step.on {
+  font-weight: 700;
+}
+@media (max-width: 560px) {
+  .brand {
+    display: none;
+  }
+  .step {
+    padding: 2px 5px;
+  }
+}
+
+/* side-panel tabs */
+.tabs {
+  display: flex;
+  gap: 2px;
+  padding: 8px 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  flex: 1;
+  font: inherit;
+  font-size: 13px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  padding: 9px 6px;
+  cursor: pointer;
+}
+.tab.on {
+  color: var(--ink);
+  border-bottom-color: var(--pine);
+}
+
+/* maneuver dial */
+.dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.dialGrid {
+  display: grid;
+  grid-template-columns: auto repeat(5, 1fr);
+  gap: 5px;
+  align-items: center;
+}
+.dialSpeed {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-right: 4px;
   text-align: right;
+}
+.dialCell {
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  aspect-ratio: 1;
+  min-width: 38px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.dialCell:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.dialCell.empty {
+  border-color: transparent;
+  background: transparent;
+  cursor: default;
+}
+.dialSpecials {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* event log */
+.logPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  max-height: 60vh;
+  overflow: auto;
+}
+.logLine {
+  white-space: pre-wrap;
 }
 .liveDot {
   width: 8px;
@@ -159,27 +275,58 @@ body {
 .flyout.side.open {
   transform: translateX(0);
 }
-/* bottom: dark glass HUD floating over the board */
+/* bottom: narrow dark-glass HUD floating over the board (see-through) */
 .flyout.bottom {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  max-height: 46dvh;
-  background: rgba(6, 9, 20, 0.8);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid var(--line);
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -12px 30px -16px rgba(0, 0, 0, 0.7);
-  transform: translateY(110%);
+  left: 50%;
+  bottom: 12px;
+  width: min(440px, 92vw);
+  max-height: 64dvh;
+  background: rgba(8, 11, 24, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.85);
+  transform: translate(-50%, 150%);
 }
 .flyout.bottom.open {
-  transform: translateY(0);
+  transform: translate(-50%, 0);
+}
+.flyout.bottom .flyoutBody {
+  padding-top: 0;
+}
+/* your-turn cue: faction-tinted glow */
+.flyout.bottom.cue {
+  border-color: var(--cue, var(--pine));
+  box-shadow:
+    0 0 0 1px var(--cue, var(--pine)),
+    0 16px 44px -16px var(--cue, var(--pine));
 }
 /* on phones, the two flyouts are mutually exclusive */
 @media (max-width: 759px) {
   .flyout.side.open ~ .flyout.bottom {
-    transform: translateY(110%);
+    transform: translate(-50%, 150%);
   }
+}
+
+.hudHandle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font: inherit;
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  padding: 9px 14px;
+  cursor: pointer;
+}
+.hudTitle {
+  font-size: 13px;
+  font-weight: 600;
+}
+.chev {
+  color: var(--ink-soft);
 }
 .controls {
   display: flex;

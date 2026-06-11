@@ -1,4 +1,4 @@
-import type { Command, PlayerView } from '@xwing/engine';
+import type { Command, GameEvent, PlayerView } from '@xwing/engine';
 import { useOnline } from './online-store';
 import { currentPlayer, useGame, viewFor } from './store';
 
@@ -13,14 +13,24 @@ export interface ActiveGame {
   needsUnlock: boolean; // local pass-and-play privacy gate
   unlock: () => void;
   statusLabel: string;
+  /** Faction colour of the side currently to act (for nav cues). */
+  activeColor: string | null;
+  /** Event log, available in local hot-seat only (online gets views, not the log). */
+  log: GameEvent[] | null;
   isHost: boolean;
   code: string | null;
   onlineError: string | null;
   leave: () => void;
 }
 
+const SIDE = ['#3fe0c5', '#f7c457'];
 const nameOf = (view: PlayerView | null, id: string | null): string =>
   view?.players.find((p) => p.id === id)?.name ?? id ?? '';
+const colorOf = (view: PlayerView | null, id: string | null): string | null => {
+  if (!view || id == null) return null;
+  const idx = view.players.findIndex((p) => p.id === id);
+  return idx < 0 ? null : (SIDE[idx % 2] ?? null);
+};
 
 export function useActiveGame(): ActiveGame {
   const onlineStatus = useOnline((s) => s.status);
@@ -63,6 +73,8 @@ export function useActiveGame(): ActiveGame {
       needsUnlock: false,
       unlock: () => undefined,
       statusLabel: status,
+      activeColor: colorOf(view, pendingPlayer),
+      log: null,
       isHost,
       code,
       onlineError,
@@ -89,6 +101,8 @@ export function useActiveGame(): ActiveGame {
       statusLabel: `Hot-seat · Round ${view.round} · ${
         view.gameOver ? 'game over' : `${nameOf(view, cp)}'s turn`
       }`,
+      activeColor: colorOf(view, cp),
+      log: game.log,
       isHost: false,
       code: null,
       onlineError: null,
@@ -106,6 +120,8 @@ export function useActiveGame(): ActiveGame {
     needsUnlock: false,
     unlock: () => undefined,
     statusLabel: 'No game in progress',
+    activeColor: null,
+    log: null,
     isHost: false,
     code: null,
     onlineError: null,

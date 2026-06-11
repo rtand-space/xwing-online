@@ -1,12 +1,17 @@
-import type { ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
+import { formatEvent } from './log';
 import { Roster } from './roster';
-import { SetupPanel } from './setup';
+import { QuickPlay, SquadBuilder } from './setup';
 import type { ActiveGame } from './useActiveGame';
 
-/**
- * Left flyout: management surface. R1 = new game / invite / board state.
- * RX expands here (full squad builder, sandbox toggle, accounts, replays).
- */
+type Tab = 'game' | 'squad' | 'log' | 'settings';
+const TABS: { key: Tab; label: string }[] = [
+  { key: 'game', label: 'Game' },
+  { key: 'squad', label: 'Squad' },
+  { key: 'log', label: 'Log' },
+  { key: 'settings', label: 'Settings' },
+];
+
 export function SideFlyout({
   open,
   onClose,
@@ -16,12 +21,32 @@ export function SideFlyout({
   onClose: () => void;
   ag: ActiveGame;
 }): ReactElement {
+  const [tab, setTab] = useState<Tab>('game');
   return (
     <>
       {open && <div className="backdrop" onClick={onClose} />}
       <aside className={open ? 'flyout side open' : 'flyout side'} aria-hidden={!open}>
+        <nav className="tabs">
+          {TABS.map((t) => (
+            <button
+              key={t.key}
+              className={tab === t.key ? 'tab on' : 'tab'}
+              onClick={() => setTab(t.key)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </nav>
         <div className="flyoutBody">
-          {ag.mode === 'none' ? <SetupPanel /> : <GamePanel ag={ag} />}
+          {tab === 'game' && (ag.mode === 'none' ? <QuickPlay /> : <GamePanel ag={ag} />)}
+          {tab === 'squad' && <SquadBuilder />}
+          {tab === 'log' && <LogTab ag={ag} />}
+          {tab === 'settings' && (
+            <p className="muted">
+              Settings live here later (theme, motion, account). Reduced-motion and
+              colour-blind-safe tokens are already respected.
+            </p>
+          )}
           <p className="disclaimer">
             Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
             models.
@@ -68,6 +93,25 @@ function GamePanel({ ag }: { ag: ActiveGame }): ReactElement {
       <button className="btn ghost" onClick={ag.leave}>
         {ag.online ? 'Leave game' : 'New game'}
       </button>
+    </div>
+  );
+}
+
+function LogTab({ ag }: { ag: ActiveGame }): ReactElement {
+  if (!ag.log) {
+    return <p className="muted">The event log is available in hot-seat games.</p>;
+  }
+  const lines = ag.log
+    .map(formatEvent)
+    .filter((l): l is string => l !== null)
+    .slice(-50);
+  return (
+    <div className="logPanel">
+      {lines.map((l: string, i: number) => (
+        <div key={i} className="logLine">
+          {l}
+        </div>
+      ))}
     </div>
   );
 }
