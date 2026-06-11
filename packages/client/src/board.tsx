@@ -100,6 +100,10 @@ function ShipBody({
   glow: string;
   stroke: number;
 }): ReactElement {
+  // Front firing arc: 90° wedge from the base centre through the two front corners
+  // (forward is local -y). Drawn on the plate, projecting a base-length ahead.
+  const reach = w * 0.95;
+  const edge = Math.SQRT1_2 * reach; // ±45° components
   return (
     <g filter={glow}>
       <rect
@@ -112,13 +116,31 @@ function ShipBody({
         stroke={color}
         strokeWidth={stroke}
       />
-      <polygon points={`0,${-w / 2 - 11} -8,${-w / 2 + 2} 8,${-w / 2 + 2}`} fill={color} />
-      <circle cx={0} cy={-w / 6} r={w / 9} fill={color} fillOpacity={0.85} />
+      <polygon points={`0,0 ${-edge},${-edge} ${edge},${-edge}`} fill={color} fillOpacity={0.14} />
+      <line
+        x1={0}
+        y1={0}
+        x2={-edge}
+        y2={-edge}
+        stroke={color}
+        strokeWidth={1.5}
+        strokeOpacity={0.8}
+      />
+      <line
+        x1={0}
+        y1={0}
+        x2={edge}
+        y2={-edge}
+        stroke={color}
+        strokeWidth={1.5}
+        strokeOpacity={0.8}
+      />
+      <circle cx={0} cy={0} r={2.5} fill={color} />
     </g>
   );
 }
 
-/** 2D SVG board: ships as bases with a nose, mapped from world mm (y-up) to screen (y-down). */
+/** 2D SVG board: ships as bases with a front-arc wedge, mapped from world mm (y-up) to screen (y-down). */
 export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], preview, onPick }) => {
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
