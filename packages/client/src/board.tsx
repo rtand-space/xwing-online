@@ -1,5 +1,130 @@
 import { applyManeuver, BASE_MM, type PlayerView, type Position, type Ship } from '@xwing/engine';
-import type { ReactElement } from 'react';
+import {
+  type MouseEvent as ReactMouseEvent,
+  type ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+
+interface ViewBox {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+const BOUND = 500;
+const MIN_W = 260; // most zoomed in
+const MAX_W = 2 * BOUND; // default (no zoom-out past the mat)
+
+const clampVB = (v: ViewBox): ViewBox => ({
+  w: v.w,
+  h: v.h,
+  x: Math.min(BOUND - v.w, Math.max(-BOUND, v.x)),
+  y: Math.min(BOUND - v.h, Math.max(-BOUND, v.y)),
+});
+
+/** Pinch (touch) + ctrl/⌘-scroll zoom, drag to pan — by mutating the SVG viewBox. */
+function usePanZoom(): {
+  ref: React.RefObject<SVGSVGElement | null>;
+  viewBox: string;
+  onMouseDown: (e: ReactMouseEvent) => void;
+} {
+  const ref = useRef<SVGSVGElement>(null);
+  const [vb, setVb] = useState<ViewBox>({ x: -BOUND, y: -BOUND, w: MAX_W, h: MAX_W });
+  const vbRef = useRef(vb);
+  vbRef.current = vb;
+  const gesture = useRef<{ pinch?: number; px?: number; py?: number }>({});
+
+  useEffect(() => {
+    const svg = ref.current;
+    if (!svg) return;
+    const apply = (next: ViewBox): void => setVb(clampVB(next));
+    const zoomAt = (factor: number, cx: number, cy: number): void => {
+      const r = svg.getBoundingClientRect();
+      const v = vbRef.current;
+      const fx = (cx - r.left) / r.width;
+      const fy = (cy - r.top) / r.height;
+      const nw = Math.min(MAX_W, Math.max(MIN_W, v.w * factor));
+      apply({ x: v.x + fx * (v.w - nw), y: v.y + fy * (v.h - nw), w: nw, h: nw });
+    };
+    const onWheel = (e: WheelEvent): void => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      e.preventDefault();
+      zoomAt(e.deltaY > 0 ? 1.1 : 0.9, e.clientX, e.clientY);
+    };
+    const onTouchStart = (e: TouchEvent): void => {
+      if (e.touches.length === 2) {
+        const a = e.touches[0]!;
+        const b = e.touches[1]!;
+        gesture.current = { pinch: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) };
+      } else if (e.touches.length === 1) {
+        gesture.current = { px: e.touches[0]!.clientX, py: e.touches[0]!.clientY };
+      }
+    };
+    const onTouchMove = (e: TouchEvent): void => {
+      const g = gesture.current;
+      if (e.touches.length === 2 && g.pinch != null) {
+        e.preventDefault();
+        const a = e.touches[0]!;
+        const b = e.touches[1]!;
+        const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        zoomAt(g.pinch / d, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+        gesture.current = { pinch: d };
+      } else if (e.touches.length === 1 && g.px != null && g.py != null) {
+        e.preventDefault();
+        const r = svg.getBoundingClientRect();
+        const v = vbRef.current;
+        const t = e.touches[0]!;
+        apply({
+          ...v,
+          x: v.x - ((t.clientX - g.px) / r.width) * v.w,
+          y: v.y - ((t.clientY - g.py) / r.height) * v.h,
+        });
+        gesture.current = { px: t.clientX, py: t.clientY };
+      }
+    };
+    const clear = (): void => {
+      gesture.current = {};
+    };
+    svg.addEventListener('wheel', onWheel, { passive: false });
+    svg.addEventListener('touchstart', onTouchStart, { passive: false });
+    svg.addEventListener('touchmove', onTouchMove, { passive: false });
+    svg.addEventListener('touchend', clear);
+    return () => {
+      svg.removeEventListener('wheel', onWheel);
+      svg.removeEventListener('touchstart', onTouchStart);
+      svg.removeEventListener('touchmove', onTouchMove);
+      svg.removeEventListener('touchend', clear);
+    };
+  }, []);
+
+  const onMouseDown = (e: ReactMouseEvent): void => {
+    const svg = ref.current;
+    if (!svg) return;
+    const r = svg.getBoundingClientRect();
+    const start = vbRef.current;
+    const sx = e.clientX;
+    const sy = e.clientY;
+    const move = (ev: MouseEvent): void =>
+      setVb(
+        clampVB({
+          ...start,
+          x: start.x - ((ev.clientX - sx) / r.width) * start.w,
+          y: start.y - ((ev.clientY - sy) / r.height) * start.h,
+        }),
+      );
+    const up = (): void => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  return { ref, viewBox: `${vb.x} ${vb.y} ${vb.w} ${vb.h}`, onMouseDown };
+}
 
 export interface BoardProps {
   view: PlayerView;
@@ -44,7 +169,7 @@ function ShipDefs(): ReactElement {
 }
 
 const TOKEN_COLOR: Record<string, string> = {
-  focus: '#f7c457',
+  focus: '#4ade80',
   evade: '#3fe0c5',
   stress: '#ef6f6f',
   lock: '#c0c6dd',
@@ -138,7 +263,7 @@ function TokenMark({
   );
 }
 
-const ARC_ANGLES = [-45, -30, -15, 0, 15, 30, 45];
+const ARC_ANGLES = Array.from({ length: 19 }, (_, i) => -45 + i * 5);
 const arcPolyline = (r: number): string =>
   ARC_ANGLES.map((a) => {
     const t = (a * Math.PI) / 180;
@@ -152,7 +277,8 @@ function CombatArc({ w, color }: { w: number; color: string }): ReactElement {
   const e = Math.SQRT1_2 * bands[2]!;
   return (
     <g>
-      <polygon points={`0,0 ${-e},${-e} ${e},${-e}`} fill={color} fillOpacity={0.07} />
+      {/* sector follows the curved range-3 boundary, so the whole wedge is filled */}
+      <polygon points={`0,0 ${arcPolyline(bands[2]!)}`} fill={color} fillOpacity={0.08} />
       <line x1={0} y1={0} x2={-e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
       <line x1={0} y1={0} x2={e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
       {bands.map((r, i) => (
@@ -189,10 +315,9 @@ function ShipBody({
   stroke: number;
   active: boolean;
 }): ReactElement {
-  // Front firing arc: 90° wedge from the base centre through the two front corners
-  // (forward is local -y). Drawn on the plate, projecting a base-length ahead.
-  const reach = w * 0.95;
-  const edge = Math.SQRT1_2 * reach; // ±45° components
+  // Front firing arc: 90° wedge from the base centre to the two front corners
+  // (forward is local -y), kept entirely on the plate.
+  const edge = w / 2; // the front corners sit at (±w/2, -w/2)
   return (
     <g filter={glow}>
       <rect
@@ -239,9 +364,16 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
   const attacker =
     view.phase === 'engagement' && activeId ? ships.find((s) => s.id === activeId) : undefined;
+  const { ref, viewBox, onMouseDown } = usePanZoom();
 
   return (
-    <svg className="board" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
+    <svg
+      ref={ref}
+      className="board"
+      viewBox={viewBox}
+      preserveAspectRatio="xMidYMid meet"
+      onMouseDown={onMouseDown}
+    >
       <Starfield />
       <ShipDefs />
       <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />

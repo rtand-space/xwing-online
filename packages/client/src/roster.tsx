@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 
 const SIDE = ['#3fe0c5', '#f7c457'];
 const TOKEN: Record<string, string> = {
-  focus: '#f7c457',
+  focus: '#4ade80',
   evade: '#3fe0c5',
   stress: '#ef6f6f',
   lock: '#c0c6dd',
