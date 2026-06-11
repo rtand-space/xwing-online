@@ -2,6 +2,8 @@
 
 Live status of the [R1 backlog](r1-backlog.md). Source of truth for ticket state — the launch tracker gets a coarse update only when a whole milestone closes.
 
+> **R1 is SHIPPED** 🚀 — live at https://xwing-online.pages.dev (client) + https://xwing-server.synrg116.workers.dev (server). Every milestone M0–M7 is complete; remaining ◐ items are deliberate R1 simplifications that grow in later releases (full data pull → R2, abilities → R3, 3D board → later visual pass). See [deploy.md](deploy.md).
+
 Status: ☐ not started · ◐ in progress · ☑ done
 
 ## M0 — Project setup
