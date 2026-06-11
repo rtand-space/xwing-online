@@ -147,28 +147,44 @@ body {
   overflow: auto;
   transition: transform 0.2s ease;
 }
+/* side: solid management slab, right edge */
 .flyout.side {
   top: 52px;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: min(380px, 88vw);
-  border-right: 1px solid var(--line);
-  transform: translateX(-100%);
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);
 }
 .flyout.side.open {
   transform: translateX(0);
 }
+/* bottom: dark glass HUD floating over the board */
 .flyout.bottom {
   left: 0;
   right: 0;
   bottom: 0;
   max-height: 46dvh;
+  background: rgba(6, 9, 20, 0.8);
+  backdrop-filter: blur(12px);
   border-top: 1px solid var(--line);
   border-radius: 16px 16px 0 0;
+  box-shadow: 0 -12px 30px -16px rgba(0, 0, 0, 0.7);
   transform: translateY(110%);
 }
 .flyout.bottom.open {
   transform: translateY(0);
+}
+/* on phones, the two flyouts are mutually exclusive */
+@media (max-width: 759px) {
+  .flyout.side.open ~ .flyout.bottom {
+    transform: translateY(110%);
+  }
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .flyoutBody {
   padding: 14px;

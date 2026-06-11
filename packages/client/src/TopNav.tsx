@@ -11,14 +11,14 @@ export function TopNav({
 }): ReactElement {
   return (
     <header className="topnav">
-      <button className="navBtn" onClick={onToggleSide} aria-label="Menu">
-        ☰
-      </button>
       <div className="brand">X-Wing Online</div>
       <div className="navStatus">
         {ag.online && <span className={`liveDot ${ag.view ? 'on' : ''}`} aria-hidden="true" />}
         {ag.statusLabel}
       </div>
+      <button className="navBtn" onClick={onToggleSide} aria-label="Menu">
+        ☰
+      </button>
     </header>
   );
 }

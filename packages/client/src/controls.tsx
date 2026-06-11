@@ -38,10 +38,10 @@ export function Controls({
   const p = view.pending[0];
   const ship = p ? view.ships.find((s) => s.id === p.shipId) : undefined;
 
-  if (!p || !ship) return <div className="panel muted">Resolving…</div>;
+  if (!p || !ship) return <div className="muted">Resolving…</div>;
 
   return (
-    <div className="panel">
+    <div className="controls">
       <div className="panelHead">
         <span className="tag">{ship.id}</span> {labelFor(p.type)}
       </div>
