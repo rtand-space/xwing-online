@@ -477,5 +477,5 @@ export function previewFor(view: PlayerView, shipId: string | undefined): BoardP
   if (!shipId) return null;
   const ship = view.ships.find((s) => s.id === shipId);
   if (!ship?.dial) return null;
-  return { shipId, pos: applyManeuver(ship.pos, ship.dial) };
+  return { shipId, pos: applyManeuver(ship.pos, ship.dial, ship.base) };
 }

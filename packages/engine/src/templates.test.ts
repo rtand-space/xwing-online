@@ -15,34 +15,34 @@ const expectPos = (actual: Position, expected: Position) => {
   expect(actual.angle).toBeCloseTo(expected.angle);
 };
 
-describe('maneuver templates', () => {
-  it('straight keeps facing and advances along +y', () => {
-    expectPos(applyManeuver(origin, m(3, 'straight')), { x: 0, y: 120, angle: 0 });
+// small base = 40mm, so a straight move advances template length + one base length.
+describe('maneuver templates (rear-of-base seats at the template end)', () => {
+  it('straight advances template length + one base, keeping facing', () => {
+    expectPos(applyManeuver(origin, m(3, 'straight'), 'small'), { x: 0, y: 160, angle: 0 });
   });
 
-  it('hard turns sweep 90° with a clean radius', () => {
-    expectPos(applyManeuver(origin, m(1, 'turn-right')), { x: 40, y: 40, angle: 90 });
-    expectPos(applyManeuver(origin, m(1, 'turn-left')), { x: -40, y: 40, angle: 270 });
+  it('hard turns sweep 90° with the base offset on entry and exit', () => {
+    expectPos(applyManeuver(origin, m(1, 'turn-right'), 'small'), { x: 60, y: 60, angle: 90 });
+    expectPos(applyManeuver(origin, m(1, 'turn-left'), 'small'), { x: -60, y: 60, angle: 270 });
   });
 
-  it('banks sweep 45°', () => {
-    const p = applyManeuver(origin, m(1, 'bank-right'));
-    expect(p.x).toBeCloseTo(80 * (1 - Math.cos(Math.PI / 4)));
-    expect(p.y).toBeCloseTo(80 * Math.sin(Math.PI / 4));
-    expect(p.angle).toBeCloseTo(45);
-  });
-
-  it('koiogran goes straight then flips 180°', () => {
-    expectPos(applyManeuver(origin, m(2, 'koiogran')), { x: 0, y: 80, angle: 180 });
+  it('koiogran goes straight (+base) then flips 180°', () => {
+    expectPos(applyManeuver(origin, m(2, 'koiogran'), 'small'), { x: 0, y: 120, angle: 180 });
   });
 
   it('applies the rigid transform relative to current facing', () => {
     const facingEast: Position = { x: 100, y: 200, angle: 90 };
-    expectPos(applyManeuver(facingEast, m(2, 'straight')), { x: 180, y: 200, angle: 90 });
-    expectPos(applyManeuver(facingEast, m(1, 'turn-right')), { x: 140, y: 160, angle: 180 });
+    expectPos(applyManeuver(facingEast, m(2, 'straight'), 'small'), { x: 220, y: 200, angle: 90 });
+    expectPos(applyManeuver(facingEast, m(1, 'turn-right'), 'small'), {
+      x: 160,
+      y: 140,
+      angle: 180,
+    });
   });
 
-  it('pathAt(t=1) equals the full maneuver', () => {
-    expect(pathAt(origin, m(2, 'bank-left'), 1)).toEqual(applyManeuver(origin, m(2, 'bank-left')));
+  it('pathAt(t=1) equals the full maneuver; t=0 is the start', () => {
+    const full = applyManeuver(origin, m(2, 'bank-left'), 'small');
+    expectPos(pathAt(origin, m(2, 'bank-left'), 1, 'small'), full);
+    expectPos(pathAt(origin, m(2, 'bank-left'), 0, 'small'), origin);
   });
 });

@@ -17,10 +17,10 @@ export interface MovementResult {
 
 /** Execute a maneuver, backing off along the template if it would overlap a ship. */
 export function resolveMovement(state: GameState, ship: Ship, m: Maneuver): MovementResult {
-  const full = pathAt(ship.pos, m, 1);
+  const full = pathAt(ship.pos, m, 1, ship.base);
   if (!collides(state, ship, full)) return { to: full, bumped: false };
   for (let t = 0.95; t > 0; t -= 0.05) {
-    const p = pathAt(ship.pos, m, t);
+    const p = pathAt(ship.pos, m, t, ship.base);
     if (!collides(state, ship, p)) return { to: p, bumped: true };
   }
   return { to: ship.pos, bumped: true };

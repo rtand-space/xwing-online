@@ -32,19 +32,19 @@ const straight = (speed: Maneuver['speed']): Maneuver => ({
 });
 
 describe('movement collisions', () => {
-  it('moves to the full placement when clear', () => {
+  it('moves to the full placement when clear (template + base)', () => {
     const mover = ship('a', 0, 0);
     const result = resolveMovement(stateWith([mover, ship('b', 500, 500)]), mover, straight(2));
     expect(result.bumped).toBe(false);
-    expect(result.to).toEqual({ x: 0, y: 80, angle: 0 });
+    expect(result.to).toEqual({ x: 0, y: 120, angle: 0 }); // 80 template + 40 base
   });
 
-  it('backs off along the template and flags a bump on overlap', () => {
+  it('backs off and flags a bump on overlap', () => {
     const mover = ship('a', 0, 0);
-    const blocker = ship('b', 0, 80); // directly in the path's end
+    const blocker = ship('b', 0, 120); // sits at the move's end
     const result = resolveMovement(stateWith([mover, blocker]), mover, straight(2));
     expect(result.bumped).toBe(true);
-    expect(result.to.y).toBeLessThan(80);
+    expect(result.to.y).toBeLessThan(120);
     expect(result.to.y).toBeGreaterThan(0);
   });
 });
@@ -60,7 +60,7 @@ describe('movement wired into activation', () => {
       ],
       ships: [
         xwing('x', 'r', 1, { x: 0, y: 0, angle: 0 }),
-        xwing('t', 'i', 2, { x: 0, y: 80, angle: 180 }),
+        xwing('t', 'i', 2, { x: 0, y: 120, angle: 180 }),
       ],
     };
     let g = createGame(config);
@@ -74,7 +74,7 @@ describe('movement wired into activation', () => {
     // x bumped into t, so its action is skipped — control passes straight to t
     const x = g.state.ships.find((s) => s.id === 'x')!;
     expect(x.hasActed).toBe(true);
-    expect(x.pos.y).toBeLessThan(80);
+    expect(x.pos.y).toBeLessThan(120);
     expect(g.state.pending[0]!.shipId).toBe('t');
     expect(g.state.pending[0]!.type).toBe('execute-maneuver');
   });
