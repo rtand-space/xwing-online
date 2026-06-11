@@ -289,11 +289,27 @@ body {
     monospace;
 }
 .activeRing {
-  fill: none;
-  stroke: var(--ink);
-  stroke-opacity: 0.35;
-  stroke-width: 2;
-  stroke-dasharray: 3 6;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%,
+  100% {
+    stroke-opacity: 0.65;
+  }
+  50% {
+    stroke-opacity: 0.2;
+  }
+}
+.rangeLabel {
+  font:
+    700 15px ui-monospace,
+    monospace;
+  opacity: 0.7;
+}
+.tokenCount {
+  font:
+    700 11px ui-monospace,
+    monospace;
 }
 
 .side {

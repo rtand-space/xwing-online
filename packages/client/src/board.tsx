@@ -87,18 +87,107 @@ function tokenCounts(ship: Ship): [string, number][] {
   return Object.entries(counts);
 }
 
+/** A distinct shape per token kind (not colour alone) above the base. */
+function TokenMark({
+  kind,
+  n,
+  cx,
+  cy,
+}: {
+  kind: string;
+  n: number;
+  cx: number;
+  cy: number;
+}): ReactElement {
+  const c = TOKEN_COLOR[kind] ?? '#fff';
+  let shape: ReactElement;
+  if (kind === 'evade') {
+    shape = (
+      <rect
+        x={cx - 4}
+        y={cy - 4}
+        width={8}
+        height={8}
+        fill={c}
+        transform={`rotate(45 ${cx} ${cy})`}
+      />
+    );
+  } else if (kind === 'stress') {
+    shape = (
+      <polygon
+        points={`${cx},${cy - 4.5} ${cx - 4.5},${cy + 3.5} ${cx + 4.5},${cy + 3.5}`}
+        fill={c}
+      />
+    );
+  } else if (kind === 'lock') {
+    shape = (
+      <rect x={cx - 4} y={cy - 4} width={8} height={8} fill="none" stroke={c} strokeWidth={1.6} />
+    );
+  } else {
+    shape = <circle cx={cx} cy={cy} r={4} fill={c} />; // focus
+  }
+  return (
+    <>
+      {shape}
+      {n > 1 && (
+        <text x={cx + 6} y={cy + 3} className="tokenCount" fill={c}>
+          {n}
+        </text>
+      )}
+    </>
+  );
+}
+
+const ARC_ANGLES = [-45, -30, -15, 0, 15, 30, 45];
+const arcPolyline = (r: number): string =>
+  ARC_ANGLES.map((a) => {
+    const t = (a * Math.PI) / 180;
+    return `${r * Math.sin(t)},${-r * Math.cos(t)}`;
+  }).join(' ');
+
+/** The active attacker's field of fire + range bands (1/2/3), drawn during Engagement. */
+function CombatArc({ w, color }: { w: number; color: string }): ReactElement {
+  const half = w / 2;
+  const bands = [half + 100, half + 200, half + 300];
+  const e = Math.SQRT1_2 * bands[2]!;
+  return (
+    <g>
+      <polygon points={`0,0 ${-e},${-e} ${e},${-e}`} fill={color} fillOpacity={0.07} />
+      <line x1={0} y1={0} x2={-e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
+      <line x1={0} y1={0} x2={e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
+      {bands.map((r, i) => (
+        <g key={i}>
+          <polyline
+            points={arcPolyline(r)}
+            fill="none"
+            stroke={color}
+            strokeWidth={1.2}
+            strokeOpacity={0.45}
+            strokeDasharray="5 5"
+          />
+          <text x={0} y={-r + 16} textAnchor="middle" className="rangeLabel" fill={color}>
+            {i + 1}
+          </text>
+        </g>
+      ))}
+    </g>
+  );
+}
+
 function ShipBody({
   w,
   color,
   fill,
   glow,
   stroke,
+  active,
 }: {
   w: number;
   color: string;
   fill: string;
   glow: string;
   stroke: number;
+  active: boolean;
 }): ReactElement {
   // Front firing arc: 90° wedge from the base centre through the two front corners
   // (forward is local -y). Drawn on the plate, projecting a base-length ahead.
@@ -116,15 +205,19 @@ function ShipBody({
         stroke={color}
         strokeWidth={stroke}
       />
-      <polygon points={`0,0 ${-edge},${-edge} ${edge},${-edge}`} fill={color} fillOpacity={0.14} />
+      <polygon
+        points={`0,0 ${-edge},${-edge} ${edge},${-edge}`}
+        fill={color}
+        fillOpacity={active ? 0.24 : 0.14}
+      />
       <line
         x1={0}
         y1={0}
         x2={-edge}
         y2={-edge}
         stroke={color}
-        strokeWidth={1.5}
-        strokeOpacity={0.8}
+        strokeWidth={active ? 2 : 1.5}
+        strokeOpacity={active ? 1 : 0.8}
       />
       <line
         x1={0}
@@ -132,8 +225,8 @@ function ShipBody({
         x2={edge}
         y2={-edge}
         stroke={color}
-        strokeWidth={1.5}
-        strokeOpacity={0.8}
+        strokeWidth={active ? 2 : 1.5}
+        strokeOpacity={active ? 1 : 0.8}
       />
       <circle cx={0} cy={0} r={2.5} fill={color} />
     </g>
@@ -144,12 +237,22 @@ function ShipBody({
 export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], preview, onPick }) => {
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
+  const attacker =
+    view.phase === 'engagement' && activeId ? ships.find((s) => s.id === activeId) : undefined;
 
   return (
     <svg className="board" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
       <Starfield />
       <ShipDefs />
       <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />
+
+      {attacker && (
+        <g
+          transform={`translate(${attacker.pos.x} ${-attacker.pos.y}) rotate(${attacker.pos.angle})`}
+        >
+          <CombatArc w={BASE_MM[attacker.base]} color={colorFor(view, attacker)} />
+        </g>
+      )}
 
       {previewShip && preview && (
         <g
@@ -183,7 +286,7 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
         const barX = s.pos.x - w / 2;
         const barY = -s.pos.y + w / 2 + 6;
         const tokens = tokenCounts(s);
-        const tokenSpan = (tokens.length - 1) * 10;
+        const tokenSpan = (tokens.length - 1) * 12;
 
         return (
           <g
@@ -191,7 +294,18 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
             onClick={() => onPick?.(s.id)}
             style={{ cursor: onPick ? 'pointer' : 'default' }}
           >
-            {active && <circle cx={s.pos.x} cy={-s.pos.y} r={w / 2 + 14} className="activeRing" />}
+            {active && (
+              <circle
+                cx={s.pos.x}
+                cy={-s.pos.y}
+                r={w / 2 + 14}
+                fill="none"
+                stroke={color}
+                strokeWidth={2.5}
+                strokeDasharray="4 6"
+                className="activeRing"
+              />
+            )}
             <g transform={`translate(${s.pos.x} ${-s.pos.y}) rotate(${s.pos.angle})`}>
               <ShipBody
                 w={w}
@@ -199,17 +313,18 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
                 fill={`url(#base${side})`}
                 glow={`url(#glow${side})`}
                 stroke={active ? 3.5 : highlight ? 3 : 2}
+                active={active}
               />
             </g>
 
-            {/* token dots above the base */}
-            {tokens.map(([kind], i) => (
-              <circle
+            {/* token shapes above the base */}
+            {tokens.map(([kind, n], i) => (
+              <TokenMark
                 key={kind}
-                cx={s.pos.x - tokenSpan / 2 + i * 10}
-                cy={-s.pos.y - w / 2 - 10}
-                r={3.5}
-                fill={TOKEN_COLOR[kind]}
+                kind={kind}
+                n={n}
+                cx={s.pos.x - tokenSpan / 2 + i * 12}
+                cy={-s.pos.y - w / 2 - 12}
               />
             ))}
 
