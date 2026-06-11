@@ -47,7 +47,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
     case 'DialRevealed':
       return mapShip(state, e.shipId, (s) => ({ ...s, dialRevealed: true }));
     case 'ShipMoved':
-      return mapShip(state, e.shipId, (s) => ({ ...s, pos: e.to, hasMoved: true }));
+      // a bumped ship forfeits its action
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        pos: e.to,
+        hasMoved: true,
+        hasActed: s.hasActed || e.bumped === true,
+      }));
     case 'StressChanged':
       return mapShip(state, e.shipId, (s) => changeStress(s, e.delta));
     case 'ActionPerformed':

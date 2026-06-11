@@ -36,3 +36,17 @@ export type { Game } from './game';
 export { projectView } from './view';
 export type { PlayerView } from './view';
 export { demoConfig, tieln, xwing } from './presets';
+
+export {
+  BASE_MM,
+  basePolygon,
+  heading,
+  normalizeAngle,
+  polygonDistance,
+  polygonsOverlap,
+} from './geometry';
+export type { Vec } from './geometry';
+export { applyManeuver, pathAt } from './templates';
+export { baseDistance, bearingDeg, inArc, RANGE_BAND_MM, rangeBand } from './arcs';
+export { resolveMovement } from './movement';
+export type { MovementResult } from './movement';

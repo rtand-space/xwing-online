@@ -41,7 +41,7 @@ export type GameEvent =
   | { type: 'GameCreated'; config: GameConfig }
   | { type: 'DialSet'; shipId: ShipId; maneuver: Maneuver }
   | { type: 'DialRevealed'; shipId: ShipId; maneuver: Maneuver }
-  | { type: 'ShipMoved'; shipId: ShipId; maneuver: Maneuver; to: Position }
+  | { type: 'ShipMoved'; shipId: ShipId; maneuver: Maneuver; to: Position; bumped?: boolean }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }

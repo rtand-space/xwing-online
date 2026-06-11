@@ -2,6 +2,7 @@ import { applyEvent } from './apply';
 import type { Command } from './commands';
 import { rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
+import { resolveMovement } from './movement';
 import { autoStep } from './phases';
 import type { GameState, Maneuver, PendingDecision, Ship } from './types';
 
@@ -48,10 +49,10 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'ExecuteManeuver': {
       const m = ship.dial;
       if (!m) return reject('No dial set');
+      const move = resolveMovement(state, ship, m);
       const events: GameEvent[] = [
         { type: 'DialRevealed', shipId: ship.id, maneuver: m },
-        // Geometry is stubbed in M1: position is unchanged. Real movement lands in M2.
-        { type: 'ShipMoved', shipId: ship.id, maneuver: m, to: ship.pos },
+        { type: 'ShipMoved', shipId: ship.id, maneuver: m, to: move.to, bumped: move.bumped },
       ];
       if (m.difficulty === 'red') events.push({ type: 'StressChanged', shipId: ship.id, delta: 1 });
       else if (m.difficulty === 'blue') {

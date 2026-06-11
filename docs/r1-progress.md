@@ -23,11 +23,11 @@ _Movement (ExecuteManeuver) and combat (DeclareAttack) are stubbed: real geometr
 
 ## M2 — Geometry
 
-- ☐ **T2.1** Coordinate system + bases
-- ☐ **T2.2** Maneuver templates
-- ☐ **T2.3** Collisions (SAT)
-- ☐ **T2.4** Arcs + range bands
-- ☐ **T2.5** Wire movement into Activation
+- ☑ **T2.1** Coordinate system + bases — `geometry.ts`; mm coords, square base polygons per size.
+- ☑ **T2.2** Maneuver templates — `templates.ts`; straight/bank/turn/koiogran as rigid transforms, golden-tested.
+- ☑ **T2.3** Collisions (SAT) — `geometry.ts` SAT + `movement.ts` back-off along the template.
+- ☑ **T2.4** Arcs + range bands — `arcs.ts`; front-arc bearing test, range bands 1/2/3.
+- ☑ **T2.5** Wire movement into Activation — real placement in `ExecuteManeuver`; a bumped ship forfeits its action.
 
 ## M3 — Combat pipeline
 
