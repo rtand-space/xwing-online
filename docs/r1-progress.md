@@ -11,13 +11,15 @@ Status: ☐ not started · ◐ in progress · ☑ done
 
 ## M1 — Engine core
 
-- ☐ **T1.1** Domain types
-- ☐ **T1.2** Event log + reducer
-- ☐ **T1.3** Phase state machine
-- ☐ **T1.4** Pending-decisions engine
-- ☐ **T1.5** Seeded RNG + dice as events
-- ☐ **T1.6** Per-player view projection
-- ☐ **T1.7** Engine test harness
+- ☑ **T1.1** Domain types — `types.ts`, `commands.ts`, `events.ts` (discriminated unions).
+- ☑ **T1.2** Event log + reducer — `apply.ts` (pure fold), `reduce.ts`, `setup.ts`, `game.ts`.
+- ☑ **T1.3** Phase state machine — `phases.ts` auto-transitions; planning→system→activation→engagement→end→next.
+- ☑ **T1.4** Pending-decisions engine — `pending.ts`; legal options only, stress gating.
+- ☑ **T1.5** Seeded RNG + dice as events — `rng.ts`, `dice.ts`; results recorded, never re-rolled.
+- ☑ **T1.6** Per-player view projection — `view.ts`; redacts unrevealed dials.
+- ☑ **T1.7** Engine test harness — `harness.ts` + golden/property/replay tests (25 passing).
+
+_Movement (ExecuteManeuver) and combat (DeclareAttack) are stubbed: real geometry lands in M2, combat resolution in M3. The command/event shape is final._
 
 ## M2 — Geometry
 

@@ -1,0 +1,112 @@
+export type PlayerId = string;
+export type ShipId = string;
+
+/** Board coordinates in real-world millimetres (matches the tabletop). */
+export interface Position {
+  x: number;
+  y: number;
+  /** Facing in degrees. Geometry is fleshed out in M2. */
+  angle: number;
+}
+
+export type BaseSize = 'small' | 'medium' | 'large';
+
+export type Bearing =
+  | 'straight'
+  | 'bank-left'
+  | 'bank-right'
+  | 'turn-left'
+  | 'turn-right'
+  | 'koiogran'
+  | 'stationary';
+
+export type Difficulty = 'blue' | 'white' | 'red';
+
+export type Speed = 0 | 1 | 2 | 3 | 4 | 5;
+
+export interface Maneuver {
+  speed: Speed;
+  bearing: Bearing;
+  difficulty: Difficulty;
+}
+
+export type ActionType = 'focus' | 'lock' | 'barrel-roll' | 'boost' | 'evade';
+
+export type TokenKind = 'focus' | 'evade' | 'stress' | 'lock';
+
+export interface Token {
+  kind: TokenKind;
+  /** Present for locks: the ship this token is trained on. */
+  targetId?: ShipId;
+}
+
+export type Phase = 'planning' | 'system' | 'activation' | 'engagement' | 'end';
+
+export interface Player {
+  id: PlayerId;
+  name: string;
+}
+
+export interface Ship {
+  id: ShipId;
+  ownerId: PlayerId;
+  /** xws-style id (e.g. 't65xwing'); stats come from @xwing/data later. */
+  shipType: string;
+  pilot: string;
+  initiative: number;
+  base: BaseSize;
+  primaryAttack: number;
+  agility: number;
+  hull: number;
+  shields: number;
+  maxHull: number;
+  maxShields: number;
+  pos: Position;
+  actionBar: ActionType[];
+  dialOptions: Maneuver[];
+  tokens: Token[];
+  dial?: Maneuver;
+  dialRevealed: boolean;
+  /** Per-round activation/engagement bookkeeping; reset at RoundEnded. */
+  hasMoved: boolean;
+  hasActed: boolean;
+  hasEngaged: boolean;
+}
+
+export interface Rng {
+  seed: string;
+  /** Number of dice drawn so far; the only mutable RNG state. */
+  cursor: number;
+}
+
+export type PendingDecision =
+  | {
+      type: 'set-dial';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { maneuvers: Maneuver[] };
+    }
+  | { type: 'execute-maneuver'; playerId: PlayerId; shipId: ShipId }
+  | {
+      type: 'perform-action';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { actions: ActionType[]; lockTargets: ShipId[]; canSkip: boolean };
+    }
+  | {
+      type: 'declare-attack';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { targets: ShipId[]; canPass: boolean };
+    };
+
+export interface GameState {
+  id: string;
+  rng: Rng;
+  round: number;
+  phase: Phase;
+  players: Player[];
+  ships: Ship[];
+  pending: PendingDecision[];
+  gameOver: boolean;
+}
