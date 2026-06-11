@@ -41,7 +41,7 @@ _R1 modification is auto-resolved (no interactive `modify-dice` step yet); the w
 
 ## M4 — Hot-seat client (fun gate)
 
-- ☑ **T4.1** App shell — Vite + React + TS, Zustand store, engine running locally, PWA manifest. _(offline SW + web-push deferred to M6.)_
+- ☑ **T4.1** App shell — Vite + React + TS, Zustand store, engine running locally, PWA manifest, setup screen, data-driven games (`@xwing/data` presets), starfield play area. _(offline SW + web-push deferred to M6.)_
 - ◐ **T4.2** Board renderer — `BoardRenderer` interface + **SVG** renderer (the architecture's documented fallback). 3D react-three-fiber variant deferred (needs glTF ship assets).
 - ◐ **T4.3** Dial + template placement — tap-to-set dial + a dashed landing-preview ghost of the revealed dial; drag-to-place with snapping still pending.
 - ◐ **T4.4** Actions + tokens UI — action buttons + skip; focus/evade/stress/lock badges drawn under each ship.
@@ -68,7 +68,7 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 
 ## M7 — Squads, polish, ship it
 
-- ☐ **T7.1** Preset squads
+- ◐ **T7.1** Preset squads — XWS-based presets in `@xwing/data` (`PRESETS`/`presetConfig`); client setup screen picks a matchup. Squad builder proper is R2.
 - ☐ **T7.2** Mobile polish + a11y
 - ☐ **T7.3** End-to-end hardening
 - ☐ **T7.4** Launch surfaces

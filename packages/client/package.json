@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@xwing/data": "workspace:*",
     "@xwing/engine": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

@@ -25,6 +25,37 @@ const TOKEN_COLOR: Record<string, string> = {
   lock: '#c0c6dd',
 };
 
+/** Deterministic scattered starfield so the play area reads as deep space. */
+const STARS = Array.from({ length: 150 }, (_, i) => ({
+  x: ((i * 167.3) % 1000) - 500,
+  y: ((i * 263.1) % 1000) - 500,
+  r: i % 11 === 0 ? 1.8 : i % 4 === 0 ? 1.1 : 0.6,
+  o: 0.25 + ((i * 53) % 60) / 100,
+}));
+
+function Starfield(): ReactElement {
+  return (
+    <>
+      <defs>
+        <radialGradient id="neb-a" cx="28%" cy="24%" r="62%">
+          <stop offset="0%" stopColor="#7c6cf0" stopOpacity="0.32" />
+          <stop offset="100%" stopColor="#7c6cf0" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="neb-b" cx="76%" cy="82%" r="58%">
+          <stop offset="0%" stopColor="#3fe0c5" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#3fe0c5" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect x={-500} y={-500} width={1000} height={1000} fill="#05070f" />
+      <rect x={-500} y={-500} width={1000} height={1000} fill="url(#neb-a)" />
+      <rect x={-500} y={-500} width={1000} height={1000} fill="url(#neb-b)" />
+      {STARS.map((s, i) => (
+        <circle key={i} cx={s.x} cy={s.y} r={s.r} fill="#ffffff" opacity={s.o} />
+      ))}
+    </>
+  );
+}
+
 function tokenCounts(ship: Ship): [string, number][] {
   const counts: Record<string, number> = {};
   for (const t of ship.tokens) counts[t.kind] = (counts[t.kind] ?? 0) + 1;
@@ -65,7 +96,8 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
 
   return (
     <svg className="board" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
-      <rect x={-460} y={-460} width={920} height={920} rx={16} className="mat" />
+      <Starfield />
+      <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />
 
       {previewShip && preview && (
         <g

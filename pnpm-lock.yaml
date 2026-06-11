@@ -29,6 +29,9 @@ importers:
 
   packages/client:
     dependencies:
+      '@xwing/data':
+        specifier: workspace:*
+        version: link:../data
       '@xwing/engine':
         specifier: workspace:*
         version: link:../engine

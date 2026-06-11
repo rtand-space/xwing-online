@@ -1,7 +1,7 @@
+import { type Preset, presetConfig } from '@xwing/data';
 import {
   type Command,
   createGame,
-  demoConfig,
   dispatch,
   type Game,
   type PlayerView,
@@ -10,27 +10,35 @@ import {
 import { create } from 'zustand';
 
 interface GameStore {
-  game: Game;
+  /** null while on the setup screen. */
+  game: Game | null;
   /** Which player has "unlocked" the shared device (pass-and-play privacy). */
   unlockedFor: string | null;
   rejection: string | null;
+  start: (preset: Preset) => void;
   send: (cmd: Command) => void;
   unlock: (playerId: string) => void;
   reset: () => void;
 }
 
-const fresh = (): Game => createGame(demoConfig(String(Date.now())));
-
 export const useGame = create<GameStore>((set, get) => ({
-  game: fresh(),
+  game: null,
   unlockedFor: null,
   rejection: null,
+  start: (preset) =>
+    set({
+      game: createGame(presetConfig(preset, String(Date.now()))),
+      unlockedFor: null,
+      rejection: null,
+    }),
   send: (cmd) => {
-    const { game, rejection } = dispatch(get().game, cmd);
+    const current = get().game;
+    if (!current) return;
+    const { game, rejection } = dispatch(current, cmd);
     set({ game, rejection: rejection ?? null });
   },
   unlock: (playerId) => set({ unlockedFor: playerId, rejection: null }),
-  reset: () => set({ game: fresh(), unlockedFor: null, rejection: null }),
+  reset: () => set({ game: null, unlockedFor: null, rejection: null }),
 }));
 
 export const currentPlayer = (g: Game): string | null => g.state.pending[0]?.playerId ?? null;

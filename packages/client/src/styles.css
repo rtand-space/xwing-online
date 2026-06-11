@@ -80,8 +80,61 @@ body {
   aspect-ratio: 1;
 }
 .mat {
-  fill: rgba(255, 255, 255, 0.03);
+  fill: none;
   stroke: var(--line);
+}
+
+.setup {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.setupCard {
+  max-width: 460px;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+}
+.setupCard h1 {
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+.presetList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 8px;
+}
+.preset {
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.preset:hover {
+  border-color: var(--pine);
+}
+.presetName {
+  font-weight: 600;
+}
+.presetDesc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 3px;
+}
+.disclaimer {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 16px 0 0;
 }
 .shipLabel {
   fill: var(--ink);
