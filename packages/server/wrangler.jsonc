@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "xwing-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-01",
+  "durable_objects": {
+    "bindings": [{ "name": "GAME", "class_name": "GameDO" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameDO"] }],
+}

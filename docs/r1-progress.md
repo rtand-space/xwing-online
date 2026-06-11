@@ -52,7 +52,7 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 
 ## M5 — Transport + persistence (Cloudflare)
 
-- ☐ **T5.1** Durable Object per game
+- ☑ **T5.1** Durable Object per game — `@xwing/server`: `GameDO` (SQLite-backed) persists the event log; HTTP intake creates a game, validates commands against authoritative state + `pending`, and serves redacted per-viewer snapshots. Verified locally via `wrangler dev` (no account). Engine logic stays pure in `game-store.ts`.
 - ☐ **T5.2** WebSocket sync + hibernation
 - ☐ **T5.3** HTTPS command intake (async)
 - ☐ **T5.4** Reconnection
@@ -70,6 +70,11 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 
 - ☑ **T7.1** Preset squads — XWS presets + a real per-side squad builder (`pilotChoices`/`buildConfig`) on the setup screen. Full loadout/points builder is still R2.
 - ◐ **T7.4** Launch surfaces — fan-project disclaimer on setup + in-game footer; error boundary; empty-state hints in builder/controls. Polished error/empty copy ongoing.
+
+## UX parking lot (tracked, not yet scheduled)
+
+- **Clean ship-status display** — replace the clunky side-panel/overlay with an uncluttered, near-ship status presentation (health/shields/tokens). R1 polish; folds into **T7.2** (mobile polish). Keep it renderer-agnostic so it survives the eventual 3D board; don't over-build 2D-only chrome.
+- **Cards / upgrades display** — inherently **R2+** (R1 has no upgrades). Design alongside the R2 squad/loadout builder; damage-card UI with the R3/R4 crit deck.
 - ☐ **T7.2** Mobile polish + a11y
 - ☐ **T7.3** End-to-end hardening
 - ☐ **T7.4** Launch surfaces
