@@ -132,17 +132,11 @@ body {
 }
 
 /* maneuver dial */
-.dial {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-}
 .dialGrid {
   display: grid;
-  grid-template-columns: auto repeat(5, 1fr);
   gap: 5px;
   align-items: center;
+  justify-content: center;
 }
 .dialSpeed {
   font-family: ui-monospace, monospace;
@@ -171,11 +165,6 @@ body {
   border-color: transparent;
   background: transparent;
   cursor: default;
-}
-.dialSpecials {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
 }
 
 /* event log */
@@ -233,7 +222,7 @@ body {
   position: absolute;
   inset: 52px 0 0 0;
   z-index: 20;
-  background: rgba(3, 5, 12, 0.5);
+  background: transparent; /* board stays fully visible; click still closes */
 }
 .flyout {
   position: absolute;

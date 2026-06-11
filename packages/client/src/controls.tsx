@@ -18,15 +18,16 @@ const BEARING: Record<Maneuver['bearing'], string> = {
   stationary: 'stop',
 };
 
-// Dial layout: bearing columns (left→right) plus a specials row, like the physical dial.
+// Dial layout: bearing columns left→right, speed rows top→bottom (like the real dial).
 const DIAL_COLS: { key: Maneuver['bearing']; glyph: string }[] = [
   { key: 'turn-left', glyph: '↰' },
   { key: 'bank-left', glyph: '↖' },
   { key: 'straight', glyph: '↑' },
   { key: 'bank-right', glyph: '↗' },
   { key: 'turn-right', glyph: '↱' },
+  { key: 'koiogran', glyph: '⟲' },
+  { key: 'stationary', glyph: '■' },
 ];
-const DIAL_SPECIALS: Record<string, string> = { koiogran: '⟲', stationary: '■' };
 
 function ManeuverDial({
   options,
@@ -35,46 +36,33 @@ function ManeuverDial({
   options: Maneuver[];
   onPick: (m: Maneuver) => void;
 }): ReactElement {
-  const inGrid = (m: Maneuver) => DIAL_COLS.some((c) => c.key === m.bearing);
-  const speeds = [...new Set(options.filter(inGrid).map((m) => m.speed))].sort((a, b) => b - a);
-  const cell = (m: Maneuver, glyph: string) => (
-    <button
-      className="dialCell"
-      style={{ color: DIFFICULTY[m.difficulty], borderColor: DIFFICULTY[m.difficulty] }}
-      onClick={() => onPick(m)}
-      aria-label={`speed ${m.speed} ${m.bearing} ${m.difficulty}`}
-    >
-      {glyph}
-    </button>
-  );
-  const specials = options.filter((m) => m.bearing in DIAL_SPECIALS);
+  // only render columns/speeds that this ship actually has
+  const cols = DIAL_COLS.filter((c) => options.some((o) => o.bearing === c.key));
+  const speeds = [...new Set(options.map((m) => m.speed))].sort((a, b) => b - a);
 
   return (
-    <div className="dial">
-      <div className="dialGrid">
-        {speeds.map((speed) => (
-          <Fragment key={speed}>
-            <div className="dialSpeed">{speed}</div>
-            {DIAL_COLS.map((c) => {
-              const m = options.find((o) => o.speed === speed && o.bearing === c.key);
-              return m ? (
-                <Fragment key={c.key}>{cell(m, c.glyph)}</Fragment>
-              ) : (
-                <span key={c.key} className="dialCell empty" />
-              );
-            })}
-          </Fragment>
-        ))}
-      </div>
-      {specials.length > 0 && (
-        <div className="dialSpecials">
-          {specials.map((m) => (
-            <Fragment key={`${m.bearing}${m.speed}`}>
-              {cell(m, DIAL_SPECIALS[m.bearing] ?? '?')}
-            </Fragment>
-          ))}
-        </div>
-      )}
+    <div className="dialGrid" style={{ gridTemplateColumns: `auto repeat(${cols.length}, 1fr)` }}>
+      {speeds.map((speed) => (
+        <Fragment key={speed}>
+          <div className="dialSpeed">{speed}</div>
+          {cols.map((c) => {
+            const m = options.find((o) => o.speed === speed && o.bearing === c.key);
+            return m ? (
+              <button
+                key={c.key}
+                className="dialCell"
+                style={{ color: DIFFICULTY[m.difficulty], borderColor: DIFFICULTY[m.difficulty] }}
+                onClick={() => onPick(m)}
+                aria-label={`speed ${speed} ${c.key} ${m.difficulty}`}
+              >
+                {c.glyph}
+              </button>
+            ) : (
+              <span key={c.key} className="dialCell empty" />
+            );
+          })}
+        </Fragment>
+      ))}
     </div>
   );
 }
