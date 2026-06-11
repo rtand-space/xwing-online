@@ -64,7 +64,7 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 - ☑ **T6.1** Guest identity — durable per-device id (`identity.ts`, localStorage); server binds it to a seat and derives command ownership from it. _Signed JWT is a later hardening._
 - ☑ **T6.2** Invite-code system — host creates a game → short code + shareable `?game=` link; join by code; seats fill in order.
 - ◐ **T6.3** Async parking + resume — game lives in the DO and parks while the other side is offline; same-device reconnect resumes via snapshot-on-connect. _Cross-device resume needs portable identity (R2 accounts)._
-- ☐ **T6.4** Web-push notifications — deferred (needs VAPID keys + service-worker push; pairs with deploy).
+- ☑ **T6.4** Web-push notifications — VAPID web push end to end: service worker (`public/sw.js`), client subscribe (`push.ts`), DO stores subscriptions per seat and sends a "your turn" push when the next player isn't connected. _Enable in prod: `wrangler secret put VAPID_PRIVATE_KEY` + redeploy; on-device delivery is verified by the user._
 
 ## M7 — Squads, polish, ship it
 

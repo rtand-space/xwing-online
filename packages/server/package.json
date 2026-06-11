@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@block65/webcrypto-web-push": "^1.0.2",
     "@xwing/engine": "workspace:*"
   },
   "devDependencies": {

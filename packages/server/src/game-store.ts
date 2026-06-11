@@ -31,3 +31,8 @@ export function applyCommand(
 export function viewFromLog(log: GameEvent[], viewerId: string): PlayerView {
   return projectView(replay(log), viewerId);
 }
+
+/** The player who now owes the next decision (for "your turn" notifications). */
+export function pendingPlayer(log: GameEvent[]): string | null {
+  return replay(log).pending[0]?.playerId ?? null;
+}

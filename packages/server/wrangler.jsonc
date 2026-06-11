@@ -16,4 +16,10 @@
       "migrations_dir": "migrations",
     },
   ],
+  // VAPID public key + subject for web push (public). Set the private key as a
+  // secret: `wrangler secret put VAPID_PRIVATE_KEY`.
+  "vars": {
+    "VAPID_PUBLIC_KEY": "BJPYX7Xk6Fqcv1pOG1doWiApSITyX_DWW7THzZtLN1qtxjwUW4hFS-UjjitTGUexNrAmI85ohI9_x7R8FqeahBA",
+    "VAPID_SUBJECT": "mailto:synrg116@gmail.com",
+  },
 }

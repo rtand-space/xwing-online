@@ -28,6 +28,17 @@ the Workers **free plan** — no paid plan needed. All commands run from the rep
 
 Current deployment: **https://xwing-server.synrg116.workers.dev**
 
+### Web push (VAPID)
+
+The public key + subject live in `wrangler.jsonc` `vars`; the client public key is
+in `packages/client/.env.production`. Set the private key as a secret, then redeploy:
+```
+pnpm --filter @xwing/server exec wrangler secret put VAPID_PRIVATE_KEY
+pnpm --filter @xwing/server exec wrangler deploy
+```
+Generate a fresh pair with the snippet in commit history if rotating; the public key
+must match in both `wrangler.jsonc` and `.env.production`.
+
 ## Client (`@xwing/client` → Cloudflare Pages)
 
 The production server URL is baked in at build time from

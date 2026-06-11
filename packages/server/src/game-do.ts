@@ -1,11 +1,13 @@
+import { buildPushPayload, type PushSubscription } from '@block65/webcrypto-web-push';
 import type { Command, GameConfig, GameEvent } from '@xwing/engine';
-import { applyCommand, createLog, viewFromLog } from './game-store';
+import { applyCommand, createLog, pendingPlayer, viewFromLog } from './game-store';
 import { json } from './http';
 import type { Env } from './index';
 
 const LOG_KEY = 'log';
 const SEATS_KEY = 'seats'; // guestId -> playerId
 const PLAYERS_KEY = 'players'; // playerId[]
+const SUBS_KEY = 'subs'; // playerId -> PushSubscription
 
 interface SocketMeta {
   viewer: string;
@@ -30,6 +32,9 @@ export class GameDO {
   }
   private async seats(): Promise<Record<string, string>> {
     return (await this.state.storage.get<Record<string, string>>(SEATS_KEY)) ?? {};
+  }
+  private async subs(): Promise<Record<string, PushSubscription>> {
+    return (await this.state.storage.get<Record<string, PushSubscription>>(SUBS_KEY)) ?? {};
   }
 
   async fetch(req: Request): Promise<Response> {
@@ -56,6 +61,20 @@ export class GameDO {
     if (req.method === 'POST' && sub === 'join') {
       const { guestId: joiner } = (await req.json()) as { guestId: string };
       return json(await this.seat(joiner));
+    }
+
+    // Register a web-push subscription for the sender's seat.
+    if (req.method === 'POST' && sub === 'subscribe') {
+      const { guestId: gid, subscription } = (await req.json()) as {
+        guestId: string;
+        subscription: PushSubscription;
+      };
+      const seat = (await this.seats())[gid];
+      if (!seat) return json({ error: 'Not seated' }, 409);
+      const subs = await this.subs();
+      subs[seat] = subscription;
+      await this.state.storage.put(SUBS_KEY, subs);
+      return json({ ok: true });
     }
 
     if (req.method === 'GET' && sub === 'seat') {
@@ -141,7 +160,42 @@ export class GameDO {
     if (result.rejection) return result.rejection;
     await this.state.storage.put(LOG_KEY, result.log);
     this.broadcast(result.log);
+    await this.notifyNext(result.log);
     return undefined;
+  }
+
+  /** If the next player to act isn't connected, send them a "your turn" push. */
+  private async notifyNext(log: GameEvent[]): Promise<void> {
+    const next = pendingPlayer(log);
+    if (!next) return;
+    const connected = this.state
+      .getWebSockets()
+      .some((ws) => (ws.deserializeAttachment() as SocketMeta | null)?.viewer === next);
+    if (connected) return; // they got the live view already
+    const subscription = (await this.subs())[next];
+    if (subscription) await this.sendPush(subscription);
+  }
+
+  private async sendPush(subscription: PushSubscription): Promise<void> {
+    if (!this.env.VAPID_PRIVATE_KEY) return; // push not configured
+    try {
+      const payload = await buildPushPayload(
+        { data: { title: 'X-Wing Online', body: 'Your turn!' } },
+        subscription,
+        {
+          subject: this.env.VAPID_SUBJECT,
+          publicKey: this.env.VAPID_PUBLIC_KEY,
+          privateKey: this.env.VAPID_PRIVATE_KEY,
+        },
+      );
+      await fetch(subscription.endpoint, {
+        method: payload.method,
+        headers: payload.headers,
+        body: payload.body,
+      });
+    } catch {
+      /* push is best-effort */
+    }
   }
 
   private broadcast(log: GameEvent[]): void {

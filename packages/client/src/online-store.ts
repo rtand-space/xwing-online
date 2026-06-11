@@ -1,6 +1,7 @@
 import type { Command, GameConfig, PlayerView } from '@xwing/engine';
 import { create } from 'zustand';
 import { getGuestId } from './identity';
+import { subscribePush } from './push';
 import { type Connection, connect, getSeat, hostGame, joinGame } from './transport';
 
 type Status = 'idle' | 'connecting' | 'playing' | 'error';
@@ -71,6 +72,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
       remember({ code, isHost: true });
       set({ seat: playerId });
       conn = open(code, guestId);
+      void subscribePush(code, guestId);
     },
 
     join: async (code) => {
@@ -84,6 +86,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
       remember({ code, isHost: false });
       set({ seat: res.playerId ?? null });
       conn = open(code, guestId);
+      void subscribePush(code, guestId);
     },
 
     resume: async () => {
@@ -105,6 +108,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
         rejection: null,
       });
       conn = open(saved.code, guestId);
+      void subscribePush(saved.code, guestId);
     },
 
     send: (command) => conn?.send(command),
