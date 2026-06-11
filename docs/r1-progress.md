@@ -56,8 +56,8 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 - ☑ **T5.2** WebSocket sync + hibernation — hibernatable WS (`acceptWebSocket`, handler methods, `serializeAttachment`, ping/pong auto-response); commands broadcast a redacted view per viewer. Verified: 2 live clients sync, opponent dial stays hidden. _Full snapshots, not yet diffs._
 - ☑ **T5.3** HTTPS command intake (async) — same `applyAndBroadcast` path; an HTTP-posted command advances the game identically and updates live sockets.
 - ☑ **T5.4** Reconnection — on WS connect (or GET) the DO sends a fresh redacted snapshot, so a dropped client resumes correct state. _Events-since-index is a later optimization._
-- ☐ **T5.5** Client transport layer
-- ☐ **T5.6** D1 cross-game schema
+- ☐ **T5.5** Client transport layer — _next: point the React app at the server; pairs naturally with M6 (identity + invite codes) so "online" is coherent._
+- ☑ **T5.6** D1 cross-game schema — `migrations/0001_init.sql` (games + game_players); Worker `/index/:id` query; DO best-effort indexes on create. Verified locally (`wrangler d1 migrations apply --local`). Real `database_id` needed at deploy.
 
 ## M6 — Identity, invites, async, notifications
 

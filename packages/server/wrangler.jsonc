@@ -7,4 +7,13 @@
     "bindings": [{ "name": "GAME", "class_name": "GameDO" }],
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameDO"] }],
+  // Replace database_id with the real one from `wrangler d1 create xwing` before deploy.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "xwing",
+      "database_id": "local-dev-placeholder",
+      "migrations_dir": "migrations",
+    },
+  ],
 }

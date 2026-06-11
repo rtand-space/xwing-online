@@ -1,5 +1,6 @@
 import type { Command, GameConfig, GameEvent } from '@xwing/engine';
 import { applyCommand, createLog, viewFromLog } from './game-store';
+import type { Env } from './index';
 
 const LOG_KEY = 'log';
 
@@ -16,7 +17,10 @@ interface SocketMeta {
  * commands also accepted via HTTP. Every change broadcasts a redacted view per viewer.
  */
 export class GameDO {
-  constructor(private readonly state: DurableObjectState) {
+  constructor(
+    private readonly state: DurableObjectState,
+    private readonly env: Env,
+  ) {
     // Heartbeats are answered without waking the object from hibernation.
     this.state.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
   }
@@ -36,6 +40,7 @@ export class GameDO {
       if (await this.log()) return json({ error: 'Game already exists' }, 409);
       const { config } = (await req.json()) as { config: GameConfig };
       await this.state.storage.put(LOG_KEY, createLog(config));
+      await this.indexGame(config);
       return json({ ok: true });
     }
 
@@ -109,6 +114,23 @@ export class GameDO {
     await this.state.storage.put(LOG_KEY, result.log);
     this.broadcast(result.log);
     return undefined;
+  }
+
+  /** Best-effort cross-game index write; never blocks gameplay if D1 is absent. */
+  private async indexGame(config: GameConfig): Promise<void> {
+    try {
+      await this.env.DB.prepare(
+        'INSERT OR IGNORE INTO games (id, created_at, status) VALUES (?1, ?2, ?3)',
+      )
+        .bind(config.id, Date.now(), 'active')
+        .run();
+      const insert = this.env.DB.prepare(
+        'INSERT OR IGNORE INTO game_players (game_id, player_id, name) VALUES (?1, ?2, ?3)',
+      );
+      await this.env.DB.batch(config.players.map((p) => insert.bind(config.id, p.id, p.name)));
+    } catch {
+      /* D1 not provisioned/migrated yet — index is auxiliary, game still runs */
+    }
   }
 
   private broadcast(log: GameEvent[]): void {
