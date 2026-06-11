@@ -1,0 +1,47 @@
+{
+  "name": "TIE/ln Fighter",
+  "xws": "tieln",
+  "faction": "Galactic Empire",
+  "size": "Small",
+  "stats": [
+    { "type": "attack", "arc": "Front Arc", "value": 2 },
+    { "type": "agility", "value": 3 },
+    { "type": "hull", "value": 3 },
+    { "type": "shields", "value": 0 }
+  ],
+  "actions": [
+    { "type": "Focus", "difficulty": "White" },
+    { "type": "Barrel Roll", "difficulty": "White" },
+    { "type": "Evade", "difficulty": "White" }
+  ],
+  "dial": [
+    "1TW",
+    "1BB",
+    "1FB",
+    "1NB",
+    "1YW",
+    "2TB",
+    "2BB",
+    "2FB",
+    "2NB",
+    "2YB",
+    "3TW",
+    "3BB",
+    "3FB",
+    "3NB",
+    "3YW",
+    "4FW",
+    "4KR",
+    "5FW"
+  ],
+  "pilots": [
+    { "name": "Academy Pilot", "xws": "academypilot", "initiative": 1, "limited": 0, "cost": 2 },
+    {
+      "name": "Obsidian Squadron Pilot",
+      "xws": "obsidiansquadronpilot",
+      "initiative": 3,
+      "limited": 0,
+      "cost": 3
+    }
+  ]
+}

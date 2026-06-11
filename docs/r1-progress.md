@@ -7,7 +7,7 @@ Status: ☐ not started · ◐ in progress · ☑ done
 ## M0 — Project setup
 
 - ☑ **T0.1** Monorepo + tooling — pnpm workspaces, 4 packages, TS strict, ESLint + Prettier, Vitest, CI. _green: typecheck, test, lint, format._
-- ☐ **T0.2** Data access layer (`@xwing/data`)
+- ☑ **T0.2** Data access layer (`@xwing/data`) — typed loaders by xws id over a vendored xwing-data2-shaped subset, dial-code parser, card→`ShipInit` bridge, and XWS parse/serialize (round-trips). _Curated R1 subset (2 ships); full dataset pull is R2._
 
 ## M1 — Engine core
 
