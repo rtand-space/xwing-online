@@ -42,6 +42,10 @@ This builds and runs `wrangler pages deploy dist --project-name xwing-online`.
 The first run creates the Pages project (accept the prompts). It prints the live
 client URL, e.g. `https://xwing-online.pages.dev`.
 
+The deploy script sets `CLOUDFLARE_ACCOUNT_ID` inline — wrangler's OAuth token
+can't enumerate `/memberships`, so the account id is provided directly. Account
+ids aren't secret.
+
 ## Local development (no account needed)
 
 ```

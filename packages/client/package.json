@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "deploy": "vite build && wrangler pages deploy dist --project-name xwing-online"
+    "deploy": "vite build && CLOUDFLARE_ACCOUNT_ID=f944a2607b3af00a38bf3da98e36fe88 wrangler pages deploy dist --project-name xwing-online"
   },
   "dependencies": {
     "@xwing/data": "workspace:*",
