@@ -1,4 +1,4 @@
-import type { ActionType, Maneuver, PlayerView } from '@xwing/engine';
+import type { ActionType, Command, Maneuver, PlayerView } from '@xwing/engine';
 import type { ReactElement } from 'react';
 import { useGame } from './store';
 
@@ -26,8 +26,15 @@ const ACTION: Record<ActionType, string> = {
   evade: 'Evade',
 };
 
-export function Controls({ view }: { view: PlayerView }): ReactElement {
-  const send = useGame((s) => s.send);
+export function Controls({
+  view,
+  onSend,
+}: {
+  view: PlayerView;
+  onSend?: (command: Command) => void;
+}): ReactElement {
+  const localSend = useGame((s) => s.send);
+  const send = onSend ?? localSend;
   const p = view.pending[0];
   const ship = p ? view.ships.find((s) => s.id === p.shipId) : undefined;
 

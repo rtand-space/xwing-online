@@ -56,15 +56,15 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 - ☑ **T5.2** WebSocket sync + hibernation — hibernatable WS (`acceptWebSocket`, handler methods, `serializeAttachment`, ping/pong auto-response); commands broadcast a redacted view per viewer. Verified: 2 live clients sync, opponent dial stays hidden. _Full snapshots, not yet diffs._
 - ☑ **T5.3** HTTPS command intake (async) — same `applyAndBroadcast` path; an HTTP-posted command advances the game identically and updates live sockets.
 - ☑ **T5.4** Reconnection — on WS connect (or GET) the DO sends a fresh redacted snapshot, so a dropped client resumes correct state. _Events-since-index is a later optimization._
-- ☐ **T5.5** Client transport layer — _next: point the React app at the server; pairs naturally with M6 (identity + invite codes) so "online" is coherent._
+- ☑ **T5.5** Client transport layer — `transport.ts` (REST host/join + WS), `online-store.ts`, `OnlineGame` view; commands go to the server, the server-projected view is the only truth (no client-side rule authority). Server-authoritative; optimistic prediction deferred.
 - ☑ **T5.6** D1 cross-game schema — `migrations/0001_init.sql` (games + game_players); Worker `/index/:id` query; DO best-effort indexes on create. Verified locally (`wrangler d1 migrations apply --local`). Real `database_id` needed at deploy.
 
 ## M6 — Identity, invites, async, notifications
 
-- ☐ **T6.1** Guest identity
-- ☐ **T6.2** Invite-code system
-- ☐ **T6.3** Async parking + resume
-- ☐ **T6.4** Web-push notifications
+- ☑ **T6.1** Guest identity — durable per-device id (`identity.ts`, localStorage); server binds it to a seat and derives command ownership from it. _Signed JWT is a later hardening._
+- ☑ **T6.2** Invite-code system — host creates a game → short code + shareable `?game=` link; join by code; seats fill in order.
+- ◐ **T6.3** Async parking + resume — game lives in the DO and parks while the other side is offline; same-device reconnect resumes via snapshot-on-connect. _Cross-device resume needs portable identity (R2 accounts)._
+- ☐ **T6.4** Web-push notifications — deferred (needs VAPID keys + service-worker push; pairs with deploy).
 
 ## M7 — Squads, polish, ship it
 

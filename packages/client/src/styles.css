@@ -213,6 +213,32 @@ body {
   justify-content: center;
   margin-top: 14px;
 }
+.joinRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.joinInput {
+  flex: 1;
+  font: inherit;
+  font-size: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+  outline: none;
+}
+.codeBox {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  word-break: break-all;
+}
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;

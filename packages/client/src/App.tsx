@@ -2,10 +2,20 @@ import type { ReactElement } from 'react';
 import { previewFor, SvgBoard } from './board';
 import { Controls } from './controls';
 import { formatEvent } from './log';
+import { OnlineGame } from './OnlineGame';
+import { useOnline } from './online-store';
 import { Setup } from './setup';
 import { currentPlayer, useGame, viewFor } from './store';
 
 export function App(): ReactElement {
+  const onlineStatus = useOnline((s) => s.status);
+  const hasGame = useGame((s) => s.game !== null);
+  if (onlineStatus !== 'idle') return <OnlineGame />;
+  if (!hasGame) return <Setup />;
+  return <LocalGame />;
+}
+
+function LocalGame(): ReactElement {
   const game = useGame((s) => s.game);
   const unlockedFor = useGame((s) => s.unlockedFor);
   const unlock = useGame((s) => s.unlock);

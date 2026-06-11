@@ -9,6 +9,7 @@ import {
   XWS_FACTION,
 } from '@xwing/data';
 import { type ReactElement, useState } from 'react';
+import { useOnline } from './online-store';
 import { useGame } from './store';
 
 const MAX_SHIPS = 6;
@@ -64,8 +65,11 @@ function SquadColumn({
 
 export function Setup(): ReactElement {
   const startGame = useGame((s) => s.startGame);
+  const hostOnline = useOnline((s) => s.host);
+  const joinOnline = useOnline((s) => s.join);
   const [rebel, setRebel] = useState<PilotChoice[]>([]);
   const [imperial, setImperial] = useState<PilotChoice[]>([]);
+  const [code, setCode] = useState(() => new URLSearchParams(location.search).get('game') ?? '');
 
   const toSquad = (faction: string, picks: PilotChoice[]): XwsSquad => ({
     faction,
@@ -120,6 +124,35 @@ export function Setup(): ReactElement {
         <button className="btn primary start" disabled={!canStart} onClick={startCustom}>
           {canStart ? 'Start battle' : 'Add a ship to each side'}
         </button>
+
+        <div className="section">Online — share a code</div>
+        <div className="presetList">
+          {PRESETS.map((p) => (
+            <button
+              key={p.id}
+              className="preset"
+              onClick={() => hostOnline(presetConfig(p, String(Date.now())))}
+            >
+              <div className="presetName">Host: {p.name}</div>
+              <div className="presetDesc">{p.description}</div>
+            </button>
+          ))}
+        </div>
+        <div className="joinRow">
+          <input
+            className="joinInput"
+            placeholder="enter game code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
+          <button
+            className="btn primary"
+            disabled={!code.trim()}
+            onClick={() => joinOnline(code.trim())}
+          >
+            Join
+          </button>
+        </div>
 
         <p className="disclaimer">
           Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
