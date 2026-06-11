@@ -43,8 +43,8 @@ _R1 modification is auto-resolved (no interactive `modify-dice` step yet); the w
 
 - ☑ **T4.1** App shell — Vite + React + TS, Zustand store, engine running locally, PWA manifest. _(offline SW + web-push deferred to M6.)_
 - ◐ **T4.2** Board renderer — `BoardRenderer` interface + **SVG** renderer (the architecture's documented fallback). 3D react-three-fiber variant deferred (needs glTF ship assets).
-- ◐ **T4.3** Dial + template placement — tap-to-set dial done; drag-to-place template preview with snapping not yet (engine computes the placement, UI shows the result).
-- ◐ **T4.4** Actions + tokens UI — action buttons + skip; tokens/stress shown in the event log, not yet as persistent on-ship badges.
+- ◐ **T4.3** Dial + template placement — tap-to-set dial + a dashed landing-preview ghost of the revealed dial; drag-to-place with snapping still pending.
+- ◐ **T4.4** Actions + tokens UI — action buttons + skip; focus/evade/stress/lock badges drawn under each ship.
 - ◐ **T4.5** Attack UI — target selection + dice faces and damage shown as a log readout; no dice animation yet.
 - ☑ **T4.6** Pass-and-play round — full hot-seat round on one device, with a pass-the-device screen that keeps dials secret.
 
