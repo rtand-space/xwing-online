@@ -1,0 +1,10 @@
+{
+  "name": "X-Wing Online",
+  "short_name": "X-Wing",
+  "description": "A free, non-commercial fan adaptation of the X-Wing miniatures game.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070f",
+  "theme_color": "#05070f",
+  "icons": []
+}
