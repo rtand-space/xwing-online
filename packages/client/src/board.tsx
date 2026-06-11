@@ -320,12 +320,12 @@ function ShipBody({
   const edge = w / 2; // the front corners sit at (±w/2, -w/2)
   return (
     <g filter={glow}>
+      {/* square base — exact game geometry; sharp corners so the arc meets them precisely */}
       <rect
         x={-w / 2}
         y={-w / 2}
         width={w}
         height={w}
-        rx={6}
         fill={fill}
         stroke={color}
         strokeWidth={stroke}
@@ -396,7 +396,6 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
             y={-BASE_MM[previewShip.base] / 2}
             width={BASE_MM[previewShip.base]}
             height={BASE_MM[previewShip.base]}
-            rx={4}
             fill="none"
             stroke={colorFor(view, previewShip)}
             strokeWidth={2}
@@ -419,6 +418,10 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
         const barY = -s.pos.y + w / 2 + 6;
         const tokens = tokenCounts(s);
         const tokenSpan = (tokens.length - 1) * 12;
+
+        const name = s.id.replace(/-/g, ' ');
+        const labelW = name.length * 7.5 + 14;
+        const labelY = barY + 9;
 
         return (
           <g
@@ -465,8 +468,19 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
             <rect x={barX} y={barY} width={hullW} height={4} rx={2} fill={color} />
             <rect x={barX + hullW} y={barY} width={shieldW} height={4} rx={2} fill="#9bd2ff" />
 
-            <text x={s.pos.x} y={barY + 18} textAnchor="middle" className="shipLabel">
-              {s.id}
+            {/* name tag attached under the base */}
+            <rect
+              x={s.pos.x - labelW / 2}
+              y={labelY}
+              width={labelW}
+              height={17}
+              rx={8}
+              fill="rgba(5,7,15,0.72)"
+              stroke={color}
+              strokeOpacity={0.45}
+            />
+            <text x={s.pos.x} y={labelY + 12.5} textAnchor="middle" className="shipLabel">
+              {name}
             </text>
           </g>
         );

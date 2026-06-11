@@ -40,6 +40,14 @@ describe('arcs and range', () => {
     expect(inArc(attacker, mk(0, -200))).toBe(false); // behind
   });
 
+  it('counts a target whose base clips the arc even if its centre is outside', () => {
+    const attacker = mk(0, 0, 0);
+    // centre at ~50° (outside the 45° line) but a near corner falls inside
+    expect(inArc(attacker, mk(120, 100))).toBe(true);
+    // fully off to the side: no part of the base in the wedge
+    expect(inArc(attacker, mk(400, 80))).toBe(false);
+  });
+
   it('buckets distance into range bands 1/2/3, null beyond', () => {
     const a = mk(0, 0);
     expect(baseDistance(a, mk(0, 90))).toBeCloseTo(50);

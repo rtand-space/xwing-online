@@ -285,7 +285,7 @@ body {
 .shipLabel {
   fill: var(--ink);
   font:
-    600 18px ui-monospace,
+    600 13px ui-monospace,
     monospace;
 }
 .tokenRow {
