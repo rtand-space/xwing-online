@@ -73,8 +73,8 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 
 ## UX parking lot (tracked, not yet scheduled)
 
-- **Clean ship-status display** — replace the clunky side-panel/overlay with an uncluttered, near-ship status presentation (health/shields/tokens). R1 polish; folds into **T7.2** (mobile polish). Keep it renderer-agnostic so it survives the eventual 3D board; don't over-build 2D-only chrome.
+- ~~Clean ship-status display~~ ✅ Done: `roster.tsx` status panel (hull/shield pips + token chips) + tidy on-board hull/shield bar and token dots. Renderer-agnostic (reads `PlayerView`), so it survives the eventual 3D board.
 - **Cards / upgrades display** — inherently **R2+** (R1 has no upgrades). Design alongside the R2 squad/loadout builder; damage-card UI with the R3/R4 crit deck.
-- ☐ **T7.2** Mobile polish + a11y
+- ◐ **T7.2** Mobile polish + a11y — clean roster status panel (hull/shield pips + token chips) replacing the cramped on-board text; board now shows a tidy hull/shield bar + token dots; focus-visible rings, reduced-motion, 44px touch targets. _Deeper perf/responsive pass ongoing._
 - ☐ **T7.3** End-to-end hardening
 - ☐ **T7.4** Launch surfaces

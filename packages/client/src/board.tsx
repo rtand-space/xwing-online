@@ -154,6 +154,15 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
         const color = colorFor(view, s);
         const active = s.id === activeId;
         const highlight = highlightIds.includes(s.id);
+
+        const total = s.maxHull + s.maxShields;
+        const hullW = total ? (w * s.hull) / total : 0;
+        const shieldW = total ? (w * s.shields) / total : 0;
+        const barX = s.pos.x - w / 2;
+        const barY = -s.pos.y + w / 2 + 6;
+        const tokens = tokenCounts(s);
+        const tokenSpan = (tokens.length - 1) * 10;
+
         return (
           <g
             key={s.id}
@@ -170,17 +179,25 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
                 stroke={active ? 3.5 : highlight ? 3 : 2}
               />
             </g>
-            <text x={s.pos.x} y={-s.pos.y + 5} textAnchor="middle" className="shipLabel">
-              {s.id} · {s.hull}
-              {s.maxShields > 0 ? `+${s.shields}` : ''}
-            </text>
-            <text x={s.pos.x} y={-s.pos.y + w / 2 + 26} textAnchor="middle" className="tokenRow">
-              {tokenCounts(s).map(([kind, n], i) => (
-                <tspan key={kind} fill={TOKEN_COLOR[kind]} dx={i === 0 ? 0 : 8}>
-                  {kind[0]!.toUpperCase()}
-                  {n > 1 ? n : ''}
-                </tspan>
-              ))}
+
+            {/* token dots above the base */}
+            {tokens.map(([kind], i) => (
+              <circle
+                key={kind}
+                cx={s.pos.x - tokenSpan / 2 + i * 10}
+                cy={-s.pos.y - w / 2 - 10}
+                r={3.5}
+                fill={TOKEN_COLOR[kind]}
+              />
+            ))}
+
+            {/* hull (faction) + shield (blue) bar below the base */}
+            <rect x={barX} y={barY} width={w} height={4} rx={2} fill="rgba(255,255,255,0.14)" />
+            <rect x={barX} y={barY} width={hullW} height={4} rx={2} fill={color} />
+            <rect x={barX + hullW} y={barY} width={shieldW} height={4} rx={2} fill="#9bd2ff" />
+
+            <text x={s.pos.x} y={barY + 18} textAnchor="middle" className="shipLabel">
+              {s.id}
             </text>
           </g>
         );

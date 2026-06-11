@@ -4,6 +4,7 @@ import { Controls } from './controls';
 import { formatEvent } from './log';
 import { OnlineGame } from './OnlineGame';
 import { useOnline } from './online-store';
+import { Roster } from './roster';
 import { Setup } from './setup';
 import { currentPlayer, useGame, viewFor } from './store';
 
@@ -99,6 +100,8 @@ function LocalGame(): ReactElement {
               {rejection && <div className="reject">{rejection}</div>}
             </>
           )}
+
+          <Roster view={view} />
 
           <div className="logPanel">
             {lines.map((l, i) => (

@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import { previewFor, SvgBoard } from './board';
 import { Controls } from './controls';
 import { useOnline } from './online-store';
+import { Roster } from './roster';
 
 const otherSeat = (view: PlayerView, seat: string | null): string | null =>
   view.players.find((p) => p.id !== seat)?.id ?? null;
@@ -122,6 +123,8 @@ export function OnlineGame(): ReactElement {
               <p className="muted">It’s their turn.</p>
             </div>
           )}
+
+          <Roster view={view} />
         </aside>
       </main>
 

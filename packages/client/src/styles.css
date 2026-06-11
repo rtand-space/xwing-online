@@ -14,6 +14,33 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* a11y: clear keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 2px;
+}
+
+/* a11y: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* comfortable tap targets on touch devices */
+@media (pointer: coarse) {
+  .btn,
+  .preset,
+  .joinInput {
+    min-height: 44px;
+  }
+}
+
 html,
 body,
 #root {
@@ -351,6 +378,55 @@ body {
   margin-top: 8px;
   color: #ef6f6f;
   font-size: 13px;
+}
+
+.rosterPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rosterSideHead {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.shipStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+}
+.shipStatus.dead {
+  opacity: 0.4;
+}
+.shipStatusName {
+  font-size: 13px;
+}
+.shipStatusBars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pips {
+  display: inline-flex;
+  gap: 3px;
+}
+.pip {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  border: 1.5px solid;
+  box-sizing: border-box;
+}
+.chip {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 1px 6px;
 }
 
 .logPanel {
