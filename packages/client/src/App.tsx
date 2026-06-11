@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { SvgBoard } from './board';
+import { previewFor, SvgBoard } from './board';
 import { Controls } from './controls';
 import { formatEvent } from './log';
 import { currentPlayer, useGame, viewFor } from './store';
@@ -46,7 +46,12 @@ export function App(): ReactElement {
 
       <main className="layout">
         <section className="boardWrap">
-          <SvgBoard view={view} highlightIds={highlightIds} />
+          <SvgBoard
+            view={view}
+            activeId={pending?.shipId}
+            highlightIds={highlightIds}
+            preview={pending?.type === 'execute-maneuver' ? previewFor(view, pending.shipId) : null}
+          />
         </section>
 
         <aside className="side">

@@ -84,10 +84,22 @@ body {
   stroke: var(--line);
 }
 .shipLabel {
-  fill: var(--ink-soft);
+  fill: var(--ink);
   font:
     600 18px ui-monospace,
     monospace;
+}
+.tokenRow {
+  font:
+    700 16px ui-monospace,
+    monospace;
+}
+.activeRing {
+  fill: none;
+  stroke: var(--ink);
+  stroke-opacity: 0.35;
+  stroke-width: 2;
+  stroke-dasharray: 3 6;
 }
 
 .side {
