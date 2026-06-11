@@ -39,14 +39,18 @@
       "xws": "bluesquadronescort",
       "initiative": 2,
       "limited": 0,
-      "cost": 4
+      "cost": 4,
+      "loadout": 8,
+      "slots": ["talent", "torpedo", "astromech", "modification", "configuration"]
     },
     {
       "name": "Red Squadron Veteran",
       "xws": "redsquadronveteran",
       "initiative": 4,
       "limited": 0,
-      "cost": 5
+      "cost": 5,
+      "loadout": 14,
+      "slots": ["talent", "torpedo", "astromech", "modification", "configuration"]
     }
   ]
 }

@@ -8,3 +8,5 @@ export { parseXws, serializeXws, squadToShipInits } from './xws';
 export type { XwsPilot, XwsSquad } from './xws';
 export { buildConfig, FACTIONS, PRESETS, presetConfig, pilotChoices, XWS_FACTION } from './presets';
 export type { PilotChoice, Preset } from './presets';
+export { MAX_SHIPS, MIN_SHIPS, SQUAD_POINT_CAP, squadPoints, validateSquad } from './squad';
+export type { SquadValidation } from './squad';

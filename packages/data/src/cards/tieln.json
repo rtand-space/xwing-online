@@ -35,13 +35,23 @@
     "5FW"
   ],
   "pilots": [
-    { "name": "Academy Pilot", "xws": "academypilot", "initiative": 1, "limited": 0, "cost": 2 },
+    {
+      "name": "Academy Pilot",
+      "xws": "academypilot",
+      "initiative": 1,
+      "limited": 0,
+      "cost": 2,
+      "loadout": 0,
+      "slots": ["modification"]
+    },
     {
       "name": "Obsidian Squadron Pilot",
       "xws": "obsidiansquadronpilot",
       "initiative": 3,
       "limited": 0,
-      "cost": 3
+      "cost": 3,
+      "loadout": 2,
+      "slots": ["talent", "modification"]
     }
   ]
 }

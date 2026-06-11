@@ -14,8 +14,14 @@ export interface PilotData {
   name: string;
   xws: string;
   initiative: number;
+  /** 0 = unlimited; otherwise the max copies of this pilot in a squad. */
   limited: number;
+  /** Squad-point cost (fixed, never varies with upgrades). */
   cost: number;
+  /** Per-pilot budget for this pilot's upgrades. */
+  loadout: number;
+  /** Upgrade slot bar (xws slot ids). */
+  slots: string[];
 }
 
 export interface ShipData {
