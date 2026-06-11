@@ -532,6 +532,25 @@ body {
   padding: 8px 10px;
   word-break: break-all;
 }
+.xws {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.xwsBox {
+  width: 100%;
+  min-height: 120px;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  resize: vertical;
+  outline: none;
+}
 
 /* ---------- roster status ---------- */
 .rosterPanel {

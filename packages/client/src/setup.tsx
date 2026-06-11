@@ -1,12 +1,14 @@
 import {
   buildConfig,
   FACTIONS,
+  parseXws,
   type PilotChoice,
   PRESETS,
   presetConfig,
   pilotChoices,
   SQUAD_POINT_CAP,
   type Side,
+  squadPoints,
   validateSquad,
   type XwsSquad,
   XWS_FACTION,
@@ -24,6 +26,100 @@ const toSquad = (side: Side, picks: PilotChoice[]): XwsSquad => ({
   faction: xwsFaction(side),
   pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
 });
+
+/** Pretty XWS export for a side's current picks. */
+const exportXws = (side: Side, picks: PilotChoice[]): string =>
+  JSON.stringify(
+    {
+      faction: xwsFaction(side),
+      points: squadPoints(toSquad(side, picks)),
+      version: '2.5.0',
+      vendor: { 'xwing-online': {} },
+      pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+    },
+    null,
+    2,
+  );
+
+/** Parse an XWS list into builder picks for this side (faction-checked, roster-checked). */
+function picksFromXws(text: string, side: Side): { picks?: PilotChoice[]; error?: string } {
+  let squad: XwsSquad;
+  try {
+    squad = parseXws(text);
+  } catch (e) {
+    return { error: (e as Error).message };
+  }
+  if (squad.faction !== xwsFaction(side)) {
+    return { error: `That list is ${squad.faction}, not ${xwsFaction(side)}.` };
+  }
+  const choices = pilotChoices(factionName(side));
+  const picks: PilotChoice[] = [];
+  for (const p of squad.pilots) {
+    const c = choices.find((ch) => ch.pilotXws === p.id && ch.shipXws === p.ship);
+    if (!c) return { error: `Not in the R1 roster yet: ${p.id} (${p.ship}).` };
+    picks.push(c);
+  }
+  return { picks };
+}
+
+function XwsTools({
+  side,
+  picks,
+  setPicks,
+}: {
+  side: Side;
+  picks: PilotChoice[];
+  setPicks: (p: PilotChoice[]) => void;
+}): ReactElement {
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState('');
+  const [error, setError] = useState('');
+
+  return (
+    <div className="xws">
+      <button
+        className="btn sm ghost"
+        onClick={() => {
+          setText(exportXws(side, picks));
+          setError('');
+          setOpen((o) => !o);
+        }}
+      >
+        {open ? 'Hide XWS' : 'Import / export XWS'}
+      </button>
+      {open && (
+        <>
+          <textarea
+            className="xwsBox"
+            spellCheck={false}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          {error && <div className="reject">{error}</div>}
+          <div className="grid">
+            <button className="btn sm" onClick={() => void navigator.clipboard?.writeText(text)}>
+              Copy
+            </button>
+            <button
+              className="btn sm primary"
+              onClick={() => {
+                const res = picksFromXws(text, side);
+                if (res.error) setError(res.error);
+                else {
+                  setPicks(res.picks ?? []);
+                  setError('');
+                  setOpen(false);
+                }
+              }}
+            >
+              Import
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 function SquadColumn({
   side,
@@ -72,6 +168,7 @@ function SquadColumn({
           </div>
         ))}
       </div>
+      <XwsTools side={side} picks={picks} setPicks={setPicks} />
     </div>
   );
 }

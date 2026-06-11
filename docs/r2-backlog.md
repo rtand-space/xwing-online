@@ -22,8 +22,8 @@ Status: ☐ not started · ◐ in progress · ☑ done
 - ☑ **T-B3** Start a game from built squads — **each side brings its own**: hot-seat builds both; online is a lobby (host=Rebel opens with their squad, joiner=Imperial brings theirs, the DO assembles the game once both are in). _Save/name squads + host-picks-side are follow-ons._
 
 ## R2-M3 — XWS interop
-- ☐ **T-X1** Paste-import an XWS squad (validate, surface errors).
-- ☐ **T-X2** Export / copy XWS + shareable link; round-trips with YASB / Launch Bay Next.
+- ☑ **T-X1** Paste-import an XWS squad into any builder (faction- and roster-checked; errors surfaced).
+- ◐ **T-X2** Export / copy standard XWS (faction/points/version/pilots) from any builder — round-trips with YASB / Launch Bay Next. _Shareable squad link still to come._
 
 ## R2-M4 — Accounts
 - ☐ **T-A1** Guest→account sign-in (auth provider TBD); migrate the guest id.
