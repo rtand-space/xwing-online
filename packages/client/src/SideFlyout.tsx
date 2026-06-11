@@ -1,0 +1,73 @@
+import type { ReactElement } from 'react';
+import { Roster } from './roster';
+import { SetupPanel } from './setup';
+import type { ActiveGame } from './useActiveGame';
+
+/**
+ * Left flyout: management surface. R1 = new game / invite / board state.
+ * RX expands here (full squad builder, sandbox toggle, accounts, replays).
+ */
+export function SideFlyout({
+  open,
+  onClose,
+  ag,
+}: {
+  open: boolean;
+  onClose: () => void;
+  ag: ActiveGame;
+}): ReactElement {
+  return (
+    <>
+      {open && <div className="backdrop" onClick={onClose} />}
+      <aside className={open ? 'flyout side open' : 'flyout side'} aria-hidden={!open}>
+        <div className="flyoutBody">
+          {ag.mode === 'none' ? <SetupPanel /> : <GamePanel ag={ag} />}
+          <p className="disclaimer">
+            Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
+            models.
+          </p>
+        </div>
+      </aside>
+    </>
+  );
+}
+
+function GamePanel({ ag }: { ag: ActiveGame }): ReactElement {
+  const shareUrl = ag.code ? `${location.origin}?game=${ag.code}` : '';
+  return (
+    <div className="panelStack">
+      <div className="panelHead">{ag.online ? 'Online game' : 'Hot-seat game'}</div>
+
+      {ag.online && ag.isHost && ag.code && (
+        <div className="panel">
+          <div className="section">Invite a friend</div>
+          <div className="codeBox">{shareUrl}</div>
+          <div className="inviteRow">
+            <span className="muted">
+              code: <strong>{ag.code}</strong>
+            </span>
+            <button
+              className="btn sm"
+              onClick={() => void navigator.clipboard?.writeText(shareUrl)}
+            >
+              Copy link
+            </button>
+          </div>
+        </div>
+      )}
+
+      {ag.onlineError && <div className="reject">{ag.onlineError}</div>}
+
+      {ag.view && (
+        <>
+          <div className="section">Board state</div>
+          <Roster view={ag.view} />
+        </>
+      )}
+
+      <button className="btn ghost" onClick={ag.leave}>
+        {ag.online ? 'Leave game' : 'New game'}
+      </button>
+    </div>
+  );
+}

@@ -63,7 +63,7 @@ function SquadColumn({
   );
 }
 
-export function Setup(): ReactElement {
+export function SetupPanel(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const hostOnline = useOnline((s) => s.host);
   const joinOnline = useOnline((s) => s.join);
@@ -87,77 +87,69 @@ export function Setup(): ReactElement {
     );
 
   return (
-    <div className="setup">
-      <div className="setupCard">
-        <h1>X-Wing Online</h1>
-        <p className="muted">Hot-seat, pass-and-play on one device.</p>
+    <div className="panelStack">
+      <div className="panelHead">New game</div>
 
-        <div className="section">Quick match</div>
-        <div className="presetList">
-          {PRESETS.map((p) => (
-            <button
-              key={p.id}
-              className="preset"
-              onClick={() => startGame(presetConfig(p, String(Date.now())))}
-            >
-              <div className="presetName">{p.name}</div>
-              <div className="presetDesc">{p.description}</div>
-            </button>
-          ))}
-        </div>
-
-        <div className="section">Build your own</div>
-        <div className="builder">
-          <SquadColumn
-            title="Rebel"
-            options={pilotChoices(FACTIONS.rebel)}
-            picks={rebel}
-            setPicks={setRebel}
-          />
-          <SquadColumn
-            title="Imperial"
-            options={pilotChoices(FACTIONS.imperial)}
-            picks={imperial}
-            setPicks={setImperial}
-          />
-        </div>
-        <button className="btn primary start" disabled={!canStart} onClick={startCustom}>
-          {canStart ? 'Start battle' : 'Add a ship to each side'}
-        </button>
-
-        <div className="section">Online — share a code</div>
-        <div className="presetList">
-          {PRESETS.map((p) => (
-            <button
-              key={p.id}
-              className="preset"
-              onClick={() => hostOnline(presetConfig(p, String(Date.now())))}
-            >
-              <div className="presetName">Host: {p.name}</div>
-              <div className="presetDesc">{p.description}</div>
-            </button>
-          ))}
-        </div>
-        <div className="joinRow">
-          <input
-            className="joinInput"
-            placeholder="enter game code"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-          />
+      <div className="section">Quick match (hot-seat)</div>
+      <div className="presetList">
+        {PRESETS.map((p) => (
           <button
-            className="btn primary"
-            disabled={!code.trim()}
-            onClick={() => joinOnline(code.trim())}
+            key={p.id}
+            className="preset"
+            onClick={() => startGame(presetConfig(p, String(Date.now())))}
           >
-            Join
+            <div className="presetName">{p.name}</div>
+            <div className="presetDesc">{p.description}</div>
           </button>
-        </div>
+        ))}
+      </div>
 
-        <p className="disclaimer">
-          Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
-          models.
-        </p>
+      <div className="section">Build your own</div>
+      <div className="builder">
+        <SquadColumn
+          title="Rebel"
+          options={pilotChoices(FACTIONS.rebel)}
+          picks={rebel}
+          setPicks={setRebel}
+        />
+        <SquadColumn
+          title="Imperial"
+          options={pilotChoices(FACTIONS.imperial)}
+          picks={imperial}
+          setPicks={setImperial}
+        />
+      </div>
+      <button className="btn primary start" disabled={!canStart} onClick={startCustom}>
+        {canStart ? 'Start battle' : 'Add a ship to each side'}
+      </button>
+
+      <div className="section">Online — share a code</div>
+      <div className="presetList">
+        {PRESETS.map((p) => (
+          <button
+            key={p.id}
+            className="preset"
+            onClick={() => hostOnline(presetConfig(p, String(Date.now())))}
+          >
+            <div className="presetName">Host: {p.name}</div>
+            <div className="presetDesc">{p.description}</div>
+          </button>
+        ))}
+      </div>
+      <div className="joinRow">
+        <input
+          className="joinInput"
+          placeholder="enter game code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+        <button
+          className="btn primary"
+          disabled={!code.trim()}
+          onClick={() => joinOnline(code.trim())}
+        >
+          Join
+        </button>
       </div>
     </div>
   );
