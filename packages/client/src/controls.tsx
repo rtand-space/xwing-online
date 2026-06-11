@@ -41,7 +41,7 @@ function ManeuverDial({
   const speeds = [...new Set(options.map((m) => m.speed))].sort((a, b) => b - a);
 
   return (
-    <div className="dialGrid" style={{ gridTemplateColumns: `auto repeat(${cols.length}, 1fr)` }}>
+    <div className="dialGrid" style={{ gridTemplateColumns: `auto repeat(${cols.length}, 40px)` }}>
       {speeds.map((speed) => (
         <Fragment key={speed}>
           <div className="dialSpeed">{speed}</div>
