@@ -69,6 +69,28 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, hasEngaged: true }));
     case 'DiceRolled':
       return { ...state, rng: { ...state.rng, cursor: state.rng.cursor + e.faces.length } };
+    case 'TokenSpent':
+      return mapShip(state, e.shipId, (s) => {
+        let removed = false;
+        return {
+          ...s,
+          tokens: s.tokens.filter((t) => {
+            if (!removed && t.kind === e.kind && (e.kind !== 'lock' || t.targetId === e.targetId)) {
+              removed = true;
+              return false;
+            }
+            return true;
+          }),
+        };
+      });
+    case 'DamageDealt':
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        shields: e.shieldsAfter,
+        hull: e.hullAfter,
+      }));
+    case 'ShipDestroyed':
+      return mapShip(state, e.shipId, (s) => ({ ...s, hull: 0 }));
     case 'RoundEnded':
       return {
         ...state,
@@ -87,8 +109,16 @@ function applyCore(state: GameState, e: GameEvent): GameState {
   }
 }
 
-/** Pure fold. Recomputes pending after every event (the doc's "who owes what"). */
+/** A side is wiped once it has no ships with hull remaining. */
+function isGameOver(s: GameState): boolean {
+  if (s.round < 1 || s.players.length === 0) return false;
+  return s.players.some((p) => !s.ships.some((sh) => sh.ownerId === p.id && sh.hull > 0));
+}
+
+/** Pure fold. Recomputes win state and pending after every event. */
 export function applyEvent(state: GameState, e: GameEvent): GameState {
-  const next = applyCore(state, e);
-  return { ...next, pending: computePending(next) };
+  const next = { ...applyCore(state, e) };
+  next.gameOver = isGameOver(next);
+  next.pending = computePending(next);
+  return next;
 }

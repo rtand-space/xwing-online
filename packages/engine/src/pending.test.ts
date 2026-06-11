@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createGame, demoConfig, dispatch } from './index';
 import type { Game } from './game';
-import { autoPlay, firstChoice } from './harness';
+import { autoPlay, type Chooser, firstChoice } from './harness';
 
 const owner = (id: string): string => (id.startsWith('x') ? 'rebel' : 'imperial');
 const ok = (r: { game: Game; rejection?: string }): Game => {
@@ -53,7 +53,12 @@ describe('pending decisions', () => {
     }
 
     g = ok(dispatch(g, { type: 'SkipAction', playerId: 'imperial', shipId: 't2' }));
-    g = autoPlay(g, firstChoice, (gg) => gg.state.round > 1);
+    // pass all attacks so no ship dies and stress survives into the next round
+    const peaceful: Chooser = (p, game) =>
+      p.type === 'declare-attack'
+        ? { type: 'PassAttack', playerId: p.playerId, shipId: p.shipId }
+        : firstChoice(p, game);
+    g = autoPlay(g, peaceful, (gg) => gg.state.round > 1);
 
     expect(g.state.phase).toBe('planning');
     const dial = g.state.pending.find((p) => p.shipId === 't2');

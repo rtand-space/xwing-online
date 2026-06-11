@@ -46,8 +46,18 @@ export type GameEvent =
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
-  | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId }
+  | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }
+  | { type: 'TokenSpent'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
+  | {
+      type: 'DamageDealt';
+      shipId: ShipId;
+      amount: number;
+      shieldsAfter: number;
+      hullAfter: number;
+      crits: number;
+    }
+  | { type: 'ShipDestroyed'; shipId: ShipId }
   | { type: 'AttackPassed'; shipId: ShipId }
   | { type: 'RoundEnded' }
   | { type: 'PhaseAdvanced'; to: Phase };

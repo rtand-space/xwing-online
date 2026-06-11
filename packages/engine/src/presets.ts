@@ -79,10 +79,10 @@ export function demoConfig(seed = 'demo', id = 'game-1'): GameConfig {
       { id: imperial, name: 'Imperial' },
     ],
     ships: [
-      xwing('x1', rebel, 4, { x: -100, y: -400, angle: 0 }),
-      xwing('x2', rebel, 2, { x: 100, y: -400, angle: 0 }),
-      tieln('t1', imperial, 3, { x: -100, y: 400, angle: 180 }),
-      tieln('t2', imperial, 1, { x: 100, y: 400, angle: 180 }),
+      xwing('x1', rebel, 4, { x: -100, y: -120, angle: 0 }),
+      xwing('x2', rebel, 2, { x: 100, y: -120, angle: 0 }),
+      tieln('t1', imperial, 3, { x: -100, y: 120, angle: 180 }),
+      tieln('t2', imperial, 1, { x: 100, y: 120, angle: 180 }),
     ],
   };
 }

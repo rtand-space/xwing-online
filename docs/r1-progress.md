@@ -31,11 +31,13 @@ _Movement (ExecuteManeuver) and combat (DeclareAttack) are stubbed: real geometr
 
 ## M3 — Combat pipeline
 
-- ☐ **T3.1** Attack sub-FSM with named timing windows
-- ☐ **T3.2** Dice + range bonuses
-- ☐ **T3.3** Modification
-- ☐ **T3.4** Damage resolution
-- ☐ **T3.5** Wire into Engagement + win condition
+- ☑ **T3.1** Attack sub-FSM with named timing windows — `combat.ts` `ATTACK_WINDOWS`; ordered, hookable extension points (R3-ready).
+- ☑ **T3.2** Dice + range bonuses — range-1 attacker / range-3 defender extra die (obstruction stubbed, no R1 obstacles).
+- ☑ **T3.3** Modification — focus change + lock reroll, rerolls before changes, tokens spent.
+- ☑ **T3.4** Damage resolution — shields→hull, crit tracking, `ShipDestroyed` at 0 hull.
+- ☑ **T3.5** Wire into Engagement + win condition — targets gated by arc+range; a wiped side sets `gameOver`.
+
+_R1 modification is auto-resolved (no interactive `modify-dice` step yet); the windows make adding it — and card abilities — a hook registration in R3, not a rewrite._
 
 ## M4 — Hot-seat client (fun gate)
 

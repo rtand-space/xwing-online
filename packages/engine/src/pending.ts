@@ -1,3 +1,4 @@
+import { inArc, rangeBand } from './arcs';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
 const alive = (s: Ship): boolean => s.hull > 0;
@@ -63,12 +64,15 @@ export function computePending(state: GameState): PendingDecision[] {
     case 'engagement': {
       const ship = engagementShip(state);
       if (!ship) return [];
+      const targets = enemies(state, ship)
+        .filter((t) => inArc(ship, t) && rangeBand(ship, t) !== null)
+        .map((s) => s.id);
       return [
         {
           type: 'declare-attack',
           playerId: ship.ownerId,
           shipId: ship.id,
-          options: { targets: enemies(state, ship).map((s) => s.id), canPass: true },
+          options: { targets, canPass: true },
         },
       ];
     }

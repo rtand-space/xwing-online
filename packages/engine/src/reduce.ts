@@ -1,6 +1,6 @@
 import { applyEvent } from './apply';
+import { resolveAttack } from './combat';
 import type { Command } from './commands';
-import { rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { resolveMovement } from './movement';
 import { autoStep } from './phases';
@@ -86,17 +86,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'DeclareAttack': {
       if (pending.type !== 'declare-attack') return reject('Wrong phase');
       if (!pending.options.targets.includes(cmd.targetId)) return reject('Invalid target');
-      const target = state.ships.find((s) => s.id === cmd.targetId) as Ship;
-      const attack = rollAttack(state.rng.seed, state.rng.cursor, ship.primaryAttack);
-      const defence = rollDefence(state.rng.seed, state.rng.cursor + attack.length, target.agility);
-      // Damage resolution is deferred to M3; M1 only records the dice as events.
-      return {
-        events: [
-          { type: 'AttackDeclared', shipId: ship.id, targetId: target.id },
-          { type: 'DiceRolled', kind: 'attack', shipId: ship.id, faces: attack },
-          { type: 'DiceRolled', kind: 'defence', shipId: target.id, faces: defence },
-        ],
-      };
+      return { events: resolveAttack(state, ship.id, cmd.targetId) };
     }
     case 'PassAttack': {
       if (pending.type !== 'declare-attack' || !pending.options.canPass)
