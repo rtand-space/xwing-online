@@ -68,7 +68,8 @@ _Playable end-to-end via a pending-decision-driven UI: `pnpm --filter @xwing/cli
 
 ## M7 — Squads, polish, ship it
 
-- ◐ **T7.1** Preset squads — XWS-based presets in `@xwing/data` (`PRESETS`/`presetConfig`); client setup screen picks a matchup. Squad builder proper is R2.
+- ☑ **T7.1** Preset squads — XWS presets + a real per-side squad builder (`pilotChoices`/`buildConfig`) on the setup screen. Full loadout/points builder is still R2.
+- ◐ **T7.4** Launch surfaces — fan-project disclaimer on setup + in-game footer; error boundary; empty-state hints in builder/controls. Polished error/empty copy ongoing.
 - ☐ **T7.2** Mobile polish + a11y
 - ☐ **T7.3** End-to-end hardening
 - ☐ **T7.4** Launch surfaces

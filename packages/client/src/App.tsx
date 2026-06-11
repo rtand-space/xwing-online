@@ -1,33 +1,9 @@
-import { PRESETS } from '@xwing/data';
 import type { ReactElement } from 'react';
 import { previewFor, SvgBoard } from './board';
 import { Controls } from './controls';
 import { formatEvent } from './log';
+import { Setup } from './setup';
 import { currentPlayer, useGame, viewFor } from './store';
-
-function Setup(): ReactElement {
-  const start = useGame((s) => s.start);
-  return (
-    <div className="setup">
-      <div className="setupCard">
-        <h1>X-Wing Online</h1>
-        <p className="muted">Pick a matchup — hot-seat, pass-and-play on one device.</p>
-        <div className="presetList">
-          {PRESETS.map((p) => (
-            <button key={p.id} className="preset" onClick={() => start(p)}>
-              <div className="presetName">{p.name}</div>
-              <div className="presetDesc">{p.description}</div>
-            </button>
-          ))}
-        </div>
-        <p className="disclaimer">
-          Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
-          models.
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export function App(): ReactElement {
   const game = useGame((s) => s.game);
@@ -119,6 +95,10 @@ export function App(): ReactElement {
           </div>
         </aside>
       </main>
+
+      <footer className="disclaimerBar">
+        Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real models.
+      </footer>
     </div>
   );
 }

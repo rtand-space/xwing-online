@@ -6,5 +6,5 @@ export { parseDial, parseManeuver } from './dial';
 export { toShipInit } from './build';
 export { parseXws, serializeXws, squadToShipInits } from './xws';
 export type { XwsPilot, XwsSquad } from './xws';
-export { PRESETS, presetConfig } from './presets';
-export type { Preset } from './presets';
+export { buildConfig, FACTIONS, PRESETS, presetConfig, pilotChoices, XWS_FACTION } from './presets';
+export type { PilotChoice, Preset } from './presets';

@@ -1,9 +1,9 @@
-import { type Preset, presetConfig } from '@xwing/data';
 import {
   type Command,
   createGame,
   dispatch,
   type Game,
+  type GameConfig,
   type PlayerView,
   projectView,
 } from '@xwing/engine';
@@ -15,7 +15,7 @@ interface GameStore {
   /** Which player has "unlocked" the shared device (pass-and-play privacy). */
   unlockedFor: string | null;
   rejection: string | null;
-  start: (preset: Preset) => void;
+  startGame: (config: GameConfig) => void;
   send: (cmd: Command) => void;
   unlock: (playerId: string) => void;
   reset: () => void;
@@ -25,12 +25,7 @@ export const useGame = create<GameStore>((set, get) => ({
   game: null,
   unlockedFor: null,
   rejection: null,
-  start: (preset) =>
-    set({
-      game: createGame(presetConfig(preset, String(Date.now()))),
-      unlockedFor: null,
-      rejection: null,
-    }),
+  startGame: (config) => set({ game: createGame(config), unlockedFor: null, rejection: null }),
   send: (cmd) => {
     const current = get().game;
     if (!current) return;

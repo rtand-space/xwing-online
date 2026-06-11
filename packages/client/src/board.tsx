@@ -13,10 +13,35 @@ export interface BoardProps {
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
 export type BoardRenderer = (props: BoardProps) => ReactElement;
 
-const colorFor = (view: PlayerView, ship: Ship): string => {
-  const idx = view.players.findIndex((p) => p.id === ship.ownerId);
-  return idx === 0 ? '#3fe0c5' : '#f7c457';
-};
+const COLORS = ['#3fe0c5', '#f7c457'];
+
+const sideIndex = (view: PlayerView, ship: Ship): number =>
+  Math.max(
+    0,
+    view.players.findIndex((p) => p.id === ship.ownerId),
+  );
+
+const colorFor = (view: PlayerView, ship: Ship): string => COLORS[sideIndex(view, ship) % 2]!;
+
+/** Per-faction base gradients and soft glow filters — a temporary "miniature" look. */
+function ShipDefs(): ReactElement {
+  return (
+    <defs>
+      {COLORS.map((c, i) => (
+        <radialGradient key={`grad${i}`} id={`base${i}`} cx="50%" cy="38%" r="68%">
+          <stop offset="0%" stopColor={c} stopOpacity="0.55" />
+          <stop offset="70%" stopColor={c} stopOpacity="0.16" />
+          <stop offset="100%" stopColor={c} stopOpacity="0.05" />
+        </radialGradient>
+      ))}
+      {COLORS.map((c, i) => (
+        <filter key={`flt${i}`} id={`glow${i}`} x="-60%" y="-60%" width="220%" height="220%">
+          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor={c} floodOpacity="0.55" />
+        </filter>
+      ))}
+    </defs>
+  );
+}
 
 const TOKEN_COLOR: Record<string, string> = {
   focus: '#f7c457',
@@ -65,27 +90,31 @@ function tokenCounts(ship: Ship): [string, number][] {
 function ShipBody({
   w,
   color,
+  fill,
+  glow,
   stroke,
 }: {
   w: number;
   color: string;
+  fill: string;
+  glow: string;
   stroke: number;
 }): ReactElement {
   return (
-    <>
+    <g filter={glow}>
       <rect
         x={-w / 2}
         y={-w / 2}
         width={w}
         height={w}
-        rx={4}
-        fill={color}
-        fillOpacity={0.18}
+        rx={6}
+        fill={fill}
         stroke={color}
         strokeWidth={stroke}
       />
-      <polygon points={`0,${-w / 2 - 10} -7,${-w / 2} 7,${-w / 2}`} fill={color} />
-    </>
+      <polygon points={`0,${-w / 2 - 11} -8,${-w / 2 + 2} 8,${-w / 2 + 2}`} fill={color} />
+      <circle cx={0} cy={-w / 6} r={w / 9} fill={color} fillOpacity={0.85} />
+    </g>
   );
 }
 
@@ -97,6 +126,7 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
   return (
     <svg className="board" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
       <Starfield />
+      <ShipDefs />
       <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />
 
       {previewShip && preview && (
@@ -120,6 +150,7 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
 
       {ships.map((s) => {
         const w = BASE_MM[s.base];
+        const side = sideIndex(view, s);
         const color = colorFor(view, s);
         const active = s.id === activeId;
         const highlight = highlightIds.includes(s.id);
@@ -131,7 +162,13 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
           >
             {active && <circle cx={s.pos.x} cy={-s.pos.y} r={w / 2 + 14} className="activeRing" />}
             <g transform={`translate(${s.pos.x} ${-s.pos.y}) rotate(${s.pos.angle})`}>
-              <ShipBody w={w} color={color} stroke={active ? 4 : highlight ? 3 : 2} />
+              <ShipBody
+                w={w}
+                color={color}
+                fill={`url(#base${side})`}
+                glow={`url(#glow${side})`}
+                stroke={active ? 3.5 : highlight ? 3 : 2}
+              />
             </g>
             <text x={s.pos.x} y={-s.pos.y + 5} textAnchor="middle" className="shipLabel">
               {s.id} · {s.hull}

@@ -136,6 +136,87 @@ body {
   color: var(--ink-soft);
   margin: 16px 0 0;
 }
+.disclaimerBar {
+  text-align: center;
+  font-size: 10px;
+  color: var(--ink-soft);
+  padding: 6px 12px;
+  border-top: 1px solid var(--line);
+}
+
+.section {
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 18px 0 8px;
+}
+.builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: left;
+}
+.col {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+}
+.colHead {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.opts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.opts .btn {
+  justify-content: space-between;
+}
+.ini {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.roster {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 28px;
+}
+.rosterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 8px;
+}
+.rosterRow .x {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 16px;
+  cursor: pointer;
+}
+.empty {
+  font-size: 12px;
+  font-style: italic;
+}
+.start {
+  width: 100%;
+  justify-content: center;
+  margin-top: 14px;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 .shipLabel {
   fill: var(--ink);
   font:

@@ -1,5 +1,38 @@
 import type { GameConfig, Player, Position } from '@xwing/engine';
+import { allShips } from './loaders';
 import { squadToShipInits, type XwsSquad } from './xws';
+
+/** Faction names as they appear in the card data, keyed by XWS side id. */
+export const FACTIONS = { rebel: 'Rebel Alliance', imperial: 'Galactic Empire' } as const;
+export const XWS_FACTION = { rebel: 'rebelalliance', imperial: 'galacticempire' } as const;
+
+export interface PilotChoice {
+  shipXws: string;
+  shipName: string;
+  pilotXws: string;
+  pilotName: string;
+  initiative: number;
+  faction: string;
+}
+
+/** Flat list of selectable pilots, optionally filtered to one faction. */
+export function pilotChoices(faction?: string): PilotChoice[] {
+  const out: PilotChoice[] = [];
+  for (const ship of allShips()) {
+    if (faction && ship.faction !== faction) continue;
+    for (const p of ship.pilots) {
+      out.push({
+        shipXws: ship.xws,
+        shipName: ship.name,
+        pilotXws: p.xws,
+        pilotName: p.name,
+        initiative: p.initiative,
+        faction: ship.faction,
+      });
+    }
+  }
+  return out;
+}
 
 const twoXwings: XwsSquad = {
   faction: 'rebelalliance',
@@ -63,8 +96,13 @@ function layout(count: number, side: 'rebel' | 'imperial'): Position[] {
   return Array.from({ length: count }, (_, i) => ({ x: (i - offset) * spacing, y, angle }));
 }
 
-/** Build a ready-to-play engine config from a preset matchup. */
-export function presetConfig(preset: Preset, seed: string, id = 'game'): GameConfig {
+/** Build a ready-to-play engine config from two squads. */
+export function buildConfig(
+  rebel: XwsSquad,
+  imperial: XwsSquad,
+  seed: string,
+  id = 'game',
+): GameConfig {
   const players: Player[] = [
     { id: 'rebel', name: 'Rebel' },
     { id: 'imperial', name: 'Imperial' },
@@ -74,12 +112,12 @@ export function presetConfig(preset: Preset, seed: string, id = 'game'): GameCon
     seed,
     players,
     ships: [
-      ...squadToShipInits(preset.rebel, 'rebel', layout(preset.rebel.pilots.length, 'rebel')),
-      ...squadToShipInits(
-        preset.imperial,
-        'imperial',
-        layout(preset.imperial.pilots.length, 'imperial'),
-      ),
+      ...squadToShipInits(rebel, 'rebel', layout(rebel.pilots.length, 'rebel')),
+      ...squadToShipInits(imperial, 'imperial', layout(imperial.pilots.length, 'imperial')),
     ],
   };
+}
+
+export function presetConfig(preset: Preset, seed: string, id = 'game'): GameConfig {
+  return buildConfig(preset.rebel, preset.imperial, seed, id);
 }
