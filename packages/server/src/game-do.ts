@@ -1,5 +1,5 @@
 import { buildPushPayload, type PushSubscription } from '@block65/webcrypto-web-push';
-import type { Command, GameConfig, GameEvent, ShipInit } from '@xwing/engine';
+import type { Command, GameConfig, GameEvent, Obstacle, ShipInit } from '@xwing/engine';
 import { applyCommand, createLog, pendingPlayer, publicLog, viewFromLog } from './game-store';
 import { json } from './http';
 import type { Env } from './index';
@@ -8,6 +8,7 @@ const LOG_KEY = 'log';
 const SEATS_KEY = 'seats'; // guestId -> side
 const SIDES_KEY = 'sides'; // side -> ShipInit[]
 const SEED_KEY = 'seed';
+const OBSTACLES_KEY = 'obstacles';
 const SUBS_KEY = 'subs'; // side -> PushSubscription
 
 interface SocketMeta {
@@ -57,13 +58,16 @@ export class GameDO {
         side,
         ships,
         seed,
+        obstacles,
       } = (await req.json()) as {
         guestId: string;
         side: string;
         ships: ShipInit[];
         seed: string;
+        obstacles?: Obstacle[];
       };
       await this.state.storage.put(SEED_KEY, seed);
+      if (obstacles) await this.state.storage.put(OBSTACLES_KEY, obstacles);
       await this.state.storage.put(SIDES_KEY, { [side]: ships });
       await this.state.storage.put(SEATS_KEY, { [host]: side });
       return json({ ok: true, playerId: side });
@@ -130,6 +134,7 @@ export class GameDO {
     if (await this.log()) return;
     if (!sides.rebel || !sides.imperial) return;
     const seed = (await this.state.storage.get<string>(SEED_KEY)) ?? 's';
+    const obstacles = (await this.state.storage.get<Obstacle[]>(OBSTACLES_KEY)) ?? [];
     const config: GameConfig = {
       id: code,
       seed,
@@ -138,6 +143,7 @@ export class GameDO {
         { id: 'imperial', name: 'Imperial' },
       ],
       ships: [...sides.rebel, ...sides.imperial],
+      obstacles,
     };
     const log = createLog(config);
     await this.state.storage.put(LOG_KEY, log);

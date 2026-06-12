@@ -19,6 +19,7 @@ import {
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
 import { useOnline } from './online-store';
+import { useSetup } from './setup-store';
 import type { SavedSquad } from './squads';
 import { useSquads } from './squads-store';
 import { useGame } from './store';
@@ -546,7 +547,14 @@ export function QuickPlay(): ReactElement {
           <button
             className="btn primary"
             disabled={!byId(aId) || !byId(bId)}
-            onClick={() => startGame(buildConfig(byId(aId)!.xws, byId(bId)!.xws, seed()))}
+            onClick={() => {
+              const a = byId(aId)!;
+              const b = byId(bId)!;
+              const s = seed();
+              useSetup
+                .getState()
+                .begin(s, (obs) => startGame(buildConfig(a.xws, b.xws, s, 'game', obs)));
+            }}
           >
             Start battle
           </button>
@@ -582,9 +590,15 @@ export function QuickPlay(): ReactElement {
       <button
         className="btn primary"
         disabled={!byId(online) || (joining && !code.trim())}
-        onClick={() =>
-          joining ? void join(code.trim(), byId(online)!.xws) : void host(byId(online)!.xws)
-        }
+        onClick={() => {
+          const sq = byId(online)!;
+          if (joining) {
+            void join(code.trim(), sq.xws);
+            return;
+          }
+          const s = seed();
+          useSetup.getState().begin(s, (obs) => void host(sq.xws, obs));
+        }}
       >
         {joining ? 'Join game' : 'Host game'}
       </button>

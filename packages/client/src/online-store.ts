@@ -1,5 +1,5 @@
 import { sideShipInits, type XwsSquad } from '@xwing/data';
-import type { Command, GameEvent, PlayerView } from '@xwing/engine';
+import type { Command, GameEvent, Obstacle, PlayerView } from '@xwing/engine';
 import { create } from 'zustand';
 import { getGuestId } from './identity';
 import { subscribePush } from './push';
@@ -37,7 +37,7 @@ interface OnlineStore {
   rejection: string | null;
   error: string | null;
   /** Host plays Rebel; brings their squad and opens the lobby. */
-  host: (squad: XwsSquad) => Promise<void>;
+  host: (squad: XwsSquad, obstacles: Obstacle[]) => Promise<void>;
   /** Joiner plays Imperial; brings their squad and starts the game. */
   join: (code: string, squad: XwsSquad) => Promise<void>;
   resume: () => Promise<void>;
@@ -70,7 +70,7 @@ export const useOnline = create<OnlineStore>((set, get) => {
     rejection: null,
     error: null,
 
-    host: async (squad) => {
+    host: async (squad, obstacles) => {
       const guestId = getGuestId();
       const code = randomCode();
       set({
@@ -83,7 +83,14 @@ export const useOnline = create<OnlineStore>((set, get) => {
         error: null,
         rejection: null,
       });
-      await hostGame(code, 'rebel', sideShipInits(squad, 'rebel'), String(Date.now()), guestId);
+      await hostGame(
+        code,
+        'rebel',
+        sideShipInits(squad, 'rebel'),
+        String(Date.now()),
+        guestId,
+        obstacles,
+      );
       remember({ code, isHost: true });
       conn = open(code, guestId);
       void subscribePush(code, guestId);

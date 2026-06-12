@@ -14,9 +14,12 @@ export {
   buildConfig,
   FACTIONS,
   FACTION_IDS,
+  obstacleValidity,
+  placementOk,
   PRESETS,
   presetConfig,
   pilotChoices,
+  randomObstacles,
   sideShipInits,
   XWS_FACTION,
 } from './presets';

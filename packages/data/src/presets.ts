@@ -1,15 +1,69 @@
-import type { GameConfig, Obstacle, Player, Position, ShipInit } from '@xwing/engine';
+import type { GameConfig, Obstacle, ObstacleKind, Player, Position, ShipInit } from '@xwing/engine';
+import { rngAt } from '@xwing/engine';
 import { allShips } from './loaders';
 import { squadToShipInits, type XwsSquad } from './xws';
 
-/** A standard scatter of obstacles in the central band (ships set up at y = ±150). */
-export const STANDARD_OBSTACLES: Obstacle[] = [
-  { id: 'ast-1', kind: 'asteroid', pos: { x: -170, y: -30, angle: 20 }, radius: 28 },
-  { id: 'ast-2', kind: 'asteroid', pos: { x: 150, y: 40, angle: -35 }, radius: 28 },
-  { id: 'deb-1', kind: 'debris', pos: { x: 0, y: 0, angle: 0 }, radius: 30 },
-  { id: 'ast-3', kind: 'asteroid', pos: { x: 40, y: -90, angle: 60 }, radius: 26 },
-  { id: 'deb-2', kind: 'debris', pos: { x: -60, y: 95, angle: -15 }, radius: 30 },
+// Placement bounds: the mat is ±498mm; obstacles stay beyond range 2 (200mm) of
+// each edge and beyond range 1 (100mm, edge-to-edge) of each other.
+const FIELD_HALF = 498;
+const EDGE_KEEPOUT = 200;
+const OBSTACLE_KINDS: ObstacleKind[] = [
+  'asteroid',
+  'asteroid',
+  'asteroid',
+  'debris',
+  'debris',
+  'debris',
 ];
+const radiusFor = (k: ObstacleKind): number => (k === 'asteroid' ? 28 : 30);
+const tooClose = (a: Obstacle, b: Obstacle): boolean =>
+  Math.hypot(a.pos.x - b.pos.x, a.pos.y - b.pos.y) <= 100 + a.radius + b.radius;
+
+/** A legal 6-obstacle scatter (3 asteroids, 3 debris) seeded for determinism. */
+export function randomObstacles(seed: string): Obstacle[] {
+  const out: Obstacle[] = [];
+  let n = 0;
+  for (let i = 0; i < OBSTACLE_KINDS.length; i++) {
+    const kind = OBSTACLE_KINDS[i]!;
+    const radius = radiusFor(kind);
+    const lim = FIELD_HALF - EDGE_KEEPOUT - radius;
+    let pos: Position = { x: (i - 2.5) * 110, y: 0, angle: 0 };
+    for (let t = 0; t < 300; t++) {
+      const cand: Obstacle = {
+        id: `obs-${i + 1}`,
+        kind,
+        radius,
+        pos: {
+          x: (rngAt(seed, n++) * 2 - 1) * lim,
+          y: (rngAt(seed, n++) * 2 - 1) * lim,
+          angle: Math.floor(rngAt(seed, n++) * 360),
+        },
+      };
+      if (out.every((o) => !tooClose(o, cand))) {
+        pos = cand.pos;
+        break;
+      }
+    }
+    out.push({ id: `obs-${i + 1}`, kind, radius, pos });
+  }
+  return out;
+}
+
+/** Per-obstacle legality (within bounds and not too close to another). */
+export function obstacleValidity(obstacles: Obstacle[]): Record<string, boolean> {
+  const v: Record<string, boolean> = {};
+  for (const o of obstacles) {
+    const lim = FIELD_HALF - EDGE_KEEPOUT - o.radius;
+    v[o.id] =
+      Math.abs(o.pos.x) <= lim &&
+      Math.abs(o.pos.y) <= lim &&
+      obstacles.every((p) => p.id === o.id || !tooClose(o, p));
+  }
+  return v;
+}
+
+export const placementOk = (obstacles: Obstacle[]): boolean =>
+  obstacles.length > 0 && Object.values(obstacleValidity(obstacles)).every(Boolean);
 
 /** Board seats (player ids). Faction is chosen separately and baked into each ShipInit. */
 export type Side = 'rebel' | 'imperial';
@@ -154,6 +208,7 @@ export function buildConfig(
   imperial: XwsSquad,
   seed: string,
   id = 'game',
+  obstacles: Obstacle[] = randomObstacles(seed),
 ): GameConfig {
   const players: Player[] = [
     { id: 'rebel', name: 'Rebel' },
@@ -167,7 +222,7 @@ export function buildConfig(
       ...squadToShipInits(rebel, 'rebel', layout(rebel.pilots.length, 'rebel')),
       ...squadToShipInits(imperial, 'imperial', layout(imperial.pilots.length, 'imperial')),
     ],
-    obstacles: STANDARD_OBSTACLES,
+    obstacles,
   };
 }
 

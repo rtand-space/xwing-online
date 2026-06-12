@@ -1,4 +1,4 @@
-import type { Command, GameEvent, PlayerView, ShipInit } from '@xwing/engine';
+import type { Command, GameEvent, Obstacle, PlayerView, ShipInit } from '@xwing/engine';
 
 export const SERVER = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:8787';
 const WS = SERVER.replace(/^http/, 'ws');
@@ -10,10 +10,11 @@ export async function hostGame(
   ships: ShipInit[],
   seed: string,
   guestId: string,
+  obstacles: Obstacle[],
 ): Promise<{ playerId: string | null }> {
   const r = await fetch(`${SERVER}/games/${code}`, {
     method: 'POST',
-    body: JSON.stringify({ guestId, side, ships, seed }),
+    body: JSON.stringify({ guestId, side, ships, seed, obstacles }),
   });
   return r.json() as Promise<{ playerId: string | null }>;
 }

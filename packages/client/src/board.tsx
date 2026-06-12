@@ -1,6 +1,7 @@
 import { applyManeuver, BASE_MM, type PlayerView, type Position, type Ship } from '@xwing/engine';
 import {
   type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
   type ReactElement,
   useEffect,
   useRef,
@@ -133,6 +134,10 @@ export interface BoardProps {
   /** Ghost outline showing where a ship's revealed dial will land. */
   preview?: { shipId: string; pos: Position } | null;
   onPick?: (id: string) => void;
+  /** Obstacle-placement mode: drag obstacles; invalid ones are flagged. */
+  placing?: boolean;
+  invalidObstacleIds?: string[];
+  onObstacleMove?: (id: string, x: number, y: number) => void;
 }
 
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
@@ -359,12 +364,42 @@ function ShipBody({
 }
 
 /** 2D SVG board: ships as bases with a front-arc wedge, mapped from world mm (y-up) to screen (y-down). */
-export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], preview, onPick }) => {
+export const SvgBoard: BoardRenderer = ({
+  view,
+  activeId,
+  highlightIds = [],
+  preview,
+  onPick,
+  placing = false,
+  invalidObstacleIds = [],
+  onObstacleMove,
+}) => {
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
   const attacker =
     view.phase === 'engagement' && activeId ? ships.find((s) => s.id === activeId) : undefined;
   const { ref, viewBox, onMouseDown } = usePanZoom();
+  const dragId = useRef<string | null>(null);
+
+  const toWorld = (e: { clientX: number; clientY: number }): { x: number; y: number } | null => {
+    const m = ref.current?.getScreenCTM();
+    if (!m) return null;
+    return { x: (e.clientX - m.e) / m.a, y: -(e.clientY - m.f) / m.d };
+  };
+  const onObstaclePointerDown = (id: string) => (e: ReactPointerEvent) => {
+    if (!placing) return;
+    e.stopPropagation();
+    dragId.current = id;
+    (e.target as Element).setPointerCapture?.(e.pointerId);
+  };
+  const onPointerMove = (e: ReactPointerEvent) => {
+    if (!dragId.current || !onObstacleMove) return;
+    const w = toWorld(e);
+    if (w) onObstacleMove(dragId.current, Math.round(w.x), Math.round(w.y));
+  };
+  const endDrag = () => {
+    dragId.current = null;
+  };
 
   return (
     <svg
@@ -372,7 +407,9 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
       className="board"
       viewBox={viewBox}
       preserveAspectRatio="xMidYMid meet"
-      onMouseDown={onMouseDown}
+      onMouseDown={(e) => (dragId.current ? undefined : onMouseDown(e))}
+      onPointerMove={placing ? onPointerMove : undefined}
+      onPointerUp={placing ? endDrag : undefined}
     >
       <Starfield />
       <ShipDefs />
@@ -384,7 +421,8 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
           cx={o.pos.x}
           cy={-o.pos.y}
           r={o.radius}
-          className={`obstacle ${o.kind}`}
+          className={`obstacle ${o.kind}${invalidObstacleIds.includes(o.id) ? ' invalid' : ''}${placing ? ' draggable' : ''}`}
+          onPointerDown={placing ? onObstaclePointerDown(o.id) : undefined}
         />
       ))}
 

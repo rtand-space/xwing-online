@@ -563,6 +563,35 @@ body {
   stroke-width: 2;
   stroke-dasharray: 5 4;
 }
+.obstacle.draggable {
+  cursor: grab;
+}
+.obstacle.invalid {
+  stroke: #ef6f6f;
+  stroke-width: 3;
+  stroke-dasharray: none;
+}
+.battlefield {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(440px, 92vw);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  background: rgba(8, 11, 24, 0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.85);
+  color: var(--ink);
+}
+.bfTitle {
+  font-weight: 600;
+}
 .account {
   display: flex;
   flex-direction: column;

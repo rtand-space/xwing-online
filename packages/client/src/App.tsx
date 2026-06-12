@@ -1,9 +1,12 @@
+import { obstacleValidity } from '@xwing/data';
 import { EMPTY_STATE, projectView } from '@xwing/engine';
 import { type ReactElement, useEffect, useState } from 'react';
 import { useAuth } from './auth';
+import { Battlefield } from './Battlefield';
 import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
+import { useSetup } from './setup-store';
 import { useSquads } from './squads-store';
 import { SideFlyout } from './SideFlyout';
 import { TopNav } from './TopNav';
@@ -25,7 +28,20 @@ export function App(): ReactElement {
   // Open the menu when there's nothing to play; get out of the way once a game starts.
   useEffect(() => setSideOpen(ag.mode === 'none'), [ag.mode]);
 
-  const view = ag.view ?? EMPTY_VIEW;
+  const placing = useSetup((s) => s.active);
+  const placeObstacles = useSetup((s) => s.obstacles);
+  const moveObstacle = useSetup((s) => s.move);
+  // Clear the menu out of the way during obstacle placement.
+  useEffect(() => {
+    if (placing) setSideOpen(false);
+  }, [placing]);
+
+  const view = placing ? { ...EMPTY_VIEW, obstacles: placeObstacles } : (ag.view ?? EMPTY_VIEW);
+  const invalidObstacleIds = placing
+    ? Object.entries(obstacleValidity(placeObstacles))
+        .filter(([, ok]) => !ok)
+        .map(([id]) => id)
+    : [];
   const pending = view.pending[0];
   const highlightIds =
     pending?.type === 'declare-attack'
@@ -48,11 +64,14 @@ export function App(): ReactElement {
               ? previewFor(view, pending.shipId)
               : null
           }
+          placing={placing}
+          invalidObstacleIds={invalidObstacleIds}
+          onObstacleMove={moveObstacle}
         />
       </div>
 
       <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
-      <BottomFlyout ag={ag} />
+      {placing ? <Battlefield /> : <BottomFlyout ag={ag} />}
     </div>
   );
 }
