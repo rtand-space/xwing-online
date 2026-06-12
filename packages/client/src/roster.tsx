@@ -9,6 +9,11 @@ const TOKEN: Record<string, string> = {
   lock: '#c0c6dd',
   calculate: '#9b8cff',
   reinforce: '#f0a830',
+  ion: '#ef6f6f',
+  tractor: '#f0a830',
+  disarm: '#f0a830',
+  strain: '#ef6f6f',
+  jam: '#f0a830',
 };
 
 function Pips({

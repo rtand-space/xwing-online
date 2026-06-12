@@ -52,6 +52,17 @@ export { applyManeuver, pathAt } from './templates';
 export { baseDistance, bearingDeg, inArc, inBullseye, RANGE_BAND_MM, rangeBand } from './arcs';
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
+export {
+  countToken,
+  defencePenalty,
+  END_PHASE_CLEARED,
+  GREEN_TOKENS,
+  hasToken,
+  ionManeuver,
+  isDisarmed,
+  isIonized,
+  isTractored,
+} from './tokens';
 export { lineObstructed, obstacleMoveEvents, obstaclesAt } from './obstacles';
 export { ATTACK_WINDOWS, resolveAttack } from './combat';
 export type { AttackContext, AttackHook, AttackWindow } from './combat';

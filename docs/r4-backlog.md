@@ -50,10 +50,23 @@ Status: ☐ not started
   its own pool. Tested.
 
 ## R4-M2 — Negative status tokens (rules effects, not just markers)
-- ☐ **T4-N1** **Ion** (forced speed-1 straight + capped to one action; ionisation
-  threshold for larger ships), **tractor** (reposition / agility effect), **disarm**
-  (cannot attack), **strain**, **jam** (remove a green token). These change the
-  movement/action/attack FSM, so they're the heavy part.
+- ☑ **T4-N1** Negative tokens with real FSM effects, centralised in `tokens.ts`,
+  grounded in the **XWA Rules Reference v1.4.6** (xwing.life). **Ion** (red) —
+  ionised at a base-size threshold (small 1 / med 2 / large 3); an ionised ship
+  *plans normally* but, at activation, executes a **blue speed-1 straight/bank in
+  its dial's direction** (stop → 1-straight), may then perform **only the calculate
+  action**, and sheds **all** ion tokens at the **end of its activation**; becoming
+  ionised **breaks the locks it maintains**. **Tractor** (orange) — tractored at the
+  same base-size threshold; while tractored a ship rolls **1 fewer defence die** (no
+  large-base exemption). **Disarm** (orange) — cannot declare attacks. **Strain**
+  (red) — rolls 1 fewer defence die, spent by defending; also shed by a blue
+  maneuver. **Jam** (orange) — strips one green token/lock if present, else lingers
+  and consumes the next green/lock gained. **End Phase** clears every *circular*
+  token (green then orange = focus/evade/calculate/reinforce + tractor/disarm/jam);
+  red tokens (stress/strain/ion) and locks keep their own timing. Roster chips for
+  the new tokens. Tested (`tokens.test.ts`). *Deferred: the opponent's
+  boost/barrel-roll reposition when a tractor lands (needs M4's real repositions);
+  the jam-applier's choice of which green token to strip (auto-picks the first).*
 - ☐ **T4-N2** **Cloak** (the cloak token + decloak; agility bonus, attack/lock
   restrictions).
 

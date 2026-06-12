@@ -1,7 +1,8 @@
 import type { GameEvent } from './events';
 import { computePending } from './pending';
 import { buildInitial } from './setup';
-import type { GameState, Ship, Token, TokenKind } from './types';
+import { END_PHASE_CLEARED, GREEN_TOKENS, hasToken, isIonized } from './tokens';
+import type { GameState, Ship, ShipId, Token, TokenKind } from './types';
 
 export const EMPTY_STATE: GameState = {
   id: '',
@@ -19,8 +20,36 @@ function mapShip(state: GameState, id: string, fn: (s: Ship) => Ship): GameState
   return { ...state, ships: state.ships.map((s) => (s.id === id ? fn(s) : s)) };
 }
 
-function withoutTokens(ship: Ship, kinds: TokenKind[]): Ship {
-  return { ...ship, tokens: ship.tokens.filter((t) => !kinds.includes(t.kind)) };
+/** End Phase: remove every circular token (green then orange). Locks and the red
+ *  stress/strain/ion tokens have their own timing and survive. */
+function roundEndTokens(ship: Ship): Token[] {
+  return ship.tokens.filter((t) => !END_PHASE_CLEARED.includes(t.kind));
+}
+
+const removeOne = (ship: Ship, kind: TokenKind): Ship => {
+  let done = false;
+  return {
+    ...ship,
+    tokens: ship.tokens.filter((t) => (!done && t.kind === kind ? ((done = true), false) : true)),
+  };
+};
+
+/** Gaining a jam token strips one green token/lock if the ship has one; otherwise
+ *  the jam token is held and consumes the next green token the ship gains. */
+function gainJam(ship: Ship): Ship {
+  const i = ship.tokens.findIndex((t) => GREEN_TOKENS.includes(t.kind));
+  if (i >= 0) return { ...ship, tokens: ship.tokens.filter((_, k) => k !== i) };
+  return { ...ship, tokens: [...ship.tokens, { kind: 'jam' }] };
+}
+
+/** Gaining a green token while jammed: the jam eats it instead, clearing one jam. */
+function gainToken(ship: Ship, kind: TokenKind, targetId?: ShipId): Ship {
+  if (GREEN_TOKENS.includes(kind) && hasToken(ship, 'jam')) return removeOne(ship, 'jam');
+  const tokens = [...ship.tokens, { kind, targetId }];
+  // becoming ionised breaks the locks the ship is maintaining
+  if (kind === 'ion' && isIonized({ ...ship, tokens }))
+    return { ...ship, tokens: tokens.filter((t) => t.kind !== 'lock') };
+  return { ...ship, tokens };
 }
 
 function changeStress(ship: Ship, delta: number): Ship {
@@ -79,10 +108,8 @@ function applyCore(state: GameState, e: GameEvent): GameState {
     case 'ActionSkipped':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasActed: true }));
     case 'TokenGained':
-      return mapShip(state, e.shipId, (s) => ({
-        ...s,
-        tokens: [...s.tokens, { kind: e.kind, targetId: e.targetId }],
-      }));
+      if (e.kind === 'jam') return mapShip(state, e.shipId, gainJam);
+      return mapShip(state, e.shipId, (s) => gainToken(s, e.kind, e.targetId));
     case 'AttackDeclared':
     case 'AttackPassed':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasEngaged: true }));
@@ -115,7 +142,8 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         ...state,
         round: state.round + 1,
         ships: state.ships.map((s) => ({
-          ...withoutTokens(s, ['focus', 'evade', 'calculate', 'reinforce']),
+          ...s,
+          tokens: roundEndTokens(s),
           charges: Math.min(s.maxCharges, s.charges + s.recurring),
           force: Math.min(s.maxForce ?? 0, (s.force ?? 0) + (s.forceRecovers ?? 0)),
           upgradeCharges: Object.fromEntries(

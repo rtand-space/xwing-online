@@ -3,6 +3,7 @@ import { rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
+import { defencePenalty } from './tokens';
 import type { GameState, Ship, TokenKind } from './types';
 
 /**
@@ -119,8 +120,18 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onRollDefence(ctx) {
-    const n = ctx.target.agility + (ctx.range === 3 ? 1 : 0) + (ctx.obstructed ? 1 : 0);
+    // tractor/strain remove agility dice; strain is then spent by defending
+    const n = Math.max(
+      0,
+      ctx.target.agility -
+        defencePenalty(ctx.target) +
+        (ctx.range === 3 ? 1 : 0) +
+        (ctx.obstructed ? 1 : 0),
+    );
     ctx.defence = drawDefence(ctx, n);
+    if (hasToken(ctx.target, 'strain')) {
+      ctx.events.push({ type: 'TokenSpent', shipId: ctx.target.id, kind: 'strain' });
+    }
   },
 
   onModifyDefence(ctx) {

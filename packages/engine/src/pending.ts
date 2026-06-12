@@ -1,5 +1,6 @@
 import { inArc, rangeBand } from './arcs';
 import { obstaclesAt } from './obstacles';
+import { isDisarmed, isIonized } from './tokens';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
 const alive = (s: Ship): boolean => s.hull > 0;
@@ -24,7 +25,12 @@ function engagementShip(state: GameState): Ship | undefined {
 }
 
 function actionDecision(state: GameState, ship: Ship): PendingDecision {
-  const actions: ActionType[] = isStressed(ship) ? [] : ship.actionBar;
+  // a stressed ship cannot act; an ionised ship may perform only calculate
+  const actions: ActionType[] = isStressed(ship)
+    ? []
+    : isIonized(ship)
+      ? ['calculate']
+      : ship.actionBar;
   const lockTargets: ShipId[] = actions.includes('lock')
     ? enemies(state, ship).map((s) => s.id)
     : [];
@@ -79,8 +85,8 @@ export function computePending(state: GameState): PendingDecision[] {
     case 'engagement': {
       const ship = engagementShip(state);
       if (!ship) return [];
-      // A ship at range 0 of an asteroid/debris cloud cannot perform attacks.
-      const blocked = obstaclesAt(state, ship.pos, ship.base).length > 0;
+      // A disarmed ship, or one at range 0 of an asteroid/debris cloud, cannot attack.
+      const blocked = isDisarmed(ship) || obstaclesAt(state, ship.pos, ship.base).length > 0;
       const targets = blocked
         ? []
         : enemies(state, ship)

@@ -6,6 +6,7 @@ import type { GameEvent } from './events';
 import { resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { autoStep } from './phases';
+import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
 import type { GameState, GameWindow, Maneuver, PendingDecision, Ship } from './types';
 
 export interface ReduceResult {
@@ -14,6 +15,14 @@ export interface ReduceResult {
 }
 
 const reject = (rejection: string): ReduceResult => ({ events: [], rejection });
+
+/** At the end of its activation an ionised ship sheds all of its ion tokens. */
+const ionShed = (ship: Ship): GameEvent[] =>
+  Array.from({ length: countToken(ship, 'ion') }, () => ({
+    type: 'TokenSpent' as const,
+    shipId: ship.id,
+    kind: 'ion' as const,
+  }));
 
 /**
  * Fold the events so far, fire a non-combat ability window's mandatory effects,
@@ -75,18 +84,26 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       return { events: [{ type: 'DialSet', shipId: ship.id, maneuver: cmd.maneuver }] };
     }
     case 'ExecuteManeuver': {
-      const m = ship.dial;
-      if (!m) return reject('No dial set');
+      // An ionised ship reveals its dial as normal but executes a blue 1-straight/
+      // bank in that direction instead.
+      const ionized = isIonized(ship);
+      if (!ship.dial) return reject('No dial set');
+      const m = ionized ? ionManeuver(ship.dial) : ship.dial;
       const move = resolveMovement(state, ship, m);
       const events: GameEvent[] = [
-        { type: 'DialRevealed', shipId: ship.id, maneuver: m },
+        { type: 'DialRevealed', shipId: ship.id, maneuver: ship.dial },
         { type: 'ShipMoved', shipId: ship.id, maneuver: m, to: move.to, bumped: move.bumped },
       ];
       if (m.difficulty === 'red') events.push({ type: 'StressChanged', shipId: ship.id, delta: 1 });
       else if (m.difficulty === 'blue') {
         events.push({ type: 'StressChanged', shipId: ship.id, delta: -1 });
+        // a blue maneuver also sheds one strain token
+        if (hasToken(ship, 'strain'))
+          events.push({ type: 'TokenSpent', shipId: ship.id, kind: 'strain' });
       }
       events.push(...obstacleMoveEvents(state, ship, move.to));
+      // a bump ends the activation, so an ionised ship sheds its ion tokens now
+      if (ionized && move.bumped) events.push(...ionShed(ship));
       return { events: appendWindow(state, events, 'afterMove', ship.id) };
     }
     case 'PerformAction': {
@@ -109,12 +126,16 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         }
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'lock', targetId: cmd.targetId });
       }
-      return { events: appendWindow(state, events, 'onPerformAction', ship.id, events[0]) };
+      const out = appendWindow(state, events, 'onPerformAction', ship.id, events[0]);
+      if (isIonized(ship)) out.push(...ionShed(ship));
+      return { events: out };
     }
     case 'SkipAction': {
       if (pending.type !== 'perform-action' || !pending.options.canSkip)
         return reject('Cannot skip');
-      return { events: [{ type: 'ActionSkipped', shipId: ship.id }] };
+      const events: GameEvent[] = [{ type: 'ActionSkipped', shipId: ship.id }];
+      if (isIonized(ship)) events.push(...ionShed(ship));
+      return { events };
     }
     case 'DeclareAttack': {
       if (pending.type !== 'declare-attack') return reject('Wrong phase');

@@ -46,7 +46,18 @@ export type ActionType =
   | 'calculate'
   | 'reinforce';
 
-export type TokenKind = 'focus' | 'evade' | 'stress' | 'lock' | 'calculate' | 'reinforce';
+export type TokenKind =
+  | 'focus'
+  | 'evade'
+  | 'stress'
+  | 'lock'
+  | 'calculate'
+  | 'reinforce'
+  | 'ion'
+  | 'tractor'
+  | 'disarm'
+  | 'strain'
+  | 'jam';
 
 export interface Token {
   kind: TokenKind;
