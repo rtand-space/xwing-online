@@ -1,5 +1,4 @@
 import {
-  buildConfig,
   FACTIONS,
   FACTION_IDS,
   type FactionId,
@@ -21,7 +20,6 @@ import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
 import type { SavedSquad } from './squads';
 import { useSquads } from './squads-store';
-import { useGame } from './store';
 
 const FACTION_BY_XWS: Record<string, FactionId> = Object.fromEntries(
   FACTION_IDS.map((f) => [XWS_FACTION[f], f]),
@@ -511,7 +509,6 @@ function SquadSelect({
 
 /** Game tab — online play, sandbox, and custom hot-seat, all from saved squads. */
 export function QuickPlay(): ReactElement {
-  const startGame = useGame((s) => s.startGame);
   const host = useOnline((s) => s.host);
   const join = useOnline((s) => s.join);
   const squads = useSquads((s) => s.squads);
@@ -519,8 +516,6 @@ export function QuickPlay(): ReactElement {
   const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
   const [code, setCode] = useState(initialCode);
   const [online, setOnline] = useState('');
-  const [aId, setAId] = useState('');
-  const [bId, setBId] = useState('');
   const joining = mode === 'join';
   const byId = (id: string) => squads.find((s) => s.id === id);
 
@@ -570,32 +565,10 @@ export function QuickPlay(): ReactElement {
         {joining ? 'Join game' : 'Host game'}
       </button>
 
-      <div className="section">Sandbox</div>
+      <div className="section">Sandbox / local</div>
       <button className="btn primary" onClick={() => useSandbox.getState().open()}>
-        Free play — place ships, fly maneuvers, check arcs
+        Free play — place ships, fly maneuvers, or launch a local game
       </button>
-
-      {squads.length > 0 && (
-        <>
-          <div className="section">Custom hot-seat</div>
-          <SquadSelect squads={squads} value={aId} onChange={setAId} placeholder="Squad A" />
-          <SquadSelect squads={squads} value={bId} onChange={setBId} placeholder="Squad B" />
-          <button
-            className="btn primary"
-            disabled={!byId(aId) || !byId(bId)}
-            onClick={() => {
-              const a = byId(aId)!;
-              const b = byId(bId)!;
-              const s = seed();
-              useSetup
-                .getState()
-                .begin(s, (obs) => startGame(buildConfig(a.xws, b.xws, s, 'game', obs)));
-            }}
-          >
-            Start battle
-          </button>
-        </>
-      )}
     </div>
   );
 }
