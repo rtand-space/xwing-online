@@ -74,6 +74,9 @@ importers:
       '@block65/webcrypto-web-push':
         specifier: ^1.0.2
         version: 1.0.2
+      '@xwing/data':
+        specifier: workspace:*
+        version: link:../data
       '@xwing/engine':
         specifier: workspace:*
         version: link:../engine

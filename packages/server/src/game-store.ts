@@ -1,3 +1,4 @@
+import { installAbilities } from '@xwing/data';
 import {
   type Command,
   createGame,
@@ -8,6 +9,9 @@ import {
   projectView,
   replay,
 } from '@xwing/engine';
+
+// Register card abilities into the engine registry before any game is built/replayed.
+installAbilities();
 
 /**
  * Pure server-side game operations on an event log. The Durable Object is a thin

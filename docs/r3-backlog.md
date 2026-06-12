@@ -74,12 +74,13 @@ Status: ☐ not started · ◐ in progress · ☑ done
   cards that need them in M4._
 
 ## R3-M4 — First card slice + honesty in the builder
-- ☐ **T3-S1** Implement a curated set that needs only the above: **ship abilities**
-  for the current hulls, the generic talents/mods/illicits already equippable that
-  don't need charges, and a handful of iconic named pilots whose abilities fit.
-- ☐ **T3-S2** Builder honesty: an `implemented` set; mark/grey abilities the engine
-  doesn't yet honour so players aren't misled (you can still equip; it just notes
-  "no effect yet"). Surfaces coverage.
+- ◐ **T3-S1** Registration plumbing in place: `@xwing/data` `abilities.ts` holds
+  behaviour-only implementations keyed by xws + `installAbilities()`, called at
+  startup by the client (`main.tsx`) and server (`game-store.ts`). First card live:
+  **Wedge Antilles** (defender rolls 1 fewer die). The curated set grows from here.
+- ☑ **T3-S2** Builder honesty: `implementedAbility(xws)` badges pilots/upgrades the
+  engine actually simulates, with a note that the rest aren't yet — so equipping an
+  unimplemented card doesn't mislead.
 
 ## R3-M5 — Content-as-data expansion
 - ☐ **T3-X1** Prove the thesis: add more named pilots/upgrades by registering

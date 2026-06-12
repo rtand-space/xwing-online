@@ -3,6 +3,7 @@ import {
   FACTION_IDS,
   type FactionId,
   getUpgrade,
+  implementedAbility,
   parseXws,
   type PilotChoice,
   pilotChoices,
@@ -236,6 +237,7 @@ function Loadout({
                   }}
                 >
                   {u.name} <span className="muted">{u.cost ?? '?'}p</span>
+                  {implementedAbility(u.xws) && <span className="abilityTag">ability</span>}
                 </button>
               );
             })}
@@ -381,6 +383,7 @@ function SquadColumn({
                 <button key={o.pilotXws} className="btn sm" onClick={() => add(o)}>
                   + {o.pilotName} <span className="ini">I{o.initiative}</span>{' '}
                   <span className="muted">{o.cost}p</span>
+                  {implementedAbility(o.pilotXws) && <span className="abilityTag">ability</span>}
                 </button>
               ))}
             </div>
@@ -388,6 +391,9 @@ function SquadColumn({
         </div>
       )}
 
+      <div className="muted abilityNote">
+        Most card abilities aren’t simulated yet — “ability” marks the ones that are.
+      </div>
       <XwsTools faction={faction} picks={picks} setPicks={setPicks} />
     </div>
   );

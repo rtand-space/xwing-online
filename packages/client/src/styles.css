@@ -696,6 +696,19 @@ body {
 .slotChip.active {
   border-color: var(--accent, #4f8cff);
 }
+.abilityTag {
+  margin-left: 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #5bd6a8;
+  border: 1px solid #5bd6a8;
+  border-radius: 6px;
+  padding: 0 4px;
+}
+.abilityNote {
+  font-size: 11px;
+}
 .slotName {
   font-size: 10px;
   text-transform: uppercase;
