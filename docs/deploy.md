@@ -39,6 +39,30 @@ pnpm --filter @xwing/server exec wrangler deploy
 Generate a fresh pair with the snippet in commit history if rotating; the public key
 must match in both `wrangler.jsonc` and `.env.production`.
 
+### Accounts (OAuth sign-in)
+
+Sign-in is OAuth handled by the Worker (Google + Discord), with stateless JWT
+sessions. Each provider returns **501** until its id + secret are set, so this is
+optional and can be configured later.
+
+1. **Register OAuth apps** with these exact redirect URIs (the Worker's origin):
+   - Google ([console.cloud.google.com](https://console.cloud.google.com) → Credentials → OAuth client, type *Web application*):
+     `https://xwing-server.synrg116.workers.dev/auth/google/callback`
+   - Discord ([discord.com/developers](https://discord.com/developers/applications) → your app → OAuth2 → Redirects):
+     `https://xwing-server.synrg116.workers.dev/auth/discord/callback`
+2. **Set the secrets** (each prompts for the value; run per secret):
+   ```
+   pnpm --filter @xwing/server exec wrangler secret put SESSION_SECRET        # any long random string
+   pnpm --filter @xwing/server exec wrangler secret put GOOGLE_CLIENT_ID
+   pnpm --filter @xwing/server exec wrangler secret put GOOGLE_CLIENT_SECRET
+   pnpm --filter @xwing/server exec wrangler secret put DISCORD_CLIENT_ID
+   pnpm --filter @xwing/server exec wrangler secret put DISCORD_CLIENT_SECRET
+   ```
+   No redeploy needed after setting secrets. `CLIENT_ORIGIN` (in `wrangler.jsonc`
+   `vars`) must equal the deployed client origin — the only URL sign-in redirects back to.
+3. Migration `0002_accounts.sql` adds the `users` + `squads` tables — apply it with
+   the same `d1 migrations apply` step above.
+
 ## Client (`@xwing/client` → Cloudflare Pages)
 
 The production server URL is baked in at build time from
