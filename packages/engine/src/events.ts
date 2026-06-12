@@ -18,6 +18,8 @@ export interface ShipInit {
   ownerId: PlayerId;
   shipType: string;
   pilot: string;
+  pilotXws?: string;
+  upgrades?: string[];
   initiative: number;
   base: BaseSize;
   primaryAttack: number;

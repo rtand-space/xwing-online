@@ -40,16 +40,15 @@ Status: ☐ not started · ◐ in progress · ☑ done
 - ☐ **T3-F1** Generalise timing windows beyond combat: a game-wide hook registry
   for windows like `afterReveal`, `beforeActivation`, `afterMove`, `onPerformAction`,
   `onGainToken`, `onRoundEnd`, plus the existing 8 attack windows. Engine-pure.
-- ☐ **T3-F2** **Ability registry** keyed by xws (ship type, pilot, upgrade) → a
-  typed `Ability` declaring handlers. Assembled per-game from the ships present +
-  their equipped upgrades. No card-specific code in the core engine.
-- ☐ **T3-F3** **Thread equipped upgrades into the engine.** `ShipInit`/`Ship` gain
-  `upgrades: string[]` (xws); `squadToShipInits` passes them through. This finally
-  connects T-B2's equipped upgrades to gameplay, and tells the registry which
-  abilities are active.
-- ☐ **T3-F4** Wire the registry into `resolveAttack` (replace the unused `hooks`
-  param with registry-driven hooks) and into the FSM steps. **Ability queue**:
-  deterministic ordering for simultaneous abilities (player order, then initiative).
+- ☑ **T3-F2** **Ability registry** keyed by xws → a typed `Ability` declaring
+  handlers (`engine/abilities.ts`); `shipAbilitySources` reads ship type + pilot +
+  upgrades. No card-specific code in the core engine.
+- ☑ **T3-F3** **Equipped upgrades + pilot xws threaded into the engine.**
+  `ShipInit`/`Ship` gain `pilotXws` + `upgrades`; `toShipInit`/`squadToShipInits`
+  pass them through (connecting T-B2's loadouts to gameplay).
+- ◐ **T3-F4** Registry wired into `resolveAttack` (`gatherAttackHooks`, attacker-
+  then-defender order, run after each builtin window). _Remaining: wire the FSM
+  steps once non-combat windows exist (F1), and refine the ability queue._
 
 ## R3-M2 — Player choice + minimal charges
 - ☐ **T3-C1** New pending decision `trigger-ability`: a "may" ability prompts its

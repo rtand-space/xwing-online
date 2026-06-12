@@ -45,6 +45,7 @@ export function squadToShipInits(
       ownerId,
       positions[i] ?? { x: 0, y: 0, angle: 0 },
       `${ownerId}-${i + 1}`,
+      Object.values(p.upgrades ?? {}).flat(),
     ),
   );
 }

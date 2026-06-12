@@ -4,6 +4,7 @@ import type { GameState, Ship } from './types';
 function initShip(init: ShipInit): Ship {
   return {
     ...init,
+    upgrades: init.upgrades ?? [],
     maxHull: init.hull,
     maxShields: init.shields,
     tokens: [],

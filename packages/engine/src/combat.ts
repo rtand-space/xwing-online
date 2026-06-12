@@ -1,3 +1,4 @@
+import { gatherAttackHooks } from './abilities';
 import { rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
@@ -157,8 +158,10 @@ export function resolveAttack(
     result: { hits: 0, crits: 0 },
     events: [],
   };
+  const registered = gatherAttackHooks(attacker, target);
   for (const w of ATTACK_WINDOWS) {
     BUILTINS[w](ctx);
+    for (const h of registered[w] ?? []) h(ctx);
     hooks[w]?.(ctx);
   }
   return ctx.events;

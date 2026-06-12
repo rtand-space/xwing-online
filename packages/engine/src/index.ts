@@ -55,3 +55,11 @@ export type { MovementResult } from './movement';
 export { lineObstructed, obstacleMoveEvents, obstaclesAt } from './obstacles';
 export { ATTACK_WINDOWS, resolveAttack } from './combat';
 export type { AttackContext, AttackHook, AttackWindow } from './combat';
+export {
+  clearAbilities,
+  gatherAttackHooks,
+  getAbility,
+  registerAbility,
+  shipAbilitySources,
+} from './abilities';
+export type { Ability, AttackAbilityHook } from './abilities';

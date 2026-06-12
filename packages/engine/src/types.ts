@@ -60,6 +60,10 @@ export interface Ship {
   /** xws-style id (e.g. 't65xwing'); stats come from @xwing/data later. */
   shipType: string;
   pilot: string;
+  /** Pilot xws id — keys pilot abilities in the R3 registry. */
+  pilotXws?: string;
+  /** Equipped upgrade xws ids — key upgrade abilities. */
+  upgrades?: string[];
   initiative: number;
   base: BaseSize;
   primaryAttack: number;

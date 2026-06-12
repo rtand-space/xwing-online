@@ -34,6 +34,7 @@ export function toShipInit(
   ownerId: string,
   pos: Position,
   id: string,
+  upgrades: string[] = [],
 ): ShipInit {
   const ship = getShip(shipXws);
   const pilot = getPilot(shipXws, pilotXws);
@@ -42,6 +43,8 @@ export function toShipInit(
     ownerId,
     shipType: ship.xws,
     pilot: pilot.name,
+    pilotXws: pilot.xws,
+    upgrades,
     initiative: pilot.initiative,
     base: SIZES[ship.size] ?? 'small',
     primaryAttack: statValue(ship, 'attack'),
