@@ -29,8 +29,8 @@ Refresh the data: clone xwing-data2 (sparse `data/`) and eirikmun/xwing-points, 
 - ◐ **T-X2** Export / copy standard XWS (faction/points/version/pilots) from any builder — round-trips with YASB / Launch Bay Next. _Shareable squad link still to come._
 
 ## R2-M4 — Accounts
-- ☐ **T-A1** Guest→account sign-in (auth provider TBD); migrate the guest id.
-- ☐ **T-A2** Saved squads + match history in D1, keyed to the account.
+- ☑ **T-A1** OAuth sign-in on the Worker (Google + Discord): authorize → callback exchanges code, upserts a `users` row in D1, mints a stateless HS256 session JWT, redirects back to the client with `#session=…`. Bearer-token auth (no cross-site cookies); `/me` resolves the user. The device guest id is linked to the account on first sign-in. Account UI lives in the Settings tab. _Setup: register the OAuth apps + set secrets (see docs/deploy.md)._
+- ◐ **T-A2** Saved squads in D1 (`squads` table), keyed to the account: Save/Load/Delete from each builder column (stored as XWS, faction-aware load). _Match history still to come._
 
 ## R2-M5 — Obstacles
 - ☐ **T-O1** Asteroids/debris in the engine (placement, overlap, effects on move/attack).

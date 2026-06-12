@@ -19,8 +19,13 @@
   ],
   // VAPID public key + subject for web push (public). Set the private key as a
   // secret: `wrangler secret put VAPID_PRIVATE_KEY`.
+  // VAPID public key + subject for web push (public). Set these secrets via
+  // `wrangler secret put`: SESSION_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
+  // DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, VAPID_PRIVATE_KEY. Sign-in returns
+  // 501 for a provider until its id+secret are set.
   "vars": {
     "VAPID_PUBLIC_KEY": "BJPYX7Xk6Fqcv1pOG1doWiApSITyX_DWW7THzZtLN1qtxjwUW4hFS-UjjitTGUexNrAmI85ohI9_x7R8FqeahBA",
     "VAPID_SUBJECT": "mailto:synrg116@gmail.com",
+    "CLIENT_ORIGIN": "https://xwing-online.pages.dev",
   },
 }

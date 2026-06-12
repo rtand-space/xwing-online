@@ -1,5 +1,6 @@
 import { EMPTY_STATE, projectView } from '@xwing/engine';
 import { type ReactElement, useEffect, useState } from 'react';
+import { useAuth } from './auth';
 import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
@@ -15,6 +16,8 @@ export function App(): ReactElement {
 
   // Reconnect to an in-progress online game after a refresh.
   useEffect(() => void useOnline.getState().resume(), []);
+  // Capture an OAuth redirect (#session=…) and load the signed-in user.
+  useEffect(() => void useAuth.getState().init(), []);
   // Open the menu when there's nothing to play; get out of the way once a game starts.
   useEffect(() => setSideOpen(ag.mode === 'none'), [ag.mode]);
 

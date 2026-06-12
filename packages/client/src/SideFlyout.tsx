@@ -1,4 +1,5 @@
 import { type ReactElement, useState } from 'react';
+import { Account } from './Account';
 import { formatEvent } from './log';
 import { Roster } from './roster';
 import { QuickPlay, SquadBuilder } from './setup';
@@ -42,10 +43,12 @@ export function SideFlyout({
           {tab === 'squad' && <SquadBuilder />}
           {tab === 'log' && <LogTab ag={ag} />}
           {tab === 'settings' && (
-            <p className="muted">
-              Settings live here later (theme, motion, account). Reduced-motion and
-              colour-blind-safe tokens are already respected.
-            </p>
+            <div className="panelStack">
+              <Account />
+              <p className="muted">
+                Reduced-motion and colour-blind-safe tokens are already respected.
+              </p>
+            </div>
           )}
           <p className="disclaimer">
             Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real

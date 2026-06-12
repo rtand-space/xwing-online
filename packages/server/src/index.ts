@@ -1,4 +1,6 @@
+import { handleAuth, handleMe } from './auth';
 import { GameDO } from './game-do';
+import { handleSquads } from './squads';
 import { cors, json, withCors } from './http';
 
 export { GameDO };
@@ -9,6 +11,12 @@ export interface Env {
   VAPID_PUBLIC_KEY: string;
   VAPID_PRIVATE_KEY: string;
   VAPID_SUBJECT: string;
+  SESSION_SECRET: string;
+  CLIENT_ORIGIN: string;
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
+  DISCORD_CLIENT_ID: string;
+  DISCORD_CLIENT_SECRET: string;
 }
 
 /**
@@ -20,6 +28,10 @@ export default {
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
 
     const parts = new URL(req.url).pathname.split('/').filter(Boolean);
+
+    if (parts[0] === 'auth') return handleAuth(req, env, parts);
+    if (parts[0] === 'me') return withCors(await handleMe(req, env));
+    if (parts[0] === 'squads') return withCors(await handleSquads(req, env, parts));
 
     if (parts[0] === 'index' && parts[1]) {
       const game = await env.DB.prepare('SELECT * FROM games WHERE id = ?').bind(parts[1]).first();

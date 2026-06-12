@@ -1,6 +1,6 @@
 import type { Command, GameEvent, PlayerView, ShipInit } from '@xwing/engine';
 
-const SERVER = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:8787';
+export const SERVER = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:8787';
 const WS = SERVER.replace(/^http/, 'ws');
 
 /** Open a lobby with the host's side + ships; the game starts once the joiner brings theirs. */

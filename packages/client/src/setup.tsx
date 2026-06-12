@@ -18,9 +18,15 @@ import {
   type XwsSquad,
   XWS_FACTION,
 } from '@xwing/data';
-import { type ReactElement, useState } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
+import { useAuth } from './auth';
 import { useOnline } from './online-store';
+import { type SavedSquad, deleteSquad, listSquads, saveSquad } from './squads';
 import { useGame } from './store';
+
+const FACTION_BY_XWS: Record<string, FactionId> = Object.fromEntries(
+  FACTION_IDS.map((f) => [XWS_FACTION[f], f]),
+);
 
 const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
@@ -242,6 +248,60 @@ function Loadout({
   );
 }
 
+/** Save/load the signed-in user's squads (shown only when authenticated). */
+function SavedSquads({
+  faction,
+  picks,
+  onLoad,
+}: {
+  faction: FactionId;
+  picks: Pick[];
+  onLoad: (f: FactionId, picks: Pick[]) => void;
+}): ReactElement | null {
+  const user = useAuth((s) => s.user);
+  const [list, setList] = useState<SavedSquad[]>([]);
+  const refresh = () => void listSquads().then(setList);
+  useEffect(() => {
+    if (user) refresh();
+    else setList([]);
+  }, [user]);
+  if (!user) return null;
+
+  const save = async () => {
+    const name = prompt('Name this squad');
+    if (!name?.trim()) return;
+    await saveSquad(name.trim(), XWS_FACTION[faction], toSquad(faction, picks));
+    refresh();
+  };
+  const load = (sq: SavedSquad) => {
+    const fid = FACTION_BY_XWS[sq.xws.faction] ?? faction;
+    const res = picksFromXws(JSON.stringify(sq.xws), fid);
+    if (res.picks) onLoad(fid, res.picks);
+  };
+
+  return (
+    <div className="savedSquads">
+      <button className="btn sm" disabled={picks.length === 0} onClick={save}>
+        Save squad
+      </button>
+      {list.map((sq) => (
+        <div key={sq.id} className="rosterRow">
+          <button className="btn sm ghost" onClick={() => load(sq)}>
+            {sq.name} <span className="muted">{sq.faction}</span>
+          </button>
+          <button
+            className="x"
+            aria-label="Delete"
+            onClick={() => void deleteSquad(sq.id).then(refresh)}
+          >
+            ×
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SquadColumn({
   faction,
   setFaction,
@@ -383,6 +443,14 @@ function SquadColumn({
         </div>
       )}
 
+      <SavedSquads
+        faction={faction}
+        picks={picks}
+        onLoad={(f, p) => {
+          setFaction(f);
+          setPicks(p);
+        }}
+      />
       <XwsTools faction={faction} picks={picks} setPicks={setPicks} />
     </div>
   );
