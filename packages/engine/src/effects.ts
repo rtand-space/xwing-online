@@ -76,15 +76,22 @@ export const gainToken = (self: Ship, kind: TokenKind, targetId?: ShipId): GameE
   kind,
   targetId,
 });
-export const spendCharge = (self: Ship, n = 1): GameEvent => ({
+/** Charges in a pool: an upgrade's own pool when `source` is its xws, else the
+ *  ship's intrinsic pool. */
+export const chargesFrom = (self: Ship, source?: string): number =>
+  source ? (self.upgradeCharges?.[source]?.charges ?? 0) : self.charges;
+
+export const spendCharge = (self: Ship, source?: string, n = 1): GameEvent => ({
   type: 'ChargeChanged',
   shipId: self.id,
   delta: -n,
+  source,
 });
-export const recoverCharge = (self: Ship, n = 1): GameEvent => ({
+export const recoverCharge = (self: Ship, source?: string, n = 1): GameEvent => ({
   type: 'ChargeChanged',
   shipId: self.id,
   delta: n,
+  source,
 });
 export const spendForce = (self: Ship, n = 1): GameEvent => ({
   type: 'ForceChanged',

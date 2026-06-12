@@ -33,6 +33,7 @@ export interface ShipInit {
   force?: number;
   maxForce?: number;
   forceRecovers?: number;
+  upgradeCharges?: Record<string, { charges: number; max: number; recovers: number }>;
   pos: Position;
   actionBar: ActionType[];
   dialOptions: Maneuver[];
@@ -56,7 +57,7 @@ export type GameEvent =
   | { type: 'ShipMoved'; shipId: ShipId; maneuver: Maneuver; to: Position; bumped?: boolean }
   | { type: 'ObstacleHit'; shipId: ShipId; obstacleId: string; kind: ObstacleKind }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
-  | { type: 'ChargeChanged'; shipId: ShipId; delta: number }
+  | { type: 'ChargeChanged'; shipId: ShipId; delta: number; source?: string }
   | { type: 'ForceChanged'; shipId: ShipId; delta: number }
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }

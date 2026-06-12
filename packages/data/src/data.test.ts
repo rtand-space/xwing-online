@@ -99,9 +99,7 @@ describe('card → engine ShipInit', () => {
       'x1',
       ['crackshot'],
     );
-    expect(init.maxCharges).toBe(1); // crackshot grants 1
-    expect(init.charges).toBe(1); // starts full
-    expect(init.recurring).toBe(0); // non-recurring
+    expect(init.upgradeCharges?.crackshot).toEqual({ charges: 1, max: 1, recovers: 0 });
   });
 
   it('seeds the Force pool from a Force-using pilot', () => {

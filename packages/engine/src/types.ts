@@ -90,10 +90,13 @@ export interface Ship {
   shields: number;
   maxHull: number;
   maxShields: number;
-  /** Charge pool (R3): current/most, plus how many recover at round end (0 = none). */
+  /** Intrinsic (ship/pilot) charge pool: current/most + round-end recovery. */
   charges: number;
   maxCharges: number;
   recurring: number;
+  /** Per-upgrade charge pools, keyed by upgrade xws — kept separate so one card
+   *  can't spend another's charges. */
+  upgradeCharges?: Record<string, { charges: number; max: number; recovers: number }>;
   /** Force pool (R4): current/most, plus how many recover at round end. */
   force?: number;
   maxForce?: number;

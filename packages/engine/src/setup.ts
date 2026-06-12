@@ -15,6 +15,7 @@ function initShip(init: ShipInit): Ship {
     maxForce,
     force: init.force ?? maxForce,
     forceRecovers: init.forceRecovers ?? 0,
+    upgradeCharges: init.upgradeCharges ?? {},
     tokens: [],
     dialRevealed: false,
     hasMoved: false,

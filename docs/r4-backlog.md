@@ -32,7 +32,7 @@ Status: ☐ not started
 
 # R4a — tokens · Force · arcs · auras · actions
 
-## R4-M1 — Resources & beneficial tokens
+## R4-M1 — Resources & beneficial tokens ✅
 - ☑ **T4-R1** Token/action unions extended; **calculate** (one focus result per
   token, in both attack & defence) and **reinforce** (a 2+ result attack deals 1
   less) implemented with real effects; the Calculate/Reinforce actions grant them;
@@ -42,8 +42,12 @@ Status: ☐ not started
   event (clamped); recovers per round. A Force user spends Force like a focus on
   any remaining results in attack/defence (after focus + calculate). Shown in the
   roster; `spendForce` helper for future Force-power abilities. Tested.
-- ☐ **T4-R3** **Per-card charge pools** — replace R3's per-ship pool so one card
-  can't spend another's charges; charge-granting on pilots/ships too (not just upgrades).
+- ☑ **T4-R3** **Per-card charge pools** — each charge upgrade gets its own pool in
+  `upgradeCharges` (keyed by xws); `ChargeChanged` carries a `source`; recovery is
+  per-pool. `chargesFrom(ship, source)` reads a pool; `spendCharge(self, source)`
+  spends it. So one card can't spend another's charges. (Intrinsic ship/pilot
+  charges keep the flat pool.) Roster shows the combined total. Crack Shot now uses
+  its own pool. Tested.
 
 ## R4-M2 — Negative status tokens (rules effects, not just markers)
 - ☐ **T4-N1** **Ion** (forced speed-1 straight + capped to one action; ionisation

@@ -53,9 +53,12 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
           {ship.maxShields > 0 && (
             <Pips filled={ship.shields} max={ship.maxShields} color="#9bd2ff" label="shields" />
           )}
-          {ship.maxCharges > 0 && (
-            <Pips filled={ship.charges} max={ship.maxCharges} color="#f0a830" label="charges" />
-          )}
+          {(() => {
+            const pools = Object.values(ship.upgradeCharges ?? {});
+            const cur = ship.charges + pools.reduce((n, p) => n + p.charges, 0);
+            const max = ship.maxCharges + pools.reduce((n, p) => n + p.max, 0);
+            return max > 0 ? <Pips filled={cur} max={max} color="#f0a830" label="charges" /> : null;
+          })()}
           {(ship.maxForce ?? 0) > 0 && (
             <Pips filled={ship.force ?? 0} max={ship.maxForce ?? 0} color="#b18bff" label="force" />
           )}

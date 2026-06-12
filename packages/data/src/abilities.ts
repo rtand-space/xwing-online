@@ -5,6 +5,7 @@ import {
   changeDefence,
   inArc,
   inBullseye,
+  chargesFrom,
   registerAbility,
   rerollAttack,
   rerollDefence,
@@ -134,12 +135,12 @@ const ABILITIES: Record<string, Ability> = {
       onModifyDefence: (ctx, self) => {
         if (
           ctx.attacker.id === self.id &&
-          ctx.attacker.charges > 0 &&
+          chargesFrom(ctx.attacker, 'crackshot') > 0 &&
           inBullseye(ctx.attacker, ctx.target) &&
           ctx.defence.includes('evade')
         ) {
           changeDefence(ctx, 'evade', 'blank', 1);
-          ctx.events.push(spendCharge(self));
+          ctx.events.push(spendCharge(self, 'crackshot'));
         }
       },
     },

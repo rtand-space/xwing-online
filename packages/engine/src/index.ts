@@ -79,6 +79,7 @@ export {
   addStress,
   changeAttack,
   changeDefence,
+  chargesFrom,
   gainToken,
   recoverCharge,
   rerollAttack,

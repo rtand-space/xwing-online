@@ -40,16 +40,12 @@ export function toShipInit(
 ): ShipInit {
   const ship = getShip(shipXws);
   const pilot = getPilot(shipXws, pilotXws);
-  // Charges granted by equipped upgrades. NOTE: pooled per ship for now; true
-  // per-card charge pools (so one card can't spend another's) come in a later pass.
-  let maxCharges = 0;
-  let recurring = 0;
+  // Each charge-granting upgrade gets its own pool (keyed by xws) so one card
+  // can't spend another's charges.
+  const upgradeCharges: Record<string, { charges: number; max: number; recovers: number }> = {};
   for (const x of upgrades) {
     const c = getUpgrade(x).charges;
-    if (c) {
-      maxCharges += c.value;
-      recurring += c.recovers;
-    }
+    if (c) upgradeCharges[x] = { charges: c.value, max: c.value, recovers: c.recovers };
   }
   return {
     id,
@@ -64,9 +60,7 @@ export function toShipInit(
     agility: statValue(ship, 'agility'),
     hull: statValue(ship, 'hull'),
     shields: statValue(ship, 'shields'),
-    maxCharges,
-    charges: maxCharges,
-    recurring,
+    upgradeCharges,
     maxForce: pilot.force?.value ?? 0,
     force: pilot.force?.value ?? 0,
     forceRecovers: pilot.force?.recovers ?? 0,

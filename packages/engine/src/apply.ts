@@ -60,10 +60,16 @@ function applyCore(state: GameState, e: GameEvent): GameState {
     case 'StressChanged':
       return mapShip(state, e.shipId, (s) => changeStress(s, e.delta));
     case 'ChargeChanged':
-      return mapShip(state, e.shipId, (s) => ({
-        ...s,
-        charges: Math.max(0, Math.min(s.maxCharges, s.charges + e.delta)),
-      }));
+      return mapShip(state, e.shipId, (s) => {
+        if (e.source) {
+          const pools = { ...(s.upgradeCharges ?? {}) };
+          const p = pools[e.source];
+          if (p)
+            pools[e.source] = { ...p, charges: Math.max(0, Math.min(p.max, p.charges + e.delta)) };
+          return { ...s, upgradeCharges: pools };
+        }
+        return { ...s, charges: Math.max(0, Math.min(s.maxCharges, s.charges + e.delta)) };
+      });
     case 'ForceChanged':
       return mapShip(state, e.shipId, (s) => ({
         ...s,
@@ -112,6 +118,12 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           ...withoutTokens(s, ['focus', 'evade', 'calculate', 'reinforce']),
           charges: Math.min(s.maxCharges, s.charges + s.recurring),
           force: Math.min(s.maxForce ?? 0, (s.force ?? 0) + (s.forceRecovers ?? 0)),
+          upgradeCharges: Object.fromEntries(
+            Object.entries(s.upgradeCharges ?? {}).map(([k, p]) => [
+              k,
+              { ...p, charges: Math.min(p.max, p.charges + p.recovers) },
+            ]),
+          ),
           dial: undefined,
           dialRevealed: false,
           hasMoved: false,

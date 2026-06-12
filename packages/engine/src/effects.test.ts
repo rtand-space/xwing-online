@@ -87,6 +87,12 @@ describe('effect primitives', () => {
   it('event builders produce the right events', () => {
     const s = ship('a');
     expect(gainToken(s, 'focus')).toEqual({ type: 'TokenGained', shipId: 'a', kind: 'focus' });
-    expect(spendCharge(s, 1)).toEqual({ type: 'ChargeChanged', shipId: 'a', delta: -1 });
+    expect(spendCharge(s)).toEqual({ type: 'ChargeChanged', shipId: 'a', delta: -1, source: undefined });
+    expect(spendCharge(s, 'crackshot')).toEqual({
+      type: 'ChargeChanged',
+      shipId: 'a',
+      delta: -1,
+      source: 'crackshot',
+    });
   });
 });

@@ -168,7 +168,10 @@ describe('card abilities', () => {
 
   it('Crack Shot spends a charge to cancel an evade against a bullseye target', () => {
     const hook = getAbility('crackshot')!.attack!.onModifyDefence!;
-    const armed: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), charges: 1, maxCharges: 1 };
+    const armed: Ship = {
+      ...ship('a', { x: 0, y: 0, angle: 0 }),
+      upgradeCharges: { crackshot: { charges: 1, max: 1, recovers: 0 } },
+    };
     const c = ctx(armed, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
     c.defence = ['evade', 'blank'];
     hook(c, armed);
