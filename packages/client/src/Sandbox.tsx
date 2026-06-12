@@ -1,26 +1,25 @@
-import { FACTION_IDS, FACTIONS, type FactionId, getShip, pilotChoices } from '@xwing/data';
+import { FACTION_IDS, FACTIONS, type FactionId, pilotChoices } from '@xwing/data';
 import type { GameConfig, ShipInit } from '@xwing/engine';
 import { type ReactElement, useState } from 'react';
-import { ManeuverDial } from './controls';
 import { useSandbox } from './sandbox-store';
+import { useSquads } from './squads-store';
 import { useGame } from './store';
 
-/** Sandbox panel: add ships, fly maneuvers, eyeball arcs, then drop into a real game. */
+/** Sandbox panel: add ships or a saved squad, eyeball arcs, then drop into a real game. */
 export function Sandbox(): ReactElement {
   const ships = useSandbox((s) => s.ships);
-  const selectedId = useSandbox((s) => s.selectedId);
   const showArcs = useSandbox((s) => s.showArcs);
   const add = useSandbox((s) => s.add);
-  const execute = useSandbox((s) => s.execute);
-  const rotate = useSandbox((s) => s.rotate);
-  const remove = useSandbox((s) => s.remove);
+  const addSquad = useSandbox((s) => s.addSquad);
   const toggleArcs = useSandbox((s) => s.toggleArcs);
   const exit = useSandbox((s) => s.exit);
   const startGame = useGame((s) => s.startGame);
+  const squads = useSquads((s) => s.squads);
 
   const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
   const [faction, setFaction] = useState<FactionId>('rebel');
   const [shipXws, setShipXws] = useState('');
+  const [squadId, setSquadId] = useState('');
 
   const all = pilotChoices(FACTIONS[faction]);
   const shipList: { xws: string; name: string }[] = [];
@@ -32,7 +31,6 @@ export function Sandbox(): ReactElement {
     }
   }
   const pilots = shipXws ? all.filter((o) => o.shipXws === shipXws) : [];
-  const sel = ships.find((s) => s.id === selectedId);
 
   const startFromSandbox = () => {
     const config: GameConfig = {
@@ -48,6 +46,8 @@ export function Sandbox(): ReactElement {
           ownerId: s.ownerId,
           shipType: s.shipType,
           pilot: s.pilot,
+          pilotXws: s.pilotXws,
+          upgrades: s.upgrades,
           initiative: s.initiative,
           base: s.base,
           primaryAttack: s.primaryAttack,
@@ -77,6 +77,36 @@ export function Sandbox(): ReactElement {
           Add to blue
         </button>
       </div>
+
+      {squads.length > 0 && (
+        <>
+          <div className="section">Add a saved squad</div>
+          <select
+            className="factionSel"
+            value={squadId}
+            onChange={(e) => setSquadId(e.target.value)}
+          >
+            <option value="">Choose a squad</option>
+            {squads.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+          <button
+            className="btn"
+            disabled={!squadId}
+            onClick={() => {
+              const sq = squads.find((s) => s.id === squadId);
+              if (sq) addSquad(sq.xws, side);
+            }}
+          >
+            Add squad
+          </button>
+        </>
+      )}
+
+      <div className="section">Add a single ship</div>
       <select
         className="factionSel"
         value={faction}
@@ -113,34 +143,6 @@ export function Sandbox(): ReactElement {
         </div>
       )}
 
-      {sel && (
-        <div className="pickCard">
-          <div className="pickHead">
-            <span>
-              {getShip(sel.shipType).name} · {sel.pilot}
-            </span>
-            <button className="x" aria-label="Remove" onClick={remove}>
-              ×
-            </button>
-          </div>
-          <ManeuverDial options={sel.dialOptions} onPick={execute} />
-          <div className="grid">
-            <button className="btn sm" onClick={() => rotate(-90)}>
-              ⟲ 90
-            </button>
-            <button className="btn sm" onClick={() => rotate(-15)}>
-              ⟲ 15
-            </button>
-            <button className="btn sm" onClick={() => rotate(15)}>
-              15 ⟳
-            </button>
-            <button className="btn sm" onClick={() => rotate(90)}>
-              90 ⟳
-            </button>
-          </div>
-        </div>
-      )}
-
       <label className="rosterRow">
         <span>Show firing arc</span>
         <input type="checkbox" checked={showArcs} onChange={toggleArcs} />
@@ -154,7 +156,9 @@ export function Sandbox(): ReactElement {
           Exit sandbox
         </button>
       </div>
-      <div className="muted">Tap a ship to select · drag to move · pick a maneuver to fly it.</div>
+      <div className="muted">
+        Tap a ship to select · drag to move · fly maneuvers from the dial below.
+      </div>
     </div>
   );
 }

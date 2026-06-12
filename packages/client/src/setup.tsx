@@ -6,8 +6,6 @@ import {
   getUpgrade,
   parseXws,
   type PilotChoice,
-  PRESETS,
-  presetConfig,
   pilotChoices,
   slotKey,
   SQUAD_POINT_CAP,
@@ -511,7 +509,7 @@ function SquadSelect({
   );
 }
 
-/** Game tab — quick presets, custom hot-seat, and online play from saved squads. */
+/** Game tab — online play, sandbox, and custom hot-seat, all from saved squads. */
 export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const host = useOnline((s) => s.host);
@@ -530,43 +528,6 @@ export function QuickPlay(): ReactElement {
 
   return (
     <div className="panelStack">
-      <div className="section">Quick match (hot-seat)</div>
-      <div className="presetList">
-        {PRESETS.map((p) => (
-          <button key={p.id} className="preset" onClick={() => startGame(presetConfig(p, seed()))}>
-            <div className="presetName">{p.name}</div>
-            <div className="presetDesc">{p.description}</div>
-          </button>
-        ))}
-      </div>
-
-      {squads.length > 0 && (
-        <>
-          <div className="section">Custom hot-seat</div>
-          <SquadSelect squads={squads} value={aId} onChange={setAId} placeholder="Squad A" />
-          <SquadSelect squads={squads} value={bId} onChange={setBId} placeholder="Squad B" />
-          <button
-            className="btn primary"
-            disabled={!byId(aId) || !byId(bId)}
-            onClick={() => {
-              const a = byId(aId)!;
-              const b = byId(bId)!;
-              const s = seed();
-              useSetup
-                .getState()
-                .begin(s, (obs) => startGame(buildConfig(a.xws, b.xws, s, 'game', obs)));
-            }}
-          >
-            Start battle
-          </button>
-        </>
-      )}
-
-      <div className="section">Sandbox</div>
-      <button className="btn" onClick={() => useSandbox.getState().open()}>
-        Free play — place ships, fly maneuvers, check arcs
-      </button>
-
       <div className="section">Play online</div>
       {squads.length === 0 && (
         <div className="muted">A squad is required — build one in the Squad tab.</div>
@@ -608,6 +569,33 @@ export function QuickPlay(): ReactElement {
       >
         {joining ? 'Join game' : 'Host game'}
       </button>
+
+      <div className="section">Sandbox</div>
+      <button className="btn primary" onClick={() => useSandbox.getState().open()}>
+        Free play — place ships, fly maneuvers, check arcs
+      </button>
+
+      {squads.length > 0 && (
+        <>
+          <div className="section">Custom hot-seat</div>
+          <SquadSelect squads={squads} value={aId} onChange={setAId} placeholder="Squad A" />
+          <SquadSelect squads={squads} value={bId} onChange={setBId} placeholder="Squad B" />
+          <button
+            className="btn primary"
+            disabled={!byId(aId) || !byId(bId)}
+            onClick={() => {
+              const a = byId(aId)!;
+              const b = byId(bId)!;
+              const s = seed();
+              useSetup
+                .getState()
+                .begin(s, (obs) => startGame(buildConfig(a.xws, b.xws, s, 'game', obs)));
+            }}
+          >
+            Start battle
+          </button>
+        </>
+      )}
     </div>
   );
 }

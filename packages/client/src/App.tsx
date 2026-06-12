@@ -7,6 +7,7 @@ import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
 import { Sandbox } from './Sandbox';
+import { SandboxDial } from './SandboxDial';
 import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
 import { useSquads } from './squads-store';
@@ -108,6 +109,7 @@ export function App(): ReactElement {
         <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
       )}
       {placing && <Battlefield />}
+      {sandbox && <SandboxDial />}
       {!sandbox && !placing && <BottomFlyout ag={ag} />}
     </div>
   );

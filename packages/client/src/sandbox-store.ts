@@ -1,20 +1,19 @@
-import { randomObstacles, toShipInit } from '@xwing/data';
-import { applyManeuver, type Maneuver, type Obstacle, type Ship } from '@xwing/engine';
+import { randomObstacles, sideShipInits, toShipInit, type XwsSquad } from '@xwing/data';
+import {
+  applyManeuver,
+  type Maneuver,
+  type Obstacle,
+  type Ship,
+  type ShipInit,
+} from '@xwing/engine';
 import { create } from 'zustand';
 
 const norm = (deg: number): number => ((deg % 360) + 360) % 360;
 
-function makeShip(shipXws: string, pilotXws: string, side: string, id: string, x: number): Ship {
-  const init = toShipInit(
-    shipXws,
-    pilotXws,
-    side,
-    { x, y: side === 'rebel' ? -150 : 150, angle: 0 },
-    id,
-  );
+function initToShip(init: ShipInit): Ship {
   return {
     ...init,
-    pos: { ...init.pos, angle: side === 'rebel' ? 0 : 180 },
+    upgrades: init.upgrades ?? [],
     maxHull: init.hull,
     maxShields: init.shields,
     maxCharges: init.maxCharges ?? 0,
@@ -28,6 +27,18 @@ function makeShip(shipXws: string, pilotXws: string, side: string, id: string, x
   };
 }
 
+function makeShip(shipXws: string, pilotXws: string, side: string, id: string, x: number): Ship {
+  return initToShip(
+    toShipInit(
+      shipXws,
+      pilotXws,
+      side,
+      { x, y: side === 'rebel' ? -150 : 150, angle: side === 'rebel' ? 0 : 180 },
+      id,
+    ),
+  );
+}
+
 interface SandboxState {
   active: boolean;
   ships: Ship[];
@@ -37,6 +48,7 @@ interface SandboxState {
   open: () => void;
   exit: () => void;
   add: (shipXws: string, pilotXws: string, side: string) => void;
+  addSquad: (squad: XwsSquad, side: string) => void;
   select: (id: string | null) => void;
   move: (id: string, x: number, y: number) => void;
   rotate: (deg: number) => void;
@@ -65,6 +77,12 @@ export const useSandbox = create<SandboxState>((set, get) => ({
     const id = `sb-${++counter}`;
     const x = (get().ships.filter((s) => s.ownerId === side).length - 1) * 120;
     set({ ships: [...get().ships, makeShip(shipXws, pilotXws, side, id, x)], selectedId: id });
+  },
+  addSquad: (squad, side) => {
+    const added = sideShipInits(squad, side as 'rebel' | 'imperial').map((init) =>
+      initToShip({ ...init, id: `sb-${++counter}` }),
+    );
+    set({ ships: [...get().ships, ...added], selectedId: added.at(-1)?.id ?? get().selectedId });
   },
   select: (id) => set({ selectedId: id }),
   move: (id, x, y) =>
