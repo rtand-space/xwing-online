@@ -45,7 +45,7 @@ const DIAL_COLS: { key: Maneuver['bearing']; glyph: string }[] = [
   { key: 'stationary', glyph: '■' },
 ];
 
-function ManeuverDial({
+export function ManeuverDial({
   options,
   onPick,
 }: {

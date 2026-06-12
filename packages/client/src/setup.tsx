@@ -19,6 +19,7 @@ import {
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
 import { useOnline } from './online-store';
+import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
 import type { SavedSquad } from './squads';
 import { useSquads } from './squads-store';
@@ -560,6 +561,11 @@ export function QuickPlay(): ReactElement {
           </button>
         </>
       )}
+
+      <div className="section">Sandbox</div>
+      <button className="btn" onClick={() => useSandbox.getState().open()}>
+        Free play — place ships, fly maneuvers, check arcs
+      </button>
 
       <div className="section">Play online</div>
       {squads.length === 0 && (

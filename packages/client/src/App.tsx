@@ -1,11 +1,13 @@
 import { obstacleValidity } from '@xwing/data';
-import { EMPTY_STATE, projectView } from '@xwing/engine';
+import { EMPTY_STATE, inArc, projectView, rangeBand } from '@xwing/engine';
 import { type ReactElement, useEffect, useState } from 'react';
 import { useAuth } from './auth';
 import { Battlefield } from './Battlefield';
 import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
+import { Sandbox } from './Sandbox';
+import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
 import { useSquads } from './squads-store';
 import { SideFlyout } from './SideFlyout';
@@ -36,12 +38,35 @@ export function App(): ReactElement {
     if (placing) setSideOpen(false);
   }, [placing]);
 
-  const view = placing ? { ...EMPTY_VIEW, obstacles: placeObstacles } : (ag.view ?? EMPTY_VIEW);
+  const sandbox = useSandbox((s) => s.active);
+  const sbShips = useSandbox((s) => s.ships);
+  const sbObstacles = useSandbox((s) => s.obstacles);
+  const sbSelected = useSandbox((s) => s.selectedId);
+  const sbShowArcs = useSandbox((s) => s.showArcs);
+  const sbSelect = useSandbox((s) => s.select);
+  const sbMove = useSandbox((s) => s.move);
+  useEffect(() => {
+    if (sandbox) setSideOpen(true);
+  }, [sandbox]);
+
+  const view = sandbox
+    ? { ...EMPTY_VIEW, ships: sbShips, obstacles: sbObstacles, phase: 'activation' as const }
+    : placing
+      ? { ...EMPTY_VIEW, obstacles: placeObstacles }
+      : (ag.view ?? EMPTY_VIEW);
   const invalidObstacleIds = placing
     ? Object.entries(obstacleValidity(placeObstacles))
         .filter(([, ok]) => !ok)
         .map(([id]) => id)
     : [];
+  // In sandbox, highlight ships in the selected ship's arc + range 3.
+  const sel = sandbox ? sbShips.find((s) => s.id === sbSelected) : undefined;
+  const sandboxHighlights =
+    sel && sbShowArcs
+      ? sbShips
+          .filter((t) => t.id !== sel.id && inArc(sel, t) && rangeBand(sel, t) !== null)
+          .map((t) => t.id)
+      : [];
   const pending = view.pending[0];
   const highlightIds =
     pending?.type === 'declare-attack'
@@ -57,8 +82,8 @@ export function App(): ReactElement {
       <div className="boardLayer">
         <SvgBoard
           view={view}
-          activeId={pending?.shipId}
-          highlightIds={highlightIds}
+          activeId={sandbox ? sbSelected : pending?.shipId}
+          highlightIds={sandbox ? sandboxHighlights : highlightIds}
           preview={
             ag.myTurn && pending?.type === 'execute-maneuver'
               ? previewFor(view, pending.shipId)
@@ -67,11 +92,23 @@ export function App(): ReactElement {
           placing={placing}
           invalidObstacleIds={invalidObstacleIds}
           onObstacleMove={moveObstacle}
+          onShipMove={sandbox ? sbMove : undefined}
+          arcShipId={sandbox && sbShowArcs ? sbSelected : undefined}
+          onPick={sandbox ? sbSelect : undefined}
         />
       </div>
 
-      <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
-      {placing ? <Battlefield /> : <BottomFlyout ag={ag} />}
+      {sandbox ? (
+        <aside className="flyout side open">
+          <div className="flyoutBody">
+            <Sandbox />
+          </div>
+        </aside>
+      ) : (
+        <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
+      )}
+      {placing && <Battlefield />}
+      {!sandbox && !placing && <BottomFlyout ag={ag} />}
     </div>
   );
 }

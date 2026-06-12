@@ -138,6 +138,9 @@ export interface BoardProps {
   placing?: boolean;
   invalidObstacleIds?: string[];
   onObstacleMove?: (id: string, x: number, y: number) => void;
+  /** Sandbox: drag ships freely, and draw a firing arc for a chosen ship. */
+  onShipMove?: (id: string, x: number, y: number) => void;
+  arcShipId?: string | null;
 }
 
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
@@ -373,32 +376,39 @@ export const SvgBoard: BoardRenderer = ({
   placing = false,
   invalidObstacleIds = [],
   onObstacleMove,
+  onShipMove,
+  arcShipId,
 }) => {
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
-  const attacker =
+  const engageAttacker =
     view.phase === 'engagement' && activeId ? ships.find((s) => s.id === activeId) : undefined;
+  const arcShip = arcShipId ? ships.find((s) => s.id === arcShipId) : engageAttacker;
   const { ref, viewBox, onMouseDown } = usePanZoom();
-  const dragId = useRef<string | null>(null);
+  const drag = useRef<{ id: string; kind: 'obstacle' | 'ship' } | null>(null);
+  const dragging = placing || Boolean(onShipMove);
 
   const toWorld = (e: { clientX: number; clientY: number }): { x: number; y: number } | null => {
     const m = ref.current?.getScreenCTM();
     if (!m) return null;
     return { x: (e.clientX - m.e) / m.a, y: -(e.clientY - m.f) / m.d };
   };
-  const onObstaclePointerDown = (id: string) => (e: ReactPointerEvent) => {
-    if (!placing) return;
+  const startDrag = (id: string, kind: 'obstacle' | 'ship') => (e: ReactPointerEvent) => {
     e.stopPropagation();
-    dragId.current = id;
+    drag.current = { id, kind };
     (e.target as Element).setPointerCapture?.(e.pointerId);
   };
   const onPointerMove = (e: ReactPointerEvent) => {
-    if (!dragId.current || !onObstacleMove) return;
+    if (!drag.current) return;
     const w = toWorld(e);
-    if (w) onObstacleMove(dragId.current, Math.round(w.x), Math.round(w.y));
+    if (!w) return;
+    const x = Math.round(w.x);
+    const y = Math.round(w.y);
+    if (drag.current.kind === 'obstacle') onObstacleMove?.(drag.current.id, x, y);
+    else onShipMove?.(drag.current.id, x, y);
   };
   const endDrag = () => {
-    dragId.current = null;
+    drag.current = null;
   };
 
   return (
@@ -407,9 +417,9 @@ export const SvgBoard: BoardRenderer = ({
       className="board"
       viewBox={viewBox}
       preserveAspectRatio="xMidYMid meet"
-      onMouseDown={(e) => (dragId.current ? undefined : onMouseDown(e))}
-      onPointerMove={placing ? onPointerMove : undefined}
-      onPointerUp={placing ? endDrag : undefined}
+      onMouseDown={(e) => (drag.current ? undefined : onMouseDown(e))}
+      onPointerMove={dragging ? onPointerMove : undefined}
+      onPointerUp={dragging ? endDrag : undefined}
     >
       <Starfield />
       <ShipDefs />
@@ -422,15 +432,13 @@ export const SvgBoard: BoardRenderer = ({
           cy={-o.pos.y}
           r={o.radius}
           className={`obstacle ${o.kind}${invalidObstacleIds.includes(o.id) ? ' invalid' : ''}${placing ? ' draggable' : ''}`}
-          onPointerDown={placing ? onObstaclePointerDown(o.id) : undefined}
+          onPointerDown={placing ? startDrag(o.id, 'obstacle') : undefined}
         />
       ))}
 
-      {attacker && (
-        <g
-          transform={`translate(${attacker.pos.x} ${-attacker.pos.y}) rotate(${attacker.pos.angle})`}
-        >
-          <CombatArc w={BASE_MM[attacker.base]} color={colorFor(view, attacker)} />
+      {arcShip && (
+        <g transform={`translate(${arcShip.pos.x} ${-arcShip.pos.y}) rotate(${arcShip.pos.angle})`}>
+          <CombatArc w={BASE_MM[arcShip.base]} color={colorFor(view, arcShip)} />
         </g>
       )}
 
@@ -467,7 +475,8 @@ export const SvgBoard: BoardRenderer = ({
           <g
             key={s.id}
             onClick={() => onPick?.(s.id)}
-            style={{ cursor: onPick ? 'pointer' : 'default' }}
+            onPointerDown={onShipMove ? startDrag(s.id, 'ship') : undefined}
+            style={{ cursor: onShipMove ? 'grab' : onPick ? 'pointer' : 'default' }}
           >
             {active && (
               <circle

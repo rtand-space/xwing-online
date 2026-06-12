@@ -37,4 +37,10 @@ Refresh the data: clone xwing-data2 (sparse `data/`) and eirikmun/xwing-points, 
 - ☑ **T-O2** Pre-game placement: a 6-obstacle layout (seeded random, valid by construction) you drag on the board, with live validity (range 1 apart / range 2 from edges) and a Shuffle. Hot-seat and online host both place before starting; placed obstacles flow through the DO into the assembled game. _v1 = the starter places for both sides (true alternating placement is a later networked setup phase)._
 
 ## R2-M6 — Sandbox (basic)
-- ☐ **T-S1** Free-place ships + dry-run maneuvers/arcs from the builder (spec §14), then drop into a real game. Cheap given the geometry tools are already FSM-independent.
+- ☑ **T-S1** Free-play sandbox (no FSM): add ships from any faction to either side, drag to place, tap to select, fly any maneuver from the dial (executes via the shared geometry), rotate, and toggle the selected ship's firing arc + in-arc/in-range highlights. "Start game" drops the current ships + obstacles into a real game. Reuses `applyManeuver`/`inArc`/`rangeBand`; board gained ship-drag + per-ship arc.
+
+## Backlog / later
+- Irregular obstacle shapes (asteroid/debris outlines) with **matching collision geometry** — fidelity upgrade, best bundled with the 3D/visual pass; needs digitized token outlines. `Obstacle` can gain an optional polygon (circle `radius` stays the fallback).
+- Shareable squad link (finish T-X2).
+- Gas-cloud obstacles (need strain/ion token types).
+- True alternating two-player obstacle placement (networked setup phase).
