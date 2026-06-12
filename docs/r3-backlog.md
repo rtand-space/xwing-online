@@ -63,14 +63,15 @@ Status: ☐ not started · ◐ in progress · ☑ done
   start full; `recurring` charges recover at round end. Force + status tokens stay R4.
   _Card-supplied charge values arrive with the M4 cards._
 
-## R3-M3 — Effect primitives (no-charge subset)
-- ☐ **T3-E1** Dice effects: reroll N, add/remove a die, change one result, set a
-  result — at the right windows, with rerolls-before-changes ordering preserved.
-- ☐ **T3-E2** Token effects: gain/spend focus·evade·lock·stress; conditional on
-  green-token state, range, arc, initiative, etc.
-- ☐ **T3-E3** Stat & dial effects: per-attack stat tweaks (e.g. +1 die at a range),
-  dial edits (add a maneuver, treat a bearing as easier). After-attack triggers.
-- ☐ Golden-master + property tests for each primitive.
+## R3-M3 — Effect primitives ✅
+- ☑ **T3-E1/E2/E3** `engine/effects.ts`: attack-window helpers `addAttackDice`/
+  `addDefenceDice`, `rerollAttack`/`rerollDefence`, `changeAttack`/`changeDefence`
+  (correct `cursor` + `DiceRolled` bookkeeping, rerolls-before-changes), and
+  game-window event builders `gainToken`/`spendCharge`/`recoverCharge`/`addStress`.
+  Card abilities compose these instead of hand-writing dice/cursor logic. Tested
+  (add/change/deterministic reroll, event builders). _A bonus-die "+1 at range"
+  is just `addAttackDice` in an `onModifyAttack` hook; dial edits land with the
+  cards that need them in M4._
 
 ## R3-M4 — First card slice + honesty in the builder
 - ☐ **T3-S1** Implement a curated set that needs only the above: **ship abilities**

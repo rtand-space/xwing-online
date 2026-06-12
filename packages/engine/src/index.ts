@@ -73,3 +73,15 @@ export type {
   GameWindow,
   OptionalAbility,
 } from './abilities';
+export {
+  addAttackDice,
+  addDefenceDice,
+  addStress,
+  changeAttack,
+  changeDefence,
+  gainToken,
+  recoverCharge,
+  rerollAttack,
+  rerollDefence,
+  spendCharge,
+} from './effects';
