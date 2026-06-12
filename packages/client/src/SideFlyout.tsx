@@ -1,7 +1,6 @@
 import { type ReactElement, useState } from 'react';
 import { Account } from './Account';
 import { formatEvent } from './log';
-import { useSandbox } from './sandbox-store';
 import { Roster } from './roster';
 import { QuickPlay, SquadBuilder } from './setup';
 import type { ActiveGame } from './useActiveGame';
@@ -92,12 +91,6 @@ function GamePanel({ ag }: { ag: ActiveGame }): ReactElement {
           <div className="section">Board state</div>
           <Roster view={ag.view} />
         </>
-      )}
-
-      {!ag.online && (
-        <button className="btn ghost" onClick={() => useSandbox.getState().open()}>
-          Enter Sandbox
-        </button>
       )}
 
       <button className="btn ghost" onClick={ag.leave}>

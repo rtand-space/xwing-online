@@ -1,14 +1,36 @@
 import { randomObstacles, sideShipInits, toShipInit, type XwsSquad } from '@xwing/data';
 import {
   applyManeuver,
+  type GameConfig,
   type Maneuver,
   type Obstacle,
   type Ship,
   type ShipInit,
 } from '@xwing/engine';
 import { create } from 'zustand';
+import { useGame } from './store';
 
 const norm = (deg: number): number => ((deg % 360) + 360) % 360;
+
+const shipToInit = (s: Ship): ShipInit => ({
+  id: s.id,
+  ownerId: s.ownerId,
+  shipType: s.shipType,
+  pilot: s.pilot,
+  pilotXws: s.pilotXws,
+  upgrades: s.upgrades,
+  initiative: s.initiative,
+  base: s.base,
+  primaryAttack: s.primaryAttack,
+  agility: s.agility,
+  hull: s.maxHull,
+  shields: s.maxShields,
+  maxCharges: s.maxCharges,
+  recurring: s.recurring,
+  pos: s.pos,
+  actionBar: s.actionBar,
+  dialOptions: s.dialOptions,
+});
 
 function initToShip(init: ShipInit): Ship {
   return {
@@ -41,6 +63,8 @@ function makeShip(shipXws: string, pilotXws: string, side: string, id: string, x
 
 interface SandboxState {
   active: boolean;
+  /** Turn-based rules running over the current board (reversible). */
+  turnBased: boolean;
   ships: Ship[];
   obstacles: Obstacle[];
   selectedId: string | null;
@@ -48,6 +72,8 @@ interface SandboxState {
   open: () => void;
   exit: () => void;
   clear: () => void;
+  enterTurnBased: () => void;
+  leaveTurnBased: () => void;
   add: (shipXws: string, pilotXws: string, side: string) => void;
   addSquad: (squad: XwsSquad, side: string) => void;
   select: (id: string | null) => void;
@@ -62,6 +88,7 @@ let counter = 0;
 
 export const useSandbox = create<SandboxState>((set, get) => ({
   active: false,
+  turnBased: false,
   ships: [],
   obstacles: [],
   selectedId: null,
@@ -72,8 +99,36 @@ export const useSandbox = create<SandboxState>((set, get) => ({
       active: true,
       obstacles: s.obstacles.length ? s.obstacles : randomObstacles(String(Date.now())),
     })),
-  exit: () => set({ active: false }),
+  exit: () => {
+    if (get().turnBased) useGame.getState().reset();
+    set({ active: false, turnBased: false, selectedId: null });
+  },
   clear: () => set({ ships: [], selectedId: null, obstacles: randomObstacles(String(Date.now())) }),
+  enterTurnBased: () => {
+    const { ships, obstacles } = get();
+    if (ships.length === 0) return;
+    const config: GameConfig = {
+      id: 'sandbox',
+      seed: String(Date.now()),
+      players: [
+        { id: 'rebel', name: 'Rebel' },
+        { id: 'imperial', name: 'Imperial' },
+      ],
+      ships: ships.map(shipToInit),
+      obstacles,
+    };
+    useGame.getState().startGame(config);
+    set({ turnBased: true, selectedId: null });
+  },
+  leaveTurnBased: () => {
+    const game = useGame.getState().game;
+    if (game) {
+      const byId = new Map(game.state.ships.map((s) => [s.id, s]));
+      set({ ships: get().ships.map((s) => ({ ...s, pos: byId.get(s.id)?.pos ?? s.pos })) });
+    }
+    useGame.getState().reset();
+    set({ turnBased: false, selectedId: null });
+  },
   add: (shipXws, pilotXws, side) => {
     const id = `sb-${++counter}`;
     const x = (get().ships.filter((s) => s.ownerId === side).length - 1) * 120;

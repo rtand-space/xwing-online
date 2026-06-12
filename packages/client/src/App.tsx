@@ -40,17 +40,20 @@ export function App(): ReactElement {
   }, [placing]);
 
   const sandbox = useSandbox((s) => s.active);
+  const turnBased = useSandbox((s) => s.turnBased);
   const sbShips = useSandbox((s) => s.ships);
   const sbObstacles = useSandbox((s) => s.obstacles);
   const sbSelected = useSandbox((s) => s.selectedId);
   const sbShowArcs = useSandbox((s) => s.showArcs);
   const sbSelect = useSandbox((s) => s.select);
   const sbMove = useSandbox((s) => s.move);
+  // Free editing mode: sandbox open but not (yet) playing turn-based.
+  const sbEdit = sandbox && !turnBased;
   useEffect(() => {
     if (sandbox) setSideOpen(true);
   }, [sandbox]);
 
-  const view = sandbox
+  const view = sbEdit
     ? { ...EMPTY_VIEW, ships: sbShips, obstacles: sbObstacles, phase: 'activation' as const }
     : placing
       ? { ...EMPTY_VIEW, obstacles: placeObstacles }
@@ -60,8 +63,8 @@ export function App(): ReactElement {
         .filter(([, ok]) => !ok)
         .map(([id]) => id)
     : [];
-  // In sandbox, highlight ships in the selected ship's arc + range 3.
-  const sel = sandbox ? sbShips.find((s) => s.id === sbSelected) : undefined;
+  // In sandbox edit mode, highlight ships in the selected ship's arc + range 3.
+  const sel = sbEdit ? sbShips.find((s) => s.id === sbSelected) : undefined;
   const sandboxHighlights =
     sel && sbShowArcs
       ? sbShips
@@ -83,19 +86,19 @@ export function App(): ReactElement {
       <div className="boardLayer">
         <SvgBoard
           view={view}
-          activeId={sandbox ? sbSelected : pending?.shipId}
-          highlightIds={sandbox ? sandboxHighlights : highlightIds}
+          activeId={sbEdit ? sbSelected : pending?.shipId}
+          highlightIds={sbEdit ? sandboxHighlights : highlightIds}
           preview={
-            ag.myTurn && pending?.type === 'execute-maneuver'
+            !sbEdit && ag.myTurn && pending?.type === 'execute-maneuver'
               ? previewFor(view, pending.shipId)
               : null
           }
           placing={placing}
           invalidObstacleIds={invalidObstacleIds}
           onObstacleMove={moveObstacle}
-          onShipMove={sandbox ? sbMove : undefined}
-          arcShipId={sandbox && sbShowArcs ? sbSelected : undefined}
-          onPick={sandbox ? sbSelect : undefined}
+          onShipMove={sbEdit ? sbMove : undefined}
+          arcShipId={sbEdit && sbShowArcs ? sbSelected : undefined}
+          onPick={sbEdit ? sbSelect : undefined}
         />
       </div>
 
@@ -112,8 +115,8 @@ export function App(): ReactElement {
         <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
       )}
       {placing && <Battlefield />}
-      {sandbox && <SandboxDial />}
-      {!sandbox && !placing && <BottomFlyout ag={ag} />}
+      {sbEdit && <SandboxDial />}
+      {!sbEdit && !placing && <BottomFlyout ag={ag} />}
     </div>
   );
 }

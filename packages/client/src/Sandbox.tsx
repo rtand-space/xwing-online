@@ -1,26 +1,41 @@
 import { FACTION_IDS, FACTIONS, type FactionId, pilotChoices } from '@xwing/data';
-import type { GameConfig, ShipInit } from '@xwing/engine';
 import { type ReactElement, useState } from 'react';
 import { useSandbox } from './sandbox-store';
 import { useSquads } from './squads-store';
-import { useGame } from './store';
 
-/** Sandbox panel: add ships or a saved squad, eyeball arcs, then drop into a real game. */
+/** Sandbox panel: build a local board, then toggle turn-based rules over it. */
 export function Sandbox(): ReactElement {
   const ships = useSandbox((s) => s.ships);
+  const turnBased = useSandbox((s) => s.turnBased);
   const showArcs = useSandbox((s) => s.showArcs);
   const add = useSandbox((s) => s.add);
   const addSquad = useSandbox((s) => s.addSquad);
   const toggleArcs = useSandbox((s) => s.toggleArcs);
   const clear = useSandbox((s) => s.clear);
   const exit = useSandbox((s) => s.exit);
-  const startGame = useGame((s) => s.startGame);
+  const enterTurnBased = useSandbox((s) => s.enterTurnBased);
+  const leaveTurnBased = useSandbox((s) => s.leaveTurnBased);
   const squads = useSquads((s) => s.squads);
 
   const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
   const [faction, setFaction] = useState<FactionId>('rebel');
   const [shipXws, setShipXws] = useState('');
   const [squadId, setSquadId] = useState('');
+
+  if (turnBased) {
+    return (
+      <div className="panelStack">
+        <div className="section">Turn-based — playing this board</div>
+        <div className="muted">Play it out with full rules, then drop back to free editing.</div>
+        <button className="btn primary" onClick={leaveTurnBased}>
+          Leave turn-based
+        </button>
+        <button className="btn ghost" onClick={exit}>
+          Exit sandbox
+        </button>
+      </div>
+    );
+  }
 
   const all = pilotChoices(FACTIONS[faction]);
   const shipList: { xws: string; name: string }[] = [];
@@ -32,39 +47,6 @@ export function Sandbox(): ReactElement {
     }
   }
   const pilots = shipXws ? all.filter((o) => o.shipXws === shipXws) : [];
-
-  const startFromSandbox = () => {
-    const config: GameConfig = {
-      id: 'sandbox',
-      seed: String(Date.now()),
-      players: [
-        { id: 'rebel', name: 'Rebel' },
-        { id: 'imperial', name: 'Imperial' },
-      ],
-      ships: ships.map(
-        (s): ShipInit => ({
-          id: s.id,
-          ownerId: s.ownerId,
-          shipType: s.shipType,
-          pilot: s.pilot,
-          pilotXws: s.pilotXws,
-          upgrades: s.upgrades,
-          initiative: s.initiative,
-          base: s.base,
-          primaryAttack: s.primaryAttack,
-          agility: s.agility,
-          hull: s.hull,
-          shields: s.shields,
-          pos: s.pos,
-          actionBar: s.actionBar,
-          dialOptions: s.dialOptions,
-        }),
-      ),
-      obstacles: useSandbox.getState().obstacles,
-    };
-    exit();
-    startGame(config);
-  };
 
   return (
     <div className="panelStack">
@@ -149,10 +131,10 @@ export function Sandbox(): ReactElement {
         <input type="checkbox" checked={showArcs} onChange={toggleArcs} />
       </label>
 
+      <button className="btn primary" disabled={ships.length === 0} onClick={enterTurnBased}>
+        Enter turn-based
+      </button>
       <div className="grid">
-        <button className="btn primary" disabled={ships.length === 0} onClick={startFromSandbox}>
-          Start game
-        </button>
         <button className="btn ghost" disabled={ships.length === 0} onClick={clear}>
           Clear board
         </button>
