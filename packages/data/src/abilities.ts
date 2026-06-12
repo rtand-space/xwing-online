@@ -1,4 +1,11 @@
-import { type Ability, addAttackDice, inArc, registerAbility } from '@xwing/engine';
+import {
+  type Ability,
+  addAttackDice,
+  changeAttack,
+  changeDefence,
+  inArc,
+  registerAbility,
+} from '@xwing/engine';
 
 /**
  * Concrete card abilities, keyed by xws. Behaviour only — never the card's
@@ -40,6 +47,32 @@ const ABILITIES: Record<string, Ability> = {
         ) {
           ctx.defence = ctx.defence.slice(0, -1);
         }
+      },
+    },
+  },
+
+  // Juke (Talent) — while you have an evade token, turn one defender evade into a focus.
+  juke: {
+    note: 'While attacking, if you are evading, change 1 defender evade result to a focus.',
+    attack: {
+      onModifyDefence: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.attacker.tokens.some((t) => t.kind === 'evade')) {
+          changeDefence(ctx, 'evade', 'focus', 1);
+        }
+      },
+    },
+  },
+
+  // Fearless (Talent) — point-blank inside the defender's front arc, turn a result into a hit.
+  fearless: {
+    note: 'While attacking at range 1 from inside the defender’s front arc, change 1 result to a hit.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (ctx.attacker.id !== self.id || ctx.range !== 1 || !inArc(ctx.target, ctx.attacker)) {
+          return;
+        }
+        if (ctx.attack.includes('blank')) changeAttack(ctx, 'blank', 'hit', 1);
+        else changeAttack(ctx, 'focus', 'hit', 1);
       },
     },
   },

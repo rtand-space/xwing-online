@@ -80,6 +80,37 @@ describe('card abilities', () => {
     expect(inside.attack).toHaveLength(1);
   });
 
+  it('Juke turns a defender evade into a focus when the attacker is evading', () => {
+    const hook = getAbility('juke')!.attack!.onModifyDefence!;
+    const evading: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), tokens: [{ kind: 'evade' }] };
+    const c = ctx(evading, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    c.defence = ['evade', 'blank'];
+    hook(c, evading);
+    expect(c.defence.filter((f) => f === 'evade')).toHaveLength(0);
+    expect(c.defence.filter((f) => f === 'focus')).toHaveLength(1);
+
+    const plain = ship('a', { x: 0, y: 0, angle: 0 });
+    const c2 = ctx(plain, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    c2.defence = ['evade'];
+    hook(c2, plain);
+    expect(c2.defence).toEqual(['evade']);
+  });
+
+  it('Fearless turns a result into a hit at range 1 inside the defender’s arc', () => {
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const hook = getAbility('fearless')!.attack!.onModifyAttack!;
+
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 180 }), ['blank', 'focus']);
+    c.range = 1;
+    hook(c, atk);
+    expect(c.attack.filter((f) => f === 'hit')).toHaveLength(1);
+
+    const far = ctx(atk, ship('t', { x: 0, y: 100, angle: 180 }), ['blank']);
+    far.range = 3;
+    hook(far, atk);
+    expect(far.attack).toEqual(['blank']);
+  });
+
   it('Outmaneuver drops a defence die only from outside the defender’s arc', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
     const hook = getAbility('outmaneuver')!.attack!.onRollDefence!;
