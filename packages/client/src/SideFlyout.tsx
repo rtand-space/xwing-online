@@ -1,6 +1,8 @@
 import { type ReactElement, useState } from 'react';
 import { Account } from './Account';
 import { formatEvent } from './log';
+import { Sandbox } from './Sandbox';
+import { useSandbox } from './sandbox-store';
 import { Roster } from './roster';
 import { QuickPlay, SquadBuilder } from './setup';
 import type { ActiveGame } from './useActiveGame';
@@ -23,6 +25,7 @@ export function SideFlyout({
   ag: ActiveGame;
 }): ReactElement {
   const [tab, setTab] = useState<Tab>('game');
+  const sandbox = useSandbox((s) => s.active);
   return (
     <>
       {open && <div className="backdrop" onClick={onClose} />}
@@ -39,7 +42,8 @@ export function SideFlyout({
           ))}
         </nav>
         <div className="flyoutBody">
-          {tab === 'game' && (ag.mode === 'none' ? <QuickPlay /> : <GamePanel ag={ag} />)}
+          {tab === 'game' &&
+            (sandbox ? <Sandbox /> : ag.mode === 'none' ? <QuickPlay /> : <GamePanel ag={ag} />)}
           {tab === 'squad' && <SquadBuilder />}
           {tab === 'log' && <LogTab ag={ag} />}
           {tab === 'settings' && (

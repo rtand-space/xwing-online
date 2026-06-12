@@ -6,7 +6,6 @@ import { Battlefield } from './Battlefield';
 import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
-import { Sandbox } from './Sandbox';
 import { SandboxDial } from './SandboxDial';
 import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
@@ -102,18 +101,7 @@ export function App(): ReactElement {
         />
       </div>
 
-      {sandbox ? (
-        <>
-          {sideOpen && <div className="backdrop" onClick={() => setSideOpen(false)} />}
-          <aside className={sideOpen ? 'flyout side open' : 'flyout side'} aria-hidden={!sideOpen}>
-            <div className="flyoutBody">
-              <Sandbox />
-            </div>
-          </aside>
-        </>
-      ) : (
-        <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
-      )}
+      <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
       {placing && <Battlefield />}
       {sbEdit && <SandboxDial />}
       {!sbEdit && !placing && <BottomFlyout ag={ag} />}
