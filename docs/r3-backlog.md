@@ -17,11 +17,11 @@ So R3 implements abilities expressible with the **primitives we already have** �
 dice (roll/reroll/add/change), focus/evade/lock/stress tokens, stat/dial tweaks,
 and after-X triggers — plus the framework itself.
 
-**Open decision (charges).** The spec files charges under R4, but charges gate a
-*large* share of otherwise-R3-simple abilities. A minimal charge / recurring-charge
-resource is cheap to add and would multiply the implementable card set. Recommend
-pulling **just** charges forward into R3 (M2), leaving Force and the status tokens
-in R4. _Decide before M2._
+**Decided — charges in R3.** The spec files charges under R4, but they gate a
+*large* share of otherwise-R3-simple abilities, so R3-M2 adds a **minimal** charge /
+recurring-charge resource. Force and the status tokens (ion/tractor/jam/cloak)
+stay R4. **Abilities are a code registry keyed by xws** (typed hook functions), not
+a data DSL — a DSL for the simplest patterns can come later.
 
 ## Constraints (locked)
 
@@ -51,13 +51,12 @@ Status: ☐ not started · ◐ in progress · ☑ done
   param with registry-driven hooks) and into the FSM steps. **Ability queue**:
   deterministic ordering for simultaneous abilities (player order, then initiative).
 
-## R3-M2 — Player choice (+ minimal charges, pending the decision)
+## R3-M2 — Player choice + minimal charges
 - ☐ **T3-C1** New pending decision `trigger-ability`: a "may" ability prompts its
   owner to use it and choose options/targets. The reduce/pending/command loop
   extends to ability prompts; verify the online DO serialises them like any command.
-- ☐ **T3-C2** _(if charges pulled forward)_ Minimal **charge** model: `charges` +
-  `maxCharges` + recurring on `Ship`; spend/recover events; round-end recovery.
-  Force and status tokens stay R4.
+- ☐ **T3-C2** Minimal **charge** model: `charges` + `maxCharges` + recurring on
+  `Ship`; spend/recover events; round-end recovery. Force and status tokens stay R4.
 
 ## R3-M3 — Effect primitives (no-charge subset)
 - ☐ **T3-E1** Dice effects: reroll N, add/remove a die, change one result, set a
@@ -89,9 +88,7 @@ Status: ☐ not started · ◐ in progress · ☑ done
 - **Scope control:** never aim for all 700 pilots / 524 upgrades. Ship a curated,
   visibly-tracked set that grows; the `implemented` surface keeps it honest.
 
-## Decisions to confirm before building
-1. **Charges in R3 or held to R4?** (Recommend: minimal charges in R3-M2.)
-2. **Ability definition style** — code registry keyed by xws (recommend now) vs a
-   data DSL for the simplest patterns (later).
-3. **Coverage strategy** — curated growing set with a visible `implemented` flag
-   (recommend) vs chasing breadth.
+## Decisions (resolved)
+1. **Charges:** minimal charge model in R3-M2 (Force/status tokens remain R4). ✓
+2. **Ability style:** code registry keyed by xws. ✓
+3. **Coverage:** curated, growing set with a visible `implemented` flag. ✓
