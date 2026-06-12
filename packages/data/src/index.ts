@@ -1,6 +1,6 @@
 import meta from './generated/meta.json';
 
-export { implementedAbility, installAbilities } from './abilities';
+export { abilityNote, implementedAbility, installAbilities } from './abilities';
 
 /** Pins the game to the points revision it was built from (cards: xwing-data2). */
 export const DATA_VERSION = meta.points;

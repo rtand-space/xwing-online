@@ -181,3 +181,6 @@ export function installAbilities(): void {
 
 /** Does the engine simulate this card's ability yet? (for builder honesty) */
 export const implementedAbility = (xws: string): boolean => xws in ABILITIES;
+
+/** Our short paraphrase of a simulated ability, for UI hints. */
+export const abilityNote = (xws: string): string | undefined => ABILITIES[xws]?.note;

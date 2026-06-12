@@ -83,15 +83,20 @@ Status: ☐ not started · ◐ in progress · ☑ done
   **Marksmanship** (after the engine gained a **bullseye arc** — `inBullseye`,
   a range-ruler-width corridor), **Fanatical**, **Trick Shot**, **Heroic**, and
   **Crack Shot** (after **upgrade-granted charges**: the generator now captures
-  each upgrade's `charges`, summed into the ship at build). The set grows from here.
-  _Charges are pooled per ship for now — true per-card pools are a later pass._
+  each upgrade's `charges`, summed into the ship at build). **11 cards** as a
+  shipping baseline. _Charges are pooled per ship for now — true per-card pools later._
+  _Further card expansion is deliberately deferred until R4 mechanics land: a
+  dataset survey shows ~80% of abilities need Force / status tokens / aux arcs /
+  auras / actions / devices, so each R4 mechanic unlocks far more cards than
+  hand-adding would. Only ~30 more are reachable on today's primitives._
 - ☑ **T3-S2** Builder honesty: `implementedAbility(xws)` badges pilots/upgrades the
-  engine actually simulates, with a note that the rest aren't yet — so equipping an
-  unimplemented card doesn't mislead.
+  engine simulates (with the paraphrase on hover) + a note that the rest aren't yet.
+  Charges shown as pips in the roster.
 
-## R3-M5 — Content-as-data expansion
-- ☐ **T3-X1** Prove the thesis: add more named pilots/upgrades by registering
-  abilities only — zero engine changes — and grow the implemented/coverage set.
+## R3-M5 — Content-as-data expansion ✅
+- ☑ **T3-X1** Thesis proven: every card added after its primitive existed was a
+  pure registry entry — zero engine changes. (Bullseye arc and upgrade-charges were
+  one-time engine unlocks, not per-card work.) Broad expansion resumes post-R4.
 
 ## Sequencing & risk
 - **M1 is the whole bet.** Get the window/registry/queue shape right; everything

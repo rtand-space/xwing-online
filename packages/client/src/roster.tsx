@@ -51,6 +51,9 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
           {ship.maxShields > 0 && (
             <Pips filled={ship.shields} max={ship.maxShields} color="#9bd2ff" label="shields" />
           )}
+          {ship.maxCharges > 0 && (
+            <Pips filled={ship.charges} max={ship.maxCharges} color="#f0a830" label="charges" />
+          )}
           {Object.entries(counts).map(([k, n]) => (
             <span key={k} className="chip" style={{ borderColor: TOKEN[k], color: TOKEN[k] }}>
               {k}
