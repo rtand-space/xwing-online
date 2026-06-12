@@ -22,6 +22,16 @@ is a one-time engine unlock; the cards that follow are pure data.)
 
 Status: ☐ not started
 
+## Decisions (resolved)
+1. **Sliced:** **R4a = M1–M4** (tokens, Force, arcs, auras, actions) ships first and
+   unlocks the majority of cards; **R4b = M5–M6** (secondary weapons, devices, damage
+   deck) follows. The card sweep (M7) runs against whatever is unlocked.
+2. **Full rules effects** for status tokens — tokens actually do their thing (ion
+   overrides movement, cloak changes agility, disarm blocks attacks…), enforced in the FSM.
+3. **Start at M1** (resources / green tokens) — lowest-risk, highest-reuse foundation.
+
+# R4a — tokens · Force · arcs · auras · actions
+
 ## R4-M1 — Resources & beneficial tokens
 - ☐ **T4-R1** Generalise the token model to the full taxonomy (green/red/orange);
   add **calculate** (focus-like for dice) and **reinforce** (reduce damage from an
@@ -53,6 +63,8 @@ Status: ☐ not started
   barrel-roll/boost executed as real repositions (geometry); red/linked actions and
   action-granting abilities.
 
+# R4b — secondary weapons · devices · damage deck
+
 ## R4-M5 — Secondary weapons & devices
 - ☐ **T4-W1** Secondary-weapon attacks from slots (torpedo/missile/cannon/turret)
   with their own attack value, arc, range, lock/charge requirements.
@@ -63,18 +75,10 @@ Status: ☐ not started
 - ☐ **T4-D1** A faceup critical-damage deck (a small crit set with effects, drawn as
   events for determinism) so crit-manipulation abilities (expose/repair) work.
 
+# Sweep
+
 ## R4-M7 — Sweep & cleanup
 - ☐ **T4-X1** The card-implementation sweep — now that the mechanics exist, register
   the large batch of newly-implementable pilots/upgrades (behaviour-only, paraphrased).
 - ☐ **T4-X2** Exact geometry for the advanced bearings (Tallon Roll / reverse, which
   are approximated today).
-
-## Decisions to confirm
-1. **Slice R4?** It's huge. A natural cut is **R4a = M1–M4** (tokens, Force, arcs,
-   auras, actions — unlocks the *majority* of cards) shipped first, then **R4b =
-   M5–M6** (secondary weapons, devices, damage deck). Or run straight through.
-2. **Token effect depth** — full rules enforcement (ion overrides movement, cloak
-   changes agility, disarm blocks attacks) vs. markers only. "Handles any card"
-   needs the real effects, but they touch the FSM.
-3. **Starting milestone** — recommend **M1** (resources/green tokens) as the lowest-
-   risk, highest-reuse foundation that later milestones build on.
