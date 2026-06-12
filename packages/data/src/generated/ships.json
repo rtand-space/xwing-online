@@ -301,6 +301,33 @@
         "cost": 8,
         "loadout": 9,
         "slots": ["Sensor", "Tech", "Modification", "Talent"]
+      },
+      {
+        "name": "“Longshot” — Evacuation of D'Qar",
+        "xws": "longshot-evacuationofdqar",
+        "initiative": 3,
+        "limited": 1,
+        "cost": 8,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "“Midnight” — Evacuation of D'Qar",
+        "xws": "midnight-evacuationofdqar",
+        "initiative": 6,
+        "limited": 1,
+        "cost": 9,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "“Scorch” — Evacuation of D'Qar",
+        "xws": "scorch-evacuationofdqar",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 9,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -603,6 +630,15 @@
         "cost": 10,
         "loadout": 15,
         "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"]
+      },
+      {
+        "name": "Lieutenant LeHuse — Evacuation of D'Qar",
+        "xws": "lieutenantlehuse-evacuationofdqar",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -730,6 +766,15 @@
         "cost": 13,
         "loadout": 11,
         "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"]
+      },
+      {
+        "name": "Kylo Ren — Evacuation of D'Qar",
+        "xws": "kyloren-evacuationofdqar",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 17,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -1007,6 +1052,15 @@
           "Modification",
           "Talent"
         ]
+      },
+      {
+        "name": "Petty Officer Thanisson — Evacuation of D'Qar",
+        "xws": "pettyofficerthanisson-evacuationofdqar",
+        "initiative": 1,
+        "limited": 1,
+        "cost": 16,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -2728,6 +2782,24 @@
         "cost": 10,
         "loadout": 0,
         "slots": []
+      },
+      {
+        "name": "Gideon Hask — Precursor",
+        "xws": "gideonhask-sl",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 33,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Iden Versio — Corvus",
+        "xws": "idenversio-epicsl",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 32,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -4447,6 +4519,15 @@
           "Payload",
           "Configuration"
         ]
+      },
+      {
+        "name": "Bo-Katan Kryze — Armed and Dangerous",
+        "xws": "bokatankryze-armedanddangerous",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 16,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -5427,6 +5508,26 @@
         "cost": 10,
         "loadout": 13,
         "slots": ["Crew", "Modification", "Turret", "Title", "Talent"]
+      },
+      {
+        "name": "Hera Syndulla — New Republic General",
+        "xws": "herasyndulla-legendsandrelics",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 18,
+        "loadout": 20,
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Gunner",
+          "Turret",
+          "Modification",
+          "Torpedo",
+          "Title",
+          "Talent",
+          "Talent"
+        ]
       }
     ]
   },
@@ -6394,6 +6495,15 @@
         "initiative": 5,
         "limited": 1,
         "cost": 18,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Leia Organa — Tantive IV",
+        "xws": "leiaorgana-epicsl",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 32,
         "loadout": 0,
         "slots": []
       }
@@ -7818,6 +7928,175 @@
           "Payload",
           "Illicit"
         ]
+      },
+      {
+        "name": "Aftab Ackbar — “Junior”",
+        "xws": "aftabackbar-wartime",
+        "initiative": 2,
+        "limited": 1,
+        "cost": 10,
+        "loadout": 13,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo"
+        ]
+      },
+      {
+        "name": "Corus Kapellim — “Gentleman Flyer”",
+        "xws": "coruskapellim-wartime",
+        "initiative": 1,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 18,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Illicit",
+          "Missile",
+          "Torpedo"
+        ]
+      },
+      {
+        "name": "Lega Fossang — Hero of Humbarine",
+        "xws": "legafossang-wartime",
+        "initiative": 3,
+        "limited": 1,
+        "cost": 10,
+        "loadout": 10,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo"
+        ]
+      },
+      {
+        "name": "Shasa Zaro — Artistic Ace",
+        "xws": "shasazaro-wartime",
+        "initiative": 3,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 15,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo",
+          "Talent"
+        ]
+      },
+      {
+        "name": "Teza Nasz — Old Soldier",
+        "xws": "tezanasz-wartime",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 18,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo",
+          "Talent"
+        ]
+      },
+      {
+        "name": "Wilsa Teshlo — Veiled Sorority Privateer",
+        "xws": "wilsateshlo-wartime",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 17,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo",
+          "Talent"
+        ]
+      },
+      {
+        "name": "Zorii Bliss — Corsair of Kijimi",
+        "xws": "zoriibliss-wartime",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 12,
+        "loadout": 20,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Talent",
+          "Missile",
+          "Torpedo",
+          "Illicit"
+        ]
+      },
+      {
+        "name": "Kijimi Spice Runner",
+        "xws": "kijimispicerunner-wartime",
+        "initiative": 2,
+        "limited": 0,
+        "cost": 11,
+        "loadout": 16,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo",
+          "Illicit"
+        ]
+      },
+      {
+        "name": "New Republic Patrol",
+        "xws": "newrepublicpatrol-wartime",
+        "initiative": 3,
+        "limited": 0,
+        "cost": 10,
+        "loadout": 11,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo"
+        ]
       }
     ]
   },
@@ -7935,6 +8214,15 @@
         "cost": 7,
         "loadout": 10,
         "slots": ["Modification", "Illicit", "Missile", "Crew", "Title"]
+      },
+      {
+        "name": "Kazuda Xiono — Resistance Spy",
+        "xws": "kazudaxiono-legendsandrelics",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 12,
+        "loadout": 13,
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
       }
     ]
   },
@@ -8122,6 +8410,24 @@
           "Sensor",
           "Modification"
         ]
+      },
+      {
+        "name": "Finch Dallow — Evacuation of D'Qar",
+        "xws": "finchdallow-evacuationofdqar",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 16,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Vennie — Evacuation of D'Qar",
+        "xws": "vennie-evacuationofdqar",
+        "initiative": 2,
+        "limited": 1,
+        "cost": 17,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -8259,6 +8565,15 @@
         "cost": 8,
         "loadout": 6,
         "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Torpedo"]
+      },
+      {
+        "name": "Pammich Nerro Goode — Evacuation of D'Qar",
+        "xws": "pammichnerrogoode-evacuationofdqar",
+        "initiative": 3,
+        "limited": 1,
+        "cost": 9,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -8533,6 +8848,33 @@
         "cost": 9,
         "loadout": 8,
         "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"]
+      },
+      {
+        "name": "Ronith Blario — Evacuation of D'Qar",
+        "xws": "ronithblario-evacuationofdqar",
+        "initiative": 2,
+        "limited": 1,
+        "cost": 9,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Tallissan Lintra — Evacuation of D'Qar",
+        "xws": "tallissanlintra-evacuationofdqar",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Zizi Tlo — Evacuation of D'Qar",
+        "xws": "zizitlo-evacuationofdqar",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -8937,6 +9279,52 @@
         "cost": 11,
         "loadout": 10,
         "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+      },
+      {
+        "name": "C’ai Threnalli — Tenacious Survivor",
+        "xws": "caithrenalli-wartime",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 10,
+        "loadout": 12,
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Missile",
+          "Torpedo",
+          "Talent"
+        ]
+      },
+      {
+        "name": "C’ai Threnalli — Evacuation of D'Qar",
+        "xws": "caithrenalli-evacuationofdqar",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Jaycris Tubbs — Evacuation of D'Qar",
+        "xws": "jaycristubbs-evacuationofdqar",
+        "initiative": 1,
+        "limited": 1,
+        "cost": 10,
+        "loadout": 0,
+        "slots": []
+      },
+      {
+        "name": "Poe Dameron — Evacuation of D'Qar",
+        "xws": "poedameron-evacuationofdqar",
+        "initiative": 6,
+        "limited": 1,
+        "cost": 16,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -9335,6 +9723,15 @@
           "Title",
           "Talent"
         ]
+      },
+      {
+        "name": "Han Solo — Armed and Dangerous",
+        "xws": "hansolo-armedanddangerous",
+        "initiative": 6,
+        "limited": 1,
+        "cost": 15,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -9559,6 +9956,15 @@
         "cost": 11,
         "loadout": 8,
         "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+      },
+      {
+        "name": "Fenn Rau — Armed and Dangerous",
+        "xws": "fennrau-armedanddangerous",
+        "initiative": 6,
+        "limited": 1,
+        "cost": 17,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -9728,6 +10134,15 @@
         "cost": 16,
         "loadout": 12,
         "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"]
+      },
+      {
+        "name": "Boba Fett — Armed and Dangerous",
+        "xws": "bobafett-armedanddangerous",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 18,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -9815,6 +10230,15 @@
         "cost": 11,
         "loadout": 11,
         "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"]
+      },
+      {
+        "name": "Zuckuss — Armed and Dangerous",
+        "xws": "zuckuss-armedanddangerous",
+        "initiative": 3,
+        "limited": 1,
+        "cost": 12,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -10187,6 +10611,15 @@
         "cost": 11,
         "loadout": 13,
         "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo"]
+      },
+      {
+        "name": "Dengar — Armed and Dangerous",
+        "xws": "dengar-armedanddangerous",
+        "initiative": 6,
+        "limited": 1,
+        "cost": 15,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -10404,6 +10837,15 @@
         "cost": 14,
         "loadout": 14,
         "slots": ["Crew", "Illicit", "Illicit", "Modification"]
+      },
+      {
+        "name": "Asajj Ventress — Trident",
+        "xws": "asajjventress-epicsl",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 19,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -10980,6 +11422,15 @@
           "Modification",
           "Talent"
         ]
+      },
+      {
+        "name": "Cad Bane — Armed and Dangerous",
+        "xws": "cadbane-armedanddangerous",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 11,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -11187,6 +11638,15 @@
         "cost": 13,
         "loadout": 11,
         "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification"]
+      },
+      {
+        "name": "The Mandalorian — Armed and Dangerous",
+        "xws": "themandalorian-armedanddangerous",
+        "initiative": 5,
+        "limited": 1,
+        "cost": 10,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -11295,6 +11755,15 @@
         "cost": 12,
         "loadout": 14,
         "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"]
+      },
+      {
+        "name": "Prince Xizor — Armed and Dangerous",
+        "xws": "princexizor-armedanddangerous",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 13,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },
@@ -11500,6 +11969,15 @@
         "cost": 16,
         "loadout": 22,
         "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"]
+      },
+      {
+        "name": "Bossk — Armed and Dangerous",
+        "xws": "bossk-armedanddangerous",
+        "initiative": 4,
+        "limited": 1,
+        "cost": 15,
+        "loadout": 0,
+        "slots": []
       }
     ]
   },

@@ -151,6 +151,18 @@ describe('full xwing-data2 snapshot', () => {
     expect(DATA_VERSION).toMatch(/^XWA /);
   });
 
+  it('every pilot is well-formed (initiative, cost, loadout, slots)', async () => {
+    const { allShips } = await import('./index');
+    const pilots = allShips().flatMap((s) => s.pilots);
+    expect(pilots.length).toBeGreaterThan(690);
+    for (const p of pilots) {
+      expect(typeof p.initiative, p.xws).toBe('number');
+      expect(typeof p.cost, p.xws).toBe('number');
+      expect(typeof p.loadout, p.xws).toBe('number');
+      expect(Array.isArray(p.slots), p.xws).toBe(true);
+    }
+  });
+
   it('every dial code in the snapshot parses (nothing dropped)', async () => {
     const { allShips, parseManeuver } = await import('./index');
     for (const ship of allShips()) {

@@ -48,6 +48,8 @@ for (const file of readdirSync(revDir)) {
   for (const ship of Object.keys(byShip)) {
     for (const [xws, p] of Object.entries(byShip[ship])) {
       xwaPilots[xws] = {
+        name: p.name,
+        subtitle: p.subtitle ?? '',
         cost: p.cost,
         loadout: p.loadout ?? 0,
         slots: p.slots ?? [],
@@ -98,6 +100,35 @@ for (const faction of readdirSync(pilotsDir)) {
 }
 ships.sort((a, b) => a.faction.localeCompare(b.faction) || a.name.localeCompare(b.name));
 
+// Append XWA-only reprint/variant pilots (suffix variants like "-battleofyavin"
+// of pilots we already carry) to their base pilot's ship — same ship, same
+// initiative as the base. XWA-original new pilots have no initiative in the
+// points feed and aren't in xwing-data2, so they're deferred (not guessed).
+const pilotShip = new Map();
+const have = new Set();
+for (const sh of ships) for (const p of sh.pilots) (pilotShip.set(p.xws, sh), have.add(p.xws));
+let synthesized = 0;
+const deferred = [];
+for (const [xws, x] of Object.entries(xwaPilots)) {
+  if (have.has(xws)) continue;
+  const sh = pilotShip.get(xws.split('-')[0]);
+  if (!sh) {
+    deferred.push(xws);
+    continue;
+  }
+  const base = sh.pilots.find((p) => p.xws === xws.split('-')[0]);
+  sh.pilots.push({
+    name: x.subtitle && x.subtitle !== x.name ? `${x.name} — ${x.subtitle}` : x.name,
+    xws,
+    initiative: base.initiative,
+    limited: x.limited,
+    cost: x.cost,
+    loadout: x.loadout,
+    slots: x.slots,
+  });
+  synthesized++;
+}
+
 const upgrades = [];
 const upDir = join(SRC, 'data/upgrades');
 for (const file of readdirSync(upDir)) {
@@ -141,6 +172,7 @@ writeFileSync(
       pointsDate: revision.effective_date,
       generatedAt: new Date().toISOString().slice(0, 10),
       ships: ships.length,
+      pilots: ships.reduce((n, s) => n + s.pilots.length, 0),
       upgrades: upgrades.length,
     },
     null,
@@ -153,4 +185,7 @@ console.log(
 );
 console.log(
   `priced from XWA: ${pilotsPriced} pilots (${pilotsUnpriced} unpriced), ${upgradesPriced} upgrades`,
+);
+console.log(
+  `synthesized ${synthesized} XWA reprint variants; deferred ${deferred.length} (XWA-original / Epic-Huge, no card data)`,
 );
