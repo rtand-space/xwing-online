@@ -7,6 +7,7 @@ import {
   inBullseye,
   registerAbility,
   rerollAttack,
+  rerollDefence,
 } from '@xwing/engine';
 
 /**
@@ -98,6 +99,53 @@ const ABILITIES: Record<string, Ability> = {
       onModifyAttack: (ctx, self) => {
         if (ctx.attacker.id === self.id && inBullseye(ctx.attacker, ctx.target)) {
           changeAttack(ctx, 'hit', 'crit', 1);
+        }
+      },
+    },
+  },
+
+  // Fanatical (Talent) — while unshielded, turn a focus into a hit.
+  fanatical: {
+    note: 'While attacking with no shields, change 1 focus result to a hit.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.attacker.shields === 0) {
+          changeAttack(ctx, 'focus', 'hit', 1);
+        }
+      },
+    },
+  },
+
+  // Trick Shot (Talent) — bonus die when your shot is obstructed by an obstacle.
+  trickshot: {
+    note: 'While attacking through an obstacle, roll 1 extra attack die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.obstructed) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // Heroic (Talent) — reroll an all-blank roll of 2+ dice, attacking or defending.
+  heroic: {
+    note: 'If all your dice are blanks (2+), reroll them — attacking or defending.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (
+          ctx.attacker.id === self.id &&
+          ctx.attack.length >= 2 &&
+          ctx.attack.every((f) => f === 'blank')
+        ) {
+          rerollAttack(ctx, 'blank');
+        }
+      },
+      onModifyDefence: (ctx, self) => {
+        if (
+          ctx.target.id === self.id &&
+          ctx.defence.length >= 2 &&
+          ctx.defence.every((f) => f === 'blank')
+        ) {
+          rerollDefence(ctx, 'blank');
         }
       },
     },

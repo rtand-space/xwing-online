@@ -140,6 +140,45 @@ describe('card abilities', () => {
     expect(offAxis.events).toHaveLength(0);
   });
 
+  it('Fanatical turns a focus into a hit only while unshielded', () => {
+    const hook = getAbility('fanatical')!.attack!.onModifyAttack!;
+    const bare = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(bare, ship('t', { x: 0, y: 100, angle: 0 }), ['focus', 'blank']);
+    hook(c, bare);
+    expect(c.attack).toEqual(['hit', 'blank']);
+
+    const shielded: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), shields: 1 };
+    const c2 = ctx(shielded, ship('t', { x: 0, y: 100, angle: 0 }), ['focus']);
+    hook(c2, shielded);
+    expect(c2.attack).toEqual(['focus']);
+  });
+
+  it('Trick Shot adds a die only when the shot is obstructed', () => {
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const hook = getAbility('trickshot')!.attack!.onRollAttack!;
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    c.obstructed = true;
+    hook(c, atk);
+    expect(c.attack).toHaveLength(2);
+
+    const clear = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    hook(clear, atk);
+    expect(clear.attack).toHaveLength(1);
+  });
+
+  it('Heroic rerolls an all-blank attack of 2+ dice', () => {
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const hook = getAbility('heroic')!.attack!.onModifyAttack!;
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'blank']);
+    hook(c, atk);
+    expect(c.cursor).toBe(2); // both rerolled
+    expect(c.events.filter((e) => e.type === 'DiceRolled')).toHaveLength(1);
+
+    const mixed = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'hit']);
+    hook(mixed, atk);
+    expect(mixed.cursor).toBe(0); // not all blanks → nothing
+  });
+
   it('Outmaneuver drops a defence die only from outside the defender’s arc', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
     const hook = getAbility('outmaneuver')!.attack!.onRollDefence!;
