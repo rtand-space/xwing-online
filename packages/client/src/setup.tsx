@@ -11,7 +11,6 @@ import {
   pilotChoices,
   slotKey,
   SQUAD_POINT_CAP,
-  type Side,
   squadPoints,
   upgradeOptions,
   validateSquad,
@@ -19,14 +18,15 @@ import {
   XWS_FACTION,
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
-import { useAuth } from './auth';
 import { useOnline } from './online-store';
-import { type SavedSquad, deleteSquad, listSquads, saveSquad } from './squads';
+import type { SavedSquad } from './squads';
+import { useSquads } from './squads-store';
 import { useGame } from './store';
 
 const FACTION_BY_XWS: Record<string, FactionId> = Object.fromEntries(
   FACTION_IDS.map((f) => [XWS_FACTION[f], f]),
 );
+const factionLabel = (xws: string): string => FACTIONS[FACTION_BY_XWS[xws] ?? 'rebel'] ?? xws;
 
 const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
@@ -248,60 +248,7 @@ function Loadout({
   );
 }
 
-/** Save/load the signed-in user's squads (shown only when authenticated). */
-function SavedSquads({
-  faction,
-  picks,
-  onLoad,
-}: {
-  faction: FactionId;
-  picks: Pick[];
-  onLoad: (f: FactionId, picks: Pick[]) => void;
-}): ReactElement | null {
-  const user = useAuth((s) => s.user);
-  const [list, setList] = useState<SavedSquad[]>([]);
-  const refresh = () => void listSquads().then(setList);
-  useEffect(() => {
-    if (user) refresh();
-    else setList([]);
-  }, [user]);
-  if (!user) return null;
-
-  const save = async () => {
-    const name = prompt('Name this squad');
-    if (!name?.trim()) return;
-    await saveSquad(name.trim(), XWS_FACTION[faction], toSquad(faction, picks));
-    refresh();
-  };
-  const load = (sq: SavedSquad) => {
-    const fid = FACTION_BY_XWS[sq.xws.faction] ?? faction;
-    const res = picksFromXws(JSON.stringify(sq.xws), fid);
-    if (res.picks) onLoad(fid, res.picks);
-  };
-
-  return (
-    <div className="savedSquads">
-      <button className="btn sm" disabled={picks.length === 0} onClick={save}>
-        Save squad
-      </button>
-      {list.map((sq) => (
-        <div key={sq.id} className="rosterRow">
-          <button className="btn sm ghost" onClick={() => load(sq)}>
-            {sq.name} <span className="muted">{sq.faction}</span>
-          </button>
-          <button
-            className="x"
-            aria-label="Delete"
-            onClick={() => void deleteSquad(sq.id).then(refresh)}
-          >
-            ×
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-}
-
+/** The squad-building column: faction, ship/pilot picker, per-pilot loadout, XWS import/export. */
 function SquadColumn({
   faction,
   setFaction,
@@ -443,65 +390,141 @@ function SquadColumn({
         </div>
       )}
 
-      <SavedSquads
-        faction={faction}
-        picks={picks}
-        onLoad={(f, p) => {
-          setFaction(f);
-          setPicks(p);
-        }}
-      />
       <XwsTools faction={faction} picks={picks} setPicks={setPicks} />
     </div>
   );
 }
 
-/** A single-faction squad builder used for online host/join. */
-function OnlineSquad({
-  side,
-  label,
-  disabled,
-  onSubmit,
-}: {
-  side: Side;
-  label: string;
-  disabled?: boolean;
-  onSubmit: (squad: XwsSquad) => void;
-}): ReactElement {
-  const [faction, setFaction] = useState<FactionId>(side === 'rebel' ? 'rebel' : 'imperial');
+/** Squad tab — the single home for building, importing, and saving squads. */
+export function SquadBuilder(): ReactElement {
+  const squads = useSquads((s) => s.squads);
+  const save = useSquads((s) => s.save);
+  const remove = useSquads((s) => s.remove);
+  const [editing, setEditing] = useState<null | 'new' | string>(null);
+  const [faction, setFaction] = useState<FactionId>('rebel');
   const [picks, setPicks] = useState<Pick[]>([]);
-  const squad = toSquad(faction, picks);
-  const v = validateSquad(squad);
+  const [name, setName] = useState('');
+
+  useEffect(() => void useSquads.getState().refresh(), []);
+
+  const edit = (entry?: SavedSquad) => {
+    if (entry) {
+      const fid = FACTION_BY_XWS[entry.xws.faction] ?? 'rebel';
+      setFaction(fid);
+      setName(entry.name);
+      setPicks(picksFromXws(JSON.stringify(entry.xws), fid).picks ?? []);
+      setEditing(entry.id);
+    } else {
+      setFaction('rebel');
+      setName('');
+      setPicks([]);
+      setEditing('new');
+    }
+  };
+
+  if (editing) {
+    const squad = toSquad(faction, picks);
+    const v = validateSquad(squad);
+    return (
+      <div className="panelStack">
+        <input
+          className="joinInput"
+          placeholder="squad name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <SquadColumn faction={faction} setFaction={setFaction} picks={picks} setPicks={setPicks} />
+        {picks.length > 0 &&
+          !v.valid &&
+          v.errors.map((e, i) => (
+            <div key={i} className="reject">
+              {e}
+            </div>
+          ))}
+        <div className="grid">
+          <button className="btn ghost" onClick={() => setEditing(null)}>
+            Cancel
+          </button>
+          <button
+            className="btn primary"
+            disabled={!name.trim() || !v.valid}
+            onClick={async () => {
+              await save(
+                name.trim(),
+                XWS_FACTION[faction],
+                squad,
+                editing === 'new' ? undefined : editing,
+              );
+              setEditing(null);
+            }}
+          >
+            Save squad
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="panelStack">
-      <SquadColumn faction={faction} setFaction={setFaction} picks={picks} setPicks={setPicks} />
-      {picks.length > 0 &&
-        !v.valid &&
-        v.errors.map((e, i) => (
-          <div key={i} className="reject">
-            {e}
-          </div>
-        ))}
-      <button
-        className="btn primary"
-        disabled={disabled || !v.valid}
-        onClick={() => onSubmit(squad)}
-      >
-        {label}
+      <div className="section">My squads</div>
+      {squads.length === 0 && <div className="muted">No squads yet — build one to play.</div>}
+      {squads.map((sq) => (
+        <div key={sq.id} className="rosterRow">
+          <button className="btn sm ghost" onClick={() => edit(sq)}>
+            {sq.name} <span className="muted">{factionLabel(sq.faction)}</span>
+          </button>
+          <button className="x" aria-label="Delete" onClick={() => void remove(sq.id)}>
+            ×
+          </button>
+        </div>
+      ))}
+      <button className="btn primary" onClick={() => edit()}>
+        + New squad
       </button>
     </div>
   );
 }
 
-/** Game tab (no game): quick presets, then one online builder toggled host/join. */
+function SquadSelect({
+  squads,
+  value,
+  onChange,
+  placeholder,
+}: {
+  squads: SavedSquad[];
+  value: string;
+  onChange: (id: string) => void;
+  placeholder: string;
+}): ReactElement {
+  return (
+    <select className="factionSel" value={value} onChange={(e) => onChange(e.target.value)}>
+      <option value="">{placeholder}</option>
+      {squads.map((s) => (
+        <option key={s.id} value={s.id}>
+          {s.name} — {factionLabel(s.faction)}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+/** Game tab — quick presets, custom hot-seat, and online play from saved squads. */
 export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const host = useOnline((s) => s.host);
   const join = useOnline((s) => s.join);
+  const squads = useSquads((s) => s.squads);
   const initialCode = new URLSearchParams(location.search).get('game') ?? '';
   const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
   const [code, setCode] = useState(initialCode);
+  const [online, setOnline] = useState('');
+  const [aId, setAId] = useState('');
+  const [bId, setBId] = useState('');
   const joining = mode === 'join';
+  const byId = (id: string) => squads.find((s) => s.id === id);
+
+  useEffect(() => void useSquads.getState().refresh(), []);
 
   return (
     <div className="panelStack">
@@ -515,59 +538,55 @@ export function QuickPlay(): ReactElement {
         ))}
       </div>
 
-      <div className="section">Play online</div>
-      <div className="segmented">
-        <button className={mode === 'host' ? 'active' : ''} onClick={() => setMode('host')}>
-          Host
-        </button>
-        <button className={joining ? 'active' : ''} onClick={() => setMode('join')}>
-          Join
-        </button>
-      </div>
-      {joining && (
-        <input
-          className="joinInput"
-          placeholder="enter game code"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
+      {squads.length === 0 ? (
+        <div className="muted">Build a squad in the Squad tab to play your own lists.</div>
+      ) : (
+        <>
+          <div className="section">Custom hot-seat</div>
+          <SquadSelect squads={squads} value={aId} onChange={setAId} placeholder="Squad A" />
+          <SquadSelect squads={squads} value={bId} onChange={setBId} placeholder="Squad B" />
+          <button
+            className="btn primary"
+            disabled={!byId(aId) || !byId(bId)}
+            onClick={() => startGame(buildConfig(byId(aId)!.xws, byId(bId)!.xws, seed()))}
+          >
+            Start battle
+          </button>
+
+          <div className="section">Play online</div>
+          <div className="segmented">
+            <button className={mode === 'host' ? 'active' : ''} onClick={() => setMode('host')}>
+              Host
+            </button>
+            <button className={joining ? 'active' : ''} onClick={() => setMode('join')}>
+              Join
+            </button>
+          </div>
+          <SquadSelect
+            squads={squads}
+            value={online}
+            onChange={setOnline}
+            placeholder="Choose your squad"
+          />
+          {joining && (
+            <input
+              className="joinInput"
+              placeholder="enter game code"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+          )}
+          <button
+            className="btn primary"
+            disabled={!byId(online) || (joining && !code.trim())}
+            onClick={() =>
+              joining ? void join(code.trim(), byId(online)!.xws) : void host(byId(online)!.xws)
+            }
+          >
+            {joining ? 'Join game' : 'Host game'}
+          </button>
+        </>
       )}
-      <OnlineSquad
-        key={mode}
-        side={joining ? 'imperial' : 'rebel'}
-        label={joining ? (code.trim() ? 'Join game' : 'Enter a code first') : 'Host game'}
-        disabled={joining && !code.trim()}
-        onSubmit={(s) => (joining ? void join(code.trim(), s) : void host(s))}
-      />
-    </div>
-  );
-}
-
-/** Squad tab (no game): build both squads for a custom hot-seat match. */
-export function SquadBuilder(): ReactElement {
-  const startGame = useGame((s) => s.startGame);
-  const [aFaction, setAFaction] = useState<FactionId>('rebel');
-  const [bFaction, setBFaction] = useState<FactionId>('imperial');
-  const [a, setA] = useState<Pick[]>([]);
-  const [b, setB] = useState<Pick[]>([]);
-  const aSquad = toSquad(aFaction, a);
-  const bSquad = toSquad(bFaction, b);
-  const canStart = validateSquad(aSquad).valid && validateSquad(bSquad).valid;
-
-  return (
-    <div className="panelStack">
-      <div className="section">Custom hot-seat — both squads, 3–8 ships, ≤50 pts each</div>
-      <div className="builder">
-        <SquadColumn faction={aFaction} setFaction={setAFaction} picks={a} setPicks={setA} />
-        <SquadColumn faction={bFaction} setFaction={setBFaction} picks={b} setPicks={setB} />
-      </div>
-      <button
-        className="btn primary start"
-        disabled={!canStart}
-        onClick={() => startGame(buildConfig(aSquad, bSquad, seed()))}
-      >
-        {canStart ? 'Start battle' : 'Each side needs a legal squad'}
-      </button>
     </div>
   );
 }

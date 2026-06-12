@@ -16,11 +16,16 @@ export async function listSquads(): Promise<SavedSquad[]> {
   return ((await r.json()) as { squads: SavedSquad[] }).squads;
 }
 
-export async function saveSquad(name: string, faction: string, xws: XwsSquad): Promise<void> {
+export async function saveSquad(
+  name: string,
+  faction: string,
+  xws: XwsSquad,
+  id?: string,
+): Promise<void> {
   await fetch(`${SERVER}/squads`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', ...authHeader() },
-    body: JSON.stringify({ name, faction, xws }),
+    body: JSON.stringify({ id, name, faction, xws }),
   });
 }
 

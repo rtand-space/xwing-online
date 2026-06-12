@@ -4,6 +4,7 @@ import { useAuth } from './auth';
 import { previewFor, SvgBoard } from './board';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
+import { useSquads } from './squads-store';
 import { SideFlyout } from './SideFlyout';
 import { TopNav } from './TopNav';
 import { useActiveGame } from './useActiveGame';
@@ -18,6 +19,9 @@ export function App(): ReactElement {
   useEffect(() => void useOnline.getState().resume(), []);
   // Capture an OAuth redirect (#session=…) and load the signed-in user.
   useEffect(() => void useAuth.getState().init(), []);
+  // Re-sync saved squads whenever sign-in state changes (migrates local → account).
+  const user = useAuth((s) => s.user);
+  useEffect(() => void useSquads.getState().refresh(), [user]);
   // Open the menu when there's nothing to play; get out of the way once a game starts.
   useEffect(() => setSideOpen(ag.mode === 'none'), [ag.mode]);
 
