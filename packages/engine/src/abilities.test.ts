@@ -1,8 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { clearAbilities, registerAbility, shipAbilitySources } from './abilities';
+import { clearAbilities, fireWindow, registerAbility, shipAbilitySources } from './abilities';
 import { resolveAttack } from './combat';
-import type { GameEvent } from './events';
-import type { GameState, Position, Ship } from './types';
+import type { Command } from './commands';
+import type { GameConfig, GameEvent, ShipInit } from './events';
+import { createGame, dispatch } from './game';
+import type { GameState, Maneuver, Position, Ship } from './types';
 
 const ship = (id: string, shipType: string, over: Partial<Ship> = {}): Ship => ({
   id,
@@ -80,5 +82,55 @@ describe('ability framework', () => {
     const t = ship('t', 'dummy', { pos: { x: 0, y: 260, angle: 0 }, agility: 0 }); // range 3, no bonus die
     const events = resolveAttack(stateWith([a, t]), 'a', 't');
     expect(events.some((e) => e.type === 'DamageDealt')).toBe(false);
+  });
+
+  it('fireWindow runs a non-combat window only for ships with the ability', () => {
+    registerAbility('flyer', {
+      game: { afterMove: ({ self }) => [{ type: 'TokenGained', shipId: self.id, kind: 'focus' }] },
+    });
+    const flyer = ship('a', 'flyer');
+    expect(fireWindow(stateWith([flyer]), 'afterMove', flyer)).toEqual([
+      { type: 'TokenGained', shipId: 'a', kind: 'focus' },
+    ]);
+    const plain = ship('b', 'plain');
+    expect(fireWindow(stateWith([plain]), 'afterMove', plain)).toEqual([]);
+  });
+
+  it('afterMove fires when a ship executes its maneuver (FSM integration)', () => {
+    registerAbility('flyer', {
+      game: { afterMove: ({ self }) => [{ type: 'TokenGained', shipId: self.id, kind: 'focus' }] },
+    });
+    const mk = (id: string, ownerId: string, st: string, y: number): ShipInit => ({
+      id,
+      ownerId,
+      shipType: st,
+      pilot: id,
+      initiative: ownerId === 'p' ? 1 : 2,
+      base: 'small',
+      primaryAttack: 2,
+      agility: 2,
+      hull: 3,
+      shields: 0,
+      pos: { x: 0, y, angle: 0 },
+      actionBar: ['focus'],
+      dialOptions: [{ speed: 1, bearing: 'straight', difficulty: 'white' }],
+    });
+    const config: GameConfig = {
+      id: 'g',
+      seed: 's',
+      players: [
+        { id: 'p', name: 'P' },
+        { id: 'q', name: 'Q' },
+      ],
+      ships: [mk('a', 'p', 'flyer', -200), mk('b', 'q', 'plain', 200)],
+    };
+    const dial: Maneuver = { speed: 1, bearing: 'straight', difficulty: 'white' };
+    let game = createGame(config);
+    const send = (cmd: Command) => (game = dispatch(game, cmd).game);
+    send({ type: 'SetDial', playerId: 'p', shipId: 'a', maneuver: dial });
+    send({ type: 'SetDial', playerId: 'q', shipId: 'b', maneuver: dial });
+    send({ type: 'ExecuteManeuver', playerId: 'p', shipId: 'a' });
+    const a = game.state.ships.find((s) => s.id === 'a')!;
+    expect(a.tokens.some((t) => t.kind === 'focus')).toBe(true);
   });
 });

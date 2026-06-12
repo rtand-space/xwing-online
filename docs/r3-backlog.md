@@ -36,19 +36,20 @@ a data DSL — a DSL for the simplest patterns can come later.
 
 Status: ☐ not started · ◐ in progress · ☑ done
 
-## R3-M1 — The framework
-- ☐ **T3-F1** Generalise timing windows beyond combat: a game-wide hook registry
-  for windows like `afterReveal`, `beforeActivation`, `afterMove`, `onPerformAction`,
-  `onGainToken`, `onRoundEnd`, plus the existing 8 attack windows. Engine-pure.
+## R3-M1 — The framework ✅
+- ☑ **T3-F1** Non-combat timing windows: `fireWindow(state, window, self, event?)`
+  runs a ship's `game` handlers and returns events to append. `afterMove` and
+  `onPerformAction` are wired into the FSM (reduce); `afterReveal`/`onRoundEnd` are
+  declared and get wired as cards need them. Engine-pure.
 - ☑ **T3-F2** **Ability registry** keyed by xws → a typed `Ability` declaring
   handlers (`engine/abilities.ts`); `shipAbilitySources` reads ship type + pilot +
   upgrades. No card-specific code in the core engine.
 - ☑ **T3-F3** **Equipped upgrades + pilot xws threaded into the engine.**
   `ShipInit`/`Ship` gain `pilotXws` + `upgrades`; `toShipInit`/`squadToShipInits`
   pass them through (connecting T-B2's loadouts to gameplay).
-- ◐ **T3-F4** Registry wired into `resolveAttack` (`gatherAttackHooks`, attacker-
-  then-defender order, run after each builtin window). _Remaining: wire the FSM
-  steps once non-combat windows exist (F1), and refine the ability queue._
+- ☑ **T3-F4** Registry wired into `resolveAttack` (`gatherAttackHooks`, attacker-
+  then-defender order, after each builtin window) and into the FSM via `fireWindow`.
+  _Ability-queue refinement (range/initiative tie-breaks) revisited when a card needs it._
 
 ## R3-M2 — Player choice + minimal charges
 - ☐ **T3-C1** New pending decision `trigger-ability`: a "may" ability prompts its

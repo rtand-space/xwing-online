@@ -1,3 +1,4 @@
+import { fireWindow, type GameWindow } from './abilities';
 import { applyEvent } from './apply';
 import { resolveAttack } from './combat';
 import type { Command } from './commands';
@@ -13,6 +14,21 @@ export interface ReduceResult {
 }
 
 const reject = (rejection: string): ReduceResult => ({ events: [], rejection });
+
+/** Fold the events so far, then fire a non-combat ability window for the acting ship. */
+function appendWindow(
+  state: GameState,
+  events: GameEvent[],
+  window: GameWindow,
+  shipId: string,
+  trigger?: GameEvent,
+): GameEvent[] {
+  let s = state;
+  for (const e of events) s = applyEvent(s, e);
+  const ship = s.ships.find((sh) => sh.id === shipId);
+  if (ship && ship.hull > 0) events.push(...fireWindow(s, window, ship, trigger));
+  return events;
+}
 
 const sameManeuver = (a: Maneuver, b: Maneuver): boolean =>
   a.speed === b.speed && a.bearing === b.bearing && a.difficulty === b.difficulty;
@@ -60,7 +76,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'StressChanged', shipId: ship.id, delta: -1 });
       }
       events.push(...obstacleMoveEvents(state, ship, move.to));
-      return { events };
+      return { events: appendWindow(state, events, 'afterMove', ship.id) };
     }
     case 'PerformAction': {
       if (pending.type !== 'perform-action') return reject('Wrong phase');
@@ -78,7 +94,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         }
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'lock', targetId: cmd.targetId });
       }
-      return { events };
+      return { events: appendWindow(state, events, 'onPerformAction', ship.id, events[0]) };
     }
     case 'SkipAction': {
       if (pending.type !== 'perform-action' || !pending.options.canSkip)
