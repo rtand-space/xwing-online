@@ -13,8 +13,11 @@ Status: ☐ not started · ◐ in progress · ☑ done
 
 ## R2-M1 — Data layer & points
 - ☑ **T-D1** Squad/loadout points model in `@xwing/data`: pilots gain `loadout` + slot bar; `squadPoints()` and `validateSquad()` (single faction, 3–8 ships, ≤20 pts, limited rules). _Loadout-cost validation lands with T-B2 (upgrade data)._
-- ◐ **T-D2** Roster expansion: added RZ-1 A-wing (Rebel) + TIE/in Interceptor (Imperial) — ability-less, front-arc, real stats/dials/points. More ships + a full xwing-data2 pull still to come.
-- ☐ **T-D3** Versioned points snapshot: pull XWA community points on a schedule, cache a pinned version, surface the data version; pin each game to its version.
+- ☑ **T-D2** Full xwing-data2 pull: `packages/data/scripts/generate.mjs` reads a xwing-data2 checkout and emits a committed snapshot (`src/generated/{ships,upgrades,meta}.json`) — **95 ships across all 7 factions, 524 upgrades, real stats/dials/points/slots**. No images/raw dataset vendored. Cross-faction shared hulls resolved in the loaders. A test parses every dial code in the snapshot (nothing dropped). Dial vocabulary made complete first (Segnor/Tallon/reverse/stationary + purple), verified against the source.
+- ◐ **T-D3** Versioned snapshot: each game pins `DATA_VERSION = xwing-data2@<commit>` (in `meta.json`). _Scheduled auto-refresh + per-game version pinning in the engine state still to come._
+
+Refresh the data: clone xwing-data2 (sparse `data/`), then
+`XWING_DATA2=/path node packages/data/scripts/generate.mjs`.
 
 ## R2-M2 — Squad builder UI
 - ☑ **T-B1** Faction pilot list with a squad-point meter + live `validateSquad` errors.

@@ -1,17 +1,17 @@
-import rz1awing from './cards/rz1awing.json';
-import t65xwing from './cards/t65xwing.json';
-import tieinterceptor from './cards/tieinterceptor.json';
-import tieln from './cards/tieln.json';
-import type { PilotData, ShipData } from './types';
+import shipsData from './generated/ships.json';
+import upgradesData from './generated/upgrades.json';
+import type { PilotData, ShipData, UpgradeData } from './types';
 
-const SHIPS: ShipData[] = [t65xwing, tieln, rz1awing, tieinterceptor].map(
-  (s) => s as unknown as ShipData,
-);
-const byXws = new Map(SHIPS.map((s) => [s.xws, s]));
+const SHIPS = shipsData as unknown as ShipData[];
 
 export function allShips(): ShipData[] {
   return SHIPS;
 }
+
+// Some hulls appear once per faction (faction-specific pilot lists). Stats/dial
+// are faction-agnostic, so getShip returns the first entry; getPilot scans them all.
+const byXws = new Map<string, ShipData>();
+for (const s of SHIPS) if (!byXws.has(s.xws)) byXws.set(s.xws, s);
 
 export function getShip(xws: string): ShipData {
   const ship = byXws.get(xws);
@@ -20,7 +20,21 @@ export function getShip(xws: string): ShipData {
 }
 
 export function getPilot(shipXws: string, pilotXws: string): PilotData {
-  const pilot = getShip(shipXws).pilots.find((p) => p.xws === pilotXws);
-  if (!pilot) throw new Error(`Unknown pilot ${pilotXws} on ${shipXws}`);
-  return pilot;
+  for (const s of SHIPS) {
+    if (s.xws !== shipXws) continue;
+    const pilot = s.pilots.find((p) => p.xws === pilotXws);
+    if (pilot) return pilot;
+  }
+  throw new Error(`Unknown pilot ${pilotXws} on ${shipXws}`);
+}
+
+const UPGRADES = upgradesData as unknown as UpgradeData[];
+
+export function allUpgrades(): UpgradeData[] {
+  return UPGRADES;
+}
+
+/** Upgrades that can equip into the given slot. */
+export function upgradesForSlot(slot: string): UpgradeData[] {
+  return UPGRADES.filter((u) => u.slots.includes(slot));
 }

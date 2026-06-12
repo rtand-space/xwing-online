@@ -35,3 +35,18 @@ export interface ShipData {
   dial: string[];
   pilots: PilotData[];
 }
+
+export interface UpgradeData {
+  xws: string;
+  name: string;
+  /** Primary slot this upgrade equips into. */
+  slot: string;
+  /** All slots it occupies (dual-slot upgrades occupy more than one). */
+  slots: string[];
+  /** Fixed loadout cost, or null when the cost varies (see variableCost). */
+  cost: number | null;
+  variableCost: { variable?: string; values?: Record<string, number> } | null;
+  /** 0 = unlimited; otherwise the max copies in a squad. */
+  limited: number;
+  restrictions: unknown[];
+}

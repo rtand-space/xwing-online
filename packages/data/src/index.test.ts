@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { DATA_VERSION } from './index';
 
 describe('@xwing/data', () => {
-  it('exposes a version', () => {
-    expect(DATA_VERSION).toBe('0.0.0');
+  it('exposes the pinned data version', () => {
+    expect(DATA_VERSION).toMatch(/^xwing-data2@/);
   });
 });

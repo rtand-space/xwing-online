@@ -1,7 +1,11 @@
-export const DATA_VERSION = '0.0.0';
+import meta from './generated/meta.json';
 
-export type { ActionData, PilotData, ShipData, Stat } from './types';
-export { allShips, getPilot, getShip } from './loaders';
+/** Pins the game to the xwing-data2 snapshot it was built from. */
+export const DATA_VERSION = `xwing-data2@${meta.commit}`;
+export const DATA_META = meta;
+
+export type { ActionData, PilotData, ShipData, Stat, UpgradeData } from './types';
+export { allShips, allUpgrades, getPilot, getShip, upgradesForSlot } from './loaders';
 export { parseDial, parseManeuver } from './dial';
 export { toShipInit } from './build';
 export { parseXws, serializeXws, squadToShipInits } from './xws';

@@ -7,6 +7,7 @@ const SIZES: Record<string, BaseSize> = { Small: 'small', Medium: 'medium', Larg
 
 const ACTIONS: Record<string, ActionType> = {
   Focus: 'focus',
+  Lock: 'lock',
   'Target Lock': 'lock',
   'Barrel Roll': 'barrel-roll',
   Boost: 'boost',

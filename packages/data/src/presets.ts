@@ -49,9 +49,9 @@ const threeTies: XwsSquad = {
   faction: 'galacticempire',
   name: 'TIE Swarm',
   pilots: [
-    { id: 'academypilot', ship: 'tieln' },
-    { id: 'academypilot', ship: 'tieln' },
-    { id: 'obsidiansquadronpilot', ship: 'tieln' },
+    { id: 'academypilot', ship: 'tielnfighter' },
+    { id: 'academypilot', ship: 'tielnfighter' },
+    { id: 'obsidiansquadronpilot', ship: 'tielnfighter' },
   ],
 };
 
@@ -59,8 +59,8 @@ const twoTies: XwsSquad = {
   faction: 'galacticempire',
   name: 'TIE Patrol',
   pilots: [
-    { id: 'academypilot', ship: 'tieln' },
-    { id: 'obsidiansquadronpilot', ship: 'tieln' },
+    { id: 'academypilot', ship: 'tielnfighter' },
+    { id: 'obsidiansquadronpilot', ship: 'tielnfighter' },
   ],
 };
 

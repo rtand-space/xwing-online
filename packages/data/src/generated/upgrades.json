@@ -1,0 +1,6703 @@
+[
+  {
+    "xws": "chopper",
+    "name": "“Chopper”",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "genius",
+    "name": "“Genius”",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "bbastromech",
+    "name": "BB Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "bb8",
+    "name": "BB-8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "c110p",
+    "name": "C1-10P",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "l4er5",
+    "name": "L4E-R5",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"],
+        "action": {
+          "type": "Rotate Arc"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "m9g8",
+    "name": "M9-G8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "modifiedr4punit-battleoverendor",
+    "name": "Modified R4-P Unit",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "preciseastromech-battleofyavin",
+    "name": "Precise Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "q7astromech",
+    "name": "Q7 Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r1j5",
+    "name": "R1-J5",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "r2astromech",
+    "name": "R2 Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r2a3-battleofyavin",
+    "name": "R2-A3",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "r2a3-battleoverendor",
+    "name": "R2-A3",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "r2a6",
+    "name": "R2-A6",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r2c4",
+    "name": "R2-C4",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r2d2",
+    "name": "R2-D2",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "r2d2-republic",
+    "name": "R2-D2",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r2d2-resistance",
+    "name": "R2-D2",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "r2d2-battleofyavin",
+    "name": "R2-D2",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "r2f2-battleofyavin",
+    "name": "R2-F2",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "r2ha",
+    "name": "R2-HA",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "r3astromech",
+    "name": "R3 Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r4astromech",
+    "name": "R4 Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small"]
+      }
+    ]
+  },
+  {
+    "xws": "r4b11",
+    "name": "R4-B11",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "r4pastromech",
+    "name": "R4-P Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r4p17",
+    "name": "R4-P17",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r4p44",
+    "name": "R4-P44",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "r5astromech",
+    "name": "R5 Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r5d8",
+    "name": "R5-D8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "r5d8-battleofyavin",
+    "name": "R5-D8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r5k6-battleofyavin",
+    "name": "R5-K6",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r5p8",
+    "name": "R5-P8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "r5tk",
+    "name": "R5-TK",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "r5x3",
+    "name": "R5-X3",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "r6d8",
+    "name": "R6-D8",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "r7a7",
+    "name": "R7-A7",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "stabilizingastromech-battleoverendor",
+    "name": "Stabilizing Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "targetingastromech-battleofyavin",
+    "name": "Targeting Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "r4p17-siegeofcoruscant",
+    "name": "Targeting Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "watchfulastromech",
+    "name": "Watchful Astromech",
+    "slot": "Astromech",
+    "slots": ["Astromech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ancillaryionweapons-siegeofcoruscant",
+    "name": "Ancillary Ion Weapons",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "autoblasters",
+    "name": "Autoblasters",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "heavylasercannon",
+    "name": "Heavy Laser Cannon",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ioncannon",
+    "name": "Ion Cannon",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "jammingbeam",
+    "name": "Jamming Beam",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "precisiontunedcannons-battleoverendor",
+    "name": "Precision-Tuned Cannons",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "protoncannons",
+    "name": "Proton Cannons",
+    "slot": "Cannon",
+    "slots": ["Cannon", "Cannon"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "syncedlasercannons",
+    "name": "Synced Laser Cannons",
+    "slot": "Cannon",
+    "slots": ["Cannon", "Cannon"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tractorbeam",
+    "name": "Tractor Beam",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "underslungblastercannon",
+    "name": "Underslung Blaster Cannon",
+    "slot": "Cannon",
+    "slots": ["Cannon"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "adaptiveshields",
+    "name": "Adaptive Shields",
+    "slot": "Cargo",
+    "slots": ["Cargo"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "boostedscanners",
+    "name": "Boosted Scanners",
+    "slot": "Cargo",
+    "slots": ["Cargo"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "optimizedpowercore",
+    "name": "Optimized Power Core",
+    "slot": "Cargo",
+    "slots": ["Cargo"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tibannareserves",
+    "name": "Tibanna Reserves",
+    "slot": "Cargo",
+    "slots": ["Cargo"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "admiralozzel",
+    "name": "Admiral Ozzel",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "agentoftheempire",
+    "name": "Agent of the Empire",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "asajjventresscommand",
+    "name": "Asajj Ventress",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance", "scumandvillainy"]
+      },
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "azmorigan",
+    "name": "Azmorigan",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "b6bladewingprototype-command",
+    "name": "B6 Blade Wing Prototype",
+    "slot": "Command",
+    "slots": ["Command", "Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["asf01bwing"]
+      }
+    ]
+  },
+  {
+    "xws": "bounty",
+    "name": "Bounty (Hired)",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "captainneeda",
+    "name": "Captain Needa",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "carlistrieekan",
+    "name": "Carlist Rieekan",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "combatboardingtube",
+    "name": "Combat Boarding Tube",
+    "slot": "Command",
+    "slots": ["Command", "Configuration"],
+    "cost": null,
+    "variableCost": {
+      "value": "?"
+    },
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["gauntletfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "dreadnoughthunter",
+    "name": "Dreadnought Hunter",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 2,
+    "restrictions": []
+  },
+  {
+    "xws": "firstorderelite",
+    "name": "First Order Elite",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "generalgrievouscommand",
+    "name": "General Grievous",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      },
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "hondoohnakacommand",
+    "name": "Hondo Ohnaka",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "initforthemoneyrebellion",
+    "name": "In It For The Money",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "standardized": true
+      },
+      {
+        "non-limited": false
+      }
+    ]
+  },
+  {
+    "xws": "jandodonna",
+    "name": "Jan Dodonna",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "jedicommander",
+    "name": "Jedi Commander",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      },
+      {
+        "ships": ["delta7aethersprite", "eta2actis"]
+      }
+    ]
+  },
+  {
+    "xws": "martuuk",
+    "name": "Mar Tuuk",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "phoenixsquadron",
+    "name": "Phoenix Squadron",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "raymusantilles",
+    "name": "Raymus Antilles",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "rifftamson",
+    "name": "Riff Tamson",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "shadowwing",
+    "name": "Shadow Wing",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "skystrikeacademyclass",
+    "name": "Skystrike Academy Class",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 2,
+    "restrictions": []
+  },
+  {
+    "xws": "stalwartcaptain",
+    "name": "Stalwart Captain",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "strategiccommander",
+    "name": "Strategic Commander",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "veteranwingleader",
+    "name": "Veteran Wing Leader",
+    "slot": "Command",
+    "slots": ["Command"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "zealouscaptain",
+    "name": "Zealous Captain",
+    "slot": "Command",
+    "slots": ["Command", "Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "alpha3bbesh",
+    "name": "Alpha-3B “Besh”",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "alpha3eesk",
+    "name": "Alpha-3E “Esk”",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "calibratedlasertargeting",
+    "name": "Calibrated Laser Targeting",
+    "slot": "Configuration",
+    "slots": ["Configuration", "Modification"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["delta7aethersprite"]
+      }
+    ]
+  },
+  {
+    "xws": "corsairrefit",
+    "name": "Corsair Refit",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 2,
+    "restrictions": []
+  },
+  {
+    "xws": "delta7b",
+    "name": "Delta-7B",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["delta7aethersprite"]
+      }
+    ]
+  },
+  {
+    "xws": "enhancedjammingsuite",
+    "name": "Enhanced Jamming Suite",
+    "slot": "Configuration",
+    "slots": ["Configuration", "Tech"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["tiewiwhispermodifiedinterceptor"]
+      }
+    ]
+  },
+  {
+    "xws": "grapplingstruts",
+    "name": "Grappling Struts (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["vultureclassdroidfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "integratedsfoils",
+    "name": "Integrated S-foils (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["t70xwing"]
+      }
+    ]
+  },
+  {
+    "xws": "interceptbooster",
+    "name": "Intercept Booster (Attached)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "l337sprogramming-battleofyavin",
+    "name": "L3-37's Programming",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "landingstruts",
+    "name": "Landing Struts (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["hyenaclassdroidbomber"]
+      }
+    ]
+  },
+  {
+    "xws": "maneuverassistmgk300",
+    "name": "Maneuver-Assist MGK-300",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "os1arsenalloadout",
+    "name": "Os-1 Arsenal Loadout",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["alphaclassstarwing"]
+      }
+    ]
+  },
+  {
+    "xws": "pivotwing",
+    "name": "Pivot Wing (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["ut60duwing"]
+      }
+    ]
+  },
+  {
+    "xws": "repulsorliftstabilizers",
+    "name": "Repulsorlift Stabilizers (Inactive)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "sensitivecontrols",
+    "name": "Sensitive Controls",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "shipAbility": ["Autothrusters"]
+      },
+      {
+        "standardized": true
+      }
+    ]
+  },
+  {
+    "xws": "servomotorsfoils",
+    "name": "Servomotor S-foils (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["t65xwing"]
+      }
+    ]
+  },
+  {
+    "xws": "stabilizedsfoils",
+    "name": "Stabilized S-foils (Closed)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "strutlockoverride-siegeofcoruscant",
+    "name": "Strut-Lock Override",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "swivelwing",
+    "name": "Swivel Wing (Down)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["gauntletfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "targetassistmgk300",
+    "name": "Target-Assist MGK-300",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tiedefenderelite",
+    "name": "TIE Defender Elite",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["tieddefender"]
+      },
+      {
+        "standardized": true
+      }
+    ]
+  },
+  {
+    "xws": "vectoredcannonsrz1",
+    "name": "Vectored Cannons (RZ-1)",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "shipAbility": ["Vectored Thrusters"]
+      },
+      {
+        "standardized": true
+      }
+    ]
+  },
+  {
+    "xws": "wartimeloadout",
+    "name": "Wartime Loadout",
+    "slot": "Configuration",
+    "slots": ["Configuration", "Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["btanr2ywing"]
+      },
+      {
+        "standardized": true
+      }
+    ]
+  },
+  {
+    "xws": "xg1assaultconfiguration",
+    "name": "Xg-1 Assault Configuration",
+    "slot": "Configuration",
+    "slots": ["Configuration"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["alphaclassstarwing"]
+      }
+    ]
+  },
+  {
+    "xws": "chopper-crew",
+    "name": "“Chopper”",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "fives",
+    "name": "“Fives”",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "leebo-swz103",
+    "name": "“Leebo”",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "zeborrelios",
+    "name": "“Zeb” Orrelios",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "000",
+    "name": "0-0-0",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"],
+        "names": ["Darth Vader"]
+      }
+    ]
+  },
+  {
+    "xws": "4lom",
+    "name": "4-LOM",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "aaylasecura",
+    "name": "Aayla Secura",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "admiralsloane",
+    "name": "Admiral Sloane",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 16,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "agentkallus",
+    "name": "Agent Kallus",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "agentterex",
+    "name": "Agent Terex",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "ahsokatano-crew",
+    "name": "Ahsoka Tano",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "amilynholdo",
+    "name": "Amilyn Holdo",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "bazemalbus",
+    "name": "Baze Malbus",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "bokatankryze",
+    "name": "Bo-Katan Kryze",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "bokatankryze-rebel-scum",
+    "name": "Bo-Katan Kryze",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "bobafett",
+    "name": "Boba Fett",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "c3po",
+    "name": "C-3PO",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "c3po-crew",
+    "name": "C-3PO",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "c3po-republic",
+    "name": "C-3PO",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "cadbane",
+    "name": "Cad Bane",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "captainhark",
+    "name": "Captain Hark",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "captainphasma",
+    "name": "Captain Phasma",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "cassianandor",
+    "name": "Cassian Andor",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "chancellorpalpatine",
+    "name": "Chancellor Palpatine",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 14,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "chewbacca",
+    "name": "Chewbacca",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "chewbacca-crew",
+    "name": "Chewbacca",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "chewbacca-crew-swz19",
+    "name": "Chewbacca",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "chewbacca-battleofyavin",
+    "name": "Chewbacca",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "cienaree",
+    "name": "Ciena Ree",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "action": {
+          "type": "Coordinate"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "cikatrovizago",
+    "name": "Cikatro Vizago",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "clanwrencommandos",
+    "name": "Clan Wren Commandos",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "sizes": ["Medium", "Large", "Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "commandermalarus",
+    "name": "Commander Malarus",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "commanderpyre",
+    "name": "Commander Pyre",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "countdooku",
+    "name": "Count Dooku",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "darthvader",
+    "name": "Darth Vader",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "deathtroopers",
+    "name": "Death Troopers",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "deathwatchcommandos",
+    "name": "Death Watch Commandos",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "sizes": ["Medium", "Large", "Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "directorkrennic",
+    "name": "Director Krennic",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "emperorpalpatine",
+    "name": "Emperor Palpatine",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "fennrau",
+    "name": "Fenn Rau",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "freelanceslicer",
+    "name": "Freelance Slicer",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ga97",
+    "name": "GA-97",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "gamutkey",
+    "name": "Gamut Key",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "garsaxon",
+    "name": "Gar Saxon",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "generalgrievous",
+    "name": "General Grievous",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "generalhux",
+    "name": "General Hux",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "ghostcompany",
+    "name": "Ghost Company",
+    "slot": "Crew",
+    "slots": ["Crew", "Gunner"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "gnkgonkdroid",
+    "name": "GNK “Gonk” Droid",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "grandinquisitor",
+    "name": "Grand Inquisitor",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 15,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "grandmofftarkin",
+    "name": "Grand Moff Tarkin",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "action": {
+          "type": "Lock"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "greefkarga",
+    "name": "Greef Karga",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "hansolo-crew",
+    "name": "Han Solo",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "herasyndulla",
+    "name": "Hera Syndulla",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "hondoohnaka",
+    "name": "Hondo Ohnaka",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "ig11",
+    "name": "IG-11",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "ig88d",
+    "name": "IG-88D",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "imperialsupercommandos",
+    "name": "Imperial Super Commandos",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "sizes": ["Medium", "Large", "Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "informant",
+    "name": "Informant",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "isbslicer",
+    "name": "ISB Slicer",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "jabbathehutt",
+    "name": "Jabba the Hutt",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 11,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "jangofett",
+    "name": "Jango Fett",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "jynerso",
+    "name": "Jyn Erso",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "k2so",
+    "name": "K-2SO",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "kananjarrus",
+    "name": "Kanan Jarrus",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "kaydelconnix",
+    "name": "Kaydel Connix",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "ketsuonyo",
+    "name": "Ketsu Onyo",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "kitfisto",
+    "name": "Kit Fisto",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "korkiekryze",
+    "name": "Korkie Kryze",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "korrsella",
+    "name": "Korr Sella",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "kuiil",
+    "name": "Kuiil",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "kyloren",
+    "name": "Kylo Ren",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "l337",
+    "name": "L3-37",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "landocalrissian-crew",
+    "name": "Lando Calrissian",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "landocalrissian",
+    "name": "Lando Calrissian",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "larmadacy",
+    "name": "Larma D'Acy",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "lattsrazzi",
+    "name": "Latts Razzi",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "leiaorgana",
+    "name": "Leia Organa",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "leiaorgana-resistance",
+    "name": "Leia Organa",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 14,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "magvayarro",
+    "name": "Magva Yarro",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "mandaloriansupercommandos",
+    "name": "Mandalorian Super Commandos",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "sizes": ["Medium", "Large", "Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "maul",
+    "name": "Maul",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"],
+        "names": ["Ezra Bridger"]
+      }
+    ]
+  },
+  {
+    "xws": "maul-crew",
+    "name": "Maul",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "ministertua",
+    "name": "Minister Tua",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "moffjerjerrod",
+    "name": "Moff Jerjerrod",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "action": {
+          "type": "Coordinate"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "niennunb",
+    "name": "Nien Nunb",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "niteowlcommandos",
+    "name": "Nite Owl Commandos",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      },
+      {
+        "sizes": ["Medium", "Large", "Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "novicetechnician",
+    "name": "Novice Technician",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "obiwankenobi",
+    "name": "Obi-wan Kenobi",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 11,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "pelimotto",
+    "name": "Peli Motto",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "sizes": ["Medium", "Large"]
+      }
+    ]
+  },
+  {
+    "xws": "perceptivecopilot",
+    "name": "Perceptive Copilot",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "pettyofficerthanisson",
+    "name": "Petty Officer Thanisson",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "plokoon",
+    "name": "Plo Koon",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "previzsla",
+    "name": "Pre Vizsla",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "primeministeralmec",
+    "name": "Prime Minister Almec",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "protectorategleb",
+    "name": "Protectorate Gleb",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "galacticempire", "firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "pz4co",
+    "name": "PZ-4CO",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "qira",
+    "name": "Qi'ra",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "r2d2-crew",
+    "name": "R2-D2",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "rookkast",
+    "name": "Rook Kast",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "rosetico",
+    "name": "Rose Tico",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "sabinewren",
+    "name": "Sabine Wren",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "satinekryze",
+    "name": "Satine Kryze",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "savageopress",
+    "name": "Savage Opress",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "sawgerrera",
+    "name": "Saw Gerrera",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "seasonednavigator",
+    "name": "Seasoned Navigator",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "seventhsister",
+    "name": "Seventh Sister",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "supremeleadersnoke",
+    "name": "Supreme Leader Snoke",
+    "slot": "Crew",
+    "slots": ["Crew", "Crew"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "tacticalofficer",
+    "name": "Tactical Officer",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Coordinate",
+          "difficulty": "Red"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "talmerrik",
+    "name": "Tal Merrik",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "thechild",
+    "name": "The Child",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire", "rebelalliance", "scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "themandalorian",
+    "name": "The Mandalorian",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "tobiasbeckett",
+    "name": "Tobias Beckett",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "torynfarr",
+    "name": "Toryn Farr",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "tristanwren",
+    "name": "Tristan Wren",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"],
+        "names": ["Gar Saxon"]
+      }
+    ]
+  },
+  {
+    "xws": "unkarplutt",
+    "name": "Unkar Plutt",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "ursawren",
+    "name": "Ursa Wren",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "wolfpack",
+    "name": "Wolfpack",
+    "slot": "Crew",
+    "slots": ["Crew", "Gunner"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "wolfpack-siegeofcoruscant",
+    "name": "Wolfpack",
+    "slot": "Crew",
+    "slots": ["Crew", "Gunner"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "yoda",
+    "name": "Yoda",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "zamwesell",
+    "name": "Zam Wesell",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 11,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "zuckuss",
+    "name": "Zuckuss",
+    "slot": "Crew",
+    "slots": ["Crew"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "blazerbomb",
+    "name": "Blazer Bomb",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "bombletgenerator",
+    "name": "Bomblet Generator",
+    "slot": "Device",
+    "slots": ["Device", "Device"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "clustermines",
+    "name": "Cluster Mines",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "concussionbombs",
+    "name": "Concussion Bombs",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "connernets",
+    "name": "Conner Nets",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "drk1probedroids",
+    "name": "DRK-1 Probe Droids",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "electroprotonbomb",
+    "name": "Electro-Proton Bomb",
+    "slot": "Device",
+    "slots": ["Device", "Modification"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Reload",
+          "difficulty": "White"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "ionbombs",
+    "name": "Ion Bombs",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "protonbombs",
+    "name": "Proton Bombs",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "proximitymines",
+    "name": "Proximity Mines",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "seismiccharges",
+    "name": "Seismic Charges",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "thermaldetonators",
+    "name": "Thermal Detonators",
+    "slot": "Device",
+    "slots": ["Device"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "battlemeditation",
+    "name": "Battle Meditation",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "brilliantevasion",
+    "name": "Brilliant Evasion",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "compassion",
+    "name": "Compassion",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "extrememaneuvers",
+    "name": "Extreme Maneuvers",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "foresight",
+    "name": "Foresight",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "hate",
+    "name": "Hate",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "force_side": ["dark"]
+      }
+    ]
+  },
+  {
+    "xws": "heightenedperception",
+    "name": "Heightened Perception",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "instinctiveaim",
+    "name": "Instinctive Aim",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "malice",
+    "name": "Malice",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "patience",
+    "name": "Patience",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "precognitivereflexes",
+    "name": "Precognitive Reflexes",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 15,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "predictiveshot",
+    "name": "Predictive Shot",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "roilinganger-siegeofcoruscant",
+    "name": "Roiling Anger",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "sense",
+    "name": "Sense",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "shatteringshot",
+    "name": "Shattering Shot",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "supernaturalreflexes",
+    "name": "Supernatural Reflexes",
+    "slot": "Force Power",
+    "slots": ["Force Power"],
+    "cost": 24,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small"]
+      }
+    ]
+  },
+  {
+    "xws": "agilegunner",
+    "name": "Agile Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ahsokatano",
+    "name": "Ahsoka Tano",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "airencracken-battleoverendor",
+    "name": "Airen Cracken",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "bistan",
+    "name": "Bistan",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "bobafett-gunner",
+    "name": "Boba Fett",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "bossk",
+    "name": "Bossk",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "bt1",
+    "name": "BT-1",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"],
+        "names": ["Darth Vader"]
+      }
+    ]
+  },
+  {
+    "xws": "clonecaptainrex",
+    "name": "Clone Captain Rex",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "clonecommandercody",
+    "name": "Clone Commander Cody",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "dengar",
+    "name": "Dengar",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "dt798",
+    "name": "DT-798",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "ezrabridger",
+    "name": "Ezra Bridger",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "fifthbrother",
+    "name": "Fifth Brother",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "finn",
+    "name": "Finn",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "firstorderordnancetech",
+    "name": "First Order Ordnance Tech",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "garsaxon-gunner",
+    "name": "Gar Saxon",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Large", "Huge"]
+      },
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "greedo",
+    "name": "Greedo",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "hansolo",
+    "name": "Han Solo",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "hansolo-gunner",
+    "name": "Han Solo",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "hotshotgunner",
+    "name": "Hotshot Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "lukeskywalker",
+    "name": "Luke Skywalker",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "migsmayfeld",
+    "name": "Migs Mayfeld",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire", "scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "paigetico",
+    "name": "Paige Tico",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "rey-gunner",
+    "name": "Rey",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "sabinewren-gunner",
+    "name": "Sabine Wren",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "seventhfleetgunner",
+    "name": "Seventh Fleet Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 13,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      }
+    ]
+  },
+  {
+    "xws": "skilledbombardier",
+    "name": "Skilled Bombardier",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "specialforcesgunner",
+    "name": "Special Forces Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      },
+      {
+        "ships": ["tiesffighter"]
+      }
+    ]
+  },
+  {
+    "xws": "suppressivegunner",
+    "name": "Suppressive Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tibersaxon",
+    "name": "Tiber Saxon",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "ursawren-gunner",
+    "name": "Ursa Wren",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic", "separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "veterantailgunner",
+    "name": "Veteran Tail Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "arcs": ["Rear Arc"]
+      }
+    ]
+  },
+  {
+    "xws": "veteranturretgunner",
+    "name": "Veteran Turret Gunner",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Rotate Arc"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "weaponssystemsofficer",
+    "name": "Weapons Systems Officer",
+    "slot": "Gunner",
+    "slots": ["Gunner"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "drillbeak",
+    "name": "Drill Beak",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint", "Cargo"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "enhancedpropulsion",
+    "name": "Enhanced Propulsion",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint", "Cargo"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "ioncannonbattery",
+    "name": "Ion Cannon Battery",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ordnancetubes",
+    "name": "Ordnance Tubes",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "pointdefensebattery",
+    "name": "Point-Defense Battery",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "protoncannonbattery",
+    "name": "Proton Cannon Battery",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint", "Cargo"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "targetingbattery",
+    "name": "Targeting Battery",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tractortentacles",
+    "name": "Tractor Tentacles",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "turbolaserbattery",
+    "name": "Turbolaser Battery",
+    "slot": "Hardpoint",
+    "slots": ["Hardpoint"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "syliure31hyperdrive",
+    "name": "Syliure-31 Hyperdrive",
+    "slot": "Hyperdrive",
+    "slots": ["Hyperdrive"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["syliureclasshyperspacering"]
+      }
+    ]
+  },
+  {
+    "xws": "babufrik",
+    "name": "Babu Frik",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "cloakingdevice",
+    "name": "Cloaking Device",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "coaxiumhyperfuel",
+    "name": "Coaxium Hyperfuel",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "contrabandcybernetics",
+    "name": "Contraband Cybernetics",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "deadmansswitch",
+    "name": "Deadman's Switch",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "falsetranspondercodes",
+    "name": "False Transponder Codes",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "feedbackarray",
+    "name": "Feedback Array",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "feedbackemitter-battleoverendor",
+    "name": "Feedback Emitter",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "hotshottailblaster",
+    "name": "Hotshot Tail Blaster",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Medium", "Large"]
+      }
+    ]
+  },
+  {
+    "xws": "inertialdampeners",
+    "name": "Inertial Dampeners",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "overtunedmodulators",
+    "name": "Overtuned Modulators",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "quickreleaselocks",
+    "name": "Quick-Release Locks",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "riggedcargochute",
+    "name": "Rigged Cargo Chute",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Medium", "Large"]
+      }
+    ]
+  },
+  {
+    "xws": "saboteursmap",
+    "name": "Saboteur's Map",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "scannerbaffler",
+    "name": "Scanner Baffler",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "trackingfob",
+    "name": "Tracking Fob",
+    "slot": "Illicit",
+    "slots": ["Illicit"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 3,
+    "restrictions": [
+      {
+        "keywords": ["Bounty Hunter"]
+      }
+    ]
+  },
+  {
+    "xws": "barragerockets",
+    "name": "Barrage Rockets",
+    "slot": "Missile",
+    "slots": ["Missile", "Missile"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "clustermissiles",
+    "name": "Cluster Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "concussionmissiles",
+    "name": "Concussion Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "diamondboronmissiles",
+    "name": "Diamond-Boron Missiles",
+    "slot": "Missile",
+    "slots": ["Missile", "Missile"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "discordmissiles",
+    "name": "Discord Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 3,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "electrochaffmissiles",
+    "name": "Electro-Chaff Missiles",
+    "slot": "Missile",
+    "slots": ["Missile", "Device"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 2,
+    "restrictions": []
+  },
+  {
+    "xws": "energyshellcharges",
+    "name": "Energy-Shell Charges",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Calculate",
+          "difficulty": "White"
+        }
+      },
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "heavyplasmamissiles-alphaclassstarwing",
+    "name": "Heavy Plasma Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "homingmissiles",
+    "name": "Homing Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ionmissiles",
+    "name": "Ion Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "magpulsewarheads",
+    "name": "Mag-Pulse Warheads",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "multimissilepods",
+    "name": "Multi-Missile Pods",
+    "slot": "Missile",
+    "slots": ["Missile", "Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "protonrockets",
+    "name": "Proton Rockets",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "saturationrockets-alphaclassstarwing",
+    "name": "Saturation Rockets",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "seekermissiles-swz103",
+    "name": "Seeker Missiles",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "xx23sthreadtracers",
+    "name": "XX-23 S-Thread Tracers",
+    "slot": "Missile",
+    "slots": ["Missile"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 2,
+    "restrictions": []
+  },
+  {
+    "xws": "ablativeplating",
+    "name": "Ablative Plating",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Medium", "Large"]
+      }
+    ]
+  },
+  {
+    "xws": "advancedslam",
+    "name": "Advanced SLAM",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "SLAM",
+          "difficulty": "White"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "afterburners",
+    "name": "Afterburners",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small"]
+      }
+    ]
+  },
+  {
+    "xws": "angleddeflectors",
+    "name": "Angled Deflectors",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "automatedloaders-swz98",
+    "name": "Automated Loaders",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "beskarreinforcedplating",
+    "name": "Beskar Reinforced Plating",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "burnoutthrusters",
+    "name": "Burnout Thrusters",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "chaffparticles-battleoverendor",
+    "name": "Chaff Particles",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "computerassistedhandling-battleoverendor",
+    "name": "Computer-Assisted Handling",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "contingencyprotocol-siegeofcoruscant",
+    "name": "Contingency Protocol",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "delayedfuses",
+    "name": "Delayed Fuses",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "dropseatbay",
+    "name": "Drop-Seat bay",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["gauntletfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "electronicbaffle",
+    "name": "Electronic Baffle",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "engineupgrade",
+    "name": "Engine Upgrade",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Boost",
+          "difficulty": "Red"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "evasionsequence7-siegeofcoruscant",
+    "name": "Evasion Sequence 7",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "fuelinjectionoverride-battleoverendor",
+    "name": "Fuel Injection Override",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "hullupgrade",
+    "name": "Hull Upgrade",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "imperviumplating",
+    "name": "Impervium Plating",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["belbullab22starfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "independentcalculations",
+    "name": "Independent Calculations",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "shipAbility": ["Networked Calculations"]
+      },
+      {
+        "standardized": true
+      }
+    ]
+  },
+  {
+    "xws": "ionmaneuveringjet-battleoverendor",
+    "name": "Ion Maneuvering Jet",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "mandalorianoptics",
+    "name": "Mandalorian Optics",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "manualailerons-tiephphantom",
+    "name": "Manual Ailerons",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "munitionsfailsafe",
+    "name": "Munitions Failsafe",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "overdrivethruster",
+    "name": "Overdrive Thruster",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "precisionionengines",
+    "name": "Precision Ion Engines",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "sensorjammer-battleofyavin",
+    "name": "Sensor Jammer",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "shieldupgrade",
+    "name": "Shield Upgrade",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "sparepartscanisters",
+    "name": "Spare Parts Canisters",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "equipped": ["Astromech"]
+      }
+    ]
+  },
+  {
+    "xws": "staticdischargevanes",
+    "name": "Static Discharge Vanes",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "stealthdevice",
+    "name": "Stealth Device",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "stygiumreserve-tiephphantom",
+    "name": "Stygium Reserve",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "synchronizedconsole",
+    "name": "Synchronized Console",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      },
+      {
+        "action": {
+          "type": "Lock",
+          "difficulty": "White"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "tacticalscrambler",
+    "name": "Tactical Scrambler",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Medium", "Large"]
+      }
+    ]
+  },
+  {
+    "xws": "targetassistalgorithm-battleoverendor",
+    "name": "Target-Assist Algorithm",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "targetingcomputer",
+    "name": "Targeting Computer",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "targetingmatrix-battleoverendor",
+    "name": "Targeting Matrix",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "unstablesublightengines-battleofyavin",
+    "name": "Unstable Sublight Engines",
+    "slot": "Modification",
+    "slots": ["Modification"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "advancedsensors",
+    "name": "Advanced Sensors",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "blanksignature-battleoverendor",
+    "name": "Blank Signature",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "collisiondetector",
+    "name": "Collision Detector",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "firecontrolsystem",
+    "name": "Fire-Control System",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "longrangescanners-alphaclassstarwing",
+    "name": "Long-Range Scanners",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "passivesensors",
+    "name": "Passive Sensors",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "relaysystem-tiephphantom",
+    "name": "Relay System",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "trajectorysimulator",
+    "name": "Trajectory Simulator",
+    "slot": "Sensor",
+    "slots": ["Sensor"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "k2b4",
+    "name": "K2-B4",
+    "slot": "Tactical Relay",
+    "slots": ["Tactical Relay"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "solitary": true
+      }
+    ]
+  },
+  {
+    "xws": "kalani",
+    "name": "Kalani",
+    "slot": "Tactical Relay",
+    "slots": ["Tactical Relay"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "kraken",
+    "name": "Kraken",
+    "slot": "Tactical Relay",
+    "slots": ["Tactical Relay"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "solitary": true
+      }
+    ]
+  },
+  {
+    "xws": "ta175",
+    "name": "TA-175",
+    "slot": "Tactical Relay",
+    "slots": ["Tactical Relay"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "solitary": true
+      }
+    ]
+  },
+  {
+    "xws": "tv94",
+    "name": "TV-94",
+    "slot": "Tactical Relay",
+    "slots": ["Tactical Relay"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "solitary": true
+      }
+    ]
+  },
+  {
+    "xws": "aceinthehole-battleoverendor",
+    "name": "Ace in the Hole",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "apexpredator-battleoverendor",
+    "name": "Apex Predator",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "attackspeed-battleofyavin",
+    "name": "Attack Speed",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "backwardstailslide",
+    "name": "Backwards Tailslide",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "clantraining",
+    "name": "Clan Training",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "keywords": ["Mandalorian"]
+      }
+    ]
+  },
+  {
+    "xws": "collected-battleoverendor",
+    "name": "Collected",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "composure",
+    "name": "Composure",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Focus"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "crackshot",
+    "name": "Crack Shot",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "cutthroat",
+    "name": "Cutthroat",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "daredevil",
+    "name": "Daredevil",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small"]
+      },
+      {
+        "action": {
+          "type": "Boost",
+          "difficulty": "White"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "deadeyeshot",
+    "name": "Deadeye Shot",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "debrisgambit",
+    "name": "Debris Gambit",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "dedicated",
+    "name": "Dedicated",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic"]
+      },
+      {
+        "keywords": ["Clone"]
+      }
+    ]
+  },
+  {
+    "xws": "disciplined",
+    "name": "Disciplined",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "efficientprocessing-swz103",
+    "name": "Efficient Processing",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "elusive",
+    "name": "Elusive",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "enduring",
+    "name": "Enduring",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ensnare",
+    "name": "Ensnare",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 10,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["nantexclassstarfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "experthandling",
+    "name": "Expert Handling",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "fanatic-battleofyavin",
+    "name": "Fanatic",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "fanatical",
+    "name": "Fanatical",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      }
+    ]
+  },
+  {
+    "xws": "fearless",
+    "name": "Fearless",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "feedbackping",
+    "name": "Feedback Ping",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Reload"
+        }
+      },
+      {
+        "keywords": ["TIE"]
+      }
+    ]
+  },
+  {
+    "xws": "graviticdeflection",
+    "name": "Gravitic Deflection",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "heroic",
+    "name": "Heroic",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "heroicsacrifice-battleoverendor",
+    "name": "Heroic Sacrifice",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "hopeful",
+    "name": "Hopeful",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "interloperturn",
+    "name": "Interloper Turn",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["tieddefender"]
+      }
+    ]
+  },
+  {
+    "xws": "intimidation",
+    "name": "Intimidation",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ionlimiteroverride",
+    "name": "Ion Limiter Override",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "keywords": ["TIE"]
+      }
+    ]
+  },
+  {
+    "xws": "itsatrap-battleoverendor",
+    "name": "It's a Trap!",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "juke",
+    "name": "Juke",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small", "Medium"]
+      }
+    ]
+  },
+  {
+    "xws": "lonewolf",
+    "name": "Lone Wolf",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "margsablclosure",
+    "name": "Marg Sabl Closure",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "marksmanship",
+    "name": "Marksmanship",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "mercenary-swz103",
+    "name": "Mercenary",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "noescape-battleoverendor",
+    "name": "No Escape",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "notorious",
+    "name": "Notorious",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "equipped": ["Illicit"]
+      }
+    ]
+  },
+  {
+    "xws": "outmaneuver",
+    "name": "Outmaneuver",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "partinggift-battleoverendor",
+    "name": "Parting Gift",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "predator",
+    "name": "Predator",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "proudtradition",
+    "name": "Proud Tradition",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "pushthelimit-battleoverendor",
+    "name": "Push The Limit",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "reckless-battleoverendor",
+    "name": "Reckless",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ruthless",
+    "name": "Ruthless",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      }
+    ]
+  },
+  {
+    "xws": "saturationsalvo",
+    "name": "Saturation Salvo",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "action": {
+          "type": "Reload"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "selfless",
+    "name": "Selfless",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "silenthunter-tiephphantom",
+    "name": "Silent Hunter",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "stealthgambit-tiephphantom",
+    "name": "Silent Hunter",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "snapshot",
+    "name": "Snap Shot",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "squadleader",
+    "name": "Squad Leader",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "starbirdslash",
+    "name": "Starbird Slash",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "swarmtactics",
+    "name": "Swarm Tactics",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "swiftapproach-swz98",
+    "name": "Swift Approach",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tierfonbellyrun",
+    "name": "Tierfon Belly Run",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "topcover-swz98",
+    "name": "Top Cover",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "treacherous",
+    "name": "Treacherous",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "trickshot",
+    "name": "Trick Shot",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "truegrit-swz98",
+    "name": "True Grit",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "vengeful-battleofyavin",
+    "name": "Vengeful",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "withoutatrace-tiephphantom",
+    "name": "Without a Trace",
+    "slot": "Talent",
+    "slots": ["Talent"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "bombardmentspecialists",
+    "name": "Bombardment Specialists",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "commsteam",
+    "name": "Comms Team",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "corsaircrew",
+    "name": "Corsair Crew",
+    "slot": "Team",
+    "slots": ["Team", "Gunner"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      }
+    ]
+  },
+  {
+    "xws": "damagecontrolteam",
+    "name": "Damage Control Team",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "droidcrew",
+    "name": "Droid Crew",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      }
+    ]
+  },
+  {
+    "xws": "gunneryspecialists",
+    "name": "Gunnery Specialists",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "igrmdroids",
+    "name": "IG-RM Droids",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ordnanceteam",
+    "name": "Ordnance Team",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "sensorexperts",
+    "name": "Sensor Experts",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "tractortechnicians",
+    "name": "Tractor Technicians",
+    "slot": "Team",
+    "slots": ["Team"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "advancedoptics",
+    "name": "Advanced Optics",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "automatedtargetpriority",
+    "name": "Automated Target Priority",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "biohexacryptcodes",
+    "name": "Biohexacrypt Codes",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      },
+      {
+        "action": {
+          "type": "Lock"
+        }
+      }
+    ]
+  },
+  {
+    "xws": "deuteriumpowercells",
+    "name": "Deuterium Power Cells",
+    "slot": "Tech",
+    "slots": ["Tech", "Modification"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ferrospherepaint",
+    "name": "Ferrosphere Paint",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      }
+    ]
+  },
+  {
+    "xws": "hyperspacetrackingdata",
+    "name": "Hyperspace Tracking Data",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["firstorder"]
+      },
+      {
+        "sizes": ["Large"]
+      }
+    ]
+  },
+  {
+    "xws": "patternanalyzer",
+    "name": "Pattern Analyzer",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "primedthrusters",
+    "name": "Primed Thrusters",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "sizes": ["Small"]
+      }
+    ]
+  },
+  {
+    "xws": "sensorbuoysuite",
+    "name": "Sensor Buoy Suite",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "sensorscramblers",
+    "name": "Sensor Scramblers",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 1,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "ships": ["tiewiwhispermodifiedinterceptor", "tievnsilencer"]
+      }
+    ]
+  },
+  {
+    "xws": "targetingsynchronizer",
+    "name": "Targeting Synchronizer",
+    "slot": "Tech",
+    "slots": ["Tech"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "andrasta",
+    "name": "Andrasta",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["firesprayclasspatrolcraft"]
+      }
+    ]
+  },
+  {
+    "xws": "assailer",
+    "name": "Assailer",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["raiderclasscorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "b6bladewingprototype",
+    "name": "B6 Blade Wing Prototype",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["asf01bwing"]
+      }
+    ]
+  },
+  {
+    "xws": "blackone",
+    "name": "Black One",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      },
+      {
+        "ships": ["t70xwing"]
+      }
+    ]
+  },
+  {
+    "xws": "bloodcrow",
+    "name": "Blood Crow",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["gozanticlasscruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "brighthope",
+    "name": "Bright Hope",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["gr75mediumtransport"]
+      }
+    ]
+  },
+  {
+    "xws": "brokenhorn",
+    "name": "Broken Horn",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["croccruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "corvus",
+    "name": "Corvus",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["raiderclasscorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "dauntless",
+    "name": "Dauntless",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["vt49decimator"]
+      }
+    ]
+  },
+  {
+    "xws": "dodonnaspride",
+    "name": "Dodonna's Pride",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["cr90corelliancorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "gauntlet",
+    "name": "Gauntlet",
+    "slot": "Title",
+    "slots": ["Title", "Modification"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticrepublic", "separatistalliance"]
+      },
+      {
+        "ships": ["gauntletfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "ghost",
+    "name": "Ghost",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["vcx100lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "grappler",
+    "name": "Grappler",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "havoc",
+    "name": "Havoc",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["scurrgh6bomber"]
+      }
+    ]
+  },
+  {
+    "xws": "houndstooth",
+    "name": "Hound's Tooth",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["yv666lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "ig2000",
+    "name": "IG-2000",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["aggressorassaultfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "impetuous",
+    "name": "Impetuous",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["raiderclasscorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "insatiableworrt",
+    "name": "Insatiable Worrt",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["croccruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "instigator",
+    "name": "Instigator",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["raiderclasscorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "jainaslight",
+    "name": "Jaina's Light",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["cr90corelliancorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "kazsfireball",
+    "name": "Kaz's Fireball",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      },
+      {
+        "ships": ["fireball"]
+      }
+    ]
+  },
+  {
+    "xws": "landosmillenniumfalcon",
+    "name": "Lando's Millennium Falcon",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["customizedyt1300lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "liberator",
+    "name": "Liberator",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["cr90corelliancorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "luminous",
+    "name": "Luminous",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["gr75mediumtransport"]
+      }
+    ]
+  },
+  {
+    "xws": "marauder",
+    "name": "Marauder",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["firesprayclasspatrolcraft"]
+      }
+    ]
+  },
+  {
+    "xws": "merchantone",
+    "name": "Merchant One",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["croccruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "millenniumfalcon",
+    "name": "Millennium Falcon",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["modifiedyt1300lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "millenniumfalcon-battleoverendor",
+    "name": "Millennium Falcon",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": null,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": []
+  },
+  {
+    "xws": "misthunter",
+    "name": "Mist Hunter",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["g1astarfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "moldycrow",
+    "name": "Moldy Crow",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance", "scumandvillainy"]
+      },
+      {
+        "ships": ["hwk290lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "nautolansrevenge",
+    "name": "Nautolan's Revenge",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "neimoidiangrasp",
+    "name": "Neimoidian Grasp",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "nightbrother",
+    "name": "Nightbrother",
+    "slot": "Title",
+    "slots": ["Title", "Modification"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "rebelalliance"]
+      },
+      {
+        "ships": ["gauntletfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "outrider",
+    "name": "Outrider",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["yt2400lightfreighter"]
+      }
+    ]
+  },
+  {
+    "xws": "phantom",
+    "name": "Phantom",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["attackshuttle", "sheathipedeclassshuttle"]
+      }
+    ]
+  },
+  {
+    "xws": "punishingone",
+    "name": "Punishing One",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["jumpmaster5000"]
+      }
+    ]
+  },
+  {
+    "xws": "quantumstorm",
+    "name": "Quantum Storm",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 3,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["gr75mediumtransport"]
+      }
+    ]
+  },
+  {
+    "xws": "razorcrest",
+    "name": "Razor Crest",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "ships": ["st70assaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "requiem",
+    "name": "Requiem",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["gozanticlasscruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "reysmillenniumfalcon",
+    "name": "Rey's Millennium Falcon",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["resistance"]
+      },
+      {
+        "ships": ["scavengedyt1300"]
+      }
+    ]
+  },
+  {
+    "xws": "scimitar",
+    "name": "Scimitar",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "ships": ["sithinfiltrator"]
+      }
+    ]
+  },
+  {
+    "xws": "shadowcaster",
+    "name": "Shadow Caster",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["lancerclasspursuitcraft"]
+      }
+    ]
+  },
+  {
+    "xws": "slavei",
+    "name": "Slave I",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy"]
+      },
+      {
+        "ships": ["firesprayclasspatrolcraft"]
+      }
+    ]
+  },
+  {
+    "xws": "slavei-swz82",
+    "name": "Slave I",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["scumandvillainy", "separatistalliance"]
+      },
+      {
+        "ships": ["firesprayclasspatrolcraft"]
+      }
+    ]
+  },
+  {
+    "xws": "soullessone",
+    "name": "Soulless One",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "ships": ["belbullab22starfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "st321",
+    "name": "ST-321",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["lambdaclasst4ashuttle"]
+      }
+    ]
+  },
+  {
+    "xws": "suppressor",
+    "name": "Suppressor",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 6,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["gozanticlasscruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "tantiveiv",
+    "name": "Tantive IV",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["cr90corelliancorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "thunderstrike",
+    "name": "Thunderstrike",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["rebelalliance"]
+      },
+      {
+        "ships": ["cr90corelliancorvette"]
+      }
+    ]
+  },
+  {
+    "xws": "trident",
+    "name": "Trident",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["separatistalliance"]
+      },
+      {
+        "ships": ["tridentclassassaultship"]
+      }
+    ]
+  },
+  {
+    "xws": "vector",
+    "name": "Vector",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 7,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "factions": ["galacticempire"]
+      },
+      {
+        "ships": ["gozanticlasscruiser"]
+      }
+    ]
+  },
+  {
+    "xws": "virago",
+    "name": "Virago",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "ships": ["starviperclassattackplatform"]
+      }
+    ]
+  },
+  {
+    "xws": "xanadublood",
+    "name": "Xanadu Blood",
+    "slot": "Title",
+    "slots": ["Title"],
+    "cost": 0,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "ships": ["rogueclassstarfighter"]
+      }
+    ]
+  },
+  {
+    "xws": "advprotontorpedoes",
+    "name": "Adv. Proton Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 9,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "homingtorpedoes",
+    "name": "Homing Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "iontorpedoes",
+    "name": "Ion Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 4,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "plasmatorpedoes",
+    "name": "Plasma Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "protontorpedoes",
+    "name": "Proton Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 12,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "trackingtorpedoes",
+    "name": "Tracking Torpedoes",
+    "slot": "Torpedo",
+    "slots": ["Torpedo"],
+    "cost": 8,
+    "variableCost": null,
+    "limited": 1,
+    "restrictions": [
+      {
+        "sizes": ["Huge"]
+      }
+    ]
+  },
+  {
+    "xws": "dorsalturret",
+    "name": "Dorsal Turret",
+    "slot": "Turret",
+    "slots": ["Turret"],
+    "cost": 2,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  },
+  {
+    "xws": "ioncannonturret",
+    "name": "Ion Cannon Turret",
+    "slot": "Turret",
+    "slots": ["Turret"],
+    "cost": 5,
+    "variableCost": null,
+    "limited": 0,
+    "restrictions": []
+  }
+]

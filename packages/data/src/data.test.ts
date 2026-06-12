@@ -10,7 +10,7 @@ describe('card loaders', () => {
     const xwing = getShip('t65xwing');
     expect(xwing.faction).toBe('Rebel Alliance');
     expect(xwing.stats.find((s) => s.type === 'attack')?.value).toBe(3);
-    expect(getPilot('t65xwing', 'redsquadronveteran').initiative).toBe(4);
+    expect(getPilot('t65xwing', 'redsquadronveteran').initiative).toBe(3);
     expect(() => getShip('nope')).toThrow();
   });
 });
@@ -85,7 +85,7 @@ describe('card → engine ShipInit', () => {
       agility: 2,
       hull: 4,
       shields: 2,
-      actionBar: ['focus', 'lock'],
+      actionBar: ['focus', 'lock', 'barrel-roll'],
     });
     expect(init.dialOptions).toContainEqual({ speed: 4, bearing: 'koiogran', difficulty: 'red' });
   });
@@ -137,17 +137,31 @@ describe('XWS format', () => {
   });
 });
 
-describe('expanded roster', () => {
-  it('loads A-wing and TIE Interceptor and builds them', async () => {
-    const { allShips, pilotChoices, toShipInit } = await import('./index');
-    expect(allShips().map((s) => s.xws)).toEqual([
-      't65xwing',
-      'tieln',
-      'rz1awing',
-      'tieinterceptor',
-    ]);
-    expect(pilotChoices('Rebel Alliance').length).toBeGreaterThanOrEqual(4);
+describe('full xwing-data2 snapshot', () => {
+  it('loads the full roster across all factions', async () => {
+    const { allShips, allUpgrades, DATA_VERSION } = await import('./index');
+    const ships = allShips();
+    expect(ships.length).toBeGreaterThan(80);
+    const xws = ships.map((s) => s.xws);
+    for (const id of ['t65xwing', 'tielnfighter', 'rz1awing', 'tieininterceptor']) {
+      expect(xws).toContain(id);
+    }
+    expect(new Set(ships.map((s) => s.faction)).size).toBeGreaterThanOrEqual(7);
+    expect(allUpgrades().length).toBeGreaterThan(400);
+    expect(DATA_VERSION).toMatch(/^xwing-data2@/);
+  });
 
+  it('every dial code in the snapshot parses (nothing dropped)', async () => {
+    const { allShips, parseManeuver } = await import('./index');
+    for (const ship of allShips()) {
+      for (const code of ship.dial) {
+        expect(parseManeuver(code), `${ship.xws} ${code}`).not.toBeNull();
+      }
+    }
+  });
+
+  it('builds an A-wing from snapshot data', async () => {
+    const { toShipInit } = await import('./index');
     const awing = toShipInit(
       'rz1awing',
       'greensquadronpilot',

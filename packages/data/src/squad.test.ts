@@ -6,15 +6,15 @@ const squad = (faction: string, pilots: { id: string; ship: string }[]): XwsSqua
   faction,
   pilots,
 });
-const blue = { id: 'bluesquadronescort', ship: 't65xwing' }; // cost 4
+const blue = { id: 'bluesquadronescort', ship: 't65xwing' }; // cost 5
 const red = { id: 'redsquadronveteran', ship: 't65xwing' }; // cost 5
-const academy = { id: 'academypilot', ship: 'tieln' }; // cost 2, imperial
+const academy = { id: 'academypilot', ship: 'tielnfighter' }; // cost 2, imperial
 
 describe('squad validation', () => {
   it('accepts a legal 3-ship, single-faction squad under the cap', () => {
     const r = validateSquad(squad('rebelalliance', [blue, blue, red]));
     expect(r.valid).toBe(true);
-    expect(r.points).toBe(13); // 4 + 4 + 5
+    expect(r.points).toBe(15); // 5 + 5 + 5
   });
 
   it('rejects fewer than 3 ships', () => {
@@ -37,6 +37,6 @@ describe('squad validation', () => {
   });
 
   it('squadPoints sums pilot costs', () => {
-    expect(squadPoints(squad('rebelalliance', [blue, red]))).toBe(9);
+    expect(squadPoints(squad('rebelalliance', [blue, red]))).toBe(10);
   });
 });
