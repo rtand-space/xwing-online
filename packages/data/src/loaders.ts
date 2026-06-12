@@ -29,9 +29,16 @@ export function getPilot(shipXws: string, pilotXws: string): PilotData {
 }
 
 const UPGRADES = upgradesData as unknown as UpgradeData[];
+const upByXws = new Map(UPGRADES.map((u) => [u.xws, u]));
 
 export function allUpgrades(): UpgradeData[] {
   return UPGRADES;
+}
+
+export function getUpgrade(xws: string): UpgradeData {
+  const u = upByXws.get(xws);
+  if (!u) throw new Error(`Unknown upgrade: ${xws}`);
+  return u;
 }
 
 /** Upgrades that can equip into the given slot. */

@@ -21,7 +21,7 @@ Refresh the data: clone xwing-data2 (sparse `data/`), then
 
 ## R2-M2 — Squad builder UI
 - ☑ **T-B1** Faction pilot list with a squad-point meter + live `validateSquad` errors.
-- ☐ **T-B2** Per-pilot loadout: slot bar, equip upgrades against the loadout meter (effects deferred to R3/R4), limited/unique enforcement.
+- ☑ **T-B2** Per-pilot loadout: each pilot shows its slot bar; tapping a slot opens a restriction-filtered upgrade picker (faction/ship/size + single-slot in v1); a live loadout meter sums cost vs `pilot.loadout` and disables over-budget picks. `validateSquad` enforces loadout budgets + upgrade limited/unique; upgrades round-trip through XWS. _Effects deferred to R3; equipped upgrades aren't yet threaded into the engine state. Exotic restriction types (arc/action/keyword) and multi-slot upgrades deferred._
 - ☑ **T-B3** Start a game from built squads — **each side brings its own**: hot-seat builds both; online is a lobby (host=Rebel opens with their squad, joiner=Imperial brings theirs, the DO assembles the game once both are in). _Save/name squads + host-picks-side are follow-ons._
 
 ## R2-M3 — XWS interop

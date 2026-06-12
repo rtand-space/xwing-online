@@ -50,6 +50,8 @@ export interface PilotChoice {
   pilotName: string;
   initiative: number;
   cost: number;
+  loadout: number;
+  slots: string[];
   faction: string;
 }
 
@@ -66,6 +68,8 @@ export function pilotChoices(faction?: string): PilotChoice[] {
         pilotName: p.name,
         initiative: p.initiative,
         cost: p.cost,
+        loadout: p.loadout,
+        slots: p.slots,
         faction: ship.faction,
       });
     }

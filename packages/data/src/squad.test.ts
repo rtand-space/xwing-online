@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { squadPoints, validateSquad } from './squad';
+import { squadPoints, upgradeOptions, validateSquad } from './squad';
 import type { XwsSquad } from './xws';
 
 const squad = (faction: string, pilots: { id: string; ship: string }[]): XwsSquad => ({
@@ -38,5 +38,25 @@ describe('squad validation', () => {
 
   it('squadPoints sums pilot costs', () => {
     expect(squadPoints(squad('rebelalliance', [blue, red]))).toBe(10);
+  });
+
+  it('flags a pilot over its loadout budget', () => {
+    const s: XwsSquad = {
+      faction: 'galacticempire',
+      pilots: [
+        { id: 'academypilot', ship: 'tielnfighter', upgrades: { talent: ['composure'] } }, // loadout 0
+        { id: 'academypilot', ship: 'tielnfighter' },
+        { id: 'obsidiansquadronpilot', ship: 'tielnfighter' },
+      ],
+    };
+    const r = validateSquad(s);
+    expect(r.valid).toBe(false);
+    expect(r.errors.join(' ')).toMatch(/loadout/i);
+  });
+
+  it('upgradeOptions returns slot-legal, single-slot upgrades', () => {
+    const opts = upgradeOptions('Talent', 't65xwing');
+    expect(opts.length).toBeGreaterThan(0);
+    expect(opts.every((u) => u.slots.length === 1)).toBe(true);
   });
 });

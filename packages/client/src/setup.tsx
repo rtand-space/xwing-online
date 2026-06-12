@@ -3,14 +3,17 @@ import {
   FACTIONS,
   FACTION_IDS,
   type FactionId,
+  getUpgrade,
   parseXws,
   type PilotChoice,
   PRESETS,
   presetConfig,
   pilotChoices,
+  slotKey,
   SQUAD_POINT_CAP,
   type Side,
   squadPoints,
+  upgradeOptions,
   validateSquad,
   type XwsSquad,
   XWS_FACTION,
@@ -22,26 +25,51 @@ import { useGame } from './store';
 const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
 
-const toSquad = (faction: FactionId, picks: PilotChoice[]): XwsSquad => ({
+/** A chosen pilot plus its equipped upgrades, aligned index-for-index to its slots. */
+interface Pick {
+  choice: PilotChoice;
+  equip: (string | null)[];
+}
+
+const newPick = (choice: PilotChoice): Pick => ({ choice, equip: choice.slots.map(() => null) });
+
+const equipCost = (equip: (string | null)[]): number =>
+  equip.reduce((s, x) => s + (x ? (getUpgrade(x).cost ?? 0) : 0), 0);
+
+/** Group a pick's equipped upgrades into the XWS `upgrades` shape (slot key → xws[]). */
+function toUpgrades(pick: Pick): Record<string, string[]> | undefined {
+  const out: Record<string, string[]> = {};
+  pick.choice.slots.forEach((slot, i) => {
+    const x = pick.equip[i];
+    if (x) (out[slotKey(slot)] ??= []).push(x);
+  });
+  return Object.keys(out).length ? out : undefined;
+}
+
+const toSquad = (faction: FactionId, picks: Pick[]): XwsSquad => ({
   faction: XWS_FACTION[faction],
-  pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+  pilots: picks.map((p) => ({
+    id: p.choice.pilotXws,
+    ship: p.choice.shipXws,
+    upgrades: toUpgrades(p),
+  })),
 });
 
-const exportXws = (faction: FactionId, picks: PilotChoice[]): string =>
+const exportXws = (faction: FactionId, picks: Pick[]): string =>
   JSON.stringify(
     {
       faction: XWS_FACTION[faction],
       points: squadPoints(toSquad(faction, picks)),
       version: '2.5.0',
       vendor: { 'xwing-online': {} },
-      pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+      pilots: toSquad(faction, picks).pilots,
     },
     null,
     2,
   );
 
-/** Parse an XWS list into builder picks for this faction (faction- and roster-checked). */
-function picksFromXws(text: string, faction: FactionId): { picks?: PilotChoice[]; error?: string } {
+/** Parse an XWS list into builder picks (faction-, roster-, and upgrade-checked). */
+function picksFromXws(text: string, faction: FactionId): { picks?: Pick[]; error?: string } {
   let squad: XwsSquad;
   try {
     squad = parseXws(text);
@@ -52,11 +80,28 @@ function picksFromXws(text: string, faction: FactionId): { picks?: PilotChoice[]
     return { error: `That list is ${squad.faction}, not ${XWS_FACTION[faction]}.` };
   }
   const choices = pilotChoices(FACTIONS[faction]);
-  const picks: PilotChoice[] = [];
+  const picks: Pick[] = [];
   for (const p of squad.pilots) {
-    const c = choices.find((ch) => ch.pilotXws === p.id && ch.shipXws === p.ship);
-    if (!c) return { error: `Not in the roster: ${p.id} (${p.ship}).` };
-    picks.push(c);
+    const choice = choices.find((ch) => ch.pilotXws === p.id && ch.shipXws === p.ship);
+    if (!choice) return { error: `Not in the roster: ${p.id} (${p.ship}).` };
+    const pick = newPick(choice);
+    const used: Record<string, number> = {};
+    for (let i = 0; i < choice.slots.length; i++) {
+      const k = slotKey(choice.slots[i]!);
+      const arr = p.upgrades?.[k];
+      if (!arr) continue;
+      const at = used[k] ?? 0;
+      const x = arr[at];
+      if (!x) continue;
+      try {
+        getUpgrade(x);
+      } catch {
+        return { error: `Unknown upgrade: ${x}.` };
+      }
+      pick.equip[i] = x;
+      used[k] = at + 1;
+    }
+    picks.push(pick);
   }
   return { picks };
 }
@@ -67,8 +112,8 @@ function XwsTools({
   setPicks,
 }: {
   faction: FactionId;
-  picks: PilotChoice[];
-  setPicks: (p: PilotChoice[]) => void;
+  picks: Pick[];
+  setPicks: (p: Pick[]) => void;
 }): ReactElement {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState('');
@@ -120,6 +165,83 @@ function XwsTools({
   );
 }
 
+/** The equipped-upgrade slot bar + per-slot upgrade picker for one pilot. */
+function Loadout({
+  pick,
+  onEquip,
+}: {
+  pick: Pick;
+  onEquip: (slot: number, x: string | null) => void;
+}) {
+  const [slot, setSlot] = useState<number | null>(null);
+  const { choice, equip } = pick;
+  if (choice.slots.length === 0) return null;
+  const used = equipCost(equip);
+  const over = used > choice.loadout;
+
+  return (
+    <>
+      <div className="slots">
+        {choice.slots.map((s, i) => {
+          const x = equip[i];
+          return (
+            <button
+              key={i}
+              className={`slotChip${x ? ' filled' : ''}${slot === i ? ' active' : ''}`}
+              onClick={() => setSlot(slot === i ? null : i)}
+            >
+              <span className="slotName">{s}</span>
+              <span className="slotVal">{x ? getUpgrade(x).name : '—'}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className={`loadoutMeter${over ? ' over' : ''}`}>
+        loadout {used}/{choice.loadout}
+      </div>
+      {slot !== null && (
+        <div className="picker">
+          <div className="pickerHead">
+            <span className="muted">{choice.slots[slot]}</span>
+            <button className="btn sm ghost" onClick={() => setSlot(null)}>
+              Done
+            </button>
+          </div>
+          <div className="opts">
+            <button
+              className="btn sm"
+              onClick={() => {
+                onEquip(slot, null);
+                setSlot(null);
+              }}
+            >
+              — Empty
+            </button>
+            {upgradeOptions(choice.slots[slot]!, choice.shipXws).map((u) => {
+              const slotCost = equip[slot] ? (getUpgrade(equip[slot]!).cost ?? 0) : 0;
+              const avail = choice.loadout - used + slotCost;
+              const cost = u.cost ?? 0;
+              return (
+                <button
+                  key={u.xws}
+                  className="btn sm"
+                  disabled={cost > avail}
+                  onClick={() => {
+                    onEquip(slot, u.xws);
+                    setSlot(null);
+                  }}
+                >
+                  {u.name} <span className="muted">{u.cost ?? '?'}p</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function SquadColumn({
   faction,
   setFaction,
@@ -128,8 +250,8 @@ function SquadColumn({
 }: {
   faction: FactionId;
   setFaction: (f: FactionId) => void;
-  picks: PilotChoice[];
-  setPicks: (p: PilotChoice[]) => void;
+  picks: Pick[];
+  setPicks: (p: Pick[]) => void;
 }): ReactElement {
   const [adding, setAdding] = useState(false);
   const [shipPick, setShipPick] = useState<string | null>(null);
@@ -156,9 +278,15 @@ function SquadColumn({
     setQ('');
   };
   const add = (o: PilotChoice) => {
-    setPicks([...picks, o]);
+    setPicks([...picks, newPick(o)]);
     reset();
   };
+  const equip = (pickIdx: number, slot: number, x: string | null) =>
+    setPicks(
+      picks.map((p, idx) =>
+        idx !== pickIdx ? p : { ...p, equip: p.equip.map((e, j) => (j === slot ? x : e)) },
+      ),
+    );
 
   return (
     <div className="col">
@@ -185,21 +313,25 @@ function SquadColumn({
 
       <div className="roster">
         {picks.length === 0 && <div className="muted empty">No ships yet.</div>}
-        {picks.map((c, i) => (
-          <div key={i} className="rosterRow">
-            <span>
-              {c.shipName} · {c.pilotName} <span className="ini">I{c.initiative}</span>
-            </span>
-            <span className="rosterEnd">
-              <span className="muted">{c.cost}p</span>
-              <button
-                className="x"
-                aria-label="Remove"
-                onClick={() => setPicks(picks.filter((_, j) => j !== i))}
-              >
-                ×
-              </button>
-            </span>
+        {picks.map((p, i) => (
+          <div key={i} className="pickCard">
+            <div className="pickHead">
+              <span>
+                {p.choice.shipName} · {p.choice.pilotName}{' '}
+                <span className="ini">I{p.choice.initiative}</span>
+              </span>
+              <span className="rosterEnd">
+                <span className="muted">{p.choice.cost}p</span>
+                <button
+                  className="x"
+                  aria-label="Remove"
+                  onClick={() => setPicks(picks.filter((_, j) => j !== i))}
+                >
+                  ×
+                </button>
+              </span>
+            </div>
+            <Loadout pick={p} onEquip={(slot, x) => equip(i, slot, x)} />
           </div>
         ))}
       </div>
@@ -269,7 +401,7 @@ function OnlineSquad({
   onSubmit: (squad: XwsSquad) => void;
 }): ReactElement {
   const [faction, setFaction] = useState<FactionId>(side === 'rebel' ? 'rebel' : 'imperial');
-  const [picks, setPicks] = useState<PilotChoice[]>([]);
+  const [picks, setPicks] = useState<Pick[]>([]);
   const squad = toSquad(faction, picks);
   const v = validateSquad(squad);
   return (
@@ -348,8 +480,8 @@ export function SquadBuilder(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const [aFaction, setAFaction] = useState<FactionId>('rebel');
   const [bFaction, setBFaction] = useState<FactionId>('imperial');
-  const [a, setA] = useState<PilotChoice[]>([]);
-  const [b, setB] = useState<PilotChoice[]>([]);
+  const [a, setA] = useState<Pick[]>([]);
+  const [b, setB] = useState<Pick[]>([]);
   const aSquad = toSquad(aFaction, a);
   const bSquad = toSquad(bFaction, b);
   const canStart = validateSquad(aSquad).valid && validateSquad(bSquad).valid;

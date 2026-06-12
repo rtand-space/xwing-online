@@ -1,9 +1,47 @@
-import { getPilot, getShip } from './loaders';
+import { getPilot, getShip, getUpgrade, upgradesForSlot } from './loaders';
+import { FACTIONS, XWS_FACTION, type FactionId } from './presets';
+import type { UpgradeData } from './types';
 import type { XwsSquad } from './xws';
 
 export const SQUAD_POINT_CAP = 20;
 export const MIN_SHIPS = 3;
 export const MAX_SHIPS = 8;
+
+/** Slot display name → XWS slot key, e.g. "Force Power" → "forcepower". */
+export const slotKey = (slot: string): string => slot.toLowerCase().replace(/[^a-z]/g, '');
+
+const FACTION_XWS_BY_NAME: Record<string, string> = Object.fromEntries(
+  (Object.keys(FACTIONS) as FactionId[]).map((id) => [FACTIONS[id], XWS_FACTION[id]]),
+);
+
+/** Loadout cost of an upgrade ("?" / unset costs count as 0). */
+export const upgradeCost = (xws: string): number => getUpgrade(xws).cost ?? 0;
+
+interface Restriction {
+  factions?: string[];
+  ships?: string[];
+  sizes?: string[];
+}
+
+/**
+ * Upgrades that legally equip into `slot` on `shipXws` — v1 enforces faction,
+ * ship, and size restrictions on single-slot upgrades; other restriction types
+ * (arcs, actions, keywords, …) are deferred.
+ */
+export function upgradeOptions(slot: string, shipXws: string): UpgradeData[] {
+  const ship = getShip(shipXws);
+  const facXws = FACTION_XWS_BY_NAME[ship.faction] ?? '';
+  const size = ship.size.toLowerCase();
+  return upgradesForSlot(slot).filter((u) => {
+    if (u.slots.length !== 1) return false;
+    return (u.restrictions as Restriction[]).every((r) => {
+      if (r.factions && !r.factions.includes(facXws)) return false;
+      if (r.ships && !r.ships.includes(shipXws)) return false;
+      if (r.sizes && !r.sizes.includes(size)) return false;
+      return true;
+    });
+  });
+}
 
 export interface SquadValidation {
   valid: boolean;
@@ -26,6 +64,7 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
 
   const factions = new Set<string>();
   const counts: Record<string, number> = {};
+  const upgradeCounts: Record<string, number> = {};
   let points = 0;
   for (const p of squad.pilots) {
     let pilot;
@@ -40,6 +79,23 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
     counts[p.id] = (counts[p.id] ?? 0) + 1;
     if (pilot.limited > 0 && counts[p.id]! > pilot.limited) {
       errors.push(`${pilot.name}: limited to ${pilot.limited} per squad.`);
+    }
+
+    let used = 0;
+    for (const x of Object.values(p.upgrades ?? {}).flat()) {
+      try {
+        const u = getUpgrade(x);
+        used += u.cost ?? 0;
+        upgradeCounts[x] = (upgradeCounts[x] ?? 0) + 1;
+        if (u.limited > 0 && upgradeCounts[x]! > u.limited) {
+          errors.push(`${u.name}: limited to ${u.limited} per squad.`);
+        }
+      } catch (e) {
+        errors.push((e as Error).message);
+      }
+    }
+    if (used > pilot.loadout) {
+      errors.push(`${pilot.name}: loadout ${used}/${pilot.loadout} over budget.`);
     }
   }
 

@@ -586,6 +586,63 @@ body {
   align-items: center;
   gap: 8px;
 }
+.pickCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+}
+.pickHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.slotChip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.slotChip.filled {
+  border-style: solid;
+}
+.slotChip.active {
+  border-color: var(--accent, #4f8cff);
+}
+.slotName {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #8a90a2);
+}
+.slotVal {
+  font-size: 12px;
+  font-weight: 600;
+}
+.loadoutMeter {
+  font-size: 11px;
+  color: var(--muted, #8a90a2);
+}
+.loadoutMeter.over {
+  color: #ef6f6f;
+  font-weight: 700;
+}
 .xws {
   display: flex;
   flex-direction: column;
