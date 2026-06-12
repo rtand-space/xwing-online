@@ -532,6 +532,22 @@ body {
   padding: 8px 10px;
   word-break: break-all;
 }
+.factionSel {
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.shipGroup {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #8a90a2);
+  margin: 8px 0 2px;
+}
 .xws {
   display: flex;
   flex-direction: column;

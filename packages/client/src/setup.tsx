@@ -1,6 +1,8 @@
 import {
   buildConfig,
   FACTIONS,
+  FACTION_IDS,
+  type FactionId,
   parseXws,
   type PilotChoice,
   PRESETS,
@@ -20,19 +22,16 @@ import { useGame } from './store';
 const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
 
-const factionName = (side: Side) => (side === 'rebel' ? FACTIONS.rebel : FACTIONS.imperial);
-const xwsFaction = (side: Side) => (side === 'rebel' ? XWS_FACTION.rebel : XWS_FACTION.imperial);
-const toSquad = (side: Side, picks: PilotChoice[]): XwsSquad => ({
-  faction: xwsFaction(side),
+const toSquad = (faction: FactionId, picks: PilotChoice[]): XwsSquad => ({
+  faction: XWS_FACTION[faction],
   pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
 });
 
-/** Pretty XWS export for a side's current picks. */
-const exportXws = (side: Side, picks: PilotChoice[]): string =>
+const exportXws = (faction: FactionId, picks: PilotChoice[]): string =>
   JSON.stringify(
     {
-      faction: xwsFaction(side),
-      points: squadPoints(toSquad(side, picks)),
+      faction: XWS_FACTION[faction],
+      points: squadPoints(toSquad(faction, picks)),
       version: '2.5.0',
       vendor: { 'xwing-online': {} },
       pilots: picks.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
@@ -41,33 +40,33 @@ const exportXws = (side: Side, picks: PilotChoice[]): string =>
     2,
   );
 
-/** Parse an XWS list into builder picks for this side (faction-checked, roster-checked). */
-function picksFromXws(text: string, side: Side): { picks?: PilotChoice[]; error?: string } {
+/** Parse an XWS list into builder picks for this faction (faction- and roster-checked). */
+function picksFromXws(text: string, faction: FactionId): { picks?: PilotChoice[]; error?: string } {
   let squad: XwsSquad;
   try {
     squad = parseXws(text);
   } catch (e) {
     return { error: (e as Error).message };
   }
-  if (squad.faction !== xwsFaction(side)) {
-    return { error: `That list is ${squad.faction}, not ${xwsFaction(side)}.` };
+  if (squad.faction !== XWS_FACTION[faction]) {
+    return { error: `That list is ${squad.faction}, not ${XWS_FACTION[faction]}.` };
   }
-  const choices = pilotChoices(factionName(side));
+  const choices = pilotChoices(FACTIONS[faction]);
   const picks: PilotChoice[] = [];
   for (const p of squad.pilots) {
     const c = choices.find((ch) => ch.pilotXws === p.id && ch.shipXws === p.ship);
-    if (!c) return { error: `Not in the R1 roster yet: ${p.id} (${p.ship}).` };
+    if (!c) return { error: `Not in the roster: ${p.id} (${p.ship}).` };
     picks.push(c);
   }
   return { picks };
 }
 
 function XwsTools({
-  side,
+  faction,
   picks,
   setPicks,
 }: {
-  side: Side;
+  faction: FactionId;
   picks: PilotChoice[];
   setPicks: (p: PilotChoice[]) => void;
 }): ReactElement {
@@ -80,7 +79,7 @@ function XwsTools({
       <button
         className="btn sm ghost"
         onClick={() => {
-          setText(exportXws(side, picks));
+          setText(exportXws(faction, picks));
           setError('');
           setOpen((o) => !o);
         }}
@@ -103,7 +102,7 @@ function XwsTools({
             <button
               className="btn sm primary"
               onClick={() => {
-                const res = picksFromXws(text, side);
+                const res = picksFromXws(text, faction);
                 if (res.error) setError(res.error);
                 else {
                   setPicks(res.picks ?? []);
@@ -122,34 +121,68 @@ function XwsTools({
 }
 
 function SquadColumn({
-  side,
+  faction,
+  setFaction,
   picks,
   setPicks,
 }: {
-  side: Side;
+  faction: FactionId;
+  setFaction: (f: FactionId) => void;
   picks: PilotChoice[];
   setPicks: (p: PilotChoice[]) => void;
 }): ReactElement {
-  const v = validateSquad(toSquad(side, picks));
+  const [q, setQ] = useState('');
+  const v = validateSquad(toSquad(faction, picks));
+  const needle = q.trim().toLowerCase();
+  const choices = pilotChoices(FACTIONS[faction]).filter(
+    (o) => !needle || `${o.shipName} ${o.pilotName}`.toLowerCase().includes(needle),
+  );
+
+  let lastShip = '';
   return (
     <div className="col">
       <div className="colHead">
-        {side === 'rebel' ? 'Rebel' : 'Imperial'}{' '}
+        <select
+          className="factionSel"
+          value={faction}
+          onChange={(e) => {
+            setFaction(e.target.value as FactionId);
+            setPicks([]);
+            setQ('');
+          }}
+        >
+          {FACTION_IDS.map((f) => (
+            <option key={f} value={f}>
+              {FACTIONS[f]}
+            </option>
+          ))}
+        </select>
         <span className="muted">
           ({v.points}/{SQUAD_POINT_CAP})
         </span>
       </div>
+      <input
+        className="joinInput"
+        placeholder="search ships / pilots"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+      />
       <div className="opts">
-        {pilotChoices(factionName(side)).map((o) => (
-          <button
-            key={o.pilotXws}
-            className="btn sm"
-            disabled={picks.length >= MAX_SHIPS}
-            onClick={() => setPicks([...picks, o])}
-          >
-            + {o.pilotName} <span className="ini">I{o.initiative}</span>
-          </button>
-        ))}
+        {choices.map((o) => {
+          const head = o.shipName !== lastShip ? ((lastShip = o.shipName), o.shipName) : null;
+          return (
+            <div key={o.shipXws + o.pilotXws}>
+              {head && <div className="shipGroup">{head}</div>}
+              <button
+                className="btn sm"
+                disabled={picks.length >= MAX_SHIPS}
+                onClick={() => setPicks([...picks, o])}
+              >
+                + {o.pilotName} <span className="ini">I{o.initiative}</span>
+              </button>
+            </div>
+          );
+        })}
       </div>
       <div className="roster">
         {picks.length === 0 && <div className="muted empty">No ships yet.</div>}
@@ -168,7 +201,7 @@ function SquadColumn({
           </div>
         ))}
       </div>
-      <XwsTools side={side} picks={picks} setPicks={setPicks} />
+      <XwsTools faction={faction} picks={picks} setPicks={setPicks} />
     </div>
   );
 }
@@ -185,12 +218,13 @@ function OnlineSquad({
   disabled?: boolean;
   onSubmit: (squad: XwsSquad) => void;
 }): ReactElement {
+  const [faction, setFaction] = useState<FactionId>(side === 'rebel' ? 'rebel' : 'imperial');
   const [picks, setPicks] = useState<PilotChoice[]>([]);
-  const squad = toSquad(side, picks);
+  const squad = toSquad(faction, picks);
   const v = validateSquad(squad);
   return (
     <div className="panelStack">
-      <SquadColumn side={side} picks={picks} setPicks={setPicks} />
+      <SquadColumn faction={faction} setFaction={setFaction} picks={picks} setPicks={setPicks} />
       {picks.length > 0 &&
         !v.valid &&
         v.errors.map((e, i) => (
@@ -209,7 +243,7 @@ function OnlineSquad({
   );
 }
 
-/** Game tab (no game): quick presets, host online (Rebel), join online (Imperial). */
+/** Game tab (no game): quick presets, host online, join online. */
 export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const host = useOnline((s) => s.host);
@@ -228,10 +262,10 @@ export function QuickPlay(): ReactElement {
         ))}
       </div>
 
-      <div className="section">Host online — you play Rebel</div>
+      <div className="section">Host online — pick your faction</div>
       <OnlineSquad side="rebel" label="Host game" onSubmit={(s) => void host(s)} />
 
-      <div className="section">Join online — you play Imperial</div>
+      <div className="section">Join online — pick your faction</div>
       <div className="joinRow">
         <input
           className="joinInput"
@@ -253,23 +287,25 @@ export function QuickPlay(): ReactElement {
 /** Squad tab (no game): build both squads for a custom hot-seat match. */
 export function SquadBuilder(): ReactElement {
   const startGame = useGame((s) => s.startGame);
-  const [rebel, setRebel] = useState<PilotChoice[]>([]);
-  const [imperial, setImperial] = useState<PilotChoice[]>([]);
-  const rebelSquad = toSquad('rebel', rebel);
-  const imperialSquad = toSquad('imperial', imperial);
-  const canStart = validateSquad(rebelSquad).valid && validateSquad(imperialSquad).valid;
+  const [aFaction, setAFaction] = useState<FactionId>('rebel');
+  const [bFaction, setBFaction] = useState<FactionId>('imperial');
+  const [a, setA] = useState<PilotChoice[]>([]);
+  const [b, setB] = useState<PilotChoice[]>([]);
+  const aSquad = toSquad(aFaction, a);
+  const bSquad = toSquad(bFaction, b);
+  const canStart = validateSquad(aSquad).valid && validateSquad(bSquad).valid;
 
   return (
     <div className="panelStack">
       <div className="section">Custom hot-seat — both squads, 3–8 ships, ≤20 pts each</div>
       <div className="builder">
-        <SquadColumn side="rebel" picks={rebel} setPicks={setRebel} />
-        <SquadColumn side="imperial" picks={imperial} setPicks={setImperial} />
+        <SquadColumn faction={aFaction} setFaction={setAFaction} picks={a} setPicks={setA} />
+        <SquadColumn faction={bFaction} setFaction={setBFaction} picks={b} setPicks={setB} />
       </div>
       <button
         className="btn primary start"
         disabled={!canStart}
-        onClick={() => startGame(buildConfig(rebelSquad, imperialSquad, seed()))}
+        onClick={() => startGame(buildConfig(aSquad, bSquad, seed()))}
       >
         {canStart ? 'Start battle' : 'Each side needs a legal squad'}
       </button>

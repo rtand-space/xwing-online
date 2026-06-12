@@ -13,12 +13,13 @@ export type { XwsPilot, XwsSquad } from './xws';
 export {
   buildConfig,
   FACTIONS,
+  FACTION_IDS,
   PRESETS,
   presetConfig,
   pilotChoices,
   sideShipInits,
   XWS_FACTION,
 } from './presets';
-export type { PilotChoice, Preset, Side } from './presets';
+export type { FactionId, PilotChoice, Preset, Side } from './presets';
 export { MAX_SHIPS, MIN_SHIPS, SQUAD_POINT_CAP, squadPoints, validateSquad } from './squad';
 export type { SquadValidation } from './squad';

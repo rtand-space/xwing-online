@@ -2,11 +2,46 @@ import type { GameConfig, Player, Position, ShipInit } from '@xwing/engine';
 import { allShips } from './loaders';
 import { squadToShipInits, type XwsSquad } from './xws';
 
+/** Board seats (player ids). Faction is chosen separately and baked into each ShipInit. */
 export type Side = 'rebel' | 'imperial';
 
-/** Faction names as they appear in the card data, keyed by XWS side id. */
-export const FACTIONS = { rebel: 'Rebel Alliance', imperial: 'Galactic Empire' } as const;
-export const XWS_FACTION = { rebel: 'rebelalliance', imperial: 'galacticempire' } as const;
+export type FactionId =
+  | 'rebel'
+  | 'imperial'
+  | 'scum'
+  | 'republic'
+  | 'separatist'
+  | 'resistance'
+  | 'firstorder';
+
+/** Display names as they appear in the card data, keyed by faction id. */
+export const FACTIONS: Record<FactionId, string> = {
+  rebel: 'Rebel Alliance',
+  imperial: 'Galactic Empire',
+  scum: 'Scum and Villainy',
+  republic: 'Galactic Republic',
+  separatist: 'Separatist Alliance',
+  resistance: 'Resistance',
+  firstorder: 'First Order',
+};
+export const XWS_FACTION: Record<FactionId, string> = {
+  rebel: 'rebelalliance',
+  imperial: 'galacticempire',
+  scum: 'scumandvillainy',
+  republic: 'galacticrepublic',
+  separatist: 'separatistalliance',
+  resistance: 'resistance',
+  firstorder: 'firstorder',
+};
+export const FACTION_IDS: FactionId[] = [
+  'rebel',
+  'imperial',
+  'scum',
+  'republic',
+  'separatist',
+  'resistance',
+  'firstorder',
+];
 
 export interface PilotChoice {
   shipXws: string;
