@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { baseDistance, bearingDeg, inArc, rangeBand } from './arcs';
+import { baseDistance, bearingDeg, inArc, inBullseye, rangeBand } from './arcs';
 import type { Ship } from './types';
 
 const mk = (x: number, y: number, angle = 0): Ship => ({
@@ -49,6 +49,15 @@ describe('arcs and range', () => {
     expect(inArc(attacker, mk(120, 100))).toBe(true);
     // fully off to the side: no part of the base in the wedge
     expect(inArc(attacker, mk(400, 80))).toBe(false);
+  });
+
+  it('bullseye is a narrow forward corridor within range 3', () => {
+    const a = mk(0, 0, 0);
+    expect(inBullseye(a, mk(0, 100))).toBe(true); // dead ahead, straddles centreline
+    expect(inBullseye(a, mk(8, 100))).toBe(true); // slightly off but within the corridor
+    expect(inBullseye(a, mk(200, 100))).toBe(false); // off to the side
+    expect(inBullseye(a, mk(0, -100))).toBe(false); // behind
+    expect(inBullseye(a, mk(0, 400))).toBe(false); // beyond range 3
   });
 
   it('buckets distance into range bands 1/2/3, null beyond', () => {

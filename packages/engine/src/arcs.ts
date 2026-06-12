@@ -57,3 +57,31 @@ export function rangeBand(a: Ship, b: Ship): number | null {
   const band = Math.floor(baseDistance(a, b) / RANGE_BAND_MM) + 1;
   return band <= 3 ? band : null;
 }
+
+/** Half-width of the bullseye corridor (≈ the range ruler's width), in mm. */
+const BULLSEYE_HALF = 12;
+
+/**
+ * Bullseye arc: a narrow forward corridor the width of the range ruler, within
+ * range 3 (per the Rules Reference). True if the target's base sits in the
+ * corridor or straddles the attacker's centreline ahead of it.
+ */
+export function inBullseye(attacker: Ship, target: Ship): boolean {
+  if (rangeBand(attacker, target) === null) return false;
+  const a = attacker.pos.angle * DEG;
+  const fwd: Vec = { x: Math.sin(a), y: Math.cos(a) };
+  const right: Vec = { x: Math.cos(a), y: -Math.sin(a) };
+  let near = false;
+  let left = false;
+  let rightSide = false;
+  for (const v of basePolygon(target.pos, target.base)) {
+    const dx = v.x - attacker.pos.x;
+    const dy = v.y - attacker.pos.y;
+    if (dx * fwd.x + dy * fwd.y <= 0) continue; // behind the attacker
+    const lat = dx * right.x + dy * right.y;
+    if (Math.abs(lat) <= BULLSEYE_HALF) near = true;
+    if (lat <= 0) left = true;
+    if (lat >= 0) rightSide = true;
+  }
+  return near || (left && rightSide);
+}

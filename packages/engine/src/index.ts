@@ -49,7 +49,7 @@ export {
 } from './geometry';
 export type { Vec } from './geometry';
 export { applyManeuver, pathAt } from './templates';
-export { baseDistance, bearingDeg, inArc, RANGE_BAND_MM, rangeBand } from './arcs';
+export { baseDistance, bearingDeg, inArc, inBullseye, RANGE_BAND_MM, rangeBand } from './arcs';
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
 export { lineObstructed, obstacleMoveEvents, obstaclesAt } from './obstacles';

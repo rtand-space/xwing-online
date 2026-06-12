@@ -4,7 +4,9 @@ import {
   changeAttack,
   changeDefence,
   inArc,
+  inBullseye,
   registerAbility,
+  rerollAttack,
 } from '@xwing/engine';
 
 /**
@@ -73,6 +75,30 @@ const ABILITIES: Record<string, Ability> = {
         }
         if (ctx.attack.includes('blank')) changeAttack(ctx, 'blank', 'hit', 1);
         else changeAttack(ctx, 'focus', 'hit', 1);
+      },
+    },
+  },
+
+  // Predator (Talent) — reroll a die against a target in your bullseye arc.
+  predator: {
+    note: 'While attacking a target in your bullseye arc, reroll 1 blank attack die.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && inBullseye(ctx.attacker, ctx.target)) {
+          rerollAttack(ctx, 'blank', 1);
+        }
+      },
+    },
+  },
+
+  // Marksmanship (Talent) — upgrade a hit to a crit against a bullseye target.
+  marksmanship: {
+    note: 'While attacking a target in your bullseye arc, change 1 hit to a crit.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && inBullseye(ctx.attacker, ctx.target)) {
+          changeAttack(ctx, 'hit', 'crit', 1);
+        }
       },
     },
   },

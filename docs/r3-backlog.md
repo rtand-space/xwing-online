@@ -79,7 +79,9 @@ Status: ☐ not started · ◐ in progress · ☑ done
   startup by the client (`main.tsx`) and server (`game-store.ts`). Live cards
   (edition-stable, arc/dice only): **Wedge Antilles** (defender −1 die),
   **Backstabber** (+1 attack die from outside the defender's arc), **Outmaneuver**
-  (defender −1 die from outside its arc). The curated set grows from here.
+  (defender −1 die from outside its arc), **Juke**, **Fearless**, plus
+  **Predator** + **Marksmanship** once the engine gained a **bullseye arc**
+  (`inBullseye`, a range-ruler-width forward corridor). The curated set grows from here.
 - ☑ **T3-S2** Builder honesty: `implementedAbility(xws)` badges pilots/upgrades the
   engine actually simulates, with a note that the rest aren't yet — so equipping an
   unimplemented card doesn't mislead.

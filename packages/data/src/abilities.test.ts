@@ -111,6 +111,35 @@ describe('card abilities', () => {
     expect(far.attack).toEqual(['blank']);
   });
 
+  it('Marksmanship upgrades a hit to a crit against a bullseye target', () => {
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const hook = getAbility('marksmanship')!.attack!.onModifyAttack!;
+
+    const bull = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit', 'blank']);
+    hook(bull, atk);
+    expect(bull.attack).toEqual(['crit', 'blank']);
+
+    const offAxis = ctx(atk, ship('t', { x: 200, y: 100, angle: 0 }), ['hit', 'blank']);
+    hook(offAxis, atk);
+    expect(offAxis.attack).toEqual(['hit', 'blank']);
+  });
+
+  it('Predator rerolls a blank only against a bullseye target', () => {
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const hook = getAbility('predator')!.attack!.onModifyAttack!;
+
+    const bull = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'hit']);
+    hook(bull, atk);
+    expect(bull.attack).toHaveLength(2);
+    expect(bull.cursor).toBe(1); // one reroll drawn
+    expect(bull.events.filter((e) => e.type === 'DiceRolled')).toHaveLength(1);
+
+    const offAxis = ctx(atk, ship('t', { x: 200, y: 100, angle: 0 }), ['blank', 'hit']);
+    hook(offAxis, atk);
+    expect(offAxis.cursor).toBe(0);
+    expect(offAxis.events).toHaveLength(0);
+  });
+
   it('Outmaneuver drops a defence die only from outside the defender’s arc', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
     const hook = getAbility('outmaneuver')!.attack!.onRollDefence!;
