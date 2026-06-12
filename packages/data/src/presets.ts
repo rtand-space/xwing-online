@@ -49,6 +49,7 @@ export interface PilotChoice {
   pilotXws: string;
   pilotName: string;
   initiative: number;
+  cost: number;
   faction: string;
 }
 
@@ -64,6 +65,7 @@ export function pilotChoices(faction?: string): PilotChoice[] {
         pilotXws: p.xws,
         pilotName: p.name,
         initiative: p.initiative,
+        cost: p.cost,
         faction: ship.faction,
       });
     }

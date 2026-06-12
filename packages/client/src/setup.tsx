@@ -131,14 +131,35 @@ function SquadColumn({
   picks: PilotChoice[];
   setPicks: (p: PilotChoice[]) => void;
 }): ReactElement {
+  const [adding, setAdding] = useState(false);
+  const [shipPick, setShipPick] = useState<string | null>(null);
   const [q, setQ] = useState('');
   const v = validateSquad(toSquad(faction, picks));
-  const needle = q.trim().toLowerCase();
-  const choices = pilotChoices(FACTIONS[faction]).filter(
-    (o) => !needle || `${o.shipName} ${o.pilotName}`.toLowerCase().includes(needle),
-  );
+  const full = picks.length >= MAX_SHIPS;
 
-  let lastShip = '';
+  const all = pilotChoices(FACTIONS[faction]);
+  const ships: { xws: string; name: string }[] = [];
+  const seen = new Set<string>();
+  for (const o of all) {
+    if (!seen.has(o.shipXws)) {
+      seen.add(o.shipXws);
+      ships.push({ xws: o.shipXws, name: o.shipName });
+    }
+  }
+  const needle = q.trim().toLowerCase();
+  const shipList = ships.filter((s) => !needle || s.name.toLowerCase().includes(needle));
+  const pilots = shipPick ? all.filter((o) => o.shipXws === shipPick) : [];
+
+  const reset = () => {
+    setAdding(false);
+    setShipPick(null);
+    setQ('');
+  };
+  const add = (o: PilotChoice) => {
+    setPicks([...picks, o]);
+    reset();
+  };
+
   return (
     <div className="col">
       <div className="colHead">
@@ -148,7 +169,7 @@ function SquadColumn({
           onChange={(e) => {
             setFaction(e.target.value as FactionId);
             setPicks([]);
-            setQ('');
+            reset();
           }}
         >
           {FACTION_IDS.map((f) => (
@@ -161,46 +182,75 @@ function SquadColumn({
           ({v.points}/{SQUAD_POINT_CAP})
         </span>
       </div>
-      <input
-        className="joinInput"
-        placeholder="search ships / pilots"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-      />
-      <div className="opts">
-        {choices.map((o) => {
-          const head = o.shipName !== lastShip ? ((lastShip = o.shipName), o.shipName) : null;
-          return (
-            <div key={o.shipXws + o.pilotXws}>
-              {head && <div className="shipGroup">{head}</div>}
-              <button
-                className="btn sm"
-                disabled={picks.length >= MAX_SHIPS}
-                onClick={() => setPicks([...picks, o])}
-              >
-                + {o.pilotName} <span className="ini">I{o.initiative}</span>
-              </button>
-            </div>
-          );
-        })}
-      </div>
+
       <div className="roster">
         {picks.length === 0 && <div className="muted empty">No ships yet.</div>}
         {picks.map((c, i) => (
           <div key={i} className="rosterRow">
             <span>
-              {c.shipName} · {c.pilotName}
+              {c.shipName} · {c.pilotName} <span className="ini">I{c.initiative}</span>
             </span>
-            <button
-              className="x"
-              aria-label="Remove"
-              onClick={() => setPicks(picks.filter((_, j) => j !== i))}
-            >
-              ×
-            </button>
+            <span className="rosterEnd">
+              <span className="muted">{c.cost}p</span>
+              <button
+                className="x"
+                aria-label="Remove"
+                onClick={() => setPicks(picks.filter((_, j) => j !== i))}
+              >
+                ×
+              </button>
+            </span>
           </div>
         ))}
       </div>
+
+      {!adding ? (
+        <button className="btn addShip" disabled={full} onClick={() => setAdding(true)}>
+          {full ? 'Squad full' : '+ Add a ship'}
+        </button>
+      ) : (
+        <div className="picker">
+          <div className="pickerHead">
+            <button
+              className="btn sm ghost"
+              onClick={() => (shipPick ? (setShipPick(null), setQ('')) : reset())}
+            >
+              ← {shipPick ? 'Ships' : 'Cancel'}
+            </button>
+            <span className="muted">
+              {shipPick ? ships.find((s) => s.xws === shipPick)?.name : 'Choose a ship'}
+            </span>
+          </div>
+          {!shipPick ? (
+            <>
+              <input
+                className="joinInput"
+                placeholder="search ships"
+                autoFocus
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+              />
+              <div className="opts">
+                {shipList.map((s) => (
+                  <button key={s.xws} className="btn sm" onClick={() => setShipPick(s.xws)}>
+                    {s.name}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="opts">
+              {pilots.map((o) => (
+                <button key={o.pilotXws} className="btn sm" onClick={() => add(o)}>
+                  + {o.pilotName} <span className="ini">I{o.initiative}</span>{' '}
+                  <span className="muted">{o.cost}p</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <XwsTools faction={faction} picks={picks} setPicks={setPicks} />
     </div>
   );
@@ -243,12 +293,15 @@ function OnlineSquad({
   );
 }
 
-/** Game tab (no game): quick presets, host online, join online. */
+/** Game tab (no game): quick presets, then one online builder toggled host/join. */
 export function QuickPlay(): ReactElement {
   const startGame = useGame((s) => s.startGame);
   const host = useOnline((s) => s.host);
   const join = useOnline((s) => s.join);
-  const [code, setCode] = useState(() => new URLSearchParams(location.search).get('game') ?? '');
+  const initialCode = new URLSearchParams(location.search).get('game') ?? '';
+  const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
+  const [code, setCode] = useState(initialCode);
+  const joining = mode === 'join';
 
   return (
     <div className="panelStack">
@@ -262,23 +315,29 @@ export function QuickPlay(): ReactElement {
         ))}
       </div>
 
-      <div className="section">Host online — pick your faction</div>
-      <OnlineSquad side="rebel" label="Host game" onSubmit={(s) => void host(s)} />
-
-      <div className="section">Join online — pick your faction</div>
-      <div className="joinRow">
+      <div className="section">Play online</div>
+      <div className="segmented">
+        <button className={mode === 'host' ? 'active' : ''} onClick={() => setMode('host')}>
+          Host
+        </button>
+        <button className={joining ? 'active' : ''} onClick={() => setMode('join')}>
+          Join
+        </button>
+      </div>
+      {joining && (
         <input
           className="joinInput"
           placeholder="enter game code"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-      </div>
+      )}
       <OnlineSquad
-        side="imperial"
-        label={code.trim() ? 'Join game' : 'Enter a code first'}
-        disabled={!code.trim()}
-        onSubmit={(s) => void join(code.trim(), s)}
+        key={mode}
+        side={joining ? 'imperial' : 'rebel'}
+        label={joining ? (code.trim() ? 'Join game' : 'Enter a code first') : 'Host game'}
+        disabled={joining && !code.trim()}
+        onSubmit={(s) => (joining ? void join(code.trim(), s) : void host(s))}
       />
     </div>
   );
