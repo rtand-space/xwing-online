@@ -538,9 +538,7 @@ export function QuickPlay(): ReactElement {
         ))}
       </div>
 
-      {squads.length === 0 ? (
-        <div className="muted">Build a squad in the Squad tab to play your own lists.</div>
-      ) : (
+      {squads.length > 0 && (
         <>
           <div className="section">Custom hot-seat</div>
           <SquadSelect squads={squads} value={aId} onChange={setAId} placeholder="Squad A" />
@@ -552,41 +550,44 @@ export function QuickPlay(): ReactElement {
           >
             Start battle
           </button>
-
-          <div className="section">Play online</div>
-          <div className="segmented">
-            <button className={mode === 'host' ? 'active' : ''} onClick={() => setMode('host')}>
-              Host
-            </button>
-            <button className={joining ? 'active' : ''} onClick={() => setMode('join')}>
-              Join
-            </button>
-          </div>
-          <SquadSelect
-            squads={squads}
-            value={online}
-            onChange={setOnline}
-            placeholder="Choose your squad"
-          />
-          {joining && (
-            <input
-              className="joinInput"
-              placeholder="enter game code"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-          )}
-          <button
-            className="btn primary"
-            disabled={!byId(online) || (joining && !code.trim())}
-            onClick={() =>
-              joining ? void join(code.trim(), byId(online)!.xws) : void host(byId(online)!.xws)
-            }
-          >
-            {joining ? 'Join game' : 'Host game'}
-          </button>
         </>
       )}
+
+      <div className="section">Play online</div>
+      {squads.length === 0 && (
+        <div className="muted">A squad is required — build one in the Squad tab.</div>
+      )}
+      <div className="segmented">
+        <button className={mode === 'host' ? 'active' : ''} onClick={() => setMode('host')}>
+          Host
+        </button>
+        <button className={joining ? 'active' : ''} onClick={() => setMode('join')}>
+          Join
+        </button>
+      </div>
+      <SquadSelect
+        squads={squads}
+        value={online}
+        onChange={setOnline}
+        placeholder={squads.length ? 'Choose your squad' : 'No squads yet'}
+      />
+      {joining && (
+        <input
+          className="joinInput"
+          placeholder="enter game code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+      )}
+      <button
+        className="btn primary"
+        disabled={!byId(online) || (joining && !code.trim())}
+        onClick={() =>
+          joining ? void join(code.trim(), byId(online)!.xws) : void host(byId(online)!.xws)
+        }
+      >
+        {joining ? 'Join game' : 'Host game'}
+      </button>
     </div>
   );
 }
