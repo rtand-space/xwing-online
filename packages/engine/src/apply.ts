@@ -59,6 +59,11 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       }));
     case 'StressChanged':
       return mapShip(state, e.shipId, (s) => changeStress(s, e.delta));
+    case 'ChargeChanged':
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        charges: Math.max(0, Math.min(s.maxCharges, s.charges + e.delta)),
+      }));
     case 'ActionPerformed':
     case 'ActionSkipped':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasActed: true }));
@@ -100,6 +105,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         round: state.round + 1,
         ships: state.ships.map((s) => ({
           ...withoutTokens(s, ['focus', 'evade']),
+          charges: Math.min(s.maxCharges, s.charges + s.recurring),
           dial: undefined,
           dialRevealed: false,
           hasMoved: false,

@@ -55,8 +55,10 @@ Status: ☐ not started · ◐ in progress · ☑ done
 - ☐ **T3-C1** New pending decision `trigger-ability`: a "may" ability prompts its
   owner to use it and choose options/targets. The reduce/pending/command loop
   extends to ability prompts; verify the online DO serialises them like any command.
-- ☐ **T3-C2** Minimal **charge** model: `charges` + `maxCharges` + recurring on
-  `Ship`; spend/recover events; round-end recovery. Force and status tokens stay R4.
+- ☑ **T3-C2** Minimal **charge** model: `charges`/`maxCharges`/`recurring` on
+  `Ship` (+ optional on `ShipInit`); `ChargeChanged` event (clamped 0..max); ships
+  start full; `recurring` charges recover at round end. Force + status tokens stay R4.
+  _Card-supplied charge values arrive with the M4 cards._
 
 ## R3-M3 — Effect primitives (no-charge subset)
 - ☐ **T3-E1** Dice effects: reroll N, add/remove a die, change one result, set a

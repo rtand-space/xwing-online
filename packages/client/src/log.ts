@@ -15,6 +15,8 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} hits ${e.kind === 'asteroid' ? 'an asteroid' : 'a debris cloud'}`;
     case 'StressChanged':
       return e.delta > 0 ? `${e.shipId} is stressed` : `${e.shipId} cleared stress`;
+    case 'ChargeChanged':
+      return e.delta < 0 ? `${e.shipId} spends a charge` : `${e.shipId} recovers a charge`;
     case 'ActionPerformed':
       return `${e.shipId}: ${e.action}${e.targetId ? ` ${e.targetId}` : ''}`;
     case 'ActionSkipped':

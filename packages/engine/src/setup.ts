@@ -2,11 +2,15 @@ import type { GameConfig, ShipInit } from './events';
 import type { GameState, Ship } from './types';
 
 function initShip(init: ShipInit): Ship {
+  const maxCharges = init.maxCharges ?? 0;
   return {
     ...init,
     upgrades: init.upgrades ?? [],
     maxHull: init.hull,
     maxShields: init.shields,
+    maxCharges,
+    charges: init.charges ?? maxCharges,
+    recurring: init.recurring ?? 0,
     tokens: [],
     dialRevealed: false,
     hasMoved: false,

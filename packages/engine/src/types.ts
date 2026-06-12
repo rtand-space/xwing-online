@@ -72,6 +72,10 @@ export interface Ship {
   shields: number;
   maxHull: number;
   maxShields: number;
+  /** Charge pool (R3): current/most, plus how many recover at round end (0 = none). */
+  charges: number;
+  maxCharges: number;
+  recurring: number;
   pos: Position;
   actionBar: ActionType[];
   dialOptions: Maneuver[];
