@@ -50,11 +50,11 @@ export function SideFlyout({
               </p>
             </div>
           )}
-          <p className="disclaimer">
-            Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
-            models.
-          </p>
         </div>
+        <p className="disclaimer">
+          Fan project — not endorsed by or affiliated with Atomic Mass Games. Go buy the real
+          models.
+        </p>
       </aside>
     </>
   );

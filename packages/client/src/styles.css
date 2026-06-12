@@ -244,6 +244,14 @@ body {
   width: min(380px, 88vw);
   border-left: 1px solid var(--line);
   transform: translateX(100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.flyout.side .flyoutBody {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 .flyout.side.open {
   transform: translateX(0);
@@ -411,7 +419,9 @@ body {
 .disclaimer {
   font-size: 11px;
   color: var(--ink-soft);
-  margin: 4px 0 0;
+  margin: 0;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
 }
 
 /* ---------- new-game / builder ---------- */
