@@ -99,6 +99,10 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'focus' });
       else if (cmd.action === 'evade') {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'evade' });
+      } else if (cmd.action === 'calculate') {
+        events.push({ type: 'TokenGained', shipId: ship.id, kind: 'calculate' });
+      } else if (cmd.action === 'reinforce') {
+        events.push({ type: 'TokenGained', shipId: ship.id, kind: 'reinforce' });
       } else if (cmd.action === 'lock') {
         if (!cmd.targetId || !pending.options.lockTargets.includes(cmd.targetId)) {
           return reject('Invalid lock target');

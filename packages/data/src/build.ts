@@ -12,6 +12,8 @@ const ACTIONS: Record<string, ActionType> = {
   'Barrel Roll': 'barrel-roll',
   Boost: 'boost',
   Evade: 'evade',
+  Calculate: 'calculate',
+  Reinforce: 'reinforce',
 };
 
 function statValue(ship: ShipData, type: string): number {

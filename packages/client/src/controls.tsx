@@ -89,6 +89,8 @@ const ACTION: Record<ActionType, string> = {
   'barrel-roll': 'Barrel Roll',
   boost: 'Boost',
   evade: 'Evade',
+  calculate: 'Calculate',
+  reinforce: 'Reinforce',
 };
 
 export function Controls({

@@ -33,9 +33,10 @@ Status: ☐ not started
 # R4a — tokens · Force · arcs · auras · actions
 
 ## R4-M1 — Resources & beneficial tokens
-- ☐ **T4-R1** Generalise the token model to the full taxonomy (green/red/orange);
-  add **calculate** (focus-like for dice) and **reinforce** (reduce damage from an
-  arc), plus the actions that grant them. Round-end cleanup of green tokens.
+- ☑ **T4-R1** Token/action unions extended; **calculate** (one focus result per
+  token, in both attack & defence) and **reinforce** (a 2+ result attack deals 1
+  less) implemented with real effects; the Calculate/Reinforce actions grant them;
+  round-end clears them as green tokens; shown in the roster. Tested.
 - ☐ **T4-R2** **Force** as a resource (spend to modify dice / trigger abilities,
   recover 1 per round); force-power upgrades and Force-using pilots.
 - ☐ **T4-R3** **Per-card charge pools** — replace R3's per-ship pool so one card

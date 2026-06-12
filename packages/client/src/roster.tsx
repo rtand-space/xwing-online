@@ -7,6 +7,8 @@ const TOKEN: Record<string, string> = {
   evade: '#3fe0c5',
   stress: '#ef6f6f',
   lock: '#c0c6dd',
+  calculate: '#9b8cff',
+  reinforce: '#f0a830',
 };
 
 function Pips({

@@ -37,9 +37,16 @@ export interface Maneuver {
   difficulty: Difficulty;
 }
 
-export type ActionType = 'focus' | 'lock' | 'barrel-roll' | 'boost' | 'evade';
+export type ActionType =
+  | 'focus'
+  | 'lock'
+  | 'barrel-roll'
+  | 'boost'
+  | 'evade'
+  | 'calculate'
+  | 'reinforce';
 
-export type TokenKind = 'focus' | 'evade' | 'stress' | 'lock';
+export type TokenKind = 'focus' | 'evade' | 'stress' | 'lock' | 'calculate' | 'reinforce';
 
 export interface Token {
   kind: TokenKind;

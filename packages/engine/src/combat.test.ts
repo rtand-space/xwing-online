@@ -127,6 +127,38 @@ describe('combat pipeline', () => {
     expect(events.some((e) => e.type === 'ShipDestroyed' && e.shipId === 'b')).toBe(true);
   });
 
+  it('calculate converts one focus result per token', () => {
+    const fix = { onRollDefence: (c: { defence: string[] }) => (c.defence = []) };
+    const attacker = mk('a', 0, 0, 0, { tokens: [{ kind: 'calculate' }] });
+    const dmg = resolveAttack(
+      stateWith([attacker, mk('b', 0, 90, 180, { agility: 0 })]),
+      'a',
+      'b',
+      {
+        ...fix,
+        onRollAttack: (c) => (c.attack = ['focus', 'focus']),
+      },
+    ).find((e) => e.type === 'DamageDealt');
+    expect(dmg?.amount).toBe(1); // one calculate ⇒ one focus → hit
+  });
+
+  it('reinforce reduces a 2+ hit attack by one', () => {
+    const fixed2 = {
+      onRollAttack: (c: { attack: string[] }) => (c.attack = ['hit', 'hit']),
+      onRollDefence: (c: { defence: string[] }) => (c.defence = []),
+    };
+    const tough = mk('b', 0, 90, 180, {
+      agility: 0,
+      shields: 0,
+      hull: 5,
+      tokens: [{ kind: 'reinforce' }],
+    });
+    const dmg = resolveAttack(stateWith([mk('a', 0, 0, 0), tough]), 'a', 'b', fixed2).find(
+      (e) => e.type === 'DamageDealt',
+    );
+    expect(dmg?.amount).toBe(1); // 2 hits → reinforced → 1
+  });
+
   it('ends the game when a side is wiped out (T3.5)', () => {
     const config: GameConfig = {
       id: 'c',

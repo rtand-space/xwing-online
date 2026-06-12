@@ -3,7 +3,7 @@ import { rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
-import type { GameState, Ship } from './types';
+import type { GameState, Ship, TokenKind } from './types';
 
 /**
  * The ordered attack pipeline. Every resolution walks these windows in order.
@@ -38,8 +38,9 @@ export interface AttackContext {
 export type AttackHook = (ctx: AttackContext) => void;
 
 const countFace = <T>(arr: T[], f: T): number => arr.filter((x) => x === f).length;
-const hasToken = (s: Ship, kind: 'focus' | 'evade'): boolean =>
-  s.tokens.some((t) => t.kind === kind);
+const hasToken = (s: Ship, kind: TokenKind): boolean => s.tokens.some((t) => t.kind === kind);
+const countTokens = (s: Ship, kind: TokenKind): number =>
+  s.tokens.filter((t) => t.kind === kind).length;
 
 function drawAttack(ctx: AttackContext, n: number): AttackFace[] {
   const faces = rollAttack(ctx.state.rng.seed, ctx.cursor, n);
@@ -87,6 +88,20 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
     if (hasToken(ctx.attacker, 'focus') && countFace(ctx.attack, 'focus') > 0) {
       ctx.attack = ctx.attack.map((f) => (f === 'focus' ? 'hit' : f));
       ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'focus' });
+    } else {
+      // calculate is a weaker focus: each token converts one focus result.
+      const n = Math.min(countTokens(ctx.attacker, 'calculate'), countFace(ctx.attack, 'focus'));
+      let changed = 0;
+      ctx.attack = ctx.attack.map((f) => {
+        if (f === 'focus' && changed < n) {
+          changed++;
+          return 'hit';
+        }
+        return f;
+      });
+      for (let i = 0; i < n; i++) {
+        ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'calculate' });
+      }
     }
   },
 
@@ -99,6 +114,19 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
     if (hasToken(ctx.target, 'focus') && countFace(ctx.defence, 'focus') > 0) {
       ctx.defence = ctx.defence.map((f) => (f === 'focus' ? 'evade' : f));
       ctx.events.push({ type: 'TokenSpent', shipId: ctx.target.id, kind: 'focus' });
+    } else {
+      const n = Math.min(countTokens(ctx.target, 'calculate'), countFace(ctx.defence, 'focus'));
+      let changed = 0;
+      ctx.defence = ctx.defence.map((f) => {
+        if (f === 'focus' && changed < n) {
+          changed++;
+          return 'evade';
+        }
+        return f;
+      });
+      for (let i = 0; i < n; i++) {
+        ctx.events.push({ type: 'TokenSpent', shipId: ctx.target.id, kind: 'calculate' });
+      }
     }
   },
 
@@ -114,6 +142,11 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onDealDamage(ctx) {
+    // Reinforce: while reinforced, an attack of 2+ uncancelled results deals 1 less.
+    if (hasToken(ctx.target, 'reinforce') && ctx.result.hits + ctx.result.crits >= 2) {
+      if (ctx.result.hits > 0) ctx.result.hits--;
+      else ctx.result.crits--;
+    }
     const total = ctx.result.hits + ctx.result.crits;
     if (total <= 0) return;
     const shieldsAfter = Math.max(0, ctx.target.shields - total);

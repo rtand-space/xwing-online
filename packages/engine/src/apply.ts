@@ -104,7 +104,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         ...state,
         round: state.round + 1,
         ships: state.ships.map((s) => ({
-          ...withoutTokens(s, ['focus', 'evade']),
+          ...withoutTokens(s, ['focus', 'evade', 'calculate', 'reinforce']),
           charges: Math.min(s.maxCharges, s.charges + s.recurring),
           dial: undefined,
           dialRevealed: false,
