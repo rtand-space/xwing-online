@@ -12,6 +12,7 @@ export function Sandbox(): ReactElement {
   const add = useSandbox((s) => s.add);
   const addSquad = useSandbox((s) => s.addSquad);
   const toggleArcs = useSandbox((s) => s.toggleArcs);
+  const clear = useSandbox((s) => s.clear);
   const exit = useSandbox((s) => s.exit);
   const startGame = useGame((s) => s.startGame);
   const squads = useSquads((s) => s.squads);
@@ -151,6 +152,9 @@ export function Sandbox(): ReactElement {
       <div className="grid">
         <button className="btn primary" disabled={ships.length === 0} onClick={startFromSandbox}>
           Start game
+        </button>
+        <button className="btn ghost" disabled={ships.length === 0} onClick={clear}>
+          Clear board
         </button>
         <button className="btn ghost" onClick={exit}>
           Exit sandbox

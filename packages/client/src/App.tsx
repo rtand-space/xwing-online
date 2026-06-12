@@ -100,11 +100,14 @@ export function App(): ReactElement {
       </div>
 
       {sandbox ? (
-        <aside className="flyout side open">
-          <div className="flyoutBody">
-            <Sandbox />
-          </div>
-        </aside>
+        <>
+          {sideOpen && <div className="backdrop" onClick={() => setSideOpen(false)} />}
+          <aside className={sideOpen ? 'flyout side open' : 'flyout side'} aria-hidden={!sideOpen}>
+            <div className="flyoutBody">
+              <Sandbox />
+            </div>
+          </aside>
+        </>
       ) : (
         <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
       )}

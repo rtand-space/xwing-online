@@ -47,6 +47,7 @@ interface SandboxState {
   showArcs: boolean;
   open: () => void;
   exit: () => void;
+  clear: () => void;
   add: (shipXws: string, pilotXws: string, side: string) => void;
   addSquad: (squad: XwsSquad, side: string) => void;
   select: (id: string | null) => void;
@@ -65,14 +66,14 @@ export const useSandbox = create<SandboxState>((set, get) => ({
   obstacles: [],
   selectedId: null,
   showArcs: true,
+  // Enter the persistent workspace; seed obstacles only the first time, keep the board on return.
   open: () =>
-    set({
+    set((s) => ({
       active: true,
-      ships: [],
-      obstacles: randomObstacles(String(Date.now())),
-      selectedId: null,
-    }),
-  exit: () => set({ active: false, ships: [], selectedId: null }),
+      obstacles: s.obstacles.length ? s.obstacles : randomObstacles(String(Date.now())),
+    })),
+  exit: () => set({ active: false }),
+  clear: () => set({ ships: [], selectedId: null, obstacles: randomObstacles(String(Date.now())) }),
   add: (shipXws, pilotXws, side) => {
     const id = `sb-${++counter}`;
     const x = (get().ships.filter((s) => s.ownerId === side).length - 1) * 120;
