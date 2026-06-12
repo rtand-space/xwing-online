@@ -30,6 +30,17 @@ describe('maneuver templates (rear-of-base seats at the template end)', () => {
     expectPos(applyManeuver(origin, m(2, 'koiogran'), 'small'), { x: 0, y: 120, angle: 180 });
   });
 
+  it("Segnor's Loop banks then flips 180°", () => {
+    const r = applyManeuver(origin, m(2, 'segnors-loop-left'), 'small');
+    expect(r.x).toBeLessThan(0); // displaced left
+    expect(r.y).toBeGreaterThan(0); // advanced forward
+    expect(r.angle).toBeCloseTo(135); // bank-left (−45) then +180
+  });
+
+  it('reverse-straight slides backward without turning', () => {
+    expectPos(applyManeuver(origin, m(1, 'reverse-straight'), 'small'), { x: 0, y: -80, angle: 0 });
+  });
+
   it('applies the rigid transform relative to current facing', () => {
     const facingEast: Position = { x: 100, y: 200, angle: 90 };
     expectPos(applyManeuver(facingEast, m(2, 'straight'), 'small'), { x: 220, y: 200, angle: 90 });

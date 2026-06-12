@@ -6,6 +6,7 @@ const DIFFICULTY: Record<Maneuver['difficulty'], string> = {
   blue: '#5bd6a8',
   white: '#d6dae8',
   red: '#ef6f6f',
+  purple: '#b18bff',
 };
 
 const BEARING: Record<Maneuver['bearing'], string> = {
@@ -15,16 +16,31 @@ const BEARING: Record<Maneuver['bearing'], string> = {
   'turn-left': 'turn L',
   'turn-right': 'turn R',
   koiogran: 'K-turn',
+  'segnors-loop-left': "Segnor's L",
+  'segnors-loop-right': "Segnor's R",
+  'tallon-roll-left': 'Tallon L',
+  'tallon-roll-right': 'Tallon R',
+  'reverse-straight': 'reverse',
+  'reverse-bank-left': 'rev bank L',
+  'reverse-bank-right': 'rev bank R',
   stationary: 'stop',
 };
 
 // Dial layout: bearing columns left→right, speed rows top→bottom (like the real dial).
+// Columns only render when the ship's dial actually uses them.
 const DIAL_COLS: { key: Maneuver['bearing']; glyph: string }[] = [
+  { key: 'tallon-roll-left', glyph: '⤽' },
+  { key: 'segnors-loop-left', glyph: '↺' },
   { key: 'turn-left', glyph: '↰' },
   { key: 'bank-left', glyph: '↖' },
+  { key: 'reverse-bank-left', glyph: '↙' },
   { key: 'straight', glyph: '↑' },
+  { key: 'reverse-straight', glyph: '↓' },
+  { key: 'reverse-bank-right', glyph: '↘' },
   { key: 'bank-right', glyph: '↗' },
   { key: 'turn-right', glyph: '↱' },
+  { key: 'segnors-loop-right', glyph: '↻' },
+  { key: 'tallon-roll-right', glyph: '⤼' },
   { key: 'koiogran', glyph: '⟲' },
   { key: 'stationary', glyph: '■' },
 ];

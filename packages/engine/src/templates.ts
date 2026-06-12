@@ -17,6 +17,8 @@ interface Local {
   dy: number;
   drive: number;
   post: number;
+  /** Reverse maneuvers slide the ship backward (template seats at the front). */
+  reverse?: boolean;
 }
 
 function arc(radius: number, phiDeg: number, dir: 1 | -1): Local {
@@ -45,6 +47,23 @@ function template(m: Maneuver): Local {
       return arc(TURN_RADIUS[m.speed], 90, -1);
     case 'turn-right':
       return arc(TURN_RADIUS[m.speed], 90, 1);
+    // Segnor's Loop: bank, then flip 180° in place.
+    case 'segnors-loop-left':
+      return { ...arc(BANK_RADIUS[m.speed], 45, -1), post: 180 };
+    case 'segnors-loop-right':
+      return { ...arc(BANK_RADIUS[m.speed], 45, 1), post: 180 };
+    // Tallon Roll: approximated as a hard turn pending full R4 maneuver geometry.
+    case 'tallon-roll-left':
+      return arc(TURN_RADIUS[m.speed], 90, -1);
+    case 'tallon-roll-right':
+      return arc(TURN_RADIUS[m.speed], 90, 1);
+    // Reverse: slide backward; banks add the bank's turn. Approximate pending R4.
+    case 'reverse-straight':
+      return { dx: 0, dy: STRAIGHT_MM[m.speed], drive: 0, post: 0, reverse: true };
+    case 'reverse-bank-left':
+      return { ...arc(BANK_RADIUS[m.speed], 45, -1), reverse: true };
+    case 'reverse-bank-right':
+      return { ...arc(BANK_RADIUS[m.speed], 45, 1), reverse: true };
   }
 }
 
@@ -63,9 +82,10 @@ export function applyManeuver(pos: Position, m: Maneuver, base: BaseSize): Posit
   const right0 = { x: Math.cos(a0), y: -Math.sin(a0) };
   const a1 = (pos.angle + l.drive) * DEG;
   const fwd1 = { x: Math.sin(a1), y: Math.cos(a1) };
+  const s = l.reverse ? -1 : 1;
   return {
-    x: pos.x + half * fwd0.x + l.dx * right0.x + l.dy * fwd0.x + half * fwd1.x,
-    y: pos.y + half * fwd0.y + l.dx * right0.y + l.dy * fwd0.y + half * fwd1.y,
+    x: pos.x + s * (half * fwd0.x + l.dx * right0.x + l.dy * fwd0.x + half * fwd1.x),
+    y: pos.y + s * (half * fwd0.y + l.dx * right0.y + l.dy * fwd0.y + half * fwd1.y),
     angle: norm360(pos.angle + l.drive + l.post),
   };
 }

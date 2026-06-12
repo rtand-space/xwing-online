@@ -20,7 +20,51 @@ describe('dial parsing', () => {
     expect(parseManeuver('4KR')).toEqual({ speed: 4, bearing: 'koiogran', difficulty: 'red' });
     expect(parseManeuver('1TW')).toEqual({ speed: 1, bearing: 'turn-left', difficulty: 'white' });
     expect(parseManeuver('2NB')).toEqual({ speed: 2, bearing: 'bank-right', difficulty: 'blue' });
-    expect(parseManeuver('3ZX')).toBeNull(); // unsupported bearing/difficulty
+    expect(parseManeuver('3ZX')).toBeNull(); // malformed bearing/difficulty
+  });
+
+  it('decodes the full advanced vocabulary (no dropped maneuvers)', () => {
+    expect(parseManeuver('3LR')).toEqual({
+      speed: 3,
+      bearing: 'segnors-loop-left',
+      difficulty: 'red',
+    }); // StarViper
+    expect(parseManeuver('3PR')).toEqual({
+      speed: 3,
+      bearing: 'segnors-loop-right',
+      difficulty: 'red',
+    });
+    expect(parseManeuver('2ER')).toEqual({
+      speed: 2,
+      bearing: 'tallon-roll-left',
+      difficulty: 'red',
+    }); // Fang
+    expect(parseManeuver('2RR')).toEqual({
+      speed: 2,
+      bearing: 'tallon-roll-right',
+      difficulty: 'red',
+    });
+    expect(parseManeuver('1AR')).toEqual({
+      speed: 1,
+      bearing: 'reverse-bank-left',
+      difficulty: 'red',
+    });
+    expect(parseManeuver('1SR')).toEqual({
+      speed: 1,
+      bearing: 'reverse-straight',
+      difficulty: 'red',
+    });
+    expect(parseManeuver('1DR')).toEqual({
+      speed: 1,
+      bearing: 'reverse-bank-right',
+      difficulty: 'red',
+    });
+    expect(parseManeuver('0OR')).toEqual({ speed: 0, bearing: 'stationary', difficulty: 'red' });
+    expect(parseManeuver('2EP')).toEqual({
+      speed: 2,
+      bearing: 'tallon-roll-left',
+      difficulty: 'purple',
+    }); // Eta-2
   });
 });
 

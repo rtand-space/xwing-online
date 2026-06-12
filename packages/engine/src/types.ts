@@ -18,9 +18,16 @@ export type Bearing =
   | 'turn-left'
   | 'turn-right'
   | 'koiogran'
+  | 'segnors-loop-left'
+  | 'segnors-loop-right'
+  | 'tallon-roll-left'
+  | 'tallon-roll-right'
+  | 'reverse-straight'
+  | 'reverse-bank-left'
+  | 'reverse-bank-right'
   | 'stationary';
 
-export type Difficulty = 'blue' | 'white' | 'red';
+export type Difficulty = 'blue' | 'white' | 'red' | 'purple';
 
 export type Speed = 0 | 1 | 2 | 3 | 4 | 5;
 
