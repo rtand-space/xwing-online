@@ -39,6 +39,20 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
 /** Who owes what, with only legal options. Pure derivation from state. */
 export function computePending(state: GameState): PendingDecision[] {
   if (state.gameOver) return [];
+  // A pending optional ability pauses the FSM until its owner uses or skips it.
+  if (state.offer) {
+    const ship = state.ships.find((s) => s.id === state.offer!.shipId);
+    if (ship) {
+      return [
+        {
+          type: 'trigger-ability',
+          playerId: ship.ownerId,
+          shipId: ship.id,
+          options: { abilityXws: state.offer.abilityXws, label: state.offer.label },
+        },
+      ];
+    }
+  }
   switch (state.phase) {
     case 'planning':
       return state.ships

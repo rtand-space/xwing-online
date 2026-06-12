@@ -1,4 +1,4 @@
-import { fireWindow, type GameWindow } from './abilities';
+import { fireWindow, findOffer, resolveOptional } from './abilities';
 import { applyEvent } from './apply';
 import { resolveAttack } from './combat';
 import type { Command } from './commands';
@@ -6,7 +6,7 @@ import type { GameEvent } from './events';
 import { resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { autoStep } from './phases';
-import type { GameState, Maneuver, PendingDecision, Ship } from './types';
+import type { GameState, GameWindow, Maneuver, PendingDecision, Ship } from './types';
 
 export interface ReduceResult {
   events: GameEvent[];
@@ -15,7 +15,10 @@ export interface ReduceResult {
 
 const reject = (rejection: string): ReduceResult => ({ events: [], rejection });
 
-/** Fold the events so far, then fire a non-combat ability window for the acting ship. */
+/**
+ * Fold the events so far, fire a non-combat ability window's mandatory effects,
+ * then offer the first available optional ability (which pauses the FSM).
+ */
 function appendWindow(
   state: GameState,
   events: GameEvent[],
@@ -23,10 +26,16 @@ function appendWindow(
   shipId: string,
   trigger?: GameEvent,
 ): GameEvent[] {
-  let s = state;
-  for (const e of events) s = applyEvent(s, e);
-  const ship = s.ships.find((sh) => sh.id === shipId);
-  if (ship && ship.hull > 0) events.push(...fireWindow(s, window, ship, trigger));
+  const fold = (): GameState => events.reduce((s, e) => applyEvent(s, e), state);
+  let ship = fold().ships.find((sh) => sh.id === shipId);
+  if (ship && ship.hull > 0) events.push(...fireWindow(fold(), window, ship, trigger));
+  ship = fold().ships.find((sh) => sh.id === shipId);
+  if (ship && ship.hull > 0) {
+    const offer = findOffer(fold(), window, ship);
+    if (offer) {
+      events.push({ type: 'AbilityOffered', shipId, window, ...offer });
+    }
+  }
   return events;
 }
 
@@ -40,6 +49,8 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   SkipAction: 'perform-action',
   DeclareAttack: 'declare-attack',
   PassAttack: 'declare-attack',
+  UseAbility: 'trigger-ability',
+  SkipAbility: 'trigger-ability',
 };
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
@@ -110,6 +121,16 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (pending.type !== 'declare-attack' || !pending.options.canPass)
         return reject('Cannot pass');
       return { events: [{ type: 'AttackPassed', shipId: ship.id }] };
+    }
+    case 'UseAbility': {
+      if (pending.type !== 'trigger-ability' || !state.offer) return reject('No ability offered');
+      const events = resolveOptional(state, ship, state.offer.abilityXws, state.offer.window);
+      events.push({ type: 'AbilityResolved' });
+      return { events };
+    }
+    case 'SkipAbility': {
+      if (pending.type !== 'trigger-ability') return reject('No ability offered');
+      return { events: [{ type: 'AbilityResolved' }] };
     }
   }
 }

@@ -57,10 +57,12 @@ export { ATTACK_WINDOWS, resolveAttack } from './combat';
 export type { AttackContext, AttackHook, AttackWindow } from './combat';
 export {
   clearAbilities,
+  findOffer,
   fireWindow,
   gatherAttackHooks,
   getAbility,
   registerAbility,
+  resolveOptional,
   shipAbilitySources,
 } from './abilities';
 export type {
@@ -69,4 +71,5 @@ export type {
   GameAbilityHook,
   GameContext,
   GameWindow,
+  OptionalAbility,
 } from './abilities';

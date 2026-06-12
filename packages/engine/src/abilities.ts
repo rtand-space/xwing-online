@@ -1,6 +1,8 @@
 import type { AttackContext, AttackWindow } from './combat';
 import type { GameEvent } from './events';
-import type { GameState, Ship } from './types';
+import type { GameState, GameWindow, Ship } from './types';
+
+export type { GameWindow } from './types';
 
 /**
  * A card ability = handlers registered on named timing windows. R3-M1 covers the
@@ -9,9 +11,6 @@ import type { GameState, Ship } from './types';
  * the attacker or the defender in the current attack.
  */
 export type AttackAbilityHook = (ctx: AttackContext, self: Ship) => void;
-
-/** Non-combat timing windows fired by the phase FSM. Extended as R3 grows. */
-export type GameWindow = 'afterReveal' | 'afterMove' | 'onPerformAction' | 'onRoundEnd';
 
 export interface GameContext {
   state: GameState;
@@ -23,11 +22,21 @@ export interface GameContext {
 /** Returns extra events to append to the stream. */
 export type GameAbilityHook = (ctx: GameContext) => GameEvent[];
 
+/** An optional ("may") ability: offered to its owner when available. */
+export interface OptionalAbility {
+  label: string;
+  available: (ctx: GameContext) => boolean;
+  resolve: (ctx: GameContext) => GameEvent[];
+}
+
 export interface Ability {
   /** A short, original paraphrase (never the card's printed text). */
   note?: string;
   attack?: Partial<Record<AttackWindow, AttackAbilityHook>>;
+  /** Mandatory game-window effects, auto-applied. */
   game?: Partial<Record<GameWindow, GameAbilityHook>>;
+  /** Optional game-window effects, offered to the owner to use or skip. */
+  optional?: Partial<Record<GameWindow, OptionalAbility>>;
 }
 
 const REGISTRY = new Map<string, Ability>();
@@ -54,6 +63,30 @@ export function shipAbilitySources(ship: Ship): string[] {
  * Attacker's abilities resolve before the defender's (deterministic queue);
  * within a ship, in source order (ship type, pilot, then upgrades).
  */
+/** First available optional ability for a ship at a window, or null. */
+export function findOffer(
+  state: GameState,
+  window: GameWindow,
+  self: Ship,
+): { abilityXws: string; label: string } | null {
+  for (const xws of shipAbilitySources(self)) {
+    const opt = REGISTRY.get(xws)?.optional?.[window];
+    if (opt && opt.available({ state, self })) return { abilityXws: xws, label: opt.label };
+  }
+  return null;
+}
+
+/** Resolve a used optional ability into events. */
+export function resolveOptional(
+  state: GameState,
+  self: Ship,
+  abilityXws: string,
+  window: GameWindow,
+): GameEvent[] {
+  const opt = REGISTRY.get(abilityXws)?.optional?.[window];
+  return opt ? opt.resolve({ state, self }) : [];
+}
+
 /** Run a ship's own abilities for a non-combat window; returns events to append. */
 export function fireWindow(
   state: GameState,

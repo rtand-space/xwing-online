@@ -2,6 +2,7 @@ import type { AttackFace, DefenceFace } from './dice';
 import type {
   ActionType,
   BaseSize,
+  GameWindow,
   Maneuver,
   Obstacle,
   ObstacleKind,
@@ -69,5 +70,13 @@ export type GameEvent =
     }
   | { type: 'ShipDestroyed'; shipId: ShipId }
   | { type: 'AttackPassed'; shipId: ShipId }
+  | {
+      type: 'AbilityOffered';
+      shipId: ShipId;
+      abilityXws: string;
+      window: GameWindow;
+      label: string;
+    }
+  | { type: 'AbilityResolved' }
   | { type: 'RoundEnded' }
   | { type: 'PhaseAdvanced'; to: Phase };

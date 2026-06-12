@@ -136,4 +136,71 @@ describe('ability framework', () => {
     const a = game.state.ships.find((s) => s.id === 'a')!;
     expect(a.tokens.some((t) => t.kind === 'focus')).toBe(true);
   });
+
+  const flyerGame = () => {
+    registerAbility('aceflyer', {
+      optional: {
+        afterMove: {
+          label: 'Spend a charge to focus',
+          available: ({ self }) => self.charges > 0,
+          resolve: ({ self }) => [
+            { type: 'ChargeChanged', shipId: self.id, delta: -1 },
+            { type: 'TokenGained', shipId: self.id, kind: 'focus' },
+          ],
+        },
+      },
+    });
+    const mk = (id: string, ownerId: string, st: string, y: number, maxCharges = 0): ShipInit => ({
+      id,
+      ownerId,
+      shipType: st,
+      pilot: id,
+      initiative: ownerId === 'p' ? 1 : 2,
+      base: 'small',
+      primaryAttack: 2,
+      agility: 2,
+      hull: 3,
+      shields: 0,
+      maxCharges,
+      pos: { x: 0, y, angle: 0 },
+      actionBar: ['focus'],
+      dialOptions: [{ speed: 1, bearing: 'straight', difficulty: 'white' }],
+    });
+    const config: GameConfig = {
+      id: 'g',
+      seed: 's',
+      players: [
+        { id: 'p', name: 'P' },
+        { id: 'q', name: 'Q' },
+      ],
+      ships: [mk('a', 'p', 'aceflyer', -200, 1), mk('b', 'q', 'plain', 200)],
+    };
+    const dial: Maneuver = { speed: 1, bearing: 'straight', difficulty: 'white' };
+    let game = createGame(config);
+    const send = (cmd: Command) => (game = dispatch(game, cmd).game);
+    send({ type: 'SetDial', playerId: 'p', shipId: 'a', maneuver: dial });
+    send({ type: 'SetDial', playerId: 'q', shipId: 'b', maneuver: dial });
+    send({ type: 'ExecuteManeuver', playerId: 'p', shipId: 'a' });
+    return { game: () => game, send };
+  };
+
+  it('offers an optional ability after a maneuver and resolves it on UseAbility', () => {
+    const { game, send } = flyerGame();
+    expect(game().state.offer?.shipId).toBe('a');
+    expect(game().state.pending[0]?.type).toBe('trigger-ability');
+    send({ type: 'UseAbility', playerId: 'p', shipId: 'a' });
+    const a = game().state.ships.find((s) => s.id === 'a')!;
+    expect(a.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    expect(a.charges).toBe(0);
+    expect(game().state.offer).toBeUndefined();
+  });
+
+  it('declines an optional ability on SkipAbility', () => {
+    const { game, send } = flyerGame();
+    send({ type: 'SkipAbility', playerId: 'p', shipId: 'a' });
+    const a = game().state.ships.find((s) => s.id === 'a')!;
+    expect(a.tokens.some((t) => t.kind === 'focus')).toBe(false);
+    expect(a.charges).toBe(1);
+    expect(game().state.offer).toBeUndefined();
+  });
 });

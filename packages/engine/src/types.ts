@@ -49,6 +49,17 @@ export interface Token {
 
 export type Phase = 'planning' | 'system' | 'activation' | 'engagement' | 'end';
 
+/** Non-combat ability timing windows fired by the phase FSM. */
+export type GameWindow = 'afterReveal' | 'afterMove' | 'onPerformAction' | 'onRoundEnd';
+
+/** A pending optional ("may") ability awaiting its owner's choice. */
+export interface AbilityOffer {
+  shipId: ShipId;
+  abilityXws: string;
+  window: GameWindow;
+  label: string;
+}
+
 export interface Player {
   id: PlayerId;
   name: string;
@@ -113,6 +124,12 @@ export type PendingDecision =
       playerId: PlayerId;
       shipId: ShipId;
       options: { targets: ShipId[]; canPass: boolean };
+    }
+  | {
+      type: 'trigger-ability';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { abilityXws: string; label: string };
     };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
@@ -135,6 +152,8 @@ export interface GameState {
   players: Player[];
   ships: Ship[];
   obstacles: Obstacle[];
+  /** A pending optional ability awaiting its owner's use/skip; pauses the FSM. */
+  offer?: AbilityOffer;
   pending: PendingDecision[];
   gameOver: boolean;
 }

@@ -34,6 +34,8 @@ export const firstChoice: Chooser = (p) => {
             targetId: p.options.targets[0]!,
           }
         : { type: 'PassAttack', playerId: p.playerId, shipId: p.shipId };
+    case 'trigger-ability':
+      return { type: 'UseAbility', playerId: p.playerId, shipId: p.shipId };
   }
 };
 

@@ -113,6 +113,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           hasEngaged: false,
         })),
       };
+    case 'AbilityOffered':
+      return {
+        ...state,
+        offer: { shipId: e.shipId, abilityXws: e.abilityXws, window: e.window, label: e.label },
+      };
+    case 'AbilityResolved':
+      return { ...state, offer: undefined };
     case 'PhaseAdvanced':
       return { ...state, phase: e.to };
   }

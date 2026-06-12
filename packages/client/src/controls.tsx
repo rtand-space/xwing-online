@@ -201,6 +201,24 @@ export function Controls({
           </button>
         </div>
       )}
+
+      {p.type === 'trigger-ability' && (
+        <div className="grid">
+          <div className="muted">{p.options.label}</div>
+          <button
+            className="btn primary"
+            onClick={() => send({ type: 'UseAbility', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Use
+          </button>
+          <button
+            className="btn ghost"
+            onClick={() => send({ type: 'SkipAbility', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Skip
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -215,5 +233,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: choose an action`;
     case 'declare-attack':
       return `${name}: declare attack`;
+    case 'trigger-ability':
+      return `${name}: optional ability`;
   }
 }

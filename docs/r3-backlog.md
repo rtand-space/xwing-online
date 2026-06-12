@@ -51,10 +51,13 @@ Status: ☐ not started · ◐ in progress · ☑ done
   then-defender order, after each builtin window) and into the FSM via `fireWindow`.
   _Ability-queue refinement (range/initiative tie-breaks) revisited when a card needs it._
 
-## R3-M2 — Player choice + minimal charges
-- ☐ **T3-C1** New pending decision `trigger-ability`: a "may" ability prompts its
-  owner to use it and choose options/targets. The reduce/pending/command loop
-  extends to ability prompts; verify the online DO serialises them like any command.
+## R3-M2 — Player choice + minimal charges ✅
+- ☑ **T3-C1** Optional ("may") abilities: a `game.optional[window]` entry with
+  `available`/`resolve` is offered after its window fires. The offer lives in
+  `state.offer`, so `computePending` surfaces a **`trigger-ability`** decision
+  (pausing the FSM) resolved by `UseAbility`/`SkipAbility`. Pure event-sourced
+  (`AbilityOffered`/`AbilityResolved`), so the online DO serialises it like any
+  command; the in-game HUD shows Use/Skip. Tested offer→use and offer→skip.
 - ☑ **T3-C2** Minimal **charge** model: `charges`/`maxCharges`/`recurring` on
   `Ship` (+ optional on `ShipInit`); `ChargeChanged` event (clamped 0..max); ships
   start full; `recurring` charges recover at round end. Force + status tokens stay R4.

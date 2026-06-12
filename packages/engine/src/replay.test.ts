@@ -45,6 +45,10 @@ function randomChoice(seedStr: string): Chooser {
               targetId: pick(p.options.targets),
             }
           : { type: 'PassAttack', playerId: p.playerId, shipId: p.shipId };
+      case 'trigger-ability':
+        return pick([true, false])
+          ? { type: 'UseAbility', playerId: p.playerId, shipId: p.shipId }
+          : { type: 'SkipAbility', playerId: p.playerId, shipId: p.shipId };
     }
   };
 }

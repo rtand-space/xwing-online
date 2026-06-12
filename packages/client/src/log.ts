@@ -35,6 +35,10 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} destroyed`;
     case 'AttackPassed':
       return `${e.shipId} holds fire`;
+    case 'AbilityOffered':
+      return `${e.shipId}: ${e.label}?`;
+    case 'AbilityResolved':
+      return null;
     case 'RoundEnded':
       return '— end of round —';
     case 'PhaseAdvanced':
