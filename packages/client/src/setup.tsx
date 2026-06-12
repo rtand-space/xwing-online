@@ -565,9 +565,9 @@ export function QuickPlay(): ReactElement {
         {joining ? 'Join game' : 'Host game'}
       </button>
 
-      <div className="section">Sandbox / local</div>
+      <div className="section">Sandbox</div>
       <button className="btn primary" onClick={() => useSandbox.getState().open()}>
-        Free play — place ships, fly maneuvers, or launch a local game
+        Enter Sandbox
       </button>
     </div>
   );
