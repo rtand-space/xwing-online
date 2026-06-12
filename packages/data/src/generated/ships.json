@@ -74,7 +74,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 14,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "“Holo”",
@@ -83,7 +84,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "“Ember”",
@@ -92,7 +94,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Modification"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "First Order Provocateur",
@@ -101,7 +104,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Tech", "Modification", "Talent"]
+        "slots": ["Tech", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -174,7 +178,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"],
+        "force": null
       },
       {
         "name": "Commander Malarus",
@@ -183,7 +188,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"],
+        "force": null
       },
       {
         "name": "“Scorch”",
@@ -192,7 +198,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "“Static”",
@@ -201,7 +208,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Longshot”",
@@ -210,7 +218,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Sensor", "Tech", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "Omega Squadron Ace",
@@ -219,7 +228,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Muse”",
@@ -228,7 +238,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "TN-3465",
@@ -237,7 +248,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Sensor", "Tech", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "Zeta Squadron Pilot",
@@ -246,7 +258,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Sensor", "Tech", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "Epsilon Squadron Cadet",
@@ -255,7 +268,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Lieutenant Rivas",
@@ -264,7 +278,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Sensor", "Tech", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "“Null”",
@@ -273,7 +288,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Sensor", "Tech", "Modification"]
+        "slots": ["Sensor", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "Lieutenant Galek",
@@ -282,7 +298,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Tech"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent", "Tech"],
+        "force": null
       },
       {
         "name": "DT-798",
@@ -291,7 +308,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Lin Gaava",
@@ -300,7 +318,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"]
+        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Longshot” — Evacuation of D'Qar",
@@ -414,7 +433,8 @@
           "Missile",
           "Talent",
           "Torpedo"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Scorch”",
@@ -432,7 +452,8 @@
           "Missile",
           "Missile",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Dread”",
@@ -450,7 +471,8 @@
           "Missile",
           "Missile",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Grudge”",
@@ -459,7 +481,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"]
+        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"],
+        "force": null
       },
       {
         "name": "First Order Cadet",
@@ -468,7 +491,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"]
+        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"],
+        "force": null
       },
       {
         "name": "Sienar-Jaemus Test Pilot",
@@ -477,7 +501,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Missile"]
+        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Missile"],
+        "force": null
       },
       {
         "name": "Jul Jerjerrod",
@@ -495,7 +520,8 @@
           "Missile",
           "Talent",
           "Torpedo"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -584,7 +610,8 @@
           "Talent",
           "Talent",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Backdraft”",
@@ -593,7 +620,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"]
+        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "Omega Squadron Expert",
@@ -602,7 +630,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"]
+        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"],
+        "force": null
       },
       {
         "name": "Zeta Squadron Survivor",
@@ -611,7 +640,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile"]
+        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile"],
+        "force": null
       },
       {
         "name": "Lieutenant LeHuse",
@@ -620,7 +650,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 20,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"]
+        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "Captain Phasma",
@@ -629,7 +660,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"]
+        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"],
+        "force": null
       },
       {
         "name": "Lieutenant LeHuse — Evacuation of D'Qar",
@@ -711,7 +743,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 14,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Kylo Ren",
@@ -720,7 +753,11 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Force Power"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "First Order Test Pilot",
@@ -729,7 +766,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 7,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "“Recoil”",
@@ -738,7 +776,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 8,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "“Avenger”",
@@ -747,7 +786,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 17,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"],
+        "force": null
       },
       {
         "name": "Sienar-Jaemus Engineer",
@@ -756,7 +796,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 7,
-        "slots": ["Tech", "Missile", "Torpedo", "Configuration"]
+        "slots": ["Tech", "Missile", "Torpedo", "Configuration"],
+        "force": null
       },
       {
         "name": "“Rush”",
@@ -765,7 +806,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"]
+        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"],
+        "force": null
       },
       {
         "name": "Kylo Ren — Evacuation of D'Qar",
@@ -865,7 +907,11 @@
           "Configuration",
           "Force Power",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "“Wrath”",
@@ -874,7 +920,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Configuration", "Talent", "Cannon"]
+        "slots": ["Gunner", "Tech", "Tech", "Modification", "Configuration", "Talent", "Cannon"],
+        "force": null
       },
       {
         "name": "“Nightfall”",
@@ -883,7 +930,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "“Whirlwind”",
@@ -892,7 +940,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "709th Legion Ace",
@@ -901,7 +950,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Red Fury Zealot",
@@ -910,7 +960,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile"]
+        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile"],
+        "force": null
       }
     ]
   },
@@ -986,7 +1037,8 @@
         "limited": 1,
         "cost": 17,
         "loadout": 22,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"]
+        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Major Stridan",
@@ -1005,7 +1057,8 @@
           "Crew",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Petty Officer Thanisson",
@@ -1014,7 +1067,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 15,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"]
+        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Starkiller Base Pilot",
@@ -1023,7 +1077,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 18,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"]
+        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Lieutenant Tavson",
@@ -1032,7 +1087,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 17,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"]
+        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Captain Cardinal",
@@ -1051,7 +1107,8 @@
           "Crew",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Petty Officer Thanisson — Evacuation of D'Qar",
@@ -1131,7 +1188,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Illicit", "Illicit", "Illicit"]
+        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Illicit", "Illicit", "Illicit"],
+        "force": null
       },
       {
         "name": "Commander Malarus",
@@ -1140,7 +1198,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"]
+        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "First Order Courier",
@@ -1149,7 +1208,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"]
+        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Gideon Hask",
@@ -1158,7 +1218,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"]
+        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Agent Tierny",
@@ -1167,7 +1228,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 18,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"]
+        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -1237,7 +1299,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"]
+        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Major Vynder",
@@ -1246,7 +1309,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"]
+        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Nu Squadron Pilot",
@@ -1255,7 +1319,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration"]
+        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Rho Squadron Pilot",
@@ -1264,7 +1329,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"]
+        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Lieutenant Karsabi",
@@ -1273,7 +1339,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Major Vynder",
@@ -1282,7 +1349,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -1366,7 +1434,8 @@
           "Payload",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Gar Saxon",
@@ -1384,7 +1453,8 @@
           "Payload",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Imperial Super Commando",
@@ -1401,7 +1471,8 @@
           "Modification",
           "Payload",
           "Configuration"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -1461,7 +1532,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent"]
+        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Colonel Jendon",
@@ -1470,7 +1542,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 18,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent", "Title"]
+        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Lieutenant Sai",
@@ -1479,7 +1552,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 5,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"]
+        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"],
+        "force": null
       },
       {
         "name": "Omicron Group Pilot",
@@ -1488,7 +1562,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"]
+        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"],
+        "force": null
       }
     ]
   },
@@ -1567,7 +1642,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"]
+        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Grand Inquisitor",
@@ -1576,7 +1652,11 @@
         "limited": 1,
         "cost": 13,
         "loadout": 15,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"]
+        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Inquisitor",
@@ -1585,7 +1665,11 @@
         "limited": 0,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"]
+        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Seventh Sister",
@@ -1594,7 +1678,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"]
+        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Fifth Brother",
@@ -1603,7 +1691,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"]
+        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -1673,7 +1765,11 @@
         "limited": 1,
         "cost": 16,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"]
+        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Maarek Stele",
@@ -1682,7 +1778,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Storm Squadron Ace",
@@ -1691,7 +1788,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"]
+        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Tempest Squadron Pilot",
@@ -1700,7 +1798,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Missile", "Sensor", "Modification"]
+        "slots": ["Missile", "Sensor", "Modification"],
+        "force": null
       },
       {
         "name": "Ved Foslo",
@@ -1709,7 +1808,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"]
+        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Zertik Strom",
@@ -1718,7 +1818,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification"]
+        "slots": ["Missile", "Sensor", "Modification"],
+        "force": null
       },
       {
         "name": "Darth Vader",
@@ -1727,7 +1828,11 @@
         "limited": 1,
         "cost": 17,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Juno Eclipse",
@@ -1736,7 +1841,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Darth Vader",
@@ -1745,7 +1851,11 @@
         "limited": 1,
         "cost": 17,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Maarek Stele",
@@ -1754,7 +1864,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -1826,7 +1937,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Modification"]
+        "slots": ["Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Captain Feroph",
@@ -1835,7 +1947,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Modification"]
+        "slots": ["Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Major Vermeil",
@@ -1844,7 +1957,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Modification", "Talent"]
+        "slots": ["Crew", "Crew", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Scarif Base Pilot",
@@ -1853,7 +1967,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Modification"]
+        "slots": ["Crew", "Crew", "Modification"],
+        "force": null
       }
     ]
   },
@@ -1920,7 +2035,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 17,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"]
+        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"],
+        "force": null
       },
       {
         "name": "Lieutenant Kestal",
@@ -1929,7 +2045,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 15,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"]
+        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"],
+        "force": null
       },
       {
         "name": "Onyx Squadron Scout",
@@ -1938,7 +2055,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"]
+        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"],
+        "force": null
       },
       {
         "name": "Sienar Specialist",
@@ -1947,7 +2065,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"]
+        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"],
+        "force": null
       }
     ]
   },
@@ -2031,7 +2150,8 @@
           "Sensor",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Redline”",
@@ -2049,7 +2169,8 @@
           "Sensor",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Cutlass Squadron Pilot",
@@ -2058,7 +2179,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Missile", "Missile", "Torpedo", "Payload", "Payload", "Sensor", "Modification"]
+        "slots": ["Missile", "Missile", "Torpedo", "Payload", "Payload", "Sensor", "Modification"],
+        "force": null
       }
     ]
   },
@@ -2145,7 +2267,8 @@
           "Tech",
           "Configuration",
           "Cannon"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Countess Ryad",
@@ -2163,7 +2286,8 @@
           "Tech",
           "Configuration",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Delta Squadron Pilot",
@@ -2172,7 +2296,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 9,
-        "slots": ["Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"]
+        "slots": ["Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Onyx Squadron Ace",
@@ -2181,7 +2306,8 @@
         "limited": 0,
         "cost": 16,
         "loadout": 10,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"]
+        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Rexler Brath",
@@ -2190,7 +2316,8 @@
         "limited": 1,
         "cost": 18,
         "loadout": 13,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"]
+        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Vult Skerris",
@@ -2208,7 +2335,8 @@
           "Tech",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Darth Vader",
@@ -2225,7 +2353,11 @@
           "Tech",
           "Force Power",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Captain Dobbs",
@@ -2234,7 +2366,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 7,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"]
+        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Captain Yorr",
@@ -2243,7 +2376,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Colonel Jendon",
@@ -2252,7 +2386,8 @@
         "limited": 1,
         "cost": 20,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -2321,7 +2456,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 1,
-        "slots": ["Modification", "Configuration"]
+        "slots": ["Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Saber Squadron Ace",
@@ -2330,7 +2466,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Soontir Fel",
@@ -2339,7 +2476,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Turr Phennir",
@@ -2348,7 +2486,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Ciena Ree",
@@ -2357,7 +2496,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Gideon Hask",
@@ -2366,7 +2506,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Configuration", "Modification"]
+        "slots": ["Talent", "Modification", "Configuration", "Modification"],
+        "force": null
       },
       {
         "name": "Vult Skerris",
@@ -2375,7 +2516,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Commandant Goran",
@@ -2384,7 +2526,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Lieutenant Lorrir",
@@ -2393,7 +2536,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Nash Windrider",
@@ -2402,7 +2546,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Iden Versio",
@@ -2411,7 +2556,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Sigma 4",
@@ -2420,7 +2566,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Sigma 5",
@@ -2429,7 +2576,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Sigma 6",
@@ -2438,7 +2586,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Sigma 7",
@@ -2447,7 +2596,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Second Sister",
@@ -2456,7 +2606,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Modification", "Configuration", "Force Power", "Sensor"]
+        "slots": ["Modification", "Configuration", "Force Power", "Sensor"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Sapphire 2",
@@ -2465,7 +2619,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Soontir Fel",
@@ -2474,7 +2629,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Maus Monare",
@@ -2483,7 +2639,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -2547,7 +2704,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Mauler” Mithel",
@@ -2556,7 +2714,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Night Beast”",
@@ -2565,7 +2724,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification"]
+        "slots": ["Modification"],
+        "force": null
       },
       {
         "name": "“Scourge” Skutu",
@@ -2574,7 +2734,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Wampa”",
@@ -2583,7 +2744,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 2,
-        "slots": ["Modification"]
+        "slots": ["Modification"],
+        "force": null
       },
       {
         "name": "Academy Pilot",
@@ -2592,7 +2754,8 @@
         "limited": 0,
         "cost": 5,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Black Squadron Ace",
@@ -2601,7 +2764,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 4,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Del Meeko",
@@ -2610,7 +2774,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 17,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"]
+        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "Gideon Hask",
@@ -2619,7 +2784,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"]
+        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "Iden Versio",
@@ -2628,7 +2794,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"]
+        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "Obsidian Squadron Pilot",
@@ -2637,7 +2804,8 @@
         "limited": 0,
         "cost": 5,
         "loadout": 0,
-        "slots": ["Modification"]
+        "slots": ["Modification"],
+        "force": null
       },
       {
         "name": "Seyn Marana",
@@ -2646,7 +2814,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"]
+        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "Valen Rudor",
@@ -2655,7 +2824,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "ISB Jingoist",
@@ -2664,7 +2834,8 @@
         "limited": 2,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Modification", "Illicit"]
+        "slots": ["Modification", "Illicit"],
+        "force": null
       },
       {
         "name": "Moff Gideon",
@@ -2673,7 +2844,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Illicit", "Talent"]
+        "slots": ["Modification", "Illicit", "Talent"],
+        "force": null
       },
       {
         "name": "“Backstabber”",
@@ -2682,7 +2854,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Dark Curse”",
@@ -2691,7 +2864,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Mauler” Mithel",
@@ -2700,7 +2874,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Wampa”",
@@ -2709,7 +2884,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Magna Tolvan",
@@ -2718,7 +2894,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Yrica Quell",
@@ -2727,7 +2904,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 8,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Iden Versio",
@@ -2736,7 +2914,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Night Beast”",
@@ -2745,7 +2924,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Valen Rudor",
@@ -2754,7 +2934,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Lieutenant Hebsly",
@@ -2763,7 +2944,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Scythe 6",
@@ -2772,7 +2954,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Major Mianda",
@@ -2781,7 +2964,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Gideon Hask — Precursor",
@@ -2872,7 +3056,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"]
+        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "“Whisper”",
@@ -2881,7 +3066,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"]
+        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Imdaar Test Pilot",
@@ -2890,7 +3076,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Gunner", "Modification", "Tech", "Sensor"]
+        "slots": ["Gunner", "Modification", "Tech", "Sensor"],
+        "force": null
       },
       {
         "name": "Sigma Squadron Ace",
@@ -2899,7 +3086,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Talent", "Gunner", "Modification", "Tech", "Sensor"]
+        "slots": ["Talent", "Gunner", "Modification", "Tech", "Sensor"],
+        "force": null
       },
       {
         "name": "“Whisper”",
@@ -2908,7 +3096,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Echo”",
@@ -2917,7 +3106,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -2991,7 +3181,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"]
+        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Onyx Squadron Sentry",
@@ -3000,7 +3191,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"]
+        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "“Rampage”",
@@ -3009,7 +3201,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"]
+        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Lyttan Dree",
@@ -3018,7 +3211,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"]
+        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Flight Leader Ubbel",
@@ -3027,7 +3221,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"]
+        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "force": null
       }
     ]
   },
@@ -3095,7 +3290,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"],
+        "force": null
       },
       {
         "name": "Captain Jonus",
@@ -3104,7 +3300,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Gamma Squadron Ace",
@@ -3113,7 +3310,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Major Rhymer",
@@ -3122,7 +3320,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Scimitar Squadron Pilot",
@@ -3131,7 +3330,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"],
+        "force": null
       },
       {
         "name": "Tomax Bren",
@@ -3140,7 +3340,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"]
+        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Captain Jonus",
@@ -3149,7 +3350,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Tomax Bren",
@@ -3158,7 +3360,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Deathfire”",
@@ -3167,7 +3370,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Captain Jonus",
@@ -3176,7 +3380,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Tomax Bren",
@@ -3185,7 +3390,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Major Rhymer",
@@ -3194,7 +3400,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Scimitar 1",
@@ -3203,7 +3410,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Scimitar 3",
@@ -3212,7 +3420,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -3276,7 +3485,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Gunner", "Payload"]
+        "slots": ["Gunner", "Payload"],
+        "force": null
       },
       {
         "name": "“Duchess”",
@@ -3285,7 +3495,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Gunner", "Modification", "Payload", "Talent", "Modification"]
+        "slots": ["Gunner", "Modification", "Payload", "Talent", "Modification"],
+        "force": null
       },
       {
         "name": "“Pure Sabacc”",
@@ -3294,7 +3505,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Gunner", "Modification", "Payload", "Talent"]
+        "slots": ["Gunner", "Modification", "Payload", "Talent"],
+        "force": null
       },
       {
         "name": "Black Squadron Scout",
@@ -3303,7 +3515,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Gunner", "Modification", "Payload", "Talent"]
+        "slots": ["Gunner", "Modification", "Payload", "Talent"],
+        "force": null
       },
       {
         "name": "Planetary Sentinel",
@@ -3312,7 +3525,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Gunner", "Modification", "Payload"]
+        "slots": ["Gunner", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "“Vagabond”",
@@ -3321,7 +3535,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Gunner", "Modification", "Payload"]
+        "slots": ["Gunner", "Modification", "Payload"],
+        "force": null
       }
     ]
   },
@@ -3407,7 +3622,8 @@
           "Payload",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Patrol Leader",
@@ -3416,7 +3632,8 @@
         "limited": 0,
         "cost": 16,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Gunner", "Gunner", "Torpedo", "Modification", "Payload"]
+        "slots": ["Crew", "Crew", "Gunner", "Gunner", "Torpedo", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "Rear Admiral Chiraneau",
@@ -3435,7 +3652,8 @@
           "Payload",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Morna Kee",
@@ -3454,7 +3672,8 @@
           "Payload",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -3526,7 +3745,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 6,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "“Jag”",
@@ -3535,7 +3755,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "“Odd Ball”",
@@ -3544,7 +3765,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "“Wolffe”",
@@ -3553,7 +3775,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "104th Battalion Pilot",
@@ -3562,7 +3785,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 3,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Squad Seven Veteran",
@@ -3571,7 +3795,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 16,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"]
+        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "“Odd Ball”",
@@ -3580,7 +3805,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Wolffe”",
@@ -3589,7 +3815,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Jag”",
@@ -3598,7 +3825,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -3669,7 +3897,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Anakin Skywalker",
@@ -3687,7 +3916,11 @@
           "Turret",
           "Force Power",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "R2-D2",
@@ -3696,7 +3929,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 20,
-        "slots": ["Gunner", "Modification", "Payload", "Torpedo", "Turret", "Crew"]
+        "slots": ["Gunner", "Modification", "Payload", "Torpedo", "Turret", "Crew"],
+        "force": null
       },
       {
         "name": "“Odd Ball”",
@@ -3705,7 +3939,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "“Matchstick”",
@@ -3714,7 +3949,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "“Broadside”",
@@ -3723,7 +3959,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       },
       {
         "name": "“Goji”",
@@ -3732,7 +3969,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       },
       {
         "name": "Red Squadron Bomber",
@@ -3741,7 +3979,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       }
     ]
   },
@@ -3809,7 +4048,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Modification", "Sensor"]
+        "slots": ["Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Drift”",
@@ -3818,7 +4058,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Boost”",
@@ -3827,7 +4068,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Stub”",
@@ -3836,7 +4078,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Knack”",
@@ -3845,7 +4088,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Sensor", "Talent"]
+        "slots": ["Talent", "Modification", "Sensor", "Talent"],
+        "force": null
       },
       {
         "name": "“Hawk”",
@@ -3854,7 +4098,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "7th Sky Corps Pilot",
@@ -3863,7 +4108,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Modification", "Sensor"]
+        "slots": ["Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "Reaper Squadron Scout",
@@ -3872,7 +4118,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Slider”",
@@ -3881,7 +4128,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       },
       {
         "name": "“Warthog”",
@@ -3890,7 +4138,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 21,
-        "slots": ["Talent", "Modification", "Sensor"]
+        "slots": ["Talent", "Modification", "Sensor"],
+        "force": null
       }
     ]
   },
@@ -3968,7 +4217,11 @@
         "limited": 0,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"]
+        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Obi-Wan Kenobi",
@@ -3984,7 +4237,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Plo Koon",
@@ -4000,7 +4257,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Saesee Tiin",
@@ -4016,7 +4277,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Mace Windu",
@@ -4032,7 +4297,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Anakin Skywalker",
@@ -4048,7 +4317,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Ahsoka Tano",
@@ -4057,7 +4330,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"]
+        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Barriss Offee",
@@ -4066,7 +4343,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"]
+        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Luminara Unduli",
@@ -4082,7 +4363,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Adi Gallia",
@@ -4098,7 +4383,11 @@
           "Modification",
           "Astromech",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -4176,7 +4465,11 @@
         "limited": 0,
         "cost": 11,
         "loadout": 4,
-        "slots": ["Force Power", "Modification", "Astromech"]
+        "slots": ["Force Power", "Modification", "Astromech"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Obi-Wan Kenobi",
@@ -4185,7 +4478,11 @@
         "limited": 1,
         "cost": 14,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Plo Koon",
@@ -4194,7 +4491,11 @@
         "limited": 1,
         "cost": 14,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Saesee Tiin",
@@ -4203,7 +4504,11 @@
         "limited": 1,
         "cost": 13,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Mace Windu",
@@ -4212,7 +4517,11 @@
         "limited": 1,
         "cost": 13,
         "loadout": 9,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Anakin Skywalker",
@@ -4221,7 +4530,11 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Ahsoka Tano",
@@ -4230,7 +4543,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech"]
+        "slots": ["Force Power", "Modification", "Astromech"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Barriss Offee",
@@ -4239,7 +4556,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 6,
-        "slots": ["Force Power", "Modification", "Astromech"]
+        "slots": ["Force Power", "Modification", "Astromech"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Luminara Unduli",
@@ -4248,7 +4569,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 6,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Adi Gallia",
@@ -4257,7 +4582,11 @@
         "limited": 1,
         "cost": 13,
         "loadout": 7,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"]
+        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -4335,7 +4664,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Obi-Wan Kenobi",
@@ -4344,7 +4677,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Aayla Secura",
@@ -4353,7 +4690,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Shaak Ti",
@@ -4362,7 +4703,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Jedi General",
@@ -4371,7 +4716,11 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Yoda",
@@ -4380,7 +4729,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Anakin Skywalker",
@@ -4389,7 +4742,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Obi-Wan Kenobi",
@@ -4398,7 +4755,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Shaak Ti",
@@ -4407,7 +4768,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Kit Fisto",
@@ -4416,7 +4781,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"]
+        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -4501,7 +4870,8 @@
           "Configuration",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Nite Owl Liberator",
@@ -4518,7 +4888,8 @@
           "Modification",
           "Payload",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Bo-Katan Kryze — Armed and Dangerous",
@@ -4612,7 +4983,8 @@
           "Missile",
           "Torpedo",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Hound”",
@@ -4630,7 +5002,8 @@
           "Torpedo",
           "Missile",
           "Missile"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Warthog”",
@@ -4649,7 +5022,8 @@
           "Missile",
           "Torpedo",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "212th Battalion Pilot",
@@ -4667,7 +5041,8 @@
           "Torpedo",
           "Missile",
           "Missile"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Sicko”",
@@ -4685,7 +5060,8 @@
           "Torpedo",
           "Missile",
           "Missile"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -4758,7 +5134,19 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Tech", "Sensor", "Force Power"]
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Tech",
+          "Sensor",
+          "Force Power"
+        ],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Ric Olié",
@@ -4767,7 +5155,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Sensor", "Tech", "Talent"]
+        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Sensor", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Padmé Amidala",
@@ -4776,7 +5165,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"]
+        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "force": null
       },
       {
         "name": "Dineé Ellberger",
@@ -4785,7 +5175,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"]
+        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "force": null
       },
       {
         "name": "Bravo Flight Officer",
@@ -4794,7 +5185,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"]
+        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "force": null
       },
       {
         "name": "Naboo Handmaiden",
@@ -4803,7 +5195,8 @@
         "limited": 2,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Tech", "Sensor"]
+        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Tech", "Sensor"],
+        "force": null
       },
       {
         "name": "Gavyn Sykes",
@@ -4812,7 +5205,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"]
+        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "force": null
       }
     ]
   },
@@ -4886,7 +5280,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Astromech", "Configuration", "Modification"]
+        "slots": ["Astromech", "Configuration", "Modification"],
+        "force": null
       },
       {
         "name": "“Odd Ball”",
@@ -4895,7 +5290,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"]
+        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Contrail”",
@@ -4904,7 +5300,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"]
+        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Klick”",
@@ -4913,7 +5310,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 17,
-        "slots": ["Talent", "Astromech", "Configuration", "Modification"]
+        "slots": ["Talent", "Astromech", "Configuration", "Modification"],
+        "force": null
       },
       {
         "name": "Shadow Squadron Escort",
@@ -4922,7 +5320,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"]
+        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Loyalist Volunteer",
@@ -4931,7 +5330,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Astromech", "Configuration", "Modification"]
+        "slots": ["Astromech", "Configuration", "Modification"],
+        "force": null
       },
       {
         "name": "“Klick”",
@@ -4940,7 +5340,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Contrail”",
@@ -4949,7 +5350,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -5018,7 +5420,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification", "Talent"]
+        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Odd Ball”",
@@ -5027,7 +5430,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Missile", "Modification", "Modification", "Talent"]
+        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Swoop”",
@@ -5036,7 +5440,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Missile", "Modification", "Modification", "Talent"]
+        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Axe”",
@@ -5045,7 +5450,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification", "Talent"]
+        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "“Tucker”",
@@ -5054,7 +5460,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Missile", "Modification", "Modification"]
+        "slots": ["Missile", "Missile", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Blue Squadron Protector",
@@ -5063,7 +5470,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Missile", "Missile", "Modification", "Modification", "Talent"]
+        "slots": ["Missile", "Missile", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Gold Squadron Trooper",
@@ -5072,7 +5480,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 2,
-        "slots": ["Missile", "Talent", "Modification", "Modification"]
+        "slots": ["Missile", "Talent", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "“Kickback”",
@@ -5081,7 +5490,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Axe”",
@@ -5090,7 +5500,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Slammer”",
@@ -5099,7 +5510,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification"]
+        "slots": ["Missile", "Modification", "Modification"],
+        "force": null
       }
     ]
   },
@@ -5177,7 +5589,8 @@
           "Torpedo",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Blue Squadron Pilot",
@@ -5194,7 +5607,8 @@
           "Sensor",
           "Torpedo",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Braylen Stramm",
@@ -5212,7 +5626,8 @@
           "Torpedo",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Ten Numb",
@@ -5230,7 +5645,8 @@
           "Torpedo",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Gina Moonsong",
@@ -5248,7 +5664,8 @@
           "Torpedo",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Hera Syndulla",
@@ -5268,7 +5685,8 @@
           "Talent",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Netrem Pollard",
@@ -5285,7 +5703,8 @@
           "Sensor",
           "Torpedo",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Adon Fox",
@@ -5294,7 +5713,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Gina Moonsong",
@@ -5303,7 +5723,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Braylen Stramm",
@@ -5312,7 +5733,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -5384,7 +5806,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"]
+        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Ibtisam",
@@ -5393,7 +5816,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"]
+        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Norra Wexley",
@@ -5402,7 +5826,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"]
+        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Shara Bey",
@@ -5411,7 +5836,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 17,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"]
+        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "force": null
       }
     ]
   },
@@ -5480,7 +5906,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Crew", "Modification", "Turret", "Title"]
+        "slots": ["Crew", "Modification", "Turret", "Title"],
+        "force": null
       },
       {
         "name": "Ezra Bridger",
@@ -5489,7 +5916,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Force Power"]
+        "slots": ["Crew", "Modification", "Turret", "Title", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Hera Syndulla",
@@ -5498,7 +5929,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Talent", "Talent"]
+        "slots": ["Crew", "Modification", "Turret", "Title", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Sabine Wren",
@@ -5507,7 +5939,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Talent"]
+        "slots": ["Crew", "Modification", "Turret", "Title", "Talent"],
+        "force": null
       },
       {
         "name": "Hera Syndulla — New Republic General",
@@ -5594,7 +6027,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Crew", "Modification", "Modification"]
+        "slots": ["Crew", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Lowhhrick",
@@ -5603,7 +6037,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Crew", "Modification", "Modification"]
+        "slots": ["Talent", "Crew", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Wullffwarro",
@@ -5612,7 +6047,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 14,
-        "slots": ["Crew", "Modification", "Modification", "Talent"]
+        "slots": ["Crew", "Modification", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -5683,7 +6119,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Evaan Verlaine",
@@ -5692,7 +6129,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       },
       {
         "name": "Gold Squadron Veteran",
@@ -5701,7 +6139,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Gray Squadron Bomber",
@@ -5710,7 +6149,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       },
       {
         "name": "Horton Salm",
@@ -5719,7 +6159,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Norra Wexley",
@@ -5728,7 +6169,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 20,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Dex Tiree",
@@ -5737,7 +6179,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Dutch” Vander",
@@ -5746,7 +6189,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Hol Okand",
@@ -5755,7 +6199,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Pops” Krail",
@@ -5764,7 +6209,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "“Pops” Krail",
@@ -5773,7 +6219,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       },
       {
         "name": "“Dutch” Vander",
@@ -5782,7 +6229,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Horton Salm",
@@ -5791,7 +6239,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -5859,7 +6308,8 @@
           "Modification",
           "Gunner",
           "Crew"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Miranda Doni",
@@ -5878,7 +6328,8 @@
           "Gunner",
           "Crew",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Warden Squadron Pilot",
@@ -5896,7 +6347,8 @@
           "Modification",
           "Gunner",
           "Crew"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -5976,7 +6428,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 14,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Talent", "Tech", "Talent"]
+        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Talent", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Gavin Darklighter",
@@ -5985,7 +6438,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 20,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"]
+        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Knave Squadron Escort",
@@ -5994,7 +6448,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Torpedo", "Modification", "Sensor", "Tech", "Astromech"]
+        "slots": ["Torpedo", "Modification", "Sensor", "Tech", "Astromech"],
+        "force": null
       },
       {
         "name": "Rogue Squadron Escort",
@@ -6003,7 +6458,8 @@
         "limited": 0,
         "cost": 14,
         "loadout": 17,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"]
+        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"],
+        "force": null
       }
     ]
   },
@@ -6072,7 +6528,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "Bodica Venj",
@@ -6081,7 +6538,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "Dirk Ullodin",
@@ -6090,7 +6548,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Clan Wren Volunteer",
@@ -6099,7 +6558,8 @@
         "limited": 2,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       }
     ]
   },
@@ -6183,7 +6643,8 @@
           "Payload",
           "Configuration",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Ezra Bridger",
@@ -6203,7 +6664,11 @@
           "Title",
           "Force Power",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Mandalorian Resistance Pilot",
@@ -6222,7 +6687,8 @@
           "Configuration",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -6297,7 +6763,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 10,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"]
+        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "force": null
       },
       {
         "name": "Kyle Katarn",
@@ -6306,7 +6773,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"]
+        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "force": null
       },
       {
         "name": "Rebel Scout",
@@ -6315,7 +6783,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Crew", "Modification", "Payload", "Payload"]
+        "slots": ["Crew", "Modification", "Payload", "Payload"],
+        "force": null
       },
       {
         "name": "Roark Garnet",
@@ -6324,7 +6793,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 12,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"]
+        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "force": null
       }
     ]
   },
@@ -6408,7 +6878,8 @@
           "Missile",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Han Solo",
@@ -6429,7 +6900,8 @@
           "Title",
           "Talent",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Lando Calrissian",
@@ -6449,7 +6921,8 @@
           "Missile",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Outer Rim Smuggler",
@@ -6458,7 +6931,8 @@
         "limited": 0,
         "cost": 16,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Modification", "Missile"]
+        "slots": ["Crew", "Crew", "Illicit", "Modification", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Leia Organa",
@@ -6478,7 +6952,11 @@
           "Missile",
           "Title",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Han Solo",
@@ -6487,7 +6965,8 @@
         "limited": 1,
         "cost": 18,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Lando Calrissian",
@@ -6496,7 +6975,8 @@
         "limited": 1,
         "cost": 18,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Leia Organa — Tantive IV",
@@ -6582,7 +7062,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Green Squadron Pilot",
@@ -6591,7 +7072,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Jake Farrell",
@@ -6600,7 +7082,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Phoenix Squadron Pilot",
@@ -6609,7 +7092,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 1,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Wedge Antilles",
@@ -6618,7 +7102,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Sabine Wren",
@@ -6627,7 +7112,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Hera Syndulla",
@@ -6636,7 +7122,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Ahsoka Tano",
@@ -6645,7 +7132,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Modification", "Missile", "Configuration", "Force Power", "Force Power"]
+        "slots": ["Modification", "Missile", "Configuration", "Force Power", "Force Power"],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Shara Bey",
@@ -6654,7 +7145,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Derek Klivian",
@@ -6663,7 +7155,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Keo Venzee",
@@ -6672,7 +7165,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Modification", "Missile", "Configuration", "Force Power"]
+        "slots": ["Modification", "Missile", "Configuration", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 0
+        }
       },
       {
         "name": "Tycho Celchu",
@@ -6681,7 +7178,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"]
+        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Arvel Crynyd",
@@ -6690,7 +7188,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Jake Farrell",
@@ -6699,7 +7198,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Shara Bey",
@@ -6708,7 +7208,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Arvel Crynyd",
@@ -6717,7 +7218,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Tycho Celchu",
@@ -6726,7 +7228,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Gemmer Sojan",
@@ -6735,7 +7238,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -6804,7 +7308,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 4,
-        "slots": ["Astromech", "Crew", "Modification", "Title"]
+        "slots": ["Astromech", "Crew", "Modification", "Title"],
+        "force": null
       },
       {
         "name": "AP-5",
@@ -6813,7 +7318,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Astromech", "Crew", "Modification", "Title"]
+        "slots": ["Astromech", "Crew", "Modification", "Title"],
+        "force": null
       },
       {
         "name": "Ezra Bridger",
@@ -6822,7 +7328,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Astromech", "Crew", "Modification", "Title", "Force Power"]
+        "slots": ["Astromech", "Crew", "Modification", "Title", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Fenn Rau",
@@ -6831,7 +7341,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Crew", "Modification", "Title", "Talent"]
+        "slots": ["Astromech", "Crew", "Modification", "Title", "Talent"],
+        "force": null
       }
     ]
   },
@@ -6900,7 +7411,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"],
+        "force": null
       },
       {
         "name": "Blue Squadron Escort",
@@ -6909,7 +7421,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 3,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"],
+        "force": null
       },
       {
         "name": "Cavern Angels Zealot",
@@ -6918,7 +7431,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"]
+        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"],
+        "force": null
       },
       {
         "name": "Edrio Two Tubes",
@@ -6927,7 +7441,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"]
+        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"],
+        "force": null
       },
       {
         "name": "Garven Dreis",
@@ -6936,7 +7451,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Jek Porkins",
@@ -6945,7 +7461,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Kullbee Sperado",
@@ -6954,7 +7471,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"]
+        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"],
+        "force": null
       },
       {
         "name": "Leevan Tenza",
@@ -6963,7 +7481,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"]
+        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"],
+        "force": null
       },
       {
         "name": "Luke Skywalker",
@@ -6979,7 +7498,11 @@
           "Configuration",
           "Force Power",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Red Squadron Veteran",
@@ -6988,7 +7511,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Thane Kyrell",
@@ -6997,7 +7521,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Wedge Antilles",
@@ -7006,7 +7531,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Biggs Darklighter",
@@ -7015,7 +7541,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Garven Dreis",
@@ -7024,7 +7551,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Jek Porkins",
@@ -7033,7 +7561,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Luke Skywalker",
@@ -7042,7 +7571,11 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Wedge Antilles",
@@ -7051,7 +7584,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Corran Horn",
@@ -7060,7 +7594,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Wes Janson",
@@ -7069,7 +7604,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Luke Skywalker",
@@ -7078,7 +7614,11 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Jek Porkins",
@@ -7087,7 +7627,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Wedge Antilles",
@@ -7096,7 +7637,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Yendor",
@@ -7105,7 +7647,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Kendy Idele",
@@ -7114,7 +7657,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -7178,7 +7722,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Modification"]
+        "slots": ["Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Captain Rex",
@@ -7187,7 +7732,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Modification"]
+        "slots": ["Talent", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Ezra Bridger",
@@ -7196,7 +7742,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 15,
-        "slots": ["Modification", "Modification", "Force Power"]
+        "slots": ["Modification", "Modification", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Sabine Wren",
@@ -7205,7 +7755,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification"]
+        "slots": ["Talent", "Modification", "Modification"],
+        "force": null
       }
     ]
   },
@@ -7270,7 +7821,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Blue Squadron Scout",
@@ -7279,7 +7831,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Bodhi Rook",
@@ -7288,7 +7841,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Cassian Andor",
@@ -7297,7 +7851,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Heff Tobber",
@@ -7306,7 +7861,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Magva Yarro",
@@ -7315,7 +7871,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Partisan Renegade",
@@ -7324,7 +7881,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Illicit"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Illicit"],
+        "force": null
       },
       {
         "name": "Saw Gerrera",
@@ -7333,7 +7891,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "K-2SO",
@@ -7342,7 +7901,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"]
+        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"],
+        "force": null
       }
     ]
   },
@@ -7411,7 +7971,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo", "Title"]
+        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo", "Title"],
+        "force": null
       },
       {
         "name": "Hera Syndulla",
@@ -7431,7 +7992,8 @@
           "Title",
           "Talent",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Kanan Jarrus",
@@ -7450,7 +8012,11 @@
           "Torpedo",
           "Title",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Lothal Rebel",
@@ -7459,7 +8025,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo"]
+        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Alexsandr Kallus",
@@ -7478,7 +8045,8 @@
           "Torpedo",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -7551,7 +8119,8 @@
         "limited": 1,
         "cost": 19,
         "loadout": 19,
-        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Dash Rendar",
@@ -7560,7 +8129,8 @@
         "limited": 1,
         "cost": 19,
         "loadout": 20,
-        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Wild Space Fringer",
@@ -7569,7 +8139,8 @@
         "limited": 0,
         "cost": 17,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Missile"]
+        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "“Leebo”",
@@ -7587,7 +8158,8 @@
           "Modification",
           "Missile",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Dash Rendar",
@@ -7605,7 +8177,8 @@
           "Modification",
           "Missile",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "“Leebo”",
@@ -7614,7 +8187,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Dash Rendar",
@@ -7623,7 +8197,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -7691,7 +8266,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Missile"]
+        "slots": ["Talent", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Bandit Squadron Pilot",
@@ -7700,7 +8276,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Missile"]
+        "slots": ["Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Lieutenant Blount",
@@ -7709,7 +8286,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile"]
+        "slots": ["Talent", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Tala Squadron Pilot",
@@ -7718,7 +8296,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Missile"]
+        "slots": ["Talent", "Modification", "Missile"],
+        "force": null
       }
     ]
   },
@@ -7798,7 +8377,8 @@
           "Payload",
           "Talent",
           "Illicit"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Teza Nasz",
@@ -7815,7 +8395,8 @@
           "Tech",
           "Payload",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Wilsa Teshlo",
@@ -7832,7 +8413,8 @@
           "Tech",
           "Payload",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Shasa Zaro",
@@ -7849,7 +8431,8 @@
           "Tech",
           "Payload",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Lega Fossang",
@@ -7858,7 +8441,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"]
+        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "force": null
       },
       {
         "name": "Aftab Ackbar",
@@ -7867,7 +8451,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 8,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"]
+        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "force": null
       },
       {
         "name": "Corus Kapellim",
@@ -7884,7 +8469,8 @@
           "Tech",
           "Payload",
           "Illicit"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "C’ai Threnalli",
@@ -7901,7 +8487,8 @@
           "Tech",
           "Payload",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "New Republic Patrol",
@@ -7910,7 +8497,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"]
+        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "force": null
       },
       {
         "name": "Kijimi Spice Runner",
@@ -7927,7 +8515,8 @@
           "Tech",
           "Payload",
           "Illicit"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Aftab Ackbar — “Junior”",
@@ -8170,7 +8759,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 3,
-        "slots": ["Modification", "Astromech", "Illicit", "Missile"]
+        "slots": ["Modification", "Astromech", "Illicit", "Missile"],
+        "force": null
       },
       {
         "name": "Jarek Yeager",
@@ -8187,7 +8777,8 @@
           "Talent",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Kazuda Xiono",
@@ -8204,7 +8795,8 @@
           "Talent",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "R1-J5",
@@ -8213,7 +8805,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Modification", "Illicit", "Missile", "Crew", "Title"]
+        "slots": ["Modification", "Illicit", "Missile", "Crew", "Title"],
+        "force": null
       },
       {
         "name": "Kazuda Xiono — Resistance Spy",
@@ -8297,7 +8890,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 20,
-        "slots": ["Payload", "Payload", "Crew", "Gunner", "Gunner", "Tech", "Modification"]
+        "slots": ["Payload", "Payload", "Crew", "Gunner", "Gunner", "Tech", "Modification"],
+        "force": null
       },
       {
         "name": "Cat",
@@ -8315,7 +8909,8 @@
           "Sensor",
           "Tech",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Vennie",
@@ -8333,7 +8928,8 @@
           "Sensor",
           "Tech",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Ben Teene",
@@ -8351,7 +8947,8 @@
           "Sensor",
           "Tech",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Edon Kappehl",
@@ -8370,7 +8967,8 @@
           "Tech",
           "Modification",
           "Sensor"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Finch Dallow",
@@ -8389,7 +8987,8 @@
           "Modification",
           "Talent",
           "Sensor"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Paige Tico",
@@ -8409,7 +9008,8 @@
           "Talent",
           "Sensor",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Finch Dallow — Evacuation of D'Qar",
@@ -8510,7 +9110,8 @@
           "Torpedo",
           "Talent",
           "Cannon"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Pammich Nerro Goode",
@@ -8528,7 +9129,8 @@
           "Cannon",
           "Torpedo",
           "Cannon"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Nodin Chavdri",
@@ -8537,7 +9139,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Cannon", "Torpedo"]
+        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Cannon", "Torpedo"],
+        "force": null
       },
       {
         "name": "Logistics Division Pilot",
@@ -8555,7 +9158,8 @@
           "Cannon",
           "Torpedo",
           "Astromech"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Taka Jamoreesa",
@@ -8564,7 +9168,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Torpedo"]
+        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Torpedo"],
+        "force": null
       },
       {
         "name": "Pammich Nerro Goode — Evacuation of D'Qar",
@@ -8644,7 +9249,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Modification", "Tech"]
+        "slots": ["Crew", "Modification", "Tech"],
+        "force": null
       },
       {
         "name": "Rose Tico",
@@ -8653,7 +9259,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 14,
-        "slots": ["Crew", "Modification", "Tech", "Talent"]
+        "slots": ["Crew", "Modification", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Vi Moradi",
@@ -8662,7 +9269,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Crew", "Modification", "Tech"]
+        "slots": ["Crew", "Modification", "Tech"],
+        "force": null
       },
       {
         "name": "Finn",
@@ -8671,7 +9279,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Crew", "Modification", "Tech", "Talent"]
+        "slots": ["Crew", "Modification", "Tech", "Talent"],
+        "force": null
       }
     ]
   },
@@ -8748,7 +9357,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Tallissan Lintra",
@@ -8757,7 +9367,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Sensor"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Sensor"],
+        "force": null
       },
       {
         "name": "Zari Bangel",
@@ -8766,7 +9377,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Greer Sonnel",
@@ -8775,7 +9387,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Green Squadron Expert",
@@ -8784,7 +9397,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Blue Squadron Recruit",
@@ -8793,7 +9407,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Zizi Tlo",
@@ -8802,7 +9417,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Tech"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Tech"],
+        "force": null
       },
       {
         "name": "Ronith Blario",
@@ -8811,7 +9427,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Merl Cobben",
@@ -8820,7 +9437,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Suralinda Javos",
@@ -8829,7 +9447,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Wrobie Tyce",
@@ -8838,7 +9457,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Missile", "Tech", "Modification", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Seftin Vanik",
@@ -8847,7 +9467,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"]
+        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "force": null
       },
       {
         "name": "Ronith Blario — Evacuation of D'Qar",
@@ -8946,7 +9567,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Modification"]
+        "slots": ["Crew", "Crew", "Modification"],
+        "force": null
       },
       {
         "name": "Chewbacca",
@@ -8966,7 +9588,8 @@
           "Missile",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Han Solo",
@@ -8986,7 +9609,8 @@
           "Missile",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Rey",
@@ -9007,7 +9631,11 @@
           "Force Power",
           "Force Power",
           "Title"
-        ]
+        ],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Poe Dameron",
@@ -9028,7 +9656,8 @@
           "Talent",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Lando Calrissian",
@@ -9048,7 +9677,8 @@
           "Missile",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -9117,7 +9747,16 @@
         "limited": 1,
         "cost": 17,
         "loadout": 20,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Talent", "Title"]
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent",
+          "Talent",
+          "Title"
+        ],
+        "force": null
       },
       {
         "name": "Poe Dameron",
@@ -9134,7 +9773,8 @@
           "Talent",
           "Talent",
           "Sensor"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Blue Squadron Rookie",
@@ -9143,7 +9783,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Red Squadron Expert",
@@ -9152,7 +9793,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Black Squadron Ace",
@@ -9161,7 +9803,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Torpedo"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Torpedo"],
+        "force": null
       },
       {
         "name": "Ello Asty",
@@ -9170,7 +9813,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Joph Seastriker",
@@ -9179,7 +9823,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Karé Kun",
@@ -9188,7 +9833,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Lieutenant Bastian",
@@ -9197,7 +9843,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Nien Nunb",
@@ -9206,7 +9853,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Tech"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Tech"],
+        "force": null
       },
       {
         "name": "Jaycris Tubbs",
@@ -9215,7 +9863,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Jessika Pava",
@@ -9224,7 +9873,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Temmin Wexley",
@@ -9233,7 +9883,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Temmin Wexley",
@@ -9242,7 +9893,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "C’ai Threnalli",
@@ -9251,7 +9903,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "Nimi Chireen",
@@ -9260,7 +9913,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "force": null
       },
       {
         "name": "Venisa Doza",
@@ -9269,7 +9923,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Missile"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Missile"],
+        "force": null
       },
       {
         "name": "Zay Versio",
@@ -9278,7 +9933,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "force": null
       },
       {
         "name": "C’ai Threnalli — Tenacious Survivor",
@@ -9406,7 +10062,8 @@
           "Illicit",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "IG-88B",
@@ -9424,7 +10081,8 @@
           "Illicit",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "IG-88C",
@@ -9442,7 +10100,8 @@
           "Illicit",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "IG-88D",
@@ -9460,7 +10119,8 @@
           "Illicit",
           "Modification",
           "Title"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -9531,7 +10191,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"]
+        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"],
+        "force": null
       },
       {
         "name": "Drea Renthal",
@@ -9540,7 +10201,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"]
+        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"],
+        "force": null
       },
       {
         "name": "Hired Gun",
@@ -9549,7 +10211,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"]
+        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"],
+        "force": null
       },
       {
         "name": "Kavil",
@@ -9558,7 +10221,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 17,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"]
+        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"],
+        "force": null
       },
       {
         "name": "Leema Kai",
@@ -9567,7 +10231,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 21,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Arliz Hadrassian",
@@ -9576,7 +10241,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Amaxine Warrior",
@@ -9585,7 +10251,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Padric",
@@ -9594,7 +10261,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "force": null
       },
       {
         "name": "Jinata Security Officer",
@@ -9603,7 +10271,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"]
+        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "force": null
       }
     ]
   },
@@ -9676,7 +10345,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification"]
+        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Han Solo",
@@ -9695,7 +10365,8 @@
           "Title",
           "Talent",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "L3-37",
@@ -9704,7 +10375,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification", "Title"]
+        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification", "Title"],
+        "force": null
       },
       {
         "name": "Lando Calrissian",
@@ -9722,7 +10394,8 @@
           "Modification",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Han Solo — Armed and Dangerous",
@@ -9796,7 +10469,8 @@
         "limited": 1,
         "cost": 3,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "L3-37",
@@ -9805,7 +10479,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Crew", "Illicit", "Modification"]
+        "slots": ["Crew", "Illicit", "Modification"],
+        "force": null
       },
       {
         "name": "Lando Calrissian",
@@ -9814,7 +10489,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Illicit", "Modification", "Talent"]
+        "slots": ["Crew", "Illicit", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Outer Rim Pioneer",
@@ -9823,7 +10499,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Illicit", "Modification"]
+        "slots": ["Crew", "Illicit", "Modification"],
+        "force": null
       }
     ]
   },
@@ -9892,7 +10569,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "Joy Rekkoff",
@@ -9901,7 +10579,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Kad Solus",
@@ -9910,7 +10589,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Old Teroch",
@@ -9919,7 +10599,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Skull Squadron Pilot",
@@ -9928,7 +10609,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Zealous Recruit",
@@ -9937,7 +10619,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Modification", "Modification", "Torpedo"]
+        "slots": ["Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Mandalorian Royal Guard",
@@ -9946,7 +10629,8 @@
         "limited": 2,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Tor Phun",
@@ -9955,7 +10639,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"]
+        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Fenn Rau — Armed and Dangerous",
@@ -10052,7 +10737,8 @@
           "Title",
           "Talent",
           "Modification"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Bounty Hunter",
@@ -10061,7 +10747,8 @@
         "limited": 0,
         "cost": 14,
         "loadout": 6,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"]
+        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "Emon Azzameen",
@@ -10079,7 +10766,8 @@
           "Payload",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Kath Scarlet",
@@ -10097,7 +10785,8 @@
           "Payload",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Koshka Frost",
@@ -10115,7 +10804,8 @@
           "Payload",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Krassis Trelix",
@@ -10124,7 +10814,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 15,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Talent"]
+        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Talent"],
+        "force": null
       },
       {
         "name": "Hondo Ohnaka",
@@ -10133,7 +10824,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"]
+        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"],
+        "force": null
       },
       {
         "name": "Boba Fett — Armed and Dangerous",
@@ -10211,7 +10903,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"]
+        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"],
+        "force": null
       },
       {
         "name": "Gand Findsman",
@@ -10220,7 +10913,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification"]
+        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification"],
+        "force": null
       },
       {
         "name": "Zuckuss",
@@ -10229,7 +10923,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"]
+        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"],
+        "force": null
       },
       {
         "name": "Zuckuss — Armed and Dangerous",
@@ -10324,7 +11019,11 @@
           "Force Power",
           "Force Power",
           "Title"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Rook Kast",
@@ -10342,7 +11041,8 @@
           "Payload",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Shadow Collective Operator",
@@ -10359,7 +11059,8 @@
           "Modification",
           "Payload",
           "Configuration"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -10434,7 +11135,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Palob Godalhi",
@@ -10443,7 +11145,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Spice Runner",
@@ -10452,7 +11155,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Crew", "Illicit", "Modification", "Payload"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "Torkil Mux",
@@ -10461,7 +11165,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Modification", "Payload"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "Gamut Key",
@@ -10470,7 +11175,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"],
+        "force": null
       },
       {
         "name": "Kanan Jarrus",
@@ -10479,7 +11185,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Force Power"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload", "Force Power"],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       },
       {
         "name": "Tápusk",
@@ -10488,7 +11198,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"]
+        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"],
+        "force": null
       }
     ]
   },
@@ -10556,7 +11267,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification"]
+        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification"],
+        "force": null
       },
       {
         "name": "Dengar",
@@ -10574,7 +11286,8 @@
           "Torpedo",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Manaroo",
@@ -10592,7 +11305,8 @@
           "Torpedo",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Tel Trevura",
@@ -10601,7 +11315,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 21,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo", "Talent"]
+        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo", "Talent"],
+        "force": null
       },
       {
         "name": "Nom Lumb",
@@ -10610,7 +11325,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo"]
+        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo"],
+        "force": null
       },
       {
         "name": "Dengar — Armed and Dangerous",
@@ -10687,7 +11403,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "force": null
       },
       {
         "name": "Captain Jostero",
@@ -10696,7 +11413,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Cartel Marauder",
@@ -10705,7 +11423,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 4,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Graz",
@@ -10714,7 +11433,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 16,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "force": null
       },
       {
         "name": "Talonbane Cobra",
@@ -10723,7 +11443,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "force": null
       },
       {
         "name": "Viktor Hel",
@@ -10732,7 +11453,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"]
+        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "force": null
       }
     ]
   },
@@ -10809,7 +11531,11 @@
         "limited": 1,
         "cost": 15,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Force Power"]
+        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Force Power"],
+        "force": {
+          "value": 2,
+          "recovers": 1
+        }
       },
       {
         "name": "Ketsu Onyo",
@@ -10818,7 +11544,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"]
+        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Sabine Wren",
@@ -10827,7 +11554,8 @@
         "limited": 1,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"]
+        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Shadowport Hunter",
@@ -10836,7 +11564,8 @@
         "limited": 0,
         "cost": 14,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification"]
+        "slots": ["Crew", "Illicit", "Illicit", "Modification"],
+        "force": null
       },
       {
         "name": "Asajj Ventress — Trident",
@@ -10917,7 +11646,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification"]
+        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification"],
+        "force": null
       },
       {
         "name": "Dalan Oberos",
@@ -10926,7 +11656,8 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"]
+        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Torani Kulda",
@@ -10935,7 +11666,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"]
+        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -11007,7 +11739,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 0,
-        "slots": ["Modification", "Illicit"]
+        "slots": ["Modification", "Illicit"],
+        "force": null
       },
       {
         "name": "Genesis Red",
@@ -11016,7 +11749,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Modification", "Talent", "Illicit"]
+        "slots": ["Modification", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Inaldra",
@@ -11025,7 +11759,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Illicit"]
+        "slots": ["Modification", "Illicit"],
+        "force": null
       },
       {
         "name": "Laetin A’shera",
@@ -11034,7 +11769,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Talent", "Illicit"]
+        "slots": ["Modification", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Quinn Jast",
@@ -11043,7 +11779,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Modification", "Talent", "Illicit"]
+        "slots": ["Modification", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Serissu",
@@ -11052,7 +11789,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Modification", "Talent"]
+        "slots": ["Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Sunny Bounder",
@@ -11061,7 +11799,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Modification"]
+        "slots": ["Modification"],
+        "force": null
       },
       {
         "name": "Tansarii Point Veteran",
@@ -11070,7 +11809,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Talent", "Illicit"]
+        "slots": ["Modification", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "G4R-G0R V/M",
@@ -11079,7 +11819,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Modification"]
+        "slots": ["Modification"],
+        "force": null
       }
     ]
   },
@@ -11142,7 +11883,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Talent"]
+        "slots": ["Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Captain Seevor",
@@ -11151,7 +11893,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Modification", "Modification", "Talent"]
+        "slots": ["Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Foreman Proach",
@@ -11160,7 +11903,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Talent", "Illicit"]
+        "slots": ["Modification", "Modification", "Talent", "Illicit"],
+        "force": null
       },
       {
         "name": "Mining Guild Surveyor",
@@ -11169,7 +11913,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Modification", "Modification"]
+        "slots": ["Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Overseer Yushyn",
@@ -11178,7 +11923,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Modification", "Illicit"]
+        "slots": ["Modification", "Modification", "Illicit"],
+        "force": null
       },
       {
         "name": "Mining Guild Sentry",
@@ -11187,7 +11933,8 @@
         "limited": 0,
         "cost": 5,
         "loadout": 1,
-        "slots": ["Modification", "Modification"]
+        "slots": ["Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Lapin",
@@ -11196,7 +11943,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Modification", "Talent"]
+        "slots": ["Modification", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -11262,7 +12010,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 19,
-        "slots": ["Crew", "Illicit", "Modification", "Talent", "Payload"]
+        "slots": ["Crew", "Illicit", "Modification", "Talent", "Payload"],
+        "force": null
       },
       {
         "name": "Jakku Gunrunner",
@@ -11271,7 +12020,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 4,
-        "slots": ["Crew", "Illicit", "Modification"]
+        "slots": ["Crew", "Illicit", "Modification"],
+        "force": null
       },
       {
         "name": "Sarco Plank",
@@ -11280,7 +12030,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Modification", "Illicit", "Tech"]
+        "slots": ["Crew", "Illicit", "Modification", "Illicit", "Tech"],
+        "force": null
       },
       {
         "name": "Unkar Plutt",
@@ -11289,7 +12040,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Modification", "Modification"]
+        "slots": ["Crew", "Illicit", "Modification", "Modification"],
+        "force": null
       }
     ]
   },
@@ -11377,7 +12129,8 @@
           "Missile",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Viktor Hel",
@@ -11386,7 +12139,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification", "Talent"]
+        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Nom Lumb",
@@ -11395,7 +12149,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification"]
+        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Outer Rim Hunter",
@@ -11404,7 +12159,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Illicit", "Modification", "Modification", "Cannon", "Cannon"]
+        "slots": ["Illicit", "Modification", "Modification", "Cannon", "Cannon"],
+        "force": null
       },
       {
         "name": "Durge",
@@ -11421,7 +12177,8 @@
           "Modification",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Cad Bane — Armed and Dangerous",
@@ -11507,7 +12264,8 @@
           "Turret",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Lok Revenant",
@@ -11516,7 +12274,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Crew", "Gunner", "Modification", "Payload", "Payload", "Turret"]
+        "slots": ["Crew", "Gunner", "Modification", "Payload", "Payload", "Turret"],
+        "force": null
       },
       {
         "name": "Sol Sixxa",
@@ -11534,7 +12293,8 @@
           "Turret",
           "Talent",
           "Illicit"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -11610,7 +12370,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 18,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"]
+        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Q9-0",
@@ -11619,7 +12380,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 10,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"]
+        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Guild Bounty Hunter",
@@ -11628,7 +12390,8 @@
         "limited": 2,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent"]
+        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "Outer Rim Enforcer",
@@ -11637,7 +12400,8 @@
         "limited": 0,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification"]
+        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification"],
+        "force": null
       },
       {
         "name": "The Mandalorian — Armed and Dangerous",
@@ -11718,7 +12482,8 @@
         "limited": 0,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"]
+        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Black Sun Enforcer",
@@ -11727,7 +12492,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Illicit", "Modification", "Sensor", "Tech", "Torpedo"]
+        "slots": ["Illicit", "Modification", "Sensor", "Tech", "Torpedo"],
+        "force": null
       },
       {
         "name": "Dalan Oberos",
@@ -11736,7 +12502,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"]
+        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"],
+        "force": null
       },
       {
         "name": "Guri",
@@ -11745,7 +12512,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"]
+        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"],
+        "force": null
       },
       {
         "name": "Prince Xizor",
@@ -11754,7 +12522,8 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"]
+        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"],
+        "force": null
       },
       {
         "name": "Prince Xizor — Armed and Dangerous",
@@ -11836,7 +12605,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Dash Rendar",
@@ -11845,7 +12615,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -11922,7 +12693,8 @@
           "Talent",
           "Title",
           "Gunner"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Latts Razzi",
@@ -11941,7 +12713,8 @@
           "Talent",
           "Title",
           "Gunner"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Moralo Eval",
@@ -11950,7 +12723,8 @@
         "limited": 1,
         "cost": 15,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"]
+        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"],
+        "force": null
       },
       {
         "name": "Trandoshan Slaver",
@@ -11959,7 +12733,8 @@
         "limited": 0,
         "cost": 14,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Gunner"]
+        "slots": ["Crew", "Crew", "Illicit", "Modification", "Gunner"],
+        "force": null
       },
       {
         "name": "Doctor Aphra",
@@ -11968,7 +12743,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 22,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"]
+        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"],
+        "force": null
       },
       {
         "name": "Bossk — Armed and Dangerous",
@@ -12045,7 +12821,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Illicit", "Modification", "Missile"]
+        "slots": ["Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Black Sun Soldier",
@@ -12054,7 +12831,8 @@
         "limited": 0,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Kaa’to Leeachos",
@@ -12063,7 +12841,8 @@
         "limited": 1,
         "cost": 7,
         "loadout": 13,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "N’dru Suhlak",
@@ -12072,7 +12851,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 14,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "force": null
       },
       {
         "name": "Nashtah Pup",
@@ -12081,7 +12861,8 @@
         "limited": 1,
         "cost": 0,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Bossk",
@@ -12090,7 +12871,8 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"]
+        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "force": null
       }
     ]
   },
@@ -12164,7 +12946,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 20,
-        "slots": ["Modification", "Modification", "Talent", "Title"]
+        "slots": ["Modification", "Modification", "Talent", "Title"],
+        "force": null
       },
       {
         "name": "Wat Tambor",
@@ -12173,7 +12956,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Modification", "Modification", "Tactical Relay", "Talent"]
+        "slots": ["Modification", "Modification", "Tactical Relay", "Talent"],
+        "force": null
       },
       {
         "name": "Feethan Ottraw Autopilot",
@@ -12182,7 +12966,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Modification", "Modification", "Tactical Relay"]
+        "slots": ["Modification", "Modification", "Tactical Relay"],
+        "force": null
       },
       {
         "name": "Captain Sear",
@@ -12191,7 +12976,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Tactical Relay"]
+        "slots": ["Modification", "Modification", "Tactical Relay"],
+        "force": null
       },
       {
         "name": "Skakoan Ace",
@@ -12200,7 +12986,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Modification", "Modification", "Talent"]
+        "slots": ["Modification", "Modification", "Talent"],
+        "force": null
       }
     ]
   },
@@ -12282,7 +13069,8 @@
           "Missile",
           "Cannon",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Phlac-Arphocc Prototype",
@@ -12299,7 +13087,8 @@
           "Missile",
           "Cannon",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Fearsome Predator",
@@ -12316,7 +13105,8 @@
           "Missile",
           "Cannon",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "DIS-347",
@@ -12333,7 +13123,8 @@
           "Missile",
           "Cannon",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Separatist Interceptor",
@@ -12350,7 +13141,8 @@
           "Missile",
           "Cannon",
           "Configuration"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Colicoid Interceptor",
@@ -12359,7 +13151,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Sensor", "Modification", "Modification", "Missile", "Cannon", "Configuration"]
+        "slots": ["Sensor", "Modification", "Modification", "Missile", "Cannon", "Configuration"],
+        "force": null
       },
       {
         "name": "DIS-347",
@@ -12368,7 +13161,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "DIS-T81",
@@ -12377,7 +13171,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Phlac-Arphocc Prototype",
@@ -12386,7 +13181,8 @@
         "limited": 2,
         "cost": 10,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Volan Das",
@@ -12403,7 +13199,8 @@
           "Missile",
           "Cannon",
           "Illicit"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -12490,7 +13287,8 @@
           "Payload",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Zam Wesell",
@@ -12508,7 +13306,8 @@
           "Payload",
           "Title",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Boba Fett",
@@ -12517,7 +13316,8 @@
         "limited": 1,
         "cost": 16,
         "loadout": 9,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"]
+        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"],
+        "force": null
       },
       {
         "name": "Separatist Racketeer",
@@ -12526,7 +13326,8 @@
         "limited": 0,
         "cost": 15,
         "loadout": 8,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"]
+        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"],
+        "force": null
       },
       {
         "name": "Aurra Sing",
@@ -12544,7 +13345,11 @@
           "Payload",
           "Title",
           "Force Power"
-        ]
+        ],
+        "force": {
+          "value": 1,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -12629,7 +13434,8 @@
           "Configuration",
           "Talent",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Pre Vizsla",
@@ -12647,7 +13453,8 @@
           "Payload",
           "Configuration",
           "Talent"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Death Watch Warrior",
@@ -12664,7 +13471,8 @@
           "Modification",
           "Payload",
           "Configuration"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -12743,7 +13551,8 @@
           "Payload",
           "Configuration",
           "Tactical Relay"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Baktoid Drone",
@@ -12752,7 +13561,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"]
+        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "force": null
       },
       {
         "name": "Geonosian Prototype",
@@ -12761,7 +13571,8 @@
         "limited": 2,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Modification", "Payload", "Configuration", "Cannon", "Cannon"]
+        "slots": ["Modification", "Payload", "Configuration", "Cannon", "Cannon"],
+        "force": null
       },
       {
         "name": "DGS-286",
@@ -12778,7 +13589,8 @@
           "Configuration",
           "Tactical Relay",
           "Torpedo"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Onderon Oppressor",
@@ -12787,7 +13599,8 @@
         "limited": 2,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"]
+        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "force": null
       },
       {
         "name": "Separatist Predator",
@@ -12796,7 +13609,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"]
+        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "force": null
       }
     ]
   },
@@ -12866,7 +13680,8 @@
         "limited": 0,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Modification", "Payload", "Configuration", "Torpedo"]
+        "slots": ["Modification", "Payload", "Configuration", "Torpedo"],
+        "force": null
       },
       {
         "name": "Bombardment Drone",
@@ -12875,7 +13690,8 @@
         "limited": 3,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Modification", "Payload", "Payload"]
+        "slots": ["Modification", "Payload", "Payload"],
+        "force": null
       },
       {
         "name": "DBS-404",
@@ -12884,7 +13700,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Payload", "Configuration", "Torpedo"]
+        "slots": ["Modification", "Payload", "Configuration", "Torpedo"],
+        "force": null
       },
       {
         "name": "Baktoid Prototype",
@@ -12893,7 +13710,8 @@
         "limited": 2,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Payload", "Configuration", "Missile", "Missile"]
+        "slots": ["Modification", "Payload", "Configuration", "Missile", "Missile"],
+        "force": null
       },
       {
         "name": "Separatist Bomber",
@@ -12902,7 +13720,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 14,
-        "slots": ["Modification", "Payload", "Configuration", "Missile"]
+        "slots": ["Modification", "Payload", "Configuration", "Missile"],
+        "force": null
       },
       {
         "name": "DBS-32C",
@@ -12911,7 +13730,15 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Modification", "Payload", "Configuration", "Missile", "Tactical Relay", "Sensor"]
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Missile",
+          "Tactical Relay",
+          "Sensor"
+        ],
+        "force": null
       },
       {
         "name": "DBS-32C",
@@ -12920,7 +13747,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "DBS-404",
@@ -12929,7 +13757,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Baktoid Prototype",
@@ -12938,7 +13767,8 @@
         "limited": 2,
         "cost": 7,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       }
     ]
   },
@@ -13006,7 +13836,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Sun Fac",
@@ -13015,7 +13846,8 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Talent", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Talent", "Talent", "Configuration"],
+        "force": null
       },
       {
         "name": "Berwer Kret",
@@ -13024,7 +13856,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"],
+        "force": null
       },
       {
         "name": "Chertek",
@@ -13033,7 +13866,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"],
+        "force": null
       },
       {
         "name": "Gorgol",
@@ -13042,7 +13876,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "force": null
       },
       {
         "name": "Petranaki Arena Ace",
@@ -13051,7 +13886,8 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"]
+        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "force": null
       }
     ]
   },
@@ -13139,7 +13975,8 @@
           "Talent",
           "Title",
           "Missile"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "IG-101",
@@ -13148,7 +13985,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"]
+        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "MagnaGuard Executioner",
@@ -13157,7 +13995,8 @@
         "limited": 0,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification"]
+        "slots": ["Cannon", "Cannon", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "MagnaGuard Protector",
@@ -13166,7 +14005,8 @@
         "limited": 2,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"]
+        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "IG-102",
@@ -13175,7 +14015,8 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"]
+        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "force": null
       },
       {
         "name": "IG-111",
@@ -13184,7 +14025,8 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification"]
+        "slots": ["Cannon", "Cannon", "Modification", "Modification"],
+        "force": null
       },
       {
         "name": "Durge",
@@ -13201,7 +14043,8 @@
           "Modification",
           "Modification",
           "Talent"
-        ]
+        ],
+        "force": null
       }
     ]
   },
@@ -13283,7 +14126,11 @@
           "Torpedo",
           "Payload",
           "Title"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Count Dooku",
@@ -13302,7 +14149,11 @@
           "Tech",
           "Payload",
           "Title"
-        ]
+        ],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       },
       {
         "name": "Dark Courier",
@@ -13311,7 +14162,8 @@
         "limited": 0,
         "cost": 12,
         "loadout": 6,
-        "slots": ["Crew", "Crew", "Sensor", "Tech", "Payload", "Modification"]
+        "slots": ["Crew", "Crew", "Sensor", "Tech", "Payload", "Modification"],
+        "force": null
       },
       {
         "name": "0-66",
@@ -13330,7 +14182,8 @@
           "Tech",
           "Payload",
           "Title"
-        ]
+        ],
+        "force": null
       },
       {
         "name": "Count Dooku",
@@ -13339,7 +14192,11 @@
         "limited": 1,
         "cost": 15,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": {
+          "value": 3,
+          "recovers": 1
+        }
       }
     ]
   },
@@ -13404,7 +14261,8 @@
         "limited": 0,
         "cost": 5,
         "loadout": 3,
-        "slots": ["Modification", "Missile", "Configuration"]
+        "slots": ["Modification", "Missile", "Configuration"],
+        "force": null
       },
       {
         "name": "Precise Hunter",
@@ -13413,7 +14271,8 @@
         "limited": 3,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Cannon", "Configuration"]
+        "slots": ["Modification", "Cannon", "Configuration"],
+        "force": null
       },
       {
         "name": "Haor Chall Prototype",
@@ -13422,7 +14281,8 @@
         "limited": 2,
         "cost": 6,
         "loadout": 7,
-        "slots": ["Modification", "Configuration", "Missile"]
+        "slots": ["Modification", "Configuration", "Missile"],
+        "force": null
       },
       {
         "name": "DFS-081",
@@ -13431,7 +14291,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 7,
-        "slots": ["Modification", "Configuration", "Missile"]
+        "slots": ["Modification", "Configuration", "Missile"],
+        "force": null
       },
       {
         "name": "Separatist Drone",
@@ -13440,7 +14301,8 @@
         "limited": 0,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Modification", "Configuration", "Missile"]
+        "slots": ["Modification", "Configuration", "Missile"],
+        "force": null
       },
       {
         "name": "DFS-311",
@@ -13449,7 +14311,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Configuration", "Missile", "Modification"]
+        "slots": ["Configuration", "Missile", "Modification"],
+        "force": null
       },
       {
         "name": "DFS-081",
@@ -13458,7 +14321,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "DFS-311",
@@ -13467,7 +14331,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "Haor Chall Prototype",
@@ -13476,7 +14341,8 @@
         "limited": 2,
         "cost": 6,
         "loadout": 0,
-        "slots": []
+        "slots": [],
+        "force": null
       },
       {
         "name": "The Iron Assembler",
@@ -13485,7 +14351,8 @@
         "limited": 1,
         "cost": 6,
         "loadout": 4,
-        "slots": ["Modification", "Configuration", "Missile", "Modification"]
+        "slots": ["Modification", "Configuration", "Missile", "Modification"],
+        "force": null
       },
       {
         "name": "Kelrodo-Ai Holdout",
@@ -13494,7 +14361,8 @@
         "limited": 3,
         "cost": 6,
         "loadout": 10,
-        "slots": ["Modification", "Modification"]
+        "slots": ["Modification", "Modification"],
+        "force": null
       }
     ]
   }

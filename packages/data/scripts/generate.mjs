@@ -93,6 +93,7 @@ for (const faction of readdirSync(pilotsDir)) {
           cost: x ? x.cost : (p.cost ?? 0),
           loadout: x ? x.loadout : (p.loadout ?? 0),
           slots: x ? x.slots : (p.slots ?? []),
+          force: p.force ? { value: p.force.value, recovers: p.force.recovers ?? 0 } : null,
         };
       }),
     });

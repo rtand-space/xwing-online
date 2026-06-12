@@ -142,6 +142,22 @@ describe('combat pipeline', () => {
     expect(dmg?.amount).toBe(1); // one calculate ⇒ one focus → hit
   });
 
+  it('a Force user spends Force to convert remaining focus results', () => {
+    const attacker: Ship = { ...mk('a', 0, 0, 0, { tokens: [] }), force: 1, maxForce: 1 };
+    const events = resolveAttack(
+      stateWith([attacker, mk('b', 0, 90, 180, { agility: 0 })]),
+      'a',
+      'b',
+      {
+        onRollAttack: (c) => (c.attack = ['focus', 'focus']),
+        onRollDefence: (c) => (c.defence = []),
+      },
+    );
+    const dmg = events.find((e) => e.type === 'DamageDealt');
+    expect(dmg?.amount).toBe(1); // 1 Force ⇒ 1 focus → hit
+    expect(events.some((e) => e.type === 'ForceChanged' && e.delta === -1)).toBe(true);
+  });
+
   it('reinforce reduces a 2+ hit attack by one', () => {
     const fixed2 = {
       onRollAttack: (c: { attack: string[] }) => (c.attack = ['hit', 'hit']),

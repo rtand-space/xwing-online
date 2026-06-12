@@ -37,8 +37,11 @@ Status: ☐ not started
   token, in both attack & defence) and **reinforce** (a 2+ result attack deals 1
   less) implemented with real effects; the Calculate/Reinforce actions grant them;
   round-end clears them as green tokens; shown in the roster. Tested.
-- ☐ **T4-R2** **Force** as a resource (spend to modify dice / trigger abilities,
-  recover 1 per round); force-power upgrades and Force-using pilots.
+- ☑ **T4-R2** **Force** as a resource: `force`/`maxForce`/`forceRecovers` on the
+  ship, seeded from the pilot's Force value (generator captures it); `ForceChanged`
+  event (clamped); recovers per round. A Force user spends Force like a focus on
+  any remaining results in attack/defence (after focus + calculate). Shown in the
+  roster; `spendForce` helper for future Force-power abilities. Tested.
 - ☐ **T4-R3** **Per-card charge pools** — replace R3's per-ship pool so one card
   can't spend another's charges; charge-granting on pilots/ships too (not just upgrades).
 

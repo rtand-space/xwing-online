@@ -103,6 +103,13 @@ describe('card → engine ShipInit', () => {
     expect(init.charges).toBe(1); // starts full
     expect(init.recurring).toBe(0); // non-recurring
   });
+
+  it('seeds the Force pool from a Force-using pilot', () => {
+    const luke = toShipInit('t65xwing', 'lukeskywalker', 'rebel', { x: 0, y: 0, angle: 0 }, 'l1');
+    expect(luke.maxForce).toBe(2);
+    expect(luke.force).toBe(2);
+    expect(luke.forceRecovers).toBe(1);
+  });
 });
 
 const sample: XwsSquad = {

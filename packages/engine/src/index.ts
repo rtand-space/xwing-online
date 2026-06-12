@@ -84,4 +84,5 @@ export {
   rerollAttack,
   rerollDefence,
   spendCharge,
+  spendForce,
 } from './effects';

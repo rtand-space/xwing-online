@@ -102,6 +102,19 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       for (let i = 0; i < n; i++) {
         ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'calculate' });
       }
+      // a Force user can spend Force the same way, for any remaining focus results
+      const f = Math.min(ctx.attacker.force ?? 0, countFace(ctx.attack, 'focus'));
+      if (f > 0) {
+        let spent = 0;
+        ctx.attack = ctx.attack.map((face) => {
+          if (face === 'focus' && spent < f) {
+            spent++;
+            return 'hit';
+          }
+          return face;
+        });
+        ctx.events.push({ type: 'ForceChanged', shipId: ctx.attacker.id, delta: -f });
+      }
     }
   },
 
@@ -126,6 +139,18 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       });
       for (let i = 0; i < n; i++) {
         ctx.events.push({ type: 'TokenSpent', shipId: ctx.target.id, kind: 'calculate' });
+      }
+      const f = Math.min(ctx.target.force ?? 0, countFace(ctx.defence, 'focus'));
+      if (f > 0) {
+        let spent = 0;
+        ctx.defence = ctx.defence.map((face) => {
+          if (face === 'focus' && spent < f) {
+            spent++;
+            return 'evade';
+          }
+          return face;
+        });
+        ctx.events.push({ type: 'ForceChanged', shipId: ctx.target.id, delta: -f });
       }
     }
   },

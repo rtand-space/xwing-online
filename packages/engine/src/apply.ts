@@ -64,6 +64,11 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         ...s,
         charges: Math.max(0, Math.min(s.maxCharges, s.charges + e.delta)),
       }));
+    case 'ForceChanged':
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        force: Math.max(0, Math.min(s.maxForce ?? 0, (s.force ?? 0) + e.delta)),
+      }));
     case 'ActionPerformed':
     case 'ActionSkipped':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasActed: true }));
@@ -106,6 +111,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         ships: state.ships.map((s) => ({
           ...withoutTokens(s, ['focus', 'evade', 'calculate', 'reinforce']),
           charges: Math.min(s.maxCharges, s.charges + s.recurring),
+          force: Math.min(s.maxForce ?? 0, (s.force ?? 0) + (s.forceRecovers ?? 0)),
           dial: undefined,
           dialRevealed: false,
           hasMoved: false,

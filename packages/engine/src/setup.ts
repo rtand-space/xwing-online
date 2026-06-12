@@ -3,6 +3,7 @@ import type { GameState, Ship } from './types';
 
 function initShip(init: ShipInit): Ship {
   const maxCharges = init.maxCharges ?? 0;
+  const maxForce = init.maxForce ?? 0;
   return {
     ...init,
     upgrades: init.upgrades ?? [],
@@ -11,6 +12,9 @@ function initShip(init: ShipInit): Ship {
     maxCharges,
     charges: init.charges ?? maxCharges,
     recurring: init.recurring ?? 0,
+    maxForce,
+    force: init.force ?? maxForce,
+    forceRecovers: init.forceRecovers ?? 0,
     tokens: [],
     dialRevealed: false,
     hasMoved: false,

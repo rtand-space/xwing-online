@@ -94,6 +94,10 @@ export interface Ship {
   charges: number;
   maxCharges: number;
   recurring: number;
+  /** Force pool (R4): current/most, plus how many recover at round end. */
+  force?: number;
+  maxForce?: number;
+  forceRecovers?: number;
   pos: Position;
   actionBar: ActionType[];
   dialOptions: Maneuver[];

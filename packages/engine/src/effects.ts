@@ -86,6 +86,11 @@ export const recoverCharge = (self: Ship, n = 1): GameEvent => ({
   shipId: self.id,
   delta: n,
 });
+export const spendForce = (self: Ship, n = 1): GameEvent => ({
+  type: 'ForceChanged',
+  shipId: self.id,
+  delta: -n,
+});
 export const addStress = (self: Ship, delta = 1): GameEvent => ({
   type: 'StressChanged',
   shipId: self.id,

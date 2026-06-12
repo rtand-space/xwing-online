@@ -22,6 +22,8 @@ export interface PilotData {
   loadout: number;
   /** Upgrade slot bar (xws slot ids). */
   slots: string[];
+  /** Force pool the pilot brings (value + per-round recovery), if a Force user. */
+  force?: { value: number; recovers: number } | null;
 }
 
 export interface ShipData {
