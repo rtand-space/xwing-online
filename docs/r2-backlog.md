@@ -33,8 +33,8 @@ Refresh the data: clone xwing-data2 (sparse `data/`) and eirikmun/xwing-points, 
 - ◐ **T-A2** Saved squads in D1 (`squads` table), keyed to the account: Save/Load/Delete from each builder column (stored as XWS, faction-aware load). _Match history still to come._
 
 ## R2-M5 — Obstacles
-- ☐ **T-O1** Asteroids/debris in the engine (placement, overlap, effects on move/attack).
-- ☐ **T-O2** Setup placement UI.
+- ◐ **T-O1** Asteroids + debris clouds in the engine, per **XWA** Rules Reference v1.4.6: move-through/overlap effects (asteroid = 1 dmg + die for +1; debris = 1 stress + die for dmg), **obstructed line of fire** = +1 defence die, **range 0 ⇒ cannot attack**. Obstacles in `GameState`/`GameConfig`, circle geometry, rolls recorded as events (deterministic replay). Rendered on the board; hot-seat games seed a standard scatter. _Gas clouds deferred (need strain/ion tokens); online games don't seed obstacles yet (comes with T-O2)._
+- ☐ **T-O2** Setup placement UI (choose + place 6 obstacles; beyond range 1 of each other / range 2 of edges) and seed online games.
 
 ## R2-M6 — Sandbox (basic)
 - ☐ **T-S1** Free-place ships + dry-run maneuvers/arcs from the builder (spec §14), then drop into a real game. Cheap given the geometry tools are already FSM-independent.

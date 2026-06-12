@@ -107,6 +107,18 @@ export type PendingDecision =
       options: { targets: ShipId[]; canPass: boolean };
     };
 
+/** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
+export type ObstacleKind = 'asteroid' | 'debris';
+
+export interface Obstacle {
+  id: string;
+  kind: ObstacleKind;
+  /** Centre; angle is cosmetic (token rotation). */
+  pos: Position;
+  /** Collision radius in millimetres. */
+  radius: number;
+}
+
 export interface GameState {
   id: string;
   rng: Rng;
@@ -114,6 +126,7 @@ export interface GameState {
   phase: Phase;
   players: Player[];
   ships: Ship[];
+  obstacles: Obstacle[];
   pending: PendingDecision[];
   gameOver: boolean;
 }

@@ -23,6 +23,7 @@ export function buildInitial(config: GameConfig): GameState {
     phase: 'planning',
     players: config.players,
     ships: config.ships.map(initShip),
+    obstacles: config.obstacles ?? [],
     pending: [],
     gameOver: false,
   };

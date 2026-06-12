@@ -551,6 +551,18 @@ body {
   border-radius: 8px;
   padding: 4px 8px;
 }
+.obstacle.asteroid {
+  fill: #6b5a47;
+  stroke: #2b2118;
+  stroke-width: 2;
+  opacity: 0.92;
+}
+.obstacle.debris {
+  fill: rgba(120, 150, 190, 0.28);
+  stroke: rgba(150, 180, 220, 0.55);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
 .account {
   display: flex;
   flex-direction: column;

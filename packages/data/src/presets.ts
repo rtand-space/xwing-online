@@ -1,6 +1,15 @@
-import type { GameConfig, Player, Position, ShipInit } from '@xwing/engine';
+import type { GameConfig, Obstacle, Player, Position, ShipInit } from '@xwing/engine';
 import { allShips } from './loaders';
 import { squadToShipInits, type XwsSquad } from './xws';
+
+/** A standard scatter of obstacles in the central band (ships set up at y = ±150). */
+export const STANDARD_OBSTACLES: Obstacle[] = [
+  { id: 'ast-1', kind: 'asteroid', pos: { x: -170, y: -30, angle: 20 }, radius: 28 },
+  { id: 'ast-2', kind: 'asteroid', pos: { x: 150, y: 40, angle: -35 }, radius: 28 },
+  { id: 'deb-1', kind: 'debris', pos: { x: 0, y: 0, angle: 0 }, radius: 30 },
+  { id: 'ast-3', kind: 'asteroid', pos: { x: 40, y: -90, angle: 60 }, radius: 26 },
+  { id: 'deb-2', kind: 'debris', pos: { x: -60, y: 95, angle: -15 }, radius: 30 },
+];
 
 /** Board seats (player ids). Faction is chosen separately and baked into each ShipInit. */
 export type Side = 'rebel' | 'imperial';
@@ -158,6 +167,7 @@ export function buildConfig(
       ...squadToShipInits(rebel, 'rebel', layout(rebel.pilots.length, 'rebel')),
       ...squadToShipInits(imperial, 'imperial', layout(imperial.pilots.length, 'imperial')),
     ],
+    obstacles: STANDARD_OBSTACLES,
   };
 }
 

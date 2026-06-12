@@ -3,6 +3,8 @@ import type {
   ActionType,
   BaseSize,
   Maneuver,
+  Obstacle,
+  ObstacleKind,
   Phase,
   Player,
   PlayerId,
@@ -32,6 +34,7 @@ export interface GameConfig {
   seed: string;
   players: Player[];
   ships: ShipInit[];
+  obstacles?: Obstacle[];
 }
 
 export type DiceKind = 'attack' | 'defence';
@@ -42,6 +45,7 @@ export type GameEvent =
   | { type: 'DialSet'; shipId: ShipId; maneuver: Maneuver }
   | { type: 'DialRevealed'; shipId: ShipId; maneuver: Maneuver }
   | { type: 'ShipMoved'; shipId: ShipId; maneuver: Maneuver; to: Position; bumped?: boolean }
+  | { type: 'ObstacleHit'; shipId: ShipId; obstacleId: string; kind: ObstacleKind }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }

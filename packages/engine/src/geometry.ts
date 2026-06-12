@@ -67,13 +67,39 @@ export function polygonsOverlap(a: Vec[], b: Vec[]): boolean {
   return true;
 }
 
-function pointSegmentDistance(p: Vec, a: Vec, b: Vec): number {
+export function pointSegmentDistance(p: Vec, a: Vec, b: Vec): number {
   const abx = b.x - a.x;
   const aby = b.y - a.y;
   const len2 = abx * abx + aby * aby;
   const t =
     len2 === 0 ? 0 : Math.max(0, Math.min(1, ((p.x - a.x) * abx + (p.y - a.y) * aby) / len2));
   return Math.hypot(p.x - (a.x + t * abx), p.y - (a.y + t * aby));
+}
+
+function pointInPolygon(p: Vec, poly: Vec[]): boolean {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const a = poly[i]!;
+    const b = poly[j]!;
+    if (a.y > p.y !== b.y > p.y && p.x < ((b.x - a.x) * (p.y - a.y)) / (b.y - a.y) + a.x) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+/** Does a circle overlap a convex polygon? (Touching counts as overlap, like the tokens.) */
+export function circleOverlapsPolygon(c: Vec, r: number, poly: Vec[]): boolean {
+  if (pointInPolygon(c, poly)) return true;
+  for (let i = 0; i < poly.length; i++) {
+    if (pointSegmentDistance(c, poly[i]!, poly[(i + 1) % poly.length]!) <= r) return true;
+  }
+  return false;
+}
+
+/** Does the segment a→b pass within `r` of centre `c`? */
+export function segmentCircleIntersect(a: Vec, b: Vec, c: Vec, r: number): boolean {
+  return pointSegmentDistance(c, a, b) <= r;
 }
 
 /** Closest edge-to-edge distance between two convex polygons; 0 if overlapping. */

@@ -7,6 +7,8 @@ export type {
   Difficulty,
   GameState,
   Maneuver,
+  Obstacle,
+  ObstacleKind,
   PendingDecision,
   Phase,
   Player,
@@ -50,5 +52,6 @@ export { applyManeuver, pathAt } from './templates';
 export { baseDistance, bearingDeg, inArc, RANGE_BAND_MM, rangeBand } from './arcs';
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
+export { lineObstructed, obstacleMoveEvents, obstaclesAt } from './obstacles';
 export { ATTACK_WINDOWS, resolveAttack } from './combat';
 export type { AttackContext, AttackHook, AttackWindow } from './combat';

@@ -36,6 +36,7 @@ const stateWith = (ships: Ship[], seed = 'combat'): GameState => ({
     { id: 'q', name: 'Q' },
   ],
   ships,
+  obstacles: [],
   pending: [],
   gameOver: false,
 });

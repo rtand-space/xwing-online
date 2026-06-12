@@ -3,6 +3,7 @@ import { resolveAttack } from './combat';
 import type { Command } from './commands';
 import type { GameEvent } from './events';
 import { resolveMovement } from './movement';
+import { obstacleMoveEvents } from './obstacles';
 import { autoStep } from './phases';
 import type { GameState, Maneuver, PendingDecision, Ship } from './types';
 
@@ -58,6 +59,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       else if (m.difficulty === 'blue') {
         events.push({ type: 'StressChanged', shipId: ship.id, delta: -1 });
       }
+      events.push(...obstacleMoveEvents(state, ship, move.to));
       return { events };
     }
     case 'PerformAction': {

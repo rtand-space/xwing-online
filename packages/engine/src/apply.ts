@@ -10,6 +10,7 @@ export const EMPTY_STATE: GameState = {
   phase: 'planning',
   players: [],
   ships: [],
+  obstacles: [],
   pending: [],
   gameOver: false,
 };
@@ -46,6 +47,8 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, dial: e.maneuver }));
     case 'DialRevealed':
       return mapShip(state, e.shipId, (s) => ({ ...s, dialRevealed: true }));
+    case 'ObstacleHit':
+      return state; // log/UI marker; the damage/stress follow as their own events
     case 'ShipMoved':
       // a bumped ship forfeits its action
       return mapShip(state, e.shipId, (s) => ({

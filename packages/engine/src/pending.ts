@@ -1,4 +1,5 @@
 import { inArc, rangeBand } from './arcs';
+import { obstaclesAt } from './obstacles';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
 const alive = (s: Ship): boolean => s.hull > 0;
@@ -64,9 +65,13 @@ export function computePending(state: GameState): PendingDecision[] {
     case 'engagement': {
       const ship = engagementShip(state);
       if (!ship) return [];
-      const targets = enemies(state, ship)
-        .filter((t) => inArc(ship, t) && rangeBand(ship, t) !== null)
-        .map((s) => s.id);
+      // A ship at range 0 of an asteroid/debris cloud cannot perform attacks.
+      const blocked = obstaclesAt(state, ship.pos, ship.base).length > 0;
+      const targets = blocked
+        ? []
+        : enemies(state, ship)
+            .filter((t) => inArc(ship, t) && rangeBand(ship, t) !== null)
+            .map((s) => s.id);
       return [
         {
           type: 'declare-attack',

@@ -1,6 +1,7 @@
 import { rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
+import { lineObstructed } from './obstacles';
 import type { GameState, Ship } from './types';
 
 /**
@@ -25,6 +26,7 @@ export interface AttackContext {
   attacker: Ship;
   target: Ship;
   range: number;
+  obstructed: boolean;
   attack: AttackFace[];
   defence: DefenceFace[];
   cursor: number;
@@ -88,7 +90,7 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onRollDefence(ctx) {
-    const n = ctx.target.agility + (ctx.range === 3 ? 1 : 0);
+    const n = ctx.target.agility + (ctx.range === 3 ? 1 : 0) + (ctx.obstructed ? 1 : 0);
     ctx.defence = drawDefence(ctx, n);
   },
 
@@ -148,6 +150,7 @@ export function resolveAttack(
     attacker,
     target,
     range: rangeBand(attacker, target) ?? 3,
+    obstructed: lineObstructed(state, attacker, target),
     attack: [],
     defence: [],
     cursor: state.rng.cursor,

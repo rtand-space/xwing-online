@@ -21,6 +21,7 @@ const stateWith = (ships: Ship[]): GameState => ({
   phase: 'activation',
   players: [],
   ships,
+  obstacles: [],
   pending: [],
   gameOver: false,
 });

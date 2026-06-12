@@ -378,6 +378,16 @@ export const SvgBoard: BoardRenderer = ({ view, activeId, highlightIds = [], pre
       <ShipDefs />
       <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />
 
+      {view.obstacles.map((o) => (
+        <circle
+          key={o.id}
+          cx={o.pos.x}
+          cy={-o.pos.y}
+          r={o.radius}
+          className={`obstacle ${o.kind}`}
+        />
+      ))}
+
       {attacker && (
         <g
           transform={`translate(${attacker.pos.x} ${-attacker.pos.y}) rotate(${attacker.pos.angle})`}
