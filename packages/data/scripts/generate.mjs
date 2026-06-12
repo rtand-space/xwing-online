@@ -30,6 +30,37 @@ const FACTION_NAMES = {
 
 const read = (p) => JSON.parse(readFileSync(p, 'utf8'));
 
+// --- XWA community points overlay (github.com/eirikmun/xwing-points) ---
+// xwing-data2 supplies card structure (stats/dials/slots); XWA supplies the
+// authoritative cost/loadout/slots/limited for the current points revision.
+const PTS = process.env.XWING_POINTS || '/tmp/xwing-points';
+if (!existsSync(join(PTS, 'XWA')))
+  throw new Error(`xwing-points not found at ${PTS} (set XWING_POINTS)`);
+const revPath = read(join(PTS, 'XWA/points-revisions.json')).current_revision; // XWA/50P20/revision.json
+const revDir = join(PTS, revPath, '..');
+const revision = read(join(PTS, revPath));
+const revId = revPath.split('/')[1];
+
+const xwaPilots = {};
+for (const file of readdirSync(revDir)) {
+  if (!file.endsWith('.json') || file === 'revision.json' || file === 'upgrades.json') continue;
+  const byShip = read(join(revDir, file));
+  for (const ship of Object.keys(byShip)) {
+    for (const [xws, p] of Object.entries(byShip[ship])) {
+      xwaPilots[xws] = {
+        cost: p.cost,
+        loadout: p.loadout ?? 0,
+        slots: p.slots ?? [],
+        limited: p.limited ?? 0,
+      };
+    }
+  }
+}
+const xwaUpgrades = read(join(revDir, 'upgrades.json'));
+let pilotsPriced = 0;
+let pilotsUnpriced = 0;
+let upgradesPriced = 0;
+
 const ships = [];
 const pilotsDir = join(SRC, 'data/pilots');
 for (const faction of readdirSync(pilotsDir)) {
@@ -48,15 +79,20 @@ for (const faction of readdirSync(pilotsDir)) {
       ),
       actions: j.actions.map((a) => ({ type: a.type, difficulty: a.difficulty })),
       dial: j.dial,
-      pilots: j.pilots.map((p) => ({
-        name: p.name,
-        xws: p.xws,
-        initiative: p.initiative,
-        limited: p.limited ?? 0,
-        cost: p.cost ?? 0,
-        loadout: p.loadout ?? 0,
-        slots: p.slots ?? [],
-      })),
+      pilots: j.pilots.map((p) => {
+        const x = xwaPilots[p.xws];
+        if (x) pilotsPriced++;
+        else pilotsUnpriced++;
+        return {
+          name: p.name,
+          xws: p.xws,
+          initiative: p.initiative,
+          limited: x ? x.limited : (p.limited ?? 0),
+          cost: x ? x.cost : (p.cost ?? 0),
+          loadout: x ? x.loadout : (p.loadout ?? 0),
+          slots: x ? x.slots : (p.slots ?? []),
+        };
+      }),
     });
   }
 }
@@ -69,14 +105,16 @@ for (const file of readdirSync(upDir)) {
   for (const u of read(join(upDir, file))) {
     const side = u.sides[0];
     const fixed = typeof u.cost?.value === 'number' ? u.cost.value : null;
+    const xu = xwaUpgrades[u.xws];
+    if (xu) upgradesPriced++;
     upgrades.push({
       xws: u.xws,
       name: side.title ?? u.name,
       slot: side.type,
       slots: side.slots ?? [side.type],
-      cost: fixed,
-      variableCost: fixed === null ? (u.cost ?? null) : null,
-      limited: u.limited ?? 0,
+      cost: xu ? xu.cost : fixed,
+      variableCost: xu || fixed !== null ? null : (u.cost ?? null),
+      limited: xu ? (xu.limited ?? 0) : (u.limited ?? 0),
       restrictions: u.restrictions ?? [],
     });
   }
@@ -99,6 +137,8 @@ writeFileSync(
     {
       source: 'xwing-data2',
       commit,
+      points: `XWA ${revId}`,
+      pointsDate: revision.effective_date,
       generatedAt: new Date().toISOString().slice(0, 10),
       ships: ships.length,
       upgrades: upgrades.length,
@@ -107,4 +147,10 @@ writeFileSync(
     2,
   ) + '\n',
 );
-console.log(`generated ${ships.length} ships, ${upgrades.length} upgrades (xwing-data2 ${commit})`);
+console.log(
+  `generated ${ships.length} ships, ${upgrades.length} upgrades ` +
+    `(xwing-data2 ${commit}, points XWA ${revId} ${revision.effective_date})`,
+);
+console.log(
+  `priced from XWA: ${pilotsPriced} pilots (${pilotsUnpriced} unpriced), ${upgradesPriced} upgrades`,
+);

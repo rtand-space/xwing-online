@@ -1,20 +1,22 @@
 import { describe, expect, it } from 'vitest';
-import { squadPoints, upgradeOptions, validateSquad } from './squad';
+import { allUpgrades, getPilot } from './loaders';
+import { pilotChoices } from './presets';
+import { SQUAD_POINT_CAP, squadPoints, upgradeOptions, validateSquad } from './squad';
 import type { XwsSquad } from './xws';
 
 const squad = (faction: string, pilots: { id: string; ship: string }[]): XwsSquad => ({
   faction,
   pilots,
 });
-const blue = { id: 'bluesquadronescort', ship: 't65xwing' }; // cost 5
-const red = { id: 'redsquadronveteran', ship: 't65xwing' }; // cost 5
-const academy = { id: 'academypilot', ship: 'tielnfighter' }; // cost 2, imperial
+const blue = { id: 'bluesquadronescort', ship: 't65xwing' };
+const red = { id: 'redsquadronveteran', ship: 't65xwing' };
+const academy = { id: 'academypilot', ship: 'tielnfighter' };
 
 describe('squad validation', () => {
   it('accepts a legal 3-ship, single-faction squad under the cap', () => {
     const r = validateSquad(squad('rebelalliance', [blue, blue, red]));
     expect(r.valid).toBe(true);
-    expect(r.points).toBe(15); // 5 + 5 + 5
+    expect(r.points).toBeLessThanOrEqual(SQUAD_POINT_CAP);
   });
 
   it('rejects fewer than 3 ships', () => {
@@ -23,10 +25,17 @@ describe('squad validation', () => {
     expect(r.errors.join(' ')).toMatch(/at least 3/i);
   });
 
-  it('rejects over the 20-point cap', () => {
-    const r = validateSquad(squad('rebelalliance', [red, red, red, red, red])); // 25
+  it('rejects over the point cap', () => {
+    // The 8 priciest distinct Rebel pilots blow well past the 50-point cap.
+    const top = [...pilotChoices('Rebel Alliance')].sort((a, b) => b.cost - a.cost).slice(0, 8);
+    const r = validateSquad(
+      squad(
+        'rebelalliance',
+        top.map((c) => ({ id: c.pilotXws, ship: c.shipXws })),
+      ),
+    );
+    expect(r.points).toBeGreaterThan(SQUAD_POINT_CAP);
     expect(r.valid).toBe(false);
-    expect(r.points).toBe(25);
     expect(r.errors.join(' ')).toMatch(/cap/i);
   });
 
@@ -37,14 +46,20 @@ describe('squad validation', () => {
   });
 
   it('squadPoints sums pilot costs', () => {
-    expect(squadPoints(squad('rebelalliance', [blue, red]))).toBe(10);
+    const expected =
+      getPilot('t65xwing', 'bluesquadronescort').cost +
+      getPilot('t65xwing', 'redsquadronveteran').cost;
+    expect(squadPoints(squad('rebelalliance', [blue, red]))).toBe(expected);
   });
 
   it('flags a pilot over its loadout budget', () => {
+    const pilot = getPilot('tielnfighter', 'academypilot');
+    const expensive = allUpgrades().find((u) => (u.cost ?? 0) > pilot.loadout);
+    expect(expensive).toBeDefined();
     const s: XwsSquad = {
       faction: 'galacticempire',
       pilots: [
-        { id: 'academypilot', ship: 'tielnfighter', upgrades: { talent: ['composure'] } }, // loadout 0
+        { id: 'academypilot', ship: 'tielnfighter', upgrades: { talent: [expensive!.xws] } },
         { id: 'academypilot', ship: 'tielnfighter' },
         { id: 'obsidiansquadronpilot', ship: 'tielnfighter' },
       ],

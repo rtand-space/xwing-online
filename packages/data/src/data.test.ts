@@ -148,7 +148,7 @@ describe('full xwing-data2 snapshot', () => {
     }
     expect(new Set(ships.map((s) => s.faction)).size).toBeGreaterThanOrEqual(7);
     expect(allUpgrades().length).toBeGreaterThan(400);
-    expect(DATA_VERSION).toMatch(/^xwing-data2@/);
+    expect(DATA_VERSION).toMatch(/^XWA /);
   });
 
   it('every dial code in the snapshot parses (nothing dropped)', async () => {

@@ -3,7 +3,7 @@ import { FACTIONS, XWS_FACTION, type FactionId } from './presets';
 import type { UpgradeData } from './types';
 import type { XwsSquad } from './xws';
 
-export const SQUAD_POINT_CAP = 20;
+export const SQUAD_POINT_CAP = 50;
 export const MIN_SHIPS = 3;
 export const MAX_SHIPS = 8;
 

@@ -18,7 +18,7 @@
     "name": "“Genius”",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 2,
+    "cost": 0,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -32,7 +32,7 @@
     "name": "BB Astromech",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -46,7 +46,7 @@
     "name": "BB-8",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -60,7 +60,7 @@
     "name": "C1-10P",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 8,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -74,7 +74,7 @@
     "name": "L4E-R5",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 3,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -91,7 +91,7 @@
     "name": "M9-G8",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 5,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -149,7 +149,7 @@
     "name": "R2 Astromech",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -179,7 +179,7 @@
     "name": "R2-A6",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -207,7 +207,7 @@
     "name": "R2-D2",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 8,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -235,7 +235,7 @@
     "name": "R2-D2",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 6,
+    "cost": 8,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -269,7 +269,7 @@
     "name": "R2-HA",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -321,7 +321,7 @@
     "name": "R4-P Astromech",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 2,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -363,7 +363,7 @@
     "name": "R5 Astromech",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 4,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -373,7 +373,7 @@
     "name": "R5-D8",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -435,7 +435,7 @@
     "name": "R5-X3",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -449,7 +449,7 @@
     "name": "R6-D8",
     "slot": "Astromech",
     "slots": ["Astromech"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -577,7 +577,7 @@
     "name": "Proton Cannons",
     "slot": "Cannon",
     "slots": ["Cannon", "Cannon"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -587,7 +587,7 @@
     "name": "Synced Laser Cannons",
     "slot": "Cannon",
     "slots": ["Cannon", "Cannon"],
-    "cost": 6,
+    "cost": 8,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -597,7 +597,7 @@
     "name": "Tractor Beam",
     "slot": "Cannon",
     "slots": ["Cannon"],
-    "cost": 6,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -751,10 +751,8 @@
     "name": "Combat Boarding Tube",
     "slot": "Command",
     "slots": ["Command", "Configuration"],
-    "cost": null,
-    "variableCost": {
-      "value": "?"
-    },
+    "cost": 0,
+    "variableCost": null,
     "limited": 0,
     "restrictions": [
       {
@@ -1285,7 +1283,7 @@
     "name": "Wartime Loadout",
     "slot": "Configuration",
     "slots": ["Configuration", "Modification"],
-    "cost": 2,
+    "cost": 0,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -1316,7 +1314,7 @@
     "name": "“Chopper”",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1364,7 +1362,7 @@
     "name": "0-0-0",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1379,7 +1377,7 @@
     "name": "4-LOM",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 8,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1403,7 +1401,7 @@
     "name": "Admiral Sloane",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 16,
+    "cost": 50,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1469,7 +1467,7 @@
     "name": "Baze Malbus",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1511,7 +1509,7 @@
     "name": "Boba Fett",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 2,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1609,7 +1607,7 @@
     "name": "Cassian Andor",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1623,7 +1621,7 @@
     "name": "Chancellor Palpatine",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 14,
+    "cost": 11,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1651,7 +1649,7 @@
     "name": "Chewbacca",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1689,7 +1687,7 @@
     "name": "Ciena Ree",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1749,7 +1747,7 @@
     "name": "Commander Pyre",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -1773,7 +1771,7 @@
     "name": "Darth Vader",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 12,
+    "cost": 15,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1787,7 +1785,7 @@
     "name": "Death Troopers",
     "slot": "Crew",
     "slots": ["Crew", "Crew"],
-    "cost": 8,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1818,7 +1816,7 @@
     "name": "Director Krennic",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1884,7 +1882,7 @@
     "name": "Gamut Key",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 8,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1912,7 +1910,7 @@
     "name": "General Grievous",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1926,7 +1924,7 @@
     "name": "General Hux",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 3,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1950,7 +1948,7 @@
     "name": "GNK “Gonk” Droid",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -1960,7 +1958,7 @@
     "name": "Grand Inquisitor",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 15,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1974,7 +1972,7 @@
     "name": "Grand Moff Tarkin",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -1993,7 +1991,7 @@
     "name": "Greef Karga",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2021,7 +2019,7 @@
     "name": "Hera Syndulla",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2035,7 +2033,7 @@
     "name": "Hondo Ohnaka",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 8,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -2045,7 +2043,7 @@
     "name": "IG-11",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2090,7 +2088,7 @@
     "name": "Informant",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -2114,7 +2112,7 @@
     "name": "Jabba the Hutt",
     "slot": "Crew",
     "slots": ["Crew", "Crew"],
-    "cost": 11,
+    "cost": 14,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2142,7 +2140,7 @@
     "name": "Jyn Erso",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 7,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2156,7 +2154,7 @@
     "name": "K-2SO",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 8,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -2166,7 +2164,7 @@
     "name": "Kanan Jarrus",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 12,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2180,7 +2178,7 @@
     "name": "Kaydel Connix",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 8,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2194,7 +2192,7 @@
     "name": "Ketsu Onyo",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2208,7 +2206,7 @@
     "name": "Kit Fisto",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 8,
+    "cost": 9,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -2260,7 +2258,7 @@
     "name": "Kylo Ren",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 9,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2274,7 +2272,7 @@
     "name": "L3-37",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2288,7 +2286,7 @@
     "name": "Lando Calrissian",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2316,7 +2314,7 @@
     "name": "Larma D'Acy",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 4,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2330,7 +2328,7 @@
     "name": "Latts Razzi",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2358,7 +2356,7 @@
     "name": "Leia Organa",
     "slot": "Crew",
     "slots": ["Crew", "Crew"],
-    "cost": 14,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2446,7 +2444,7 @@
     "name": "Moff Jerjerrod",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 7,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2465,7 +2463,7 @@
     "name": "Nien Nunb",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2520,7 +2518,7 @@
     "name": "Peli Motto",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2547,7 +2545,7 @@
     "name": "Petty Officer Thanisson",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 3,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2571,7 +2569,7 @@
     "name": "Pre Vizsla",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 9,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2599,7 +2597,7 @@
     "name": "Protectorate Gleb",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2613,7 +2611,7 @@
     "name": "PZ-4CO",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2683,7 +2681,7 @@
     "name": "Sabine Wren",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 3,
+    "cost": 1,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2697,7 +2695,7 @@
     "name": "Satine Kryze",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 10,
+    "cost": 15,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2763,7 +2761,7 @@
     "name": "Supreme Leader Snoke",
     "slot": "Crew",
     "slots": ["Crew", "Crew"],
-    "cost": 10,
+    "cost": 15,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2808,7 +2806,7 @@
     "name": "The Child",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 7,
+    "cost": 9,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2822,7 +2820,7 @@
     "name": "The Mandalorian",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 2,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2836,7 +2834,7 @@
     "name": "Tobias Beckett",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 2,
+    "cost": 8,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2860,7 +2858,7 @@
     "name": "Tristan Wren",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2875,7 +2873,7 @@
     "name": "Unkar Plutt",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2889,7 +2887,7 @@
     "name": "Ursa Wren",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2933,7 +2931,7 @@
     "name": "Zam Wesell",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 11,
+    "cost": 9,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2947,7 +2945,7 @@
     "name": "Zuckuss",
     "slot": "Crew",
     "slots": ["Crew"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -2961,7 +2959,7 @@
     "name": "Blazer Bomb",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -2971,7 +2969,7 @@
     "name": "Bomblet Generator",
     "slot": "Device",
     "slots": ["Device", "Device"],
-    "cost": 2,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -2981,7 +2979,7 @@
     "name": "Cluster Mines",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 7,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -2991,7 +2989,7 @@
     "name": "Concussion Bombs",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3011,7 +3009,7 @@
     "name": "DRK-1 Probe Droids",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 5,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3062,7 +3060,7 @@
     "name": "Proximity Mines",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 10,
+    "cost": 9,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3082,7 +3080,7 @@
     "name": "Thermal Detonators",
     "slot": "Device",
     "slots": ["Device"],
-    "cost": 5,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3126,7 +3124,7 @@
     "name": "Extreme Maneuvers",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 8,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3146,7 +3144,7 @@
     "name": "Hate",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3160,7 +3158,7 @@
     "name": "Heightened Perception",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 3,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3180,7 +3178,7 @@
     "name": "Malice",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3200,7 +3198,7 @@
     "name": "Precognitive Reflexes",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 15,
+    "cost": 8,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3230,7 +3228,7 @@
     "name": "Sense",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3250,7 +3248,7 @@
     "name": "Supernatural Reflexes",
     "slot": "Force Power",
     "slots": ["Force Power"],
-    "cost": 24,
+    "cost": 50,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3264,7 +3262,7 @@
     "name": "Agile Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 1,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3274,7 +3272,7 @@
     "name": "Ahsoka Tano",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 12,
+    "cost": 11,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -3294,7 +3292,7 @@
     "name": "Bistan",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 8,
+    "cost": 50,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3318,7 +3316,7 @@
     "name": "Bossk",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 6,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3332,7 +3330,7 @@
     "name": "BT-1",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3347,7 +3345,7 @@
     "name": "Clone Captain Rex",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -3387,7 +3385,7 @@
     "slots": ["Gunner"],
     "cost": 3,
     "variableCost": null,
-    "limited": 0,
+    "limited": 1,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3441,7 +3439,7 @@
     "name": "First Order Ordnance Tech",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3472,7 +3470,7 @@
     "name": "Greedo",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3500,7 +3498,7 @@
     "name": "Han Solo",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 9,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3514,7 +3512,7 @@
     "name": "Hotshot Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3538,7 +3536,7 @@
     "name": "Migs Mayfeld",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3566,7 +3564,7 @@
     "name": "Rey",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 10,
+    "cost": 14,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -3590,7 +3588,7 @@
     "name": "Seventh Fleet Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 13,
+    "cost": 9,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3614,7 +3612,7 @@
     "name": "Special Forces Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 0,
+    "cost": 9,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3631,7 +3629,7 @@
     "name": "Suppressive Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 7,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3683,7 +3681,7 @@
     "name": "Veteran Turret Gunner",
     "slot": "Gunner",
     "slots": ["Gunner"],
-    "cost": 3,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3862,7 +3860,7 @@
     "name": "Coaxium Hyperfuel",
     "slot": "Illicit",
     "slots": ["Illicit"],
-    "cost": 4,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3872,7 +3870,7 @@
     "name": "Contraband Cybernetics",
     "slot": "Illicit",
     "slots": ["Illicit"],
-    "cost": 3,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -3922,7 +3920,7 @@
     "name": "Hotshot Tail Blaster",
     "slot": "Illicit",
     "slots": ["Illicit"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -3966,7 +3964,7 @@
     "name": "Rigged Cargo Chute",
     "slot": "Illicit",
     "slots": ["Illicit"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4014,7 +4012,7 @@
     "name": "Barrage Rockets",
     "slot": "Missile",
     "slots": ["Missile", "Missile"],
-    "cost": 6,
+    "cost": 8,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4024,7 +4022,7 @@
     "name": "Cluster Missiles",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4034,7 +4032,7 @@
     "name": "Concussion Missiles",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 5,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4068,7 +4066,7 @@
     "name": "Electro-Chaff Missiles",
     "slot": "Missile",
     "slots": ["Missile", "Device"],
-    "cost": 9,
+    "cost": 10,
     "variableCost": null,
     "limited": 2,
     "restrictions": []
@@ -4078,7 +4076,7 @@
     "name": "Energy-Shell Charges",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4108,7 +4106,7 @@
     "name": "Homing Missiles",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4118,7 +4116,7 @@
     "name": "Ion Missiles",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4128,7 +4126,7 @@
     "name": "Mag-Pulse Warheads",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 4,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4138,7 +4136,7 @@
     "name": "Multi-Missile Pods",
     "slot": "Missile",
     "slots": ["Missile", "Missile"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4148,7 +4146,7 @@
     "name": "Proton Rockets",
     "slot": "Missile",
     "slots": ["Missile"],
-    "cost": 8,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4188,7 +4186,7 @@
     "name": "Ablative Plating",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 4,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4233,7 +4231,7 @@
     "name": "Angled Deflectors",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 4,
+    "cost": 1,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4257,7 +4255,7 @@
     "name": "Beskar Reinforced Plating",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 3,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4267,7 +4265,7 @@
     "name": "Burnout Thrusters",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4314,7 +4312,7 @@
     "name": "Delayed Fuses",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4324,7 +4322,7 @@
     "name": "Drop-Seat bay",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 5,
+    "cost": 0,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4385,7 +4383,7 @@
     "name": "Hull Upgrade",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 6,
+    "cost": 9,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4409,7 +4407,7 @@
     "name": "Independent Calculations",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4476,7 +4474,7 @@
     "name": "Precision Ion Engines",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4496,7 +4494,7 @@
     "name": "Shield Upgrade",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 8,
+    "cost": 10,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4520,7 +4518,7 @@
     "name": "Static Discharge Vanes",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 5,
+    "cost": 12,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4550,7 +4548,7 @@
     "name": "Synchronized Console",
     "slot": "Modification",
     "slots": ["Modification"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4624,7 +4622,7 @@
     "name": "Advanced Sensors",
     "slot": "Sensor",
     "slots": ["Sensor"],
-    "cost": 12,
+    "cost": 8,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4731,7 +4729,7 @@
     "name": "Kraken",
     "slot": "Tactical Relay",
     "slots": ["Tactical Relay"],
-    "cost": 8,
+    "cost": 7,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -4748,7 +4746,7 @@
     "name": "TA-175",
     "slot": "Tactical Relay",
     "slots": ["Tactical Relay"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -4812,7 +4810,7 @@
     "name": "Backwards Tailslide",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 2,
+    "cost": 1,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4862,7 +4860,7 @@
     "name": "Crack Shot",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -4882,7 +4880,7 @@
     "name": "Daredevil",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4912,7 +4910,7 @@
     "name": "Debris Gambit",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4926,7 +4924,7 @@
     "name": "Dedicated",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 3,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -4977,7 +4975,7 @@
     "name": "Enduring",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 5,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5075,7 +5073,7 @@
     "name": "Gravitic Deflection",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5133,7 +5131,7 @@
     "name": "Intimidation",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 3,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5201,7 +5199,7 @@
     "name": "Marksmanship",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5231,7 +5229,7 @@
     "name": "Notorious",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 7,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -5245,7 +5243,7 @@
     "name": "Outmaneuver",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 12,
+    "cost": 9,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5305,7 +5303,7 @@
     "name": "Ruthless",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5319,7 +5317,7 @@
     "name": "Saturation Salvo",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 2,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5335,7 +5333,7 @@
     "name": "Selfless",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 4,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5369,7 +5367,7 @@
     "name": "Snap Shot",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 9,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5379,7 +5377,7 @@
     "name": "Squad Leader",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 1,
     "restrictions": []
@@ -5399,7 +5397,7 @@
     "name": "Swarm Tactics",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 5,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5439,7 +5437,7 @@
     "name": "Treacherous",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 3,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5453,7 +5451,7 @@
     "name": "Trick Shot",
     "slot": "Talent",
     "slots": ["Talent"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5621,7 +5619,7 @@
     "name": "Biohexacrypt Codes",
     "slot": "Tech",
     "slots": ["Tech"],
-    "cost": 1,
+    "cost": 2,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5640,7 +5638,7 @@
     "name": "Deuterium Power Cells",
     "slot": "Tech",
     "slots": ["Tech", "Modification"],
-    "cost": 6,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -5650,7 +5648,7 @@
     "name": "Ferrosphere Paint",
     "slot": "Tech",
     "slots": ["Tech"],
-    "cost": 3,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5664,7 +5662,7 @@
     "name": "Hyperspace Tracking Data",
     "slot": "Tech",
     "slots": ["Tech"],
-    "cost": 2,
+    "cost": 15,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5691,7 +5689,7 @@
     "name": "Primed Thrusters",
     "slot": "Tech",
     "slots": ["Tech"],
-    "cost": 6,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": [
@@ -5875,7 +5873,7 @@
     "name": "Dauntless",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 4,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -5974,7 +5972,7 @@
     "name": "Hound's Tooth",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 6,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -6440,7 +6438,7 @@
     "name": "Slave I",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 10,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -6474,7 +6472,7 @@
     "name": "Soulless One",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 9,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -6491,7 +6489,7 @@
     "name": "ST-321",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 3,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -6593,7 +6591,7 @@
     "name": "Virago",
     "slot": "Title",
     "slots": ["Title"],
-    "cost": 0,
+    "cost": 8,
     "variableCost": null,
     "limited": 1,
     "restrictions": [
@@ -6621,7 +6619,7 @@
     "name": "Adv. Proton Torpedoes",
     "slot": "Torpedo",
     "slots": ["Torpedo"],
-    "cost": 9,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6631,7 +6629,7 @@
     "name": "Homing Torpedoes",
     "slot": "Torpedo",
     "slots": ["Torpedo"],
-    "cost": 5,
+    "cost": 4,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6641,7 +6639,7 @@
     "name": "Ion Torpedoes",
     "slot": "Torpedo",
     "slots": ["Torpedo"],
-    "cost": 4,
+    "cost": 5,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6651,7 +6649,7 @@
     "name": "Plasma Torpedoes",
     "slot": "Torpedo",
     "slots": ["Torpedo"],
-    "cost": 5,
+    "cost": 7,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6661,7 +6659,7 @@
     "name": "Proton Torpedoes",
     "slot": "Torpedo",
     "slots": ["Torpedo"],
-    "cost": 12,
+    "cost": 14,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6685,7 +6683,7 @@
     "name": "Dorsal Turret",
     "slot": "Turret",
     "slots": ["Turret"],
-    "cost": 2,
+    "cost": 3,
     "variableCost": null,
     "limited": 0,
     "restrictions": []
@@ -6695,7 +6693,7 @@
     "name": "Ion Cannon Turret",
     "slot": "Turret",
     "slots": ["Turret"],
-    "cost": 5,
+    "cost": 6,
     "variableCost": null,
     "limited": 0,
     "restrictions": []

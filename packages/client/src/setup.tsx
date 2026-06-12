@@ -488,7 +488,7 @@ export function SquadBuilder(): ReactElement {
 
   return (
     <div className="panelStack">
-      <div className="section">Custom hot-seat — both squads, 3–8 ships, ≤20 pts each</div>
+      <div className="section">Custom hot-seat — both squads, 3–8 ships, ≤50 pts each</div>
       <div className="builder">
         <SquadColumn faction={aFaction} setFaction={setAFaction} picks={a} setPicks={setA} />
         <SquadColumn faction={bFaction} setFaction={setBFaction} picks={b} setPicks={setB} />

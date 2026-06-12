@@ -1,7 +1,7 @@
 import meta from './generated/meta.json';
 
-/** Pins the game to the xwing-data2 snapshot it was built from. */
-export const DATA_VERSION = `xwing-data2@${meta.commit}`;
+/** Pins the game to the points revision it was built from (cards: xwing-data2). */
+export const DATA_VERSION = meta.points;
 export const DATA_META = meta;
 
 export type { ActionData, PilotData, ShipData, Stat, UpgradeData } from './types';

@@ -12,12 +12,12 @@ engine). R2 is the building experience + data; ability-less ships are playable n
 Status: ☐ not started · ◐ in progress · ☑ done
 
 ## R2-M1 — Data layer & points
-- ☑ **T-D1** Squad/loadout points model in `@xwing/data`: pilots gain `loadout` + slot bar; `squadPoints()` and `validateSquad()` (single faction, 3–8 ships, ≤20 pts, limited rules). _Loadout-cost validation lands with T-B2 (upgrade data)._
+- ☑ **T-D1** Squad/loadout points model in `@xwing/data`: pilots gain `loadout` + slot bar; `squadPoints()` and `validateSquad()` (single faction, 3–8 ships, **≤50 pts**, loadout budgets, limited rules).
 - ☑ **T-D2** Full xwing-data2 pull: `packages/data/scripts/generate.mjs` reads a xwing-data2 checkout and emits a committed snapshot (`src/generated/{ships,upgrades,meta}.json`) — **95 ships across all 7 factions, 524 upgrades, real stats/dials/points/slots**. No images/raw dataset vendored. Cross-faction shared hulls resolved in the loaders. A test parses every dial code in the snapshot (nothing dropped). Dial vocabulary made complete first (Segnor/Tallon/reverse/stationary + purple), verified against the source.
-- ◐ **T-D3** Versioned snapshot: each game pins `DATA_VERSION = xwing-data2@<commit>` (in `meta.json`). _Scheduled auto-refresh + per-game version pinning in the engine state still to come._
+- ☑ **T-D3** Versioned XWA points: the generator overlays the authoritative **XWA community points** (github.com/eirikmun/xwing-points) onto the xwing-data2 cards — cost/loadout/slots/limited keyed by xws for the current revision (**50P 2.0, 2026-04-26**). All 659 pilots + 455 upgrades priced from XWA; `DATA_VERSION` = the points revision. _Scheduled auto-refresh + per-game version pinning in engine state still to come; ~75 newer XWA pilots not yet in the xwing-data2 card set._
 
-Refresh the data: clone xwing-data2 (sparse `data/`), then
-`XWING_DATA2=/path node packages/data/scripts/generate.mjs`.
+Refresh the data: clone xwing-data2 (sparse `data/`) and eirikmun/xwing-points, then
+`XWING_DATA2=/cards XWING_POINTS=/points node packages/data/scripts/generate.mjs`.
 
 ## R2-M2 — Squad builder UI
 - ☑ **T-B1** Faction pilot list with a squad-point meter + live `validateSquad` errors.
