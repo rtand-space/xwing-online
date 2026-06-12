@@ -48,5 +48,7 @@ export interface UpgradeData {
   variableCost: { variable?: string; values?: Record<string, number> } | null;
   /** 0 = unlimited; otherwise the max copies in a squad. */
   limited: number;
+  /** Charges this upgrade grants (and how many recover each round), if any. */
+  charges: { value: number; recovers: number } | null;
   restrictions: unknown[];
 }

@@ -7,6 +7,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -21,6 +22,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -35,6 +37,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -49,6 +55,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -63,6 +73,10 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -77,6 +91,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"],
@@ -94,6 +109,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -108,6 +124,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -118,6 +138,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -128,6 +152,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -138,6 +163,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -152,6 +181,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -162,6 +195,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -172,6 +209,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -182,6 +223,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -196,6 +238,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -210,6 +253,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -224,6 +271,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -238,6 +289,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -252,6 +307,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -262,6 +321,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -272,6 +335,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -286,6 +350,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -296,6 +361,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -310,6 +376,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -324,6 +391,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -338,6 +409,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -352,6 +427,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -366,6 +442,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -376,6 +456,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -390,6 +474,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -400,6 +488,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -410,6 +502,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -424,6 +520,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -438,6 +535,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -452,6 +553,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -466,6 +568,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -480,6 +586,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -490,6 +600,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -500,6 +611,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -510,6 +625,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -520,6 +636,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -530,6 +650,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -540,6 +661,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -550,6 +672,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -560,6 +683,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -570,6 +694,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -580,6 +705,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -590,6 +719,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -600,6 +730,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -610,6 +741,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -620,6 +752,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -630,6 +763,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -640,6 +774,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -650,6 +785,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -660,6 +799,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -670,6 +810,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -680,6 +821,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance", "scumandvillainy"]
@@ -697,6 +839,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -707,6 +850,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -724,6 +868,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -734,6 +879,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -744,6 +893,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -754,6 +904,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -768,6 +919,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 2,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -778,6 +930,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -788,6 +941,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -805,6 +959,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -819,6 +977,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -839,6 +998,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -849,6 +1009,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -866,6 +1027,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -883,6 +1045,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -893,6 +1056,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -903,6 +1067,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -920,6 +1085,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -930,6 +1096,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 2,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -940,6 +1107,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -954,6 +1122,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -968,6 +1140,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -978,6 +1151,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -992,6 +1166,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1002,6 +1177,10 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -1012,6 +1191,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["delta7aethersprite"]
@@ -1026,6 +1206,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 2,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1036,6 +1217,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["delta7aethersprite"]
@@ -1050,6 +1232,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["tiewiwhispermodifiedinterceptor"]
@@ -1064,6 +1247,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["vultureclassdroidfighter"]
@@ -1078,6 +1262,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["t70xwing"]
@@ -1092,6 +1277,10 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 3,
+      "recovers": -1
+    },
     "restrictions": []
   },
   {
@@ -1102,6 +1291,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1112,6 +1302,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["hyenaclassdroidbomber"]
@@ -1126,6 +1317,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1136,6 +1328,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["alphaclassstarwing"]
@@ -1150,6 +1343,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["ut60duwing"]
@@ -1164,6 +1358,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1174,6 +1369,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "shipAbility": ["Autothrusters"]
@@ -1191,6 +1387,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["t65xwing"]
@@ -1205,6 +1402,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1215,6 +1413,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -1225,6 +1427,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -1239,6 +1442,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1249,6 +1453,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1269,6 +1474,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "shipAbility": ["Vectored Thrusters"]
@@ -1286,6 +1492,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["btanr2ywing"]
@@ -1303,6 +1510,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["alphaclassstarwing"]
@@ -1317,6 +1525,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1331,6 +1540,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1341,6 +1551,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1351,6 +1562,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1365,6 +1577,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -1380,6 +1593,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1394,6 +1608,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1404,6 +1619,7 @@
     "cost": 50,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1418,6 +1634,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1432,6 +1649,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1442,6 +1660,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticrepublic"]
@@ -1456,6 +1675,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -1470,6 +1690,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1484,6 +1705,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -1498,6 +1720,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -1512,6 +1735,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1526,6 +1750,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1540,6 +1765,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -1554,6 +1780,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -1568,6 +1795,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1582,6 +1810,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1596,6 +1828,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -1610,6 +1843,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1624,6 +1858,7 @@
     "cost": 11,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -1638,6 +1873,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1652,6 +1891,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1666,6 +1906,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -1680,6 +1924,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1690,6 +1935,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1709,6 +1955,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1723,6 +1970,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1740,6 +1991,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1750,6 +2002,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1760,6 +2013,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -1774,6 +2028,7 @@
     "cost": 15,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1788,6 +2043,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1802,6 +2058,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -1819,6 +2079,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1833,6 +2094,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1847,6 +2109,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -1861,6 +2124,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1871,6 +2135,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 5,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -1885,6 +2153,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1899,6 +2171,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1913,6 +2186,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -1927,6 +2204,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -1941,6 +2219,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -1951,6 +2230,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -1961,6 +2244,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1975,6 +2259,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1994,6 +2282,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2008,6 +2297,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2022,6 +2312,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2036,6 +2327,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2046,6 +2338,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2060,6 +2353,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2074,6 +2368,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2091,6 +2389,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2101,6 +2400,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2115,6 +2415,10 @@
     "cost": 14,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2129,6 +2433,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -2143,6 +2448,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2157,6 +2463,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2167,6 +2474,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2181,6 +2489,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2195,6 +2504,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2209,6 +2519,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2219,6 +2530,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2233,6 +2545,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2247,6 +2560,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2261,6 +2575,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -2275,6 +2590,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2289,6 +2605,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2303,6 +2620,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2317,6 +2635,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2331,6 +2650,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2345,6 +2665,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2359,6 +2683,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2373,6 +2698,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2387,6 +2713,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2404,6 +2734,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -2419,6 +2750,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2433,6 +2765,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2447,6 +2780,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2466,6 +2803,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2480,6 +2818,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2497,6 +2839,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2507,6 +2850,7 @@
     "cost": 11,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2521,6 +2865,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2538,6 +2883,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2548,6 +2894,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -2562,6 +2909,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2572,6 +2920,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -2586,6 +2935,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticrepublic"]
@@ -2600,6 +2950,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticempire", "firstorder"]
@@ -2614,6 +2965,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2628,6 +2980,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2642,6 +2995,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2656,6 +3010,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2670,6 +3025,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2684,6 +3040,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2698,6 +3055,10 @@
     "cost": 15,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2712,6 +3073,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -2726,6 +3088,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2740,6 +3103,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2750,6 +3114,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2764,6 +3129,7 @@
     "cost": 15,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -2778,6 +3144,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -2795,6 +3162,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -2809,6 +3177,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire", "rebelalliance", "scumandvillainy"]
@@ -2823,6 +3192,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2837,6 +3207,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2851,6 +3222,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2861,6 +3233,10 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"],
@@ -2876,6 +3252,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2890,6 +3267,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2904,6 +3282,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2914,6 +3293,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2924,6 +3304,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -2934,6 +3315,10 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -2948,6 +3333,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2962,6 +3348,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -2972,6 +3362,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -2982,6 +3376,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -2992,6 +3390,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3002,6 +3404,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3012,6 +3418,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -3026,6 +3436,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "action": {
@@ -3043,6 +3457,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3053,6 +3471,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3063,6 +3485,10 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3073,6 +3499,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3083,6 +3513,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3093,6 +3527,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3107,6 +3542,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3117,6 +3553,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3127,6 +3564,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3137,6 +3575,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3147,6 +3586,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "force_side": ["dark"]
@@ -3161,6 +3601,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3171,6 +3612,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3181,6 +3623,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3191,6 +3634,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3201,6 +3645,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3211,6 +3656,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3221,6 +3667,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3231,6 +3678,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3241,6 +3689,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3251,6 +3700,7 @@
     "cost": 50,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -3265,6 +3715,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3275,6 +3726,7 @@
     "cost": 11,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3285,6 +3737,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3295,6 +3748,7 @@
     "cost": 50,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3309,6 +3763,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3319,6 +3774,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3333,6 +3789,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -3348,6 +3805,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3358,6 +3816,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3372,6 +3831,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3386,6 +3849,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3400,6 +3864,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3414,6 +3879,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -3428,6 +3894,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3442,6 +3909,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3456,6 +3924,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Large", "Huge"]
@@ -3473,6 +3942,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3487,6 +3960,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3501,6 +3975,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3515,6 +3990,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3525,6 +4001,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3539,6 +4016,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire", "scumandvillainy"]
@@ -3553,6 +4031,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3567,6 +4046,7 @@
     "cost": 14,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3581,6 +4061,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3591,6 +4072,10 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3605,6 +4090,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3615,6 +4101,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3632,6 +4119,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3642,6 +4130,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -3656,6 +4148,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -3670,6 +4163,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "arcs": ["Rear Arc"]
@@ -3684,6 +4178,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -3700,6 +4195,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3710,6 +4206,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -3727,6 +4224,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -3744,6 +4242,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3754,6 +4253,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3764,6 +4264,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3774,6 +4275,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3784,6 +4286,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3794,6 +4297,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -3811,6 +4315,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3821,6 +4326,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["syliureclasshyperspacering"]
@@ -3835,6 +4341,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy", "resistance"]
@@ -3849,6 +4359,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -3863,6 +4377,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3873,6 +4388,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3883,6 +4402,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3893,6 +4413,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3903,6 +4427,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3913,6 +4438,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3923,6 +4452,10 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -3937,6 +4470,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3947,6 +4481,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3957,6 +4495,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -3967,6 +4509,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -3981,6 +4527,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -3991,6 +4538,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4001,6 +4549,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 3,
+    "charges": null,
     "restrictions": [
       {
         "keywords": ["Bounty Hunter"]
@@ -4015,6 +4564,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 5,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4025,6 +4578,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4035,6 +4592,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4045,6 +4606,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4055,6 +4620,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 3,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -4069,6 +4638,10 @@
     "cost": 10,
     "variableCost": null,
     "limited": 2,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4079,6 +4652,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "action": {
@@ -4099,6 +4676,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4109,6 +4690,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4119,6 +4704,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4129,6 +4718,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4139,6 +4732,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 5,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4149,6 +4746,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4159,6 +4760,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 4,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -4169,6 +4774,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 4,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4179,6 +4788,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 2,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4189,6 +4802,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -4203,6 +4820,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -4220,6 +4838,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -4234,6 +4856,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -4248,6 +4871,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4258,6 +4885,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4268,6 +4899,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -4285,6 +4920,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4295,6 +4931,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4305,6 +4945,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4315,6 +4956,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4325,6 +4967,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -4339,6 +4982,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4349,6 +4993,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -4366,6 +5011,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4376,6 +5022,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4386,6 +5036,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4396,6 +5047,10 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "ships": ["belbullab22starfighter"]
@@ -4410,6 +5065,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "shipAbility": ["Networked Calculations"]
@@ -4427,6 +5083,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4437,6 +5097,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4447,6 +5111,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4457,6 +5125,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4467,6 +5136,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4477,6 +5147,10 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4487,6 +5161,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4497,6 +5172,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4507,6 +5183,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "equipped": ["Astromech"]
@@ -4521,6 +5201,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4531,6 +5212,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4541,6 +5226,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4551,6 +5240,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -4571,6 +5261,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -4585,6 +5276,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4595,6 +5287,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4605,6 +5298,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4615,6 +5309,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4625,6 +5320,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4635,6 +5331,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -4645,6 +5345,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4655,6 +5359,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4665,6 +5370,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4675,6 +5384,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -4685,6 +5398,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4695,6 +5409,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4705,6 +5420,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -4722,6 +5438,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 3
+    },
     "restrictions": []
   },
   {
@@ -4732,6 +5452,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -4749,6 +5470,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -4766,6 +5488,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -4783,6 +5506,10 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4793,6 +5520,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4803,6 +5531,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4813,6 +5542,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4823,6 +5553,10 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "keywords": ["Mandalorian"]
@@ -4837,6 +5571,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4847,6 +5582,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -4863,6 +5599,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -4873,6 +5613,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4883,6 +5624,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -4903,6 +5645,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4913,6 +5656,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -4927,6 +5671,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -4944,6 +5689,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4954,6 +5700,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4964,6 +5711,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -4978,6 +5729,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -4988,6 +5740,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["nantexclassstarfighter"]
@@ -5002,6 +5755,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -5019,6 +5773,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5029,6 +5784,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -5043,6 +5799,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5057,6 +5814,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -5076,6 +5834,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5086,6 +5845,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -5100,6 +5860,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5110,6 +5871,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5120,6 +5882,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["tieddefender"]
@@ -5134,6 +5897,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5144,6 +5908,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "keywords": ["TIE"]
@@ -5158,6 +5923,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5168,6 +5934,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -5182,6 +5949,10 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 1
+    },
     "restrictions": []
   },
   {
@@ -5192,6 +5963,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5202,6 +5974,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5212,6 +5985,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5222,6 +5996,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5232,6 +6007,10 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "equipped": ["Illicit"]
@@ -5246,6 +6025,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5256,6 +6036,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5266,6 +6047,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5276,6 +6058,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5286,6 +6069,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5296,6 +6080,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5306,6 +6091,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -5320,6 +6106,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "action": {
@@ -5336,6 +6123,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -5350,6 +6138,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5360,6 +6149,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5370,6 +6160,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5380,6 +6171,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5390,6 +6182,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5400,6 +6193,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5410,6 +6204,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5420,6 +6215,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5430,6 +6226,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5440,6 +6237,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -5454,6 +6255,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5464,6 +6266,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5474,6 +6277,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5484,6 +6288,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5494,6 +6299,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5504,6 +6310,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5514,6 +6321,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5528,6 +6336,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5538,6 +6347,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -5552,6 +6362,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5562,6 +6373,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5572,6 +6384,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5582,6 +6395,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5592,6 +6406,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5602,6 +6417,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5612,6 +6428,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5622,6 +6439,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -5641,6 +6459,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -5651,6 +6473,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -5665,6 +6488,7 @@
     "cost": 15,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -5682,6 +6506,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5692,6 +6517,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -5706,6 +6532,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5716,6 +6543,7 @@
     "cost": 1,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["tiewiwhispermodifiedinterceptor", "tievnsilencer"]
@@ -5730,6 +6558,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -5740,6 +6569,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5757,6 +6587,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -5774,6 +6605,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -5791,6 +6623,10 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -5808,6 +6644,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -5825,6 +6662,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -5842,6 +6680,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5859,6 +6698,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -5876,6 +6716,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -5893,6 +6734,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -5910,6 +6752,10 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -5927,6 +6773,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -5944,6 +6791,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["tridentclassassaultship"]
@@ -5958,6 +6806,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5975,6 +6824,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5992,6 +6842,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6009,6 +6860,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6026,6 +6878,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6043,6 +6896,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6060,6 +6914,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6077,6 +6932,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -6094,6 +6950,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6111,6 +6968,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6128,6 +6986,7 @@
     "cost": 12,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6145,6 +7004,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6162,6 +7022,7 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6179,6 +7040,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6196,6 +7058,7 @@
     "cost": null,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -6206,6 +7069,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6223,6 +7087,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance", "scumandvillainy"]
@@ -6240,6 +7105,7 @@
     "cost": 2,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6257,6 +7123,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6274,6 +7141,10 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 1
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -6291,6 +7162,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6308,6 +7180,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6325,6 +7198,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6342,6 +7216,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6359,6 +7234,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["st70assaultship"]
@@ -6373,6 +7249,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6390,6 +7267,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -6407,6 +7285,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6424,6 +7303,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6441,6 +7321,7 @@
     "cost": 10,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6458,6 +7339,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -6475,6 +7357,7 @@
     "cost": 9,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6492,6 +7375,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6509,6 +7393,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6526,6 +7411,7 @@
     "cost": 5,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6543,6 +7429,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -6560,6 +7447,7 @@
     "cost": 4,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6577,6 +7465,7 @@
     "cost": 7,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -6594,6 +7483,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "ships": ["starviperclassattackplatform"]
@@ -6608,6 +7501,7 @@
     "cost": 0,
     "variableCost": null,
     "limited": 1,
+    "charges": null,
     "restrictions": [
       {
         "ships": ["rogueclassstarfighter"]
@@ -6622,6 +7516,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 1,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -6632,6 +7530,10 @@
     "cost": 4,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -6642,6 +7544,10 @@
     "cost": 5,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -6652,6 +7558,10 @@
     "cost": 7,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -6662,6 +7572,10 @@
     "cost": 14,
     "variableCost": null,
     "limited": 0,
+    "charges": {
+      "value": 2,
+      "recovers": 0
+    },
     "restrictions": []
   },
   {
@@ -6672,6 +7586,10 @@
     "cost": 8,
     "variableCost": null,
     "limited": 1,
+    "charges": {
+      "value": 3,
+      "recovers": 0
+    },
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -6686,6 +7604,7 @@
     "cost": 3,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   },
   {
@@ -6696,6 +7615,7 @@
     "cost": 6,
     "variableCost": null,
     "limited": 0,
+    "charges": null,
     "restrictions": []
   }
 ]

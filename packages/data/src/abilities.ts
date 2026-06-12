@@ -8,6 +8,7 @@ import {
   registerAbility,
   rerollAttack,
   rerollDefence,
+  spendCharge,
 } from '@xwing/engine';
 
 /**
@@ -122,6 +123,24 @@ const ABILITIES: Record<string, Ability> = {
     attack: {
       onRollAttack: (ctx, self) => {
         if (ctx.attacker.id === self.id && ctx.obstructed) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // Crack Shot (Talent) — spend its charge to cancel an evade against a bullseye target.
+  crackshot: {
+    note: 'While attacking a bullseye target, spend a charge to cancel 1 evade result.',
+    attack: {
+      onModifyDefence: (ctx, self) => {
+        if (
+          ctx.attacker.id === self.id &&
+          ctx.attacker.charges > 0 &&
+          inBullseye(ctx.attacker, ctx.target) &&
+          ctx.defence.includes('evade')
+        ) {
+          changeDefence(ctx, 'evade', 'blank', 1);
+          ctx.events.push(spendCharge(self));
+        }
       },
     },
   },

@@ -79,9 +79,12 @@ Status: ☐ not started · ◐ in progress · ☑ done
   startup by the client (`main.tsx`) and server (`game-store.ts`). Live cards
   (edition-stable, arc/dice only): **Wedge Antilles** (defender −1 die),
   **Backstabber** (+1 attack die from outside the defender's arc), **Outmaneuver**
-  (defender −1 die from outside its arc), **Juke**, **Fearless**, plus
-  **Predator** + **Marksmanship** once the engine gained a **bullseye arc**
-  (`inBullseye`, a range-ruler-width forward corridor). The curated set grows from here.
+  (defender −1 die from outside its arc), **Juke**, **Fearless**, **Predator** +
+  **Marksmanship** (after the engine gained a **bullseye arc** — `inBullseye`,
+  a range-ruler-width corridor), **Fanatical**, **Trick Shot**, **Heroic**, and
+  **Crack Shot** (after **upgrade-granted charges**: the generator now captures
+  each upgrade's `charges`, summed into the ship at build). The set grows from here.
+  _Charges are pooled per ship for now — true per-card pools are a later pass._
 - ☑ **T3-S2** Builder honesty: `implementedAbility(xws)` badges pilots/upgrades the
   engine actually simulates, with a note that the rest aren't yet — so equipping an
   unimplemented card doesn't mislead.

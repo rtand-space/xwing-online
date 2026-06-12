@@ -1,6 +1,6 @@
 import type { ActionType, BaseSize, Position, ShipInit } from '@xwing/engine';
 import { parseDial } from './dial';
-import { getPilot, getShip } from './loaders';
+import { getPilot, getShip, getUpgrade } from './loaders';
 import type { ShipData } from './types';
 
 const SIZES: Record<string, BaseSize> = { Small: 'small', Medium: 'medium', Large: 'large' };
@@ -38,6 +38,17 @@ export function toShipInit(
 ): ShipInit {
   const ship = getShip(shipXws);
   const pilot = getPilot(shipXws, pilotXws);
+  // Charges granted by equipped upgrades. NOTE: pooled per ship for now; true
+  // per-card charge pools (so one card can't spend another's) come in a later pass.
+  let maxCharges = 0;
+  let recurring = 0;
+  for (const x of upgrades) {
+    const c = getUpgrade(x).charges;
+    if (c) {
+      maxCharges += c.value;
+      recurring += c.recovers;
+    }
+  }
   return {
     id,
     ownerId,
@@ -51,6 +62,9 @@ export function toShipInit(
     agility: statValue(ship, 'agility'),
     hull: statValue(ship, 'hull'),
     shields: statValue(ship, 'shields'),
+    maxCharges,
+    charges: maxCharges,
+    recurring,
     pos,
     actionBar: actionBar(ship),
     dialOptions: parseDial(ship.dial),

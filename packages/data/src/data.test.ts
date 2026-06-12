@@ -89,6 +89,20 @@ describe('card → engine ShipInit', () => {
     });
     expect(init.dialOptions).toContainEqual({ speed: 4, bearing: 'koiogran', difficulty: 'red' });
   });
+
+  it('sums charges granted by equipped upgrades', () => {
+    const init = toShipInit(
+      't65xwing',
+      'bluesquadronescort',
+      'rebel',
+      { x: 0, y: 0, angle: 0 },
+      'x1',
+      ['crackshot'],
+    );
+    expect(init.maxCharges).toBe(1); // crackshot grants 1
+    expect(init.charges).toBe(1); // starts full
+    expect(init.recurring).toBe(0); // non-recurring
+  });
 });
 
 const sample: XwsSquad = {

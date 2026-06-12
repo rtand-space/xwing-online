@@ -146,6 +146,9 @@ for (const file of readdirSync(upDir)) {
       cost: xu ? xu.cost : fixed,
       variableCost: xu || fixed !== null ? null : (u.cost ?? null),
       limited: xu ? (xu.limited ?? 0) : (u.limited ?? 0),
+      charges: side.charges
+        ? { value: side.charges.value, recovers: side.charges.recovers ?? 0 }
+        : null,
       restrictions: u.restrictions ?? [],
     });
   }
