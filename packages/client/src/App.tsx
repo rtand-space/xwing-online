@@ -4,6 +4,7 @@ import { type ReactElement, useEffect, useState } from 'react';
 import { useAuth } from './auth';
 import { Battlefield } from './Battlefield';
 import { previewFor, SvgBoard } from './board';
+import { useBoardPrefs } from './board-prefs';
 import { BottomFlyout } from './BottomFlyout';
 import { useOnline } from './online-store';
 import { SandboxDial } from './SandboxDial';
@@ -19,7 +20,7 @@ const EMPTY_VIEW = projectView(EMPTY_STATE, '');
 export function App(): ReactElement {
   const ag = useActiveGame();
   const [sideOpen, setSideOpen] = useState(true);
-  const [showNames, setShowNames] = useState(false);
+  const showNames = useBoardPrefs((s) => s.showNames);
 
   // Reconnect to an in-progress online game after a refresh.
   useEffect(() => void useOnline.getState().resume(), []);
@@ -101,13 +102,6 @@ export function App(): ReactElement {
           onPick={sbEdit ? sbSelect : undefined}
           showNames={showNames}
         />
-        <button
-          className={showNames ? 'boardToggle on' : 'boardToggle'}
-          onClick={() => setShowNames((v) => !v)}
-          title="Toggle pilot names"
-        >
-          Names
-        </button>
       </div>
 
       <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />

@@ -1,5 +1,6 @@
 import { FACTION_IDS, FACTIONS, type FactionId, pilotChoices } from '@xwing/data';
 import { type ReactElement, useState } from 'react';
+import { NamesToggle } from './board-prefs';
 import { Roster } from './roster';
 import { useSandbox } from './sandbox-store';
 import { useSquads } from './squads-store';
@@ -36,6 +37,7 @@ export function Sandbox(): ReactElement {
             <Roster view={game.state} />
           </>
         )}
+        <NamesToggle />
         <button className="btn primary" onClick={leaveTurnBased}>
           Leave turn-based
         </button>
@@ -139,6 +141,7 @@ export function Sandbox(): ReactElement {
         <span>Show firing arc</span>
         <input type="checkbox" checked={showArcs} onChange={toggleArcs} />
       </label>
+      <NamesToggle />
 
       <button className="btn primary" disabled={ships.length === 0} onClick={enterTurnBased}>
         Enter turn-based

@@ -52,6 +52,13 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
       <span className="shipStatusName">
         {ship.pilot} <span className="muted">· {ship.id}</span>
       </span>
+      {!dead && (
+        <span className="shipStatusStats">
+          <span title="initiative">init {ship.initiative}</span>
+          <span title="attack dice">atk {ship.primaryAttack}</span>
+          <span title="agility (defence dice)">agi {ship.agility}</span>
+        </span>
+      )}
       {dead ? (
         <span className="muted">destroyed</span>
       ) : (

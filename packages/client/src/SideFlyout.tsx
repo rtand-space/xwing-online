@@ -1,5 +1,6 @@
 import { type ReactElement, useState } from 'react';
 import { Account } from './Account';
+import { NamesToggle } from './board-prefs';
 import { formatEvent } from './log';
 import { Sandbox } from './Sandbox';
 import { useSandbox } from './sandbox-store';
@@ -96,6 +97,8 @@ function GamePanel({ ag }: { ag: ActiveGame }): ReactElement {
           <Roster view={ag.view} />
         </>
       )}
+
+      <NamesToggle />
 
       <button className="btn ghost" onClick={ag.leave}>
         {ag.online ? 'Leave game' : 'New game'}
