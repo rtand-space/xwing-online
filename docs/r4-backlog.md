@@ -118,9 +118,13 @@ Status: ☐ not started
     then move + disarm + the red-action stress).
   - **red / purple action costs** from card data (`actionDifficulty`): a red action
     gains stress; a purple action spends a Force and is hidden without it.
-  - *Deferred: **linked actions** — the `linked` field isn't in the committed data
-    snapshot, so it needs a data refresh. Also: coordinate-granted repositions/locks,
-    and reusing the reposition system for decloak's barrel-roll + the tractor reposition.*
+  - **linked actions** — the generator now captures the `linked` field (`actionLinks`
+    on the ship). After a base action the FSM pauses (LinkOffered/LinkResolved) to
+    offer its one linked follow-up (use or skip); the follow-up runs the full action
+    path (linked repositions take the placement choice, linked locks target an enemy)
+    and is charged at the link's own difficulty (usually a red stress). Links don't chain.
+  - *Deferred: coordinate-granted repositions/locks, and reusing the reposition system
+    for decloak's barrel-roll + the tractor reposition.*
 
 # R4b — secondary weapons · devices · damage deck
 
