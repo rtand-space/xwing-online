@@ -295,6 +295,28 @@ const ABILITIES: Record<string, Ability> = {
     initiative: (self) => (self.hull < self.maxHull ? 6 : undefined),
   },
 
+  // "Avenger" — spurred on by a wingmate's loss. Reactive (onDestroyed, fired only
+  // for friendlies of the lost ship), cost-free → grants a free action.
+  avenger: {
+    note: 'After another friendly ship is destroyed, may perform an action.',
+    optional: {
+      onDestroyed: {
+        label: 'Avenger: perform an action',
+        available: () => true,
+        resolve: ({ self }) => [{ type: 'ActionGranted', shipId: self.id }],
+      },
+    },
+  },
+
+  // "Midnight" — a perfect lock jams the enemy's tricks. Cost-free dice lockdown.
+  midnight: {
+    note: 'While attacking or defending, if you have a lock on the enemy ship, its dice cannot be modified.',
+    lockdown: (ctx, self) => {
+      const enemyId = self.id === ctx.attacker.id ? ctx.target.id : ctx.attacker.id;
+      return self.tokens.some((t) => t.kind === 'lock' && t.targetId === enemyId);
+    },
+  },
+
   // "Backdraft" — turret covers his tail. Cost-free, automatic.
   backdraft: {
     note: 'While attacking, if the defender is in your rear arc, roll 1 extra attack die.',

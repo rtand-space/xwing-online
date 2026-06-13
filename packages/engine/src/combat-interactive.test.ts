@@ -168,6 +168,31 @@ const changeOneFace = <T,>(arr: T[], from: T, to: T): T[] => {
 };
 
 describe('reactive windows after combat', () => {
+  it('fires onDestroyed for a living friendly of a destroyed ship', () => {
+    clearAbilities();
+    registerAbility('forcehit', {
+      attack: {
+        onModifyAttack: (ctx, self) => {
+          if (ctx.attacker.id === self.id) ctx.attack = ['hit', 'hit'];
+        },
+      },
+    });
+    registerAbility('mourner', {
+      game: { onDestroyed: ({ self }) => [{ type: 'TokenGained', shipId: self.id, kind: 'focus' }] },
+    });
+    let s = stateWith([
+      ship('a', 'p', 0, 0, { primaryAttack: 2, pilotXws: 'forcehit' }),
+      ship('d', 'q', 0, 200, { agility: 0, maxHull: 1, hull: 1 }),
+      ship('f', 'q', 300, 300, { pilotXws: 'mourner' }),
+    ]);
+    s = drive(s, { type: 'DeclareAttack', playerId: 'p', shipId: 'a', targetId: 'd' });
+    s = drive(s, { type: 'ModifyDone', playerId: 'p', shipId: 'a' });
+    s = drive(s, { type: 'ModifyDone', playerId: 'q', shipId: 'd' });
+    expect(s.ships.find((x) => x.id === 'd')!.hull).toBe(0); // destroyed
+    expect(s.ships.find((x) => x.id === 'f')!.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    clearAbilities();
+  });
+
   it('fires onDamaged for a defender that took damage', () => {
     clearAbilities();
     registerAbility('forcehit', {
@@ -190,6 +215,35 @@ describe('reactive windows after combat', () => {
     const d = s.ships.find((x) => x.id === 'd')!;
     expect(d.hull).toBeLessThan(d.maxHull); // took damage
     expect(d.tokens.some((t) => t.kind === 'focus')).toBe(true); // onDamaged fired
+    clearAbilities();
+  });
+});
+
+describe('dice lockdown (Midnight)', () => {
+  it('suppresses the enemy modify step when locked', () => {
+    clearAbilities();
+    registerAbility('lockjam', {
+      lockdown: (ctx, self) => {
+        const enemyId = self.id === ctx.attacker.id ? ctx.target.id : ctx.attacker.id;
+        return self.tokens.some((t) => t.kind === 'lock' && t.targetId === enemyId);
+      },
+    });
+    const c: CombatState = {
+      attackerId: 'a',
+      targetId: 'd',
+      range: 2,
+      obstructed: false,
+      attack: ['focus', 'blank'],
+      defence: [],
+      step: 'attack',
+    };
+    const atk = ship('a', 'p', 0, 0, { tokens: [{ kind: 'focus' }] });
+    const jammer = ship('d', 'q', 0, 200, {
+      pilotXws: 'lockjam',
+      tokens: [{ kind: 'lock', targetId: 'a' }],
+    });
+    expect(combatSpends(stateWith([atk, jammer]), c)).toEqual([]); // attacker can't spend focus
+    expect(combatSpends(stateWith([atk, ship('d', 'q', 0, 200, {})]), c)).toContain('focus');
     clearAbilities();
   });
 });

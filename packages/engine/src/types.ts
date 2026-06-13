@@ -137,7 +137,8 @@ export type GameWindow =
   | 'afterAttack' // the attacker, after performing the attack
   | 'afterDefend' // the defender, after defending
   | 'onDamaged' // the defender, when it suffered damage
-  | 'onShieldLost'; // the defender, when it lost at least one shield
+  | 'onShieldLost' // the defender, when it lost at least one shield
+  | 'onDestroyed'; // a living friendly of a destroyed ship
 
 /** A pending optional ("may") ability awaiting its owner's choice. */
 export interface AbilityOffer {

@@ -299,6 +299,17 @@ export function beginAttack(
   return { events: ctx.events, attack: ctx.attack, range: ctx.range, obstructed: ctx.obstructed };
 }
 
+/** True if `suppressedId`'s dice modifications are prevented by the opponent's
+ *  lock-down ability (e.g. Midnight). */
+function lockedDown(state: GameState, c: CombatState, suppressedId: string): boolean {
+  const opponent = state.ships.find(
+    (s) => s.id === (suppressedId === c.attackerId ? c.targetId : c.attackerId),
+  );
+  if (!opponent || opponent.hull <= 0) return false;
+  const ctx = makeCtx(state, c);
+  return shipAbilitySources(opponent).some((xws) => getAbility(xws)?.lockdown?.(ctx, opponent));
+}
+
 /** The ship who owns the current modify step, and which window its abilities use. */
 function stepOwner(state: GameState, c: CombatState): { ship: Ship; window: AttackWindow } {
   const id = c.step === 'defence' ? c.targetId : c.attackerId;
@@ -311,6 +322,8 @@ function stepOwner(state: GameState, c: CombatState): { ship: Ship; window: Atta
 /** Optional token spends available to whoever owns the current modify step. */
 export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
   if (c.step === 'after-defence') return []; // attacker spent its tokens in the attack step
+  const ownerId = c.step === 'defence' ? c.targetId : c.attackerId;
+  if (lockedDown(state, c, ownerId)) return []; // dice can't be modified
   const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
   const pool: (AttackFace | DefenceFace)[] = c.step === 'attack' ? c.attack : c.defence;
   const opts: SpendKind[] = [];
@@ -334,6 +347,7 @@ export function combatAbilities(
   c: CombatState,
 ): { xws: string; label: string }[] {
   const { ship: owner, window } = stepOwner(state, c);
+  if (lockedDown(state, c, owner.id)) return []; // dice can't be modified
   const ctx = makeCtx(state, c);
   const out: { xws: string; label: string }[] = [];
   for (const xws of shipAbilitySources(owner)) {
@@ -399,6 +413,8 @@ export function applyAttackAbilities(
   state: GameState,
   c: CombatState,
 ): { attack: AttackFace[]; events: GameEvent[] } {
+  // a locked-down attacker can't modify its attack dice
+  if (lockedDown(state, c, c.attackerId)) return { attack: [...c.attack], events: [] };
   const ctx = makeCtx(state, c);
   for (const h of gatherAttackHooks(state, ctx.attacker, ctx.target).onModifyAttack ?? []) h(ctx);
   return { attack: ctx.attack, events: ctx.events };
@@ -420,7 +436,8 @@ export function rollDefenceStage(
 export function finishCombat(state: GameState, c: CombatState): GameEvent[] {
   const ctx = makeCtx(state, c);
   const reg = gatherAttackHooks(state, ctx.attacker, ctx.target);
-  for (const h of reg.onModifyDefence ?? []) h(ctx);
+  // a locked-down defender's dice can't be modified (by either side)
+  if (!lockedDown(state, c, c.targetId)) for (const h of reg.onModifyDefence ?? []) h(ctx);
   for (const w of ['onCompare', 'onDealDamage', 'onAfterAttack'] as const) {
     BUILTINS[w](ctx);
     for (const h of reg[w] ?? []) h(ctx);

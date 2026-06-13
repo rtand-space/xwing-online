@@ -352,6 +352,16 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       }
       if (dmg) appendWindow(state, events, 'onDamaged', c.targetId, undefined, c.attackerId);
       appendWindow(state, events, 'afterDefend', c.targetId, undefined, c.attackerId);
+      // if the defender was destroyed, its living friendlies get an onDestroyed window
+      if (events.some((e) => e.type === 'ShipDestroyed' && e.shipId === c.targetId)) {
+        const owner = before.ownerId;
+        const folded = events.reduce((sx, e) => applyEvent(sx, e), state);
+        for (const f of folded.ships) {
+          if (f.id !== c.targetId && f.ownerId === owner && f.hull > 0) {
+            appendWindow(state, events, 'onDestroyed', f.id);
+          }
+        }
+      }
       return { events };
     }
     case 'UseAbility': {

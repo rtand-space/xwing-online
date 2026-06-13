@@ -46,6 +46,9 @@ export interface Ability {
   /** Overrides the ship's printed initiative under a condition (returns undefined
    *  to keep the printed value). */
   initiative?: (self: Ship) => number | undefined;
+  /** During an attack, returns true if `self` prevents its enemy's dice from being
+   *  modified (e.g. a lock-down ability). */
+  lockdown?: (ctx: AttackContext, self: Ship) => boolean;
   /** Mandatory dice effects, auto-applied at their window. */
   attack?: Partial<Record<AttackWindow, AttackAbilityHook>>;
   /** Optional ("may") dice effects, offered to the owner during the modify step. */
