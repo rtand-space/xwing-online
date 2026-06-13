@@ -96,7 +96,7 @@ Status: ☐ not started
   *Deferred: a setup UI to pick the initial facing, explicit "rotate to any arc"
   (currently cycles), and board rendering of non-front arcs.*
 
-## R4-M4 — Ability scope + full action system
+## R4-M4 — Ability scope + full action system ✅
 - ☑ **T4-S1** **Auras / broader scope.** `gatherAttackHooks` now collects hooks from
   *every* living ship (attacker + defender first, then the rest by id), so an aura on
   a nearby ship reads the attack via its own `self` plus a friendly/enemy-at-range
@@ -105,20 +105,22 @@ Status: ☐ not started
   friendly attacker at range 0–1 rerolls a die) as the first aura. (Game-window/
   action-grant "leader" auras are the coordinate mechanic in T4-S2, not passive
   `afterMove` hooks, so the self-scoped game windows were left intact.)
-- ◐ **T4-S2** **Full action bar** — in progress.
-  - ☑ **boost & barrel-roll** as real repositions (`reposition.ts` candidate geometry
+- ☑ **T4-S2** **Full action bar.**
+  - **boost & barrel-roll** as real repositions (`reposition.ts` candidate geometry
     + a `reposition` pending decision; boost = 1-speed straight/both banks, barrel
     roll = lateral one template + base; collision-pruned, action hidden if no legal
     placement).
-  - ☑ **jam** (enemy at range 1 gains a jam token) and **reload** (recover a charge +
+  - **jam** (enemy at range 1 gains a jam token) and **reload** (recover a charge +
     gain disarm).
-  - ☑ **coordinate** (grant a friendly at range 1–2 a free self-action via a
+  - **coordinate** (grant a friendly at range 1–2 a free self-action via a
     `grantedAction` pause; doesn't consume the target's own activation action).
-  - ☐ **SLAM** (a second maneuver of the executed speed, then disarm).
-  - ☐ **red / linked actions** (needs per-action difficulty in the model: a red action
-    gains stress; linked actions chain a second action).
-  - *Also deferred: nested repositions/locks performed via a coordinate; wiring the
-    new reposition system back into decloak's barrel-roll and the tractor reposition.*
+  - **SLAM** (reuses the reposition FSM — any dial maneuver at the executed speed,
+    then move + disarm + the red-action stress).
+  - **red / purple action costs** from card data (`actionDifficulty`): a red action
+    gains stress; a purple action spends a Force and is hidden without it.
+  - *Deferred: **linked actions** — the `linked` field isn't in the committed data
+    snapshot, so it needs a data refresh. Also: coordinate-granted repositions/locks,
+    and reusing the reposition system for decloak's barrel-roll + the tractor reposition.*
 
 # R4b — secondary weapons · devices · damage deck
 
