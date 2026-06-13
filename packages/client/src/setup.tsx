@@ -275,7 +275,9 @@ function SquadColumn({
   }
   const needle = q.trim().toLowerCase();
   const shipList = ships.filter((s) => !needle || s.name.toLowerCase().includes(needle));
-  const pilots = shipPick ? all.filter((o) => o.shipXws === shipPick) : [];
+  const pilots = shipPick
+    ? all.filter((o) => o.shipXws === shipPick).sort((a, b) => b.initiative - a.initiative)
+    : [];
 
   const reset = () => {
     setAdding(false);
