@@ -152,6 +152,23 @@ The old engine auto-applied them all. Staged fix (chosen: **tokens first**).
   Fanatical reverted to auto (they cost nothing). *Heroic / Juke / Howlrunner are
   cost-free → stay auto, correctly.*
 
+## R4-M9 — Missing ability mechanics (unblocks the sweep)
+Working through the hooks the sweep needs, highest-leverage first.
+- ☑ **T4-R1** **Reactive windows** — fire ability windows when an attack resolves:
+  `afterAttack` (attacker), then the defender's `onShieldLost` / `onDamaged` /
+  `afterDefend`. `appendWindow` queues at most one optional offer at a time.
+  Reactive abilities reuse existing machinery — **Lieutenant Tavson** (after damage,
+  spend a charge to act) emits `ActionGranted` and rides the coordinate flow.
+- ☑ **T4-R2** **Bonus attacks** — `offerBonusAttack` → `BonusAttackOffered` → a
+  declare-attack that reuses the whole interactive-combat flow but, via a `bonus` flag
+  on `AttackDeclared`, doesn't count as the ship's engagement. **Quickdraw** rides it
+  (onShieldLost → spend charge → bonus attack).
+- ☐ **T4-R3** Remaining hooks (in rough leverage order): a **setup window**;
+  **condition cards**; **token transfer**; **deplete tokens** + grant-token-to-others;
+  **dynamic initiative** (Null/Rush); **dice-can't-be-modified** (Midnight/Ember);
+  **after-destroyed** auras; **"moved through a ship"** triggers. Pass the attacker
+  to the defender's reactive windows so target-the-attacker bonus attacks (Dengar) work.
+
 # R4b — secondary weapons · devices · damage deck
 
 ## R4-M5 — Secondary weapons & devices
