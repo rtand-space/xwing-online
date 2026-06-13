@@ -163,11 +163,19 @@ Working through the hooks the sweep needs, highest-leverage first.
   declare-attack that reuses the whole interactive-combat flow but, via a `bonus` flag
   on `AttackDeclared`, doesn't count as the ship's engagement. **Quickdraw** rides it
   (onShieldLost → spend charge → bonus attack).
-- ☐ **T4-R3** Remaining hooks (in rough leverage order): a **setup window**;
-  **condition cards**; **token transfer**; **deplete tokens** + grant-token-to-others;
-  **dynamic initiative** (Null/Rush); **dice-can't-be-modified** (Midnight/Ember);
-  **after-destroyed** auras; **"moved through a ship"** triggers. Pass the attacker
-  to the defender's reactive windows so target-the-attacker bonus attacks (Dengar) work.
+- ◐ **T4-R3** More hooks.
+  - ☑ **Dynamic initiative** — `initiative` ability hook + `effectiveInitiative`;
+    activation/engagement order use it. Null (7 while undamaged) / Rush (6 while damaged).
+  - ☑ **Attacker context in reactive windows** — thread the attacker id through the
+    optional-ability path, so a defender's afterDefend/onDamaged ability knows who shot
+    it. Dengar returns fire (afterDefend → charge → bonus attack vs the attacker).
+  - ☑ **Deplete token** — the attack-side strain (−1 attack die, spent on attack, shed
+    by a blue maneuver). Foundational for deplete-granting cards/weapons.
+  - ☐ Still to build: **setup window**; **condition cards**; **token transfer** (needs a
+    target decision); **grant deplete/strain to others** (needs the granting triggers —
+    System Phase choice, reload, etc.); **dice-can't-be-modified** (Midnight/Ember);
+    **after-destroyed auras** (fire onDestroyed for other ships); **"moved through a
+    ship"** triggers (only final placement + bump tracked today).
 
 # R4b — secondary weapons · devices · damage deck
 
