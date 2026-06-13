@@ -180,6 +180,20 @@ export function computePending(state: GameState): PendingDecision[] {
     const ship = state.ships.find((s) => s.id === state.linkedAction!.shipId);
     if (ship) return [linkedDecision(state, ship, state.linkedAction.action)];
   }
+  // A granted bonus attack pauses for its declaration (reuses the attack flow).
+  if (state.bonusAttack) {
+    const ship = state.ships.find((s) => s.id === state.bonusAttack!.shipId);
+    if (ship) {
+      const allowed = state.bonusAttack.targets;
+      const targets = enemies(state, ship)
+        .filter((t) => attackValue(ship, t) !== null && rangeBand(ship, t) !== null)
+        .filter((t) => !allowed || allowed.includes(t.id))
+        .map((s) => s.id);
+      return [
+        { type: 'declare-attack', playerId: ship.ownerId, shipId: ship.id, options: { targets, canPass: true } },
+      ];
+    }
+  }
   // An attack mid-resolution pauses for the current step's optional spends.
   if (state.combat) {
     const c = state.combat;

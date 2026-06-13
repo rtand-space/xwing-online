@@ -118,3 +118,11 @@ export const offerActionGrant = (
   candidates: ShipId[],
   spendForce = false,
 ): GameEvent => ({ type: 'GrantOffered', granterId: self.id, candidates, spendForce });
+
+/** Grant `self` a bonus attack (optionally restricted to `targets`); it reuses the
+ *  normal attack flow but does not count as the ship's engagement. */
+export const offerBonusAttack = (self: Ship, targets?: ShipId[]): GameEvent => ({
+  type: 'BonusAttackOffered',
+  shipId: self.id,
+  targets,
+});

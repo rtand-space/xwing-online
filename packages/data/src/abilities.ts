@@ -14,6 +14,7 @@ import {
   inRange,
   chargesFrom,
   offerActionGrant,
+  offerBonusAttack,
   registerAbility,
   rerollAttack,
   rerollDefence,
@@ -309,6 +310,19 @@ const ABILITIES: Record<string, Ability> = {
     attack: {
       onRollAttack: (ctx, self) => {
         if (ctx.attacker.id === self.id && ctx.range === 3) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // "Quickdraw" — fires back the instant the shields drop. Reactive (onShieldLost);
+  // costs a charge, so it's an optional offer that grants a bonus attack.
+  quickdraw: {
+    note: 'After you lose a shield, may spend a charge to perform a bonus primary attack.',
+    optional: {
+      onShieldLost: {
+        label: 'Quickdraw: spend a charge for a bonus attack',
+        available: ({ self }) => self.charges > 0,
+        resolve: ({ self }) => [spendCharge(self), offerBonusAttack(self)],
       },
     },
   },

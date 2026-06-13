@@ -305,6 +305,10 @@ export interface GameState {
   linkedAction?: { shipId: ShipId; action: ActionType; difficulty: Difficulty };
   /** An attack mid-resolution, paused for the current step's optional spends. */
   combat?: CombatState;
+  /** A bonus attack granted to a ship (optionally restricted to certain targets),
+   *  awaiting its declaration; reuses the normal attack flow but doesn't count as
+   *  the ship's engagement. */
+  bonusAttack?: { shipId: ShipId; targets?: ShipId[] };
   pending: PendingDecision[];
   gameOver: boolean;
 }

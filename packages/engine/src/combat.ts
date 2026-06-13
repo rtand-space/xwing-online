@@ -29,6 +29,8 @@ export interface AttackContext {
   target: Ship;
   range: number;
   obstructed: boolean;
+  /** True for a bonus attack — recorded on AttackDeclared so it doesn't engage. */
+  bonus?: boolean;
   attack: AttackFace[];
   defence: DefenceFace[];
   cursor: number;
@@ -64,6 +66,7 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       shipId: ctx.attacker.id,
       targetId: ctx.target.id,
       range: ctx.range,
+      bonus: ctx.bonus,
     });
   },
 
@@ -267,6 +270,7 @@ export function beginAttack(
   state: GameState,
   attackerId: string,
   targetId: string,
+  bonus = false,
 ): { events: GameEvent[]; attack: AttackFace[]; range: number; obstructed: boolean } {
   const attacker = state.ships.find((s) => s.id === attackerId)!;
   const target = state.ships.find((s) => s.id === targetId)!;
@@ -276,6 +280,7 @@ export function beginAttack(
     target,
     range: rangeBand(attacker, target) ?? 3,
     obstructed: lineObstructed(state, attacker, target),
+    bonus,
     attack: [],
     defence: [],
     cursor: state.rng.cursor,

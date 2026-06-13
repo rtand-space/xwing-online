@@ -117,6 +117,7 @@ export {
   friendliesInRange,
   gainToken,
   offerActionGrant,
+  offerBonusAttack,
   recoverCharge,
   rerollAttack,
   rerollDefence,

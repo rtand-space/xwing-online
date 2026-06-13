@@ -272,17 +272,20 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (pending.type !== 'declare-attack') return reject('Wrong phase');
       if (!pending.options.targets.includes(cmd.targetId)) return reject('Invalid target');
       // roll the dice, then pause for the attacker's optional spends
-      const { events, attack, range, obstructed } = beginAttack(state, ship.id, cmd.targetId);
-      return {
-        events: [
-          ...events,
-          { type: 'CombatBegan', attackerId: ship.id, targetId: cmd.targetId, range, obstructed, attack },
-        ],
-      };
+      const bonus = state.bonusAttack?.shipId === ship.id;
+      const { events, attack, range, obstructed } = beginAttack(state, ship.id, cmd.targetId, bonus);
+      const out: GameEvent[] = [
+        ...events,
+        { type: 'CombatBegan', attackerId: ship.id, targetId: cmd.targetId, range, obstructed, attack },
+      ];
+      if (bonus) out.push({ type: 'BonusAttackResolved' });
+      return { events: out };
     }
     case 'PassAttack': {
       if (pending.type !== 'declare-attack' || !pending.options.canPass)
         return reject('Cannot pass');
+      // declining a granted bonus attack just clears it (no engagement spent)
+      if (state.bonusAttack?.shipId === ship.id) return { events: [{ type: 'BonusAttackResolved' }] };
       return { events: [{ type: 'AttackPassed', shipId: ship.id }] };
     }
     case 'Modify': {

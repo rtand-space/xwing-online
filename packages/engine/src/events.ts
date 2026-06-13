@@ -87,7 +87,9 @@ export type GameEvent =
   | { type: 'LinkOffered'; shipId: ShipId; action: ActionType; difficulty: Difficulty }
   | { type: 'LinkResolved' }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
-  | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
+  | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number; bonus?: boolean }
+  | { type: 'BonusAttackOffered'; shipId: ShipId; targets?: ShipId[] }
+  | { type: 'BonusAttackResolved' }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }
   | {
       type: 'CombatBegan';

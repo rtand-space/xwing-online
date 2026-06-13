@@ -142,8 +142,14 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       if (e.kind === 'jam') return mapShip(state, e.shipId, gainJam);
       return mapShip(state, e.shipId, (s) => gainToken(s, e.kind, e.targetId));
     case 'AttackDeclared':
+      // a bonus attack is extra — it doesn't count as the ship's engagement
+      return e.bonus ? state : mapShip(state, e.shipId, (s) => ({ ...s, hasEngaged: true }));
     case 'AttackPassed':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasEngaged: true }));
+    case 'BonusAttackOffered':
+      return { ...state, bonusAttack: { shipId: e.shipId, targets: e.targets } };
+    case 'BonusAttackResolved':
+      return { ...state, bonusAttack: undefined };
     case 'DiceRolled':
       return { ...state, rng: { ...state.rng, cursor: state.rng.cursor + e.faces.length } };
     case 'CombatBegan':

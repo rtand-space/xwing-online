@@ -194,6 +194,28 @@ describe('reactive windows after combat', () => {
   });
 });
 
+describe('bonus attacks', () => {
+  it('a granted bonus attack reuses combat and does not spend engagement', () => {
+    let s = stateWith([ship('a', 'p', 0, 0, {}), ship('d', 'q', 0, 200, { agility: 0 })]);
+    s = applyEvent(s, { type: 'BonusAttackOffered', shipId: 'a' });
+    const dec = s.pending.find((p) => p.type === 'declare-attack' && p.shipId === 'a');
+    expect(dec?.type === 'declare-attack' && dec.options.targets).toEqual(['d']);
+
+    s = drive(s, { type: 'DeclareAttack', playerId: 'p', shipId: 'a', targetId: 'd' });
+    expect(s.combat?.attackerId).toBe('a'); // a real attack is now in progress
+    expect(s.bonusAttack).toBeUndefined();
+    expect(s.ships.find((x) => x.id === 'a')!.hasEngaged).toBe(false); // not its engagement
+  });
+
+  it('declining a bonus attack just clears it', () => {
+    let s = stateWith([ship('a', 'p', 0, 0, {}), ship('d', 'q', 0, 200, {})]);
+    s = applyEvent(s, { type: 'BonusAttackOffered', shipId: 'a' });
+    s = drive(s, { type: 'PassAttack', playerId: 'p', shipId: 'a' });
+    expect(s.bonusAttack).toBeUndefined();
+    expect(s.ships.find((x) => x.id === 'a')!.hasEngaged).toBe(false);
+  });
+});
+
 describe('interactive attack FSM', () => {
   it('pauses for the attacker, then the defender, then resolves', () => {
     let s = stateWith([
