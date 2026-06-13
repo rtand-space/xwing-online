@@ -37,6 +37,10 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} is coordinated — free action`;
     case 'GrantResolved':
       return null;
+    case 'LinkOffered':
+      return `${e.shipId} may link ${e.action}`;
+    case 'LinkResolved':
+      return null;
     case 'TokenGained':
       return `${e.shipId} gains ${e.kind}`;
     case 'TokenSpent':

@@ -141,6 +141,61 @@ describe('action difficulty', () => {
   });
 });
 
+describe('linked actions', () => {
+  it('offers a token link after the base action, charging the link difficulty', () => {
+    // Focus, linked to a red Evade
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['focus'],
+      actionLinks: { focus: { action: 'evade', difficulty: 'red' } },
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'focus' });
+    // the base focus is done and a linked evade is now offered
+    expect(s.ships[0]!.hasActed).toBe(true);
+    expect(s.linkedAction?.action).toBe('evade');
+    const link = s.pending.find((p) => p.type === 'perform-action' && p.shipId === 'a');
+    expect(link?.type === 'perform-action' && link.options.actions).toEqual(['evade']);
+
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'evade' });
+    const ship2 = s.ships[0]!;
+    expect(ship2.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    expect(ship2.tokens.some((t) => t.kind === 'evade')).toBe(true);
+    expect(ship2.tokens.filter((t) => t.kind === 'stress')).toHaveLength(1); // red link → stress
+    expect(s.linkedAction).toBeUndefined();
+  });
+
+  it('can decline the linked action', () => {
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['focus'],
+      actionLinks: { focus: { action: 'evade', difficulty: 'red' } },
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'focus' });
+    s = perform(s, { type: 'SkipAction', playerId: 'p', shipId: 'a' });
+    expect(s.linkedAction).toBeUndefined();
+    expect(s.ships[0]!.tokens.some((t) => t.kind === 'evade')).toBe(false);
+    expect(s.ships[0]!.tokens.some((t) => t.kind === 'stress')).toBe(false);
+  });
+
+  it('runs a linked reposition through the placement choice', () => {
+    // Focus, linked to a red Barrel Roll
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['focus'],
+      actionLinks: { focus: { action: 'barrel-roll', difficulty: 'red' } },
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'focus' });
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'barrel-roll' });
+    // now paused on the reposition placement
+    expect(s.pending[0]!.type).toBe('reposition');
+    s = perform(s, { type: 'Reposition', playerId: 'p', shipId: 'a', choice: 0 });
+    const ship2 = s.ships[0]!;
+    expect(ship2.pos).not.toEqual({ x: 0, y: 0, angle: 0 }); // moved
+    expect(ship2.tokens.filter((t) => t.kind === 'stress')).toHaveLength(1); // red link
+    expect(s.linkedAction).toBeUndefined();
+  });
+});
+
 describe('SLAM action', () => {
   it('offers maneuvers at the executed speed, then moves + disarms', () => {
     const a = ship('a', 'p', 0, 0, {

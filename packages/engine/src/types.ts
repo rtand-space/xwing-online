@@ -69,6 +69,12 @@ export interface ShipArc {
   value: number;
 }
 
+/** A follow-up action that may be performed immediately after a base action. */
+export interface ActionLink {
+  action: ActionType;
+  difficulty: Difficulty;
+}
+
 /** A legal destination for a boost/barrel-roll reposition. */
 export interface RepositionCandidate {
   label: string;
@@ -151,6 +157,8 @@ export interface Ship {
   actionBar: ActionType[];
   /** Per-action difficulty (red → stress, purple → spend Force); white if absent. */
   actionDifficulty?: Partial<Record<ActionType, Difficulty>>;
+  /** Per-action linked follow-up actions (perform B right after A). */
+  actionLinks?: Partial<Record<ActionType, ActionLink>>;
   dialOptions: Maneuver[];
   tokens: Token[];
   dial?: Maneuver;
@@ -242,6 +250,8 @@ export interface GameState {
   };
   /** A free action granted by a coordinate, awaiting that ship's choice; pauses the FSM. */
   grantedAction?: { shipId: ShipId };
+  /** A linked follow-up action offered after a base action; pauses the FSM. */
+  linkedAction?: { shipId: ShipId; action: ActionType; difficulty: Difficulty };
   pending: PendingDecision[];
   gameOver: boolean;
 }

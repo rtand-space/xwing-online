@@ -1,6 +1,7 @@
 export const ENGINE_VERSION = '0.0.0';
 
 export type {
+  ActionLink,
   ActionType,
   ArcKind,
   BaseSize,

@@ -1,5 +1,6 @@
 import type { AttackFace, DefenceFace } from './dice';
 import type {
+  ActionLink,
   ActionType,
   BaseSize,
   Difficulty,
@@ -43,6 +44,7 @@ export interface ShipInit {
   pos: Position;
   actionBar: ActionType[];
   actionDifficulty?: Partial<Record<ActionType, Difficulty>>;
+  actionLinks?: Partial<Record<ActionType, ActionLink>>;
   dialOptions: Maneuver[];
 }
 
@@ -80,6 +82,8 @@ export type GameEvent =
   | { type: 'Repositioned'; shipId: ShipId; to: Position }
   | { type: 'ActionGranted'; shipId: ShipId }
   | { type: 'GrantResolved' }
+  | { type: 'LinkOffered'; shipId: ShipId; action: ActionType; difficulty: Difficulty }
+  | { type: 'LinkResolved' }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }

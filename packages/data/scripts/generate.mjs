@@ -79,7 +79,15 @@ for (const faction of readdirSync(pilotsDir)) {
       stats: j.stats.map((s) =>
         s.arc ? { type: s.type, arc: s.arc, value: s.value } : { type: s.type, value: s.value },
       ),
-      actions: j.actions.map((a) => ({ type: a.type, difficulty: a.difficulty })),
+      actions: j.actions.map((a) =>
+        a.linked
+          ? {
+              type: a.type,
+              difficulty: a.difficulty,
+              linked: { type: a.linked.type, difficulty: a.linked.difficulty },
+            }
+          : { type: a.type, difficulty: a.difficulty },
+      ),
       dial: j.dial,
       pilots: j.pilots.map((p) => {
         const x = xwaPilots[p.xws];

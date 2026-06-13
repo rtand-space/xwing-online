@@ -1,4 +1,5 @@
 import type {
+  ActionLink,
   ActionType,
   ArcKind,
   BaseSize,
@@ -78,6 +79,18 @@ function actionDifficulty(ship: ShipData): Partial<Record<ActionType, Difficulty
   return out;
 }
 
+function actionLinks(ship: ShipData): Partial<Record<ActionType, ActionLink>> {
+  const out: Partial<Record<ActionType, ActionLink>> = {};
+  for (const a of ship.actions) {
+    const base = ACTIONS[a.type];
+    const linked = a.linked && ACTIONS[a.linked.type];
+    if (base && a.linked && linked) {
+      out[base] = { action: linked, difficulty: DIFFICULTY[a.linked.difficulty] ?? 'white' };
+    }
+  }
+  return out;
+}
+
 /** Build an engine ShipInit from card data — the data→engine bridge. */
 export function toShipInit(
   shipXws: string,
@@ -121,6 +134,7 @@ export function toShipInit(
     pos,
     actionBar: actionBar(ship),
     actionDifficulty: actionDifficulty(ship),
+    actionLinks: actionLinks(ship),
     dialOptions: parseDial(ship.dial),
   };
 }

@@ -385,7 +385,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
@@ -393,7 +397,11 @@
       },
       {
         "type": "Reload",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Evade",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -557,19 +565,35 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       },
       {
         "type": "Evade",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       },
       {
         "type": "Lock",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       }
     ],
     "dial": [
@@ -852,7 +876,11 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       },
       {
         "type": "Evade",
@@ -864,11 +892,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "White"
+        }
       }
     ],
     "dial": [
@@ -1606,11 +1642,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -1726,7 +1770,11 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
@@ -2007,7 +2055,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Evade",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -2109,7 +2161,11 @@
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Reload",
@@ -3150,7 +3206,11 @@
       },
       {
         "type": "Rotate Arc",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Calculate",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -3257,7 +3317,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Reload",
@@ -5249,7 +5313,11 @@
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -5390,7 +5458,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Evade",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -5542,7 +5614,11 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
@@ -5876,7 +5952,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Evade",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -6391,11 +6471,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -6494,11 +6582,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -6719,11 +6815,19 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
@@ -10535,11 +10639,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -11091,11 +11203,19 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
@@ -11230,11 +11350,19 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Rotate Arc",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Barrel Roll",
@@ -12072,15 +12200,27 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Boost",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Evade",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
@@ -12449,11 +12589,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -12911,11 +13059,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Focus",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -13026,11 +13182,19 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Evade",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Boost",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Calculate",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -13515,7 +13679,11 @@
       },
       {
         "type": "Reload",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Calculate",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [
@@ -13645,7 +13813,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Lock",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Reload",
@@ -13918,15 +14090,27 @@
     "actions": [
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Boost",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Focus",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Evade",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Barrel Roll",
+          "difficulty": "Red"
+        }
       },
       {
         "type": "Lock",
@@ -14231,7 +14415,11 @@
       },
       {
         "type": "Barrel Roll",
-        "difficulty": "White"
+        "difficulty": "White",
+        "linked": {
+          "type": "Calculate",
+          "difficulty": "Red"
+        }
       }
     ],
     "dial": [

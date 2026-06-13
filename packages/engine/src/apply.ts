@@ -124,6 +124,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return { ...state, grantedAction: { shipId: e.shipId } };
     case 'GrantResolved':
       return { ...state, grantedAction: undefined };
+    case 'LinkOffered':
+      return {
+        ...state,
+        linkedAction: { shipId: e.shipId, action: e.action, difficulty: e.difficulty },
+      };
+    case 'LinkResolved':
+      return { ...state, linkedAction: undefined };
     case 'TokenGained':
       if (e.kind === 'jam') return mapShip(state, e.shipId, gainJam);
       return mapShip(state, e.shipId, (s) => gainToken(s, e.kind, e.targetId));

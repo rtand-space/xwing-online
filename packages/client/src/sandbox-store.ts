@@ -32,6 +32,7 @@ const shipToInit = (s: Ship): ShipInit => ({
   pos: s.pos,
   actionBar: s.actionBar,
   actionDifficulty: s.actionDifficulty,
+  actionLinks: s.actionLinks,
   dialOptions: s.dialOptions,
 });
 

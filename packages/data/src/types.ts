@@ -8,6 +8,8 @@ export interface Stat {
 export interface ActionData {
   type: string;
   difficulty: string;
+  /** A linked action that may be performed immediately after this one. */
+  linked?: { type: string; difficulty: string };
 }
 
 export interface PilotData {

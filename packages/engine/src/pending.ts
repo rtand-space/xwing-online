@@ -80,6 +80,32 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
 /** Free actions a coordinate can grant (no nested targets/repositions for now). */
 const GRANTABLE: ActionType[] = ['focus', 'evade', 'calculate', 'reinforce', 'rotate-arc', 'reload'];
 
+/** The follow-up choice offered after a base action with a linked action. The
+ *  single linked action is offered (gated by legality), with skip always allowed. */
+function linkedDecision(state: GameState, ship: Ship, action: ActionType): PendingDecision {
+  let actions: ActionType[] = [action];
+  if (action === 'boost' || action === 'barrel-roll') {
+    if (repositionCandidates(state, ship, action).length === 0) actions = [];
+  } else if (action === 'slam' && slamCandidates(state, ship).length === 0) {
+    actions = [];
+  }
+  const lockTargets = action === 'lock' ? enemies(state, ship).map((s) => s.id) : [];
+  const jamTargets =
+    action === 'jam'
+      ? enemies(state, ship)
+          .filter((t) => rangeBand(ship, t) === 1)
+          .map((s) => s.id)
+      : [];
+  if (action === 'jam' && jamTargets.length === 0) actions = [];
+  if (action === 'lock' && lockTargets.length === 0) actions = [];
+  return {
+    type: 'perform-action',
+    playerId: ship.ownerId,
+    shipId: ship.id,
+    options: { actions, lockTargets, jamTargets, coordinateTargets: [], canSkip: true },
+  };
+}
+
 /** The granted ship's free-action choice from a coordinate. */
 function grantedDecision(ship: Ship): PendingDecision {
   const actions = isStressed(ship) ? [] : ship.actionBar.filter((a) => GRANTABLE.includes(a));
@@ -133,6 +159,11 @@ export function computePending(state: GameState): PendingDecision[] {
         },
       ];
     }
+  }
+  // A linked follow-up action pauses the FSM for the ship's use/skip choice.
+  if (state.linkedAction) {
+    const ship = state.ships.find((s) => s.id === state.linkedAction!.shipId);
+    if (ship) return [linkedDecision(state, ship, state.linkedAction.action)];
   }
   switch (state.phase) {
     case 'planning':

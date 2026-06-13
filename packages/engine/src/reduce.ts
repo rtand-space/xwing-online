@@ -12,6 +12,7 @@ import { pathAt } from './templates';
 import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
 import type {
   ActionType,
+  Difficulty,
   GameState,
   GameWindow,
   Maneuver,
@@ -46,11 +47,21 @@ function reloadCharge(ship: Ship): GameEvent | null {
 }
 
 /** A red action gains stress; a purple action spends Force. White costs nothing. */
-function actionCost(ship: Ship, action: ActionType): GameEvent[] {
-  const d = ship.actionDifficulty?.[action] ?? 'white';
-  if (d === 'red') return [{ type: 'StressChanged', shipId: ship.id, delta: 1 }];
-  if (d === 'purple') return [{ type: 'ForceChanged', shipId: ship.id, delta: -1 }];
+function costFor(shipId: string, d: Difficulty): GameEvent[] {
+  if (d === 'red') return [{ type: 'StressChanged', shipId, delta: 1 }];
+  if (d === 'purple') return [{ type: 'ForceChanged', shipId, delta: -1 }];
   return [];
+}
+
+const actionDiff = (ship: Ship, action: ActionType): Difficulty =>
+  ship.actionDifficulty?.[action] ?? 'white';
+
+/** Offer a base action's linked follow-up, if it has one. */
+function linkOffer(ship: Ship, action: ActionType): GameEvent[] {
+  const link = ship.actionLinks?.[action];
+  return link
+    ? [{ type: 'LinkOffered', shipId: ship.id, action: link.action, difficulty: link.difficulty }]
+    : [];
 }
 
 /** Token/effect events for a self-targeted action — used both by the normal action
@@ -169,7 +180,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         return {
           events: [
             ...freeActionEffects(ship, cmd.action),
-            ...actionCost(ship, cmd.action),
+            ...costFor(ship.id, actionDiff(ship, cmd.action)),
             { type: 'GrantResolved' },
           ],
         };
@@ -224,7 +235,11 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         }
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'lock', targetId: cmd.targetId });
       }
-      events.push(...actionCost(ship, cmd.action));
+      // a linked follow-up charges the link's difficulty and ends the chain;
+      // a base action charges its own difficulty and offers its link (if any)
+      const isLinked = state.linkedAction?.shipId === ship.id;
+      events.push(...costFor(ship.id, isLinked ? state.linkedAction!.difficulty : actionDiff(ship, cmd.action)));
+      events.push(...(isLinked ? [{ type: 'LinkResolved' as const }] : linkOffer(ship, cmd.action)));
       const out = appendWindow(state, events, 'onPerformAction', ship.id, events[0]);
       if (isIonized(ship)) out.push(...ionShed(ship));
       return { events: out };
@@ -232,7 +247,8 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'SkipAction': {
       if (pending.type !== 'perform-action' || !pending.options.canSkip)
         return reject('Cannot skip');
-      // declining a coordinate's free action just ends the grant
+      // declining a linked follow-up or a coordinate's free action just ends it
+      if (state.linkedAction?.shipId === ship.id) return { events: [{ type: 'LinkResolved' }] };
       if (state.grantedAction?.shipId === ship.id) return { events: [{ type: 'GrantResolved' }] };
       const events: GameEvent[] = [{ type: 'ActionSkipped', shipId: ship.id }];
       if (isIonized(ship)) events.push(...ionShed(ship));
@@ -286,7 +302,10 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         { type: 'ActionPerformed', shipId: ship.id, action },
       ];
       if (action === 'slam') events.push({ type: 'TokenGained', shipId: ship.id, kind: 'disarm' });
-      events.push(...actionCost(ship, action));
+      // a linked reposition charges the link's difficulty and ends the chain
+      const isLinked = state.linkedAction?.shipId === ship.id && state.linkedAction.action === action;
+      events.push(...costFor(ship.id, isLinked ? state.linkedAction!.difficulty : actionDiff(ship, action)));
+      events.push(...(isLinked ? [{ type: 'LinkResolved' as const }] : linkOffer(ship, action)));
       return { events: appendWindow(state, events, 'onPerformAction', ship.id, events[1]) };
     }
   }
