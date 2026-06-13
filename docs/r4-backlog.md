@@ -181,10 +181,14 @@ Working through the hooks the sweep needs, highest-leverage first.
     serialisable `EffectSpec` (transfer/grant/remove token) applied to the chosen ship.
     Axe rides it (pass a green token to a side-arc wingmate). Unlocks the whole
     choose-a-ship-and-move/grant/remove-a-token class.
-  - ☐ Still to build: **setup window**; **condition cards**; a **System-/Engagement-Phase
-    ability window** (so phase-start token-grants like von Reg/Muse/Holo can use the
-    target-select primitive); **"moved through a ship"** triggers (only final placement +
-    bump tracked today).
+  - ☑ **Phase-start ability windows** — `nextPhaseOffer` offers `onSystemPhase` /
+    `onEngagementStart` abilities in initiative order (one at a time, tracked done per
+    phase). Major von Reg (System → strain a bullseye enemy) and Muse (engagement start
+    → clear a wingmate's stress) ride it via target-select.
+  - ☐ Still to build (lower-leverage / bigger): **condition cards** (a subsystem —
+    assignable markers with their own abilities); **setup window** (most setup abilities
+    also need conditions/repositioning); **"moved through a ship"** triggers (only final
+    placement + bump tracked today). **9 reusable hooks** built so far.
 
 # R4b — secondary weapons · devices · damage deck
 
