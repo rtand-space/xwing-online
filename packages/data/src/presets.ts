@@ -116,6 +116,27 @@ export interface PilotChoice {
   loadout: number;
   slots: string[];
   faction: string;
+  /** Short tag for scenario/alt-art reprints sharing a name, e.g. "BoY"; else undefined. */
+  variant?: string;
+}
+
+const VARIANT_TAGS: Record<string, string> = {
+  battleofyavin: 'BoY',
+  battleoverendor: 'BoE',
+  siegeofcoruscant: 'SoC',
+  evacuationofdqar: 'Evac',
+  armedanddangerous: 'A&D',
+  legendsandrelics: 'L&R',
+  wartime: 'Wartime',
+};
+
+/** A short reprint tag for a pilot xws (BoY etc., or a SWZ set code), or undefined. */
+export function pilotVariant(xws: string): string | undefined {
+  for (const t of xws.split('-')) {
+    if (VARIANT_TAGS[t]) return VARIANT_TAGS[t];
+    if (/^swz\d+$/.test(t)) return t.toUpperCase();
+  }
+  return undefined;
 }
 
 /** Flat list of selectable pilots, optionally filtered to one faction. */
@@ -134,6 +155,7 @@ export function pilotChoices(faction?: string): PilotChoice[] {
         loadout: p.loadout,
         slots: p.slots,
         faction: ship.faction,
+        variant: pilotVariant(p.xws),
       });
     }
   }

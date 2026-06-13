@@ -1,4 +1,4 @@
-import { getPilot, getShip, getUpgrade, upgradesForSlot } from './loaders';
+import { getPilot, getShip, getUpgrade, pilotFaction, upgradesForSlot } from './loaders';
 import { FACTIONS, XWS_FACTION, type FactionId } from './presets';
 import type { UpgradeData } from './types';
 import type { XwsSquad } from './xws';
@@ -70,8 +70,8 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
   for (const p of squad.pilots) {
     let pilot;
     try {
-      factions.add(getShip(p.ship).faction);
       pilot = getPilot(p.ship, p.id);
+      factions.add(pilotFaction(p.ship, p.id));
     } catch (e) {
       errors.push((e as Error).message);
       continue;

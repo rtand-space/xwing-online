@@ -21,6 +21,7 @@ export {
   PRESETS,
   presetConfig,
   pilotChoices,
+  pilotVariant,
   randomObstacles,
   sideShipInits,
   XWS_FACTION,

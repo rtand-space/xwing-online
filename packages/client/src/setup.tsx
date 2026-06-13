@@ -17,6 +17,7 @@ import {
   XWS_FACTION,
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
+import { type Pick, newPick, useBuilder } from './builder-store';
 import { useOnline } from './online-store';
 import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
@@ -30,14 +31,6 @@ const factionLabel = (xws: string): string => FACTIONS[FACTION_BY_XWS[xws] ?? 'r
 
 const MAX_SHIPS = 8;
 const seed = (): string => String(Date.now());
-
-/** A chosen pilot plus its equipped upgrades, aligned index-for-index to its slots. */
-interface Pick {
-  choice: PilotChoice;
-  equip: (string | null)[];
-}
-
-const newPick = (choice: PilotChoice): Pick => ({ choice, equip: choice.slots.map(() => null) });
 
 const equipCost = (equip: (string | null)[]): number =>
   equip.reduce((s, x) => s + (x ? (getUpgrade(x).cost ?? 0) : 0), 0);
@@ -330,6 +323,7 @@ function SquadColumn({
             <div className="pickHead">
               <span>
                 {p.choice.shipName} · {p.choice.pilotName}{' '}
+                {p.choice.variant && <span className="variantTag">{p.choice.variant}</span>}{' '}
                 <span className="ini">I{p.choice.initiative}</span>
               </span>
               <span className="rosterEnd">
@@ -386,8 +380,9 @@ function SquadColumn({
             <div className="opts">
               {pilots.map((o) => (
                 <button key={o.pilotXws} className="btn sm" onClick={() => add(o)}>
-                  + {o.pilotName} <span className="ini">I{o.initiative}</span>{' '}
-                  <span className="muted">{o.cost}p</span>
+                  + {o.pilotName}{' '}
+                  {o.variant && <span className="variantTag">{o.variant}</span>}{' '}
+                  <span className="ini">I{o.initiative}</span> <span className="muted">{o.cost}p</span>
                   {implementedAbility(o.pilotXws) && (
                     <span className="abilityTag" title={abilityNote(o.pilotXws)}>
                       ability
@@ -413,10 +408,7 @@ export function SquadBuilder(): ReactElement {
   const squads = useSquads((s) => s.squads);
   const save = useSquads((s) => s.save);
   const remove = useSquads((s) => s.remove);
-  const [editing, setEditing] = useState<null | 'new' | string>(null);
-  const [faction, setFaction] = useState<FactionId>('rebel');
-  const [picks, setPicks] = useState<Pick[]>([]);
-  const [name, setName] = useState('');
+  const { editing, faction, picks, name, setEditing, setFaction, setPicks, setName } = useBuilder();
 
   useEffect(() => void useSquads.getState().refresh(), []);
 

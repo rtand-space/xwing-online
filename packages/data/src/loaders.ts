@@ -28,6 +28,15 @@ export function getPilot(shipXws: string, pilotXws: string): PilotData {
   throw new Error(`Unknown pilot ${pilotXws} on ${shipXws}`);
 }
 
+// A hull can appear under several factions with different pilot lists, so the
+// faction is the one whose entry actually carries this pilot — not the first hull.
+export function pilotFaction(shipXws: string, pilotXws: string): string {
+  for (const s of SHIPS) {
+    if (s.xws === shipXws && s.pilots.some((p) => p.xws === pilotXws)) return s.faction;
+  }
+  throw new Error(`Unknown pilot ${pilotXws} on ${shipXws}`);
+}
+
 const UPGRADES = upgradesData as unknown as UpgradeData[];
 const upByXws = new Map(UPGRADES.map((u) => [u.xws, u]));
 

@@ -39,6 +39,12 @@ describe('squad validation', () => {
     expect(r.errors.join(' ')).toMatch(/cap/i);
   });
 
+  it('accepts a hull shared across factions (ARC-170 is Rebel here, not its first listing)', () => {
+    const arc = { id: 'ibtisam', ship: 'arc170starfighter' };
+    const r = validateSquad(squad('rebelalliance', [blue, red, arc]));
+    expect(r.errors.join(' ')).not.toMatch(/one faction/i);
+  });
+
   it('rejects mixed factions', () => {
     const r = validateSquad(squad('rebelalliance', [blue, academy, academy]));
     expect(r.valid).toBe(false);
