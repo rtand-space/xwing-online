@@ -141,7 +141,21 @@ Status: ☐ not started
 # Sweep
 
 ## R4-M7 — Sweep & cleanup
-- ☐ **T4-X1** The card-implementation sweep — now that the mechanics exist, register
-  the large batch of newly-implementable pilots/upgrades (behaviour-only, paraphrased).
+- ◐ **T4-X1** The card-implementation sweep (behaviour-only paraphrases, never card
+  text). Scale: **~970 cards** carry an ability (522 pilots + 446 available upgrades).
+  Decision (user): **build the missing ability-engine hooks first**, then sweep.
+  - **Quick builds:** xwing-data2 ships preset pilot+upgrade combos; **69** of the
+    upgrades they use aren't in the XWA points feed (quick-build-only / scenario
+    reprints). The generator now flags each upgrade `available`; `upgradeOptions`
+    hides the non-available ones so only XWA-legal cards fill normal slots.
+  - **First batch registered:** Gideon Hask, Graz, Ahhav, Lt. Blount, Laetin A'shera,
+    "Night Beast" (clean attack/defence modifiers + a blue-maneuver focus).
+  - **Hook built — cross-ship action grants:** an ability can offer "choose a friendly
+    at range N; it performs a free action" (optional Force cost) via a `grantOffer` +
+    `grant-target` decision reusing the coordinate `grantedAction` flow. Unlocks the
+    ~27 "after X, a friendly may act" cards; **Ahsoka Tano** + **Airen Cracken** ride it.
+  - *Hooks still to build to unlock more: a **setup window**; confirm **Force-spend
+    attack/defence** abilities work as auto-spend mandatory hooks (like Crack Shot) so
+    they need no new hook. Suffix-variant pilot xws need separate registration.*
 - ☐ **T4-X2** Exact geometry for the advanced bearings (Tallon Roll / reverse, which
   are approximated today).
