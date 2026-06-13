@@ -69,10 +69,18 @@ function randomChoice(seedStr: string): Chooser {
               targetId: pick(p.options.candidates),
             }
           : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
-      case 'modify':
-        return p.options.spends.length && pick([true, false])
-          ? { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: pick(p.options.spends) }
-          : { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
+      case 'modify': {
+        const moves = [
+          ...p.options.spends.map((spend) => ({ kind: 'spend', spend }) as const),
+          ...p.options.abilities.map((a) => ({ kind: 'ability', xws: a.xws }) as const),
+        ];
+        if (!moves.length || !pick([true, false]))
+          return { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
+        const m = pick(moves);
+        return m.kind === 'spend'
+          ? { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: m.spend }
+          : { type: 'UseModifyAbility', playerId: p.playerId, shipId: p.shipId, xws: m.xws };
+      }
     }
   };
 }

@@ -1,5 +1,5 @@
 import { attackValue, rangeBand } from './arcs';
-import { combatSpends } from './combat';
+import { combatAbilities, combatSpends } from './combat';
 import { obstaclesAt } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
 import { isCloaked, isDisarmed, isIonized } from './tokens';
@@ -190,7 +190,7 @@ export function computePending(state: GameState): PendingDecision[] {
           type: 'modify',
           playerId: ship.ownerId,
           shipId: ship.id,
-          options: { step: c.step, spends: combatSpends(state, c) },
+          options: { step: c.step, spends: combatSpends(state, c), abilities: combatAbilities(state, c) },
         },
       ];
     }

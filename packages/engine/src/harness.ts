@@ -50,9 +50,16 @@ export const firstChoice: Chooser = (p) => {
           }
         : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
     case 'modify':
-      return p.options.spends.length
-        ? { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: p.options.spends[0]! }
-        : { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
+      if (p.options.spends.length)
+        return { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: p.options.spends[0]! };
+      if (p.options.abilities.length)
+        return {
+          type: 'UseModifyAbility',
+          playerId: p.playerId,
+          shipId: p.shipId,
+          xws: p.options.abilities[0]!.xws,
+        };
+      return { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
   }
 };
 

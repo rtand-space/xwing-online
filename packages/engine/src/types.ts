@@ -17,6 +17,10 @@ export interface CombatState {
   defence: DefenceFace[];
   /** Whose modify step is open: the attacker's, then the defender's. */
   step: 'attack' | 'defence';
+  /** Set once a result has been changed; rerolls are then no longer offered. */
+  changed?: boolean;
+  /** Optional abilities already used this attack (offered at most once each). */
+  usedAbilities?: string[];
 }
 
 /** Board coordinates in real-world millimetres (matches the tabletop). */
@@ -247,7 +251,11 @@ export type PendingDecision =
       type: 'modify';
       playerId: PlayerId;
       shipId: ShipId;
-      options: { step: 'attack' | 'defence'; spends: SpendKind[] };
+      options: {
+        step: 'attack' | 'defence';
+        spends: SpendKind[];
+        abilities: { xws: string; label: string }[];
+      };
     };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */

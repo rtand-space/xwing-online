@@ -22,4 +22,5 @@ export type Command =
   | { type: 'GrantAction'; playerId: PlayerId; shipId: ShipId; targetId: ShipId }
   | { type: 'DeclineGrant'; playerId: PlayerId; shipId: ShipId }
   | { type: 'Modify'; playerId: PlayerId; shipId: ShipId; spend: SpendKind }
+  | { type: 'UseModifyAbility'; playerId: PlayerId; shipId: ShipId; xws: string }
   | { type: 'ModifyDone'; playerId: PlayerId; shipId: ShipId };

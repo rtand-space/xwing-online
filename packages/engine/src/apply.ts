@@ -167,6 +167,10 @@ function applyCore(state: GameState, e: GameEvent): GameState {
               ...state.combat,
               attack: e.attack ?? state.combat.attack,
               defence: e.defence ?? state.combat.defence,
+              changed: e.changed || state.combat.changed,
+              usedAbilities: e.usedAbility
+                ? [...(state.combat.usedAbilities ?? []), e.usedAbility]
+                : state.combat.usedAbilities,
             },
           }
         : state;

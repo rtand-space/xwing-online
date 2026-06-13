@@ -29,10 +29,22 @@ export interface OptionalAbility {
   resolve: (ctx: GameContext) => GameEvent[];
 }
 
+/** An optional ("may") in-combat ability the owner is offered during a modify step. */
+export interface OptionalAttackHook {
+  label: string;
+  /** Rerolls must resolve before result changes; flagged so ordering is enforced. */
+  reroll?: boolean;
+  available: (ctx: AttackContext, self: Ship) => boolean;
+  apply: (ctx: AttackContext, self: Ship) => void;
+}
+
 export interface Ability {
   /** A short, original paraphrase (never the card's printed text). */
   note?: string;
+  /** Mandatory dice effects, auto-applied at their window. */
   attack?: Partial<Record<AttackWindow, AttackAbilityHook>>;
+  /** Optional ("may") dice effects, offered to the owner during the modify step. */
+  optionalAttack?: Partial<Record<AttackWindow, OptionalAttackHook>>;
   /** Mandatory game-window effects, auto-applied. */
   game?: Partial<Record<GameWindow, GameAbilityHook>>;
   /** Optional game-window effects, offered to the owner to use or skip. */

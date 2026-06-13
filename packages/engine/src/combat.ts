@@ -1,4 +1,4 @@
-import { gatherAttackHooks } from './abilities';
+import { gatherAttackHooks, getAbility, shipAbilitySources } from './abilities';
 import { attackValue, rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
@@ -296,8 +296,10 @@ export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
   const pool: (AttackFace | DefenceFace)[] = c.step === 'attack' ? c.attack : c.defence;
   const opts: SpendKind[] = [];
   if (hasToken(ship, 'focus') && pool.includes('focus')) opts.push('focus');
+  // a lock reroll is only offered before any result has been changed
   if (
     c.step === 'attack' &&
+    !c.changed &&
     ship.tokens.some((t) => t.kind === 'lock' && t.targetId === c.targetId) &&
     pool.includes('blank')
   )
@@ -305,6 +307,40 @@ export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
   if (countTokens(ship, 'calculate') > 0 && pool.includes('focus')) opts.push('calculate');
   if ((ship.force ?? 0) > 0 && pool.includes('focus')) opts.push('force');
   return opts;
+}
+
+/** The step owner's available optional ("may") abilities for the current modify step. */
+export function combatAbilities(
+  state: GameState,
+  c: CombatState,
+): { xws: string; label: string }[] {
+  const window = c.step === 'attack' ? 'onModifyAttack' : 'onModifyDefence';
+  const owner = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
+  const ctx = makeCtx(state, c);
+  const out: { xws: string; label: string }[] = [];
+  for (const xws of shipAbilitySources(owner)) {
+    const opt = getAbility(xws)?.optionalAttack?.[window];
+    if (!opt || (opt.reroll && c.changed)) continue; // rerolls only before changes
+    if (c.usedAbilities?.includes(xws)) continue; // each offered at most once per attack
+    if (opt.available(ctx, owner)) out.push({ xws, label: opt.label });
+  }
+  return out;
+}
+
+/** Apply one optional ability to the active pool; returns the new pool + events. */
+export function applyOptionalAbility(
+  state: GameState,
+  c: CombatState,
+  xws: string,
+): { attack?: AttackFace[]; defence?: DefenceFace[]; events: GameEvent[]; changed: boolean } {
+  const window = c.step === 'attack' ? 'onModifyAttack' : 'onModifyDefence';
+  const owner = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
+  const opt = getAbility(xws)!.optionalAttack![window]!;
+  const ctx = makeCtx(state, c);
+  opt.apply(ctx, owner);
+  return c.step === 'attack'
+    ? { attack: ctx.attack, events: ctx.events, changed: !opt.reroll }
+    : { defence: ctx.defence, events: ctx.events, changed: !opt.reroll };
 }
 
 /** Apply one optional spend to the active pool; returns the new pool + events. */

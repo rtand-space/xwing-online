@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { applyEvent, computePending, reduce } from './index';
-import { applySpend, combatSpends } from './combat';
+import { applyEvent, clearAbilities, computePending, reduce, registerAbility } from './index';
+import { applySpend, combatAbilities, combatSpends } from './combat';
 import type { CombatState, GameState, Ship } from './index';
 import { xwing } from './index';
 
@@ -81,6 +81,51 @@ describe('combatSpends / applySpend (pure)', () => {
     const r = applySpend(s, base({ step: 'defence', defence: ['focus', 'blank'] }), 'focus');
     expect(r.defence).toEqual(['evade', 'blank']);
     expect(r.events).toEqual([{ type: 'TokenSpent', shipId: 'd', kind: 'focus' }]);
+  });
+});
+
+describe('optional abilities + reroll ordering', () => {
+  const cs = (over: Partial<CombatState> = {}): CombatState => ({
+    attackerId: 'a',
+    targetId: 'd',
+    range: 2,
+    obstructed: false,
+    attack: ['hit', 'blank'],
+    defence: [],
+    step: 'attack',
+    ...over,
+  });
+
+  it('offers an optional attack ability only while available, once per attack', () => {
+    clearAbilities();
+    registerAbility('mark', {
+      optionalAttack: {
+        onModifyAttack: {
+          label: 'hit → crit',
+          available: (ctx) => ctx.attack.includes('hit'),
+          apply: (ctx) => {
+            ctx.attack = ctx.attack.map((f) => (f === 'hit' ? 'crit' : f));
+          },
+        },
+      },
+    });
+    const s = stateWith([
+      ship('a', 'p', 0, 0, { pilotXws: 'mark' }),
+      ship('d', 'q', 0, 200, {}),
+    ]);
+    expect(combatAbilities(s, cs()).map((x) => x.xws)).toEqual(['mark']);
+    expect(combatAbilities(s, cs({ usedAbilities: ['mark'] }))).toEqual([]); // used up
+    expect(combatAbilities(s, cs({ attack: ['blank'] }))).toEqual([]); // not available
+    clearAbilities();
+  });
+
+  it('stops offering a lock reroll once a result has been changed', () => {
+    const s = stateWith([
+      ship('a', 'p', 0, 0, { tokens: [{ kind: 'lock', targetId: 'd' }] }),
+      ship('d', 'q', 0, 200, {}),
+    ]);
+    expect(combatSpends(s, cs({ attack: ['blank'] }))).toContain('lock');
+    expect(combatSpends(s, cs({ attack: ['blank'], changed: true }))).not.toContain('lock');
   });
 });
 

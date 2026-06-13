@@ -2,6 +2,7 @@ import { fireWindow, findOffer, resolveOptional } from './abilities';
 import { applyEvent } from './apply';
 import {
   applyAttackAbilities,
+  applyOptionalAbility,
   applySpend,
   beginAttack,
   finishCombat,
@@ -135,6 +136,7 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   GrantAction: 'grant-target',
   DeclineGrant: 'grant-target',
   Modify: 'modify',
+  UseModifyAbility: 'modify',
   ModifyDone: 'modify',
 };
 
@@ -285,7 +287,30 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (pending.type !== 'modify' || !state.combat) return reject('No combat');
       if (!pending.options.spends.includes(cmd.spend)) return reject('Spend not available');
       const r = applySpend(state, state.combat, cmd.spend);
-      return { events: [...r.events, { type: 'CombatDiceSet', attack: r.attack, defence: r.defence }] };
+      // a lock is a reroll; focus/calculate/force change results (locking out rerolls)
+      return {
+        events: [
+          ...r.events,
+          { type: 'CombatDiceSet', attack: r.attack, defence: r.defence, changed: cmd.spend !== 'lock' },
+        ],
+      };
+    }
+    case 'UseModifyAbility': {
+      if (pending.type !== 'modify' || !state.combat) return reject('No combat');
+      if (!pending.options.abilities.some((a) => a.xws === cmd.xws)) return reject('Unavailable');
+      const r = applyOptionalAbility(state, state.combat, cmd.xws);
+      return {
+        events: [
+          ...r.events,
+          {
+            type: 'CombatDiceSet',
+            attack: r.attack,
+            defence: r.defence,
+            changed: r.changed,
+            usedAbility: cmd.xws,
+          },
+        ],
+      };
     }
     case 'ModifyDone': {
       if (pending.type !== 'modify' || !state.combat) return reject('No combat');

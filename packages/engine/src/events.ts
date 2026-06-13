@@ -97,7 +97,13 @@ export type GameEvent =
       obstructed: boolean;
       attack: AttackFace[];
     }
-  | { type: 'CombatDiceSet'; attack?: AttackFace[]; defence?: DefenceFace[] }
+  | {
+      type: 'CombatDiceSet';
+      attack?: AttackFace[];
+      defence?: DefenceFace[];
+      changed?: boolean;
+      usedAbility?: string;
+    }
   | { type: 'CombatAdvanced'; defence: DefenceFace[] }
   | { type: 'CombatEnded' }
   | { type: 'TokenSpent'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }

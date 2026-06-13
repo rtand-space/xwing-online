@@ -328,6 +328,17 @@ export function Controls({
               Spend {s}
             </button>
           ))}
+          {p.options.abilities.map((a) => (
+            <button
+              key={a.xws}
+              className="btn"
+              onClick={() =>
+                send({ type: 'UseModifyAbility', playerId: p.playerId, shipId: p.shipId, xws: a.xws })
+              }
+            >
+              {a.label}
+            </button>
+          ))}
           <button
             className="btn primary"
             onClick={() => send({ type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId })}

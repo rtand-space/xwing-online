@@ -93,38 +93,39 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
-  // Predator (Talent) — reroll a die against a target in your bullseye arc.
+  // Predator (Talent) — may reroll a die against a target in your bullseye arc.
   predator: {
-    note: 'While attacking a target in your bullseye arc, reroll 1 blank attack die.',
-    attack: {
-      onModifyAttack: (ctx, self) => {
-        if (ctx.attacker.id === self.id && inBullseye(ctx.attacker, ctx.target)) {
-          rerollAttack(ctx, 'blank', 1);
-        }
+    note: 'While attacking a target in your bullseye arc, may reroll 1 blank attack die.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Predator: reroll a blank',
+        reroll: true,
+        available: (ctx) => inBullseye(ctx.attacker, ctx.target) && ctx.attack.includes('blank'),
+        apply: (ctx) => rerollAttack(ctx, 'blank', 1),
       },
     },
   },
 
-  // Marksmanship (Talent) — upgrade a hit to a crit against a bullseye target.
+  // Marksmanship (Talent) — may upgrade a hit to a crit against a bullseye target.
   marksmanship: {
-    note: 'While attacking a target in your bullseye arc, change 1 hit to a crit.',
-    attack: {
-      onModifyAttack: (ctx, self) => {
-        if (ctx.attacker.id === self.id && inBullseye(ctx.attacker, ctx.target)) {
-          changeAttack(ctx, 'hit', 'crit', 1);
-        }
+    note: 'While attacking a target in your bullseye arc, may change 1 hit to a crit.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Marksmanship: hit → crit',
+        available: (ctx) => inBullseye(ctx.attacker, ctx.target) && ctx.attack.includes('hit'),
+        apply: (ctx) => changeAttack(ctx, 'hit', 'crit', 1),
       },
     },
   },
 
-  // Fanatical (Talent) — while unshielded, turn a focus into a hit.
+  // Fanatical (Talent) — while unshielded, may turn a focus into a hit.
   fanatical: {
-    note: 'While attacking with no shields, change 1 focus result to a hit.',
-    attack: {
-      onModifyAttack: (ctx, self) => {
-        if (ctx.attacker.id === self.id && ctx.attacker.shields === 0) {
-          changeAttack(ctx, 'focus', 'hit', 1);
-        }
+    note: 'While attacking with no shields, may change 1 focus result to a hit.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Fanatical: focus → hit',
+        available: (ctx) => ctx.attacker.shields === 0 && ctx.attack.includes('focus'),
+        apply: (ctx) => changeAttack(ctx, 'focus', 'hit', 1),
       },
     },
   },

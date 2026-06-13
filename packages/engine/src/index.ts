@@ -105,6 +105,7 @@ export type {
   GameContext,
   GameWindow,
   OptionalAbility,
+  OptionalAttackHook,
 } from './abilities';
 export {
   addAttackDice,
