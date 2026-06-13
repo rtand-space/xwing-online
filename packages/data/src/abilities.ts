@@ -305,6 +305,176 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // --- Resistance ---
+
+  // "Covenell" — flies hot. Cost-free, automatic.
+  covanell: {
+    note: 'Attacking or defending, if your revealed maneuver is red, roll 1 extra die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && self.dial?.difficulty === 'red') addAttackDice(ctx, 1);
+      },
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && self.dial?.difficulty === 'red') addDefenceDice(ctx, 1);
+      },
+    },
+  },
+
+  // "Joph Seastriker" — shrugging off a hit fuels a dodge. Cost-free, automatic (reactive).
+  jophseastriker: {
+    note: 'After you lose a shield, gain an evade token.',
+    game: { onShieldLost: ({ self }) => [gainToken(self, 'evade')] },
+  },
+
+  // Zay Versio — punishes a wounded attacker. Cost-free reroll → automatic.
+  zayversio: {
+    note: 'While defending against a damaged attacker, reroll 1 defence die.',
+    attack: {
+      onModifyDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && ctx.attacker.hull < ctx.attacker.maxHull)
+          rerollDefence(ctx, 'blank', 1);
+      },
+    },
+  },
+
+  // Nimi Chireen — exploits a hesitant ace. Cost-free, automatic.
+  nimichireen: {
+    note: 'While attacking, if the defender has higher initiative, change a blank to a focus.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.target.initiative > self.initiative)
+          changeAttack(ctx, 'blank', 'focus', 1);
+      },
+    },
+  },
+
+  // "Lulo Lampar" — wrings more out of the throttle under strain. Mandatory, automatic.
+  lulolampar: {
+    note: 'While stressed, attacking roll 1 extra die; defending roll 1 fewer die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && self.tokens.some((t) => t.kind === 'stress'))
+          addAttackDice(ctx, 1);
+      },
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && self.tokens.some((t) => t.kind === 'stress'))
+          ctx.defence = ctx.defence.slice(0, -1);
+      },
+    },
+  },
+
+  // Rey — bends the Force to find the shot. Costs Force → optional.
+  rey: {
+    note: 'Attacking or defending against an enemy in your front arc, may spend 1 Force to change a blank to a hit (or an evade).',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Rey: Force → blank to hit',
+        available: (ctx, self) =>
+          (self.force ?? 0) > 0 && inArc(self, ctx.target) && ctx.attack.includes('blank'),
+        apply: (ctx, self) => {
+          changeAttack(ctx, 'blank', 'hit', 1);
+          ctx.events.push(spendForce(self));
+        },
+      },
+      onModifyDefence: {
+        label: 'Rey: Force → blank to evade',
+        available: (ctx, self) =>
+          self.id === ctx.target.id &&
+          (self.force ?? 0) > 0 &&
+          inArc(self, ctx.attacker) &&
+          ctx.defence.includes('blank'),
+        apply: (ctx, self) => {
+          changeDefence(ctx, 'blank', 'evade', 1);
+          ctx.events.push(spendForce(self));
+        },
+      },
+    },
+  },
+
+  // Finn — grits through to land an extra result. Costs strain → optional.
+  finn: {
+    note: 'Attacking or defending, may gain a strain token to add a focus result.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Finn: take strain to add a focus',
+        available: (ctx, self) => ctx.attacker.id === self.id,
+        apply: (ctx, self) => {
+          ctx.attack = [...ctx.attack, 'focus'];
+          ctx.events.push(gainToken(self, 'strain'));
+        },
+      },
+      onModifyDefence: {
+        label: 'Finn: take strain to add a focus',
+        available: (ctx, self) => self.id === ctx.target.id,
+        apply: (ctx, self) => {
+          ctx.defence = [...ctx.defence, 'focus'];
+          ctx.events.push(gainToken(self, 'strain'));
+        },
+      },
+    },
+  },
+
+  // "Zizi Tlo" — banks a charge into a token after the exchange. Costs a charge → optional.
+  zizitlo: {
+    note: 'After you defend or attack, may spend a charge to gain a focus token.',
+    optional: {
+      afterAttack: {
+        label: 'Zizi Tlo: spend a charge for a focus',
+        available: ({ self }) => self.charges > 0,
+        resolve: ({ self }) => [spendCharge(self), gainToken(self, 'focus')],
+      },
+      afterDefend: {
+        label: 'Zizi Tlo: spend a charge for a focus',
+        available: ({ self }) => self.charges > 0,
+        resolve: ({ self }) => [spendCharge(self), gainToken(self, 'focus')],
+      },
+    },
+  },
+
+  // Jay Cristubbs — steadies a wingmate after a calm maneuver. No cost → choice via target-select.
+  jaycristubbs: {
+    note: 'After a blue maneuver, may have a friendly ship at range 0–1 remove a stress token.',
+    optional: {
+      afterMove: {
+        label: 'Jay Cristubbs: clear a wingmate’s stress',
+        available: ({ state, self }) =>
+          self.dial?.difficulty === 'blue' &&
+          friendliesInRange(state, self, 1).some((s) => s.tokens.some((t) => t.kind === 'stress')),
+        resolve: ({ state, self }) => [
+          offerTargetEffect(
+            self,
+            friendliesInRange(state, self, 1)
+              .filter((s) => s.tokens.some((t) => t.kind === 'stress'))
+              .map((s) => s.id),
+            { kind: 'remove-token', token: 'stress' },
+          ),
+        ],
+      },
+    },
+  },
+
+  // Seftin Vanik — slings a dodge to an ally after repositioning. No cost → target-select.
+  seftinvanik: {
+    note: 'After you boost, may transfer an evade token to a friendly ship at range 1.',
+    optional: {
+      onPerformAction: {
+        label: 'Seftin Vanik: pass an evade to a wingmate',
+        available: ({ state, self, event }) =>
+          event?.type === 'ActionPerformed' &&
+          event.action === 'boost' &&
+          self.tokens.some((t) => t.kind === 'evade') &&
+          friendliesInRange(state, self, 1).length > 0,
+        resolve: ({ state, self }) => [
+          offerTargetEffect(self, friendliesInRange(state, self, 1).map((s) => s.id), {
+            kind: 'transfer-token',
+            fromId: self.id,
+            token: 'evade',
+          }),
+        ],
+      },
+    },
+  },
+
   // --- First Order ---
 
   // "Null" — flies its best while pristine. Dynamic initiative.

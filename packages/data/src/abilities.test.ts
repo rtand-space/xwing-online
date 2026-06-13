@@ -263,6 +263,40 @@ describe('card abilities', () => {
     expect(effectiveInitiative({ ...r, hull: 2 })).toBe(6); // damaged
   });
 
+  it('Covenell adds a die on a red maneuver (automatic)', () => {
+    const hook = getAbility('covanell')!.attack!.onRollAttack!;
+    const red = { speed: 2, bearing: 'koiogran', difficulty: 'red' } as Ship['dial'];
+    const a: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), dial: red };
+    const c = ctx(a, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    hook(c, a);
+    expect(c.attack).toHaveLength(2);
+  });
+
+  it('Joph Seastriker gains an evade when a shield is lost', () => {
+    const fn = getAbility('jophseastriker')!.game!.onShieldLost!;
+    const evs = fn({ state, self: ship('a', { x: 0, y: 0, angle: 0 }) });
+    expect(evs).toEqual([{ type: 'TokenGained', shipId: 'a', kind: 'evade' }]);
+  });
+
+  it('Rey is offered to spend Force on a front-arc enemy', () => {
+    const opt = getAbility('rey')!.optionalAttack!.onModifyAttack!;
+    const rey: Ship = { ...ship('r', { x: 0, y: 0, angle: 0 }), force: 1, maxForce: 1 };
+    const c = ctx(rey, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'hit']); // ahead → front arc
+    expect(opt.available(c, rey)).toBe(true);
+    opt.apply(c, rey);
+    expect(c.attack).toEqual(['hit', 'hit']);
+    expect(c.events.some((e) => e.type === 'ForceChanged' && e.delta === -1)).toBe(true);
+  });
+
+  it('Finn adds a focus result for a strain token', () => {
+    const opt = getAbility('finn')!.optionalAttack!.onModifyAttack!;
+    const a = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(a, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    opt.apply(c, a);
+    expect(c.attack).toEqual(['hit', 'focus']);
+    expect(c.events.some((e) => e.type === 'TokenGained' && e.kind === 'strain')).toBe(true);
+  });
+
   it('Longshot adds an attack die at range 3 (automatic)', () => {
     const hook = getAbility('longshot')!.attack!.onRollAttack!;
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
