@@ -388,6 +388,31 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
 }
 
 /**
+ * A pending decision with no real choice — its only legal option, ready to apply.
+ * Lets a driver (client/AI) skip empty steps without prompting: no target → pass,
+ * no action → skip, nothing to spend → proceed. (A presentation concern, so it
+ * lives here as a helper rather than baked into the FSM.)
+ */
+export function trivialCommand(p: PendingDecision): Command | null {
+  if (
+    p.type === 'perform-action' &&
+    !p.options.actions.length &&
+    !p.options.lockTargets.length &&
+    !p.options.jamTargets.length &&
+    !p.options.coordinateTargets.length
+  ) {
+    return { type: 'SkipAction', playerId: p.playerId, shipId: p.shipId };
+  }
+  if (p.type === 'declare-attack' && !p.options.targets.length) {
+    return { type: 'PassAttack', playerId: p.playerId, shipId: p.shipId };
+  }
+  if (p.type === 'modify' && !p.options.spends.length && !p.options.abilities.length) {
+    return { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
+  }
+  return null;
+}
+
+/**
  * Validate a command and return all resulting events, including the automatic
  * phase transitions that cascade until the game next needs player input.
  */

@@ -8,10 +8,26 @@ import {
   type PlayerView,
   projectView,
   replay,
+  trivialCommand,
 } from '@xwing/engine';
 import { create } from 'zustand';
 
 const LOG_KEY = 'xwing:localLog';
+
+/** Auto-apply steps that have only one legal option (no target → pass, no action
+ *  → skip, nothing to spend → proceed) so players aren't prompted for non-choices. */
+const autoResolve = (game: Game): Game => {
+  let g = game;
+  for (let i = 0; i < 500; i++) {
+    const p = g.state.pending[0];
+    const cmd = p && trivialCommand(p);
+    if (!cmd) break;
+    const next = dispatch(g, cmd).game;
+    if (next === g) break;
+    g = next;
+  }
+  return g;
+};
 
 const saveLocal = (game: Game | null): void => {
   if (game) localStorage.setItem(LOG_KEY, JSON.stringify(game.log));
@@ -45,7 +61,7 @@ export const useGame = create<GameStore>((set, get) => ({
   unlockedFor: null,
   rejection: null,
   startGame: (config) => {
-    const game = createGame(config);
+    const game = autoResolve(createGame(config));
     saveLocal(game);
     set({ game, unlockedFor: null, rejection: null });
   },
@@ -53,8 +69,9 @@ export const useGame = create<GameStore>((set, get) => ({
     const current = get().game;
     if (!current) return;
     const { game, rejection } = dispatch(current, cmd);
-    saveLocal(game);
-    set({ game, rejection: rejection ?? null });
+    const resolved = rejection ? game : autoResolve(game);
+    saveLocal(resolved);
+    set({ game: resolved, rejection: rejection ?? null });
   },
   unlock: (playerId) => set({ unlockedFor: playerId, rejection: null }),
   reset: () => {

@@ -111,45 +111,44 @@ describe('card abilities', () => {
     expect(far.attack).toEqual(['blank']);
   });
 
-  it('Marksmanship is offered, and upgrades a hit to a crit, only against a bullseye target', () => {
+  it('Marksmanship upgrades a hit to a crit against a bullseye target', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
-    const opt = getAbility('marksmanship')!.optionalAttack!.onModifyAttack!;
+    const hook = getAbility('marksmanship')!.attack!.onModifyAttack!;
 
     const bull = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit', 'blank']);
-    expect(opt.available(bull, atk)).toBe(true);
-    opt.apply(bull, atk);
+    hook(bull, atk);
     expect(bull.attack).toEqual(['crit', 'blank']);
 
     const offAxis = ctx(atk, ship('t', { x: 200, y: 100, angle: 0 }), ['hit', 'blank']);
-    expect(opt.available(offAxis, atk)).toBe(false);
+    hook(offAxis, atk);
+    expect(offAxis.attack).toEqual(['hit', 'blank']);
   });
 
-  it('Predator is a reroll offered only against a bullseye target', () => {
+  it('Predator rerolls a blank only against a bullseye target', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
-    const opt = getAbility('predator')!.optionalAttack!.onModifyAttack!;
-    expect(opt.reroll).toBe(true);
+    const hook = getAbility('predator')!.attack!.onModifyAttack!;
 
     const bull = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'hit']);
-    expect(opt.available(bull, atk)).toBe(true);
-    opt.apply(bull, atk);
+    hook(bull, atk);
     expect(bull.attack).toHaveLength(2);
     expect(bull.cursor).toBe(1); // one reroll drawn
 
     const offAxis = ctx(atk, ship('t', { x: 200, y: 100, angle: 0 }), ['blank', 'hit']);
-    expect(opt.available(offAxis, atk)).toBe(false);
+    hook(offAxis, atk);
+    expect(offAxis.cursor).toBe(0);
   });
 
-  it('Fanatical is offered, turning a focus into a hit, only while unshielded', () => {
-    const opt = getAbility('fanatical')!.optionalAttack!.onModifyAttack!;
+  it('Fanatical turns a focus into a hit only while unshielded', () => {
+    const hook = getAbility('fanatical')!.attack!.onModifyAttack!;
     const bare = ship('a', { x: 0, y: 0, angle: 0 });
     const c = ctx(bare, ship('t', { x: 0, y: 100, angle: 0 }), ['focus', 'blank']);
-    expect(opt.available(c, bare)).toBe(true);
-    opt.apply(c, bare);
+    hook(c, bare);
     expect(c.attack).toEqual(['hit', 'blank']);
 
     const shielded: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), shields: 1 };
     const c2 = ctx(shielded, ship('t', { x: 0, y: 100, angle: 0 }), ['focus']);
-    expect(opt.available(c2, shielded)).toBe(false);
+    hook(c2, shielded);
+    expect(c2.attack).toEqual(['focus']);
   });
 
   it('Trick Shot adds a die only when the shot is obstructed', () => {

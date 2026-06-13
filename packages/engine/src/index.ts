@@ -35,7 +35,7 @@ export { rollAttack, rollDefence } from './dice';
 export { rngAt } from './rng';
 export { applyEvent, EMPTY_STATE } from './apply';
 export { computePending } from './pending';
-export { reduce } from './reduce';
+export { reduce, trivialCommand } from './reduce';
 export type { ReduceResult } from './reduce';
 export { autoStep } from './phases';
 export { buildInitial } from './setup';
