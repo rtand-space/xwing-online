@@ -126,6 +126,8 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   Decloak: 'decloak',
   SkipDecloak: 'decloak',
   Reposition: 'reposition',
+  GrantAction: 'grant-target',
+  DeclineGrant: 'grant-target',
 };
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
@@ -291,6 +293,18 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'SkipDecloak': {
       if (pending.type !== 'decloak') return reject('Cannot skip');
       return { events: [{ type: 'DecloakPassed', shipId: ship.id }] };
+    }
+    case 'GrantAction': {
+      if (pending.type !== 'grant-target' || !state.grantOffer) return reject('No grant offered');
+      if (!pending.options.candidates.includes(cmd.targetId)) return reject('Invalid grant target');
+      const events: GameEvent[] = [{ type: 'GrantOfferResolved' }];
+      if (state.grantOffer.spendForce) events.push({ type: 'ForceChanged', shipId: ship.id, delta: -1 });
+      events.push({ type: 'ActionGranted', shipId: cmd.targetId });
+      return { events };
+    }
+    case 'DeclineGrant': {
+      if (pending.type !== 'grant-target') return reject('No grant offered');
+      return { events: [{ type: 'GrantOfferResolved' }] };
     }
     case 'Reposition': {
       if (pending.type !== 'reposition') return reject('Wrong phase');

@@ -269,6 +269,29 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'grant-target' && (
+        <div className="grid">
+          <div className="muted">Grant a friendly ship an action:</div>
+          {p.options.candidates.map((t) => (
+            <button
+              key={`grant-${t}`}
+              className="btn"
+              onClick={() =>
+                send({ type: 'GrantAction', playerId: p.playerId, shipId: p.shipId, targetId: t })
+              }
+            >
+              {t}
+            </button>
+          ))}
+          <button
+            className="btn ghost"
+            onClick={() => send({ type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Decline
+          </button>
+        </div>
+      )}
+
       {p.type === 'decloak' && (
         <div className="grid">
           <div className="muted">Spend cloak to decloak (boost)?</div>
@@ -324,5 +347,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: decloak?`;
     case 'reposition':
       return `${name}: choose placement`;
+    case 'grant-target':
+      return `${name}: grant an action`;
   }
 }

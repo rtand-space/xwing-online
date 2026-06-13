@@ -60,6 +60,15 @@ function randomChoice(seedStr: string): Chooser {
           shipId: p.shipId,
           choice: pick(p.options.candidates.map((_, i) => i)),
         };
+      case 'grant-target':
+        return p.options.candidates.length && pick([true, false])
+          ? {
+              type: 'GrantAction',
+              playerId: p.playerId,
+              shipId: p.shipId,
+              targetId: pick(p.options.candidates),
+            }
+          : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
     }
   };
 }

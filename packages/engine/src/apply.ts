@@ -120,6 +120,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       };
     case 'Repositioned':
       return { ...mapShip(state, e.shipId, (s) => ({ ...s, pos: e.to })), reposition: undefined };
+    case 'GrantOffered':
+      return {
+        ...state,
+        grantOffer: { granterId: e.granterId, candidates: e.candidates, spendForce: e.spendForce },
+      };
+    case 'GrantOfferResolved':
+      return { ...state, grantOffer: undefined };
     case 'ActionGranted':
       return { ...state, grantedAction: { shipId: e.shipId } };
     case 'GrantResolved':

@@ -1,7 +1,8 @@
+import { inRange } from './arcs';
 import type { AttackContext } from './combat';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
-import type { Ship, ShipId, TokenKind } from './types';
+import type { GameState, Ship, ShipId, TokenKind } from './types';
 
 /**
  * Ergonomic, correct building blocks for card abilities. Attack-window helpers
@@ -103,3 +104,17 @@ export const addStress = (self: Ship, delta = 1): GameEvent => ({
   shipId: self.id,
   delta,
 });
+
+/** Living friendly ships (excluding self) within range `max`. */
+export const friendliesInRange = (state: GameState, self: Ship, max: number): Ship[] =>
+  state.ships.filter(
+    (s) => s.id !== self.id && s.ownerId === self.ownerId && s.hull > 0 && inRange(self, s, max),
+  );
+
+/** Offer to grant one of `candidates` a free action (optionally spending the
+ *  granter's Force); the granter then picks the recipient or declines. */
+export const offerActionGrant = (
+  self: Ship,
+  candidates: ShipId[],
+  spendForce = false,
+): GameEvent => ({ type: 'GrantOffered', granterId: self.id, candidates, spendForce });

@@ -141,6 +141,20 @@ export function computePending(state: GameState): PendingDecision[] {
       ];
     }
   }
+  // An ability granting an action pauses for the granter to pick the recipient.
+  if (state.grantOffer) {
+    const ship = state.ships.find((s) => s.id === state.grantOffer!.granterId);
+    if (ship) {
+      return [
+        {
+          type: 'grant-target',
+          playerId: ship.ownerId,
+          shipId: ship.id,
+          options: { candidates: state.grantOffer.candidates, canSkip: true },
+        },
+      ];
+    }
+  }
   // A coordinate's free action pauses the FSM for the granted ship's choice.
   if (state.grantedAction) {
     const ship = state.ships.find((s) => s.id === state.grantedAction!.shipId);

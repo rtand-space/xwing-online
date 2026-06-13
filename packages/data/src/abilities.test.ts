@@ -245,6 +245,18 @@ describe('card abilities', () => {
     expect(hit.events).toHaveLength(0);
   });
 
+  it('Airen Cracken offers a friendly an action after attacking', () => {
+    const hook = getAbility('airencracken')!.attack!.onAfterAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 }); // owner 'a'
+    const friend = { ...ship('f', { x: 0, y: 60, angle: 0 }), ownerId: 'a' }; // friendly, range 1
+    const target = ship('t', { x: 0, y: 200, angle: 0 });
+    const c = ctx(atk, target, []);
+    c.state = { ships: [atk, friend, target] } as unknown as GameState;
+    hook(c, atk);
+    const offered = c.events.find((e) => e.type === 'GrantOffered');
+    expect(offered && offered.type === 'GrantOffered' && offered.candidates).toEqual(['f']);
+  });
+
   it('Howlrunner rerolls a blank for a friendly ship at range 0–1 only', () => {
     const hook = getAbility('howlrunner')!.attack!.onModifyAttack!;
     const howl = ship('h', { x: 0, y: 0, angle: 0 }); // owner 'h'

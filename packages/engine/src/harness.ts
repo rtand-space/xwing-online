@@ -40,6 +40,15 @@ export const firstChoice: Chooser = (p) => {
       return { type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId };
     case 'reposition':
       return { type: 'Reposition', playerId: p.playerId, shipId: p.shipId, choice: 0 };
+    case 'grant-target':
+      return p.options.candidates.length
+        ? {
+            type: 'GrantAction',
+            playerId: p.playerId,
+            shipId: p.shipId,
+            targetId: p.options.candidates[0]!,
+          }
+        : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
   }
 };
 

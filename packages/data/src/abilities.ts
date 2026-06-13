@@ -4,12 +4,14 @@ import {
   addDefenceDice,
   changeAttack,
   changeDefence,
+  friendliesInRange,
   gainToken,
   inArc,
   inArcAt,
   inBullseye,
   inRange,
   chargesFrom,
+  offerActionGrant,
   registerAbility,
   rerollAttack,
   rerollDefence,
@@ -242,6 +244,33 @@ const ABILITIES: Record<string, Ability> = {
         label: 'Night Beast: gain a focus token?',
         available: ({ self }) => self.dial?.difficulty === 'blue',
         resolve: ({ self }) => [gainToken(self, 'focus')],
+      },
+    },
+  },
+
+  // Ahsoka Tano — channels the Force to hand a nearby ally a free action.
+  ahsokatano: {
+    note: 'After fully executing a maneuver, may spend 1 Force to grant a friendly ship at range 0–1 an action.',
+    optional: {
+      afterMove: {
+        label: 'Ahsoka Tano: spend 1 Force for a friendly ship to act?',
+        available: ({ state, self }) =>
+          (self.force ?? 0) > 0 && friendliesInRange(state, self, 1).length > 0,
+        resolve: ({ state, self }) => [
+          offerActionGrant(self, friendliesInRange(state, self, 1).map((s) => s.id), true),
+        ],
+      },
+    },
+  },
+
+  // Airen Cracken — calls a wingmate into action right after firing.
+  airencracken: {
+    note: 'After performing an attack, may let a friendly ship at range 1 perform an action.',
+    attack: {
+      onAfterAttack: (ctx, self) => {
+        if (ctx.attacker.id !== self.id) return;
+        const cands = friendliesInRange(ctx.state, self, 1).map((s) => s.id);
+        if (cands.length) ctx.events.push(offerActionGrant(self, cands, false));
       },
     },
   },

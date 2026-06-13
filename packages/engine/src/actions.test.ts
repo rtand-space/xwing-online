@@ -141,6 +141,40 @@ describe('action difficulty', () => {
   });
 });
 
+describe('ability action grant', () => {
+  it('an offered grant lets the granter pick a friendly, which then acts', () => {
+    let s = stateWith([
+      ship('a', 'p', 0, 0, { force: 1, maxForce: 1 }),
+      ship('b', 'p', 0, 100, { actionBar: ['focus'], hasMoved: false }),
+      ship('e', 'q', 0, 600),
+    ]);
+    // an ability offers a Force-funded grant to friendly b
+    s = applyEvent(s, { type: 'GrantOffered', granterId: 'a', candidates: ['b'], spendForce: true });
+    const offer = s.pending.find((p) => p.type === 'grant-target');
+    expect(offer?.type === 'grant-target' && offer.shipId).toBe('a');
+
+    s = perform(s, { type: 'GrantAction', playerId: 'p', shipId: 'a', targetId: 'b' });
+    expect(s.ships.find((x) => x.id === 'a')!.force).toBe(0); // Force spent
+    const granted = s.pending.find((p) => p.type === 'perform-action' && p.shipId === 'b');
+    expect(granted?.type === 'perform-action' && granted.options.granted).toBe(true);
+
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'b', action: 'focus' });
+    const b = s.ships.find((x) => x.id === 'b')!;
+    expect(b.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    expect(b.hasActed).toBe(false); // free action, its own activation untouched
+    expect(s.grantOffer).toBeUndefined();
+    expect(s.grantedAction).toBeUndefined();
+  });
+
+  it('the granter can decline the offer', () => {
+    let s = stateWith([ship('a', 'p', 0, 0), ship('b', 'p', 0, 100), ship('e', 'q', 0, 600)]);
+    s = applyEvent(s, { type: 'GrantOffered', granterId: 'a', candidates: ['b'], spendForce: false });
+    s = perform(s, { type: 'DeclineGrant', playerId: 'p', shipId: 'a' });
+    expect(s.grantOffer).toBeUndefined();
+    expect(s.grantedAction).toBeUndefined();
+  });
+});
+
 describe('linked actions', () => {
   it('offers a token link after the base action, charging the link difficulty', () => {
     // Focus, linked to a red Evade

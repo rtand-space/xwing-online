@@ -80,6 +80,8 @@ export type GameEvent =
       candidates: RepositionCandidate[];
     }
   | { type: 'Repositioned'; shipId: ShipId; to: Position }
+  | { type: 'GrantOffered'; granterId: ShipId; candidates: ShipId[]; spendForce: boolean }
+  | { type: 'GrantOfferResolved' }
   | { type: 'ActionGranted'; shipId: ShipId }
   | { type: 'GrantResolved' }
   | { type: 'LinkOffered'; shipId: ShipId; action: ActionType; difficulty: Difficulty }

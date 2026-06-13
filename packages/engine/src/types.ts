@@ -218,6 +218,12 @@ export type PendingDecision =
       playerId: PlayerId;
       shipId: ShipId;
       options: { action: 'boost' | 'barrel-roll' | 'slam'; candidates: RepositionCandidate[] };
+    }
+  | {
+      type: 'grant-target';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { candidates: ShipId[]; canSkip: boolean };
     };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
@@ -248,7 +254,10 @@ export interface GameState {
     action: 'boost' | 'barrel-roll' | 'slam';
     candidates: RepositionCandidate[];
   };
-  /** A free action granted by a coordinate, awaiting that ship's choice; pauses the FSM. */
+  /** An ability offering to grant a friendly ship an action; awaiting the granter's
+   *  target choice (or decline); pauses the FSM. */
+  grantOffer?: { granterId: ShipId; candidates: ShipId[]; spendForce: boolean };
+  /** A free action granted by a coordinate or ability, awaiting that ship's choice. */
   grantedAction?: { shipId: ShipId };
   /** A linked follow-up action offered after a base action; pauses the FSM. */
   linkedAction?: { shipId: ShipId; action: ActionType; difficulty: Difficulty };
