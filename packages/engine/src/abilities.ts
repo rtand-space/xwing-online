@@ -41,6 +41,9 @@ export interface OptionalAttackHook {
 export interface Ability {
   /** A short, original paraphrase (never the card's printed text). */
   note?: string;
+  /** Overrides the ship's printed initiative under a condition (returns undefined
+   *  to keep the printed value). */
+  initiative?: (self: Ship) => number | undefined;
   /** Mandatory dice effects, auto-applied at their window. */
   attack?: Partial<Record<AttackWindow, AttackAbilityHook>>;
   /** Optional ("may") dice effects, offered to the owner during the modify step. */
@@ -63,6 +66,15 @@ export function getAbility(xws: string): Ability | undefined {
 export function clearAbilities(): void {
   REGISTRY.clear();
 }
+/** A ship's initiative after any ability override (e.g. Null/Rush), else printed. */
+export function effectiveInitiative(ship: Ship): number {
+  for (const xws of shipAbilitySources(ship)) {
+    const v = REGISTRY.get(xws)?.initiative?.(ship);
+    if (v !== undefined) return v;
+  }
+  return ship.initiative;
+}
+
 /** xws ids whose abilities are active on a ship: ship type, pilot, equipped upgrades. */
 export function shipAbilitySources(ship: Ship): string[] {
   return [ship.shipType, ship.pilotXws, ...(ship.upgrades ?? [])].filter((x): x is string =>

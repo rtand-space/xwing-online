@@ -1,3 +1,4 @@
+import { effectiveInitiative } from './abilities';
 import { attackValue, rangeBand } from './arcs';
 import { combatAbilities, combatSpends } from './combat';
 import { obstaclesAt } from './obstacles';
@@ -16,7 +17,10 @@ function enemies(state: GameState, ship: Ship): Ship[] {
 function activationShip(state: GameState): Ship | undefined {
   return [...state.ships]
     .filter((s) => alive(s) && !(s.hasMoved && s.hasActed))
-    .sort((a, b) => a.initiative - b.initiative || (a.id < b.id ? -1 : 1))[0];
+    .sort(
+      (a, b) =>
+        effectiveInitiative(a) - effectiveInitiative(b) || (a.id < b.id ? -1 : 1),
+    )[0];
 }
 
 /** Lowest initiative first: the next cloaked ship that may still decloak this phase. */
@@ -30,7 +34,10 @@ function decloakShip(state: GameState): Ship | undefined {
 function engagementShip(state: GameState): Ship | undefined {
   return [...state.ships]
     .filter((s) => alive(s) && !s.hasEngaged)
-    .sort((a, b) => b.initiative - a.initiative || (a.id < b.id ? -1 : 1))[0];
+    .sort(
+      (a, b) =>
+        effectiveInitiative(b) - effectiveInitiative(a) || (a.id < b.id ? -1 : 1),
+    )[0];
 }
 
 function actionDecision(state: GameState, ship: Ship): PendingDecision {

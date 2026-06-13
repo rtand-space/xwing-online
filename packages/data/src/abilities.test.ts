@@ -1,5 +1,6 @@
 import {
   type AttackContext,
+  effectiveInitiative,
   getAbility,
   type GameState,
   type Position,
@@ -244,6 +245,22 @@ describe('card abilities', () => {
     hit.result = { hits: 2, crits: 0 };
     hook(hit, atk);
     expect(hit.events).toHaveLength(0);
+  });
+
+  it('Null and Rush override initiative by damage state', () => {
+    const base = (xws: string, init: number): Ship => ({
+      ...ship('s', { x: 0, y: 0, angle: 0 }),
+      pilotXws: xws,
+      initiative: init,
+      hull: 3,
+      maxHull: 3,
+    });
+    const n = base('null', 1);
+    expect(effectiveInitiative(n)).toBe(7); // undamaged
+    expect(effectiveInitiative({ ...n, hull: 2 })).toBe(1); // damaged → printed
+    const r = base('rush', 2);
+    expect(effectiveInitiative(r)).toBe(2); // undamaged → printed
+    expect(effectiveInitiative({ ...r, hull: 2 })).toBe(6); // damaged
   });
 
   it('Longshot adds an attack die at range 3 (automatic)', () => {

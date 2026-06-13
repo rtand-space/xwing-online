@@ -90,6 +90,7 @@ export { ATTACK_WINDOWS, resolveAttack } from './combat';
 export type { AttackContext, AttackHook, AttackWindow } from './combat';
 export {
   clearAbilities,
+  effectiveInitiative,
   findOffer,
   fireWindow,
   gatherAttackHooks,

@@ -283,6 +283,18 @@ const ABILITIES: Record<string, Ability> = {
 
   // --- First Order ---
 
+  // "Null" — flies its best while pristine. Dynamic initiative.
+  null: {
+    note: 'While undamaged, your initiative is 7.',
+    initiative: (self) => (self.hull >= self.maxHull ? 7 : undefined),
+  },
+
+  // "Rush" — fights harder once hurt. Dynamic initiative.
+  rush: {
+    note: 'While damaged, your initiative is 6.',
+    initiative: (self) => (self.hull < self.maxHull ? 6 : undefined),
+  },
+
   // "Backdraft" — turret covers his tail. Cost-free, automatic.
   backdraft: {
     note: 'While attacking, if the defender is in your rear arc, roll 1 extra attack die.',
