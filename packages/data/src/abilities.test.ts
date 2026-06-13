@@ -246,6 +246,56 @@ describe('card abilities', () => {
     expect(hit.events).toHaveLength(0);
   });
 
+  it('Longshot adds an attack die at range 3 (automatic)', () => {
+    const hook = getAbility('longshot')!.attack!.onRollAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    c.range = 3;
+    hook(c, atk);
+    expect(c.attack).toHaveLength(2);
+    const close = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    close.range = 1;
+    hook(close, atk);
+    expect(close.attack).toHaveLength(1);
+  });
+
+  it('Blackout strips two defence dice on an obstructed shot (automatic)', () => {
+    const hook = getAbility('blackout')!.attack!.onRollDefence!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    c.obstructed = true;
+    c.defence = ['evade', 'focus', 'blank'];
+    hook(c, atk);
+    expect(c.defence).toEqual(['evade']);
+  });
+
+  it('DT-798 is offered to take strain for an extra die', () => {
+    const opt = getAbility('dt798')!.optionalAttack!.onModifyAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    expect(opt.available(c, atk)).toBe(true);
+    opt.apply(c, atk);
+    expect(c.attack).toHaveLength(2);
+    expect(c.events.some((e) => e.type === 'TokenGained' && e.kind === 'strain')).toBe(true);
+    const strained: Ship = { ...atk, tokens: [{ kind: 'strain' }] };
+    expect(opt.available(ctx(strained, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']), strained)).toBe(false);
+  });
+
+  it('Static is offered to spend a lock and focus to make every die a crit', () => {
+    const opt = getAbility('static')!.optionalAttack!.onModifyAttack!;
+    const loaded: Ship = {
+      ...ship('a', { x: 0, y: 0, angle: 0 }),
+      tokens: [{ kind: 'lock', targetId: 't' }, { kind: 'focus' }],
+    };
+    const c = ctx(loaded, ship('t', { x: 0, y: 100, angle: 0 }), ['hit', 'blank', 'focus']);
+    expect(opt.available(c, loaded)).toBe(true);
+    opt.apply(c, loaded);
+    expect(c.attack).toEqual(['crit', 'crit', 'crit']);
+    expect(c.events.filter((e) => e.type === 'TokenSpent')).toHaveLength(2);
+    const noLock = ship('a', { x: 0, y: 0, angle: 0 });
+    expect(opt.available(ctx(noLock, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']), noLock)).toBe(false);
+  });
+
   it('Ric Olié adds a die when his maneuver is faster (cost-free, automatic)', () => {
     const hook = getAbility('ricolie')!.attack!.onRollAttack!;
     const fast: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), dial: maneuver(3) };

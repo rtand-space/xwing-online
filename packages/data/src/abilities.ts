@@ -280,6 +280,74 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // --- First Order ---
+
+  // "Backdraft" — turret covers his tail. Cost-free, automatic.
+  backdraft: {
+    note: 'While attacking, if the defender is in your rear arc, roll 1 extra attack die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && inArcAt(ctx.attacker, ctx.target, 180, 45))
+          addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // "Blackout" — hunts through the debris. Cost-free, automatic.
+  blackout: {
+    note: 'While attacking through an obstacle, the defender rolls 2 fewer defence dice.',
+    attack: {
+      onRollDefence: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.obstructed) ctx.defence = ctx.defence.slice(0, -2);
+      },
+    },
+  },
+
+  // "Longshot" — reaches out. Cost-free, automatic.
+  longshot: {
+    note: 'While attacking at range 3, roll 1 extra attack die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.range === 3) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // "DT-798" — strains the frame for one more shot. Costs strain → optional.
+  dt798: {
+    note: 'While attacking, if not strained, may gain a strain token to roll 1 extra attack die.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'DT-798: take strain for an extra die',
+        available: (ctx, self) =>
+          ctx.attacker.id === self.id && !self.tokens.some((t) => t.kind === 'strain'),
+        apply: (ctx, self) => {
+          addAttackDice(ctx, 1);
+          ctx.events.push(gainToken(self, 'strain'));
+        },
+      },
+    },
+  },
+
+  // "Static" — dumps everything into a perfect burst. Costs a lock + focus → optional.
+  static: {
+    note: 'While attacking, may spend your lock on the defender and a focus token to change all results to crits.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Static: lock + focus → all crits',
+        available: (ctx, self) =>
+          self.tokens.some((t) => t.kind === 'lock' && t.targetId === ctx.target.id) &&
+          self.tokens.some((t) => t.kind === 'focus') &&
+          ctx.attack.some((f) => f !== 'crit'),
+        apply: (ctx, self) => {
+          ctx.attack = ctx.attack.map(() => 'crit');
+          ctx.events.push({ type: 'TokenSpent', shipId: self.id, kind: 'lock', targetId: ctx.target.id });
+          ctx.events.push({ type: 'TokenSpent', shipId: self.id, kind: 'focus' });
+        },
+      },
+    },
+  },
+
   // Ric Olié — speed gives the edge. Cost-free, so automatic.
   ricolie: {
     note: 'Attacking or defending, if your revealed maneuver is faster than the enemy ship’s, roll 1 extra die.',
