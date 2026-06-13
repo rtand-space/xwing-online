@@ -96,6 +96,13 @@ const ACTION: Record<ActionType, string> = {
   jam: 'Jam',
   reload: 'Reload',
   coordinate: 'Coordinate',
+  slam: 'SLAM',
+};
+
+const REPOSITION_LABEL: Record<'boost' | 'barrel-roll' | 'slam', string> = {
+  boost: 'Boost',
+  'barrel-roll': 'Barrel roll',
+  slam: 'SLAM',
 };
 
 export function Controls({
@@ -247,7 +254,7 @@ export function Controls({
 
       {p.type === 'reposition' && (
         <div className="grid">
-          <div className="muted">{p.options.action === 'boost' ? 'Boost' : 'Barrel roll'} — pick a placement:</div>
+          <div className="muted">{REPOSITION_LABEL[p.options.action]} — pick a placement:</div>
           {p.options.candidates.map((c, i) => (
             <button
               key={c.label}

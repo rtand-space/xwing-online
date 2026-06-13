@@ -6,11 +6,19 @@ import type { GameEvent } from './events';
 import { nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
-import { repositionCandidates } from './reposition';
+import { repositionCandidates, slamCandidates } from './reposition';
 import { autoStep } from './phases';
 import { pathAt } from './templates';
 import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
-import type { GameState, GameWindow, Maneuver, PendingDecision, Ship, Speed } from './types';
+import type {
+  ActionType,
+  GameState,
+  GameWindow,
+  Maneuver,
+  PendingDecision,
+  Ship,
+  Speed,
+} from './types';
 
 export interface ReduceResult {
   events: GameEvent[];
@@ -35,6 +43,14 @@ function reloadCharge(ship: Ship): GameEvent | null {
   }
   if (ship.charges < ship.maxCharges) return { type: 'ChargeChanged', shipId: ship.id, delta: 1 };
   return null;
+}
+
+/** A red action gains stress; a purple action spends Force. White costs nothing. */
+function actionCost(ship: Ship, action: ActionType): GameEvent[] {
+  const d = ship.actionDifficulty?.[action] ?? 'white';
+  if (d === 'red') return [{ type: 'StressChanged', shipId: ship.id, delta: 1 }];
+  if (d === 'purple') return [{ type: 'ForceChanged', shipId: ship.id, delta: -1 }];
+  return [];
 }
 
 /** Token/effect events for a self-targeted action — used both by the normal action
@@ -150,14 +166,27 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (!pending.options.actions.includes(cmd.action)) return reject('Action not available');
       // a coordinate's free action: apply the effect without ending the activation
       if (state.grantedAction?.shipId === ship.id) {
-        return { events: [...freeActionEffects(ship, cmd.action), { type: 'GrantResolved' }] };
+        return {
+          events: [
+            ...freeActionEffects(ship, cmd.action),
+            ...actionCost(ship, cmd.action),
+            { type: 'GrantResolved' },
+          ],
+        };
       }
-      // boost/barrel-roll pause for a placement choice instead of resolving now
+      // boost/barrel-roll/SLAM pause for a placement choice instead of resolving now
       if (cmd.action === 'boost' || cmd.action === 'barrel-roll') {
         const candidates = repositionCandidates(state, ship, cmd.action);
         if (candidates.length === 0) return reject('No legal reposition');
         return {
           events: [{ type: 'RepositionOffered', shipId: ship.id, action: cmd.action, candidates }],
+        };
+      }
+      if (cmd.action === 'slam') {
+        const candidates = slamCandidates(state, ship);
+        if (candidates.length === 0) return reject('No legal SLAM maneuver');
+        return {
+          events: [{ type: 'RepositionOffered', shipId: ship.id, action: 'slam', candidates }],
         };
       }
       const events: GameEvent[] = [
@@ -195,6 +224,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         }
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'lock', targetId: cmd.targetId });
       }
+      events.push(...actionCost(ship, cmd.action));
       const out = appendWindow(state, events, 'onPerformAction', ship.id, events[0]);
       if (isIonized(ship)) out.push(...ionShed(ship));
       return { events: out };
@@ -250,10 +280,13 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (pending.type !== 'reposition') return reject('Wrong phase');
       const cand = pending.options.candidates[cmd.choice];
       if (!cand) return reject('Invalid reposition choice');
+      const action = pending.options.action;
       const events: GameEvent[] = [
         { type: 'Repositioned', shipId: ship.id, to: cand.to },
-        { type: 'ActionPerformed', shipId: ship.id, action: pending.options.action },
+        { type: 'ActionPerformed', shipId: ship.id, action },
       ];
+      if (action === 'slam') events.push({ type: 'TokenGained', shipId: ship.id, kind: 'disarm' });
+      events.push(...actionCost(ship, action));
       return { events: appendWindow(state, events, 'onPerformAction', ship.id, events[1]) };
     }
   }

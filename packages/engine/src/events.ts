@@ -2,6 +2,7 @@ import type { AttackFace, DefenceFace } from './dice';
 import type {
   ActionType,
   BaseSize,
+  Difficulty,
   GameWindow,
   Maneuver,
   Obstacle,
@@ -41,6 +42,7 @@ export interface ShipInit {
   upgradeCharges?: Record<string, { charges: number; max: number; recovers: number }>;
   pos: Position;
   actionBar: ActionType[];
+  actionDifficulty?: Partial<Record<ActionType, Difficulty>>;
   dialOptions: Maneuver[];
 }
 
@@ -72,7 +74,7 @@ export type GameEvent =
   | {
       type: 'RepositionOffered';
       shipId: ShipId;
-      action: 'boost' | 'barrel-roll';
+      action: 'boost' | 'barrel-roll' | 'slam';
       candidates: RepositionCandidate[];
     }
   | { type: 'Repositioned'; shipId: ShipId; to: Position }

@@ -49,7 +49,8 @@ export type ActionType =
   | 'rotate-arc'
   | 'jam'
   | 'reload'
-  | 'coordinate';
+  | 'coordinate'
+  | 'slam';
 
 /** A primary-weapon firing arc and its attack value. */
 export type ArcKind =
@@ -148,6 +149,8 @@ export interface Ship {
   forceRecovers?: number;
   pos: Position;
   actionBar: ActionType[];
+  /** Per-action difficulty (red → stress, purple → spend Force); white if absent. */
+  actionDifficulty?: Partial<Record<ActionType, Difficulty>>;
   dialOptions: Maneuver[];
   tokens: Token[];
   dial?: Maneuver;
@@ -206,7 +209,7 @@ export type PendingDecision =
       type: 'reposition';
       playerId: PlayerId;
       shipId: ShipId;
-      options: { action: 'boost' | 'barrel-roll'; candidates: RepositionCandidate[] };
+      options: { action: 'boost' | 'barrel-roll' | 'slam'; candidates: RepositionCandidate[] };
     };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
@@ -232,7 +235,11 @@ export interface GameState {
   /** A pending optional ability awaiting its owner's use/skip; pauses the FSM. */
   offer?: AbilityOffer;
   /** A boost/barrel-roll mid-resolution, awaiting the placement choice; pauses the FSM. */
-  reposition?: { shipId: ShipId; action: 'boost' | 'barrel-roll'; candidates: RepositionCandidate[] };
+  reposition?: {
+    shipId: ShipId;
+    action: 'boost' | 'barrel-roll' | 'slam';
+    candidates: RepositionCandidate[];
+  };
   /** A free action granted by a coordinate, awaiting that ship's choice; pauses the FSM. */
   grantedAction?: { shipId: ShipId };
   pending: PendingDecision[];

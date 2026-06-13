@@ -43,3 +43,17 @@ export function repositionCandidates(
   }
   return out;
 }
+
+/** SLAM destinations: any dial maneuver at the speed the ship executed this round,
+ *  dropping placements that would overlap a ship. */
+export function slamCandidates(state: GameState, ship: Ship): RepositionCandidate[] {
+  const speed = ship.dial?.speed;
+  if (speed === undefined) return [];
+  const out: RepositionCandidate[] = [];
+  for (const m of ship.dialOptions) {
+    if (m.speed !== speed) continue;
+    const to = applyManeuver(ship.pos, m, ship.base);
+    if (!collides(state, ship, to)) out.push({ label: `${m.speed} ${m.bearing}`, to });
+  }
+  return out;
+}

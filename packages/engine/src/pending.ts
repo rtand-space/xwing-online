@@ -1,6 +1,6 @@
 import { attackValue, rangeBand } from './arcs';
 import { obstaclesAt } from './obstacles';
-import { repositionCandidates } from './reposition';
+import { repositionCandidates, slamCandidates } from './reposition';
 import { isCloaked, isDisarmed, isIonized } from './tokens';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
@@ -42,11 +42,13 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
       : isCloaked(ship)
         ? ship.actionBar.filter((a) => a !== 'cloak')
         : ship.actionBar;
-  // a reposition is only offerable if it has at least one legal placement
-  const actions = bar.filter(
-    (a) =>
-      (a !== 'boost' && a !== 'barrel-roll') || repositionCandidates(state, ship, a).length > 0,
-  );
+  // a reposition is only offerable with a legal placement; a purple action needs Force
+  const actions = bar.filter((a) => {
+    if (a === 'boost' || a === 'barrel-roll') return repositionCandidates(state, ship, a).length > 0;
+    if (a === 'slam') return slamCandidates(state, ship).length > 0;
+    if ((ship.actionDifficulty?.[a] ?? 'white') === 'purple') return (ship.force ?? 0) >= 1;
+    return true;
+  });
   const lockTargets: ShipId[] = actions.includes('lock')
     ? enemies(state, ship).map((s) => s.id)
     : [];

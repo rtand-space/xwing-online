@@ -1,4 +1,12 @@
-import type { ActionType, ArcKind, BaseSize, Position, ShipArc, ShipInit } from '@xwing/engine';
+import type {
+  ActionType,
+  ArcKind,
+  BaseSize,
+  Difficulty,
+  Position,
+  ShipArc,
+  ShipInit,
+} from '@xwing/engine';
 import { parseDial } from './dial';
 import { getPilot, getShip, getUpgrade } from './loaders';
 import type { ShipData } from './types';
@@ -19,6 +27,13 @@ const ACTIONS: Record<string, ActionType> = {
   Jam: 'jam',
   Reload: 'reload',
   Coordinate: 'coordinate',
+  SLAM: 'slam',
+};
+
+const DIFFICULTY: Record<string, Difficulty> = {
+  White: 'white',
+  Red: 'red',
+  Purple: 'purple',
 };
 
 const ARCS: Record<string, ArcKind> = {
@@ -52,6 +67,15 @@ function actionBar(ship: ShipData): ActionType[] {
     if (mapped && !bar.includes(mapped)) bar.push(mapped);
   }
   return bar;
+}
+
+function actionDifficulty(ship: ShipData): Partial<Record<ActionType, Difficulty>> {
+  const out: Partial<Record<ActionType, Difficulty>> = {};
+  for (const a of ship.actions) {
+    const mapped = ACTIONS[a.type];
+    if (mapped) out[mapped] = DIFFICULTY[a.difficulty] ?? 'white';
+  }
+  return out;
 }
 
 /** Build an engine ShipInit from card data — the data→engine bridge. */
@@ -96,6 +120,7 @@ export function toShipInit(
     forceRecovers: pilot.force?.recovers ?? 0,
     pos,
     actionBar: actionBar(ship),
+    actionDifficulty: actionDifficulty(ship),
     dialOptions: parseDial(ship.dial),
   };
 }

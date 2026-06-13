@@ -31,6 +31,7 @@ const shipToInit = (s: Ship): ShipInit => ({
   recurring: s.recurring,
   pos: s.pos,
   actionBar: s.actionBar,
+  actionDifficulty: s.actionDifficulty,
   dialOptions: s.dialOptions,
 });
 

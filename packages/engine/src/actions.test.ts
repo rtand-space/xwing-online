@@ -105,3 +105,68 @@ describe('reload action', () => {
     expect(ship2.tokens.some((t) => t.kind === 'disarm')).toBe(true);
   });
 });
+
+describe('action difficulty', () => {
+  it('a red action gains a stress token', () => {
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['barrel-roll'],
+      actionDifficulty: { 'barrel-roll': 'red' },
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'barrel-roll' });
+    s = perform(s, { type: 'Reposition', playerId: 'p', shipId: 'a', choice: 0 });
+    expect(s.ships[0]!.tokens.filter((t) => t.kind === 'stress')).toHaveLength(1);
+  });
+
+  it('a purple action is hidden without Force and spends Force when used', () => {
+    const noForce = ship('a', 'p', 0, 0, {
+      actionBar: ['focus'],
+      actionDifficulty: { focus: 'purple' },
+    });
+    let s = stateWith([noForce, ship('e', 'q', 0, 600)]);
+    let act = s.pending.find((p) => p.type === 'perform-action');
+    expect(act?.type === 'perform-action' && act.options.actions).toEqual([]); // no Force → hidden
+
+    const withForce = ship('a', 'p', 0, 0, {
+      actionBar: ['focus'],
+      actionDifficulty: { focus: 'purple' },
+      force: 1,
+      maxForce: 1,
+    });
+    s = stateWith([withForce, ship('e', 'q', 0, 600)]);
+    act = s.pending.find((p) => p.type === 'perform-action');
+    expect(act?.type === 'perform-action' && act.options.actions).toEqual(['focus']);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'focus' });
+    expect(s.ships[0]!.force).toBe(0); // Force spent
+  });
+});
+
+describe('SLAM action', () => {
+  it('offers maneuvers at the executed speed, then moves + disarms', () => {
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['slam'],
+      actionDifficulty: { slam: 'red' },
+      dial: { speed: 2, bearing: 'straight', difficulty: 'white' },
+      dialOptions: [
+        { speed: 1, bearing: 'straight', difficulty: 'white' },
+        { speed: 2, bearing: 'straight', difficulty: 'white' },
+        { speed: 2, bearing: 'bank-left', difficulty: 'white' },
+      ],
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'slam' });
+    const rep = s.pending.find((p) => p.type === 'reposition');
+    expect(rep?.type === 'reposition' && rep.options.action).toBe('slam');
+    expect(rep?.type === 'reposition' && rep.options.candidates.map((c) => c.label)).toEqual([
+      '2 straight',
+      '2 bank-left',
+    ]); // only the speed-2 dial options
+
+    s = perform(s, { type: 'Reposition', playerId: 'p', shipId: 'a', choice: 0 });
+    const moved = s.ships[0]!;
+    expect(moved.pos.y).toBeCloseTo(120); // 80 template + 40 base
+    expect(moved.tokens.some((t) => t.kind === 'disarm')).toBe(true);
+    expect(moved.tokens.some((t) => t.kind === 'stress')).toBe(true); // SLAM is red
+    expect(moved.hasActed).toBe(true);
+  });
+});
