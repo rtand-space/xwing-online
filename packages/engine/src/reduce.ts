@@ -105,6 +105,7 @@ function appendWindow(
   window: GameWindow,
   shipId: string,
   trigger?: GameEvent,
+  attackerId?: string,
 ): GameEvent[] {
   const fold = (): GameState => events.reduce((s, e) => applyEvent(s, e), state);
   let ship = fold().ships.find((sh) => sh.id === shipId);
@@ -112,9 +113,9 @@ function appendWindow(
   ship = fold().ships.find((sh) => sh.id === shipId);
   // only queue one optional offer at a time — the FSM pauses until it resolves
   if (ship && ship.hull > 0 && !fold().offer) {
-    const offer = findOffer(fold(), window, ship);
+    const offer = findOffer(fold(), window, ship, attackerId);
     if (offer) {
-      events.push({ type: 'AbilityOffered', shipId, window, ...offer });
+      events.push({ type: 'AbilityOffered', shipId, window, attackerId, ...offer });
     }
   }
   return events;
@@ -345,15 +346,21 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
           e.type === 'DamageDealt' && e.shipId === c.targetId,
       );
       if (dmg && dmg.shieldsAfter < before.shields) {
-        appendWindow(state, events, 'onShieldLost', c.targetId);
+        appendWindow(state, events, 'onShieldLost', c.targetId, undefined, c.attackerId);
       }
-      if (dmg) appendWindow(state, events, 'onDamaged', c.targetId);
-      appendWindow(state, events, 'afterDefend', c.targetId);
+      if (dmg) appendWindow(state, events, 'onDamaged', c.targetId, undefined, c.attackerId);
+      appendWindow(state, events, 'afterDefend', c.targetId, undefined, c.attackerId);
       return { events };
     }
     case 'UseAbility': {
       if (pending.type !== 'trigger-ability' || !state.offer) return reject('No ability offered');
-      const events = resolveOptional(state, ship, state.offer.abilityXws, state.offer.window);
+      const events = resolveOptional(
+        state,
+        ship,
+        state.offer.abilityXws,
+        state.offer.window,
+        state.offer.attackerId,
+      );
       events.push({ type: 'AbilityResolved' });
       return { events };
     }

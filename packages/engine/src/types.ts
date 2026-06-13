@@ -144,6 +144,8 @@ export interface AbilityOffer {
   abilityXws: string;
   window: GameWindow;
   label: string;
+  /** The attacker, for a defender's reactive-window ability (e.g. return fire). */
+  attackerId?: ShipId;
 }
 
 export interface Player {

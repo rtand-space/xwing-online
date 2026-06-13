@@ -236,7 +236,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
     case 'AbilityOffered':
       return {
         ...state,
-        offer: { shipId: e.shipId, abilityXws: e.abilityXws, window: e.window, label: e.label },
+        offer: {
+          shipId: e.shipId,
+          abilityXws: e.abilityXws,
+          window: e.window,
+          label: e.label,
+          attackerId: e.attackerId,
+        },
       };
     case 'AbilityResolved':
       return { ...state, offer: undefined };

@@ -126,6 +126,7 @@ export type GameEvent =
       abilityXws: string;
       window: GameWindow;
       label: string;
+      attackerId?: ShipId;
     }
   | { type: 'AbilityResolved' }
   | { type: 'RoundEnded' }

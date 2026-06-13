@@ -326,6 +326,26 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // Dengar — returns fire on anyone foolish enough to shoot him. Reactive
+  // (afterDefend), costs a charge, and targets the attacker via the attacker context.
+  dengar: {
+    note: 'After you defend, if the attacker is in your front arc, may spend a charge for a bonus attack against it.',
+    optional: {
+      afterDefend: {
+        label: 'Dengar: spend a charge to return fire',
+        available: ({ state, self, attackerId }) => {
+          if (!attackerId || self.charges <= 0) return false;
+          const attacker = state.ships.find((s) => s.id === attackerId);
+          return !!attacker && attacker.hull > 0 && inArc(self, attacker);
+        },
+        resolve: ({ self, attackerId }) => [
+          spendCharge(self),
+          offerBonusAttack(self, attackerId ? [attackerId] : undefined),
+        ],
+      },
+    },
+  },
+
   // "Quickdraw" — fires back the instant the shields drop. Reactive (onShieldLost);
   // costs a charge, so it's an optional offer that grants a bonus attack.
   quickdraw: {

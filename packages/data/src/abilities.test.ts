@@ -369,6 +369,19 @@ describe('card abilities', () => {
     expect(opt.available(attacking, ezra)).toBe(false);
   });
 
+  it('Dengar returns fire on an attacker in his front arc, spending a charge', () => {
+    const opt = getAbility('dengar')!.optional!.afterDefend!;
+    const dengar: Ship = { ...ship('d', { x: 0, y: 0, angle: 0 }), charges: 1, maxCharges: 1 };
+    const attacker = ship('a', { x: 0, y: 100, angle: 180 }); // ahead → in Dengar's front arc
+    const st = { ships: [dengar, attacker] } as unknown as GameState;
+    expect(opt.available({ state: st, self: dengar, attackerId: 'a' })).toBe(true);
+    const evs = opt.resolve({ state: st, self: dengar, attackerId: 'a' });
+    expect(evs.some((e) => e.type === 'ChargeChanged' && e.delta === -1)).toBe(true);
+    const bonus = evs.find((e) => e.type === 'BonusAttackOffered');
+    expect(bonus && bonus.type === 'BonusAttackOffered' && bonus.targets).toEqual(['a']);
+    expect(opt.available({ state: st, self: dengar })).toBe(false); // no attacker context
+  });
+
   it('Lieutenant Tavson offers to spend a charge for a free action when damaged', () => {
     const opt = getAbility('lieutenanttavson')!.optional!.onDamaged!;
     const armed: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), charges: 1, maxCharges: 1 };

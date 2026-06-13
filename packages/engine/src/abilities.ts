@@ -1,6 +1,6 @@
 import type { AttackContext, AttackWindow } from './combat';
 import type { GameEvent } from './events';
-import type { GameState, GameWindow, Ship } from './types';
+import type { GameState, GameWindow, Ship, ShipId } from './types';
 
 export type { GameWindow } from './types';
 
@@ -18,6 +18,8 @@ export interface GameContext {
   self: Ship;
   /** The triggering event, when relevant (e.g. the ActionPerformed for onPerformAction). */
   event?: GameEvent;
+  /** For the defender's reactive windows (afterDefend/onDamaged/…): the attacker. */
+  attackerId?: ShipId;
 }
 /** Returns extra events to append to the stream. */
 export type GameAbilityHook = (ctx: GameContext) => GameEvent[];
@@ -87,10 +89,12 @@ export function findOffer(
   state: GameState,
   window: GameWindow,
   self: Ship,
+  attackerId?: ShipId,
 ): { abilityXws: string; label: string } | null {
   for (const xws of shipAbilitySources(self)) {
     const opt = REGISTRY.get(xws)?.optional?.[window];
-    if (opt && opt.available({ state, self })) return { abilityXws: xws, label: opt.label };
+    if (opt && opt.available({ state, self, attackerId }))
+      return { abilityXws: xws, label: opt.label };
   }
   return null;
 }
@@ -101,9 +105,10 @@ export function resolveOptional(
   self: Ship,
   abilityXws: string,
   window: GameWindow,
+  attackerId?: ShipId,
 ): GameEvent[] {
   const opt = REGISTRY.get(abilityXws)?.optional?.[window];
-  return opt ? opt.resolve({ state, self }) : [];
+  return opt ? opt.resolve({ state, self, attackerId }) : [];
 }
 
 /** Run a ship's own abilities for a non-combat window; returns events to append. */
