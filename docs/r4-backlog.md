@@ -139,9 +139,19 @@ The old engine auto-applied them all. Staged fix (chosen: **tokens first**).
   events so it folds deterministically (golden-master tests still pass). Client gets a
   modify panel showing the rolled dice + spends. *Bonus-die and dice-mod **abilities**
   (Crack Shot, Predator, …) still resolve automatically for now.*
-- ☐ **T4-C2** Migrate the registered abilities to **optional offers** too (Crack Shot,
-  Predator, "may spend Force/charge" cards), and order rerolls strictly before changes
-  per the rules. Then the M7 sweep can register "may" cards correctly.
+- ◐ **T4-C2** Migrate the registered abilities to **optional offers**. New
+  `optionalAttack` ability section: "may" dice effects are offered to the owner during
+  the modify step (each at most once per attack), and **rerolls are only offered before
+  any result has been changed** (combat tracks a `changed` flag). `UseModifyAbility`
+  command; the modify decision lists available abilities.
+  - ☑ Migrated the clear attacker-owned `onModifyAttack` "may" cards: **Predator** (a
+    reroll), **Marksmanship**, **Fanatical**.
+  - ☐ Still to migrate: **cross-owner / onModifyDefence** abilities (Juke, Crack Shot —
+    attacker effects on the defender's dice, need a richer modify-defence timing step),
+    **Howlrunner** (an aura the *attacker* chooses to use), **Heroic** (both windows),
+    and the "may +die" abilities (Lt. Blount, …) which fire at the roll step. These
+    stay **auto** for now.
+  - Then the M7 sweep can register "may" cards correctly.
 
 # R4b — secondary weapons · devices · damage deck
 
