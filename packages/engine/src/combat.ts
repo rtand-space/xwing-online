@@ -290,8 +290,18 @@ export function beginAttack(
   return { events: ctx.events, attack: ctx.attack, range: ctx.range, obstructed: ctx.obstructed };
 }
 
-/** Optional spends available to whoever owns the current modify step. */
+/** The ship who owns the current modify step, and which window its abilities use. */
+function stepOwner(state: GameState, c: CombatState): { ship: Ship; window: AttackWindow } {
+  const id = c.step === 'defence' ? c.targetId : c.attackerId;
+  return {
+    ship: state.ships.find((s) => s.id === id)!,
+    window: c.step === 'attack' ? 'onModifyAttack' : 'onModifyDefence',
+  };
+}
+
+/** Optional token spends available to whoever owns the current modify step. */
 export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
+  if (c.step === 'after-defence') return []; // attacker spent its tokens in the attack step
   const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
   const pool: (AttackFace | DefenceFace)[] = c.step === 'attack' ? c.attack : c.defence;
   const opts: SpendKind[] = [];
@@ -314,8 +324,7 @@ export function combatAbilities(
   state: GameState,
   c: CombatState,
 ): { xws: string; label: string }[] {
-  const window = c.step === 'attack' ? 'onModifyAttack' : 'onModifyDefence';
-  const owner = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
+  const { ship: owner, window } = stepOwner(state, c);
   const ctx = makeCtx(state, c);
   const out: { xws: string; label: string }[] = [];
   for (const xws of shipAbilitySources(owner)) {
@@ -333,8 +342,7 @@ export function applyOptionalAbility(
   c: CombatState,
   xws: string,
 ): { attack?: AttackFace[]; defence?: DefenceFace[]; events: GameEvent[]; changed: boolean } {
-  const window = c.step === 'attack' ? 'onModifyAttack' : 'onModifyDefence';
-  const owner = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
+  const { ship: owner, window } = stepOwner(state, c);
   const opt = getAbility(xws)!.optionalAttack![window]!;
   const ctx = makeCtx(state, c);
   opt.apply(ctx, owner);

@@ -129,6 +129,44 @@ describe('optional abilities + reroll ordering', () => {
   });
 });
 
+describe('after-defence attacker step (cost ability on defender dice)', () => {
+  it('gives the attacker a step when a cost ability can modify the defender dice', () => {
+    clearAbilities();
+    registerAbility('snipe', {
+      optionalAttack: {
+        onModifyDefence: {
+          label: 'cancel evade (charge)',
+          available: (ctx, self) => self.charges > 0 && ctx.defence.includes('evade'),
+          apply: (ctx, self) => {
+            ctx.defence = changeOneFace(ctx.defence, 'evade', 'blank');
+            ctx.events.push({ type: 'ChargeChanged', shipId: self.id, delta: -1 });
+          },
+        },
+      },
+    });
+    const s = stateWith([
+      ship('a', 'p', 0, 0, { pilotXws: 'snipe', charges: 1, maxCharges: 1 }),
+      ship('d', 'q', 0, 200, {}),
+    ]);
+    const c: CombatState = {
+      attackerId: 'a',
+      targetId: 'd',
+      range: 2,
+      obstructed: false,
+      attack: ['hit'],
+      defence: ['evade'],
+      step: 'after-defence',
+    };
+    expect(combatAbilities(s, c).map((x) => x.xws)).toEqual(['snipe']);
+    clearAbilities();
+  });
+});
+
+const changeOneFace = <T,>(arr: T[], from: T, to: T): T[] => {
+  let done = false;
+  return arr.map((f) => (!done && f === from ? ((done = true), to) : f));
+};
+
 describe('interactive attack FSM', () => {
   it('pauses for the attacker, then the defender, then resolves', () => {
     let s = stateWith([

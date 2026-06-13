@@ -139,19 +139,18 @@ The old engine auto-applied them all. Staged fix (chosen: **tokens first**).
   events so it folds deterministically (golden-master tests still pass). Client gets a
   modify panel showing the rolled dice + spends. *Bonus-die and dice-mod **abilities**
   (Crack Shot, Predator, …) still resolve automatically for now.*
-- ◐ **T4-C2** Migrate the registered abilities to **optional offers**. New
-  `optionalAttack` ability section: "may" dice effects are offered to the owner during
-  the modify step (each at most once per attack), and **rerolls are only offered before
-  any result has been changed** (combat tracks a `changed` flag). `UseModifyAbility`
-  command; the modify decision lists available abilities.
-  - ☑ Migrated the clear attacker-owned `onModifyAttack` "may" cards: **Predator** (a
-    reroll), **Marksmanship**, **Fanatical**.
-  - ☐ Still to migrate: **cross-owner / onModifyDefence** abilities (Juke, Crack Shot —
-    attacker effects on the defender's dice, need a richer modify-defence timing step),
-    **Howlrunner** (an aura the *attacker* chooses to use), **Heroic** (both windows),
-    and the "may +die" abilities (Lt. Blount, …) which fire at the roll step. These
-    stay **auto** for now.
-  - Then the M7 sweep can register "may" cards correctly.
+- ☑ **T4-C2** Optionality is driven by **cost**, not the word "may": only abilities
+  that cost the owner a resource (spend a focus/Force/charge) are offered; cost-free
+  effects (extra/fewer dice, cost-free rerolls/changes) auto-trigger, for a lightweight
+  feel. New `optionalAttack` ability section: cost abilities are offered during the
+  modify step (each ≤ once/attack), with **rerolls only before any result changes**
+  (`changed` flag) and `UseModifyAbility`. An **`after-defence`** combat step lets the
+  *attacker* use cost abilities that modify the defender's dice (e.g. **Crack Shot**,
+  now an offer). **Auto-skip**: `trivialCommand` resolves empty steps (no target →
+  pass, no action → skip, nothing to spend → proceed); the client applies it so players
+  are never prompted for a non-choice (the engine FSM stays pure). Predator/Marksmanship/
+  Fanatical reverted to auto (they cost nothing). *Heroic / Juke / Howlrunner are
+  cost-free → stay auto, correctly.*
 
 # R4b — secondary weapons · devices · damage deck
 

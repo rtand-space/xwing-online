@@ -178,6 +178,8 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return state.combat
         ? { ...state, combat: { ...state.combat, defence: e.defence, step: 'defence' } }
         : state;
+    case 'CombatStep':
+      return state.combat ? { ...state, combat: { ...state.combat, step: e.step } } : state;
     case 'CombatEnded':
       return { ...state, combat: undefined };
     case 'TokenSpent':

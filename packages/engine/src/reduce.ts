@@ -5,6 +5,7 @@ import {
   applyOptionalAbility,
   applySpend,
   beginAttack,
+  combatAbilities,
   finishCombat,
   rollDefenceStage,
 } from './combat';
@@ -314,8 +315,9 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     }
     case 'ModifyDone': {
       if (pending.type !== 'modify' || !state.combat) return reject('No combat');
-      if (state.combat.step === 'attack') {
-        // run the (auto, for now) attack abilities, then roll defence
+      const c = state.combat;
+      if (c.step === 'attack') {
+        // run the auto (cost-free) attack abilities, then roll defence
         let s = state;
         const events: GameEvent[] = [];
         const ab = applyAttackAbilities(s, s.combat!);
@@ -325,8 +327,12 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push(...rd.events, { type: 'CombatAdvanced', defence: rd.defence });
         return { events };
       }
-      // defence step done: resolve abilities, compare, deal damage
-      return { events: [...finishCombat(state, state.combat), { type: 'CombatEnded' }] };
+      // after the defender modifies, give the attacker a step for any cost ability
+      // that modifies the defender's dice (e.g. Crack Shot); otherwise resolve.
+      if (c.step === 'defence' && combatAbilities(state, { ...c, step: 'after-defence' }).length) {
+        return { events: [{ type: 'CombatStep', step: 'after-defence' }] };
+      }
+      return { events: [...finishCombat(state, c), { type: 'CombatEnded' }] };
     }
     case 'UseAbility': {
       if (pending.type !== 'trigger-ability' || !state.offer) return reject('No ability offered');

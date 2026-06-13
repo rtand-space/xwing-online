@@ -15,8 +15,9 @@ export interface CombatState {
   obstructed: boolean;
   attack: AttackFace[];
   defence: DefenceFace[];
-  /** Whose modify step is open: the attacker's, then the defender's. */
-  step: 'attack' | 'defence';
+  /** Whose modify step is open: the attacker's, the defender's, then the attacker
+   *  again for cost abilities that modify the defender's dice (e.g. Crack Shot). */
+  step: 'attack' | 'defence' | 'after-defence';
   /** Set once a result has been changed; rerolls are then no longer offered. */
   changed?: boolean;
   /** Optional abilities already used this attack (offered at most once each). */
@@ -252,7 +253,7 @@ export type PendingDecision =
       playerId: PlayerId;
       shipId: ShipId;
       options: {
-        step: 'attack' | 'defence';
+        step: 'attack' | 'defence' | 'after-defence';
         spends: SpendKind[];
         abilities: { xws: string; label: string }[];
       };

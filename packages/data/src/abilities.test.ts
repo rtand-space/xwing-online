@@ -164,23 +164,23 @@ describe('card abilities', () => {
     expect(clear.attack).toHaveLength(1);
   });
 
-  it('Crack Shot spends a charge to cancel an evade against a bullseye target', () => {
-    const hook = getAbility('crackshot')!.attack!.onModifyDefence!;
+  it('Crack Shot is offered to spend a charge to cancel an evade against a bullseye target', () => {
+    const opt = getAbility('crackshot')!.optionalAttack!.onModifyDefence!;
     const armed: Ship = {
       ...ship('a', { x: 0, y: 0, angle: 0 }),
       upgradeCharges: { crackshot: { charges: 1, max: 1, recovers: 0 } },
     };
     const c = ctx(armed, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
     c.defence = ['evade', 'blank'];
-    hook(c, armed);
+    expect(opt.available(c, armed)).toBe(true);
+    opt.apply(c, armed);
     expect(c.defence.filter((f) => f === 'evade')).toHaveLength(0);
     expect(c.events.some((e) => e.type === 'ChargeChanged' && e.delta === -1)).toBe(true);
 
-    const empty = ship('a', { x: 0, y: 0, angle: 0 }); // 0 charges
+    const empty = ship('a', { x: 0, y: 0, angle: 0 }); // 0 charges → not offered
     const c2 = ctx(empty, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
     c2.defence = ['evade'];
-    hook(c2, empty);
-    expect(c2.defence).toEqual(['evade']);
+    expect(opt.available(c2, empty)).toBe(false);
   });
 
   it('Heroic rerolls an all-blank attack of 2+ dice', () => {

@@ -105,6 +105,7 @@ export type GameEvent =
       usedAbility?: string;
     }
   | { type: 'CombatAdvanced'; defence: DefenceFace[] }
+  | { type: 'CombatStep'; step: 'attack' | 'defence' | 'after-defence' }
   | { type: 'CombatEnded' }
   | { type: 'TokenSpent'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | {

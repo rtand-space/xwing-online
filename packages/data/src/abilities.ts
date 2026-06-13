@@ -140,20 +140,22 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
-  // Crack Shot (Talent) — spend its charge to cancel an evade against a bullseye target.
+  // Crack Shot (Talent) — may spend its charge to cancel an evade against a bullseye
+  // target. Charge is a cost, so it's an optional offer (during the attacker's
+  // after-defence step).
   crackshot: {
-    note: 'While attacking a bullseye target, spend a charge to cancel 1 evade result.',
-    attack: {
-      onModifyDefence: (ctx, self) => {
-        if (
-          ctx.attacker.id === self.id &&
-          chargesFrom(ctx.attacker, 'crackshot') > 0 &&
+    note: 'While attacking a target in your bullseye arc, may spend a charge to cancel 1 evade.',
+    optionalAttack: {
+      onModifyDefence: {
+        label: 'Crack Shot: cancel an evade (charge)',
+        available: (ctx, self) =>
+          chargesFrom(self, 'crackshot') > 0 &&
           inBullseye(ctx.attacker, ctx.target) &&
-          ctx.defence.includes('evade')
-        ) {
+          ctx.defence.includes('evade'),
+        apply: (ctx, self) => {
           changeDefence(ctx, 'evade', 'blank', 1);
           ctx.events.push(spendCharge(self, 'crackshot'));
-        }
+        },
       },
     },
   },

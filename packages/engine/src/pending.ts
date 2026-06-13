@@ -183,7 +183,7 @@ export function computePending(state: GameState): PendingDecision[] {
   // An attack mid-resolution pauses for the current step's optional spends.
   if (state.combat) {
     const c = state.combat;
-    const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId));
+    const ship = state.ships.find((s) => s.id === (c.step === 'defence' ? c.targetId : c.attackerId));
     if (ship) {
       return [
         {

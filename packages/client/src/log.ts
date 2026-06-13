@@ -59,6 +59,8 @@ export function formatEvent(e: GameEvent): string | null {
       return null;
     case 'CombatAdvanced':
       return null;
+    case 'CombatStep':
+      return null;
     case 'CombatEnded':
       return null;
     case 'DamageDealt':
