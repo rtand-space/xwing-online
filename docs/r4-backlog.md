@@ -177,10 +177,14 @@ Working through the hooks the sweep needs, highest-leverage first.
     is fully suppressed (spends, offered abilities, and its auto cost-free abilities).
     "Midnight" rides it. *Ember (a more specific "can't spend focus/calc") would reuse
     this with a narrower predicate.*
-  - ☐ Still to build: **setup window**; **condition cards**; **token transfer** (needs a
-    target decision); **grant deplete/strain to others** (needs the granting triggers —
-    System Phase choice, reload, etc.); **"moved through a ship"** triggers (only final
-    placement + bump tracked today); **System-Phase ability window** (von Reg, Muse, …).
+  - ☑ **Target-select effect** — `offerTargetEffect` + a `select-target` decision +
+    serialisable `EffectSpec` (transfer/grant/remove token) applied to the chosen ship.
+    Axe rides it (pass a green token to a side-arc wingmate). Unlocks the whole
+    choose-a-ship-and-move/grant/remove-a-token class.
+  - ☐ Still to build: **setup window**; **condition cards**; a **System-/Engagement-Phase
+    ability window** (so phase-start token-grants like von Reg/Muse/Holo can use the
+    target-select primitive); **"moved through a ship"** triggers (only final placement +
+    bump tracked today).
 
 # R4b — secondary weapons · devices · damage deck
 
