@@ -1,5 +1,23 @@
+import type { AttackFace, DefenceFace } from './dice';
+
 export type PlayerId = string;
 export type ShipId = string;
+
+/** Optional dice modifications a player may apply during an attack. */
+export type SpendKind = 'focus' | 'lock' | 'calculate' | 'force';
+
+/** An attack mid-resolution: dice are rolled and the owner of the current step
+ *  may apply optional spends before it proceeds. */
+export interface CombatState {
+  attackerId: ShipId;
+  targetId: ShipId;
+  range: number;
+  obstructed: boolean;
+  attack: AttackFace[];
+  defence: DefenceFace[];
+  /** Whose modify step is open: the attacker's, then the defender's. */
+  step: 'attack' | 'defence';
+}
 
 /** Board coordinates in real-world millimetres (matches the tabletop). */
 export interface Position {
@@ -224,6 +242,12 @@ export type PendingDecision =
       playerId: PlayerId;
       shipId: ShipId;
       options: { candidates: ShipId[]; canSkip: boolean };
+    }
+  | {
+      type: 'modify';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { step: 'attack' | 'defence'; spends: SpendKind[] };
     };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
@@ -261,6 +285,8 @@ export interface GameState {
   grantedAction?: { shipId: ShipId };
   /** A linked follow-up action offered after a base action; pauses the FSM. */
   linkedAction?: { shipId: ShipId; action: ActionType; difficulty: Difficulty };
+  /** An attack mid-resolution, paused for the current step's optional spends. */
+  combat?: CombatState;
   pending: PendingDecision[];
   gameOver: boolean;
 }

@@ -146,6 +146,36 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, hasEngaged: true }));
     case 'DiceRolled':
       return { ...state, rng: { ...state.rng, cursor: state.rng.cursor + e.faces.length } };
+    case 'CombatBegan':
+      return {
+        ...state,
+        combat: {
+          attackerId: e.attackerId,
+          targetId: e.targetId,
+          range: e.range,
+          obstructed: e.obstructed,
+          attack: e.attack,
+          defence: [],
+          step: 'attack',
+        },
+      };
+    case 'CombatDiceSet':
+      return state.combat
+        ? {
+            ...state,
+            combat: {
+              ...state.combat,
+              attack: e.attack ?? state.combat.attack,
+              defence: e.defence ?? state.combat.defence,
+            },
+          }
+        : state;
+    case 'CombatAdvanced':
+      return state.combat
+        ? { ...state, combat: { ...state.combat, defence: e.defence, step: 'defence' } }
+        : state;
+    case 'CombatEnded':
+      return { ...state, combat: undefined };
     case 'TokenSpent':
       return mapShip(state, e.shipId, (s) => {
         let removed = false;

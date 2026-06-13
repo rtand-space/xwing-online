@@ -49,6 +49,10 @@ export const firstChoice: Chooser = (p) => {
             targetId: p.options.candidates[0]!,
           }
         : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
+    case 'modify':
+      return p.options.spends.length
+        ? { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: p.options.spends[0]! }
+        : { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
   }
 };
 

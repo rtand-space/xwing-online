@@ -1,0 +1,110 @@
+import { describe, expect, it } from 'vitest';
+import { applyEvent, computePending, reduce } from './index';
+import { applySpend, combatSpends } from './combat';
+import type { CombatState, GameState, Ship } from './index';
+import { xwing } from './index';
+
+const ship = (id: string, owner: string, x: number, y: number, over: Partial<Ship> = {}): Ship => ({
+  ...xwing(id, owner, 1, { x, y, angle: 0 }),
+  maxHull: 6,
+  maxShields: 0,
+  shields: 0,
+  agility: 2,
+  charges: 0,
+  maxCharges: 0,
+  recurring: 0,
+  tokens: [],
+  dialRevealed: false,
+  hasMoved: true,
+  hasActed: true,
+  hasEngaged: false,
+  ...over,
+});
+
+const stateWith = (ships: Ship[]): GameState => {
+  const s: GameState = {
+    id: 'g',
+    rng: { seed: 's', cursor: 0 },
+    round: 1,
+    phase: 'engagement',
+    players: [
+      { id: 'p', name: 'P' },
+      { id: 'q', name: 'Q' },
+    ],
+    ships,
+    obstacles: [],
+    pending: [],
+    gameOver: false,
+  };
+  return { ...s, pending: computePending(s) };
+};
+
+const drive = (s: GameState, cmd: Parameters<typeof reduce>[1]): GameState => {
+  const r = reduce(s, cmd);
+  if (r.rejection) throw new Error(r.rejection);
+  return r.events.reduce(applyEvent, s);
+};
+
+describe('combatSpends / applySpend (pure)', () => {
+  const base = (over: Partial<CombatState>): CombatState => ({
+    attackerId: 'a',
+    targetId: 'd',
+    range: 2,
+    obstructed: false,
+    attack: [],
+    defence: [],
+    step: 'attack',
+    ...over,
+  });
+
+  it('offers focus only when the attacker has a focus token and a focus result', () => {
+    const s = stateWith([
+      ship('a', 'p', 0, 0, { tokens: [{ kind: 'focus' }] }),
+      ship('d', 'q', 0, 200, {}),
+    ]);
+    expect(combatSpends(s, base({ attack: ['focus', 'blank'] }))).toContain('focus');
+    expect(combatSpends(s, base({ attack: ['hit', 'blank'] }))).not.toContain('focus');
+  });
+
+  it('spending focus turns every focus result into a hit and spends the token', () => {
+    const s = stateWith([
+      ship('a', 'p', 0, 0, { tokens: [{ kind: 'focus' }] }),
+      ship('d', 'q', 0, 200, {}),
+    ]);
+    const r = applySpend(s, base({ attack: ['focus', 'focus', 'blank'] }), 'focus');
+    expect(r.attack).toEqual(['hit', 'hit', 'blank']);
+    expect(r.events).toEqual([{ type: 'TokenSpent', shipId: 'a', kind: 'focus' }]);
+  });
+
+  it('the defender spends focus for evades', () => {
+    const s = stateWith([ship('a', 'p', 0, 0, {}), ship('d', 'q', 0, 200, { tokens: [{ kind: 'focus' }] })]);
+    const r = applySpend(s, base({ step: 'defence', defence: ['focus', 'blank'] }), 'focus');
+    expect(r.defence).toEqual(['evade', 'blank']);
+    expect(r.events).toEqual([{ type: 'TokenSpent', shipId: 'd', kind: 'focus' }]);
+  });
+});
+
+describe('interactive attack FSM', () => {
+  it('pauses for the attacker, then the defender, then resolves', () => {
+    let s = stateWith([
+      ship('a', 'p', 0, 0, { primaryAttack: 3, tokens: [{ kind: 'focus' }] }),
+      ship('d', 'q', 0, 200, { agility: 2 }),
+    ]);
+    // a is higher in the engagement order (both init 1, id 'a' < 'd')
+    expect(s.pending[0]!.type).toBe('declare-attack');
+    s = drive(s, { type: 'DeclareAttack', playerId: 'p', shipId: 'a', targetId: 'd' });
+    expect(s.combat?.step).toBe('attack');
+    const atkStep = s.pending.find((x) => x.type === 'modify');
+    expect(atkStep?.type === 'modify' && atkStep.shipId).toBe('a');
+
+    s = drive(s, { type: 'ModifyDone', playerId: 'p', shipId: 'a' });
+    expect(s.combat?.step).toBe('defence');
+    expect(s.combat?.defence.length).toBe(2); // 2 agility dice rolled
+    const defStep = s.pending.find((x) => x.type === 'modify');
+    expect(defStep?.type === 'modify' && defStep.shipId).toBe('d');
+
+    s = drive(s, { type: 'ModifyDone', playerId: 'q', shipId: 'd' });
+    expect(s.combat).toBeUndefined(); // combat resolved
+    expect(s.ships.find((x) => x.id === 'a')!.hasEngaged).toBe(true);
+  });
+});

@@ -310,6 +310,33 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'modify' && (
+        <div className="grid">
+          <div className="muted">
+            {p.options.step === 'attack' ? 'Attack' : 'Defence'} dice:{' '}
+            {(p.options.step === 'attack' ? view.combat?.attack : view.combat?.defence)?.join(', ') ||
+              '—'}
+          </div>
+          {p.options.spends.map((s) => (
+            <button
+              key={s}
+              className="btn"
+              onClick={() =>
+                send({ type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: s })
+              }
+            >
+              Spend {s}
+            </button>
+          ))}
+          <button
+            className="btn primary"
+            onClick={() => send({ type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Done
+          </button>
+        </div>
+      )}
+
       {p.type === 'trigger-ability' && (
         <div className="grid">
           <div className="muted">{p.options.label}</div>
@@ -349,5 +376,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: choose placement`;
     case 'grant-target':
       return `${name}: grant an action`;
+    case 'modify':
+      return `${name}: modify dice`;
   }
 }

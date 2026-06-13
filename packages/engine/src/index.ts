@@ -5,6 +5,8 @@ export type {
   ActionType,
   ArcKind,
   BaseSize,
+  CombatState,
+  SpendKind,
   Bearing,
   Difficulty,
   GameState,

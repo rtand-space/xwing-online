@@ -53,6 +53,14 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} attacks ${e.targetId} (range ${e.range})`;
     case 'DiceRolled':
       return `  ${e.kind}: ${e.faces.join(', ')}`;
+    case 'CombatBegan':
+      return null;
+    case 'CombatDiceSet':
+      return null;
+    case 'CombatAdvanced':
+      return null;
+    case 'CombatEnded':
+      return null;
     case 'DamageDealt':
       return `${e.shipId} takes ${e.amount} → ${e.shieldsAfter} shields, ${e.hullAfter} hull`;
     case 'ShipDestroyed':

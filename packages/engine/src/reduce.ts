@@ -1,6 +1,12 @@
 import { fireWindow, findOffer, resolveOptional } from './abilities';
 import { applyEvent } from './apply';
-import { resolveAttack } from './combat';
+import {
+  applyAttackAbilities,
+  applySpend,
+  beginAttack,
+  finishCombat,
+  rollDefenceStage,
+} from './combat';
 import type { Command } from './commands';
 import type { GameEvent } from './events';
 import { nextFacing } from './arcs';
@@ -128,6 +134,8 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   Reposition: 'reposition',
   GrantAction: 'grant-target',
   DeclineGrant: 'grant-target',
+  Modify: 'modify',
+  ModifyDone: 'modify',
 };
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
@@ -259,12 +267,41 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'DeclareAttack': {
       if (pending.type !== 'declare-attack') return reject('Wrong phase');
       if (!pending.options.targets.includes(cmd.targetId)) return reject('Invalid target');
-      return { events: resolveAttack(state, ship.id, cmd.targetId) };
+      // roll the dice, then pause for the attacker's optional spends
+      const { events, attack, range, obstructed } = beginAttack(state, ship.id, cmd.targetId);
+      return {
+        events: [
+          ...events,
+          { type: 'CombatBegan', attackerId: ship.id, targetId: cmd.targetId, range, obstructed, attack },
+        ],
+      };
     }
     case 'PassAttack': {
       if (pending.type !== 'declare-attack' || !pending.options.canPass)
         return reject('Cannot pass');
       return { events: [{ type: 'AttackPassed', shipId: ship.id }] };
+    }
+    case 'Modify': {
+      if (pending.type !== 'modify' || !state.combat) return reject('No combat');
+      if (!pending.options.spends.includes(cmd.spend)) return reject('Spend not available');
+      const r = applySpend(state, state.combat, cmd.spend);
+      return { events: [...r.events, { type: 'CombatDiceSet', attack: r.attack, defence: r.defence }] };
+    }
+    case 'ModifyDone': {
+      if (pending.type !== 'modify' || !state.combat) return reject('No combat');
+      if (state.combat.step === 'attack') {
+        // run the (auto, for now) attack abilities, then roll defence
+        let s = state;
+        const events: GameEvent[] = [];
+        const ab = applyAttackAbilities(s, s.combat!);
+        events.push(...ab.events, { type: 'CombatDiceSet', attack: ab.attack });
+        for (const e of events) s = applyEvent(s, e);
+        const rd = rollDefenceStage(s, s.combat!);
+        events.push(...rd.events, { type: 'CombatAdvanced', defence: rd.defence });
+        return { events };
+      }
+      // defence step done: resolve abilities, compare, deal damage
+      return { events: [...finishCombat(state, state.combat), { type: 'CombatEnded' }] };
     }
     case 'UseAbility': {
       if (pending.type !== 'trigger-ability' || !state.offer) return reject('No ability offered');

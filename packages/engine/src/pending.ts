@@ -1,4 +1,5 @@
 import { attackValue, rangeBand } from './arcs';
+import { combatSpends } from './combat';
 import { obstaclesAt } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
 import { isCloaked, isDisarmed, isIonized } from './tokens';
@@ -178,6 +179,21 @@ export function computePending(state: GameState): PendingDecision[] {
   if (state.linkedAction) {
     const ship = state.ships.find((s) => s.id === state.linkedAction!.shipId);
     if (ship) return [linkedDecision(state, ship, state.linkedAction.action)];
+  }
+  // An attack mid-resolution pauses for the current step's optional spends.
+  if (state.combat) {
+    const c = state.combat;
+    const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId));
+    if (ship) {
+      return [
+        {
+          type: 'modify',
+          playerId: ship.ownerId,
+          shipId: ship.id,
+          options: { step: c.step, spends: combatSpends(state, c) },
+        },
+      ];
+    }
   }
   switch (state.phase) {
     case 'planning':

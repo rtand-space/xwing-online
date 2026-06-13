@@ -89,6 +89,17 @@ export type GameEvent =
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }
+  | {
+      type: 'CombatBegan';
+      attackerId: ShipId;
+      targetId: ShipId;
+      range: number;
+      obstructed: boolean;
+      attack: AttackFace[];
+    }
+  | { type: 'CombatDiceSet'; attack?: AttackFace[]; defence?: DefenceFace[] }
+  | { type: 'CombatAdvanced'; defence: DefenceFace[] }
+  | { type: 'CombatEnded' }
   | { type: 'TokenSpent'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | {
       type: 'DamageDealt';

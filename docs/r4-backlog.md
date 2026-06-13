@@ -126,6 +126,23 @@ Status: ☐ not started
   - *Deferred: coordinate-granted repositions/locks, and reusing the reposition system
     for decloak's barrel-roll + the tractor reposition.*
 
+## R4-M8 — Interactive combat (optional spends)
+Rules correction (user): a "may" is the default — spending focus/evade/calculate/
+Force/charges and using "may" abilities are the player's **choice**, not automatic.
+The old engine auto-applied them all. Staged fix (chosen: **tokens first**).
+- ☑ **T4-C1** Combat is now **event-sourced and interactive**: `resolveAttack` (atomic
+  auto-resolve) is kept for tests/AI, but real play holds an in-progress attack in
+  `state.combat` and pauses for a **modify** decision — the attacker's step, then the
+  defender's. The built-in token spends (focus → hits/evades, calculate, Force,
+  lock-reroll) are offered as discrete `Modify` choices with a `ModifyDone`; the dice
+  pool is carried in `CombatBegan`/`CombatDiceSet`/`CombatAdvanced`/`CombatEnded`
+  events so it folds deterministically (golden-master tests still pass). Client gets a
+  modify panel showing the rolled dice + spends. *Bonus-die and dice-mod **abilities**
+  (Crack Shot, Predator, …) still resolve automatically for now.*
+- ☐ **T4-C2** Migrate the registered abilities to **optional offers** too (Crack Shot,
+  Predator, "may spend Force/charge" cards), and order rerolls strictly before changes
+  per the rules. Then the M7 sweep can register "may" cards correctly.
+
 # R4b — secondary weapons · devices · damage deck
 
 ## R4-M5 — Secondary weapons & devices

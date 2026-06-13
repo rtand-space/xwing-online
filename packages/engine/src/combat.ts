@@ -4,7 +4,7 @@ import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './di
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
 import { agilityBonus, defencePenalty } from './tokens';
-import type { GameState, Ship, TokenKind } from './types';
+import type { CombatState, GameState, Ship, SpendKind, TokenKind } from './types';
 
 /**
  * The ordered attack pipeline. Every resolution walks these windows in order.
@@ -235,6 +235,142 @@ export function resolveAttack(
     BUILTINS[w](ctx);
     for (const h of registered[w] ?? []) h(ctx);
     hooks[w]?.(ctx);
+  }
+  return ctx.events;
+}
+
+// --- Interactive resolution (R4-M8): the same windows, but token spends are the
+// owner's choice, so resolution pauses for a modify step instead of auto-applying.
+
+function makeCtx(state: GameState, c: CombatState): AttackContext {
+  return {
+    state,
+    attacker: state.ships.find((s) => s.id === c.attackerId)!,
+    target: state.ships.find((s) => s.id === c.targetId)!,
+    range: c.range,
+    obstructed: c.obstructed,
+    attack: [...c.attack],
+    defence: [...c.defence],
+    cursor: state.rng.cursor,
+    result: { hits: 0, crits: 0 },
+    events: [],
+  };
+}
+
+function changeOne<T>(arr: T[], from: T, to: T): T[] {
+  let done = false;
+  return arr.map((f) => (!done && f === from ? ((done = true), to) : f));
+}
+
+/** Declare the attack and roll its dice (incl. bonus-die abilities). No spends. */
+export function beginAttack(
+  state: GameState,
+  attackerId: string,
+  targetId: string,
+): { events: GameEvent[]; attack: AttackFace[]; range: number; obstructed: boolean } {
+  const attacker = state.ships.find((s) => s.id === attackerId)!;
+  const target = state.ships.find((s) => s.id === targetId)!;
+  const ctx: AttackContext = {
+    state,
+    attacker,
+    target,
+    range: rangeBand(attacker, target) ?? 3,
+    obstructed: lineObstructed(state, attacker, target),
+    attack: [],
+    defence: [],
+    cursor: state.rng.cursor,
+    result: { hits: 0, crits: 0 },
+    events: [],
+  };
+  const reg = gatherAttackHooks(state, attacker, target);
+  for (const w of ['onDeclare', 'onRollAttack'] as const) {
+    BUILTINS[w](ctx);
+    for (const h of reg[w] ?? []) h(ctx);
+  }
+  return { events: ctx.events, attack: ctx.attack, range: ctx.range, obstructed: ctx.obstructed };
+}
+
+/** Optional spends available to whoever owns the current modify step. */
+export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
+  const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
+  const pool: (AttackFace | DefenceFace)[] = c.step === 'attack' ? c.attack : c.defence;
+  const opts: SpendKind[] = [];
+  if (hasToken(ship, 'focus') && pool.includes('focus')) opts.push('focus');
+  if (
+    c.step === 'attack' &&
+    ship.tokens.some((t) => t.kind === 'lock' && t.targetId === c.targetId) &&
+    pool.includes('blank')
+  )
+    opts.push('lock');
+  if (countTokens(ship, 'calculate') > 0 && pool.includes('focus')) opts.push('calculate');
+  if ((ship.force ?? 0) > 0 && pool.includes('focus')) opts.push('force');
+  return opts;
+}
+
+/** Apply one optional spend to the active pool; returns the new pool + events. */
+export function applySpend(
+  state: GameState,
+  c: CombatState,
+  kind: SpendKind,
+): { attack?: AttackFace[]; defence?: DefenceFace[]; events: GameEvent[] } {
+  const events: GameEvent[] = [];
+  const shipId = c.step === 'attack' ? c.attackerId : c.targetId;
+  const to = c.step === 'attack' ? 'hit' : 'evade';
+  if (c.step === 'attack' && kind === 'lock') {
+    const rerolled = rollAttack(state.rng.seed, state.rng.cursor, countFace(c.attack, 'blank'));
+    events.push({ type: 'DiceRolled', kind: 'attack', shipId, faces: rerolled });
+    events.push({ type: 'TokenSpent', shipId, kind: 'lock', targetId: c.targetId });
+    return { attack: [...c.attack.filter((f) => f !== 'blank'), ...rerolled], events };
+  }
+  const spend: GameEvent =
+    kind === 'focus' || kind === 'calculate'
+      ? { type: 'TokenSpent', shipId, kind }
+      : { type: 'ForceChanged', shipId, delta: -1 };
+  events.push(spend);
+  if (c.step === 'attack') {
+    const attack =
+      kind === 'focus'
+        ? c.attack.map((f) => (f === 'focus' ? 'hit' : f))
+        : changeOne(c.attack, 'focus', to as AttackFace);
+    return { attack, events };
+  }
+  const defence =
+    kind === 'focus'
+      ? c.defence.map((f) => (f === 'focus' ? 'evade' : f))
+      : changeOne(c.defence, 'focus', 'evade');
+  return { defence, events };
+}
+
+/** Run the registered (auto, for now) onModifyAttack abilities against the pool. */
+export function applyAttackAbilities(
+  state: GameState,
+  c: CombatState,
+): { attack: AttackFace[]; events: GameEvent[] } {
+  const ctx = makeCtx(state, c);
+  for (const h of gatherAttackHooks(state, ctx.attacker, ctx.target).onModifyAttack ?? []) h(ctx);
+  return { attack: ctx.attack, events: ctx.events };
+}
+
+/** Roll the defence dice (builtin + registered onRollDefence). No spends. */
+export function rollDefenceStage(
+  state: GameState,
+  c: CombatState,
+): { defence: DefenceFace[]; events: GameEvent[] } {
+  const ctx = makeCtx(state, c);
+  const reg = gatherAttackHooks(state, ctx.attacker, ctx.target);
+  BUILTINS.onRollDefence(ctx);
+  for (const h of reg.onRollDefence ?? []) h(ctx);
+  return { defence: ctx.defence, events: ctx.events };
+}
+
+/** Resolve registered onModifyDefence, then compare and deal damage. */
+export function finishCombat(state: GameState, c: CombatState): GameEvent[] {
+  const ctx = makeCtx(state, c);
+  const reg = gatherAttackHooks(state, ctx.attacker, ctx.target);
+  for (const h of reg.onModifyDefence ?? []) h(ctx);
+  for (const w of ['onCompare', 'onDealDamage', 'onAfterAttack'] as const) {
+    BUILTINS[w](ctx);
+    for (const h of reg[w] ?? []) h(ctx);
   }
   return ctx.events;
 }

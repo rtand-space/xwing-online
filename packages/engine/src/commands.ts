@@ -1,4 +1,4 @@
-import type { ActionType, Maneuver, PlayerId, ShipId } from './types';
+import type { ActionType, Maneuver, PlayerId, ShipId, SpendKind } from './types';
 
 /** Player intent. Validated against `state.pending`; may be rejected. */
 export type Command =
@@ -20,4 +20,6 @@ export type Command =
   | { type: 'SkipDecloak'; playerId: PlayerId; shipId: ShipId }
   | { type: 'Reposition'; playerId: PlayerId; shipId: ShipId; choice: number }
   | { type: 'GrantAction'; playerId: PlayerId; shipId: ShipId; targetId: ShipId }
-  | { type: 'DeclineGrant'; playerId: PlayerId; shipId: ShipId };
+  | { type: 'DeclineGrant'; playerId: PlayerId; shipId: ShipId }
+  | { type: 'Modify'; playerId: PlayerId; shipId: ShipId; spend: SpendKind }
+  | { type: 'ModifyDone'; playerId: PlayerId; shipId: ShipId };

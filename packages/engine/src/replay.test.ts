@@ -69,6 +69,10 @@ function randomChoice(seedStr: string): Chooser {
               targetId: pick(p.options.candidates),
             }
           : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
+      case 'modify':
+        return p.options.spends.length && pick([true, false])
+          ? { type: 'Modify', playerId: p.playerId, shipId: p.shipId, spend: pick(p.options.spends) }
+          : { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
     }
   };
 }
