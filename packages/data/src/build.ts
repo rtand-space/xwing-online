@@ -18,6 +18,7 @@ const ACTIONS: Record<string, ActionType> = {
   'Rotate Arc': 'rotate-arc',
   Jam: 'jam',
   Reload: 'reload',
+  Coordinate: 'coordinate',
 };
 
 const ARCS: Record<string, ArcKind> = {

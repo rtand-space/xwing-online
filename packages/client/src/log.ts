@@ -33,6 +33,10 @@ export function formatEvent(e: GameEvent): string | null {
       return null;
     case 'Repositioned':
       return `${e.shipId} repositions`;
+    case 'ActionGranted':
+      return `${e.shipId} is coordinated — free action`;
+    case 'GrantResolved':
+      return null;
     case 'TokenGained':
       return `${e.shipId} gains ${e.kind}`;
     case 'TokenSpent':

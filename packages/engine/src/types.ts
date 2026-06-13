@@ -48,7 +48,8 @@ export type ActionType =
   | 'cloak'
   | 'rotate-arc'
   | 'jam'
-  | 'reload';
+  | 'reload'
+  | 'coordinate';
 
 /** A primary-weapon firing arc and its attack value. */
 export type ArcKind =
@@ -177,7 +178,16 @@ export type PendingDecision =
       type: 'perform-action';
       playerId: PlayerId;
       shipId: ShipId;
-      options: { actions: ActionType[]; lockTargets: ShipId[]; jamTargets: ShipId[]; canSkip: boolean };
+      options: {
+        actions: ActionType[];
+        lockTargets: ShipId[];
+        jamTargets: ShipId[];
+        coordinateTargets: ShipId[];
+        /** True when this is a free action granted by a coordinate, not the
+         *  ship's own activation action. */
+        granted?: boolean;
+        canSkip: boolean;
+      };
     }
   | {
       type: 'declare-attack';
@@ -223,6 +233,8 @@ export interface GameState {
   offer?: AbilityOffer;
   /** A boost/barrel-roll mid-resolution, awaiting the placement choice; pauses the FSM. */
   reposition?: { shipId: ShipId; action: 'boost' | 'barrel-roll'; candidates: RepositionCandidate[] };
+  /** A free action granted by a coordinate, awaiting that ship's choice; pauses the FSM. */
+  grantedAction?: { shipId: ShipId };
   pending: PendingDecision[];
   gameOver: boolean;
 }

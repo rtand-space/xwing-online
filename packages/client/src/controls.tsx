@@ -95,6 +95,7 @@ const ACTION: Record<ActionType, string> = {
   'rotate-arc': 'Rotate Arc',
   jam: 'Jam',
   reload: 'Reload',
+  coordinate: 'Coordinate',
 };
 
 export function Controls({
@@ -146,7 +147,7 @@ export function Controls({
         <div className="grid">
           {p.options.actions.length === 0 && <div className="muted">Stressed — no actions.</div>}
           {p.options.actions
-            .filter((a) => a !== 'lock' && a !== 'jam')
+            .filter((a) => a !== 'lock' && a !== 'jam' && a !== 'coordinate')
             .map((a) => (
               <button
                 key={a}
@@ -192,6 +193,24 @@ export function Controls({
                 }
               >
                 Jam {t}
+              </button>
+            ))}
+          {p.options.actions.includes('coordinate') &&
+            p.options.coordinateTargets.map((t) => (
+              <button
+                key={`coord-${t}`}
+                className="btn"
+                onClick={() =>
+                  send({
+                    type: 'PerformAction',
+                    playerId: p.playerId,
+                    shipId: p.shipId,
+                    action: 'coordinate',
+                    targetId: t,
+                  })
+                }
+              >
+                Coordinate {t}
               </button>
             ))}
           <button

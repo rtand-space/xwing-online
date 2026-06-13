@@ -37,6 +37,29 @@ function reloadCharge(ship: Ship): GameEvent | null {
   return null;
 }
 
+/** Token/effect events for a self-targeted action — used both by the normal action
+ *  step and by a coordinate's free action. */
+function freeActionEffects(ship: Ship, action: string): GameEvent[] {
+  switch (action) {
+    case 'focus':
+      return [{ type: 'TokenGained', shipId: ship.id, kind: 'focus' }];
+    case 'evade':
+      return [{ type: 'TokenGained', shipId: ship.id, kind: 'evade' }];
+    case 'calculate':
+      return [{ type: 'TokenGained', shipId: ship.id, kind: 'calculate' }];
+    case 'reinforce':
+      return [{ type: 'TokenGained', shipId: ship.id, kind: 'reinforce' }];
+    case 'rotate-arc':
+      return [{ type: 'ArcRotated', shipId: ship.id, to: nextFacing(ship) }];
+    case 'reload': {
+      const rc = reloadCharge(ship);
+      return [...(rc ? [rc] : []), { type: 'TokenGained', shipId: ship.id, kind: 'disarm' }];
+    }
+    default:
+      return [];
+  }
+}
+
 /**
  * Fold the events so far, fire a non-combat ability window's mandatory effects,
  * then offer the first available optional ability (which pauses the FSM).
@@ -125,6 +148,10 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'PerformAction': {
       if (pending.type !== 'perform-action') return reject('Wrong phase');
       if (!pending.options.actions.includes(cmd.action)) return reject('Action not available');
+      // a coordinate's free action: apply the effect without ending the activation
+      if (state.grantedAction?.shipId === ship.id) {
+        return { events: [...freeActionEffects(ship, cmd.action), { type: 'GrantResolved' }] };
+      }
       // boost/barrel-roll pause for a placement choice instead of resolving now
       if (cmd.action === 'boost' || cmd.action === 'barrel-roll') {
         const candidates = repositionCandidates(state, ship, cmd.action);
@@ -157,6 +184,11 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
           return reject('Invalid jam target');
         }
         events.push({ type: 'TokenGained', shipId: cmd.targetId, kind: 'jam' });
+      } else if (cmd.action === 'coordinate') {
+        if (!cmd.targetId || !pending.options.coordinateTargets.includes(cmd.targetId)) {
+          return reject('Invalid coordinate target');
+        }
+        events.push({ type: 'ActionGranted', shipId: cmd.targetId });
       } else if (cmd.action === 'lock') {
         if (!cmd.targetId || !pending.options.lockTargets.includes(cmd.targetId)) {
           return reject('Invalid lock target');
@@ -170,6 +202,8 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'SkipAction': {
       if (pending.type !== 'perform-action' || !pending.options.canSkip)
         return reject('Cannot skip');
+      // declining a coordinate's free action just ends the grant
+      if (state.grantedAction?.shipId === ship.id) return { events: [{ type: 'GrantResolved' }] };
       const events: GameEvent[] = [{ type: 'ActionSkipped', shipId: ship.id }];
       if (isIonized(ship)) events.push(...ionShed(ship));
       return { events };

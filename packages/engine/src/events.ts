@@ -76,6 +76,8 @@ export type GameEvent =
       candidates: RepositionCandidate[];
     }
   | { type: 'Repositioned'; shipId: ShipId; to: Position }
+  | { type: 'ActionGranted'; shipId: ShipId }
+  | { type: 'GrantResolved' }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }

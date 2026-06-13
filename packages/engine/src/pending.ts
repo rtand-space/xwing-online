@@ -55,11 +55,44 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
         .filter((t) => rangeBand(ship, t) === 1)
         .map((s) => s.id)
     : [];
+  const coordinateTargets: ShipId[] = actions.includes('coordinate')
+    ? state.ships
+        .filter((s) => s.id !== ship.id && s.ownerId === ship.ownerId && alive(s))
+        .filter((s) => {
+          const band = rangeBand(ship, s);
+          return band !== null && band <= 2;
+        })
+        .map((s) => s.id)
+    : [];
+  const available = actions.filter(
+    (a) => (a !== 'jam' || jamTargets.length > 0) && (a !== 'coordinate' || coordinateTargets.length > 0),
+  );
   return {
     type: 'perform-action',
     playerId: ship.ownerId,
     shipId: ship.id,
-    options: { actions: actions.filter((a) => a !== 'jam' || jamTargets.length > 0), lockTargets, jamTargets, canSkip: true },
+    options: { actions: available, lockTargets, jamTargets, coordinateTargets, canSkip: true },
+  };
+}
+
+/** Free actions a coordinate can grant (no nested targets/repositions for now). */
+const GRANTABLE: ActionType[] = ['focus', 'evade', 'calculate', 'reinforce', 'rotate-arc', 'reload'];
+
+/** The granted ship's free-action choice from a coordinate. */
+function grantedDecision(ship: Ship): PendingDecision {
+  const actions = isStressed(ship) ? [] : ship.actionBar.filter((a) => GRANTABLE.includes(a));
+  return {
+    type: 'perform-action',
+    playerId: ship.ownerId,
+    shipId: ship.id,
+    options: {
+      actions,
+      lockTargets: [],
+      jamTargets: [],
+      coordinateTargets: [],
+      granted: true,
+      canSkip: true,
+    },
   };
 }
 
@@ -79,6 +112,11 @@ export function computePending(state: GameState): PendingDecision[] {
         },
       ];
     }
+  }
+  // A coordinate's free action pauses the FSM for the granted ship's choice.
+  if (state.grantedAction) {
+    const ship = state.ships.find((s) => s.id === state.grantedAction!.shipId);
+    if (ship) return [grantedDecision(ship)];
   }
   // A boost/barrel-roll mid-resolution pauses the FSM for the placement choice.
   if (state.reposition) {

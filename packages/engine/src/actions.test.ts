@@ -65,6 +65,33 @@ describe('jam action', () => {
   });
 });
 
+describe('coordinate action', () => {
+  it('grants a friendly ship at range 1–2 a free action without ending its activation', () => {
+    const a = ship('a', 'p', 0, 0, { actionBar: ['coordinate'] });
+    const friend = ship('b', 'p', 0, 150, { actionBar: ['focus'], hasMoved: false }); // range 2, not yet activated
+    let s = stateWith([a, friend, ship('e', 'q', 0, 600)]);
+    const act = s.pending.find((p) => p.type === 'perform-action' && p.shipId === 'a');
+    expect(act?.type === 'perform-action' && act.options.coordinateTargets).toEqual(['b']);
+
+    s = perform(s, {
+      type: 'PerformAction',
+      playerId: 'p',
+      shipId: 'a',
+      action: 'coordinate',
+      targetId: 'b',
+    });
+    // the FSM now pauses for b's granted free action
+    const granted = s.pending.find((p) => p.type === 'perform-action' && p.shipId === 'b');
+    expect(granted?.type === 'perform-action' && granted.options.granted).toBe(true);
+
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'b', action: 'focus' });
+    const b = s.ships.find((x) => x.id === 'b')!;
+    expect(b.tokens.some((t) => t.kind === 'focus')).toBe(true); // got the free focus
+    expect(b.hasActed).toBe(false); // its own activation action is still available
+    expect(s.grantedAction).toBeUndefined();
+  });
+});
+
 describe('reload action', () => {
   it('recovers a charge on a depleted pool and gains a disarm token', () => {
     const a = ship('a', 'p', 0, 0, {
