@@ -466,6 +466,10 @@ body {
 .colHead {
   font-weight: 600;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 .opts {
   display: flex;
