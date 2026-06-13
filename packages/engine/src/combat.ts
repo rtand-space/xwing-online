@@ -3,7 +3,7 @@ import { attackValue, rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
-import { agilityBonus, defencePenalty } from './tokens';
+import { agilityBonus, attackPenalty, defencePenalty } from './tokens';
 import type { CombatState, GameState, Ship, SpendKind, TokenKind } from './types';
 
 /**
@@ -71,10 +71,14 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onRollAttack(ctx) {
-    // dice come from the arc bearing on the target (falls back to the front value)
+    // dice come from the arc bearing on the target (falls back to the front value);
+    // deplete removes one and is then spent
     const value = attackValue(ctx.attacker, ctx.target) ?? ctx.attacker.primaryAttack;
-    const n = value + (ctx.range === 1 ? 1 : 0);
+    const n = Math.max(0, value + (ctx.range === 1 ? 1 : 0) - attackPenalty(ctx.attacker));
     ctx.attack = drawAttack(ctx, n);
+    if (hasToken(ctx.attacker, 'deplete')) {
+      ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'deplete' });
+    }
   },
 
   onModifyAttack(ctx) {

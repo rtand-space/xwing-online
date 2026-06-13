@@ -178,9 +178,11 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (m.difficulty === 'red') events.push({ type: 'StressChanged', shipId: ship.id, delta: 1 });
       else if (m.difficulty === 'blue') {
         events.push({ type: 'StressChanged', shipId: ship.id, delta: -1 });
-        // a blue maneuver also sheds one strain token
+        // a blue maneuver also sheds one strain and one deplete token
         if (hasToken(ship, 'strain'))
           events.push({ type: 'TokenSpent', shipId: ship.id, kind: 'strain' });
+        if (hasToken(ship, 'deplete'))
+          events.push({ type: 'TokenSpent', shipId: ship.id, kind: 'deplete' });
       }
       events.push(...obstacleMoveEvents(state, ship, move.to));
       // a bump ends the activation, so an ionised ship sheds its ion tokens now

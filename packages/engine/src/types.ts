@@ -115,6 +115,7 @@ export type TokenKind =
   | 'tractor'
   | 'disarm'
   | 'strain'
+  | 'deplete'
   | 'jam'
   | 'cloak';
 

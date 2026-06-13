@@ -111,6 +111,23 @@ describe('strain', () => {
   });
 });
 
+describe('deplete', () => {
+  it('removes one attack die and is spent by attacking', () => {
+    const atk = ship('a', 'p', 0, 0, 0, tok('deplete'));
+    const def = ship('d', 'q', 0, 180, 180, []);
+    const events = resolveAttack(stateWith([atk, def]), 'a', 'd');
+    const rolled = events.find((e) => e.type === 'DiceRolled' && e.kind === 'attack');
+    expect(rolled && rolled.type === 'DiceRolled' && rolled.faces.length).toBe(2); // 3 attack - 1
+    expect(events.some((e) => e.type === 'TokenSpent' && e.kind === 'deplete')).toBe(true);
+  });
+
+  it('is not removed by the End Phase (red token)', () => {
+    let s = stateWith([ship('a', 'p', 0, 0, 0, tok('deplete'))]);
+    s = applyEvent(s, { type: 'RoundEnded' });
+    expect(s.ships[0]!.tokens.filter((t) => t.kind === 'deplete')).toHaveLength(1);
+  });
+});
+
 describe('disarm', () => {
   it('cannot declare an attack', () => {
     const s = stateWith([ship('a', 'p', 0, 0, 0, tok('disarm')), ship('d', 'q', 0, 180, 180, [])]);

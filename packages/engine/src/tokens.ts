@@ -41,6 +41,9 @@ export const agilityBonus = (s: Ship): number => (isCloaked(s) ? 2 : 0);
 export const defencePenalty = (s: Ship): number =>
   (isTractored(s) ? 1 : 0) + (hasToken(s, 'strain') ? 1 : 0);
 
+/** Attack dice removed while attacking: depleted (1) — the attack-side strain. */
+export const attackPenalty = (s: Ship): number => (hasToken(s, 'deplete') ? 1 : 0);
+
 /** The forced ion maneuver: a blue speed-1 straight/bank in the dial's direction
  *  (a stop or any non-turning bearing becomes a 1-straight). */
 export function ionManeuver(dial?: Maneuver): Maneuver {

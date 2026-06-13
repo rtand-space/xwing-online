@@ -13,6 +13,7 @@ const TOKEN: Record<string, string> = {
   tractor: '#f0a830',
   disarm: '#f0a830',
   strain: '#ef6f6f',
+  deplete: '#ef6f6f',
   jam: '#f0a830',
   cloak: '#6fb8ef',
 };
