@@ -16,6 +16,8 @@ const ACTIONS: Record<string, ActionType> = {
   Reinforce: 'reinforce',
   Cloak: 'cloak',
   'Rotate Arc': 'rotate-arc',
+  Jam: 'jam',
+  Reload: 'reload',
 };
 
 const ARCS: Record<string, ArcKind> = {

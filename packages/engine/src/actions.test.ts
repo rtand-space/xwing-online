@@ -1,0 +1,80 @@
+import { describe, expect, it } from 'vitest';
+import { applyEvent, computePending, reduce, xwing } from './index';
+import type { GameState, Ship } from './index';
+
+const ship = (id: string, owner: string, x: number, y: number, over: Partial<Ship> = {}): Ship => ({
+  ...xwing(id, owner, 1, { x, y, angle: 0 }),
+  maxHull: 4,
+  maxShields: 0,
+  shields: 0,
+  charges: 0,
+  maxCharges: 0,
+  recurring: 0,
+  actionBar: [],
+  tokens: [],
+  dialRevealed: false,
+  hasMoved: true,
+  hasActed: false,
+  hasEngaged: false,
+  ...over,
+});
+
+const stateWith = (ships: Ship[]): GameState => {
+  const s: GameState = {
+    id: 'g',
+    rng: { seed: 's', cursor: 0 },
+    round: 1,
+    phase: 'activation',
+    players: [
+      { id: 'p', name: 'P' },
+      { id: 'q', name: 'Q' },
+    ],
+    ships,
+    obstacles: [],
+    pending: [],
+    gameOver: false,
+  };
+  return { ...s, pending: computePending(s) };
+};
+
+const perform = (s: GameState, cmd: Parameters<typeof reduce>[1]): GameState => {
+  const r = reduce(s, cmd);
+  if (r.rejection) throw new Error(r.rejection);
+  return r.events.reduce(applyEvent, s);
+};
+
+describe('jam action', () => {
+  it('offers only enemies at range 1, and the target gains a jam token', () => {
+    const a = ship('a', 'p', 0, 0, { actionBar: ['jam'] });
+    const near = ship('e', 'q', 0, 60, { tokens: [{ kind: 'focus' }] }); // range 1
+    const far = ship('f', 'q', 0, 600, {}); // out of range
+    let s = stateWith([a, near, far]);
+    const act = s.pending.find((p) => p.type === 'perform-action');
+    expect(act?.type === 'perform-action' && act.options.jamTargets).toEqual(['e']);
+
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'jam', targetId: 'e' });
+    const e = s.ships.find((x) => x.id === 'e')!;
+    expect(e.tokens.some((t) => t.kind === 'focus')).toBe(false); // jam stripped the green token
+    expect(e.tokens.some((t) => t.kind === 'jam')).toBe(false);
+  });
+
+  it('is hidden when no enemy is in range', () => {
+    const s = stateWith([ship('a', 'p', 0, 0, { actionBar: ['jam', 'focus'] }), ship('e', 'q', 0, 600)]);
+    const act = s.pending.find((p) => p.type === 'perform-action');
+    expect(act?.type === 'perform-action' && act.options.actions).toEqual(['focus']);
+  });
+});
+
+describe('reload action', () => {
+  it('recovers a charge on a depleted pool and gains a disarm token', () => {
+    const a = ship('a', 'p', 0, 0, {
+      actionBar: ['reload'],
+      upgradeCharges: { protontorpedoes: { charges: 0, max: 1, recovers: 1 } },
+    });
+    let s = stateWith([a, ship('e', 'q', 0, 600)]);
+    s = perform(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'reload' });
+    const ship2 = s.ships.find((x) => x.id === 'a')!;
+    expect(ship2.upgradeCharges!.protontorpedoes!.charges).toBe(1);
+    expect(ship2.tokens.some((t) => t.kind === 'disarm')).toBe(true);
+  });
+});

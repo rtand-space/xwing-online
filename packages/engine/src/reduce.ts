@@ -27,6 +27,16 @@ const ionShed = (ship: Ship): GameEvent[] =>
     kind: 'ion' as const,
   }));
 
+/** Reload recovers one charge: an upgrade pool below its max first, else the
+ *  intrinsic pool. (Ordnance-specific reloading lands with secondary weapons.) */
+function reloadCharge(ship: Ship): GameEvent | null {
+  for (const [source, p] of Object.entries(ship.upgradeCharges ?? {})) {
+    if (p.charges < p.max) return { type: 'ChargeChanged', shipId: ship.id, delta: 1, source };
+  }
+  if (ship.charges < ship.maxCharges) return { type: 'ChargeChanged', shipId: ship.id, delta: 1 };
+  return null;
+}
+
 /**
  * Fold the events so far, fire a non-combat ability window's mandatory effects,
  * then offer the first available optional ability (which pauses the FSM).
@@ -138,6 +148,15 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'cloak' });
       } else if (cmd.action === 'rotate-arc') {
         events.push({ type: 'ArcRotated', shipId: ship.id, to: nextFacing(ship) });
+      } else if (cmd.action === 'reload') {
+        const rc = reloadCharge(ship);
+        if (rc) events.push(rc);
+        events.push({ type: 'TokenGained', shipId: ship.id, kind: 'disarm' });
+      } else if (cmd.action === 'jam') {
+        if (!cmd.targetId || !pending.options.jamTargets.includes(cmd.targetId)) {
+          return reject('Invalid jam target');
+        }
+        events.push({ type: 'TokenGained', shipId: cmd.targetId, kind: 'jam' });
       } else if (cmd.action === 'lock') {
         if (!cmd.targetId || !pending.options.lockTargets.includes(cmd.targetId)) {
           return reject('Invalid lock target');

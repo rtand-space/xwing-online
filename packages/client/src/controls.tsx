@@ -93,6 +93,8 @@ const ACTION: Record<ActionType, string> = {
   reinforce: 'Reinforce',
   cloak: 'Cloak',
   'rotate-arc': 'Rotate Arc',
+  jam: 'Jam',
+  reload: 'Reload',
 };
 
 export function Controls({
@@ -144,7 +146,7 @@ export function Controls({
         <div className="grid">
           {p.options.actions.length === 0 && <div className="muted">Stressed — no actions.</div>}
           {p.options.actions
-            .filter((a) => a !== 'lock')
+            .filter((a) => a !== 'lock' && a !== 'jam')
             .map((a) => (
               <button
                 key={a}
@@ -172,6 +174,24 @@ export function Controls({
                 }
               >
                 Lock {t}
+              </button>
+            ))}
+          {p.options.actions.includes('jam') &&
+            p.options.jamTargets.map((t) => (
+              <button
+                key={`jam-${t}`}
+                className="btn"
+                onClick={() =>
+                  send({
+                    type: 'PerformAction',
+                    playerId: p.playerId,
+                    shipId: p.shipId,
+                    action: 'jam',
+                    targetId: t,
+                  })
+                }
+              >
+                Jam {t}
               </button>
             ))}
           <button

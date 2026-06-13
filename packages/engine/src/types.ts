@@ -46,7 +46,9 @@ export type ActionType =
   | 'calculate'
   | 'reinforce'
   | 'cloak'
-  | 'rotate-arc';
+  | 'rotate-arc'
+  | 'jam'
+  | 'reload';
 
 /** A primary-weapon firing arc and its attack value. */
 export type ArcKind =
@@ -175,7 +177,7 @@ export type PendingDecision =
       type: 'perform-action';
       playerId: PlayerId;
       shipId: ShipId;
-      options: { actions: ActionType[]; lockTargets: ShipId[]; canSkip: boolean };
+      options: { actions: ActionType[]; lockTargets: ShipId[]; jamTargets: ShipId[]; canSkip: boolean };
     }
   | {
       type: 'declare-attack';

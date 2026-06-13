@@ -50,11 +50,16 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
   const lockTargets: ShipId[] = actions.includes('lock')
     ? enemies(state, ship).map((s) => s.id)
     : [];
+  const jamTargets: ShipId[] = actions.includes('jam')
+    ? enemies(state, ship)
+        .filter((t) => rangeBand(ship, t) === 1)
+        .map((s) => s.id)
+    : [];
   return {
     type: 'perform-action',
     playerId: ship.ownerId,
     shipId: ship.id,
-    options: { actions, lockTargets, canSkip: true },
+    options: { actions: actions.filter((a) => a !== 'jam' || jamTargets.length > 0), lockTargets, jamTargets, canSkip: true },
   };
 }
 
