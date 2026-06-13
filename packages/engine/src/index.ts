@@ -22,6 +22,7 @@ export type {
   Ship,
   ShipArc,
   ShipId,
+  ShipWeapon,
   Speed,
   Token,
   TokenKind,

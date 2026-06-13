@@ -175,6 +175,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           attack: e.attack,
           defence: [],
           step: 'attack',
+          weaponXws: e.weaponXws,
         },
       };
     case 'CombatDiceSet':

@@ -2,6 +2,9 @@ import type { ActionType, Command, Maneuver, PlayerView } from '@xwing/engine';
 import { Fragment, type ReactElement } from 'react';
 import { useGame } from './store';
 
+const nameOf = (view: PlayerView, id: string): string =>
+  view.ships.find((s) => s.id === id)?.pilot ?? id;
+
 const DIFFICULTY: Record<Maneuver['difficulty'], string> = {
   blue: '#5bd6a8',
   white: '#d6dae8',
@@ -231,7 +234,10 @@ export function Controls({
 
       {p.type === 'declare-attack' && (
         <div className="grid">
-          {p.options.targets.length === 0 && <div className="muted">No target in arc/range.</div>}
+          {p.options.targets.length === 0 &&
+            !p.options.weapons?.some((w) => w.targets.length) && (
+              <div className="muted">No target in arc/range.</div>
+            )}
           {p.options.targets.map((t) => (
             <button
               key={t}
@@ -240,9 +246,28 @@ export function Controls({
                 send({ type: 'DeclareAttack', playerId: p.playerId, shipId: p.shipId, targetId: t })
               }
             >
-              Attack {t}
+              Primary → {nameOf(view, t)}
             </button>
           ))}
+          {p.options.weapons?.map((w) =>
+            w.targets.map((t) => (
+              <button
+                key={`${w.xws}:${t}`}
+                className="btn"
+                onClick={() =>
+                  send({
+                    type: 'DeclareAttack',
+                    playerId: p.playerId,
+                    shipId: p.shipId,
+                    targetId: t,
+                    weapon: w.xws,
+                  })
+                }
+              >
+                {w.name} → {nameOf(view, t)}
+              </button>
+            )),
+          )}
           <button
             className="btn ghost"
             onClick={() => send({ type: 'PassAttack', playerId: p.playerId, shipId: p.shipId })}

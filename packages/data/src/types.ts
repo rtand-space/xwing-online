@@ -57,5 +57,13 @@ export interface UpgradeData {
   limited: number;
   /** Charges this upgrade grants (and how many recover each round), if any. */
   charges: { value: number; recovers: number } | null;
+  /** Secondary-weapon stats (torpedo/missile/cannon/turret), if this is a weapon. */
+  weapon: {
+    arc: string;
+    value: number;
+    minRange: number;
+    maxRange: number;
+    ordnance: boolean;
+  } | null;
   restrictions: unknown[];
 }

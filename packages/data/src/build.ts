@@ -7,6 +7,7 @@ import type {
   Position,
   ShipArc,
   ShipInit,
+  ShipWeapon,
 } from '@xwing/engine';
 import { parseDial } from './dial';
 import { getPilot, getShip, getUpgrade } from './loaders';
@@ -106,9 +107,22 @@ export function toShipInit(
   // Each charge-granting upgrade gets its own pool (keyed by xws) so one card
   // can't spend another's charges.
   const upgradeCharges: Record<string, { charges: number; max: number; recovers: number }> = {};
+  const weapons: ShipWeapon[] = [];
   for (const x of upgrades) {
-    const c = getUpgrade(x).charges;
-    if (c) upgradeCharges[x] = { charges: c.value, max: c.value, recovers: c.recovers };
+    const u = getUpgrade(x);
+    if (u.charges) upgradeCharges[x] = { charges: u.charges.value, max: u.charges.value, recovers: u.charges.recovers };
+    const arc = u.weapon && ARCS[u.weapon.arc];
+    if (u.weapon && arc) {
+      weapons.push({
+        xws: x,
+        name: u.name,
+        value: u.weapon.value,
+        arc,
+        minRange: u.weapon.minRange,
+        maxRange: u.weapon.maxRange,
+        ordnance: u.weapon.ordnance,
+      });
+    }
   }
   return {
     id,
@@ -121,6 +135,7 @@ export function toShipInit(
     base: SIZES[ship.size] ?? 'small',
     primaryAttack: statValue(ship, 'attack'),
     arcs,
+    weapons,
     turretArc: arcs.some((a) => a.kind === 'single-turret' || a.kind === 'double-turret')
       ? 'front'
       : undefined,

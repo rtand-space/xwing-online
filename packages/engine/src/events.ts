@@ -16,6 +16,7 @@ import type {
   RepositionCandidate,
   ShipArc,
   ShipId,
+  ShipWeapon,
   TokenKind,
   TurretFacing,
 } from './types';
@@ -31,6 +32,7 @@ export interface ShipInit {
   base: BaseSize;
   primaryAttack: number;
   arcs?: ShipArc[];
+  weapons?: ShipWeapon[];
   turretArc?: TurretFacing;
   agility: number;
   hull: number;
@@ -88,7 +90,15 @@ export type GameEvent =
   | { type: 'LinkOffered'; shipId: ShipId; action: ActionType; difficulty: Difficulty }
   | { type: 'LinkResolved' }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
-  | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number; bonus?: boolean }
+  | {
+      type: 'AttackDeclared';
+      shipId: ShipId;
+      targetId: ShipId;
+      range: number;
+      bonus?: boolean;
+      /** Name of the secondary weapon used (for the log), if not the primary. */
+      weapon?: string;
+    }
   | { type: 'BonusAttackOffered'; shipId: ShipId; targets?: ShipId[] }
   | { type: 'BonusAttackResolved' }
   | {
@@ -107,6 +117,7 @@ export type GameEvent =
       range: number;
       obstructed: boolean;
       attack: AttackFace[];
+      weaponXws?: string;
     }
   | {
       type: 'CombatDiceSet';

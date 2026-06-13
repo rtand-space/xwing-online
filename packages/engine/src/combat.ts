@@ -4,7 +4,7 @@ import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './di
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
 import { agilityBonus, attackPenalty, defencePenalty } from './tokens';
-import type { CombatState, GameState, Ship, SpendKind, TokenKind } from './types';
+import type { CombatState, GameState, Ship, ShipWeapon, SpendKind, TokenKind } from './types';
 
 /**
  * The ordered attack pipeline. Every resolution walks these windows in order.
@@ -31,6 +31,8 @@ export interface AttackContext {
   obstructed: boolean;
   /** True for a bonus attack — recorded on AttackDeclared so it doesn't engage. */
   bonus?: boolean;
+  /** The secondary weapon being fired, if not the primary attack. */
+  weapon?: ShipWeapon;
   attack: AttackFace[];
   defence: DefenceFace[];
   cursor: number;
@@ -67,14 +69,19 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       targetId: ctx.target.id,
       range: ctx.range,
       bonus: ctx.bonus,
+      weapon: ctx.weapon?.name,
     });
   },
 
   onRollAttack(ctx) {
-    // dice come from the arc bearing on the target (falls back to the front value);
+    // a secondary weapon rolls its own value; otherwise the arc bearing on the target
+    // (falls back to the front value). only primary attacks get the range-1 bonus die.
     // deplete removes one and is then spent
-    const value = attackValue(ctx.attacker, ctx.target) ?? ctx.attacker.primaryAttack;
-    const n = Math.max(0, value + (ctx.range === 1 ? 1 : 0) - attackPenalty(ctx.attacker));
+    const value = ctx.weapon
+      ? ctx.weapon.value
+      : (attackValue(ctx.attacker, ctx.target) ?? ctx.attacker.primaryAttack);
+    const range1 = ctx.weapon ? 0 : ctx.range === 1 ? 1 : 0;
+    const n = Math.max(0, value + range1 - attackPenalty(ctx.attacker));
     ctx.attack = drawAttack(ctx, n);
     if (hasToken(ctx.attacker, 'deplete')) {
       ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'deplete' });
@@ -250,12 +257,14 @@ export function resolveAttack(
 // owner's choice, so resolution pauses for a modify step instead of auto-applying.
 
 function makeCtx(state: GameState, c: CombatState): AttackContext {
+  const attacker = state.ships.find((s) => s.id === c.attackerId)!;
   return {
     state,
-    attacker: state.ships.find((s) => s.id === c.attackerId)!,
+    attacker,
     target: state.ships.find((s) => s.id === c.targetId)!,
     range: c.range,
     obstructed: c.obstructed,
+    weapon: c.weaponXws ? attacker.weapons?.find((w) => w.xws === c.weaponXws) : undefined,
     attack: [...c.attack],
     defence: [...c.defence],
     cursor: state.rng.cursor,
@@ -275,6 +284,7 @@ export function beginAttack(
   attackerId: string,
   targetId: string,
   bonus = false,
+  weapon?: ShipWeapon,
 ): { events: GameEvent[]; attack: AttackFace[]; range: number; obstructed: boolean } {
   const attacker = state.ships.find((s) => s.id === attackerId)!;
   const target = state.ships.find((s) => s.id === targetId)!;
@@ -285,6 +295,7 @@ export function beginAttack(
     range: rangeBand(attacker, target) ?? 3,
     obstructed: lineObstructed(state, attacker, target),
     bonus,
+    weapon,
     attack: [],
     defence: [],
     cursor: state.rng.cursor,

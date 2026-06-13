@@ -193,8 +193,15 @@ Working through the hooks the sweep needs, highest-leverage first.
 # R4b — secondary weapons · devices · damage deck
 
 ## R4-M5 — Secondary weapons & devices
-- ☐ **T4-W1** Secondary-weapon attacks from slots (torpedo/missile/cannon/turret)
-  with their own attack value, arc, range, lock/charge requirements.
+- ☑ **T4-W1** Secondary-weapon attacks from slots (torpedo/missile/cannon/turret)
+  with their own attack value, arc, range, lock/charge requirements. Weapon stats
+  captured in the snapshot (`generate.mjs` reads `side.attack`; 41 weapons) and bridged
+  engine-ward as `ShipWeapon[]` by `build.ts` (engine stays pure). The engagement
+  `declare-attack` offer now lists primary **plus** each equipped weapon that bears on a
+  target (`weaponReaches` = arc + min/max range); **ordnance requires a lock** and
+  declaring **spends a charge**. `combat.ts` rolls the weapon's value (no range-1 bonus
+  die for secondaries). Per-card ordnance modify-effects (hit→crit spends) deferred to
+  the card sweep via the existing `onModifyAttack` hooks.
 - ☐ **T4-W2** Devices / bombs: drop & launch, placement, detonation timing, effects
   (reuses the obstacle geometry).
 

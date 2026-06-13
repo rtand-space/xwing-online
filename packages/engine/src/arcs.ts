@@ -1,5 +1,5 @@
 import { basePolygon, heading, polygonDistance, type Vec } from './geometry';
-import type { ArcKind, Position, Ship, ShipArc, TurretFacing } from './types';
+import type { ArcKind, Position, Ship, ShipArc, ShipWeapon, TurretFacing } from './types';
 
 const DEG = Math.PI / 180;
 
@@ -73,7 +73,7 @@ export function shipArcs(s: Ship): ShipArc[] {
   return s.arcs && s.arcs.length > 0 ? s.arcs : [{ kind: 'front', value: s.primaryAttack }];
 }
 
-function arcContains(a: Ship, t: Ship, kind: ArcKind, facing: TurretFacing): boolean {
+export function arcContains(a: Ship, t: Ship, kind: ArcKind, facing: TurretFacing): boolean {
   switch (kind) {
     case 'front':
       return inArcAt(a, t, 0, 45);
@@ -101,6 +101,13 @@ export function attackValue(a: Ship, t: Ship): number | null {
     if (arcContains(a, t, arc.kind, facing)) best = Math.max(best ?? 0, arc.value);
   }
   return best;
+}
+
+/** Whether a secondary weapon bears on `target`: in its arc and within range band. */
+export function weaponReaches(a: Ship, t: Ship, w: ShipWeapon): boolean {
+  const band = rangeBand(a, t);
+  if (band === null || band < w.minRange || band > w.maxRange) return false;
+  return arcContains(a, t, w.arc, a.turretArc ?? 'front');
 }
 
 /** Whether the ship has a rotatable turret indicator. */

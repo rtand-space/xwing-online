@@ -291,14 +291,38 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     }
     case 'DeclareAttack': {
       if (pending.type !== 'declare-attack') return reject('Wrong phase');
-      if (!pending.options.targets.includes(cmd.targetId)) return reject('Invalid target');
+      // a secondary weapon must be one offered this step, with the target in its list
+      let weapon;
+      if (cmd.weapon) {
+        const offered = pending.options.weapons?.find((w) => w.xws === cmd.weapon);
+        if (!offered || !offered.targets.includes(cmd.targetId)) return reject('Invalid target');
+        weapon = ship.weapons?.find((w) => w.xws === cmd.weapon);
+        if (!weapon) return reject('No such weapon');
+      } else if (!pending.options.targets.includes(cmd.targetId)) {
+        return reject('Invalid target');
+      }
       // roll the dice, then pause for the attacker's optional spends
       const bonus = state.bonusAttack?.shipId === ship.id;
-      const { events, attack, range, obstructed } = beginAttack(state, ship.id, cmd.targetId, bonus);
-      const out: GameEvent[] = [
-        ...events,
-        { type: 'CombatBegan', attackerId: ship.id, targetId: cmd.targetId, range, obstructed, attack },
-      ];
+      const { events, attack, range, obstructed } = beginAttack(
+        state,
+        ship.id,
+        cmd.targetId,
+        bonus,
+        weapon,
+      );
+      const out: GameEvent[] = [];
+      // ordnance and other charge weapons spend a charge on declaration
+      if (weapon && ship.upgradeCharges?.[weapon.xws])
+        out.push({ type: 'ChargeChanged', shipId: ship.id, delta: -1, source: weapon.xws });
+      out.push(...events, {
+        type: 'CombatBegan',
+        attackerId: ship.id,
+        targetId: cmd.targetId,
+        range,
+        obstructed,
+        attack,
+        weaponXws: weapon?.xws,
+      });
       if (bonus) out.push({ type: 'BonusAttackResolved' });
       return { events: out };
     }
@@ -474,7 +498,11 @@ export function trivialCommand(p: PendingDecision): Command | null {
   ) {
     return { type: 'SkipAction', playerId: p.playerId, shipId: p.shipId };
   }
-  if (p.type === 'declare-attack' && !p.options.targets.length) {
+  if (
+    p.type === 'declare-attack' &&
+    !p.options.targets.length &&
+    !p.options.weapons?.some((w) => w.targets.length)
+  ) {
     return { type: 'PassAttack', playerId: p.playerId, shipId: p.shipId };
   }
   if (p.type === 'modify' && !p.options.spends.length && !p.options.abilities.length) {

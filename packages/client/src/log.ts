@@ -54,7 +54,7 @@ export function formatEvent(e: GameEvent, name: (id: string) => string = (id) =>
     case 'TokenSpent':
       return `${n(e.shipId)} spends ${e.kind}`;
     case 'AttackDeclared':
-      return `${n(e.shipId)}${e.bonus ? ' (bonus)' : ''} attacks ${n(e.targetId)} (range ${e.range})`;
+      return `${n(e.shipId)}${e.bonus ? ' (bonus)' : ''} attacks ${n(e.targetId)}${e.weapon ? ` with ${e.weapon}` : ''} (range ${e.range})`;
     case 'BonusAttackOffered':
       return `${n(e.shipId)} may make a bonus attack`;
     case 'BonusAttackResolved':

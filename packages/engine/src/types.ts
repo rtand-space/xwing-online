@@ -22,6 +22,8 @@ export interface CombatState {
   changed?: boolean;
   /** Optional abilities already used this attack (offered at most once each). */
   usedAbilities?: string[];
+  /** The equipped weapon this attack used (upgrade xws), if a secondary weapon. */
+  weaponXws?: string;
 }
 
 /** Board coordinates in real-world millimetres (matches the tabletop). */
@@ -90,6 +92,19 @@ export type TurretFacing = 'front' | 'right' | 'rear' | 'left';
 export interface ShipArc {
   kind: ArcKind;
   value: number;
+}
+
+/** An equipped secondary weapon (torpedo/missile/cannon/turret) the ship can fire. */
+export interface ShipWeapon {
+  /** Upgrade xws — also keys its charge pool in `upgradeCharges`. */
+  xws: string;
+  name: string;
+  value: number;
+  arc: ArcKind;
+  minRange: number;
+  maxRange: number;
+  /** Ordnance requires a lock on the target (and spends a charge). */
+  ordnance: boolean;
 }
 
 /** A follow-up action that may be performed immediately after a base action. */
@@ -181,6 +196,8 @@ export interface Ship {
   primaryAttack: number;
   /** Primary-weapon firing arcs from card stats; defaults to a single front arc. */
   arcs?: ShipArc[];
+  /** Equipped secondary weapons (torpedo/missile/cannon/turret). */
+  weapons?: ShipWeapon[];
   /** Current orientation of a rotatable (single/double) turret indicator. */
   turretArc?: TurretFacing;
   agility: number;
@@ -250,7 +267,13 @@ export type PendingDecision =
       type: 'declare-attack';
       playerId: PlayerId;
       shipId: ShipId;
-      options: { targets: ShipId[]; canPass: boolean };
+      options: {
+        /** Primary-weapon targets. */
+        targets: ShipId[];
+        /** Equipped secondary weapons that bear on a target this step. */
+        weapons?: { xws: string; name: string; targets: ShipId[] }[];
+        canPass: boolean;
+      };
     }
   | {
       type: 'trigger-ability';

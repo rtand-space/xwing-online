@@ -162,6 +162,16 @@ for (const file of readdirSync(upDir)) {
       charges: side.charges
         ? { value: side.charges.value, recovers: side.charges.recovers ?? 0 }
         : null,
+      // Secondary-weapon stats (torpedo/missile/cannon/turret): own dice, arc, range.
+      weapon: side.attack
+        ? {
+            arc: side.attack.arc,
+            value: side.attack.value,
+            minRange: side.attack.minrange,
+            maxRange: side.attack.maxrange,
+            ordnance: Boolean(side.attack.ordnance),
+          }
+        : null,
       restrictions: u.restrictions ?? [],
     });
   }

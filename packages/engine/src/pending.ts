@@ -1,5 +1,5 @@
 import { effectiveInitiative } from './abilities';
-import { attackValue, rangeBand } from './arcs';
+import { attackValue, rangeBand, weaponReaches } from './arcs';
 import { combatAbilities, combatSpends } from './combat';
 import { obstaclesAt } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
@@ -8,6 +8,8 @@ import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './typ
 
 const alive = (s: Ship): boolean => s.hull > 0;
 const isStressed = (s: Ship): boolean => s.tokens.some((t) => t.kind === 'stress');
+const hasLockOn = (s: Ship, targetId: ShipId): boolean =>
+  s.tokens.some((t) => t.kind === 'lock' && t.targetId === targetId);
 
 function enemies(state: GameState, ship: Ship): Ship[] {
   return state.ships.filter((s) => s.ownerId !== ship.ownerId && alive(s));
@@ -261,17 +263,31 @@ export function computePending(state: GameState): PendingDecision[] {
       if (!ship) return [];
       // A disarmed ship, or one at range 0 of an asteroid/debris cloud, cannot attack.
       const blocked = isDisarmed(ship) || obstaclesAt(state, ship.pos, ship.base).length > 0;
-      const targets = blocked
-        ? []
-        : enemies(state, ship)
-            .filter((t) => attackValue(ship, t) !== null && rangeBand(ship, t) !== null)
-            .map((s) => s.id);
+      const foes = blocked ? [] : enemies(state, ship);
+      const targets = foes
+        .filter((t) => attackValue(ship, t) !== null && rangeBand(ship, t) !== null)
+        .map((s) => s.id);
+      const weapons = (ship.weapons ?? [])
+        .filter((w) => {
+          const pool = ship.upgradeCharges?.[w.xws];
+          return !pool || pool.charges > 0; // a charge weapon needs a charge
+        })
+        .map((w) => ({
+          xws: w.xws,
+          name: w.name,
+          targets: foes
+            .filter((t) => weaponReaches(ship, t, w))
+            // ordnance must be locked onto its target
+            .filter((t) => !w.ordnance || hasLockOn(ship, t.id))
+            .map((s) => s.id),
+        }))
+        .filter((w) => w.targets.length > 0);
       return [
         {
           type: 'declare-attack',
           playerId: ship.ownerId,
           shipId: ship.id,
-          options: { targets, canPass: true },
+          options: { targets, weapons, canPass: true },
         },
       ];
     }

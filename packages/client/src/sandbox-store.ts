@@ -29,6 +29,7 @@ const shipToInit = (s: Ship): ShipInit => ({
   base: s.base,
   primaryAttack: s.primaryAttack,
   arcs: s.arcs,
+  weapons: s.weapons,
   turretArc: s.turretArc,
   agility: s.agility,
   hull: s.maxHull,

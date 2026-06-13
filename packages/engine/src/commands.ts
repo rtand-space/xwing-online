@@ -12,7 +12,14 @@ export type Command =
       targetId?: ShipId;
     }
   | { type: 'SkipAction'; playerId: PlayerId; shipId: ShipId }
-  | { type: 'DeclareAttack'; playerId: PlayerId; shipId: ShipId; targetId: ShipId }
+  | {
+      type: 'DeclareAttack';
+      playerId: PlayerId;
+      shipId: ShipId;
+      targetId: ShipId;
+      /** Equipped weapon xws to fire; absent = primary attack. */
+      weapon?: string;
+    }
   | { type: 'PassAttack'; playerId: PlayerId; shipId: ShipId }
   | { type: 'UseAbility'; playerId: PlayerId; shipId: ShipId }
   | { type: 'SkipAbility'; playerId: PlayerId; shipId: ShipId }
