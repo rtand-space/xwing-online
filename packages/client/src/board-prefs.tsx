@@ -8,7 +8,7 @@ interface BoardPrefs {
 }
 
 export const useBoardPrefs = create<BoardPrefs>((set) => ({
-  showNames: false,
+  showNames: true,
   toggleNames: () => set((s) => ({ showNames: !s.showNames })),
 }));
 

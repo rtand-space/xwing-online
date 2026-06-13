@@ -318,28 +318,31 @@ function SquadColumn({
 
       <div className="roster">
         {picks.length === 0 && <div className="muted empty">No ships yet.</div>}
-        {picks.map((p, i) => (
-          <div key={i} className="pickCard">
-            <div className="pickHead">
-              <span>
-                {p.choice.shipName} · {p.choice.pilotName}{' '}
-                {p.choice.variant && <span className="variantTag">{p.choice.variant}</span>}{' '}
-                <span className="ini">I{p.choice.initiative}</span>
-              </span>
-              <span className="rosterEnd">
-                <span className="muted">{p.choice.cost}p</span>
-                <button
-                  className="x"
-                  aria-label="Remove"
-                  onClick={() => setPicks(picks.filter((_, j) => j !== i))}
-                >
-                  ×
-                </button>
-              </span>
+        {picks
+          .map((p, i) => ({ p, i }))
+          .sort((a, b) => b.p.choice.initiative - a.p.choice.initiative)
+          .map(({ p, i }) => (
+            <div key={i} className="pickCard">
+              <div className="pickHead">
+                <span>
+                  {p.choice.shipName} · {p.choice.pilotName}{' '}
+                  {p.choice.variant && <span className="variantTag">{p.choice.variant}</span>}{' '}
+                  <span className="ini">I{p.choice.initiative}</span>
+                </span>
+                <span className="rosterEnd">
+                  <span className="muted">{p.choice.cost}p</span>
+                  <button
+                    className="x"
+                    aria-label="Remove"
+                    onClick={() => setPicks(picks.filter((_, j) => j !== i))}
+                  >
+                    ×
+                  </button>
+                </span>
+              </div>
+              <Loadout pick={p} onEquip={(slot, x) => equip(i, slot, x)} />
             </div>
-            <Loadout pick={p} onEquip={(slot, x) => equip(i, slot, x)} />
-          </div>
-        ))}
+          ))}
       </div>
 
       {!adding ? (

@@ -119,7 +119,7 @@ export function Controls({
 
   if (!p || !ship) return <div className="muted">Resolving…</div>;
 
-  const name = ship.id.replace(/-/g, ' ');
+  const name = ship.pilot;
 
   return (
     <div className="controls">
