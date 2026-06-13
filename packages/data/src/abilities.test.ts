@@ -198,6 +198,53 @@ describe('card abilities', () => {
     expect(mixed.cursor).toBe(0); // not all blanks → nothing
   });
 
+  it('Gideon Hask adds a die against a damaged defender', () => {
+    const hook = getAbility('gideonhask')!.attack!.onRollAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const damaged = { ...ship('t', { x: 0, y: 100, angle: 0 }), hull: 2 }; // maxHull 3
+    const c = ctx(atk, damaged, ['hit']);
+    hook(c, atk);
+    expect(c.attack).toHaveLength(2);
+    const healthy = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    hook(healthy, atk);
+    expect(healthy.attack).toHaveLength(1);
+  });
+
+  it('Graz adds an attack die from behind the defender', () => {
+    const hook = getAbility('graz')!.attack!.onRollAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const behind = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']); // t faces +y, a is behind
+    hook(behind, atk);
+    expect(behind.attack).toHaveLength(2);
+    const front = ctx(atk, ship('t', { x: 0, y: 100, angle: 180 }), ['hit']); // t faces a
+    hook(front, atk);
+    expect(front.attack).toHaveLength(1);
+  });
+
+  it('Ahhav adds a die against a larger ship', () => {
+    const hook = getAbility('ahhav')!.attack!.onRollAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 }); // small
+    const big = ctx(atk, { ...ship('t', { x: 0, y: 100, angle: 0 }), base: 'large' }, ['hit']);
+    hook(big, atk);
+    expect(big.attack).toHaveLength(2);
+    const same = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    hook(same, atk);
+    expect(same.attack).toHaveLength(1);
+  });
+
+  it('Laetin A’shera gains an evade after a clean miss', () => {
+    const hook = getAbility('laetinashera')!.attack!.onAfterAttack!;
+    const atk = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), []);
+    c.result = { hits: 0, crits: 0 };
+    hook(c, atk);
+    expect(c.events.some((e) => e.type === 'TokenGained' && e.kind === 'evade')).toBe(true);
+    const hit = ctx(atk, ship('t', { x: 0, y: 100, angle: 0 }), []);
+    hit.result = { hits: 2, crits: 0 };
+    hook(hit, atk);
+    expect(hit.events).toHaveLength(0);
+  });
+
   it('Howlrunner rerolls a blank for a friendly ship at range 0–1 only', () => {
     const hook = getAbility('howlrunner')!.attack!.onModifyAttack!;
     const howl = ship('h', { x: 0, y: 0, angle: 0 }); // owner 'h'

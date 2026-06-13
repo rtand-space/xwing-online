@@ -1,17 +1,25 @@
 import {
   type Ability,
   addAttackDice,
+  addDefenceDice,
   changeAttack,
   changeDefence,
+  gainToken,
   inArc,
+  inArcAt,
   inBullseye,
   inRange,
   chargesFrom,
   registerAbility,
   rerollAttack,
   rerollDefence,
+  type Ship,
   spendCharge,
 } from '@xwing/engine';
+
+const SIZE_RANK: Record<Ship['base'], number> = { small: 0, medium: 1, large: 2 };
+/** True if `a` is behind `b` (in the rear half of b's base). */
+const behind = (a: Ship, b: Ship): boolean => inArcAt(b, a, 180, 90);
 
 /**
  * Concrete card abilities, keyed by xws. Behaviour only — never the card's
@@ -159,6 +167,81 @@ const ABILITIES: Record<string, Ability> = {
         ) {
           rerollAttack(ctx, 'blank', 1);
         }
+      },
+    },
+  },
+
+  // Gideon Hask — presses the advantage against a wounded target.
+  gideonhask: {
+    note: 'While attacking a damaged defender, roll 1 extra attack die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && ctx.target.hull < ctx.target.maxHull) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // Graz — deadly from the blind spot, on offence or defence.
+  graz: {
+    note: 'Attacking from behind the defender, or defending from behind the attacker, roll 1 extra die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && behind(ctx.attacker, ctx.target)) addAttackDice(ctx, 1);
+      },
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && behind(ctx.target, ctx.attacker)) addDefenceDice(ctx, 1);
+      },
+    },
+  },
+
+  // Ahhav — punches up against bigger ships.
+  ahhav: {
+    note: 'Attacking or defending against a larger-based ship, roll 1 extra die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && SIZE_RANK[ctx.target.base] > SIZE_RANK[self.base])
+          addAttackDice(ctx, 1);
+      },
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && SIZE_RANK[ctx.attacker.base] > SIZE_RANK[self.base])
+          addDefenceDice(ctx, 1);
+      },
+    },
+  },
+
+  // Lieutenant Blount — concentrated fire when a wingmate is on the target.
+  lieutenantblount: {
+    note: 'While attacking, if another friendly ship is at range 0–1 of the defender, roll 1 extra attack die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id !== self.id) return;
+        const near = ctx.state.ships.some(
+          (s) => s.id !== self.id && s.ownerId === self.ownerId && s.hull > 0 && inRange(s, ctx.target, 1),
+        );
+        if (near) addAttackDice(ctx, 1);
+      },
+    },
+  },
+
+  // Laetin A'shera — a clean break earns an evade.
+  laetinashera: {
+    note: 'After an attack you make or defend against deals no damage, gain an evade token.',
+    attack: {
+      onAfterAttack: (ctx, self) => {
+        const involved = ctx.attacker.id === self.id || ctx.target.id === self.id;
+        if (involved && ctx.result.hits + ctx.result.crits === 0) ctx.events.push(gainToken(self, 'evade'));
+      },
+    },
+  },
+
+  // "Night Beast" — a steady maneuver lets it line up a focus.
+  nightbeast: {
+    note: 'After fully executing a blue maneuver, may gain a focus token.',
+    optional: {
+      afterMove: {
+        label: 'Night Beast: gain a focus token?',
+        available: ({ self }) => self.dial?.difficulty === 'blue',
+        resolve: ({ self }) => [gainToken(self, 'focus')],
       },
     },
   },
