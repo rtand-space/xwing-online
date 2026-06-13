@@ -4,6 +4,7 @@ import type {
   ActionType,
   BaseSize,
   Difficulty,
+  EffectSpec,
   GameWindow,
   Maneuver,
   Obstacle,
@@ -90,6 +91,14 @@ export type GameEvent =
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number; bonus?: boolean }
   | { type: 'BonusAttackOffered'; shipId: ShipId; targets?: ShipId[] }
   | { type: 'BonusAttackResolved' }
+  | {
+      type: 'TargetOffered';
+      byShip: ShipId;
+      candidates: ShipId[];
+      effect: EffectSpec;
+      canSkip: boolean;
+    }
+  | { type: 'TargetResolved' }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }
   | {
       type: 'CombatBegan';

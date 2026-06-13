@@ -150,6 +150,18 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return { ...state, bonusAttack: { shipId: e.shipId, targets: e.targets } };
     case 'BonusAttackResolved':
       return { ...state, bonusAttack: undefined };
+    case 'TargetOffered':
+      return {
+        ...state,
+        targetSelect: {
+          byShip: e.byShip,
+          candidates: e.candidates,
+          effect: e.effect,
+          canSkip: e.canSkip,
+        },
+      };
+    case 'TargetResolved':
+      return { ...state, targetSelect: undefined };
     case 'DiceRolled':
       return { ...state, rng: { ...state.rng, cursor: state.rng.cursor + e.faces.length } };
     case 'CombatBegan':

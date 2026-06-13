@@ -119,6 +119,7 @@ export {
   gainToken,
   offerActionGrant,
   offerBonusAttack,
+  offerTargetEffect,
   recoverCharge,
   rerollAttack,
   rerollDefence,

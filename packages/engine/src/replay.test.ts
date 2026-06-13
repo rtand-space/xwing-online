@@ -69,6 +69,15 @@ function randomChoice(seedStr: string): Chooser {
               targetId: pick(p.options.candidates),
             }
           : { type: 'DeclineGrant', playerId: p.playerId, shipId: p.shipId };
+      case 'select-target':
+        return p.options.candidates.length && pick([true, false])
+          ? {
+              type: 'SelectTarget',
+              playerId: p.playerId,
+              shipId: p.shipId,
+              targetId: pick(p.options.candidates),
+            }
+          : { type: 'SkipTarget', playerId: p.playerId, shipId: p.shipId };
       case 'modify': {
         const moves = [
           ...p.options.spends.map((spend) => ({ kind: 'spend', spend }) as const),

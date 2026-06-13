@@ -98,6 +98,13 @@ export interface ActionLink {
   difficulty: Difficulty;
 }
 
+/** A serialisable effect an ability applies to a chosen ship (no closures, so it
+ *  folds deterministically). */
+export type EffectSpec =
+  | { kind: 'transfer-token'; fromId: ShipId; token: TokenKind }
+  | { kind: 'grant-token'; token: TokenKind }
+  | { kind: 'remove-token'; token: TokenKind };
+
 /** A legal destination for a boost/barrel-roll reposition. */
 export interface RepositionCandidate {
   label: string;
@@ -262,6 +269,12 @@ export type PendingDecision =
       options: { candidates: ShipId[]; canSkip: boolean };
     }
   | {
+      type: 'select-target';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { candidates: ShipId[]; canSkip: boolean };
+    }
+  | {
       type: 'modify';
       playerId: PlayerId;
       shipId: ShipId;
@@ -313,6 +326,8 @@ export interface GameState {
    *  awaiting its declaration; reuses the normal attack flow but doesn't count as
    *  the ship's engagement. */
   bonusAttack?: { shipId: ShipId; targets?: ShipId[] };
+  /** An ability awaiting its owner's choice of a ship to apply an effect to. */
+  targetSelect?: { byShip: ShipId; candidates: ShipId[]; effect: EffectSpec; canSkip: boolean };
   pending: PendingDecision[];
   gameOver: boolean;
 }

@@ -2,7 +2,7 @@ import { inRange } from './arcs';
 import type { AttackContext } from './combat';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
-import type { GameState, Ship, ShipId, TokenKind } from './types';
+import type { EffectSpec, GameState, Ship, ShipId, TokenKind } from './types';
 
 /**
  * Ergonomic, correct building blocks for card abilities. Attack-window helpers
@@ -126,3 +126,11 @@ export const offerBonusAttack = (self: Ship, targets?: ShipId[]): GameEvent => (
   shipId: self.id,
   targets,
 });
+
+/** Offer `self` a choice of ship from `candidates` to apply `effect` to. */
+export const offerTargetEffect = (
+  self: Ship,
+  candidates: ShipId[],
+  effect: EffectSpec,
+  canSkip = true,
+): GameEvent => ({ type: 'TargetOffered', byShip: self.id, candidates, effect, canSkip });

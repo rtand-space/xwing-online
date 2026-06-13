@@ -55,6 +55,10 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} may make a bonus attack`;
     case 'BonusAttackResolved':
       return null;
+    case 'TargetOffered':
+      return null;
+    case 'TargetResolved':
+      return null;
     case 'DiceRolled':
       return `  ${e.kind}: ${e.faces.join(', ')}`;
     case 'CombatBegan':

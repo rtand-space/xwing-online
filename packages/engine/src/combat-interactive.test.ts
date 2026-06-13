@@ -248,6 +248,28 @@ describe('dice lockdown (Midnight)', () => {
   });
 });
 
+describe('target-select effects', () => {
+  it('applies a transfer-token effect to the chosen ship', () => {
+    let s = stateWith([
+      ship('a', 'p', 0, 0, { tokens: [{ kind: 'focus' }] }),
+      ship('b', 'p', 0, 100, {}),
+      ship('e', 'q', 0, 600, {}),
+    ]);
+    s = applyEvent(s, {
+      type: 'TargetOffered',
+      byShip: 'a',
+      candidates: ['b'],
+      effect: { kind: 'transfer-token', fromId: 'a', token: 'focus' },
+      canSkip: true,
+    });
+    expect(s.pending.find((p) => p.type === 'select-target')?.shipId).toBe('a');
+    s = drive(s, { type: 'SelectTarget', playerId: 'p', shipId: 'a', targetId: 'b' });
+    expect(s.ships.find((x) => x.id === 'a')!.tokens.some((t) => t.kind === 'focus')).toBe(false);
+    expect(s.ships.find((x) => x.id === 'b')!.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    expect(s.targetSelect).toBeUndefined();
+  });
+});
+
 describe('bonus attacks', () => {
   it('a granted bonus attack reuses combat and does not spend engagement', () => {
     let s = stateWith([ship('a', 'p', 0, 0, {}), ship('d', 'q', 0, 200, { agility: 0 })]);

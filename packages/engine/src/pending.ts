@@ -187,6 +187,20 @@ export function computePending(state: GameState): PendingDecision[] {
     const ship = state.ships.find((s) => s.id === state.linkedAction!.shipId);
     if (ship) return [linkedDecision(state, ship, state.linkedAction.action)];
   }
+  // An ability awaiting its owner's choice of a ship to apply an effect to.
+  if (state.targetSelect) {
+    const ship = state.ships.find((s) => s.id === state.targetSelect!.byShip);
+    if (ship) {
+      return [
+        {
+          type: 'select-target',
+          playerId: ship.ownerId,
+          shipId: ship.id,
+          options: { candidates: state.targetSelect.candidates, canSkip: state.targetSelect.canSkip },
+        },
+      ];
+    }
+  }
   // A granted bonus attack pauses for its declaration (reuses the attack flow).
   if (state.bonusAttack) {
     const ship = state.ships.find((s) => s.id === state.bonusAttack!.shipId);

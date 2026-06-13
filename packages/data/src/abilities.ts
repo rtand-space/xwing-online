@@ -13,14 +13,38 @@ import {
   inBullseye,
   inRange,
   chargesFrom,
+  GREEN_TOKENS,
   offerActionGrant,
   offerBonusAttack,
+  offerTargetEffect,
+  type OptionalAbility,
   registerAbility,
   rerollAttack,
   rerollDefence,
   type Ship,
   spendCharge,
 } from '@xwing/engine';
+
+/** A friendly ship in self's left or right arc (used by token-passing pilots). */
+const inSideArc = (self: Ship, s: Ship): boolean =>
+  inArcAt(self, s, 90, 45) || inArcAt(self, s, -90, 45);
+
+// Axe — slings a token to a wingmate after the shooting. Optional (a token choice,
+// but no resource cost) on both attack and defend, via a target-select offer.
+const axeTransfer: OptionalAbility = {
+  label: 'Axe: pass a green token to a wingmate',
+  available: ({ state, self }) =>
+    self.tokens.some((t) => GREEN_TOKENS.includes(t.kind)) &&
+    friendliesInRange(state, self, 2).some((s) => inSideArc(self, s)),
+  resolve: ({ state, self }) => {
+    const green = self.tokens.find((t) => GREEN_TOKENS.includes(t.kind));
+    if (!green) return [];
+    const candidates = friendliesInRange(state, self, 2)
+      .filter((s) => inSideArc(self, s))
+      .map((s) => s.id);
+    return [offerTargetEffect(self, candidates, { kind: 'transfer-token', fromId: self.id, token: green.kind })];
+  },
+};
 
 const SIZE_RANK: Record<Ship['base'], number> = { small: 0, medium: 1, large: 2 };
 /** True if `a` is behind `b` (in the rear half of b's base). */
@@ -293,6 +317,12 @@ const ABILITIES: Record<string, Ability> = {
   rush: {
     note: 'While damaged, your initiative is 6.',
     initiative: (self) => (self.hull < self.maxHull ? 6 : undefined),
+  },
+
+  // Axe — passes a token to a wingmate after the exchange of fire.
+  axe: {
+    note: 'After you defend or attack, may pass one of your green tokens to a friendly ship in your side arc at range 1–2.',
+    optional: { afterAttack: axeTransfer, afterDefend: axeTransfer },
   },
 
   // "Avenger" — spurred on by a wingmate's loss. Reactive (onDestroyed, fired only

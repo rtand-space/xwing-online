@@ -21,6 +21,7 @@ import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
 import type {
   ActionType,
   Difficulty,
+  EffectSpec,
   GameState,
   GameWindow,
   Maneuver,
@@ -141,7 +142,24 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   Modify: 'modify',
   UseModifyAbility: 'modify',
   ModifyDone: 'modify',
+  SelectTarget: 'select-target',
+  SkipTarget: 'select-target',
 };
+
+/** Events for an ability's serialised effect applied to the chosen ship. */
+function applyEffect(effect: EffectSpec, targetId: string): GameEvent[] {
+  switch (effect.kind) {
+    case 'transfer-token':
+      return [
+        { type: 'TokenSpent', shipId: effect.fromId, kind: effect.token },
+        { type: 'TokenGained', shipId: targetId, kind: effect.token },
+      ];
+    case 'grant-token':
+      return [{ type: 'TokenGained', shipId: targetId, kind: effect.token }];
+    case 'remove-token':
+      return [{ type: 'TokenSpent', shipId: targetId, kind: effect.token }];
+  }
+}
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
   return state.pending.find(
@@ -409,6 +427,17 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'DeclineGrant': {
       if (pending.type !== 'grant-target') return reject('No grant offered');
       return { events: [{ type: 'GrantOfferResolved' }] };
+    }
+    case 'SelectTarget': {
+      if (pending.type !== 'select-target' || !state.targetSelect) return reject('No target offered');
+      if (!pending.options.candidates.includes(cmd.targetId)) return reject('Invalid target');
+      return {
+        events: [...applyEffect(state.targetSelect.effect, cmd.targetId), { type: 'TargetResolved' }],
+      };
+    }
+    case 'SkipTarget': {
+      if (pending.type !== 'select-target' || !pending.options.canSkip) return reject('Cannot skip');
+      return { events: [{ type: 'TargetResolved' }] };
     }
     case 'Reposition': {
       if (pending.type !== 'reposition') return reject('Wrong phase');

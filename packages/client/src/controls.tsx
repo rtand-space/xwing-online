@@ -292,6 +292,31 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'select-target' && (
+        <div className="grid">
+          <div className="muted">Choose a ship:</div>
+          {p.options.candidates.map((t) => (
+            <button
+              key={`sel-${t}`}
+              className="btn"
+              onClick={() =>
+                send({ type: 'SelectTarget', playerId: p.playerId, shipId: p.shipId, targetId: t })
+              }
+            >
+              {t}
+            </button>
+          ))}
+          {p.options.canSkip && (
+            <button
+              className="btn ghost"
+              onClick={() => send({ type: 'SkipTarget', playerId: p.playerId, shipId: p.shipId })}
+            >
+              Skip
+            </button>
+          )}
+        </div>
+      )}
+
       {p.type === 'decloak' && (
         <div className="grid">
           <div className="muted">Spend cloak to decloak (boost)?</div>
@@ -387,6 +412,8 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: choose placement`;
     case 'grant-target':
       return `${name}: grant an action`;
+    case 'select-target':
+      return `${name}: choose a ship`;
     case 'modify':
       return `${name}: modify dice`;
   }

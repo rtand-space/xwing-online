@@ -393,6 +393,23 @@ describe('card abilities', () => {
     expect(opt.available({ state, self: empty })).toBe(false);
   });
 
+  it('Axe offers to pass a green token to a friendly in his side arc', () => {
+    const opt = getAbility('axe')!.optional!.afterAttack!;
+    const self: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), tokens: [{ kind: 'focus' }] };
+    const friend: Ship = { ...ship('f', { x: 120, y: 0, angle: 0 }), ownerId: 'a' }; // right arc, range 1
+    const st = { ships: [self, friend] } as unknown as GameState;
+    expect(opt.available({ state: st, self })).toBe(true);
+    const off = opt.resolve({ state: st, self }).find((e) => e.type === 'TargetOffered');
+    expect(off && off.type === 'TargetOffered' && off.candidates).toEqual(['f']);
+    expect(off && off.type === 'TargetOffered' && off.effect).toEqual({
+      kind: 'transfer-token',
+      fromId: 'a',
+      token: 'focus',
+    });
+    const empty = ship('a', { x: 0, y: 0, angle: 0 }); // no green token
+    expect(opt.available({ state: { ships: [empty, friend] } as unknown as GameState, self: empty })).toBe(false);
+  });
+
   it('Airen Cracken offers a friendly an action after attacking', () => {
     const hook = getAbility('airencracken')!.attack!.onAfterAttack!;
     const atk = ship('a', { x: 0, y: 0, angle: 0 }); // owner 'a'
