@@ -145,7 +145,10 @@ export type GameWindow =
   | 'afterDefend' // the defender, after defending
   | 'onDamaged' // the defender, when it suffered damage
   | 'onShieldLost' // the defender, when it lost at least one shield
-  | 'onDestroyed'; // a living friendly of a destroyed ship
+  | 'onDestroyed' // a living friendly of a destroyed ship
+  // phase-start windows, offered in initiative order:
+  | 'onSystemPhase' // during the System Phase
+  | 'onEngagementStart'; // at the start of the Engagement Phase
 
 /** A pending optional ("may") ability awaiting its owner's choice. */
 export interface AbilityOffer {
@@ -328,6 +331,8 @@ export interface GameState {
   bonusAttack?: { shipId: ShipId; targets?: ShipId[] };
   /** An ability awaiting its owner's choice of a ship to apply an effect to. */
   targetSelect?: { byShip: ShipId; candidates: ShipId[]; effect: EffectSpec; canSkip: boolean };
+  /** Ships that have taken their phase-start ability opportunity this phase. */
+  phaseAbilitiesDone?: ShipId[];
   pending: PendingDecision[];
   gameOver: boolean;
 }

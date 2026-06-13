@@ -1,4 +1,4 @@
-import { fireWindow, findOffer, resolveOptional } from './abilities';
+import { effectiveInitiative, fireWindow, findOffer, resolveOptional } from './abilities';
 import { applyEvent } from './apply';
 import {
   applyAttackAbilities,
@@ -487,6 +487,33 @@ export function trivialCommand(p: PendingDecision): Command | null {
  * Validate a command and return all resulting events, including the automatic
  * phase transitions that cascade until the game next needs player input.
  */
+/**
+ * The next phase-start ability to offer (System Phase / start of Engagement), in
+ * initiative order, for a ship that hasn't taken its opportunity yet. Offered one
+ * at a time; returns null when none remain.
+ */
+function nextPhaseOffer(s: GameState): GameEvent | null {
+  if (s.offer || s.combat || s.targetSelect || s.bonusAttack || s.grantOffer || s.grantedAction)
+    return null;
+  const window =
+    s.phase === 'system' ? 'onSystemPhase' : s.phase === 'engagement' ? 'onEngagementStart' : null;
+  if (!window) return null;
+  if (window === 'onSystemPhase' && s.pending.some((p) => p.type === 'decloak')) return null;
+  const done = s.phaseAbilitiesDone ?? [];
+  const order = s.ships
+    .filter((sh) => sh.hull > 0 && !done.includes(sh.id))
+    .sort((a, b) =>
+      window === 'onSystemPhase'
+        ? effectiveInitiative(a) - effectiveInitiative(b) || (a.id < b.id ? -1 : 1)
+        : effectiveInitiative(b) - effectiveInitiative(a) || (a.id < b.id ? -1 : 1),
+    );
+  for (const ship of order) {
+    const offer = findOffer(s, window, ship);
+    if (offer) return { type: 'AbilityOffered', shipId: ship.id, window, ...offer };
+  }
+  return null;
+}
+
 export function reduce(state: GameState, cmd: Command): ReduceResult {
   const direct = reduceDirect(state, cmd);
   if (direct.rejection) return direct;
@@ -494,13 +521,21 @@ export function reduce(state: GameState, cmd: Command): ReduceResult {
   const events = [...direct.events];
   let s = state;
   for (const e of direct.events) s = applyEvent(s, e);
-  for (;;) {
-    const auto = autoStep(s);
-    if (!auto) break;
-    for (const e of auto) {
+  const push = (es: GameEvent[]): void => {
+    for (const e of es) {
       events.push(e);
       s = applyEvent(s, e);
     }
+  };
+  for (;;) {
+    const offer = nextPhaseOffer(s);
+    if (offer) {
+      push([offer]);
+      continue;
+    }
+    const auto = autoStep(s);
+    if (!auto) break;
+    push(auto);
   }
   return { events };
 }

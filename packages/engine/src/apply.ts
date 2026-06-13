@@ -256,10 +256,17 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           attackerId: e.attackerId,
         },
       };
-    case 'AbilityResolved':
-      return { ...state, offer: undefined };
+    case 'AbilityResolved': {
+      const w = state.offer?.window;
+      const sid = state.offer?.shipId;
+      const done =
+        (w === 'onSystemPhase' || w === 'onEngagementStart') && sid
+          ? [...(state.phaseAbilitiesDone ?? []), sid]
+          : state.phaseAbilitiesDone;
+      return { ...state, offer: undefined, phaseAbilitiesDone: done };
+    }
     case 'PhaseAdvanced':
-      return { ...state, phase: e.to };
+      return { ...state, phase: e.to, phaseAbilitiesDone: [] };
   }
 }
 

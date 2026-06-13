@@ -347,6 +347,48 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // Major von Reg — paints a target during the lull before engagement.
+  majorvonreg: {
+    note: 'During the System Phase, may give an enemy ship in your bullseye arc a strain token.',
+    optional: {
+      onSystemPhase: {
+        label: 'von Reg: strain a bullseye enemy',
+        available: ({ state, self }) =>
+          state.ships.some((s) => s.ownerId !== self.ownerId && s.hull > 0 && inBullseye(self, s)),
+        resolve: ({ state, self }) => [
+          offerTargetEffect(
+            self,
+            state.ships
+              .filter((s) => s.ownerId !== self.ownerId && s.hull > 0 && inBullseye(self, s))
+              .map((s) => s.id),
+            { kind: 'grant-token', token: 'strain' },
+          ),
+        ],
+      },
+    },
+  },
+
+  // "Muse" — steadies a wingmate before the shooting starts.
+  muse: {
+    note: 'At the start of the Engagement Phase, may have a friendly ship at range 0–1 remove a stress token.',
+    optional: {
+      onEngagementStart: {
+        label: 'Muse: clear a wingmate’s stress',
+        available: ({ state, self }) =>
+          friendliesInRange(state, self, 1).some((s) => s.tokens.some((t) => t.kind === 'stress')),
+        resolve: ({ state, self }) => [
+          offerTargetEffect(
+            self,
+            friendliesInRange(state, self, 1)
+              .filter((s) => s.tokens.some((t) => t.kind === 'stress'))
+              .map((s) => s.id),
+            { kind: 'remove-token', token: 'stress' },
+          ),
+        ],
+      },
+    },
+  },
+
   // "Backdraft" — turret covers his tail. Cost-free, automatic.
   backdraft: {
     note: 'While attacking, if the defender is in your rear arc, roll 1 extra attack die.',

@@ -393,6 +393,35 @@ describe('card abilities', () => {
     expect(opt.available({ state, self: empty })).toBe(false);
   });
 
+  it('Major von Reg offers to strain a bullseye enemy in the System Phase', () => {
+    const opt = getAbility('majorvonreg')!.optional!.onSystemPhase!;
+    const self = ship('a', { x: 0, y: 0, angle: 0 });
+    const enemy = ship('e', { x: 0, y: 100, angle: 0 }); // dead ahead → bullseye, different owner
+    const st = { ships: [self, enemy] } as unknown as GameState;
+    expect(opt.available({ state: st, self })).toBe(true);
+    const off = opt.resolve({ state: st, self }).find((e) => e.type === 'TargetOffered');
+    expect(off && off.type === 'TargetOffered' && off.candidates).toEqual(['e']);
+    expect(off && off.type === 'TargetOffered' && off.effect).toEqual({
+      kind: 'grant-token',
+      token: 'strain',
+    });
+  });
+
+  it('Muse offers to clear a stressed wingmate at the engagement start', () => {
+    const opt = getAbility('muse')!.optional!.onEngagementStart!;
+    const self = ship('m', { x: 0, y: 0, angle: 0 });
+    const stressed: Ship = { ...ship('f', { x: 0, y: 60, angle: 0 }), ownerId: 'm', tokens: [{ kind: 'stress' }] };
+    const st = { ships: [self, stressed] } as unknown as GameState;
+    expect(opt.available({ state: st, self })).toBe(true);
+    const off = opt.resolve({ state: st, self }).find((e) => e.type === 'TargetOffered');
+    expect(off && off.type === 'TargetOffered' && off.effect).toEqual({
+      kind: 'remove-token',
+      token: 'stress',
+    });
+    const calm: Ship = { ...ship('f', { x: 0, y: 60, angle: 0 }), ownerId: 'm' }; // no stress
+    expect(opt.available({ state: { ships: [self, calm] } as unknown as GameState, self })).toBe(false);
+  });
+
   it('Axe offers to pass a green token to a friendly in his side arc', () => {
     const opt = getAbility('axe')!.optional!.afterAttack!;
     const self: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), tokens: [{ kind: 'focus' }] };

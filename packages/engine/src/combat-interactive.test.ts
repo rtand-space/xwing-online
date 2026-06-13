@@ -248,6 +248,48 @@ describe('dice lockdown (Midnight)', () => {
   });
 });
 
+describe('phase-start ability windows', () => {
+  it('offers an onEngagementStart ability when the engagement phase begins', () => {
+    clearAbilities();
+    registerAbility('rally', {
+      optional: {
+        onEngagementStart: {
+          label: 'rally',
+          available: () => true,
+          resolve: ({ self }) => [{ type: 'TokenGained', shipId: self.id, kind: 'focus' }],
+        },
+      },
+    });
+    let s: GameState = {
+      id: 'g',
+      rng: { seed: 's', cursor: 0 },
+      round: 1,
+      phase: 'activation',
+      players: [
+        { id: 'p', name: 'P' },
+        { id: 'q', name: 'Q' },
+      ],
+      ships: [
+        ship('a', 'p', 0, 0, { pilotXws: 'rally', initiative: 2, hasActed: false }),
+        ship('b', 'q', 0, 200, { initiative: 1 }),
+      ],
+      obstacles: [],
+      pending: [],
+      gameOver: false,
+    };
+    s = { ...s, pending: computePending(s) };
+    s = drive(s, { type: 'SkipAction', playerId: 'p', shipId: 'a' }); // finishes activation
+    expect(s.phase).toBe('engagement');
+    const trig = s.pending.find((p) => p.type === 'trigger-ability');
+    expect(trig?.shipId).toBe('a');
+    s = drive(s, { type: 'UseAbility', playerId: 'p', shipId: 'a' });
+    expect(s.ships.find((x) => x.id === 'a')!.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    // a is now done → the engagement attacks proceed
+    expect(s.pending.some((p) => p.type === 'declare-attack')).toBe(true);
+    clearAbilities();
+  });
+});
+
 describe('target-select effects', () => {
   it('applies a transfer-token effect to the chosen ship', () => {
     let s = stateWith([
