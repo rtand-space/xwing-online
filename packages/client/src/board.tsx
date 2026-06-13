@@ -271,39 +271,112 @@ function TokenMark({
   );
 }
 
-const ARC_ANGLES = Array.from({ length: 19 }, (_, i) => -45 + i * 5);
-const arcPolyline = (r: number): string =>
-  ARC_ANGLES.map((a) => {
-    const t = (a * Math.PI) / 180;
-    return `${r * Math.sin(t)},${-r * Math.cos(t)}`;
-  }).join(' ');
+/** A firing arc as a centre angle (from forward = 0°, right 90°, rear 180°, left 270°)
+ *  and half-width. */
+interface Wedge {
+  center: number;
+  half: number;
+}
+const FACING_DEG: Record<string, number> = { front: 0, right: 90, rear: 180, left: 270 };
 
-/** The active attacker's field of fire + range bands (1/2/3), drawn during Engagement. */
-function CombatArc({ w, color }: { w: number; color: string }): ReactElement {
-  const half = w / 2;
+/** The wedges a ship actually fires through, from its arcs + turret facing. */
+function arcWedges(ship: Ship): Wedge[] {
+  const arcs =
+    ship.arcs && ship.arcs.length ? ship.arcs : [{ kind: 'front' as const, value: ship.primaryAttack }];
+  const out: Wedge[] = [];
+  for (const a of arcs) {
+    if (a.kind === 'front') out.push({ center: 0, half: 45 });
+    else if (a.kind === 'rear') out.push({ center: 180, half: 45 });
+    else if (a.kind === 'full-front') out.push({ center: 0, half: 90 });
+    else if (a.kind === 'bullseye') out.push({ center: 0, half: 5 });
+    else if (a.kind === 'single-turret')
+      out.push({ center: FACING_DEG[ship.turretArc ?? 'front']!, half: 45 });
+    else if (a.kind === 'double-turret') {
+      const lr = ship.turretArc === 'left' || ship.turretArc === 'right';
+      out.push({ center: lr ? 90 : 0, half: 45 });
+      out.push({ center: lr ? 270 : 180, half: 45 });
+    }
+  }
+  return out;
+}
+
+const dir = (deg: number): [number, number] => {
+  const a = (deg * Math.PI) / 180;
+  return [Math.sin(a), -Math.cos(a)]; // forward (0°) is screen -y
+};
+/** Points along an arc of radius r spanning a wedge. */
+const arcPath = (r: number, w: Wedge): string => {
+  const n = Math.max(2, Math.round(w.half / 5));
+  const pts: string[] = [];
+  for (let i = 0; i <= n; i++) {
+    const [dx, dy] = dir(w.center - w.half + (2 * w.half * i) / n);
+    pts.push(`${r * dx},${r * dy}`);
+  }
+  return pts.join(' ');
+};
+
+/** The active/selected ship's actual fields of fire + range bands (1/2/3). */
+function CombatArc({
+  base,
+  wedges,
+  color,
+}: {
+  base: number;
+  wedges: Wedge[];
+  color: string;
+}): ReactElement {
+  const half = base / 2;
   const bands = [half + 100, half + 200, half + 300];
-  const e = Math.SQRT1_2 * bands[2]!;
+  const r3 = bands[2]!;
   return (
     <g>
-      {/* sector follows the curved range-3 boundary, so the whole wedge is filled */}
-      <polygon points={`0,0 ${arcPolyline(bands[2]!)}`} fill={color} fillOpacity={0.08} />
-      <line x1={0} y1={0} x2={-e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
-      <line x1={0} y1={0} x2={e} y2={-e} stroke={color} strokeWidth={1.5} strokeOpacity={0.55} />
-      {bands.map((r, i) => (
-        <g key={i}>
-          <polyline
-            points={arcPolyline(r)}
-            fill="none"
-            stroke={color}
-            strokeWidth={1.2}
-            strokeOpacity={0.45}
-            strokeDasharray="5 5"
-          />
-          <text x={0} y={-r + 16} textAnchor="middle" className="rangeLabel" fill={color}>
-            {i + 1}
-          </text>
+      {wedges.map((wedge, wi) => (
+        <g key={wi}>
+          <polygon points={`0,0 ${arcPath(r3, wedge)}`} fill={color} fillOpacity={0.08} />
+          {[wedge.center - wedge.half, wedge.center + wedge.half].map((edge, ei) => {
+            const [dx, dy] = dir(edge);
+            return (
+              <line
+                key={ei}
+                x1={0}
+                y1={0}
+                x2={r3 * dx}
+                y2={r3 * dy}
+                stroke={color}
+                strokeWidth={1.5}
+                strokeOpacity={0.55}
+              />
+            );
+          })}
+          {bands.map((r, i) => (
+            <polyline
+              key={i}
+              points={arcPath(r, wedge)}
+              fill="none"
+              stroke={color}
+              strokeWidth={1.2}
+              strokeOpacity={0.4}
+              strokeDasharray="5 5"
+            />
+          ))}
         </g>
       ))}
+      {wedges[0] &&
+        bands.map((r, i) => {
+          const [dx, dy] = dir(wedges[0]!.center);
+          return (
+            <text
+              key={i}
+              x={dx * (r - 16)}
+              y={dy * (r - 16)}
+              textAnchor="middle"
+              className="rangeLabel"
+              fill={color}
+            >
+              {i + 1}
+            </text>
+          );
+        })}
     </g>
   );
 }
@@ -315,6 +388,7 @@ function ShipBody({
   glow,
   stroke,
   active,
+  wedges,
 }: {
   w: number;
   color: string;
@@ -322,13 +396,14 @@ function ShipBody({
   glow: string;
   stroke: number;
   active: boolean;
+  wedges: Wedge[];
 }): ReactElement {
-  // Front firing arc: 90° wedge from the base centre to the two front corners
-  // (forward is local -y), kept entirely on the plate.
-  const edge = w / 2; // the front corners sit at (±w/2, -w/2)
+  // A soft directional indicator per firing arc (front/rear/turret/…), kept near
+  // the plate so a turret's facing reads at a glance.
+  const r = w * 0.66;
   return (
     <g filter={glow}>
-      {/* square base — exact game geometry; sharp corners so the arc meets them precisely */}
+      {/* square base — exact game geometry */}
       <rect
         x={-w / 2}
         y={-w / 2}
@@ -338,29 +413,30 @@ function ShipBody({
         stroke={color}
         strokeWidth={stroke}
       />
-      <polygon
-        points={`0,0 ${-edge},${-edge} ${edge},${-edge}`}
-        fill={color}
-        fillOpacity={active ? 0.24 : 0.14}
-      />
-      <line
-        x1={0}
-        y1={0}
-        x2={-edge}
-        y2={-edge}
-        stroke={color}
-        strokeWidth={active ? 2 : 1.5}
-        strokeOpacity={active ? 1 : 0.8}
-      />
-      <line
-        x1={0}
-        y1={0}
-        x2={edge}
-        y2={-edge}
-        stroke={color}
-        strokeWidth={active ? 2 : 1.5}
-        strokeOpacity={active ? 1 : 0.8}
-      />
+      {wedges.map((wedge, i) => (
+        <g key={i}>
+          <polygon
+            points={`0,0 ${arcPath(r, wedge)}`}
+            fill={color}
+            fillOpacity={active ? 0.22 : 0.12}
+          />
+          {[wedge.center - wedge.half, wedge.center + wedge.half].map((edge, ei) => {
+            const [dx, dy] = dir(edge);
+            return (
+              <line
+                key={ei}
+                x1={0}
+                y1={0}
+                x2={r * dx}
+                y2={r * dy}
+                stroke={color}
+                strokeWidth={active ? 1.8 : 1.2}
+                strokeOpacity={active ? 0.95 : 0.7}
+              />
+            );
+          })}
+        </g>
+      ))}
       <circle cx={0} cy={0} r={2.5} fill={color} />
     </g>
   );
@@ -438,7 +514,7 @@ export const SvgBoard: BoardRenderer = ({
 
       {arcShip && (
         <g transform={`translate(${arcShip.pos.x} ${-arcShip.pos.y}) rotate(${arcShip.pos.angle})`}>
-          <CombatArc w={BASE_MM[arcShip.base]} color={colorFor(view, arcShip)} />
+          <CombatArc base={BASE_MM[arcShip.base]} wedges={arcWedges(arcShip)} color={colorFor(view, arcShip)} />
         </g>
       )}
 
@@ -498,6 +574,7 @@ export const SvgBoard: BoardRenderer = ({
                 glow={`url(#glow${side})`}
                 stroke={active ? 3.5 : highlight ? 3 : 2}
                 active={active}
+                wedges={arcWedges(s)}
               />
               {/* name on the rear edge, in the plate's frame (rotates with the base) */}
               <text
