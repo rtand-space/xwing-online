@@ -43,6 +43,9 @@ export interface ShipData {
 export interface UpgradeData {
   xws: string;
   name: string;
+  /** In the XWA points feed → buyable in normal list building. Cards absent from
+   *  the feed (quick-build-only / scenario reprints) are excluded from slot options. */
+  available: boolean;
   /** Primary slot this upgrade equips into. */
   slot: string;
   /** All slots it occupies (dual-slot upgrades occupy more than one). */

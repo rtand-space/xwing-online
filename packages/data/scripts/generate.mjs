@@ -152,6 +152,10 @@ for (const file of readdirSync(upDir)) {
       name: side.title ?? u.name,
       slot: side.type,
       slots: side.slots ?? [side.type],
+      // Listed in the XWA points feed = buyable in normal list building. Upgrades
+      // absent from the feed (e.g. quick-build-only cards) are kept for reference
+      // but excluded from the squad builder's slot options.
+      available: Boolean(xu),
       cost: xu ? xu.cost : fixed,
       variableCost: xu || fixed !== null ? null : (u.cost ?? null),
       limited: xu ? (xu.limited ?? 0) : (u.limited ?? 0),

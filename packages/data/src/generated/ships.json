@@ -74,7 +74,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 14,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -84,7 +91,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Modification"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -94,7 +108,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Modification"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -104,7 +124,11 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Tech", "Modification", "Talent"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -178,7 +202,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -188,7 +219,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Missile", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -198,7 +236,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -208,7 +252,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -218,7 +267,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Sensor", "Tech", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -228,7 +281,12 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -238,7 +296,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -248,7 +311,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Sensor", "Tech", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -258,7 +325,11 @@
         "limited": 0,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Sensor", "Tech", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -278,7 +349,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Sensor", "Tech", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -288,7 +363,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Sensor", "Tech", "Modification"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -298,7 +377,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Sensor", "Tech", "Modification", "Talent", "Tech"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -308,7 +393,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -318,7 +408,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Sensor", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Sensor",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -489,7 +584,15 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Payload",
+          "Missile",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -499,7 +602,15 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Torpedo"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Payload",
+          "Missile",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -509,7 +620,15 @@
         "limited": 0,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Gunner", "Modification", "Tech", "Payload", "Payload", "Missile", "Missile"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Payload",
+          "Payload",
+          "Missile",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -644,7 +763,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"],
+        "slots": [
+          "Sensor",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Missile",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -654,7 +781,14 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"],
+        "slots": [
+          "Sensor",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -664,7 +798,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile"],
+        "slots": [
+          "Sensor",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -674,7 +814,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 20,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent", "Modification"],
+        "slots": [
+          "Sensor",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Missile",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -684,7 +832,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Sensor", "Gunner", "Modification", "Tech", "Missile", "Talent"],
+        "slots": [
+          "Sensor",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -767,7 +922,14 @@
         "limited": 1,
         "cost": 15,
         "loadout": 14,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -777,7 +939,14 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Force Power"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -790,7 +959,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 7,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -800,7 +976,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 8,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -810,7 +993,13 @@
         "limited": 1,
         "cost": 14,
         "loadout": 17,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -820,7 +1009,12 @@
         "limited": 0,
         "cost": 11,
         "loadout": 7,
-        "slots": ["Tech", "Missile", "Torpedo", "Configuration"],
+        "slots": [
+          "Tech",
+          "Missile",
+          "Torpedo",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -830,7 +1024,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Tech", "Modification", "Missile", "Torpedo", "Configuration"],
+        "slots": [
+          "Tech",
+          "Modification",
+          "Missile",
+          "Torpedo",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -956,7 +1156,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Configuration", "Talent", "Cannon"],
+        "slots": [
+          "Gunner",
+          "Tech",
+          "Tech",
+          "Modification",
+          "Configuration",
+          "Talent",
+          "Cannon"
+        ],
         "force": null
       },
       {
@@ -966,7 +1174,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Gunner",
+          "Tech",
+          "Tech",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -976,7 +1192,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Gunner",
+          "Tech",
+          "Tech",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -986,7 +1210,15 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Gunner",
+          "Tech",
+          "Tech",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -996,7 +1228,13 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Gunner", "Tech", "Tech", "Modification", "Missile"],
+        "slots": [
+          "Gunner",
+          "Tech",
+          "Tech",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       }
     ]
@@ -1073,7 +1311,16 @@
         "limited": 1,
         "cost": 17,
         "loadout": 22,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Cannon",
+          "Sensor",
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1103,7 +1350,16 @@
         "limited": 1,
         "cost": 15,
         "loadout": 15,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Cannon",
+          "Sensor",
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1113,7 +1369,16 @@
         "limited": 0,
         "cost": 15,
         "loadout": 18,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Cannon",
+          "Sensor",
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1123,7 +1388,16 @@
         "limited": 1,
         "cost": 16,
         "loadout": 17,
-        "slots": ["Cannon", "Sensor", "Tech", "Tech", "Crew", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Cannon",
+          "Sensor",
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1224,7 +1498,16 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Illicit", "Illicit", "Illicit"],
+        "slots": [
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Modification",
+          "Illicit",
+          "Illicit",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -1234,7 +1517,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"],
+        "slots": [
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1244,7 +1534,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1254,7 +1550,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification"],
+        "slots": [
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1264,7 +1566,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 18,
-        "slots": ["Tech", "Tech", "Crew", "Crew", "Modification", "Talent"],
+        "slots": [
+          "Tech",
+          "Tech",
+          "Crew",
+          "Crew",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -1335,7 +1644,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Sensor",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1345,7 +1661,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Sensor",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1355,7 +1678,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Sensor",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -1365,7 +1694,14 @@
         "limited": 0,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Modification", "Modification", "Sensor", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Sensor",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1559,7 +1895,20 @@
         "difficulty": "Red"
       }
     ],
-    "dial": ["0OR", "1BB", "1FB", "1NB", "2TR", "2BW", "2FB", "2NW", "2YR", "3BR", "3FW", "3NR"],
+    "dial": [
+      "0OR",
+      "1BB",
+      "1FB",
+      "1NB",
+      "2TR",
+      "2BW",
+      "2FB",
+      "2NW",
+      "2YR",
+      "3BR",
+      "3FW",
+      "3NR"
+    ],
     "pilots": [
       {
         "name": "Captain Kagi",
@@ -1568,7 +1917,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Cannon",
+          "Sensor",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1578,7 +1934,15 @@
         "limited": 1,
         "cost": 13,
         "loadout": 18,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Cannon",
+          "Sensor",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -1588,7 +1952,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 5,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Cannon",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1598,7 +1968,13 @@
         "limited": 0,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Cannon", "Sensor", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Cannon",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -1686,7 +2062,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1696,7 +2077,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 15,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Force Power",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -1709,7 +2096,12 @@
         "limited": 0,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -1722,7 +2114,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -1735,7 +2132,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -1813,7 +2215,13 @@
         "limited": 1,
         "cost": 16,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Force Power", "Force Power"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Force Power",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -1826,7 +2234,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1836,7 +2250,12 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1846,7 +2265,11 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Missile", "Sensor", "Modification"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1856,7 +2279,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Missile", "Sensor", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1866,7 +2294,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1889,7 +2321,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Missile", "Sensor", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -1985,7 +2423,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -1995,7 +2437,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2005,7 +2451,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Modification", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2015,7 +2466,11 @@
         "limited": 0,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -2087,7 +2542,14 @@
         "limited": 1,
         "cost": 9,
         "loadout": 17,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"],
+        "slots": [
+          "Gunner",
+          "Turret",
+          "Missile",
+          "Missile",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2097,7 +2559,15 @@
         "limited": 1,
         "cost": 9,
         "loadout": 15,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"],
+        "slots": [
+          "Gunner",
+          "Turret",
+          "Missile",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2107,7 +2577,15 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Modification", "Sensor", "Talent"],
+        "slots": [
+          "Gunner",
+          "Turret",
+          "Missile",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2117,7 +2595,14 @@
         "limited": 0,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Gunner", "Turret", "Missile", "Missile", "Sensor", "Modification"],
+        "slots": [
+          "Gunner",
+          "Turret",
+          "Missile",
+          "Missile",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -2235,7 +2720,15 @@
         "limited": 0,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Missile", "Missile", "Torpedo", "Payload", "Payload", "Sensor", "Modification"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Torpedo",
+          "Payload",
+          "Payload",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -2352,7 +2845,14 @@
         "limited": 0,
         "cost": 15,
         "loadout": 9,
-        "slots": ["Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "slots": [
+          "Cannon",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2362,7 +2862,15 @@
         "limited": 0,
         "cost": 16,
         "loadout": 10,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "slots": [
+          "Talent",
+          "Cannon",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2372,7 +2880,15 @@
         "limited": 1,
         "cost": 18,
         "loadout": 13,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "slots": [
+          "Talent",
+          "Cannon",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2422,7 +2938,15 @@
         "limited": 1,
         "cost": 15,
         "loadout": 7,
-        "slots": ["Talent", "Cannon", "Missile", "Modification", "Sensor", "Tech", "Configuration"],
+        "slots": [
+          "Talent",
+          "Cannon",
+          "Missile",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2512,7 +3036,10 @@
         "limited": 0,
         "cost": 8,
         "loadout": 1,
-        "slots": ["Modification", "Configuration"],
+        "slots": [
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2522,7 +3049,11 @@
         "limited": 0,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2532,7 +3063,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2542,7 +3078,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2552,7 +3092,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2562,7 +3106,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Configuration", "Modification"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2572,7 +3121,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2582,7 +3136,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2592,7 +3150,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2602,7 +3164,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -2662,7 +3228,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Modification", "Configuration", "Force Power", "Sensor"],
+        "slots": [
+          "Modification",
+          "Configuration",
+          "Force Power",
+          "Sensor"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -2760,7 +3331,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2770,7 +3344,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2780,7 +3357,9 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification"],
+        "slots": [
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2790,7 +3369,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2800,7 +3382,9 @@
         "limited": 1,
         "cost": 6,
         "loadout": 2,
-        "slots": ["Modification"],
+        "slots": [
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2820,7 +3404,10 @@
         "limited": 0,
         "cost": 6,
         "loadout": 4,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2830,7 +3417,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 17,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -2840,7 +3433,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -2850,7 +3449,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -2860,7 +3465,9 @@
         "limited": 0,
         "cost": 5,
         "loadout": 0,
-        "slots": ["Modification"],
+        "slots": [
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -2870,7 +3477,13 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Talent", "Missile", "Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Missile",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -2880,7 +3493,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2890,7 +3506,10 @@
         "limited": 2,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Modification", "Illicit"],
+        "slots": [
+          "Modification",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -2900,7 +3519,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Illicit", "Talent"],
+        "slots": [
+          "Modification",
+          "Illicit",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2950,7 +3573,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -2960,7 +3586,10 @@
         "limited": 1,
         "cost": 7,
         "loadout": 8,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3112,7 +3741,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3122,7 +3757,13 @@
         "limited": 1,
         "cost": 14,
         "loadout": 15,
-        "slots": ["Gunner", "Modification", "Sensor", "Tech", "Talent"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3132,7 +3773,12 @@
         "limited": 0,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Gunner", "Modification", "Tech", "Sensor"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -3142,7 +3788,13 @@
         "limited": 0,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Talent", "Gunner", "Modification", "Tech", "Sensor"],
+        "slots": [
+          "Talent",
+          "Gunner",
+          "Modification",
+          "Tech",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -3241,7 +3893,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Gunner",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -3251,7 +3909,14 @@
         "limited": 0,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Gunner",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3261,7 +3926,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Gunner",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3271,7 +3943,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Gunner",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -3281,7 +3959,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Cannon", "Cannon", "Gunner", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Gunner",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -3354,7 +4039,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -3364,7 +4055,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3374,7 +4072,14 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3384,7 +4089,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3394,7 +4106,13 @@
         "limited": 0,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -3404,7 +4122,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Torpedo", "Missile", "Payload", "Payload", "Modification", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Missile",
+          "Payload",
+          "Payload",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3549,7 +4274,10 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Gunner", "Payload"],
+        "slots": [
+          "Gunner",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -3559,7 +4287,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Gunner", "Modification", "Payload", "Talent", "Modification"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Talent",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -3569,7 +4303,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Gunner", "Modification", "Payload", "Talent"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3579,7 +4318,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Gunner", "Modification", "Payload", "Talent"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3589,7 +4333,11 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Gunner", "Modification", "Payload"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -3599,7 +4347,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Gunner", "Modification", "Payload"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       }
     ]
@@ -3696,7 +4448,15 @@
         "limited": 0,
         "cost": 16,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Gunner", "Gunner", "Torpedo", "Modification", "Payload"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Gunner",
+          "Gunner",
+          "Torpedo",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -3809,7 +4569,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 6,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3819,7 +4586,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -3829,7 +4602,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3839,7 +4619,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3849,7 +4636,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 3,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -3859,7 +4652,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 16,
-        "slots": ["Astromech", "Gunner", "Crew", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Crew",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3961,7 +4761,15 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -3993,7 +4801,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 20,
-        "slots": ["Gunner", "Modification", "Payload", "Torpedo", "Turret", "Crew"],
+        "slots": [
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Crew"
+        ],
         "force": null
       },
       {
@@ -4003,7 +4818,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 19,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -4013,7 +4836,15 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -4023,7 +4854,14 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -4033,7 +4871,14 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -4043,7 +4888,14 @@
         "limited": 0,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Astromech", "Gunner", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       }
     ]
@@ -4112,7 +4964,10 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4122,7 +4977,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4132,7 +4991,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4142,7 +5005,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4152,7 +5019,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Sensor", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -4162,7 +5034,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4172,7 +5048,10 @@
         "limited": 0,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Modification", "Sensor"],
+        "slots": [
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4182,7 +5061,11 @@
         "limited": 0,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4192,7 +5075,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -4202,7 +5089,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 21,
-        "slots": ["Talent", "Modification", "Sensor"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Sensor"
+        ],
         "force": null
       }
     ]
@@ -4281,7 +5172,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Configuration",
+          "Modification",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -4394,7 +5291,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Configuration",
+          "Modification",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4407,7 +5310,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Force Power", "Configuration", "Modification", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Configuration",
+          "Modification",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -4529,7 +5438,11 @@
         "limited": 0,
         "cost": 11,
         "loadout": 4,
-        "slots": ["Force Power", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -4542,7 +5455,12 @@
         "limited": 1,
         "cost": 14,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4555,7 +5473,12 @@
         "limited": 1,
         "cost": 14,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4568,7 +5491,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4581,7 +5509,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 9,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4594,7 +5527,12 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4607,7 +5545,11 @@
         "limited": 1,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Force Power", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4620,7 +5562,11 @@
         "limited": 1,
         "cost": 11,
         "loadout": 6,
-        "slots": ["Force Power", "Modification", "Astromech"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -4633,7 +5579,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 6,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4646,7 +5597,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 7,
-        "slots": ["Force Power", "Modification", "Astromech", "Force Power"],
+        "slots": [
+          "Force Power",
+          "Modification",
+          "Astromech",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4728,7 +5684,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4741,7 +5704,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4754,7 +5724,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4767,7 +5744,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4780,7 +5764,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -4793,7 +5783,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -4845,7 +5842,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Talent", "Force Power", "Astromech", "Cannon", "Modification", "Force Power"],
+        "slots": [
+          "Talent",
+          "Force Power",
+          "Astromech",
+          "Cannon",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -5219,7 +6223,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Sensor", "Tech", "Talent"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Sensor",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5229,7 +6241,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Torpedo",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -5239,7 +6258,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Torpedo",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -5249,7 +6275,14 @@
         "limited": 0,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Torpedo",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -5259,7 +6292,14 @@
         "limited": 2,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Talent", "Astromech", "Modification", "Torpedo", "Tech", "Sensor"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Tech",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -5269,7 +6309,14 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Talent", "Astromech", "Modification", "Tech", "Torpedo", "Sensor"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Torpedo",
+          "Sensor"
+        ],
         "force": null
       }
     ]
@@ -5348,7 +6395,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 6,
-        "slots": ["Astromech", "Configuration", "Modification"],
+        "slots": [
+          "Astromech",
+          "Configuration",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -5358,7 +6409,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "slots": [
+          "Astromech",
+          "Configuration",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5368,7 +6424,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "slots": [
+          "Astromech",
+          "Configuration",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5378,7 +6439,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 17,
-        "slots": ["Talent", "Astromech", "Configuration", "Modification"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Configuration",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -5388,7 +6454,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Astromech", "Configuration", "Modification", "Talent"],
+        "slots": [
+          "Astromech",
+          "Configuration",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5398,7 +6469,11 @@
         "limited": 0,
         "cost": 7,
         "loadout": 3,
-        "slots": ["Astromech", "Configuration", "Modification"],
+        "slots": [
+          "Astromech",
+          "Configuration",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -5492,7 +6567,12 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5502,7 +6582,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 16,
-        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5512,7 +6597,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5522,7 +6612,12 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5532,7 +6627,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Missile", "Modification", "Modification"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -5542,7 +6642,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Missile", "Missile", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -5552,7 +6658,12 @@
         "limited": 0,
         "cost": 6,
         "loadout": 2,
-        "slots": ["Missile", "Talent", "Modification", "Modification"],
+        "slots": [
+          "Missile",
+          "Talent",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -5582,7 +6693,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Missile", "Modification", "Modification"],
+        "slots": [
+          "Missile",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -5882,7 +6997,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Crew",
+          "Gunner",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -5892,7 +7014,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Crew",
+          "Gunner",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -5902,7 +7031,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 16,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Crew",
+          "Gunner",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -5912,7 +7048,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 17,
-        "slots": ["Talent", "Astromech", "Crew", "Gunner", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Astromech",
+          "Crew",
+          "Gunner",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       }
     ]
@@ -5986,7 +7129,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Crew", "Modification", "Turret", "Title"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Turret",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -5996,7 +7144,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Force Power"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Turret",
+          "Title",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -6009,7 +7163,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Talent", "Talent"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Turret",
+          "Title",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6019,7 +7180,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Crew", "Modification", "Turret", "Title", "Talent"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Turret",
+          "Title",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6107,7 +7274,11 @@
         "limited": 0,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Crew", "Modification", "Modification"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -6117,7 +7288,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Crew", "Modification", "Modification"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -6127,7 +7303,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 14,
-        "slots": ["Crew", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -6199,7 +7380,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6209,7 +7397,13 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -6219,7 +7413,14 @@
         "limited": 0,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6229,7 +7430,13 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -6239,7 +7446,14 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6249,7 +7463,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 20,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6299,7 +7520,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -6370,7 +7597,19 @@
         "difficulty": "White"
       }
     ],
-    "dial": ["1BB", "1FB", "1NB", "2TW", "2BW", "2FB", "2NW", "2YW", "3BW", "3FW", "3NW"],
+    "dial": [
+      "1BB",
+      "1FB",
+      "1NB",
+      "2TW",
+      "2BW",
+      "2FB",
+      "2NW",
+      "2YW",
+      "3BW",
+      "3FW",
+      "3NW"
+    ],
     "pilots": [
       {
         "name": "Esege Tuketu",
@@ -6516,7 +7755,15 @@
         "limited": 1,
         "cost": 14,
         "loadout": 14,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Talent", "Tech", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Modification",
+          "Sensor",
+          "Astromech",
+          "Talent",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6526,7 +7773,14 @@
         "limited": 1,
         "cost": 15,
         "loadout": 20,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Modification",
+          "Sensor",
+          "Astromech",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6536,7 +7790,13 @@
         "limited": 0,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Torpedo", "Modification", "Sensor", "Tech", "Astromech"],
+        "slots": [
+          "Torpedo",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Astromech"
+        ],
         "force": null
       },
       {
@@ -6546,7 +7806,14 @@
         "limited": 0,
         "cost": 14,
         "loadout": 17,
-        "slots": ["Torpedo", "Modification", "Sensor", "Astromech", "Tech", "Talent"],
+        "slots": [
+          "Torpedo",
+          "Modification",
+          "Sensor",
+          "Astromech",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -6624,7 +7891,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6634,7 +7907,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -6644,7 +7923,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -6654,7 +7938,12 @@
         "limited": 2,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       }
     ]
@@ -6867,7 +8156,13 @@
         "limited": 1,
         "cost": 14,
         "loadout": 10,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Modification",
+          "Payload",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -6877,7 +8172,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Modification",
+          "Payload",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -6887,7 +8188,12 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Crew", "Modification", "Payload", "Payload"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Payload",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -6897,7 +8203,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 12,
-        "slots": ["Talent", "Crew", "Modification", "Payload", "Title"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Modification",
+          "Payload",
+          "Title"
+        ],
         "force": null
       }
     ]
@@ -7035,7 +8347,14 @@
         "limited": 0,
         "cost": 16,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Modification", "Missile"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -7166,7 +8485,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7176,7 +8500,12 @@
         "limited": 0,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7186,7 +8515,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 6,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7196,7 +8531,12 @@
         "limited": 0,
         "cost": 7,
         "loadout": 1,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7206,7 +8546,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7216,7 +8562,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7226,7 +8577,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7236,7 +8593,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Modification", "Missile", "Configuration", "Force Power", "Force Power"],
+        "slots": [
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Force Power",
+          "Force Power"
+        ],
         "force": {
           "value": 3,
           "recovers": 1
@@ -7249,7 +8612,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7259,7 +8628,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Missile", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7269,7 +8643,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Modification", "Missile", "Configuration", "Force Power"],
+        "slots": [
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 0
@@ -7282,7 +8661,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 15,
-        "slots": ["Talent", "Modification", "Missile", "Configuration", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7412,7 +8797,12 @@
         "limited": 1,
         "cost": 7,
         "loadout": 4,
-        "slots": ["Astromech", "Crew", "Modification", "Title"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Modification",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -7422,7 +8812,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Astromech", "Crew", "Modification", "Title"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Modification",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -7432,7 +8827,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Astromech", "Crew", "Modification", "Title", "Force Power"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Modification",
+          "Title",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -7445,7 +8846,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Crew", "Modification", "Title", "Talent"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Modification",
+          "Title",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -7515,7 +8922,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7525,7 +8937,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 3,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7535,7 +8952,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Configuration",
+          "Missile",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -7545,7 +8968,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Configuration",
+          "Missile",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -7555,7 +8984,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7565,7 +9000,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7575,7 +9016,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Configuration",
+          "Missile",
+          "Illicit",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7585,7 +9033,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Configuration", "Missile", "Illicit", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Configuration",
+          "Missile",
+          "Illicit",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7615,7 +9070,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7625,7 +9086,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7635,7 +9102,13 @@
         "limited": 1,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7698,7 +9171,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7708,7 +9187,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Torpedo", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Torpedo",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7826,7 +9311,10 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Modification"],
+        "slots": [
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -7836,7 +9324,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Modification"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -7846,7 +9338,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 15,
-        "slots": ["Modification", "Modification", "Force Power"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -7859,7 +9355,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 13,
-        "slots": ["Talent", "Modification", "Modification"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -7925,7 +9425,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -7935,7 +9443,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7945,7 +9460,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -7955,7 +9476,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7965,7 +9493,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -7975,7 +9510,15 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -7985,7 +9528,14 @@
         "limited": 0,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Illicit"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -7995,7 +9545,15 @@
         "limited": 1,
         "cost": 13,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration", "Talent", "Illicit"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -8005,7 +9563,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Crew", "Crew", "Sensor", "Modification", "Configuration"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       }
     ]
@@ -8075,7 +9639,16 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo", "Title"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Gunner",
+          "Turret",
+          "Modification",
+          "Torpedo",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -8129,7 +9702,15 @@
         "limited": 0,
         "cost": 15,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Sensor", "Gunner", "Turret", "Modification", "Torpedo"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Gunner",
+          "Turret",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -8223,7 +9804,15 @@
         "limited": 1,
         "cost": 19,
         "loadout": 19,
-        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8233,7 +9822,15 @@
         "limited": 1,
         "cost": 19,
         "loadout": 20,
-        "slots": ["Talent", "Crew", "Gunner", "Illicit", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8243,7 +9840,13 @@
         "limited": 0,
         "cost": 17,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8370,7 +9973,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8380,7 +9987,10 @@
         "limited": 0,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Missile"],
+        "slots": [
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8390,7 +10000,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8400,7 +10014,11 @@
         "limited": 0,
         "cost": 7,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       }
     ]
@@ -8545,7 +10163,14 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -8555,7 +10180,14 @@
         "limited": 1,
         "cost": 7,
         "loadout": 8,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -8601,7 +10233,14 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Turret", "Modification", "Modification", "Tech", "Payload"],
+        "slots": [
+          "Astromech",
+          "Turret",
+          "Modification",
+          "Modification",
+          "Tech",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -8863,7 +10502,12 @@
         "limited": 0,
         "cost": 6,
         "loadout": 3,
-        "slots": ["Modification", "Astromech", "Illicit", "Missile"],
+        "slots": [
+          "Modification",
+          "Astromech",
+          "Illicit",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -8909,7 +10553,13 @@
         "limited": 1,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Modification", "Illicit", "Missile", "Crew", "Title"],
+        "slots": [
+          "Modification",
+          "Illicit",
+          "Missile",
+          "Crew",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -8919,7 +10569,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"]
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ]
       }
     ]
   },
@@ -8994,7 +10650,15 @@
         "limited": 0,
         "cost": 15,
         "loadout": 20,
-        "slots": ["Payload", "Payload", "Crew", "Gunner", "Gunner", "Tech", "Modification"],
+        "slots": [
+          "Payload",
+          "Payload",
+          "Crew",
+          "Gunner",
+          "Gunner",
+          "Tech",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -9243,7 +10907,15 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Cannon", "Torpedo"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Crew",
+          "Modification",
+          "Tech",
+          "Cannon",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -9272,7 +10944,14 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Astromech", "Crew", "Crew", "Modification", "Tech", "Torpedo"],
+        "slots": [
+          "Astromech",
+          "Crew",
+          "Crew",
+          "Modification",
+          "Tech",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -9353,7 +11032,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Modification", "Tech"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -9363,7 +11046,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 14,
-        "slots": ["Crew", "Modification", "Tech", "Talent"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9373,7 +11061,11 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Crew", "Modification", "Tech"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -9383,7 +11075,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Crew", "Modification", "Tech", "Talent"],
+        "slots": [
+          "Crew",
+          "Modification",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -9461,7 +11158,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9471,7 +11174,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Sensor"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent",
+          "Sensor"
+        ],
         "force": null
       },
       {
@@ -9481,7 +11191,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 15,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9491,7 +11207,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9501,7 +11222,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9511,7 +11238,12 @@
         "limited": 0,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9521,7 +11253,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent", "Tech"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -9531,7 +11270,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9541,7 +11285,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9551,7 +11300,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9561,7 +11315,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 4,
-        "slots": ["Missile", "Tech", "Modification", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9571,7 +11330,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Missile", "Tech", "Modification", "Talent", "Talent"],
+        "slots": [
+          "Missile",
+          "Tech",
+          "Modification",
+          "Talent",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9671,7 +11436,11 @@
         "limited": 0,
         "cost": 15,
         "loadout": 16,
-        "slots": ["Crew", "Crew", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -9887,7 +11656,12 @@
         "limited": 0,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -9897,7 +11671,13 @@
         "limited": 0,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9907,7 +11687,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Torpedo"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -9917,7 +11704,13 @@
         "limited": 1,
         "cost": 13,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9927,7 +11720,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -9937,7 +11735,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9947,7 +11751,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 4,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -9957,7 +11766,14 @@
         "limited": 1,
         "cost": 14,
         "loadout": 18,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Tech"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -9967,7 +11783,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 7,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -9977,7 +11798,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -9987,7 +11813,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -9997,7 +11829,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10007,7 +11845,13 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10017,7 +11861,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -10027,7 +11876,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent", "Missile"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -10037,7 +11893,13 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Tech", "Configuration", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Tech",
+          "Configuration",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10295,7 +12157,14 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Turret",
+          "Illicit",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -10305,7 +12174,15 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Turret",
+          "Talent",
+          "Illicit",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -10315,7 +12192,14 @@
         "limited": 0,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Illicit", "Missile"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Turret",
+          "Illicit",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -10325,7 +12209,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 17,
-        "slots": ["Astromech", "Modification", "Payload", "Turret", "Talent", "Illicit", "Missile"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Turret",
+          "Talent",
+          "Illicit",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -10335,7 +12227,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 21,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10345,7 +12244,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10355,7 +12261,14 @@
         "limited": 0,
         "cost": 10,
         "loadout": 16,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10365,7 +12278,14 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret", "Talent"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10375,7 +12295,13 @@
         "limited": 0,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Astromech", "Modification", "Payload", "Torpedo", "Turret"],
+        "slots": [
+          "Astromech",
+          "Modification",
+          "Payload",
+          "Torpedo",
+          "Turret"
+        ],
         "force": null
       }
     ]
@@ -10449,7 +12375,14 @@
         "limited": 0,
         "cost": 11,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -10479,7 +12412,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Crew", "Crew", "Gunner", "Illicit", "Modification", "Modification", "Title"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -10583,7 +12524,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Crew", "Illicit", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -10593,7 +12538,12 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Illicit", "Modification", "Talent"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10603,7 +12553,11 @@
         "limited": 1,
         "cost": 7,
         "loadout": 9,
-        "slots": ["Crew", "Illicit", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -10681,7 +12635,13 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10691,7 +12651,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10701,7 +12666,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10711,7 +12681,12 @@
         "limited": 1,
         "cost": 12,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10721,7 +12696,12 @@
         "limited": 0,
         "cost": 11,
         "loadout": 10,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10731,7 +12711,11 @@
         "limited": 0,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10741,7 +12725,12 @@
         "limited": 2,
         "cost": 12,
         "loadout": 15,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10751,7 +12740,12 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Torpedo"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -10859,7 +12853,14 @@
         "limited": 0,
         "cost": 14,
         "loadout": 6,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -10926,7 +12927,15 @@
         "limited": 1,
         "cost": 16,
         "loadout": 15,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Talent"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -10936,7 +12945,15 @@
         "limited": 1,
         "cost": 16,
         "loadout": 12,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -11015,7 +13032,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Title",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11025,7 +13050,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Sensor",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -11035,7 +13066,15 @@
         "limited": 1,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Crew", "Illicit", "Missile", "Sensor", "Modification", "Title", "Talent"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Sensor",
+          "Modification",
+          "Title",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11255,7 +13294,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -11265,7 +13311,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -11275,7 +13328,12 @@
         "limited": 0,
         "cost": 7,
         "loadout": 5,
-        "slots": ["Crew", "Illicit", "Modification", "Payload"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -11285,7 +13343,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Crew", "Illicit", "Modification", "Payload"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -11295,7 +13358,13 @@
         "limited": 1,
         "cost": 8,
         "loadout": 7,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11305,7 +13374,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Force Power"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload",
+          "Force Power"
+        ],
         "force": {
           "value": 1,
           "recovers": 1
@@ -11318,7 +13393,13 @@
         "limited": 1,
         "cost": 8,
         "loadout": 6,
-        "slots": ["Crew", "Illicit", "Modification", "Payload", "Talent"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Payload",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -11395,7 +13476,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -11443,7 +13530,15 @@
         "limited": 1,
         "cost": 13,
         "loadout": 21,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo", "Talent"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Modification",
+          "Torpedo",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11453,7 +13548,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Cannon", "Crew", "Gunner", "Illicit", "Modification", "Torpedo"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Gunner",
+          "Illicit",
+          "Modification",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -11531,7 +13633,14 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11541,7 +13650,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -11551,7 +13666,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 4,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -11561,7 +13682,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 16,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11571,7 +13699,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 13,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11581,7 +13716,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Illicit", "Illicit", "Modification", "Modification", "Missile", "Talent"],
+        "slots": [
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Missile",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -11659,7 +13801,13 @@
         "limited": 1,
         "cost": 15,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Force Power"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Force Power"
+        ],
         "force": {
           "value": 2,
           "recovers": 1
@@ -11672,7 +13820,14 @@
         "limited": 1,
         "cost": 15,
         "loadout": 12,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -11682,7 +13837,14 @@
         "limited": 1,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -11692,7 +13854,12 @@
         "limited": 0,
         "cost": 14,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Illicit", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -11774,7 +13941,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification"],
+        "slots": [
+          "Astromech",
+          "Illicit",
+          "Missile",
+          "Torpedo",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -11784,7 +13957,14 @@
         "limited": 1,
         "cost": 11,
         "loadout": 13,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"],
+        "slots": [
+          "Astromech",
+          "Illicit",
+          "Missile",
+          "Torpedo",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11794,7 +13974,14 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Astromech", "Illicit", "Missile", "Torpedo", "Modification", "Talent"],
+        "slots": [
+          "Astromech",
+          "Illicit",
+          "Missile",
+          "Torpedo",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -11867,7 +14054,10 @@
         "limited": 0,
         "cost": 6,
         "loadout": 0,
-        "slots": ["Modification", "Illicit"],
+        "slots": [
+          "Modification",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11877,7 +14067,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Modification", "Talent", "Illicit"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11887,7 +14081,10 @@
         "limited": 1,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Illicit"],
+        "slots": [
+          "Modification",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11897,7 +14094,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Talent", "Illicit"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11907,7 +14108,11 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Modification", "Talent", "Illicit"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11917,7 +14122,10 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -11927,7 +14135,9 @@
         "limited": 1,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Modification"],
+        "slots": [
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -11937,7 +14147,11 @@
         "limited": 0,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Talent", "Illicit"],
+        "slots": [
+          "Modification",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -11947,7 +14161,9 @@
         "limited": 1,
         "cost": 7,
         "loadout": 7,
-        "slots": ["Modification"],
+        "slots": [
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -12011,7 +14227,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12021,7 +14241,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 8,
-        "slots": ["Modification", "Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12031,7 +14255,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Talent", "Illicit"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -12041,7 +14270,10 @@
         "limited": 0,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Modification", "Modification"],
+        "slots": [
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -12051,7 +14283,11 @@
         "limited": 1,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Modification", "Illicit"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Illicit"
+        ],
         "force": null
       },
       {
@@ -12061,7 +14297,10 @@
         "limited": 0,
         "cost": 5,
         "loadout": 1,
-        "slots": ["Modification", "Modification"],
+        "slots": [
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -12071,7 +14310,11 @@
         "limited": 1,
         "cost": 8,
         "loadout": 9,
-        "slots": ["Modification", "Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -12138,7 +14381,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 19,
-        "slots": ["Crew", "Illicit", "Modification", "Talent", "Payload"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -12148,7 +14397,11 @@
         "limited": 0,
         "cost": 7,
         "loadout": 4,
-        "slots": ["Crew", "Illicit", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -12158,7 +14411,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 14,
-        "slots": ["Crew", "Illicit", "Modification", "Illicit", "Tech"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Illicit",
+          "Tech"
+        ],
         "force": null
       },
       {
@@ -12168,7 +14427,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 13,
-        "slots": ["Crew", "Illicit", "Modification", "Modification"],
+        "slots": [
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       }
     ]
@@ -12279,7 +14543,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12289,7 +14560,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Cannon", "Cannon", "Illicit", "Modification", "Modification"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Illicit",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -12299,7 +14576,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Illicit", "Modification", "Modification", "Cannon", "Cannon"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Modification",
+          "Cannon",
+          "Cannon"
+        ],
         "force": null
       },
       {
@@ -12414,7 +14697,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 11,
-        "slots": ["Crew", "Gunner", "Modification", "Payload", "Payload", "Turret"],
+        "slots": [
+          "Crew",
+          "Gunner",
+          "Modification",
+          "Payload",
+          "Payload",
+          "Turret"
+        ],
         "force": null
       },
       {
@@ -12510,7 +14800,15 @@
         "limited": 1,
         "cost": 16,
         "loadout": 18,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -12520,7 +14818,15 @@
         "limited": 1,
         "cost": 15,
         "loadout": 10,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent", "Title"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -12530,7 +14836,14 @@
         "limited": 2,
         "cost": 14,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification", "Talent"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12540,7 +14853,13 @@
         "limited": 0,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Crew", "Crew", "Illicit", "Illicit", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Illicit",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -12630,7 +14949,14 @@
         "limited": 0,
         "cost": 11,
         "loadout": 11,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Sensor",
+          "Torpedo",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12640,7 +14966,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 9,
-        "slots": ["Illicit", "Modification", "Sensor", "Tech", "Torpedo"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Sensor",
+          "Tech",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -12650,7 +14982,14 @@
         "limited": 1,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Tech", "Talent"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Sensor",
+          "Torpedo",
+          "Tech",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -12660,7 +14999,15 @@
         "limited": 1,
         "cost": 13,
         "loadout": 11,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Sensor",
+          "Torpedo",
+          "Talent",
+          "Tech",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -12670,7 +15017,15 @@
         "limited": 1,
         "cost": 12,
         "loadout": 14,
-        "slots": ["Illicit", "Modification", "Sensor", "Torpedo", "Talent", "Tech", "Title"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Sensor",
+          "Torpedo",
+          "Talent",
+          "Tech",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -12871,7 +15226,14 @@
         "limited": 1,
         "cost": 15,
         "loadout": 13,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Gunner"
+        ],
         "force": null
       },
       {
@@ -12881,7 +15243,13 @@
         "limited": 0,
         "cost": 14,
         "loadout": 9,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Gunner"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Gunner"
+        ],
         "force": null
       },
       {
@@ -12891,7 +15259,14 @@
         "limited": 1,
         "cost": 16,
         "loadout": 22,
-        "slots": ["Crew", "Crew", "Illicit", "Modification", "Talent", "Gunner"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Illicit",
+          "Modification",
+          "Talent",
+          "Gunner"
+        ],
         "force": null
       },
       {
@@ -12969,7 +15344,11 @@
         "limited": 0,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Illicit", "Modification", "Missile"],
+        "slots": [
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -12979,7 +15358,12 @@
         "limited": 0,
         "cost": 7,
         "loadout": 10,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -12989,7 +15373,12 @@
         "limited": 1,
         "cost": 7,
         "loadout": 13,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -12999,7 +15388,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 14,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -13019,7 +15413,12 @@
         "limited": 1,
         "cost": 8,
         "loadout": 11,
-        "slots": ["Talent", "Illicit", "Modification", "Missile"],
+        "slots": [
+          "Talent",
+          "Illicit",
+          "Modification",
+          "Missile"
+        ],
         "force": null
       }
     ]
@@ -13102,7 +15501,12 @@
         "limited": 1,
         "cost": 13,
         "loadout": 20,
-        "slots": ["Modification", "Modification", "Talent", "Title"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -13112,7 +15516,12 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Modification", "Modification", "Tactical Relay", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Tactical Relay",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -13122,7 +15531,11 @@
         "limited": 0,
         "cost": 9,
         "loadout": 10,
-        "slots": ["Modification", "Modification", "Tactical Relay"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Tactical Relay"
+        ],
         "force": null
       },
       {
@@ -13132,7 +15545,11 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Modification", "Modification", "Tactical Relay"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Tactical Relay"
+        ],
         "force": null
       },
       {
@@ -13142,7 +15559,11 @@
         "limited": 0,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Modification", "Modification", "Talent"],
+        "slots": [
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       }
     ]
@@ -13315,7 +15736,14 @@
         "limited": 0,
         "cost": 8,
         "loadout": 5,
-        "slots": ["Sensor", "Modification", "Modification", "Missile", "Cannon", "Configuration"],
+        "slots": [
+          "Sensor",
+          "Modification",
+          "Modification",
+          "Missile",
+          "Cannon",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -13480,7 +15908,15 @@
         "limited": 1,
         "cost": 16,
         "loadout": 9,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload", "Title"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Title"
+        ],
         "force": null
       },
       {
@@ -13490,7 +15926,14 @@
         "limited": 0,
         "cost": 15,
         "loadout": 8,
-        "slots": ["Cannon", "Crew", "Illicit", "Missile", "Modification", "Payload"],
+        "slots": [
+          "Cannon",
+          "Crew",
+          "Illicit",
+          "Missile",
+          "Modification",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -13729,7 +16172,13 @@
         "limited": 0,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -13739,7 +16188,13 @@
         "limited": 2,
         "cost": 10,
         "loadout": 13,
-        "slots": ["Modification", "Payload", "Configuration", "Cannon", "Cannon"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Cannon",
+          "Cannon"
+        ],
         "force": null
       },
       {
@@ -13767,7 +16222,13 @@
         "limited": 2,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -13777,7 +16238,13 @@
         "limited": 0,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Missile", "Missile", "Modification", "Payload", "Configuration"],
+        "slots": [
+          "Missile",
+          "Missile",
+          "Modification",
+          "Payload",
+          "Configuration"
+        ],
         "force": null
       }
     ]
@@ -13852,7 +16319,12 @@
         "limited": 0,
         "cost": 8,
         "loadout": 12,
-        "slots": ["Modification", "Payload", "Configuration", "Torpedo"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -13862,7 +16334,11 @@
         "limited": 3,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Modification", "Payload", "Payload"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Payload"
+        ],
         "force": null
       },
       {
@@ -13872,7 +16348,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 12,
-        "slots": ["Modification", "Payload", "Configuration", "Torpedo"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Torpedo"
+        ],
         "force": null
       },
       {
@@ -13882,7 +16363,13 @@
         "limited": 2,
         "cost": 8,
         "loadout": 10,
-        "slots": ["Modification", "Payload", "Configuration", "Missile", "Missile"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Missile",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -13892,7 +16379,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 14,
-        "slots": ["Modification", "Payload", "Configuration", "Missile"],
+        "slots": [
+          "Modification",
+          "Payload",
+          "Configuration",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -14008,7 +16500,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 5,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14018,7 +16515,14 @@
         "limited": 1,
         "cost": 13,
         "loadout": 17,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Talent", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Talent",
+          "Talent",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14028,7 +16532,13 @@
         "limited": 1,
         "cost": 9,
         "loadout": 9,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Talent",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14038,7 +16548,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 14,
-        "slots": ["Talent", "Modification", "Modification", "Talent", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Talent",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14048,7 +16564,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 11,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14058,7 +16579,12 @@
         "limited": 0,
         "cost": 10,
         "loadout": 8,
-        "slots": ["Talent", "Modification", "Modification", "Configuration"],
+        "slots": [
+          "Talent",
+          "Modification",
+          "Modification",
+          "Configuration"
+        ],
         "force": null
       }
     ]
@@ -14169,7 +16695,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 12,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -14179,7 +16711,12 @@
         "limited": 0,
         "cost": 9,
         "loadout": 8,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -14189,7 +16726,13 @@
         "limited": 2,
         "cost": 10,
         "loadout": 10,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -14199,7 +16742,13 @@
         "limited": 1,
         "cost": 10,
         "loadout": 11,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification", "Talent"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Modification",
+          "Modification",
+          "Talent"
+        ],
         "force": null
       },
       {
@@ -14209,7 +16758,12 @@
         "limited": 1,
         "cost": 9,
         "loadout": 7,
-        "slots": ["Cannon", "Cannon", "Modification", "Modification"],
+        "slots": [
+          "Cannon",
+          "Cannon",
+          "Modification",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -14346,7 +16900,14 @@
         "limited": 0,
         "cost": 12,
         "loadout": 6,
-        "slots": ["Crew", "Crew", "Sensor", "Tech", "Payload", "Modification"],
+        "slots": [
+          "Crew",
+          "Crew",
+          "Sensor",
+          "Tech",
+          "Payload",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -14449,7 +17010,11 @@
         "limited": 0,
         "cost": 5,
         "loadout": 3,
-        "slots": ["Modification", "Missile", "Configuration"],
+        "slots": [
+          "Modification",
+          "Missile",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14459,7 +17024,11 @@
         "limited": 3,
         "cost": 6,
         "loadout": 5,
-        "slots": ["Modification", "Cannon", "Configuration"],
+        "slots": [
+          "Modification",
+          "Cannon",
+          "Configuration"
+        ],
         "force": null
       },
       {
@@ -14469,7 +17038,11 @@
         "limited": 2,
         "cost": 6,
         "loadout": 7,
-        "slots": ["Modification", "Configuration", "Missile"],
+        "slots": [
+          "Modification",
+          "Configuration",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -14479,7 +17052,11 @@
         "limited": 1,
         "cost": 6,
         "loadout": 7,
-        "slots": ["Modification", "Configuration", "Missile"],
+        "slots": [
+          "Modification",
+          "Configuration",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -14489,7 +17066,11 @@
         "limited": 0,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Modification", "Configuration", "Missile"],
+        "slots": [
+          "Modification",
+          "Configuration",
+          "Missile"
+        ],
         "force": null
       },
       {
@@ -14499,7 +17080,11 @@
         "limited": 1,
         "cost": 6,
         "loadout": 6,
-        "slots": ["Configuration", "Missile", "Modification"],
+        "slots": [
+          "Configuration",
+          "Missile",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -14539,7 +17124,12 @@
         "limited": 1,
         "cost": 6,
         "loadout": 4,
-        "slots": ["Modification", "Configuration", "Missile", "Modification"],
+        "slots": [
+          "Modification",
+          "Configuration",
+          "Missile",
+          "Modification"
+        ],
         "force": null
       },
       {
@@ -14549,7 +17139,10 @@
         "limited": 3,
         "cost": 6,
         "loadout": 10,
-        "slots": ["Modification", "Modification"],
+        "slots": [
+          "Modification",
+          "Modification"
+        ],
         "force": null
       }
     ]

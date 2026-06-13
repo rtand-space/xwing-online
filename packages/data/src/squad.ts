@@ -33,6 +33,7 @@ export function upgradeOptions(slot: string, shipXws: string): UpgradeData[] {
   const facXws = FACTION_XWS_BY_NAME[ship.faction] ?? '';
   const size = ship.size.toLowerCase();
   return upgradesForSlot(slot).filter((u) => {
+    if (!u.available) return false; // quick-build-only / non-XWA cards aren't buyable
     if (u.slots.length !== 1) return false;
     return (u.restrictions as Restriction[]).every((r) => {
       if (r.factions && !r.factions.includes(facXws)) return false;

@@ -74,4 +74,11 @@ describe('squad validation', () => {
     expect(opts.length).toBeGreaterThan(0);
     expect(opts.every((u) => u.slots.length === 1)).toBe(true);
   });
+
+  it('upgradeOptions excludes quick-build-only / non-XWA upgrades', () => {
+    // delta7b is a Configuration card available only via quick builds (not in XWA points)
+    const opts = upgradeOptions('Configuration', 'delta7aethersprite');
+    expect(opts.some((u) => u.xws === 'delta7b')).toBe(false);
+    expect(opts.every((u) => u.available)).toBe(true);
+  });
 });
