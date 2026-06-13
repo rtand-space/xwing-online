@@ -1,7 +1,9 @@
 import { FACTION_IDS, FACTIONS, type FactionId, pilotChoices } from '@xwing/data';
 import { type ReactElement, useState } from 'react';
+import { Roster } from './roster';
 import { useSandbox } from './sandbox-store';
 import { useSquads } from './squads-store';
+import { useGame } from './store';
 
 /** Sandbox panel: build a local board, then toggle turn-based rules over it. */
 export function Sandbox(): ReactElement {
@@ -16,6 +18,7 @@ export function Sandbox(): ReactElement {
   const enterTurnBased = useSandbox((s) => s.enterTurnBased);
   const leaveTurnBased = useSandbox((s) => s.leaveTurnBased);
   const squads = useSquads((s) => s.squads);
+  const game = useGame((s) => s.game);
 
   const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
   const [faction, setFaction] = useState<FactionId>('rebel');
@@ -27,6 +30,12 @@ export function Sandbox(): ReactElement {
       <div className="panelStack">
         <div className="section">Turn-based — playing this board</div>
         <div className="muted">Play it out with full rules, then drop back to free editing.</div>
+        {game && (
+          <>
+            <div className="section">Board state</div>
+            <Roster view={game.state} />
+          </>
+        )}
         <button className="btn primary" onClick={leaveTurnBased}>
           Leave turn-based
         </button>

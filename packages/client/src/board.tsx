@@ -469,7 +469,7 @@ export const SvgBoard: BoardRenderer = ({
 
         const tokens = tokenCounts(s);
         const tokenSpan = (tokens.length - 1) * 12;
-        const name = s.id.replace(/-/g, ' ');
+        const name = s.pilot || s.id.replace(/-/g, ' ');
 
         return (
           <g
