@@ -3,15 +3,32 @@ import {
   type Command,
   createGame,
   dispatch,
+  type Game,
   type GameConfig,
   type GameEvent,
   type PlayerView,
   projectView,
   replay,
+  trivialCommand,
 } from '@xwing/engine';
 
 // Register card abilities into the engine registry before any game is built/replayed.
 installAbilities();
+
+/** Auto-apply pending steps with only one legal option so a player is never
+ *  prompted to "pass" a non-choice (e.g. an action step with no available action). */
+function autoResolve(game: Game): Game {
+  let g = game;
+  for (let i = 0; i < 500; i++) {
+    const p = g.state.pending[0];
+    const cmd = p && trivialCommand(p);
+    if (!cmd) break;
+    const next = dispatch(g, cmd).game;
+    if (next === g) break;
+    g = next;
+  }
+  return g;
+}
 
 /**
  * Pure server-side game operations on an event log. The Durable Object is a thin
@@ -19,7 +36,7 @@ installAbilities();
  */
 
 export function createLog(config: GameConfig): GameEvent[] {
-  return createGame(config).log;
+  return autoResolve(createGame(config)).log;
 }
 
 /** Validate a command against the authoritative log and append its events. */
@@ -28,7 +45,7 @@ export function applyCommand(
   command: Command,
 ): { log: GameEvent[]; rejection?: string } {
   const { game, rejection } = dispatch({ state: replay(log), log }, command);
-  return rejection ? { log, rejection } : { log: game.log };
+  return rejection ? { log, rejection } : { log: autoResolve(game).log };
 }
 
 /** Redacted view for one recipient — opponents' unrevealed dials are stripped. */

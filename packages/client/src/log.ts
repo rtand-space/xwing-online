@@ -1,58 +1,62 @@
 import type { GameEvent } from '@xwing/engine';
 
-/** Human-readable log line for an event, or null to omit. Hides secret dial values. */
-export function formatEvent(e: GameEvent): string | null {
+/**
+ * Human-readable log line for an event, or null to omit. Hides secret dial values.
+ * `name` maps a ship id to its pilot name (falls back to the id when unknown).
+ */
+export function formatEvent(e: GameEvent, name: (id: string) => string = (id) => id): string | null {
+  const n = name;
   switch (e.type) {
     case 'GameCreated':
       return 'Game started';
     case 'DialSet':
-      return `${e.shipId} set a dial`;
+      return `${n(e.shipId)} set a dial`;
     case 'DialRevealed':
-      return `${e.shipId} reveals ${e.maneuver.speed} ${e.maneuver.bearing}`;
+      return `${n(e.shipId)} reveals ${e.maneuver.speed} ${e.maneuver.bearing}`;
     case 'ShipMoved':
-      return e.bumped ? `${e.shipId} overlapped — backed off` : null;
+      return e.bumped ? `${n(e.shipId)} overlapped — backed off` : null;
     case 'Decloaked':
-      return `${e.shipId} decloaks`;
+      return `${n(e.shipId)} decloaks`;
     case 'DecloakPassed':
       return null;
     case 'ObstacleHit':
-      return `${e.shipId} hits ${e.kind === 'asteroid' ? 'an asteroid' : 'a debris cloud'}`;
+      return `${n(e.shipId)} hits ${e.kind === 'asteroid' ? 'an asteroid' : 'a debris cloud'}`;
     case 'StressChanged':
-      return e.delta > 0 ? `${e.shipId} is stressed` : `${e.shipId} cleared stress`;
+      return e.delta > 0 ? `${n(e.shipId)} is stressed` : `${n(e.shipId)} cleared stress`;
     case 'ChargeChanged':
-      return e.delta < 0 ? `${e.shipId} spends a charge` : `${e.shipId} recovers a charge`;
+      return e.delta < 0 ? `${n(e.shipId)} spends a charge` : `${n(e.shipId)} recovers a charge`;
     case 'ForceChanged':
-      return e.delta < 0 ? `${e.shipId} spends Force` : `${e.shipId} recovers Force`;
+      return e.delta < 0 ? `${n(e.shipId)} spends Force` : `${n(e.shipId)} recovers Force`;
     case 'ActionPerformed':
-      return `${e.shipId}: ${e.action}${e.targetId ? ` ${e.targetId}` : ''}`;
+      return `${n(e.shipId)}: ${e.action}${e.targetId ? ` ${n(e.targetId)}` : ''}`;
     case 'ActionSkipped':
-      return `${e.shipId}: no action`;
+      return `${n(e.shipId)}: no action`;
     case 'ArcRotated':
-      return `${e.shipId} rotates arc to ${e.to}`;
+      return `${n(e.shipId)} rotates arc to ${e.to}`;
     case 'RepositionOffered':
       return null;
     case 'Repositioned':
-      return `${e.shipId} repositions`;
+      return `${n(e.shipId)} repositions`;
     case 'GrantOffered':
       return null;
     case 'GrantOfferResolved':
       return null;
     case 'ActionGranted':
-      return `${e.shipId} is granted a free action`;
+      return `${n(e.shipId)} is granted a free action`;
     case 'GrantResolved':
       return null;
     case 'LinkOffered':
-      return `${e.shipId} may link ${e.action}`;
+      return `${n(e.shipId)} may link ${e.action}`;
     case 'LinkResolved':
       return null;
     case 'TokenGained':
-      return `${e.shipId} gains ${e.kind}`;
+      return `${n(e.shipId)} gains ${e.kind}`;
     case 'TokenSpent':
-      return `${e.shipId} spends ${e.kind}`;
+      return `${n(e.shipId)} spends ${e.kind}`;
     case 'AttackDeclared':
-      return `${e.shipId}${e.bonus ? ' (bonus)' : ''} attacks ${e.targetId} (range ${e.range})`;
+      return `${n(e.shipId)}${e.bonus ? ' (bonus)' : ''} attacks ${n(e.targetId)} (range ${e.range})`;
     case 'BonusAttackOffered':
-      return `${e.shipId} may make a bonus attack`;
+      return `${n(e.shipId)} may make a bonus attack`;
     case 'BonusAttackResolved':
       return null;
     case 'TargetOffered':
@@ -72,13 +76,13 @@ export function formatEvent(e: GameEvent): string | null {
     case 'CombatEnded':
       return null;
     case 'DamageDealt':
-      return `${e.shipId} takes ${e.amount} → ${e.shieldsAfter} shields, ${e.hullAfter} hull`;
+      return `${n(e.shipId)} takes ${e.amount} → ${e.shieldsAfter} shields, ${e.hullAfter} hull`;
     case 'ShipDestroyed':
-      return `${e.shipId} destroyed`;
+      return `${n(e.shipId)} destroyed`;
     case 'AttackPassed':
-      return `${e.shipId} holds fire`;
+      return `${n(e.shipId)} holds fire`;
     case 'AbilityOffered':
-      return `${e.shipId}: ${e.label}?`;
+      return `${n(e.shipId)}: ${e.label}?`;
     case 'AbilityResolved':
       return null;
     case 'RoundEnded':

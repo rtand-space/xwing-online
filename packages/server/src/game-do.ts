@@ -1,4 +1,5 @@
 import { buildPushPayload, type PushSubscription } from '@block65/webcrypto-web-push';
+import { pilotFaction } from '@xwing/data';
 import type { Command, GameConfig, GameEvent, Obstacle, ShipInit } from '@xwing/engine';
 import { applyCommand, createLog, pendingPlayer, publicLog, viewFromLog } from './game-store';
 import { json } from './http';
@@ -14,6 +15,12 @@ const SUBS_KEY = 'subs'; // side -> PushSubscription
 interface SocketMeta {
   viewer: string;
 }
+
+/** A side's faction display name, derived from its first ship (seats stay rebel/imperial). */
+const sideFaction = (ships: ShipInit[]): string => {
+  const s = ships[0];
+  return s?.pilotXws ? pilotFaction(s.shipType, s.pilotXws) : '';
+};
 
 /**
  * One Durable Object per game. Holds the authoritative event log (SQLite storage),
@@ -139,8 +146,8 @@ export class GameDO {
       id: code,
       seed,
       players: [
-        { id: 'rebel', name: 'Rebel' },
-        { id: 'imperial', name: 'Imperial' },
+        { id: 'rebel', name: sideFaction(sides.rebel) },
+        { id: 'imperial', name: sideFaction(sides.imperial) },
       ],
       ships: [...sides.rebel, ...sides.imperial],
       obstacles,

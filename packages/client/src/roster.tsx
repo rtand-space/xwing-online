@@ -1,3 +1,4 @@
+import { getShip } from '@xwing/data';
 import type { PlayerView, Ship } from '@xwing/engine';
 import type { ReactElement } from 'react';
 
@@ -50,7 +51,7 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
   return (
     <div className={dead ? 'shipStatus dead' : 'shipStatus'}>
       <span className="shipStatusName">
-        {ship.pilot} <span className="muted">· {ship.id}</span>
+        {ship.pilot} <span className="muted">· {getShip(ship.shipType).name}</span>
       </span>
       {!dead && (
         <span className="shipStatusStats">

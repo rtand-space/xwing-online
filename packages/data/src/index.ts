@@ -7,7 +7,15 @@ export const DATA_VERSION = meta.points;
 export const DATA_META = meta;
 
 export type { ActionData, PilotData, ShipData, Stat, UpgradeData } from './types';
-export { allShips, allUpgrades, getPilot, getShip, getUpgrade, upgradesForSlot } from './loaders';
+export {
+  allShips,
+  allUpgrades,
+  getPilot,
+  getShip,
+  getUpgrade,
+  pilotFaction,
+  upgradesForSlot,
+} from './loaders';
 export { parseDial, parseManeuver } from './dial';
 export { toShipInit } from './build';
 export { parseXws, serializeXws, squadToShipInits } from './xws';
@@ -18,6 +26,7 @@ export {
   FACTION_IDS,
   obstacleValidity,
   placementOk,
+  factionLabel,
   PRESETS,
   presetConfig,
   pilotChoices,

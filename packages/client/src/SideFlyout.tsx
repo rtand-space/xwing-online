@@ -111,8 +111,10 @@ function LogTab({ ag }: { ag: ActiveGame }): ReactElement {
   if (!ag.log) {
     return <p className="muted">Start a game to see the event log.</p>;
   }
+  const names = new Map(ag.view?.ships.map((s) => [s.id, s.pilot]));
+  const nameOf = (id: string): string => names.get(id) ?? id;
   const lines = ag.log
-    .map(formatEvent)
+    .map((e) => formatEvent(e, nameOf))
     .filter((l): l is string => l !== null)
     .slice(-50);
   return (

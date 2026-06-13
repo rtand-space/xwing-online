@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { allUpgrades, getPilot } from './loaders';
-import { pilotChoices } from './presets';
+import { allUpgrades, getPilot, pilotFaction } from './loaders';
+import { factionLabel, pilotChoices } from './presets';
 import { SQUAD_POINT_CAP, squadPoints, upgradeOptions, validateSquad } from './squad';
 import type { XwsSquad } from './xws';
 
@@ -49,6 +49,13 @@ describe('squad validation', () => {
     const r = validateSquad(squad('rebelalliance', [blue, academy, academy]));
     expect(r.valid).toBe(false);
     expect(r.errors.join(' ')).toMatch(/one faction/i);
+  });
+
+  it('resolves faction display names for side labelling', () => {
+    expect(factionLabel('scumandvillainy')).toBe('Scum and Villainy');
+    // ARC-170 is listed under several factions; the pilot picks the right one
+    expect(pilotFaction('arc170starfighter', 'ibtisam')).toBe('Rebel Alliance');
+    expect(pilotFaction('arc170starfighter', 'jag')).toBe('Galactic Republic');
   });
 
   it('squadPoints sums pilot costs', () => {

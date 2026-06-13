@@ -106,6 +106,12 @@ export const FACTION_IDS: FactionId[] = [
   'firstorder',
 ];
 
+const FACTION_NAME_BY_XWS: Record<string, string> = Object.fromEntries(
+  FACTION_IDS.map((id) => [XWS_FACTION[id], FACTIONS[id]]),
+);
+/** Display name for an XWS faction string, e.g. "scumandvillainy" → "Scum and Villainy". */
+export const factionLabel = (xws: string): string => FACTION_NAME_BY_XWS[xws] ?? xws;
+
 export interface PilotChoice {
   shipXws: string;
   shipName: string;
@@ -233,8 +239,8 @@ export function buildConfig(
   obstacles: Obstacle[] = randomObstacles(seed),
 ): GameConfig {
   const players: Player[] = [
-    { id: 'rebel', name: 'Rebel' },
-    { id: 'imperial', name: 'Imperial' },
+    { id: 'rebel', name: factionLabel(rebel.faction) },
+    { id: 'imperial', name: factionLabel(imperial.faction) },
   ];
   return {
     id,

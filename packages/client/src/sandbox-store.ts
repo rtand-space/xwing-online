@@ -1,4 +1,10 @@
-import { randomObstacles, sideShipInits, toShipInit, type XwsSquad } from '@xwing/data';
+import {
+  pilotFaction,
+  randomObstacles,
+  sideShipInits,
+  toShipInit,
+  type XwsSquad,
+} from '@xwing/data';
 import {
   applyManeuver,
   type GameConfig,
@@ -90,6 +96,16 @@ interface SandboxState {
 
 let counter = 0;
 
+/** A sandbox side's display name — the faction of its first ship, else the seat. */
+const sideName = (ships: Ship[], side: string): string => {
+  const s = ships.find((sh) => sh.ownerId === side);
+  return s?.pilotXws
+    ? pilotFaction(s.shipType, s.pilotXws)
+    : side === 'rebel'
+      ? 'Rebel'
+      : 'Imperial';
+};
+
 export const useSandbox = create<SandboxState>((set, get) => ({
   active: false,
   turnBased: false,
@@ -115,8 +131,8 @@ export const useSandbox = create<SandboxState>((set, get) => ({
       id: 'sandbox',
       seed: String(Date.now()),
       players: [
-        { id: 'rebel', name: 'Rebel' },
-        { id: 'imperial', name: 'Imperial' },
+        { id: 'rebel', name: sideName(ships, 'rebel') },
+        { id: 'imperial', name: sideName(ships, 'imperial') },
       ],
       ships: ships.map(shipToInit),
       obstacles,
