@@ -10,8 +10,10 @@ import type {
   Player,
   PlayerId,
   Position,
+  ShipArc,
   ShipId,
   TokenKind,
+  TurretFacing,
 } from './types';
 
 export interface ShipInit {
@@ -24,6 +26,8 @@ export interface ShipInit {
   initiative: number;
   base: BaseSize;
   primaryAttack: number;
+  arcs?: ShipArc[];
+  turretArc?: TurretFacing;
   agility: number;
   hull: number;
   shields: number;
@@ -63,6 +67,7 @@ export type GameEvent =
   | { type: 'ForceChanged'; shipId: ShipId; delta: number }
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }
+  | { type: 'ArcRotated'; shipId: ShipId; to: TurretFacing }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }

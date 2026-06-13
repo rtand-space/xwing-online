@@ -3,6 +3,7 @@ import { applyEvent } from './apply';
 import { resolveAttack } from './combat';
 import type { Command } from './commands';
 import type { GameEvent } from './events';
+import { nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { autoStep } from './phases';
@@ -125,6 +126,8 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'reinforce' });
       } else if (cmd.action === 'cloak') {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'cloak' });
+      } else if (cmd.action === 'rotate-arc') {
+        events.push({ type: 'ArcRotated', shipId: ship.id, to: nextFacing(ship) });
       } else if (cmd.action === 'lock') {
         if (!cmd.targetId || !pending.options.lockTargets.includes(cmd.targetId)) {
           return reject('Invalid lock target');

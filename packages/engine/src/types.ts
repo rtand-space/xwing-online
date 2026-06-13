@@ -45,7 +45,25 @@ export type ActionType =
   | 'evade'
   | 'calculate'
   | 'reinforce'
-  | 'cloak';
+  | 'cloak'
+  | 'rotate-arc';
+
+/** A primary-weapon firing arc and its attack value. */
+export type ArcKind =
+  | 'front'
+  | 'rear'
+  | 'full-front'
+  | 'bullseye'
+  | 'single-turret'
+  | 'double-turret';
+
+/** Where a rotatable (single/double) turret indicator points. */
+export type TurretFacing = 'front' | 'right' | 'rear' | 'left';
+
+export interface ShipArc {
+  kind: ArcKind;
+  value: number;
+}
 
 export type TokenKind =
   | 'focus'
@@ -97,7 +115,12 @@ export interface Ship {
   upgrades?: string[];
   initiative: number;
   base: BaseSize;
+  /** Front-arc attack value; the default when `arcs` is absent. */
   primaryAttack: number;
+  /** Primary-weapon firing arcs from card stats; defaults to a single front arc. */
+  arcs?: ShipArc[];
+  /** Current orientation of a rotatable (single/double) turret indicator. */
+  turretArc?: TurretFacing;
   agility: number;
   hull: number;
   shields: number;

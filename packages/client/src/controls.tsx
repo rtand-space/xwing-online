@@ -92,6 +92,7 @@ const ACTION: Record<ActionType, string> = {
   calculate: 'Calculate',
   reinforce: 'Reinforce',
   cloak: 'Cloak',
+  'rotate-arc': 'Rotate Arc',
 };
 
 export function Controls({

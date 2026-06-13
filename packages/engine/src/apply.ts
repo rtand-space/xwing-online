@@ -111,6 +111,8 @@ function applyCore(state: GameState, e: GameEvent): GameState {
     case 'ActionPerformed':
     case 'ActionSkipped':
       return mapShip(state, e.shipId, (s) => ({ ...s, hasActed: true }));
+    case 'ArcRotated':
+      return mapShip(state, e.shipId, (s) => ({ ...s, turretArc: e.to }));
     case 'TokenGained':
       if (e.kind === 'jam') return mapShip(state, e.shipId, gainJam);
       return mapShip(state, e.shipId, (s) => gainToken(s, e.kind, e.targetId));

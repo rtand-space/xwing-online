@@ -1,4 +1,4 @@
-import { inArc, rangeBand } from './arcs';
+import { attackValue, rangeBand } from './arcs';
 import { obstaclesAt } from './obstacles';
 import { isCloaked, isDisarmed, isIonized } from './tokens';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
@@ -103,7 +103,7 @@ export function computePending(state: GameState): PendingDecision[] {
       const targets = blocked
         ? []
         : enemies(state, ship)
-            .filter((t) => inArc(ship, t) && rangeBand(ship, t) !== null)
+            .filter((t) => attackValue(ship, t) !== null && rangeBand(ship, t) !== null)
             .map((s) => s.id);
       return [
         {

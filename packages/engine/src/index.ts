@@ -2,6 +2,7 @@ export const ENGINE_VERSION = '0.0.0';
 
 export type {
   ActionType,
+  ArcKind,
   BaseSize,
   Bearing,
   Difficulty,
@@ -16,10 +17,12 @@ export type {
   Position,
   Rng,
   Ship,
+  ShipArc,
   ShipId,
   Speed,
   Token,
   TokenKind,
+  TurretFacing,
 } from './types';
 export type { Command } from './commands';
 export type { DiceKind, GameConfig, GameEvent, ShipInit } from './events';
@@ -49,7 +52,19 @@ export {
 } from './geometry';
 export type { Vec } from './geometry';
 export { applyManeuver, pathAt } from './templates';
-export { baseDistance, bearingDeg, inArc, inBullseye, RANGE_BAND_MM, rangeBand } from './arcs';
+export {
+  attackValue,
+  baseDistance,
+  bearingDeg,
+  hasTurret,
+  inArc,
+  inArcAt,
+  inBullseye,
+  nextFacing,
+  RANGE_BAND_MM,
+  rangeBand,
+  shipArcs,
+} from './arcs';
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
 export {

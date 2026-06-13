@@ -1,5 +1,5 @@
 import { basePolygon, heading, polygonDistance, type Vec } from './geometry';
-import type { Position, Ship } from './types';
+import type { ArcKind, Position, Ship, ShipArc, TurretFacing } from './types';
 
 const DEG = Math.PI / 180;
 
@@ -29,22 +29,94 @@ function rayHitsSegment(o: Vec, d: Vec, p1: Vec, p2: Vec): boolean {
   return t >= 0 && u >= 0 && u <= 1;
 }
 
+/** Shortest signed difference a−b, in (−180, 180]. */
+function angleDiff(a: number, b: number): number {
+  let d = (a - b) % 360;
+  if (d > 180) d -= 360;
+  if (d <= -180) d += 360;
+  return d;
+}
+
 /**
- * Front-arc test: any part of the target's base inside the ±halfAngle wedge from the
- * attacker's base centre. True if a base corner lies in the wedge, or an arc edge
- * crosses the base — so the slightest overlap counts, matching the drawn arc.
+ * Arc test: any part of the target's base inside the wedge of half-width `halfAngleDeg`
+ * centred `centreDeg` off the attacker's facing (0 = ahead, +90 = right, 180 = behind).
+ * True if a base corner lies in the wedge, or an arc edge crosses the base.
  */
-export function inArc(attacker: Ship, target: Ship, halfAngleDeg = 45): boolean {
+export function inArcAt(
+  attacker: Ship,
+  target: Ship,
+  centreDeg = 0,
+  halfAngleDeg = 45,
+): boolean {
   const poly = basePolygon(target.pos, target.base);
-  if (poly.some((v) => Math.abs(bearingDeg(attacker.pos, v)) <= halfAngleDeg)) return true;
+  if (poly.some((v) => Math.abs(angleDiff(bearingDeg(attacker.pos, v), centreDeg)) <= halfAngleDeg))
+    return true;
 
   const apex: Vec = { x: attacker.pos.x, y: attacker.pos.y };
-  const left = heading(attacker.pos.angle - halfAngleDeg);
-  const right = heading(attacker.pos.angle + halfAngleDeg);
+  const left = heading(attacker.pos.angle + centreDeg - halfAngleDeg);
+  const right = heading(attacker.pos.angle + centreDeg + halfAngleDeg);
   return poly.some((p, i) => {
     const q = poly[(i + 1) % poly.length]!;
     return rayHitsSegment(apex, left, p, q) || rayHitsSegment(apex, right, p, q);
   });
+}
+
+/** Front-arc test (kept for callers that only care about the standard ±45 arc). */
+export function inArc(attacker: Ship, target: Ship, halfAngleDeg = 45): boolean {
+  return inArcAt(attacker, target, 0, halfAngleDeg);
+}
+
+const FACING_DEG: Record<TurretFacing, number> = { front: 0, right: 90, rear: 180, left: -90 };
+
+/** The ship's firing arcs, defaulting to a single front arc from primaryAttack. */
+export function shipArcs(s: Ship): ShipArc[] {
+  return s.arcs && s.arcs.length > 0 ? s.arcs : [{ kind: 'front', value: s.primaryAttack }];
+}
+
+function arcContains(a: Ship, t: Ship, kind: ArcKind, facing: TurretFacing): boolean {
+  switch (kind) {
+    case 'front':
+      return inArcAt(a, t, 0, 45);
+    case 'rear':
+      return inArcAt(a, t, 180, 45);
+    case 'full-front':
+      return inArcAt(a, t, 0, 90);
+    case 'bullseye':
+      return inBullseye(a, t);
+    case 'single-turret':
+      return inArcAt(a, t, FACING_DEG[facing], 45);
+    case 'double-turret':
+      return facing === 'left' || facing === 'right'
+        ? inArcAt(a, t, 90, 45) || inArcAt(a, t, -90, 45)
+        : inArcAt(a, t, 0, 45) || inArcAt(a, t, 180, 45);
+  }
+}
+
+/** Best (max) primary attack value reaching `target` across the attacker's arcs,
+ *  or null when no arc bears on it. */
+export function attackValue(a: Ship, t: Ship): number | null {
+  const facing = a.turretArc ?? 'front';
+  let best: number | null = null;
+  for (const arc of shipArcs(a)) {
+    if (arcContains(a, t, arc.kind, facing)) best = Math.max(best ?? 0, arc.value);
+  }
+  return best;
+}
+
+/** Whether the ship has a rotatable turret indicator. */
+export function hasTurret(s: Ship): boolean {
+  return shipArcs(s).some((arc) => arc.kind === 'single-turret' || arc.kind === 'double-turret');
+}
+
+/** Next turret orientation for the Rotate Arc action: double turrets toggle their
+ *  two opposite arcs; single turrets cycle through the four arcs. */
+export function nextFacing(s: Ship): TurretFacing {
+  const cur = s.turretArc ?? 'front';
+  if (shipArcs(s).some((arc) => arc.kind === 'double-turret')) {
+    return cur === 'front' || cur === 'rear' ? 'right' : 'front';
+  }
+  const order: TurretFacing[] = ['front', 'right', 'rear', 'left'];
+  return order[(order.indexOf(cur) + 1) % 4]!;
 }
 
 /** Edge-to-edge distance between two ships' bases, in millimetres. */

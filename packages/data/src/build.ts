@@ -1,4 +1,4 @@
-import type { ActionType, BaseSize, Position, ShipInit } from '@xwing/engine';
+import type { ActionType, ArcKind, BaseSize, Position, ShipArc, ShipInit } from '@xwing/engine';
 import { parseDial } from './dial';
 import { getPilot, getShip, getUpgrade } from './loaders';
 import type { ShipData } from './types';
@@ -14,10 +14,32 @@ const ACTIONS: Record<string, ActionType> = {
   Evade: 'evade',
   Calculate: 'calculate',
   Reinforce: 'reinforce',
+  Cloak: 'cloak',
+  'Rotate Arc': 'rotate-arc',
+};
+
+const ARCS: Record<string, ArcKind> = {
+  'Front Arc': 'front',
+  'Rear Arc': 'rear',
+  'Full Front Arc': 'full-front',
+  'Bullseye Arc': 'bullseye',
+  'Single Turret Arc': 'single-turret',
+  'Double Turret Arc': 'double-turret',
 };
 
 function statValue(ship: ShipData, type: string): number {
   return ship.stats.find((s) => s.type === type)?.value ?? 0;
+}
+
+/** Primary-weapon firing arcs from the ship's attack stats. */
+function shipArcs(ship: ShipData): ShipArc[] {
+  const arcs: ShipArc[] = [];
+  for (const s of ship.stats) {
+    if (s.type !== 'attack') continue;
+    const kind = ARCS[s.arc ?? 'Front Arc'];
+    if (kind) arcs.push({ kind, value: s.value });
+  }
+  return arcs;
 }
 
 function actionBar(ship: ShipData): ActionType[] {
@@ -40,6 +62,7 @@ export function toShipInit(
 ): ShipInit {
   const ship = getShip(shipXws);
   const pilot = getPilot(shipXws, pilotXws);
+  const arcs = shipArcs(ship);
   // Each charge-granting upgrade gets its own pool (keyed by xws) so one card
   // can't spend another's charges.
   const upgradeCharges: Record<string, { charges: number; max: number; recovers: number }> = {};
@@ -57,6 +80,10 @@ export function toShipInit(
     initiative: pilot.initiative,
     base: SIZES[ship.size] ?? 'small',
     primaryAttack: statValue(ship, 'attack'),
+    arcs,
+    turretArc: arcs.some((a) => a.kind === 'single-turret' || a.kind === 'double-turret')
+      ? 'front'
+      : undefined,
     agility: statValue(ship, 'agility'),
     hull: statValue(ship, 'hull'),
     shields: statValue(ship, 'shields'),

@@ -78,11 +78,23 @@ Status: ☐ not started
   decloak menu (barrel-roll + bank/direction choice) — M2 ships only the forward
   boost, since real boost/barrel-roll geometry is T4-S2.*
 
-## R4-M3 — Arcs
-- ☐ **T4-A1** Arc data from card stats: **turret** (rotatable single-turret),
-  **double turret**, **rear arc**, **full-front**, **mobile arc** (bullseye exists).
-- ☐ **T4-A2** Arc selection/rotation in setup + the Rotate Arc action; attacks and
-  arc-conditional abilities respect the chosen arc.
+## R4-M3 — Arcs ✅
+- ☑ **T4-A1** Arc geometry + data. `arcs.ts` generalises the front wedge into
+  `inArcAt(centre, half)` and adds front / rear / **full-front** (±90) /
+  single-turret / double-turret (two opposite arcs) tests (bullseye already
+  existed). `attackValue(attacker, target)` returns the **best value across the
+  ship's arcs**, or null when none bears. Engine `Ship` carries `arcs: ShipArc[]`
+  + `turretArc` (rotatable facing); `build.ts` populates them from the card's
+  attack stats (one stat per arc, e.g. ARC-170 front 3 / rear 2; "mobile arc"
+  ships are encoded as single-turret in xwing-data2, so they ride that path).
+- ☑ **T4-A2** Selection + rotation. New **`rotate-arc` action** (mapped from the
+  card's Rotate Arc) emits `ArcRotated`; `nextFacing` cycles a single turret through
+  the four arcs and toggles a double turret between its two orientations. Setup
+  defaults the indicator to `front`. Combat draws dice from the bearing arc and
+  engagement only offers targets `attackValue` reaches, so attacks respect the
+  chosen arc. Client gets the action label + a log line. Tested (`arcs.test.ts`).
+  *Deferred: a setup UI to pick the initial facing, explicit "rotate to any arc"
+  (currently cycles), and board rendering of non-front arcs.*
 
 ## R4-M4 — Ability scope + full action system
 - ☐ **T4-S1** **Auras / broader scope:** gather ability hooks from *all* ships, not

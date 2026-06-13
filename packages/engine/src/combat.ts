@@ -1,5 +1,5 @@
 import { gatherAttackHooks } from './abilities';
-import { rangeBand } from './arcs';
+import { attackValue, rangeBand } from './arcs';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
@@ -68,7 +68,9 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onRollAttack(ctx) {
-    const n = ctx.attacker.primaryAttack + (ctx.range === 1 ? 1 : 0);
+    // dice come from the arc bearing on the target (falls back to the front value)
+    const value = attackValue(ctx.attacker, ctx.target) ?? ctx.attacker.primaryAttack;
+    const n = value + (ctx.range === 1 ? 1 : 0);
     ctx.attack = drawAttack(ctx, n);
   },
 
