@@ -2,10 +2,12 @@ import {
   type Ability,
   addAttackDice,
   addDefenceDice,
+  addStress,
   changeAttack,
   changeDefence,
   friendliesInRange,
   gainToken,
+  spendForce,
   inArc,
   inArcAt,
   inBullseye,
@@ -274,6 +276,83 @@ const ABILITIES: Record<string, Ability> = {
         if (ctx.attacker.id !== self.id) return;
         const cands = friendliesInRange(ctx.state, self, 1).map((s) => s.id);
         if (cands.length) ctx.events.push(offerActionGrant(self, cands, false));
+      },
+    },
+  },
+
+  // Ric Olié — speed gives the edge. Cost-free, so automatic.
+  ricolie: {
+    note: 'Attacking or defending, if your revealed maneuver is faster than the enemy ship’s, roll 1 extra die.',
+    attack: {
+      onRollAttack: (ctx, self) => {
+        if (ctx.attacker.id === self.id && (self.dial?.speed ?? 0) > (ctx.target.dial?.speed ?? 0))
+          addAttackDice(ctx, 1);
+      },
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && (self.dial?.speed ?? 0) > (ctx.attacker.dial?.speed ?? 0))
+          addDefenceDice(ctx, 1);
+      },
+    },
+  },
+
+  // "Scorch" — push the engines for an extra shot. Costs a stress, so it's optional.
+  scorch: {
+    note: 'While attacking, if unstressed, may gain a stress token to roll 1 extra attack die.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Scorch: take stress for an extra die',
+        available: (ctx, self) =>
+          ctx.attacker.id === self.id && !self.tokens.some((t) => t.kind === 'stress'),
+        apply: (ctx, self) => {
+          addAttackDice(ctx, 1);
+          ctx.events.push(addStress(self));
+        },
+      },
+    },
+  },
+
+  // Darth Vader (TIE Advanced) — spends the Force to find the mark. Cost → optional.
+  'darthvader-battleofyavin': {
+    note: 'While attacking, may spend 1 Force to change a blank result to a hit.',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Vader: Force → blank to hit',
+        available: (ctx, self) => (self.force ?? 0) > 0 && ctx.attack.includes('blank'),
+        apply: (ctx, self) => {
+          changeAttack(ctx, 'blank', 'hit', 1);
+          ctx.events.push(spendForce(self));
+        },
+      },
+    },
+  },
+
+  // Ezra Bridger — channels stress through the Force. Costs Force, so it's optional.
+  ezrabridger: {
+    note: 'While stressed, may spend 1 Force to change up to 2 of your focus results (hits attacking, evades defending).',
+    optionalAttack: {
+      onModifyAttack: {
+        label: 'Ezra: Force → up to 2 focus to hits',
+        available: (ctx, self) =>
+          ctx.attacker.id === self.id &&
+          (self.force ?? 0) > 0 &&
+          self.tokens.some((t) => t.kind === 'stress') &&
+          ctx.attack.includes('focus'),
+        apply: (ctx, self) => {
+          changeAttack(ctx, 'focus', 'hit', 2);
+          ctx.events.push(spendForce(self));
+        },
+      },
+      onModifyDefence: {
+        label: 'Ezra: Force → up to 2 focus to evades',
+        available: (ctx, self) =>
+          ctx.target.id === self.id &&
+          (self.force ?? 0) > 0 &&
+          self.tokens.some((t) => t.kind === 'stress') &&
+          ctx.defence.includes('focus'),
+        apply: (ctx, self) => {
+          changeDefence(ctx, 'focus', 'evade', 2);
+          ctx.events.push(spendForce(self));
+        },
       },
     },
   },

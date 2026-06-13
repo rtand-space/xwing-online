@@ -36,6 +36,9 @@ const ship = (id: string, pos: Position): Ship => ({
   hasEngaged: false,
 });
 
+const maneuver = (speed: number) =>
+  ({ speed, bearing: 'straight', difficulty: 'white' }) as Ship['dial'];
+
 const state = { rng: { seed: 'ab', cursor: 0 } } as unknown as GameState;
 const ctx = (attacker: Ship, target: Ship, attack: AttackContext['attack']): AttackContext => ({
   state,
@@ -241,6 +244,62 @@ describe('card abilities', () => {
     hit.result = { hits: 2, crits: 0 };
     hook(hit, atk);
     expect(hit.events).toHaveLength(0);
+  });
+
+  it('Ric Olié adds a die when his maneuver is faster (cost-free, automatic)', () => {
+    const hook = getAbility('ricolie')!.attack!.onRollAttack!;
+    const fast: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), dial: maneuver(3) };
+    const slow: Ship = { ...ship('t', { x: 0, y: 100, angle: 0 }), dial: maneuver(1) };
+    const c = ctx(fast, slow, ['hit']);
+    hook(c, fast);
+    expect(c.attack).toHaveLength(2);
+    const even = ctx(fast, { ...slow, dial: maneuver(3) }, ['hit']);
+    hook(even, fast);
+    expect(even.attack).toHaveLength(1);
+  });
+
+  it('Scorch is offered to take a stress for an extra die', () => {
+    const opt = getAbility('scorch')!.optionalAttack!.onModifyAttack!;
+    const a = ship('a', { x: 0, y: 0, angle: 0 });
+    const c = ctx(a, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']);
+    expect(opt.available(c, a)).toBe(true);
+    opt.apply(c, a);
+    expect(c.attack).toHaveLength(2);
+    expect(c.events.some((e) => e.type === 'StressChanged' && e.delta === 1)).toBe(true);
+    const stressed: Ship = { ...a, tokens: [{ kind: 'stress' }] };
+    expect(opt.available(ctx(stressed, ship('t', { x: 0, y: 100, angle: 0 }), ['hit']), stressed)).toBe(false);
+  });
+
+  it('Darth Vader (BoY) is offered to spend Force to turn a blank into a hit', () => {
+    const opt = getAbility('darthvader-battleofyavin')!.optionalAttack!.onModifyAttack!;
+    const forced: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), force: 1, maxForce: 1 };
+    const c = ctx(forced, ship('t', { x: 0, y: 100, angle: 0 }), ['blank', 'hit']);
+    expect(opt.available(c, forced)).toBe(true);
+    opt.apply(c, forced);
+    expect(c.attack).toEqual(['hit', 'hit']);
+    expect(c.events.some((e) => e.type === 'ForceChanged' && e.delta === -1)).toBe(true);
+    const noForce = ship('a', { x: 0, y: 0, angle: 0 });
+    expect(opt.available(ctx(noForce, ship('t', { x: 0, y: 100, angle: 0 }), ['blank']), noForce)).toBe(false);
+  });
+
+  it('Ezra Bridger only offers his defence Force-change while he is the defender and stressed', () => {
+    const opt = getAbility('ezrabridger')!.optionalAttack!.onModifyDefence!;
+    const ezra: Ship = {
+      ...ship('e', { x: 0, y: 0, angle: 0 }),
+      force: 1,
+      maxForce: 1,
+      tokens: [{ kind: 'stress' }],
+    };
+    const atk = ship('a', { x: 0, y: 100, angle: 0 });
+    const defending = ctx(atk, ezra, ['hit']); // ezra is the target/defender
+    defending.defence = ['focus', 'focus', 'blank'];
+    expect(opt.available(defending, ezra)).toBe(true);
+    opt.apply(defending, ezra);
+    expect(defending.defence).toEqual(['evade', 'evade', 'blank']);
+
+    const attacking = ctx(ezra, atk, ['hit']); // ezra is the attacker → not his defence ability
+    attacking.defence = ['focus'];
+    expect(opt.available(attacking, ezra)).toBe(false);
   });
 
   it('Airen Cracken offers a friendly an action after attacking', () => {
