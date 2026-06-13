@@ -206,6 +206,28 @@ body {
   justify-content: center;
   padding: 8px;
 }
+.boardToggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  font: 600 12px ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  background: rgba(8, 10, 20, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.boardToggle:hover {
+  opacity: 1;
+}
+.boardToggle.on {
+  opacity: 1;
+  border-color: var(--accent, #3fe0c5);
+  color: var(--accent, #3fe0c5);
+}
 .board {
   aspect-ratio: 1;
   height: 100%;
@@ -818,6 +840,18 @@ body {
   font:
     700 11px ui-monospace,
     monospace;
+}
+.nameCard {
+  fill: rgba(8, 10, 20, 0.72);
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 1;
+}
+.shipName {
+  fill: #e7ecf6;
+  font:
+    600 10px ui-sans-serif,
+    system-ui,
+    sans-serif;
 }
 .activeRing {
   animation: ringPulse 2s ease-in-out infinite;

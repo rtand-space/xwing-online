@@ -141,6 +141,8 @@ export interface BoardProps {
   /** Sandbox: drag ships freely, and draw a firing arc for a chosen ship. */
   onShipMove?: (id: string, x: number, y: number) => void;
   arcShipId?: string | null;
+  /** Show floating pilot-name cards under each ship (off by default — uncluttered). */
+  showNames?: boolean;
 }
 
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
@@ -454,6 +456,7 @@ export const SvgBoard: BoardRenderer = ({
   onObstacleMove,
   onShipMove,
   arcShipId,
+  showNames = false,
 }) => {
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
@@ -576,18 +579,24 @@ export const SvgBoard: BoardRenderer = ({
                 active={active}
                 wedges={arcWedges(s)}
               />
-              {/* name on the rear edge, in the plate's frame (rotates with the base) */}
-              <text
-                x={0}
-                y={w / 2 - 5}
-                textAnchor="middle"
-                textLength={w - 8}
-                lengthAdjust="spacingAndGlyphs"
-                className="shipLabel"
-              >
-                {name}
-              </text>
             </g>
+
+            {/* optional upright pilot-name card below the base (does not rotate) */}
+            {showNames && (
+              <g transform={`translate(${s.pos.x} ${-s.pos.y + w / 2 + 6})`}>
+                <rect
+                  x={-(name.length * 3.1 + 6)}
+                  y={0}
+                  width={name.length * 6.2 + 12}
+                  height={15}
+                  rx={4}
+                  className="nameCard"
+                />
+                <text x={0} y={11} textAnchor="middle" className="shipName">
+                  {name}
+                </text>
+              </g>
+            )}
 
             {/* token shapes above the base */}
             {tokens.map(([kind, n], i) => (

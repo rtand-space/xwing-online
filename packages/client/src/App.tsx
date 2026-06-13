@@ -19,6 +19,7 @@ const EMPTY_VIEW = projectView(EMPTY_STATE, '');
 export function App(): ReactElement {
   const ag = useActiveGame();
   const [sideOpen, setSideOpen] = useState(true);
+  const [showNames, setShowNames] = useState(false);
 
   // Reconnect to an in-progress online game after a refresh.
   useEffect(() => void useOnline.getState().resume(), []);
@@ -98,7 +99,15 @@ export function App(): ReactElement {
           onShipMove={sbEdit ? sbMove : undefined}
           arcShipId={sbEdit && sbShowArcs ? sbSelected : undefined}
           onPick={sbEdit ? sbSelect : undefined}
+          showNames={showNames}
         />
+        <button
+          className={showNames ? 'boardToggle on' : 'boardToggle'}
+          onClick={() => setShowNames((v) => !v)}
+          title="Toggle pilot names"
+        >
+          Names
+        </button>
       </div>
 
       <SideFlyout open={sideOpen} onClose={() => setSideOpen(false)} ag={ag} />
