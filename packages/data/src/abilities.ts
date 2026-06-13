@@ -5,6 +5,7 @@ import {
   changeDefence,
   inArc,
   inBullseye,
+  inRange,
   chargesFrom,
   registerAbility,
   rerollAttack,
@@ -141,6 +142,22 @@ const ABILITIES: Record<string, Ability> = {
         ) {
           changeDefence(ctx, 'evade', 'blank', 1);
           ctx.events.push(spendCharge(self, 'crackshot'));
+        }
+      },
+    },
+  },
+
+  // Howlrunner (TIE/ln) — reroll aura: a friendly attacker at range 0–1 rerolls a die.
+  howlrunner: {
+    note: 'While a friendly ship at range 0–1 attacks, it may reroll 1 attack die.',
+    attack: {
+      onModifyAttack: (ctx, self) => {
+        if (
+          ctx.attacker.id !== self.id &&
+          ctx.attacker.ownerId === self.ownerId &&
+          inRange(self, ctx.attacker, 1)
+        ) {
+          rerollAttack(ctx, 'blank', 1);
         }
       },
     },

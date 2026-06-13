@@ -58,11 +58,6 @@ export function shipAbilitySources(ship: Ship): string[] {
   );
 }
 
-/**
- * Collect attack-window hooks for one attack, bound to their owning ship.
- * Attacker's abilities resolve before the defender's (deterministic queue);
- * within a ship, in source order (ship type, pilot, then upgrades).
- */
 /** First available optional ability for a ship at a window, or null. */
 export function findOffer(
   state: GameState,
@@ -102,12 +97,24 @@ export function fireWindow(
   return events;
 }
 
+/**
+ * Collect attack-window hooks for one attack, bound to their owning ship.
+ * Hooks come from *every* living ship — attacker and defender first (their
+ * abilities resolve before bystanders'), then the rest by id — so aura abilities
+ * on nearby ships (e.g. a reroll leader) can read the attack via their own `self`
+ * and a friendly/enemy-at-range condition. Self-scoped abilities simply guard on
+ * `self` being the attacker or target. Within a ship, in source order.
+ */
 export function gatherAttackHooks(
+  state: GameState,
   attacker: Ship,
   target: Ship,
 ): Partial<Record<AttackWindow, ((ctx: AttackContext) => void)[]>> {
+  const others = state.ships
+    .filter((s) => s.hull > 0 && s.id !== attacker.id && s.id !== target.id)
+    .sort((a, b) => (a.id < b.id ? -1 : 1));
   const out: Partial<Record<AttackWindow, ((ctx: AttackContext) => void)[]>> = {};
-  for (const ship of [attacker, target]) {
+  for (const ship of [attacker, target, ...others]) {
     for (const xws of shipAbilitySources(ship)) {
       const ability = REGISTRY.get(xws);
       if (!ability?.attack) continue;

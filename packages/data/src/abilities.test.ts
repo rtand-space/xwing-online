@@ -198,6 +198,26 @@ describe('card abilities', () => {
     expect(mixed.cursor).toBe(0); // not all blanks → nothing
   });
 
+  it('Howlrunner rerolls a blank for a friendly ship at range 0–1 only', () => {
+    const hook = getAbility('howlrunner')!.attack!.onModifyAttack!;
+    const howl = ship('h', { x: 0, y: 0, angle: 0 }); // owner 'h'
+    const enemy = ship('t', { x: 0, y: 100, angle: 0 });
+
+    const friend = { ...ship('f', { x: 60, y: 0, angle: 0 }), ownerId: 'h' };
+    const near = ctx(friend, enemy, ['blank', 'hit']);
+    hook(near, howl);
+    expect(near.cursor).toBe(1); // friendly + in range → reroll the blank
+
+    const farFriend = { ...ship('g', { x: 0, y: 400, angle: 0 }), ownerId: 'h' };
+    const far = ctx(farFriend, enemy, ['blank', 'hit']);
+    hook(far, howl);
+    expect(far.cursor).toBe(0); // out of range → no reroll
+
+    const foe = ctx(ship('e', { x: 60, y: 0, angle: 0 }), enemy, ['blank', 'hit']);
+    hook(foe, howl);
+    expect(foe.cursor).toBe(0); // enemy ship → no reroll
+  });
+
   it('Outmaneuver drops a defence die only from outside the defender’s arc', () => {
     const atk = ship('a', { x: 0, y: 0, angle: 0 });
     const hook = getAbility('outmaneuver')!.attack!.onRollDefence!;

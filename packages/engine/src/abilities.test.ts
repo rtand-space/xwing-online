@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
+import { inRange } from './arcs';
 import { clearAbilities, fireWindow, registerAbility, shipAbilitySources } from './abilities';
 import { resolveAttack } from './combat';
 import type { Command } from './commands';
@@ -75,6 +76,34 @@ describe('ability framework', () => {
     );
     expect(dmg?.amount).toBe(3);
     expect(dmg?.hullAfter).toBe(2);
+  });
+
+  it('gathers attack hooks from a third aura ship within range', () => {
+    registerAbility('leader', {
+      attack: {
+        onModifyAttack: (ctx, self) => {
+          if (
+            ctx.attacker.id !== self.id &&
+            ctx.attacker.ownerId === self.ownerId &&
+            inRange(self, ctx.attacker, 1)
+          ) {
+            ctx.attack = ['hit', 'hit', 'hit'];
+          }
+        },
+      },
+    });
+    const a = ship('a', 'plain', { ownerId: 'team', primaryAttack: 0 });
+    const t = ship('t', 'dummy', { ownerId: 'enemy', pos: { x: 0, y: 160, angle: 0 }, agility: 0 });
+    const dmg = (leaderY: number): number => {
+      const leader = ship('c', 'leader', { ownerId: 'team', pos: { x: leaderY, y: 0, angle: 0 } });
+      const events = resolveAttack(stateWith([a, t, leader]), 'a', 't');
+      const d = events.find(
+        (e): e is Extract<GameEvent, { type: 'DamageDealt' }> => e.type === 'DamageDealt',
+      );
+      return d?.amount ?? 0;
+    };
+    expect(dmg(90)).toBe(3); // leader at range 1: the aura grants 3 hits
+    expect(dmg(400)).toBe(0); // leader out of range: no aura, attacker has 0 dice
   });
 
   it('does not run an ability for a ship that lacks it', () => {

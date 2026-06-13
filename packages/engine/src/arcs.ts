@@ -130,6 +130,12 @@ export function rangeBand(a: Ship, b: Ship): number | null {
   return band <= 3 ? band : null;
 }
 
+/** Whether `b` is within range `max` of `a` (inclusive). */
+export function inRange(a: Ship, b: Ship, max: number): boolean {
+  const band = rangeBand(a, b);
+  return band !== null && band <= max;
+}
+
 /** Half-width of the bullseye corridor (≈ the range ruler's width), in mm. */
 const BULLSEYE_HALF = 12;
 

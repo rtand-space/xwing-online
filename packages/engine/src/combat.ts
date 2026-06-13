@@ -230,7 +230,7 @@ export function resolveAttack(
     result: { hits: 0, crits: 0 },
     events: [],
   };
-  const registered = gatherAttackHooks(attacker, target);
+  const registered = gatherAttackHooks(state, attacker, target);
   for (const w of ATTACK_WINDOWS) {
     BUILTINS[w](ctx);
     for (const h of registered[w] ?? []) h(ctx);

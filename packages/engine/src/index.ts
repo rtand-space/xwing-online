@@ -60,6 +60,7 @@ export {
   inArc,
   inArcAt,
   inBullseye,
+  inRange,
   nextFacing,
   RANGE_BAND_MM,
   rangeBand,
