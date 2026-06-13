@@ -171,11 +171,16 @@ Working through the hooks the sweep needs, highest-leverage first.
     it. Dengar returns fire (afterDefend → charge → bonus attack vs the attacker).
   - ☑ **Deplete token** — the attack-side strain (−1 attack die, spent on attack, shed
     by a blue maneuver). Foundational for deplete-granting cards/weapons.
+  - ☑ **After-destroyed window** — when a ship dies, fire `onDestroyed` for each living
+    friendly of it. "Avenger" rides it (free action via ActionGranted).
+  - ☑ **Dice lockdown** — a `lockdown` ability hook; a locked-down ship's modify step
+    is fully suppressed (spends, offered abilities, and its auto cost-free abilities).
+    "Midnight" rides it. *Ember (a more specific "can't spend focus/calc") would reuse
+    this with a narrower predicate.*
   - ☐ Still to build: **setup window**; **condition cards**; **token transfer** (needs a
     target decision); **grant deplete/strain to others** (needs the granting triggers —
-    System Phase choice, reload, etc.); **dice-can't-be-modified** (Midnight/Ember);
-    **after-destroyed auras** (fire onDestroyed for other ships); **"moved through a
-    ship"** triggers (only final placement + bump tracked today).
+    System Phase choice, reload, etc.); **"moved through a ship"** triggers (only final
+    placement + bump tracked today); **System-Phase ability window** (von Reg, Muse, …).
 
 # R4b — secondary weapons · devices · damage deck
 
