@@ -97,12 +97,28 @@ Status: ☐ not started
   (currently cycles), and board rendering of non-front arcs.*
 
 ## R4-M4 — Ability scope + full action system
-- ☐ **T4-S1** **Auras / broader scope:** gather ability hooks from *all* ships, not
-  just attacker/target, with "friendly/enemy ship at range N" conditions — unlocks
-  the large squad-synergy class (e.g. reroll auras, token-granting leaders).
-- ☐ **T4-S2** **Full action bar:** coordinate, jam, reload, SLAM, rotate arc, plus
-  barrel-roll/boost executed as real repositions (geometry); red/linked actions and
-  action-granting abilities.
+- ☑ **T4-S1** **Auras / broader scope.** `gatherAttackHooks` now collects hooks from
+  *every* living ship (attacker + defender first, then the rest by id), so an aura on
+  a nearby ship reads the attack via its own `self` plus a friendly/enemy-at-range
+  condition. Existing self-scoped abilities are unaffected (they already guard on
+  `self` = attacker/target). Adds `inRange(a,b,max)` and registers **Howlrunner** (a
+  friendly attacker at range 0–1 rerolls a die) as the first aura. (Game-window/
+  action-grant "leader" auras are the coordinate mechanic in T4-S2, not passive
+  `afterMove` hooks, so the self-scoped game windows were left intact.)
+- ◐ **T4-S2** **Full action bar** — in progress.
+  - ☑ **boost & barrel-roll** as real repositions (`reposition.ts` candidate geometry
+    + a `reposition` pending decision; boost = 1-speed straight/both banks, barrel
+    roll = lateral one template + base; collision-pruned, action hidden if no legal
+    placement).
+  - ☑ **jam** (enemy at range 1 gains a jam token) and **reload** (recover a charge +
+    gain disarm).
+  - ☑ **coordinate** (grant a friendly at range 1–2 a free self-action via a
+    `grantedAction` pause; doesn't consume the target's own activation action).
+  - ☐ **SLAM** (a second maneuver of the executed speed, then disarm).
+  - ☐ **red / linked actions** (needs per-action difficulty in the model: a red action
+    gains stress; linked actions chain a second action).
+  - *Also deferred: nested repositions/locks performed via a coordinate; wiring the
+    new reposition system back into decloak's barrel-roll and the tractor reposition.*
 
 # R4b — secondary weapons · devices · damage deck
 
