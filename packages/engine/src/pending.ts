@@ -1,6 +1,6 @@
 import { inArc, rangeBand } from './arcs';
 import { obstaclesAt } from './obstacles';
-import { isDisarmed, isIonized } from './tokens';
+import { isCloaked, isDisarmed, isIonized } from './tokens';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
 const alive = (s: Ship): boolean => s.hull > 0;
@@ -17,6 +17,13 @@ function activationShip(state: GameState): Ship | undefined {
     .sort((a, b) => a.initiative - b.initiative || (a.id < b.id ? -1 : 1))[0];
 }
 
+/** Lowest initiative first: the next cloaked ship that may still decloak this phase. */
+function decloakShip(state: GameState): Ship | undefined {
+  return [...state.ships]
+    .filter((s) => alive(s) && isCloaked(s) && !s.hasSystemActed)
+    .sort((a, b) => a.initiative - b.initiative || (a.id < b.id ? -1 : 1))[0];
+}
+
 /** Highest initiative first; deterministic id tie-break. Undefined once all engaged. */
 function engagementShip(state: GameState): Ship | undefined {
   return [...state.ships]
@@ -25,12 +32,15 @@ function engagementShip(state: GameState): Ship | undefined {
 }
 
 function actionDecision(state: GameState, ship: Ship): PendingDecision {
-  // a stressed ship cannot act; an ionised ship may perform only calculate
+  // a stressed ship cannot act; an ionised ship may perform only calculate;
+  // a cloaked ship cannot perform the cloak action (no second cloak token)
   const actions: ActionType[] = isStressed(ship)
     ? []
     : isIonized(ship)
       ? ['calculate']
-      : ship.actionBar;
+      : isCloaked(ship)
+        ? ship.actionBar.filter((a) => a !== 'cloak')
+        : ship.actionBar;
   const lockTargets: ShipId[] = actions.includes('lock')
     ? enemies(state, ship).map((s) => s.id)
     : [];
@@ -72,8 +82,11 @@ export function computePending(state: GameState): PendingDecision[] {
             maneuvers: s.dialOptions.filter((m) => !(isStressed(s) && m.difficulty === 'red')),
           },
         }));
-    case 'system':
-      return [];
+    case 'system': {
+      const ship = decloakShip(state);
+      if (!ship) return [];
+      return [{ type: 'decloak', playerId: ship.ownerId, shipId: ship.id, options: { canSkip: true } }];
+    }
     case 'activation': {
       const ship = activationShip(state);
       if (!ship) return [];

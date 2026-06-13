@@ -28,8 +28,14 @@ export const hasToken = (s: Ship, kind: TokenKind): boolean => s.tokens.some((t)
 export const isIonized = (s: Ship): boolean => countToken(s, 'ion') >= THRESHOLD[s.base];
 export const isTractored = (s: Ship): boolean => countToken(s, 'tractor') >= THRESHOLD[s.base];
 
-/** A disarmed ship cannot perform attacks. */
-export const isDisarmed = (s: Ship): boolean => hasToken(s, 'disarm');
+/** A ship is cloaked while it holds a cloak token. */
+export const isCloaked = (s: Ship): boolean => hasToken(s, 'cloak');
+
+/** A disarmed ship cannot perform attacks; a cloaked ship is also disarmed. */
+export const isDisarmed = (s: Ship): boolean => hasToken(s, 'disarm') || isCloaked(s);
+
+/** Defence dice added while defending: cloak grants +2 agility. */
+export const agilityBonus = (s: Ship): number => (isCloaked(s) ? 2 : 0);
 
 /** Defence dice removed while defending: tractored (1) plus strained (1). */
 export const defencePenalty = (s: Ship): number =>

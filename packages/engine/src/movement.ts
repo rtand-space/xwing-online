@@ -2,7 +2,8 @@ import { basePolygon, polygonsOverlap } from './geometry';
 import { pathAt } from './templates';
 import type { GameState, Maneuver, Position, Ship } from './types';
 
-function collides(state: GameState, ship: Ship, pos: Position): boolean {
+/** Would `ship` placed at `pos` overlap any other living ship? */
+export function collides(state: GameState, ship: Ship, pos: Position): boolean {
   const poly = basePolygon(pos, ship.base);
   return state.ships.some(
     (o) => o.id !== ship.id && o.hull > 0 && polygonsOverlap(poly, basePolygon(o.pos, o.base)),

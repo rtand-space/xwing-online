@@ -11,6 +11,10 @@ export function formatEvent(e: GameEvent): string | null {
       return `${e.shipId} reveals ${e.maneuver.speed} ${e.maneuver.bearing}`;
     case 'ShipMoved':
       return e.bumped ? `${e.shipId} overlapped — backed off` : null;
+    case 'Decloaked':
+      return `${e.shipId} decloaks`;
+    case 'DecloakPassed':
+      return null;
     case 'ObstacleHit':
       return `${e.shipId} hits ${e.kind === 'asteroid' ? 'an asteroid' : 'a debris cloud'}`;
     case 'StressChanged':

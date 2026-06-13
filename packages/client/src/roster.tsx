@@ -14,6 +14,7 @@ const TOKEN: Record<string, string> = {
   disarm: '#f0a830',
   strain: '#ef6f6f',
   jam: '#f0a830',
+  cloak: '#6fb8ef',
 };
 
 function Pips({

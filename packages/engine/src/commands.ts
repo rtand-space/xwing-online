@@ -15,4 +15,6 @@ export type Command =
   | { type: 'DeclareAttack'; playerId: PlayerId; shipId: ShipId; targetId: ShipId }
   | { type: 'PassAttack'; playerId: PlayerId; shipId: ShipId }
   | { type: 'UseAbility'; playerId: PlayerId; shipId: ShipId }
-  | { type: 'SkipAbility'; playerId: PlayerId; shipId: ShipId };
+  | { type: 'SkipAbility'; playerId: PlayerId; shipId: ShipId }
+  | { type: 'Decloak'; playerId: PlayerId; shipId: ShipId }
+  | { type: 'SkipDecloak'; playerId: PlayerId; shipId: ShipId };

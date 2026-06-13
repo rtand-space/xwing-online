@@ -67,8 +67,16 @@ Status: ☐ not started
   the new tokens. Tested (`tokens.test.ts`). *Deferred: the opponent's
   boost/barrel-roll reposition when a tractor lands (needs M4's real repositions);
   the jam-applier's choice of which green token to strip (auto-picks the first).*
-- ☐ **T4-N2** **Cloak** (the cloak token + decloak; agility bonus, attack/lock
-  restrictions).
+- ☑ **T4-N2** **Cloak** (blue token, RR-grounded). The **cloak action** grants a
+  cloak token; while cloaked a ship rolls **+2 agility**, is **disarmed** (cannot
+  attack), and cannot perform the cloak action again. **Decloak** is a System-Phase
+  optional decision (new `decloak` pending + `Decloak`/`SkipDecloak` commands,
+  sequenced low→high initiative via a `hasSystemActed` flag) that spends the cloak
+  token and repositions; a decloak that would overlap a ship fails (stays put, keeps
+  the token). Cloak is a blue token so it survives the End Phase. Client gets a
+  decloak control + cloak chip/action label. Tested. *Deferred to M4: the full
+  decloak menu (barrel-roll + bank/direction choice) — M2 ships only the forward
+  boost, since real boost/barrel-roll geometry is T4-S2.*
 
 ## R4-M3 — Arcs
 - ☐ **T4-A1** Arc data from card stats: **turret** (rotatable single-turret),

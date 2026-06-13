@@ -49,6 +49,10 @@ function randomChoice(seedStr: string): Chooser {
         return pick([true, false])
           ? { type: 'UseAbility', playerId: p.playerId, shipId: p.shipId }
           : { type: 'SkipAbility', playerId: p.playerId, shipId: p.shipId };
+      case 'decloak':
+        return pick([true, false])
+          ? { type: 'Decloak', playerId: p.playerId, shipId: p.shipId }
+          : { type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId };
     }
   };
 }

@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { applyEvent, computePending, createGame, dispatch, resolveAttack, tieln, xwing } from './index';
+import {
+  applyEvent,
+  computePending,
+  createGame,
+  dispatch,
+  reduce,
+  resolveAttack,
+  tieln,
+  xwing,
+} from './index';
 import type { GameConfig, GameState, Ship, Token, TokenKind } from './index';
 
 const ship = (id: string, owner: string, x: number, y: number, angle: number, tokens: Token[]): Ship => ({
@@ -196,5 +205,39 @@ describe('ion', () => {
     s = applyEvent(s, { type: 'TokenGained', shipId: 'a', kind: 'ion' });
     expect(s.ships[0]!.tokens.some((t) => t.kind === 'lock')).toBe(false);
     expect(s.ships[0]!.tokens.some((t) => t.kind === 'ion')).toBe(true);
+  });
+});
+
+describe('cloak', () => {
+  it('a cloaked ship rolls +2 agility on defence', () => {
+    const plain = defenceDice(attack(ship('d', 'q', 0, 180, 180, [])));
+    const cloaked = defenceDice(attack(ship('d', 'q', 0, 180, 180, tok('cloak'))));
+    expect(cloaked).toBe(plain + 2);
+  });
+
+  it('a cloaked ship is disarmed and cannot attack', () => {
+    const s = stateWith([ship('a', 'p', 0, 0, 0, tok('cloak')), ship('d', 'q', 0, 180, 180, [])]);
+    const decl = computePending(s).find((p) => p.type === 'declare-attack' && p.shipId === 'a');
+    expect(decl && decl.type === 'declare-attack' && decl.options.targets).toEqual([]);
+  });
+
+  it('survives the End Phase (blue token)', () => {
+    let s = stateWith([ship('a', 'p', 0, 0, 0, tok('cloak'))]);
+    s = applyEvent(s, { type: 'RoundEnded' });
+    expect(s.ships[0]!.tokens.some((t) => t.kind === 'cloak')).toBe(true);
+  });
+
+  it('is offered a decloak in the System Phase and spends the token to move', () => {
+    let s = stateWith([
+      { ...ship('a', 'p', 0, 0, 0, tok('cloak')), initiative: 2 },
+      ship('d', 'q', 0, 800, 180, []),
+    ]);
+    s = { ...s, phase: 'system' };
+    s = { ...s, pending: computePending(s) };
+    expect(s.pending.find((p) => p.type === 'decloak')?.shipId).toBe('a');
+    const r = reduce(s, { type: 'Decloak', playerId: 'p', shipId: 'a' });
+    const moved = r.events.find((e) => e.type === 'Decloaked');
+    expect(moved && moved.type === 'Decloaked' && moved.to.y).toBeCloseTo(120); // 80 boost + 40 base
+    expect(r.events.some((e) => e.type === 'TokenSpent' && e.kind === 'cloak')).toBe(true);
   });
 });

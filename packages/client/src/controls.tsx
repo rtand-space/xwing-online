@@ -91,6 +91,7 @@ const ACTION: Record<ActionType, string> = {
   evade: 'Evade',
   calculate: 'Calculate',
   reinforce: 'Reinforce',
+  cloak: 'Cloak',
 };
 
 export function Controls({
@@ -204,6 +205,24 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'decloak' && (
+        <div className="grid">
+          <div className="muted">Spend cloak to decloak (boost)?</div>
+          <button
+            className="btn primary"
+            onClick={() => send({ type: 'Decloak', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Decloak
+          </button>
+          <button
+            className="btn ghost"
+            onClick={() => send({ type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Stay cloaked
+          </button>
+        </div>
+      )}
+
       {p.type === 'trigger-ability' && (
         <div className="grid">
           <div className="muted">{p.options.label}</div>
@@ -237,5 +256,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: declare attack`;
     case 'trigger-ability':
       return `${name}: optional ability`;
+    case 'decloak':
+      return `${name}: decloak?`;
   }
 }

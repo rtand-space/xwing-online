@@ -53,12 +53,14 @@ export { baseDistance, bearingDeg, inArc, inBullseye, RANGE_BAND_MM, rangeBand }
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
 export {
+  agilityBonus,
   countToken,
   defencePenalty,
   END_PHASE_CLEARED,
   GREEN_TOKENS,
   hasToken,
   ionManeuver,
+  isCloaked,
   isDisarmed,
   isIonized,
   isTractored,

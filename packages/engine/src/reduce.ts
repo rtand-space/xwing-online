@@ -3,11 +3,12 @@ import { applyEvent } from './apply';
 import { resolveAttack } from './combat';
 import type { Command } from './commands';
 import type { GameEvent } from './events';
-import { resolveMovement } from './movement';
+import { collides, resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { autoStep } from './phases';
+import { pathAt } from './templates';
 import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
-import type { GameState, GameWindow, Maneuver, PendingDecision, Ship } from './types';
+import type { GameState, GameWindow, Maneuver, PendingDecision, Ship, Speed } from './types';
 
 export interface ReduceResult {
   events: GameEvent[];
@@ -60,6 +61,8 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   PassAttack: 'declare-attack',
   UseAbility: 'trigger-ability',
   SkipAbility: 'trigger-ability',
+  Decloak: 'decloak',
+  SkipDecloak: 'decloak',
 };
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
@@ -120,6 +123,8 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'calculate' });
       } else if (cmd.action === 'reinforce') {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'reinforce' });
+      } else if (cmd.action === 'cloak') {
+        events.push({ type: 'TokenGained', shipId: ship.id, kind: 'cloak' });
       } else if (cmd.action === 'lock') {
         if (!cmd.targetId || !pending.options.lockTargets.includes(cmd.targetId)) {
           return reject('Invalid lock target');
@@ -156,6 +161,24 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'SkipAbility': {
       if (pending.type !== 'trigger-ability') return reject('No ability offered');
       return { events: [{ type: 'AbilityResolved' }] };
+    }
+    case 'Decloak': {
+      if (pending.type !== 'decloak') return reject('Wrong phase');
+      // M2 supports the forward boost; the full barrel-roll/bank menu lands in M4.
+      const speed: Speed = ship.base === 'small' ? 2 : 1;
+      const to = pathAt(ship.pos, { speed, bearing: 'straight', difficulty: 'white' }, 1, ship.base);
+      // a decloak that would overlap a ship fails: stay put and keep the token
+      if (collides(state, ship, to)) return { events: [{ type: 'DecloakPassed', shipId: ship.id }] };
+      return {
+        events: [
+          { type: 'Decloaked', shipId: ship.id, to },
+          { type: 'TokenSpent', shipId: ship.id, kind: 'cloak' },
+        ],
+      };
+    }
+    case 'SkipDecloak': {
+      if (pending.type !== 'decloak') return reject('Cannot skip');
+      return { events: [{ type: 'DecloakPassed', shipId: ship.id }] };
     }
   }
 }

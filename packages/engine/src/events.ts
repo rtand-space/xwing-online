@@ -55,6 +55,8 @@ export type GameEvent =
   | { type: 'DialSet'; shipId: ShipId; maneuver: Maneuver }
   | { type: 'DialRevealed'; shipId: ShipId; maneuver: Maneuver }
   | { type: 'ShipMoved'; shipId: ShipId; maneuver: Maneuver; to: Position; bumped?: boolean }
+  | { type: 'Decloaked'; shipId: ShipId; to: Position }
+  | { type: 'DecloakPassed'; shipId: ShipId }
   | { type: 'ObstacleHit'; shipId: ShipId; obstacleId: string; kind: ObstacleKind }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
   | { type: 'ChargeChanged'; shipId: ShipId; delta: number; source?: string }

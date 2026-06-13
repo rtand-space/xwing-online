@@ -44,7 +44,8 @@ export type ActionType =
   | 'boost'
   | 'evade'
   | 'calculate'
-  | 'reinforce';
+  | 'reinforce'
+  | 'cloak';
 
 export type TokenKind =
   | 'focus'
@@ -57,7 +58,8 @@ export type TokenKind =
   | 'tractor'
   | 'disarm'
   | 'strain'
-  | 'jam';
+  | 'jam'
+  | 'cloak';
 
 export interface Token {
   kind: TokenKind;
@@ -122,6 +124,8 @@ export interface Ship {
   hasMoved: boolean;
   hasActed: boolean;
   hasEngaged: boolean;
+  /** Whether the ship has taken its System-Phase opportunity (e.g. decloak). */
+  hasSystemActed?: boolean;
 }
 
 export interface Rng {
@@ -155,7 +159,8 @@ export type PendingDecision =
       playerId: PlayerId;
       shipId: ShipId;
       options: { abilityXws: string; label: string };
-    };
+    }
+  | { type: 'decloak'; playerId: PlayerId; shipId: ShipId; options: { canSkip: boolean } };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
 export type ObstacleKind = 'asteroid' | 'debris';

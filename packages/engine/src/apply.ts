@@ -86,6 +86,10 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         hasMoved: true,
         hasActed: s.hasActed || e.bumped === true,
       }));
+    case 'Decloaked':
+      return mapShip(state, e.shipId, (s) => ({ ...s, pos: e.to, hasSystemActed: true }));
+    case 'DecloakPassed':
+      return mapShip(state, e.shipId, (s) => ({ ...s, hasSystemActed: true }));
     case 'StressChanged':
       return mapShip(state, e.shipId, (s) => changeStress(s, e.delta));
     case 'ChargeChanged':
@@ -157,6 +161,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           hasMoved: false,
           hasActed: false,
           hasEngaged: false,
+          hasSystemActed: false,
         })),
       };
     case 'AbilityOffered':
