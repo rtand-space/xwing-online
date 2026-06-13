@@ -6,6 +6,7 @@ import type { GameEvent } from './events';
 import { nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
+import { repositionCandidates } from './reposition';
 import { autoStep } from './phases';
 import { pathAt } from './templates';
 import { countToken, hasToken, ionManeuver, isIonized } from './tokens';
@@ -64,6 +65,7 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   SkipAbility: 'trigger-ability',
   Decloak: 'decloak',
   SkipDecloak: 'decloak',
+  Reposition: 'reposition',
 };
 
 function matchPending(state: GameState, cmd: Command): PendingDecision | undefined {
@@ -113,6 +115,14 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'PerformAction': {
       if (pending.type !== 'perform-action') return reject('Wrong phase');
       if (!pending.options.actions.includes(cmd.action)) return reject('Action not available');
+      // boost/barrel-roll pause for a placement choice instead of resolving now
+      if (cmd.action === 'boost' || cmd.action === 'barrel-roll') {
+        const candidates = repositionCandidates(state, ship, cmd.action);
+        if (candidates.length === 0) return reject('No legal reposition');
+        return {
+          events: [{ type: 'RepositionOffered', shipId: ship.id, action: cmd.action, candidates }],
+        };
+      }
       const events: GameEvent[] = [
         { type: 'ActionPerformed', shipId: ship.id, action: cmd.action, targetId: cmd.targetId },
       ];
@@ -182,6 +192,16 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
     case 'SkipDecloak': {
       if (pending.type !== 'decloak') return reject('Cannot skip');
       return { events: [{ type: 'DecloakPassed', shipId: ship.id }] };
+    }
+    case 'Reposition': {
+      if (pending.type !== 'reposition') return reject('Wrong phase');
+      const cand = pending.options.candidates[cmd.choice];
+      if (!cand) return reject('Invalid reposition choice');
+      const events: GameEvent[] = [
+        { type: 'Repositioned', shipId: ship.id, to: cand.to },
+        { type: 'ActionPerformed', shipId: ship.id, action: pending.options.action },
+      ];
+      return { events: appendWindow(state, events, 'onPerformAction', ship.id, events[1]) };
     }
   }
 }

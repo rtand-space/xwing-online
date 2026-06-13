@@ -53,6 +53,13 @@ function randomChoice(seedStr: string): Chooser {
         return pick([true, false])
           ? { type: 'Decloak', playerId: p.playerId, shipId: p.shipId }
           : { type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId };
+      case 'reposition':
+        return {
+          type: 'Reposition',
+          playerId: p.playerId,
+          shipId: p.shipId,
+          choice: pick(p.options.candidates.map((_, i) => i)),
+        };
     }
   };
 }

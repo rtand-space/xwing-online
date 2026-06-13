@@ -68,6 +68,7 @@ export {
 } from './arcs';
 export { resolveMovement } from './movement';
 export type { MovementResult } from './movement';
+export { repositionCandidates } from './reposition';
 export {
   agilityBonus,
   countToken,

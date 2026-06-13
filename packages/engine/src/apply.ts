@@ -113,6 +113,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, hasActed: true }));
     case 'ArcRotated':
       return mapShip(state, e.shipId, (s) => ({ ...s, turretArc: e.to }));
+    case 'RepositionOffered':
+      return {
+        ...state,
+        reposition: { shipId: e.shipId, action: e.action, candidates: e.candidates },
+      };
+    case 'Repositioned':
+      return { ...mapShip(state, e.shipId, (s) => ({ ...s, pos: e.to })), reposition: undefined };
     case 'TokenGained':
       if (e.kind === 'jam') return mapShip(state, e.shipId, gainJam);
       return mapShip(state, e.shipId, (s) => gainToken(s, e.kind, e.targetId));

@@ -1,5 +1,6 @@
 import { attackValue, rangeBand } from './arcs';
 import { obstaclesAt } from './obstacles';
+import { repositionCandidates } from './reposition';
 import { isCloaked, isDisarmed, isIonized } from './tokens';
 import type { ActionType, GameState, PendingDecision, Ship, ShipId } from './types';
 
@@ -34,13 +35,18 @@ function engagementShip(state: GameState): Ship | undefined {
 function actionDecision(state: GameState, ship: Ship): PendingDecision {
   // a stressed ship cannot act; an ionised ship may perform only calculate;
   // a cloaked ship cannot perform the cloak action (no second cloak token)
-  const actions: ActionType[] = isStressed(ship)
+  const bar = isStressed(ship)
     ? []
     : isIonized(ship)
-      ? ['calculate']
+      ? (['calculate'] as ActionType[])
       : isCloaked(ship)
         ? ship.actionBar.filter((a) => a !== 'cloak')
         : ship.actionBar;
+  // a reposition is only offerable if it has at least one legal placement
+  const actions = bar.filter(
+    (a) =>
+      (a !== 'boost' && a !== 'barrel-roll') || repositionCandidates(state, ship, a).length > 0,
+  );
   const lockTargets: ShipId[] = actions.includes('lock')
     ? enemies(state, ship).map((s) => s.id)
     : [];
@@ -65,6 +71,20 @@ export function computePending(state: GameState): PendingDecision[] {
           playerId: ship.ownerId,
           shipId: ship.id,
           options: { abilityXws: state.offer.abilityXws, label: state.offer.label },
+        },
+      ];
+    }
+  }
+  // A boost/barrel-roll mid-resolution pauses the FSM for the placement choice.
+  if (state.reposition) {
+    const ship = state.ships.find((s) => s.id === state.reposition!.shipId);
+    if (ship) {
+      return [
+        {
+          type: 'reposition',
+          playerId: ship.ownerId,
+          shipId: ship.id,
+          options: { action: state.reposition.action, candidates: state.reposition.candidates },
         },
       ];
     }

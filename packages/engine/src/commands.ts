@@ -17,4 +17,5 @@ export type Command =
   | { type: 'UseAbility'; playerId: PlayerId; shipId: ShipId }
   | { type: 'SkipAbility'; playerId: PlayerId; shipId: ShipId }
   | { type: 'Decloak'; playerId: PlayerId; shipId: ShipId }
-  | { type: 'SkipDecloak'; playerId: PlayerId; shipId: ShipId };
+  | { type: 'SkipDecloak'; playerId: PlayerId; shipId: ShipId }
+  | { type: 'Reposition'; playerId: PlayerId; shipId: ShipId; choice: number };

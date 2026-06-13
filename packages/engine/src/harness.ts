@@ -38,6 +38,8 @@ export const firstChoice: Chooser = (p) => {
       return { type: 'UseAbility', playerId: p.playerId, shipId: p.shipId };
     case 'decloak':
       return { type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId };
+    case 'reposition':
+      return { type: 'Reposition', playerId: p.playerId, shipId: p.shipId, choice: 0 };
   }
 };
 

@@ -206,6 +206,23 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'reposition' && (
+        <div className="grid">
+          <div className="muted">{p.options.action === 'boost' ? 'Boost' : 'Barrel roll'} — pick a placement:</div>
+          {p.options.candidates.map((c, i) => (
+            <button
+              key={c.label}
+              className="btn"
+              onClick={() =>
+                send({ type: 'Reposition', playerId: p.playerId, shipId: p.shipId, choice: i })
+              }
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {p.type === 'decloak' && (
         <div className="grid">
           <div className="muted">Spend cloak to decloak (boost)?</div>
@@ -259,5 +276,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: optional ability`;
     case 'decloak':
       return `${name}: decloak?`;
+    case 'reposition':
+      return `${name}: choose placement`;
   }
 }

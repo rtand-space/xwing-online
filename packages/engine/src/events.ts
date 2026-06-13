@@ -10,6 +10,7 @@ import type {
   Player,
   PlayerId,
   Position,
+  RepositionCandidate,
   ShipArc,
   ShipId,
   TokenKind,
@@ -68,6 +69,13 @@ export type GameEvent =
   | { type: 'ActionPerformed'; shipId: ShipId; action: ActionType; targetId?: ShipId }
   | { type: 'ActionSkipped'; shipId: ShipId }
   | { type: 'ArcRotated'; shipId: ShipId; to: TurretFacing }
+  | {
+      type: 'RepositionOffered';
+      shipId: ShipId;
+      action: 'boost' | 'barrel-roll';
+      candidates: RepositionCandidate[];
+    }
+  | { type: 'Repositioned'; shipId: ShipId; to: Position }
   | { type: 'TokenGained'; shipId: ShipId; kind: TokenKind; targetId?: ShipId }
   | { type: 'AttackDeclared'; shipId: ShipId; targetId: ShipId; range: number }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }

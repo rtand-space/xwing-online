@@ -65,6 +65,12 @@ export interface ShipArc {
   value: number;
 }
 
+/** A legal destination for a boost/barrel-roll reposition. */
+export interface RepositionCandidate {
+  label: string;
+  to: Position;
+}
+
 export type TokenKind =
   | 'focus'
   | 'evade'
@@ -183,7 +189,13 @@ export type PendingDecision =
       shipId: ShipId;
       options: { abilityXws: string; label: string };
     }
-  | { type: 'decloak'; playerId: PlayerId; shipId: ShipId; options: { canSkip: boolean } };
+  | { type: 'decloak'; playerId: PlayerId; shipId: ShipId; options: { canSkip: boolean } }
+  | {
+      type: 'reposition';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: { action: 'boost' | 'barrel-roll'; candidates: RepositionCandidate[] };
+    };
 
 /** Obstacle kinds with engine support today (gas clouds need strain/ion tokens — later). */
 export type ObstacleKind = 'asteroid' | 'debris';
@@ -207,6 +219,8 @@ export interface GameState {
   obstacles: Obstacle[];
   /** A pending optional ability awaiting its owner's use/skip; pauses the FSM. */
   offer?: AbilityOffer;
+  /** A boost/barrel-roll mid-resolution, awaiting the placement choice; pauses the FSM. */
+  reposition?: { shipId: ShipId; action: 'boost' | 'barrel-roll'; candidates: RepositionCandidate[] };
   pending: PendingDecision[];
   gameOver: boolean;
 }
