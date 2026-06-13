@@ -110,7 +110,8 @@ function appendWindow(
   let ship = fold().ships.find((sh) => sh.id === shipId);
   if (ship && ship.hull > 0) events.push(...fireWindow(fold(), window, ship, trigger));
   ship = fold().ships.find((sh) => sh.id === shipId);
-  if (ship && ship.hull > 0) {
+  // only queue one optional offer at a time — the FSM pauses until it resolves
+  if (ship && ship.hull > 0 && !fold().offer) {
     const offer = findOffer(fold(), window, ship);
     if (offer) {
       events.push({ type: 'AbilityOffered', shipId, window, ...offer });
@@ -332,7 +333,20 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (c.step === 'defence' && combatAbilities(state, { ...c, step: 'after-defence' }).length) {
         return { events: [{ type: 'CombatStep', step: 'after-defence' }] };
       }
-      return { events: [...finishCombat(state, c), { type: 'CombatEnded' }] };
+      const events: GameEvent[] = [...finishCombat(state, c), { type: 'CombatEnded' }];
+      // reactive windows: attacker first, then the defender's
+      appendWindow(state, events, 'afterAttack', c.attackerId);
+      const before = state.ships.find((sh) => sh.id === c.targetId)!;
+      const dmg = events.find(
+        (e): e is Extract<GameEvent, { type: 'DamageDealt' }> =>
+          e.type === 'DamageDealt' && e.shipId === c.targetId,
+      );
+      if (dmg && dmg.shieldsAfter < before.shields) {
+        appendWindow(state, events, 'onShieldLost', c.targetId);
+      }
+      if (dmg) appendWindow(state, events, 'onDamaged', c.targetId);
+      appendWindow(state, events, 'afterDefend', c.targetId);
+      return { events };
     }
     case 'UseAbility': {
       if (pending.type !== 'trigger-ability' || !state.offer) return reject('No ability offered');

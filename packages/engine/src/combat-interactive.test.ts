@@ -167,6 +167,33 @@ const changeOneFace = <T,>(arr: T[], from: T, to: T): T[] => {
   return arr.map((f) => (!done && f === from ? ((done = true), to) : f));
 };
 
+describe('reactive windows after combat', () => {
+  it('fires onDamaged for a defender that took damage', () => {
+    clearAbilities();
+    registerAbility('forcehit', {
+      attack: {
+        onModifyAttack: (ctx, self) => {
+          if (ctx.attacker.id === self.id) ctx.attack = ['hit', 'hit'];
+        },
+      },
+    });
+    registerAbility('reactor', {
+      game: { onDamaged: ({ self }) => [{ type: 'TokenGained', shipId: self.id, kind: 'focus' }] },
+    });
+    let s = stateWith([
+      ship('a', 'p', 0, 0, { primaryAttack: 2, pilotXws: 'forcehit' }),
+      ship('d', 'q', 0, 200, { agility: 0, pilotXws: 'reactor' }),
+    ]);
+    s = drive(s, { type: 'DeclareAttack', playerId: 'p', shipId: 'a', targetId: 'd' });
+    s = drive(s, { type: 'ModifyDone', playerId: 'p', shipId: 'a' }); // attack step
+    s = drive(s, { type: 'ModifyDone', playerId: 'q', shipId: 'd' }); // defence step → resolve
+    const d = s.ships.find((x) => x.id === 'd')!;
+    expect(d.hull).toBeLessThan(d.maxHull); // took damage
+    expect(d.tokens.some((t) => t.kind === 'focus')).toBe(true); // onDamaged fired
+    clearAbilities();
+  });
+});
+
 describe('interactive attack FSM', () => {
   it('pauses for the attacker, then the defender, then resolves', () => {
     let s = stateWith([

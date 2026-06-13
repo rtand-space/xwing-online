@@ -352,6 +352,17 @@ describe('card abilities', () => {
     expect(opt.available(attacking, ezra)).toBe(false);
   });
 
+  it('Lieutenant Tavson offers to spend a charge for a free action when damaged', () => {
+    const opt = getAbility('lieutenanttavson')!.optional!.onDamaged!;
+    const armed: Ship = { ...ship('a', { x: 0, y: 0, angle: 0 }), charges: 1, maxCharges: 1 };
+    expect(opt.available({ state, self: armed })).toBe(true);
+    const evs = opt.resolve({ state, self: armed });
+    expect(evs.some((e) => e.type === 'ChargeChanged' && e.delta === -1)).toBe(true);
+    expect(evs.some((e) => e.type === 'ActionGranted' && e.shipId === 'a')).toBe(true);
+    const empty = ship('a', { x: 0, y: 0, angle: 0 }); // 0 charges
+    expect(opt.available({ state, self: empty })).toBe(false);
+  });
+
   it('Airen Cracken offers a friendly an action after attacking', () => {
     const hook = getAbility('airencracken')!.attack!.onAfterAttack!;
     const atk = ship('a', { x: 0, y: 0, angle: 0 }); // owner 'a'

@@ -313,6 +313,19 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // Lieutenant Tavson — turns a hit into momentum. Reactive (onDamaged); costs a
+  // charge, so it's an optional offer that grants a free action (reuses ActionGranted).
+  lieutenanttavson: {
+    note: 'After you suffer damage, may spend a charge to perform an action.',
+    optional: {
+      onDamaged: {
+        label: 'Tavson: spend a charge to take an action',
+        available: ({ self }) => self.charges > 0,
+        resolve: ({ self }) => [spendCharge(self), { type: 'ActionGranted', shipId: self.id }],
+      },
+    },
+  },
+
   // "DT-798" — strains the frame for one more shot. Costs strain → optional.
   dt798: {
     note: 'While attacking, if not strained, may gain a strain token to roll 1 extra attack die.',

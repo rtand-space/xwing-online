@@ -126,8 +126,17 @@ export interface Token {
 
 export type Phase = 'planning' | 'system' | 'activation' | 'engagement' | 'end';
 
-/** Non-combat ability timing windows fired by the phase FSM. */
-export type GameWindow = 'afterReveal' | 'afterMove' | 'onPerformAction' | 'onRoundEnd';
+/** Ability timing windows fired by the phase/combat FSM. */
+export type GameWindow =
+  | 'afterReveal'
+  | 'afterMove'
+  | 'onPerformAction'
+  | 'onRoundEnd'
+  // reactive windows fired when an attack resolves:
+  | 'afterAttack' // the attacker, after performing the attack
+  | 'afterDefend' // the defender, after defending
+  | 'onDamaged' // the defender, when it suffered damage
+  | 'onShieldLost'; // the defender, when it lost at least one shield
 
 /** A pending optional ("may") ability awaiting its owner's choice. */
 export interface AbilityOffer {
