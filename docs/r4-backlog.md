@@ -202,8 +202,16 @@ Working through the hooks the sweep needs, highest-leverage first.
   declaring **spends a charge**. `combat.ts` rolls the weapon's value (no range-1 bonus
   die for secondaries). Per-card ordnance modify-effects (hit→crit spends) deferred to
   the card sweep via the existing `onModifyAttack` hooks.
-- ☐ **T4-W2** Devices / bombs: drop & launch, placement, detonation timing, effects
-  (reuses the obstacle geometry).
+- ☑ **T4-W2** Devices / bombs (curated core set). `Device` board entity + `devices` on
+  `GameState`; equipped devices bridged engine-ward as `ShipDevice[]` (`build.ts`), with
+  behaviour in a pure engine registry (`devices.ts`, original paraphrases — never the
+  card `effect` text). **Drop** (rear [1-straight]) and **launch** (front) placement, in
+  the **System Phase** and **after-maneuver** (a `drop-device` pending, charge-gated).
+  **Bombs** detonate at the end of Activation (one at a time in the reduce loop so each
+  resolves against the updated board); **mines** detonate on move-through (`minesTouched`,
+  damage aggregated like obstacles). Curated: Proton/Ion/Thermal bombs, Proximity Mine,
+  Conner Net. `devices.test.ts` (6). Deferred: Seismic Charge (obstacle removal),
+  generators, remotes, curved launch templates.
 
 ## R4-M6 — Damage deck
 - ☐ **T4-D1** A faceup critical-damage deck (a small crit set with effects, drawn as

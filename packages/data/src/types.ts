@@ -65,5 +65,7 @@ export interface UpgradeData {
     maxRange: number;
     ordnance: boolean;
   } | null;
+  /** Device (bomb/mine) name + type, if this is a device; effects live in engine code. */
+  device: { name: string; type: string } | null;
   restrictions: unknown[];
 }

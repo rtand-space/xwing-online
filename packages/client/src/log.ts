@@ -21,6 +21,12 @@ export function formatEvent(e: GameEvent, name: (id: string) => string = (id) =>
       return null;
     case 'ObstacleHit':
       return `${n(e.shipId)} hits ${e.kind === 'asteroid' ? 'an asteroid' : 'a debris cloud'}`;
+    case 'DeviceDropped':
+      return `${n(e.shipId)} drops a ${e.kind}`;
+    case 'DeviceDetonated':
+      return `a ${e.shipId ? 'mine' : 'bomb'} detonates`;
+    case 'DropSkipped':
+      return null;
     case 'StressChanged':
       return e.delta > 0 ? `${n(e.shipId)} is stressed` : `${n(e.shipId)} cleared stress`;
     case 'ChargeChanged':

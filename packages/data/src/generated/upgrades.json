@@ -10,6 +10,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -27,6 +28,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -47,6 +49,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -67,6 +70,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -87,6 +91,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -104,6 +109,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"],
@@ -124,6 +130,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -144,6 +151,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -160,6 +168,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -173,6 +182,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -189,6 +199,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -209,6 +220,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -225,6 +237,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -241,6 +254,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -254,6 +268,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -271,6 +286,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -291,6 +307,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -311,6 +328,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -331,6 +349,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -351,6 +370,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -367,6 +387,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -380,6 +401,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -397,6 +419,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -410,6 +433,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -427,6 +451,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -447,6 +472,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -467,6 +493,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -484,6 +511,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -504,6 +532,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -520,6 +549,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -540,6 +570,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -556,6 +587,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -572,6 +604,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -589,6 +622,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -609,6 +643,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -626,6 +661,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -646,6 +682,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -666,6 +703,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -679,6 +717,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -695,6 +734,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -708,6 +748,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -724,6 +765,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -743,6 +785,7 @@
       "maxRange": 2,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -762,6 +805,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -781,6 +825,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -800,6 +845,7 @@
       "maxRange": 2,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -819,6 +865,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -841,6 +888,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -860,6 +908,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -879,6 +928,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -898,6 +948,7 @@
       "maxRange": 1,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -911,6 +962,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -924,6 +976,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -937,6 +990,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -953,6 +1007,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -966,6 +1021,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -979,6 +1035,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -992,6 +1049,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance", "scumandvillainy"]
@@ -1012,6 +1070,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1025,6 +1084,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1045,6 +1105,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1061,6 +1122,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1074,6 +1136,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1087,6 +1150,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -1104,6 +1168,7 @@
     "limited": 2,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1117,6 +1182,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1130,6 +1196,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -1153,6 +1220,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -1170,6 +1238,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1193,6 +1262,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1206,6 +1276,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -1226,6 +1297,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -1246,6 +1318,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1259,6 +1332,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1272,6 +1346,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -1292,6 +1367,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1305,6 +1381,7 @@
     "limited": 2,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1318,6 +1395,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -1338,6 +1416,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -1355,6 +1434,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1368,6 +1448,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -1385,6 +1466,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1401,6 +1483,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1414,6 +1497,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["delta7aethersprite"]
@@ -1431,6 +1515,7 @@
     "limited": 2,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1444,6 +1529,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["delta7aethersprite"]
@@ -1461,6 +1547,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["tiewiwhispermodifiedinterceptor"]
@@ -1478,6 +1565,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["vultureclassdroidfighter"]
@@ -1495,6 +1583,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["t70xwing"]
@@ -1515,6 +1604,7 @@
       "recovers": -1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1528,6 +1618,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1541,6 +1632,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["hyenaclassdroidbomber"]
@@ -1558,6 +1650,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1571,6 +1664,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["alphaclassstarwing"]
@@ -1588,6 +1682,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["ut60duwing"]
@@ -1605,6 +1700,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1618,6 +1714,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "shipAbility": ["Autothrusters"]
@@ -1638,6 +1735,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["t65xwing"]
@@ -1655,6 +1753,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1671,6 +1770,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1684,6 +1784,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -1701,6 +1802,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1714,6 +1816,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1743,6 +1846,7 @@
       "maxRange": 3,
       "ordnance": false
     },
+    "device": null,
     "restrictions": [
       {
         "shipAbility": ["Vectored Thrusters"]
@@ -1763,6 +1867,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["btanr2ywing"]
@@ -1783,6 +1888,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["alphaclassstarwing"]
@@ -1800,6 +1906,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1817,6 +1924,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1830,6 +1938,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1843,6 +1952,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -1860,6 +1970,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -1878,6 +1989,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -1895,6 +2007,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1908,6 +2021,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1925,6 +2039,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -1942,6 +2057,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -1955,6 +2071,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticrepublic"]
@@ -1972,6 +2089,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -1989,6 +2107,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2006,6 +2125,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -2023,6 +2143,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -2040,6 +2161,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2057,6 +2179,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2074,6 +2197,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2091,6 +2215,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2108,6 +2233,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2128,6 +2254,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2145,6 +2272,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -2162,6 +2290,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2179,6 +2308,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -2199,6 +2329,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2216,6 +2347,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2236,6 +2368,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2253,6 +2386,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2266,6 +2400,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2288,6 +2423,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2308,6 +2444,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Clan Wren Commandos",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2328,6 +2468,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2341,6 +2482,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2354,6 +2496,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -2371,6 +2514,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2388,6 +2532,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2408,6 +2553,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Death Watch Commandos",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -2428,6 +2577,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2445,6 +2595,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2462,6 +2613,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -2479,6 +2631,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2495,6 +2648,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2515,6 +2669,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2532,6 +2687,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2552,6 +2708,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -2569,6 +2726,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -2586,6 +2744,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2602,6 +2761,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2615,6 +2775,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2635,6 +2796,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2657,6 +2819,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2674,6 +2837,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2691,6 +2855,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2708,6 +2873,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2721,6 +2887,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2738,6 +2905,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2758,6 +2926,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Imperial Super Commandos",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2778,6 +2950,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2791,6 +2964,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -2811,6 +2985,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2828,6 +3003,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -2845,6 +3021,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2862,6 +3039,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2875,6 +3053,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -2892,6 +3071,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2909,6 +3089,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2926,6 +3107,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -2939,6 +3121,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -2956,6 +3139,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -2973,6 +3157,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -2990,6 +3175,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3007,6 +3193,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3024,6 +3211,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3041,6 +3229,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3058,6 +3247,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3075,6 +3265,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3095,6 +3286,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3112,6 +3304,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3129,6 +3322,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3149,6 +3343,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Mandalorian Super Commandos",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3169,6 +3367,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -3187,6 +3386,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3204,6 +3404,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -3224,6 +3425,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -3246,6 +3448,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3266,6 +3469,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Nite Owl Commandos",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3286,6 +3493,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3299,6 +3507,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3316,6 +3525,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3336,6 +3546,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3349,6 +3560,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3366,6 +3578,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3379,6 +3592,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -3396,6 +3610,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticrepublic"]
@@ -3413,6 +3628,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "galacticempire", "firstorder"]
@@ -3430,6 +3646,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3447,6 +3664,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3464,6 +3682,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3481,6 +3700,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3498,6 +3718,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -3515,6 +3736,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3535,6 +3757,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -3552,6 +3775,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -3569,6 +3793,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3586,6 +3811,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3599,6 +3825,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -3616,6 +3843,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -3633,6 +3861,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -3653,6 +3882,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -3670,6 +3900,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire", "rebelalliance", "scumandvillainy"]
@@ -3687,6 +3918,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3704,6 +3936,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3721,6 +3954,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3737,6 +3971,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"],
@@ -3755,6 +3990,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3772,6 +4008,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -3789,6 +4026,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3802,6 +4040,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3815,6 +4054,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -3831,6 +4071,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -3848,6 +4089,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -3868,6 +4110,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Blazer Bomb",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -3884,6 +4130,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Bomblet",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -3900,6 +4150,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Cluster Mine",
+      "type": "Mine"
+    },
     "restrictions": []
   },
   {
@@ -3916,6 +4170,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Concussion Bomb",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -3932,6 +4190,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Conner Net",
+      "type": "Mine"
+    },
     "restrictions": []
   },
   {
@@ -3948,6 +4210,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "DRK-1 Probe Droid",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -3968,6 +4234,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Electro-Proton Bomb",
+      "type": "Bomb"
+    },
     "restrictions": [
       {
         "action": {
@@ -3991,6 +4261,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Ion Bomb",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -4007,6 +4281,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Proton Bomb",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -4023,6 +4301,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Proximity Mine",
+      "type": "Mine"
+    },
     "restrictions": []
   },
   {
@@ -4039,6 +4321,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Seismic Charge",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -4055,6 +4341,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Thermal Detonators",
+      "type": "Bomb"
+    },
     "restrictions": []
   },
   {
@@ -4068,6 +4358,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -4085,6 +4376,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4098,6 +4390,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4111,6 +4404,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4130,6 +4424,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -4143,6 +4438,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "force_side": ["dark"]
@@ -4160,6 +4456,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4173,6 +4470,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4186,6 +4484,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4199,6 +4498,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4212,6 +4512,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4225,6 +4526,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4238,6 +4540,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4251,6 +4554,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4264,6 +4568,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4277,6 +4582,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -4294,6 +4600,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4307,6 +4614,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4320,6 +4628,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4333,6 +4642,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -4350,6 +4660,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4363,6 +4674,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -4380,6 +4692,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"],
@@ -4398,6 +4711,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4411,6 +4725,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -4431,6 +4746,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -4448,6 +4764,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -4465,6 +4782,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -4482,6 +4800,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -4499,6 +4818,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -4516,6 +4836,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -4533,6 +4854,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Large", "Huge"]
@@ -4556,6 +4878,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -4573,6 +4896,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -4590,6 +4914,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -4607,6 +4932,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4620,6 +4946,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -4637,6 +4964,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire", "scumandvillainy"]
@@ -4654,6 +4982,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -4671,6 +5000,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -4688,6 +5018,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4704,6 +5035,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -4721,6 +5053,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4734,6 +5067,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -4754,6 +5088,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4770,6 +5105,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -4787,6 +5123,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -4804,6 +5141,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "arcs": ["Rear Arc"]
@@ -4821,6 +5159,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -4840,6 +5179,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4859,6 +5199,7 @@
       "maxRange": 1,
       "ordnance": true
     },
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -4879,6 +5220,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -4905,6 +5247,7 @@
       "maxRange": 4,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -4918,6 +5261,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -4937,6 +5281,7 @@
       "maxRange": 2,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -4956,6 +5301,7 @@
       "maxRange": 5,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -4975,6 +5321,7 @@
       "maxRange": 5,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -4994,6 +5341,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -5020,6 +5368,7 @@
       "maxRange": 5,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5033,6 +5382,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["syliureclasshyperspacering"]
@@ -5053,6 +5403,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "resistance"]
@@ -5073,6 +5424,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -5090,6 +5442,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5106,6 +5459,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5119,6 +5473,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5135,6 +5490,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5148,6 +5504,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5164,6 +5521,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5186,6 +5544,7 @@
       "maxRange": 1,
       "ordnance": true
     },
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -5203,6 +5562,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5219,6 +5579,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5235,6 +5596,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5251,6 +5613,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Loose Cargo",
+      "type": "Obstacle"
+    },
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -5268,6 +5634,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5281,6 +5648,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5294,6 +5662,7 @@
     "limited": 3,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "keywords": ["Bounty Hunter"]
@@ -5320,6 +5689,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5342,6 +5712,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5364,6 +5735,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5386,6 +5758,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5402,6 +5775,10 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": {
+      "name": "Buzz Droid Swarm",
+      "type": "Remote"
+    },
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -5422,6 +5799,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5444,6 +5822,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -5476,6 +5855,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5498,6 +5878,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5520,6 +5901,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5542,6 +5924,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5564,6 +5947,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5586,6 +5970,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5608,6 +5993,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5630,6 +6016,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5652,6 +6039,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -5668,6 +6056,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -5685,6 +6074,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -5708,6 +6098,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -5725,6 +6116,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -5745,6 +6137,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5761,6 +6154,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5777,6 +6171,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -5797,6 +6192,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5813,6 +6209,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5826,6 +6223,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5839,6 +6237,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5852,6 +6251,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["gauntletfighter"]
@@ -5869,6 +6269,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5882,6 +6283,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -5902,6 +6304,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5918,6 +6321,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5931,6 +6335,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -5947,6 +6352,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["belbullab22starfighter"]
@@ -5964,6 +6370,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "shipAbility": ["Networked Calculations"]
@@ -5987,6 +6394,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6003,6 +6411,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6019,6 +6428,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6032,6 +6442,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6045,6 +6456,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6061,6 +6473,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6074,6 +6487,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6087,6 +6501,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6103,6 +6518,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "equipped": ["Astromech"]
@@ -6120,6 +6536,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6136,6 +6553,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6152,6 +6570,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6165,6 +6584,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -6188,6 +6608,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Medium", "Large"]
@@ -6205,6 +6626,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6218,6 +6640,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6231,6 +6654,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6244,6 +6668,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6257,6 +6682,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6273,6 +6699,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6289,6 +6716,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6302,6 +6730,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6318,6 +6747,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6334,6 +6764,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6347,6 +6778,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6360,6 +6792,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6373,6 +6806,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6396,6 +6830,7 @@
       "recovers": 3
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6409,6 +6844,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6429,6 +6865,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6449,6 +6886,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -6472,6 +6910,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6485,6 +6924,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6498,6 +6938,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6511,6 +6952,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6527,6 +6969,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "keywords": ["Mandalorian"]
@@ -6544,6 +6987,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6557,6 +7001,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -6579,6 +7024,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6592,6 +7038,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6605,6 +7052,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -6628,6 +7076,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6641,6 +7090,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -6658,6 +7108,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic"]
@@ -6678,6 +7129,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6691,6 +7143,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6707,6 +7160,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -6724,6 +7178,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6737,6 +7192,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["nantexclassstarfighter"]
@@ -6754,6 +7210,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -6774,6 +7231,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6787,6 +7245,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -6804,6 +7263,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -6821,6 +7281,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -6843,6 +7304,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6856,6 +7318,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -6873,6 +7336,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6886,6 +7350,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6899,6 +7364,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["tieddefender"]
@@ -6916,6 +7382,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6929,6 +7396,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "keywords": ["TIE"]
@@ -6946,6 +7414,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6959,6 +7428,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small", "Medium"]
@@ -6979,6 +7449,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -6992,6 +7463,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7005,6 +7477,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7018,6 +7491,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7031,6 +7505,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7047,6 +7522,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "equipped": ["Illicit"]
@@ -7064,6 +7540,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7077,6 +7554,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7090,6 +7568,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7103,6 +7582,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7116,6 +7596,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7129,6 +7610,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7142,6 +7624,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -7159,6 +7642,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "action": {
@@ -7178,6 +7662,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -7195,6 +7680,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7208,6 +7694,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7227,6 +7714,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -7240,6 +7728,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7253,6 +7742,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7266,6 +7756,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7279,6 +7770,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7292,6 +7784,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7305,6 +7798,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7321,6 +7815,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -7338,6 +7833,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7351,6 +7847,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7364,6 +7861,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7377,6 +7875,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7390,6 +7889,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7403,6 +7903,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7416,6 +7917,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -7433,6 +7935,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7446,6 +7949,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -7463,6 +7967,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7476,6 +7981,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7489,6 +7995,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7502,6 +8009,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7515,6 +8023,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7528,6 +8037,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7541,6 +8051,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7554,6 +8065,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -7579,6 +8091,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7592,6 +8105,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -7609,6 +8123,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["firstorder"]
@@ -7629,6 +8144,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7642,6 +8158,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Small"]
@@ -7659,6 +8176,10 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": {
+      "name": "Sensor Buoy",
+      "type": "Remote"
+    },
     "restrictions": []
   },
   {
@@ -7672,6 +8193,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["tiewiwhispermodifiedinterceptor", "tievnsilencer"]
@@ -7689,6 +8211,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -7702,6 +8225,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -7722,6 +8246,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -7742,6 +8267,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -7765,6 +8291,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -7785,6 +8312,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -7805,6 +8333,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -7825,6 +8354,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -7845,6 +8375,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -7865,6 +8396,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -7885,6 +8417,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -7908,6 +8441,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticrepublic", "separatistalliance"]
@@ -7928,6 +8462,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -7948,6 +8483,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["tridentclassassaultship"]
@@ -7965,6 +8501,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -7985,6 +8522,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8005,6 +8543,7 @@
     "limited": 0,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8025,6 +8564,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8045,6 +8585,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8065,6 +8606,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8085,6 +8627,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8105,6 +8648,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -8125,6 +8669,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8145,6 +8690,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8165,6 +8711,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8185,6 +8732,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8205,6 +8753,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8225,6 +8774,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8245,6 +8795,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": []
   },
   {
@@ -8258,6 +8809,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8278,6 +8830,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance", "scumandvillainy"]
@@ -8298,6 +8851,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8318,6 +8872,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -8341,6 +8896,7 @@
       "recovers": 1
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "rebelalliance"]
@@ -8361,6 +8917,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8381,6 +8938,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8401,6 +8959,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8421,6 +8980,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8441,6 +9001,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["st70assaultship"]
@@ -8458,6 +9019,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8478,6 +9040,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["resistance"]
@@ -8498,6 +9061,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -8518,6 +9082,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8538,6 +9103,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy"]
@@ -8558,6 +9124,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["scumandvillainy", "separatistalliance"]
@@ -8578,6 +9145,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -8598,6 +9166,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8618,6 +9187,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8638,6 +9208,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8658,6 +9229,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["rebelalliance"]
@@ -8678,6 +9250,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["separatistalliance"]
@@ -8698,6 +9271,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "factions": ["galacticempire"]
@@ -8721,6 +9295,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["starviperclassattackplatform"]
@@ -8738,6 +9313,7 @@
     "limited": 1,
     "charges": null,
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "ships": ["rogueclassstarfighter"]
@@ -8764,6 +9340,7 @@
       "maxRange": 1,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8786,6 +9363,7 @@
       "maxRange": 2,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8808,6 +9386,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8830,6 +9409,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8852,6 +9432,7 @@
       "maxRange": 3,
       "ordnance": true
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8868,6 +9449,7 @@
       "recovers": 0
     },
     "weapon": null,
+    "device": null,
     "restrictions": [
       {
         "sizes": ["Huge"]
@@ -8891,6 +9473,7 @@
       "maxRange": 2,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   },
   {
@@ -8910,6 +9493,7 @@
       "maxRange": 2,
       "ordnance": false
     },
+    "device": null,
     "restrictions": []
   }
 ]

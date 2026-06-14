@@ -78,6 +78,26 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, dialRevealed: true }));
     case 'ObstacleHit':
       return state; // log/UI marker; the damage/stress follow as their own events
+    case 'DeviceDropped': {
+      const ship = state.ships.find((s) => s.id === e.shipId)!;
+      const device = {
+        id: e.deviceId,
+        ownerId: ship.ownerId,
+        xws: e.xws,
+        name: ship.devices?.find((d) => d.xws === e.xws)?.name ?? e.xws,
+        kind: e.kind,
+        pos: e.pos,
+      };
+      return mapShip(
+        { ...state, devices: [...(state.devices ?? []), device] },
+        e.shipId,
+        (s) => ({ ...s, hasDropped: true }),
+      );
+    }
+    case 'DropSkipped':
+      return mapShip(state, e.shipId, (s) => ({ ...s, hasDropped: true }));
+    case 'DeviceDetonated':
+      return { ...state, devices: (state.devices ?? []).filter((d) => d.id !== e.deviceId) };
     case 'ShipMoved':
       // a bumped ship forfeits its action
       return mapShip(state, e.shipId, (s) => ({
@@ -266,8 +286,13 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           : state.phaseAbilitiesDone;
       return { ...state, offer: undefined, phaseAbilitiesDone: done };
     }
-    case 'PhaseAdvanced':
-      return { ...state, phase: e.to, phaseAbilitiesDone: [] };
+    case 'PhaseAdvanced': {
+      const next = { ...state, phase: e.to, phaseAbilitiesDone: [] };
+      // the drop window reopens at the start of the System and Activation phases
+      if (e.to === 'system' || e.to === 'activation')
+        next.ships = next.ships.map((s) => (s.hasDropped ? { ...s, hasDropped: false } : s));
+      return next;
+    }
   }
 }
 

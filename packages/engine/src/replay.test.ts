@@ -53,6 +53,18 @@ function randomChoice(seedStr: string): Chooser {
         return pick([true, false])
           ? { type: 'Decloak', playerId: p.playerId, shipId: p.shipId }
           : { type: 'SkipDecloak', playerId: p.playerId, shipId: p.shipId };
+      case 'drop-device':
+        if (p.options.devices.length && pick([true, false])) {
+          const dev = pick(p.options.devices);
+          return {
+            type: 'DropDevice',
+            playerId: p.playerId,
+            shipId: p.shipId,
+            xws: dev.xws,
+            choice: pick(dev.placements.map((_, i) => i)),
+          };
+        }
+        return { type: 'SkipDrop', playerId: p.playerId, shipId: p.shipId };
       case 'reposition':
         return {
           type: 'Reposition',

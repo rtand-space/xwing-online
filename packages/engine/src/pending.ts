@@ -1,5 +1,6 @@
 import { effectiveInitiative } from './abilities';
 import { attackValue, rangeBand, weaponReaches } from './arcs';
+import { droppableDevices } from './devices';
 import { combatAbilities, combatSpends } from './combat';
 import { obstaclesAt } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
@@ -23,6 +24,24 @@ function activationShip(state: GameState): Ship | undefined {
       (a, b) =>
         effectiveInitiative(a) - effectiveInitiative(b) || (a.id < b.id ? -1 : 1),
     )[0];
+}
+
+/** Lowest initiative first: the next ship that may drop a System-Phase device. */
+function systemDropShip(state: GameState): Ship | undefined {
+  return [...state.ships]
+    .filter((s) => alive(s) && !s.hasDropped && droppableDevices(s, 'system').length > 0)
+    .sort((a, b) => a.initiative - b.initiative || (a.id < b.id ? -1 : 1))[0];
+}
+
+function dropOffer(ship: Ship, window: 'system' | 'after-move'): PendingDecision | null {
+  const devices = droppableDevices(ship, window);
+  if (devices.length === 0) return null;
+  return {
+    type: 'drop-device',
+    playerId: ship.ownerId,
+    shipId: ship.id,
+    options: { devices, canSkip: true },
+  };
 }
 
 /** Lowest initiative first: the next cloaked ship that may still decloak this phase. */
@@ -247,14 +266,21 @@ export function computePending(state: GameState): PendingDecision[] {
         }));
     case 'system': {
       const ship = decloakShip(state);
-      if (!ship) return [];
-      return [{ type: 'decloak', playerId: ship.ownerId, shipId: ship.id, options: { canSkip: true } }];
+      if (ship)
+        return [{ type: 'decloak', playerId: ship.ownerId, shipId: ship.id, options: { canSkip: true } }];
+      const dropper = systemDropShip(state);
+      return dropper ? [dropOffer(dropper, 'system')!] : [];
     }
     case 'activation': {
       const ship = activationShip(state);
       if (!ship) return [];
       if (!ship.hasMoved) {
         return [{ type: 'execute-maneuver', playerId: ship.ownerId, shipId: ship.id }];
+      }
+      // after the maneuver, a ship may drop/launch an after-move device before acting
+      if (!ship.hasDropped) {
+        const drop = dropOffer(ship, 'after-move');
+        if (drop) return [drop];
       }
       return [actionDecision(state, ship)];
     }

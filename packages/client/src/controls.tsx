@@ -360,6 +360,36 @@ export function Controls({
         </div>
       )}
 
+      {p.type === 'drop-device' && (
+        <div className="grid">
+          {p.options.devices.map((d) =>
+            d.placements.map((pl, i) => (
+              <button
+                key={`${d.xws}:${i}`}
+                className="btn primary"
+                onClick={() =>
+                  send({
+                    type: 'DropDevice',
+                    playerId: p.playerId,
+                    shipId: p.shipId,
+                    xws: d.xws,
+                    choice: i,
+                  })
+                }
+              >
+                {pl.mode === 'launch' ? 'Launch' : 'Drop'} {d.name}
+              </button>
+            )),
+          )}
+          <button
+            className="btn ghost"
+            onClick={() => send({ type: 'SkipDrop', playerId: p.playerId, shipId: p.shipId })}
+          >
+            Skip
+          </button>
+        </div>
+      )}
+
       {p.type === 'modify' && (
         <div className="grid">
           <div className="muted">
@@ -441,5 +471,7 @@ function labelFor(type: PlayerView['pending'][number]['type'], name: string): st
       return `${name}: choose a ship`;
     case 'modify':
       return `${name}: modify dice`;
+    case 'drop-device':
+      return `${name}: drop a device?`;
   }
 }

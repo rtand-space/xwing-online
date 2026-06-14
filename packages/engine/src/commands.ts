@@ -13,6 +13,15 @@ export type Command =
     }
   | { type: 'SkipAction'; playerId: PlayerId; shipId: ShipId }
   | {
+      type: 'DropDevice';
+      playerId: PlayerId;
+      shipId: ShipId;
+      xws: string;
+      /** Index into the offered placements for this device. */
+      choice: number;
+    }
+  | { type: 'SkipDrop'; playerId: PlayerId; shipId: ShipId }
+  | {
       type: 'DeclareAttack';
       playerId: PlayerId;
       shipId: ShipId;

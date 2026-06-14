@@ -10,6 +10,7 @@ import {
   rollDefenceStage,
 } from './combat';
 import type { Command } from './commands';
+import { deviceId, mineDetonation, minesTouched, nextBombDetonation } from './devices';
 import type { GameEvent } from './events';
 import { nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
@@ -136,6 +137,8 @@ const PENDING_FOR: Record<Command['type'], PendingDecision['type']> = {
   SkipAbility: 'trigger-ability',
   Decloak: 'decloak',
   SkipDecloak: 'decloak',
+  DropDevice: 'drop-device',
+  SkipDrop: 'drop-device',
   Reposition: 'reposition',
   GrantAction: 'grant-target',
   DeclineGrant: 'grant-target',
@@ -203,6 +206,15 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
           events.push({ type: 'TokenSpent', shipId: ship.id, kind: 'deplete' });
       }
       events.push(...obstacleMoveEvents(state, ship, move.to));
+      // mines the ship moved through detonate (rng continues past any obstacle dice)
+      const movedShip = { ...ship, pos: move.to };
+      const diceSoFar = events.reduce(
+        (n, e) => n + (e.type === 'DiceRolled' ? e.faces.length : 0),
+        0,
+      );
+      events.push(
+        ...mineDetonation(state, minesTouched(state, ship, move.to), movedShip, state.rng.cursor + diceSoFar),
+      );
       // a bump ends the activation, so an ionised ship sheds its ion tokens now
       if (ionized && move.bumped) events.push(...ionShed(ship));
       return { events: appendWindow(state, events, 'afterMove', ship.id) };
@@ -440,6 +452,30 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (pending.type !== 'decloak') return reject('Cannot skip');
       return { events: [{ type: 'DecloakPassed', shipId: ship.id }] };
     }
+    case 'DropDevice': {
+      if (pending.type !== 'drop-device') return reject('Cannot drop now');
+      const offered = pending.options.devices.find((d) => d.xws === cmd.xws);
+      const place = offered?.placements[cmd.choice];
+      if (!offered || !place) return reject('Invalid device placement');
+      const dev = ship.devices?.find((d) => d.xws === cmd.xws);
+      if (!dev) return reject('No such device');
+      const events: GameEvent[] = [];
+      if (ship.upgradeCharges?.[cmd.xws])
+        events.push({ type: 'ChargeChanged', shipId: ship.id, delta: -1, source: cmd.xws });
+      events.push({
+        type: 'DeviceDropped',
+        shipId: ship.id,
+        deviceId: deviceId(state, ship, cmd.xws),
+        xws: cmd.xws,
+        kind: dev.kind,
+        pos: place.pos,
+      });
+      return { events };
+    }
+    case 'SkipDrop': {
+      if (pending.type !== 'drop-device') return reject('Cannot skip');
+      return { events: [{ type: 'DropSkipped', shipId: ship.id }] };
+    }
     case 'GrantAction': {
       if (pending.type !== 'grant-target' || !state.grantOffer) return reject('No grant offered');
       if (!pending.options.candidates.includes(cmd.targetId)) return reject('Invalid grant target');
@@ -508,6 +544,9 @@ export function trivialCommand(p: PendingDecision): Command | null {
   if (p.type === 'modify' && !p.options.spends.length && !p.options.abilities.length) {
     return { type: 'ModifyDone', playerId: p.playerId, shipId: p.shipId };
   }
+  if (p.type === 'drop-device' && p.options.devices.length === 0) {
+    return { type: 'SkipDrop', playerId: p.playerId, shipId: p.shipId };
+  }
   return null;
 }
 
@@ -560,6 +599,15 @@ export function reduce(state: GameState, cmd: Command): ReduceResult {
     if (offer) {
       push([offer]);
       continue;
+    }
+    // bombs detonate at the end of the Activation Phase (once every ship has
+    // activated), one at a time so each resolves against the updated board
+    if (s.phase === 'activation' && s.pending.length === 0) {
+      const det = nextBombDetonation(s);
+      if (det) {
+        push(det);
+        continue;
+      }
     }
     const auto = autoStep(s);
     if (!auto) break;

@@ -15,6 +15,7 @@ import type {
   Position,
   RepositionCandidate,
   ShipArc,
+  ShipDevice,
   ShipId,
   ShipWeapon,
   TokenKind,
@@ -33,6 +34,7 @@ export interface ShipInit {
   primaryAttack: number;
   arcs?: ShipArc[];
   weapons?: ShipWeapon[];
+  devices?: ShipDevice[];
   turretArc?: TurretFacing;
   agility: number;
   hull: number;
@@ -70,6 +72,16 @@ export type GameEvent =
   | { type: 'Decloaked'; shipId: ShipId; to: Position }
   | { type: 'DecloakPassed'; shipId: ShipId }
   | { type: 'ObstacleHit'; shipId: ShipId; obstacleId: string; kind: ObstacleKind }
+  | {
+      type: 'DeviceDropped';
+      shipId: ShipId;
+      deviceId: string;
+      xws: string;
+      kind: 'bomb' | 'mine';
+      pos: Position;
+    }
+  | { type: 'DeviceDetonated'; deviceId: string; xws: string; shipId?: ShipId }
+  | { type: 'DropSkipped'; shipId: ShipId }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
   | { type: 'ChargeChanged'; shipId: ShipId; delta: number; source?: string }
   | { type: 'ForceChanged'; shipId: ShipId; delta: number }

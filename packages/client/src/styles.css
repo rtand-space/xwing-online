@@ -567,6 +567,22 @@ body {
   stroke-width: 2;
   stroke-dasharray: 5 4;
 }
+.device {
+  stroke-width: 2;
+}
+.device.bomb {
+  fill: rgba(247, 196, 87, 0.22);
+  stroke: #f7c457;
+}
+.device.mine {
+  fill: rgba(239, 111, 111, 0.22);
+  stroke: #ef6f6f;
+}
+.deviceGlyph {
+  fill: #e9ecf7;
+  font-size: 14px;
+  pointer-events: none;
+}
 .obstacle.draggable {
   cursor: grab;
 }

@@ -94,6 +94,14 @@ export interface ShipArc {
   value: number;
 }
 
+/** An equipped device (bomb/mine) the ship can drop or launch. */
+export interface ShipDevice {
+  /** Upgrade xws — keys its charge pool and the engine behaviour registry. */
+  xws: string;
+  name: string;
+  kind: 'bomb' | 'mine';
+}
+
 /** An equipped secondary weapon (torpedo/missile/cannon/turret) the ship can fire. */
 export interface ShipWeapon {
   /** Upgrade xws — also keys its charge pool in `upgradeCharges`. */
@@ -198,6 +206,8 @@ export interface Ship {
   arcs?: ShipArc[];
   /** Equipped secondary weapons (torpedo/missile/cannon/turret). */
   weapons?: ShipWeapon[];
+  /** Equipped devices (bombs/mines) the ship can drop or launch. */
+  devices?: ShipDevice[];
   /** Current orientation of a rotatable (single/double) turret indicator. */
   turretArc?: TurretFacing;
   agility: number;
@@ -232,6 +242,8 @@ export interface Ship {
   hasEngaged: boolean;
   /** Whether the ship has taken its System-Phase opportunity (e.g. decloak). */
   hasSystemActed?: boolean;
+  /** Whether the ship has resolved its device-drop offer this window (reset each phase). */
+  hasDropped?: boolean;
 }
 
 export interface Rng {
@@ -283,6 +295,15 @@ export type PendingDecision =
     }
   | { type: 'decloak'; playerId: PlayerId; shipId: ShipId; options: { canSkip: boolean } }
   | {
+      type: 'drop-device';
+      playerId: PlayerId;
+      shipId: ShipId;
+      options: {
+        devices: { xws: string; name: string; placements: DevicePlacement[] }[];
+        canSkip: boolean;
+      };
+    }
+  | {
       type: 'reposition';
       playerId: PlayerId;
       shipId: ShipId;
@@ -323,6 +344,23 @@ export interface Obstacle {
   radius: number;
 }
 
+/** A legal place to drop (rear template) or launch (front template) a device. */
+export interface DevicePlacement {
+  mode: 'drop' | 'launch';
+  pos: Position;
+}
+
+/** A device token (bomb/mine) placed on the board, awaiting detonation. */
+export interface Device {
+  id: string;
+  ownerId: PlayerId;
+  /** Upgrade xws — keys the behaviour registry. */
+  xws: string;
+  name: string;
+  kind: 'bomb' | 'mine';
+  pos: Position;
+}
+
 export interface GameState {
   id: string;
   rng: Rng;
@@ -331,6 +369,8 @@ export interface GameState {
   players: Player[];
   ships: Ship[];
   obstacles: Obstacle[];
+  /** Devices (bombs/mines) dropped on the board, awaiting detonation. */
+  devices?: Device[];
   /** A pending optional ability awaiting its owner's use/skip; pauses the FSM. */
   offer?: AbilityOffer;
   /** A boost/barrel-roll mid-resolution, awaiting the placement choice; pauses the FSM. */

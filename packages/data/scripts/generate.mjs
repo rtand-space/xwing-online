@@ -172,6 +172,8 @@ for (const file of readdirSync(upDir)) {
             ordnance: Boolean(side.attack.ordnance),
           }
         : null,
+      // Device (bomb/mine) — factual name + type only; effects are paraphrased in code.
+      device: side.device ? { name: side.device.name, type: side.device.type } : null,
       restrictions: u.restrictions ?? [],
     });
   }

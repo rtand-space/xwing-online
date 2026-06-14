@@ -6,6 +6,7 @@ import type {
   Difficulty,
   Position,
   ShipArc,
+  ShipDevice,
   ShipInit,
   ShipWeapon,
 } from '@xwing/engine';
@@ -108,6 +109,7 @@ export function toShipInit(
   // can't spend another's charges.
   const upgradeCharges: Record<string, { charges: number; max: number; recovers: number }> = {};
   const weapons: ShipWeapon[] = [];
+  const devices: ShipDevice[] = [];
   for (const x of upgrades) {
     const u = getUpgrade(x);
     if (u.charges) upgradeCharges[x] = { charges: u.charges.value, max: u.charges.value, recovers: u.charges.recovers };
@@ -123,6 +125,10 @@ export function toShipInit(
         ordnance: u.weapon.ordnance,
       });
     }
+    if (u.device) {
+      const kind = u.device.type.toLowerCase();
+      if (kind === 'bomb' || kind === 'mine') devices.push({ xws: x, name: u.name, kind });
+    }
   }
   return {
     id,
@@ -136,6 +142,7 @@ export function toShipInit(
     primaryAttack: statValue(ship, 'attack'),
     arcs,
     weapons,
+    devices,
     turretArc: arcs.some((a) => a.kind === 'single-turret' || a.kind === 'double-turret')
       ? 'front'
       : undefined,

@@ -515,6 +515,15 @@ export const SvgBoard: BoardRenderer = ({
         />
       ))}
 
+      {(view.devices ?? []).map((d) => (
+        <g key={d.id} transform={`translate(${d.pos.x} ${-d.pos.y})`}>
+          <circle r={13} className={`device ${d.kind}`} />
+          <text className="deviceGlyph" textAnchor="middle" dominantBaseline="central">
+            {d.kind === 'mine' ? '✸' : '✦'}
+          </text>
+        </g>
+      ))}
+
       {arcShip && (
         <g transform={`translate(${arcShip.pos.x} ${-arcShip.pos.y}) rotate(${arcShip.pos.angle})`}>
           <CombatArc base={BASE_MM[arcShip.base]} wedges={arcWedges(arcShip)} color={colorFor(view, arcShip)} />
