@@ -3,6 +3,7 @@ import type {
   ActionLink,
   ActionType,
   BaseSize,
+  DamageCard,
   Difficulty,
   EffectSpec,
   GameWindow,
@@ -82,6 +83,8 @@ export type GameEvent =
     }
   | { type: 'DeviceDetonated'; deviceId: string; xws: string; shipId?: ShipId }
   | { type: 'DropSkipped'; shipId: ShipId }
+  | { type: 'DamageCardDealt'; shipId: ShipId; card: DamageCard }
+  | { type: 'DamageCardRemoved'; shipId: ShipId; cardId: string }
   | { type: 'StressChanged'; shipId: ShipId; delta: number }
   | { type: 'ChargeChanged'; shipId: ShipId; delta: number; source?: string }
   | { type: 'ForceChanged'; shipId: ShipId; delta: number }

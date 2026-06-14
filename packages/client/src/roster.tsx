@@ -92,6 +92,11 @@ function ShipStatus({
               {k !== 'lock' && n > 1 ? ` ${n}` : ''}
             </span>
           ))}
+          {(ship.damageCards ?? []).map((c) => (
+            <span key={c.id} className="chip critChip" title="critical damage">
+              ✸ {c.name}
+            </span>
+          ))}
         </span>
       )}
     </div>

@@ -101,6 +101,17 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       return mapShip(state, e.shipId, (s) => ({ ...s, hasDropped: true }));
     case 'DeviceDetonated':
       return { ...state, devices: (state.devices ?? []).filter((d) => d.id !== e.deviceId) };
+    case 'DamageCardDealt':
+      return mapShip(
+        { ...state, damageDrawn: (state.damageDrawn ?? 0) + 1 },
+        e.shipId,
+        (s) => ({ ...s, damageCards: [...(s.damageCards ?? []), e.card] }),
+      );
+    case 'DamageCardRemoved':
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        damageCards: (s.damageCards ?? []).filter((c) => c.id !== e.cardId),
+      }));
     case 'ShipMoved':
       // a bumped ship forfeits its action
       return mapShip(state, e.shipId, (s) => ({

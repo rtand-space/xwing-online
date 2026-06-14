@@ -1,5 +1,6 @@
 import { gatherAttackHooks, getAbility, shipAbilitySources } from './abilities';
 import { attackValue, rangeBand } from './arcs';
+import { cardPenalty, drawDamageCards } from './damage';
 import { type AttackFace, type DefenceFace, rollAttack, rollDefence } from './dice';
 import type { GameEvent } from './events';
 import { lineObstructed } from './obstacles';
@@ -81,7 +82,10 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       ? ctx.weapon.value
       : (attackValue(ctx.attacker, ctx.target) ?? ctx.attacker.primaryAttack);
     const range1 = ctx.weapon ? 0 : ctx.range === 1 ? 1 : 0;
-    const n = Math.max(0, value + range1 - attackPenalty(ctx.attacker));
+    const n = Math.max(
+      0,
+      value + range1 - attackPenalty(ctx.attacker) - cardPenalty(ctx.attacker, 'attack'),
+    );
     ctx.attack = drawAttack(ctx, n);
     if (hasToken(ctx.attacker, 'deplete')) {
       ctx.events.push({ type: 'TokenSpent', shipId: ctx.attacker.id, kind: 'deplete' });
@@ -141,7 +145,8 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       0,
       ctx.target.agility +
         agilityBonus(ctx.target) -
-        defencePenalty(ctx.target) +
+        defencePenalty(ctx.target) -
+        cardPenalty(ctx.target, 'agility') +
         (ctx.range === 3 ? 1 : 0) +
         (ctx.obstructed ? 1 : 0),
     );
@@ -213,6 +218,10 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
       hullAfter,
       crits: ctx.result.crits,
     });
+    // crit results that reach the hull become faceup damage cards
+    ctx.events.push(
+      ...drawDamageCards(ctx.state, ctx.target.id, Math.min(ctx.result.crits, hullDamage)),
+    );
     if (hullAfter === 0 && ctx.target.hull > 0) {
       ctx.events.push({ type: 'ShipDestroyed', shipId: ctx.target.id });
     }

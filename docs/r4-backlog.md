@@ -214,8 +214,17 @@ Working through the hooks the sweep needs, highest-leverage first.
   generators, remotes, curved launch templates.
 
 ## R4-M6 — Damage deck
-- ☐ **T4-D1** A faceup critical-damage deck (a small crit set with effects, drawn as
-  events for determinism) so crit-manipulation abilities (expose/repair) work.
+- ◐ **T4-D1** A faceup critical-damage deck. `damage.ts`: a deck of **original-named,
+  behaviour-only** crit cards (never the real card text/art) — `Weapon Malfunction`
+  (−1 attack), `Stabiliser Damage` (−1 agility), `Critical Breach` (raw) — shuffled
+  deterministically from the seed (own `:deck` rng stream), stored on `GameState`
+  (`damageDeck` + `damageDrawn`, redacted from the view). Crit results that reach the hull
+  draw faceup cards (`onDealDamage`, `Math.min(crits, hullDamage)`); faceup cards reduce
+  the matching combat stat (`cardPenalty` in `onRollAttack`/`onRollDefence`).
+  `DamageCardDealt` / `DamageCardRemoved` (repair) events; roster shows the crit chips.
+  `damage.test.ts` (5). **Remaining:** more crit effect kinds (action loss, recurring
+  stress), facedown cards + the expose ability, deck reshuffle on exhaustion, and wiring
+  the actual repair/expose card abilities in the sweep.
 
 # Sweep
 

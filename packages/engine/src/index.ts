@@ -19,6 +19,8 @@ export type {
   PlayerId,
   Position,
   Rng,
+  DamageCard,
+  DamageEffect,
   Device,
   DevicePlacement,
   Ship,

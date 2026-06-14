@@ -834,6 +834,11 @@ body {
   border-radius: 6px;
   padding: 1px 6px;
 }
+.critChip {
+  color: #ef6f6f;
+  border-color: #ef6f6f;
+  text-transform: none;
+}
 
 /* ---------- board SVG text ---------- */
 .shipLabel {

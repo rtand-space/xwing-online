@@ -31,9 +31,10 @@ work.
 - ☐ **Range-0 (bump) attacks.** Overlap reads as range band 1, so a range-0 attack wrongly
   gets the range-1 bonus die and dice mods. Distinguish true range 0 (base contact) and
   forbid the bonus die / mods (and likely the primary attack). (`arcs.ts`, `combat.ts`)
-- ☐ **"Only red focus after a bump" — needs reproduction.** A bumped ship already forfeits
-  its action (`hasActed = bumped`); the reported behaviour contradicts that. Reproduce, then
-  fix whatever path leaks an action menu.
+- ☐ **Bumped ship → only a red focus action** (clarified). A ship that overlaps another ship
+  does **not** lose its action entirely — it may perform only a **red Focus** (stress) action.
+  Today the engine sets `hasActed = bumped`, forfeiting the action; change to offer a single
+  red focus instead. (`apply.ts` `ShipMoved`, `pending.ts` `actionDecision`)
 
 ## P1 — rules, core UX, online, legality
 

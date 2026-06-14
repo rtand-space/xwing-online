@@ -244,6 +244,8 @@ export interface Ship {
   hasSystemActed?: boolean;
   /** Whether the ship has resolved its device-drop offer this window (reset each phase). */
   hasDropped?: boolean;
+  /** Faceup critical-damage cards the ship is carrying. */
+  damageCards?: DamageCard[];
 }
 
 export interface Rng {
@@ -350,6 +352,18 @@ export interface DevicePlacement {
   pos: Position;
 }
 
+/** A faceup critical-damage card's ongoing effect (functional, original wording). */
+export type DamageEffect =
+  | { kind: 'stat'; stat: 'attack' | 'agility'; amount: number } // reduce a stat while faceup
+  | { kind: 'none' }; // raw damage, no ongoing effect
+
+/** A drawn faceup critical-damage card. */
+export interface DamageCard {
+  id: string;
+  name: string;
+  effect: DamageEffect;
+}
+
 /** A device token (bomb/mine) placed on the board, awaiting detonation. */
 export interface Device {
   id: string;
@@ -371,6 +385,9 @@ export interface GameState {
   obstacles: Obstacle[];
   /** Devices (bombs/mines) dropped on the board, awaiting detonation. */
   devices?: Device[];
+  /** The shuffled critical-damage deck and how many cards have been drawn. */
+  damageDeck?: DamageCard[];
+  damageDrawn?: number;
   /** A pending optional ability awaiting its owner's use/skip; pauses the FSM. */
   offer?: AbilityOffer;
   /** A boost/barrel-roll mid-resolution, awaiting the placement choice; pauses the FSM. */

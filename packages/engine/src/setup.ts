@@ -1,3 +1,4 @@
+import { buildDamageDeck } from './damage';
 import type { GameConfig, ShipInit } from './events';
 import type { GameState, Ship } from './types';
 
@@ -34,6 +35,8 @@ export function buildInitial(config: GameConfig): GameState {
     players: config.players,
     ships: config.ships.map(initShip),
     obstacles: config.obstacles ?? [],
+    damageDeck: buildDamageDeck(config.seed),
+    damageDrawn: 0,
     pending: [],
     gameOver: false,
   };

@@ -10,6 +10,8 @@ export function projectView(state: GameState, viewerId: PlayerId): PlayerView {
     ships: state.ships.map((s) =>
       s.ownerId === viewerId || s.dialRevealed ? s : { ...s, dial: undefined },
     ),
+    // the upcoming damage-deck order is secret; clients only need cards already on ships
+    damageDeck: undefined,
     pending: state.pending.filter((p) => p.playerId === viewerId),
   };
 }

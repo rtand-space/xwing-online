@@ -83,6 +83,10 @@ export function formatEvent(e: GameEvent, name: (id: string) => string = (id) =>
       return null;
     case 'DamageDealt':
       return `${n(e.shipId)} takes ${e.amount} → ${e.shieldsAfter} shields, ${e.hullAfter} hull`;
+    case 'DamageCardDealt':
+      return `${n(e.shipId)} suffers a critical hit: ${e.card.name}`;
+    case 'DamageCardRemoved':
+      return `${n(e.shipId)} repairs a critical hit`;
     case 'ShipDestroyed':
       return `${n(e.shipId)} destroyed`;
     case 'AttackPassed':
