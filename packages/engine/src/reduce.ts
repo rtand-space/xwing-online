@@ -163,6 +163,10 @@ function applyEffect(effect: EffectSpec, targetId: string): GameEvent[] {
       return [{ type: 'TokenGained', shipId: targetId, kind: effect.token }];
     case 'remove-token':
       return [{ type: 'TokenSpent', shipId: targetId, kind: effect.token }];
+    case 'assign-condition':
+      return [{ type: 'ConditionAssigned', shipId: targetId, condition: effect.condition }];
+    case 'remove-condition':
+      return [{ type: 'ConditionRemoved', shipId: targetId, condition: effect.condition }];
   }
 }
 

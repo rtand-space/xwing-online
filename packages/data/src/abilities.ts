@@ -559,6 +559,17 @@ const ABILITIES: Record<string, Ability> = {
     },
   },
 
+  // A condition marker (original) — demonstrates the assignable-condition subsystem.
+  // Assigned to a ship by a card/ability; while it carries this marker it defends worse.
+  rattled: {
+    note: 'While this condition is assigned, the ship rolls 1 fewer defence die.',
+    attack: {
+      onRollDefence: (ctx, self) => {
+        if (ctx.target.id === self.id && ctx.defence.length > 0) ctx.defence.pop();
+      },
+    },
+  },
+
   // "Backdraft" — turret covers his tail. Cost-free, automatic.
   backdraft: {
     note: 'While attacking, if the defender is in your rear arc, roll 1 extra attack die.',

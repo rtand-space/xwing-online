@@ -5,6 +5,7 @@ import {
   type GameState,
   type Position,
   type Ship,
+  shipAbilitySources,
 } from '@xwing/engine';
 import { describe, expect, it } from 'vitest';
 import { implementedAbility, installAbilities } from './abilities';
@@ -59,6 +60,16 @@ describe('card abilities', () => {
     expect(implementedAbility('wedgeantilles')).toBe(true);
     expect(implementedAbility('outmaneuver')).toBe(true);
     expect(implementedAbility('academypilot')).toBe(false);
+  });
+
+  it('an assigned condition carries its own ability (Rattled drops a defence die)', () => {
+    const conditioned = { ...ship('a', { x: 0, y: 0, angle: 0 }), conditions: ['rattled'] };
+    // the condition is a live ability source on the ship it's assigned to
+    expect(shipAbilitySources(conditioned)).toContain('rattled');
+    const c = ctx(ship('x', { x: 0, y: 100, angle: 0 }), conditioned, ['hit']);
+    c.defence = ['evade', 'blank', 'focus'];
+    getAbility('rattled')!.attack!.onRollDefence!(c, conditioned);
+    expect(c.defence).toHaveLength(2); // one fewer die while rattled
   });
 
   it('Wedge Antilles drops a defence die while he attacks', () => {

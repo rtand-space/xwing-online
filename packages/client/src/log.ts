@@ -69,6 +69,10 @@ export function formatEvent(e: GameEvent, name: (id: string) => string = (id) =>
       return null;
     case 'TargetResolved':
       return null;
+    case 'ConditionAssigned':
+      return `${n(e.shipId)} gains ${e.condition}`;
+    case 'ConditionRemoved':
+      return `${n(e.shipId)} loses ${e.condition}`;
     case 'DiceRolled':
       return `  ${e.kind}: ${e.faces.join(', ')}`;
     case 'CombatBegan':

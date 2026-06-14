@@ -97,6 +97,11 @@ function ShipStatus({
               ✸ {c.name}
             </span>
           ))}
+          {(ship.conditions ?? []).map((c) => (
+            <span key={c} className="chip condChip" title="condition">
+              ◈ {c}
+            </span>
+          ))}
         </span>
       )}
     </div>

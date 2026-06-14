@@ -112,6 +112,17 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         ...s,
         damageCards: (s.damageCards ?? []).filter((c) => c.id !== e.cardId),
       }));
+    case 'ConditionAssigned':
+      return mapShip(state, e.shipId, (s) =>
+        (s.conditions ?? []).includes(e.condition)
+          ? s
+          : { ...s, conditions: [...(s.conditions ?? []), e.condition] },
+      );
+    case 'ConditionRemoved':
+      return mapShip(state, e.shipId, (s) => ({
+        ...s,
+        conditions: (s.conditions ?? []).filter((c) => c !== e.condition),
+      }));
     case 'ShipMoved':
       // a bumped ship keeps its action step but may perform only a red focus
       return mapShip(state, e.shipId, (s) => ({

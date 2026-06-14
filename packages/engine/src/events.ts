@@ -124,6 +124,8 @@ export type GameEvent =
       canSkip: boolean;
     }
   | { type: 'TargetResolved' }
+  | { type: 'ConditionAssigned'; shipId: ShipId; condition: string }
+  | { type: 'ConditionRemoved'; shipId: ShipId; condition: string }
   | { type: 'DiceRolled'; kind: DiceKind; shipId: ShipId; faces: (AttackFace | DefenceFace)[] }
   | {
       type: 'CombatBegan';

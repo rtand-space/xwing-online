@@ -185,10 +185,16 @@ Working through the hooks the sweep needs, highest-leverage first.
     `onEngagementStart` abilities in initiative order (one at a time, tracked done per
     phase). Major von Reg (System → strain a bullseye enemy) and Muse (engagement start
     → clear a wingmate's stress) ride it via target-select.
-  - ☐ Still to build (lower-leverage / bigger): **condition cards** (a subsystem —
-    assignable markers with their own abilities); **setup window** (most setup abilities
-    also need conditions/repositioning); **"moved through a ship"** triggers (only final
-    placement + bump tracked today). **9 reusable hooks** built so far.
+  - ☑ **Condition cards (subsystem).** Assignable markers that carry their own abilities:
+    `Ship.conditions` is folded into `shipAbilitySources`, so an assigned condition's
+    registered ability is live on the ship. `ConditionAssigned`/`ConditionRemoved` events
+    (apply is idempotent); the `EffectSpec` union gained `assign-condition`/`remove-condition`
+    so the existing target-select offer can hand them out. A demonstration condition
+    (`rattled`, original-named: −1 defence die) proves it end-to-end; roster shows condition
+    chips. Specific condition cards register in the sweep (original paraphrases).
+  - ☐ Still to build (lower-leverage): **setup window** (most setup abilities also need
+    repositioning); **"moved through a ship"** triggers (only final placement + bump tracked
+    today). **10 reusable hooks** built so far.
 
 # R4b — secondary weapons · devices · damage deck
 

@@ -843,6 +843,11 @@ body {
   border-color: #ef6f6f;
   text-transform: none;
 }
+.condChip {
+  color: #c08bff;
+  border-color: #c08bff;
+  text-transform: none;
+}
 .colorPick {
   display: flex;
   align-items: center;

@@ -82,9 +82,12 @@ export function effectiveInitiative(ship: Ship): number {
 
 /** xws ids whose abilities are active on a ship: ship type, pilot, equipped upgrades. */
 export function shipAbilitySources(ship: Ship): string[] {
-  return [ship.shipType, ship.pilotXws, ...(ship.upgrades ?? [])].filter((x): x is string =>
-    Boolean(x),
-  );
+  return [
+    ship.shipType,
+    ship.pilotXws,
+    ...(ship.upgrades ?? []),
+    ...(ship.conditions ?? []),
+  ].filter((x): x is string => Boolean(x));
 }
 
 /** First available optional ability for a ship at a window, or null. */

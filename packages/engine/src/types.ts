@@ -126,7 +126,9 @@ export interface ActionLink {
 export type EffectSpec =
   | { kind: 'transfer-token'; fromId: ShipId; token: TokenKind }
   | { kind: 'grant-token'; token: TokenKind }
-  | { kind: 'remove-token'; token: TokenKind };
+  | { kind: 'remove-token'; token: TokenKind }
+  | { kind: 'assign-condition'; condition: string }
+  | { kind: 'remove-condition'; condition: string };
 
 /** A legal destination for a boost/barrel-roll reposition. */
 export interface RepositionCandidate {
@@ -200,6 +202,8 @@ export interface Ship {
   pilotXws?: string;
   /** Equipped upgrade xws ids — key upgrade abilities. */
   upgrades?: string[];
+  /** Assigned condition keys — markers that carry their own abilities (R4-M9). */
+  conditions?: string[];
   initiative: number;
   base: BaseSize;
   /** Front-arc attack value; the default when `arcs` is absent. */
