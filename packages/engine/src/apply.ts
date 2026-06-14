@@ -45,7 +45,10 @@ function gainJam(ship: Ship): Ship {
 /** Gaining a green token while jammed: the jam eats it instead, clearing one jam. */
 function gainToken(ship: Ship, kind: TokenKind, targetId?: ShipId): Ship {
   if (GREEN_TOKENS.includes(kind) && hasToken(ship, 'jam')) return removeOne(ship, 'jam');
-  const tokens = [...ship.tokens, { kind, targetId }];
+  // a ship may maintain only one lock (the limit is 1 unless a card raises it — later);
+  // acquiring a new lock drops the old.
+  const base = kind === 'lock' ? ship.tokens.filter((t) => t.kind !== 'lock') : ship.tokens;
+  const tokens = [...base, { kind, targetId }];
   // becoming ionised breaks the locks the ship is maintaining
   if (kind === 'ion' && isIonized({ ...ship, tokens }))
     return { ...ship, tokens: tokens.filter((t) => t.kind !== 'lock') };

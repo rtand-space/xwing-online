@@ -56,4 +56,9 @@ describe('maneuver templates (rear-of-base seats at the template end)', () => {
     expectPos(pathAt(origin, m(2, 'bank-left'), 1, 'small'), full);
     expectPos(pathAt(origin, m(2, 'bank-left'), 0, 'small'), origin);
   });
+
+  it('a 0-speed stationary stop does not move the ship', () => {
+    const start: Position = { x: 30, y: -20, angle: 90 };
+    expectPos(applyManeuver(start, m(0, 'stationary'), 'large'), start);
+  });
 });

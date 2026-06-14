@@ -76,6 +76,8 @@ const norm360 = (deg: number): number => ((deg % 360) + 360) % 360;
  */
 export function applyManeuver(pos: Position, m: Maneuver, base: BaseSize): Position {
   const l = template(m);
+  // a stationary (0-speed) maneuver doesn't move the ship at all
+  if (l.dx === 0 && l.dy === 0 && l.drive === 0 && l.post === 0) return { ...pos };
   const half = BASE_MM[base] / 2;
   const a0 = pos.angle * DEG;
   const fwd0 = { x: Math.sin(a0), y: Math.cos(a0) };

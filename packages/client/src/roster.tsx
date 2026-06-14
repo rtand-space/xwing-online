@@ -43,10 +43,19 @@ function Pips({
   );
 }
 
-function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElement {
+function ShipStatus({
+  ship,
+  color,
+  nameOf,
+}: {
+  ship: Ship;
+  color: string;
+  nameOf: (id: string) => string;
+}): ReactElement {
   const dead = ship.hull <= 0;
   const counts: Record<string, number> = {};
   for (const t of ship.tokens) counts[t.kind] = (counts[t.kind] ?? 0) + 1;
+  const lockedOn = ship.tokens.find((t) => t.kind === 'lock')?.targetId;
 
   return (
     <div className={dead ? 'shipStatus dead' : 'shipStatus'}>
@@ -79,8 +88,8 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
           )}
           {Object.entries(counts).map(([k, n]) => (
             <span key={k} className="chip" style={{ borderColor: TOKEN[k], color: TOKEN[k] }}>
-              {k}
-              {n > 1 ? ` ${n}` : ''}
+              {k === 'lock' && lockedOn ? `lock → ${nameOf(lockedOn)}` : k}
+              {k !== 'lock' && n > 1 ? ` ${n}` : ''}
             </span>
           ))}
         </span>
@@ -91,6 +100,7 @@ function ShipStatus({ ship, color }: { ship: Ship; color: string }): ReactElemen
 
 /** Clean per-side fleet status — health and tokens at a glance. */
 export function Roster({ view }: { view: PlayerView }): ReactElement {
+  const nameOf = (id: string): string => view.ships.find((s) => s.id === id)?.pilot ?? id;
   return (
     <div className="panel rosterPanel">
       {view.players.map((p, idx) => (
@@ -101,7 +111,7 @@ export function Roster({ view }: { view: PlayerView }): ReactElement {
           {view.ships
             .filter((s) => s.ownerId === p.id)
             .map((s) => (
-              <ShipStatus key={s.id} ship={s} color={SIDE[idx % 2]!} />
+              <ShipStatus key={s.id} ship={s} color={SIDE[idx % 2]!} nameOf={nameOf} />
             ))}
         </div>
       ))}

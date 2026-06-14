@@ -52,6 +52,17 @@ const defenceDice = (events: ReturnType<typeof resolveAttack>): number => {
 const attack = (def: Ship): ReturnType<typeof resolveAttack> =>
   resolveAttack(stateWith([ship('a', 'p', 0, 0, 0, []), def]), 'a', 'd');
 
+describe('lock (one at a time)', () => {
+  it('acquiring a new lock drops the previous one', () => {
+    let s = stateWith([ship('a', 'p', 0, 0, 0, []), ship('b', 'q', 0, 180, 180, [])]);
+    s = applyEvent(s, { type: 'TokenGained', shipId: 'a', kind: 'lock', targetId: 'b' });
+    s = applyEvent(s, { type: 'TokenGained', shipId: 'a', kind: 'lock', targetId: 'c' });
+    const locks = s.ships.find((x) => x.id === 'a')!.tokens.filter((t) => t.kind === 'lock');
+    expect(locks).toHaveLength(1);
+    expect(locks[0]!.targetId).toBe('c');
+  });
+});
+
 describe('tractor (threshold by base size)', () => {
   it('a tractored small ship rolls one fewer defence die', () => {
     expect(defenceDice(attack(ship('d', 'q', 0, 180, 180, tok('tractor'))))).toBe(2); // 3 - 1

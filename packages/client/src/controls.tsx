@@ -184,7 +184,7 @@ export function Controls({
                   })
                 }
               >
-                Lock {t}
+                Lock {nameOf(view, t)}
               </button>
             ))}
           {p.options.actions.includes('jam') &&
@@ -202,7 +202,7 @@ export function Controls({
                   })
                 }
               >
-                Jam {t}
+                Jam {nameOf(view, t)}
               </button>
             ))}
           {p.options.actions.includes('coordinate') &&
@@ -220,7 +220,7 @@ export function Controls({
                   })
                 }
               >
-                Coordinate {t}
+                Coordinate {nameOf(view, t)}
               </button>
             ))}
           <button
@@ -305,7 +305,7 @@ export function Controls({
                 send({ type: 'GrantAction', playerId: p.playerId, shipId: p.shipId, targetId: t })
               }
             >
-              {t}
+              {nameOf(view, t)}
             </button>
           ))}
           <button
@@ -328,7 +328,7 @@ export function Controls({
                 send({ type: 'SelectTarget', playerId: p.playerId, shipId: p.shipId, targetId: t })
               }
             >
-              {t}
+              {nameOf(view, t)}
             </button>
           ))}
           {p.options.canSkip && (

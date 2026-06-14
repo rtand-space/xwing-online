@@ -62,15 +62,17 @@ function engagementShip(state: GameState): Ship | undefined {
 }
 
 function actionDecision(state: GameState, ship: Ship): PendingDecision {
-  // a stressed ship cannot act; an ionised ship may perform only calculate;
-  // a cloaked ship cannot perform the cloak action (no second cloak token)
-  const bar = isStressed(ship)
-    ? []
-    : isIonized(ship)
-      ? (['calculate'] as ActionType[])
-      : isCloaked(ship)
-        ? ship.actionBar.filter((a) => a !== 'cloak')
-        : ship.actionBar;
+  // a stressed ship cannot act; nor can one overlapping an asteroid; an ionised ship
+  // may perform only calculate; a cloaked ship cannot re-cloak (no second cloak token)
+  const onAsteroid = obstaclesAt(state, ship.pos, ship.base).some((o) => o.kind === 'asteroid');
+  const bar =
+    isStressed(ship) || onAsteroid
+      ? []
+      : isIonized(ship)
+        ? (['calculate'] as ActionType[])
+        : isCloaked(ship)
+          ? ship.actionBar.filter((a) => a !== 'cloak')
+          : ship.actionBar;
   // a reposition is only offerable with a legal placement; a purple action needs Force
   const actions = bar.filter((a) => {
     if (a === 'boost' || a === 'barrel-roll') return repositionCandidates(state, ship, a).length > 0;
