@@ -57,7 +57,8 @@ work.
 **Online / experience**
 - ☐ **Own board edge at the bottom of the screen** (you fly "up" toward the opponent) —
   per-seat board orientation flip.
-- ☐ Host picks a colour, joiner picks any other.
+- ✅ Host picks a colour (teal = rebel seat / amber = imperial seat); the joiner takes the
+  side left open and lays its squad out on the correct end (seat GET returns the open side).
 
 **Board visual**
 - ☐ Map corners: the background overflows the rounded-corner clip.
