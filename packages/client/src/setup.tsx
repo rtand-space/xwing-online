@@ -528,6 +528,7 @@ export function QuickPlay(): ReactElement {
   const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
   const [code, setCode] = useState(initialCode);
   const [online, setOnline] = useState('');
+  const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
   const joining = mode === 'join';
   const byId = (id: string) => squads.find((s) => s.id === id);
 
@@ -553,13 +554,29 @@ export function QuickPlay(): ReactElement {
         onChange={setOnline}
         placeholder={squads.length ? 'Choose your squad' : 'No squads yet'}
       />
-      {joining && (
+      {joining ? (
         <input
           className="joinInput"
           placeholder="enter game code"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
+      ) : (
+        <div className="colorPick">
+          <span className="muted">Your colour</span>
+          <button
+            className={`swatch teal${side === 'rebel' ? ' on' : ''}`}
+            aria-label="Teal"
+            aria-pressed={side === 'rebel'}
+            onClick={() => setSide('rebel')}
+          />
+          <button
+            className={`swatch amber${side === 'imperial' ? ' on' : ''}`}
+            aria-label="Amber"
+            aria-pressed={side === 'imperial'}
+            onClick={() => setSide('imperial')}
+          />
+        </div>
       )}
       <button
         className="btn primary"
@@ -571,7 +588,7 @@ export function QuickPlay(): ReactElement {
             return;
           }
           const s = seed();
-          useSetup.getState().begin(s, (obs) => void host(sq.xws, obs));
+          useSetup.getState().begin(s, (obs) => void host(sq.xws, obs, side));
         }}
       >
         {joining ? 'Join game' : 'Host game'}

@@ -287,6 +287,10 @@ body {
   .flyout.side.open ~ .flyout.bottom {
     transform: translate(-50%, 150%);
   }
+  /* the side slab takes the full width on small screens */
+  .flyout.side {
+    width: 100%;
+  }
 }
 
 .hudHandle {
@@ -838,6 +842,29 @@ body {
   color: #ef6f6f;
   border-color: #ef6f6f;
   text-transform: none;
+}
+.colorPick {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.swatch.teal {
+  background: #3fe0c5;
+}
+.swatch.amber {
+  background: #f7c457;
+}
+.swatch.on {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--panel);
 }
 
 /* ---------- board SVG text ---------- */

@@ -36,9 +36,9 @@ interface OnlineStore {
   isHost: boolean;
   rejection: string | null;
   error: string | null;
-  /** Host plays Rebel; brings their squad and opens the lobby. */
-  host: (squad: XwsSquad, obstacles: Obstacle[]) => Promise<void>;
-  /** Joiner plays Imperial; brings their squad and starts the game. */
+  /** Host brings their squad and opens the lobby on the chosen side (defaults to rebel). */
+  host: (squad: XwsSquad, obstacles: Obstacle[], side?: string) => Promise<void>;
+  /** Joiner brings their squad and starts the game on whichever side the host left open. */
   join: (code: string, squad: XwsSquad) => Promise<void>;
   resume: () => Promise<void>;
   send: (command: Command) => void;
@@ -70,14 +70,14 @@ export const useOnline = create<OnlineStore>((set, get) => {
     rejection: null,
     error: null,
 
-    host: async (squad, obstacles) => {
+    host: async (squad, obstacles, side = 'rebel') => {
       const guestId = getGuestId();
       const code = randomCode();
       set({
         status: 'connecting',
         code,
         isHost: true,
-        seat: 'rebel',
+        seat: side,
         view: null,
         log: [],
         error: null,
@@ -85,8 +85,8 @@ export const useOnline = create<OnlineStore>((set, get) => {
       });
       await hostGame(
         code,
-        'rebel',
-        sideShipInits(squad, 'rebel'),
+        side,
+        sideShipInits(squad, side as 'rebel' | 'imperial'),
         String(Date.now()),
         guestId,
         obstacles,
@@ -107,12 +107,15 @@ export const useOnline = create<OnlineStore>((set, get) => {
         error: null,
         rejection: null,
       });
-      const res = await joinGame(code, sideShipInits(squad, 'imperial'), guestId);
+      // take whichever side the host left open, so the squad lays out on the right end
+      const { openSide } = await getSeat(code, guestId);
+      const side = (openSide ?? 'imperial') as 'rebel' | 'imperial';
+      const res = await joinGame(code, sideShipInits(squad, side), guestId);
       if (res.error) {
         set({ status: 'error', error: res.error });
         return;
       }
-      set({ seat: res.playerId ?? 'imperial' });
+      set({ seat: res.playerId ?? side });
       remember({ code, isHost: false });
       conn = open(code, guestId);
       void subscribePush(code, guestId);

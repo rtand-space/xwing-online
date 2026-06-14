@@ -116,7 +116,10 @@ export class GameDO {
 
     if (req.method === 'GET' && sub === 'seat') {
       const seats = await this.seats();
-      return json({ playerId: seats[guestId] ?? null });
+      // the side a new joiner would take (opposite the host's), for correct ship layout
+      const hostSide = Object.keys(await this.sides())[0];
+      const openSide = hostSide ? (hostSide === 'rebel' ? 'imperial' : 'rebel') : null;
+      return json({ playerId: seats[guestId] ?? null, openSide });
     }
 
     if (req.method === 'POST' && sub === 'commands') {

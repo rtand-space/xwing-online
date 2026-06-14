@@ -32,9 +32,12 @@ export async function joinGame(
   return r.json() as Promise<{ playerId?: string; error?: string }>;
 }
 
-export async function getSeat(code: string, guestId: string): Promise<{ playerId: string | null }> {
+export async function getSeat(
+  code: string,
+  guestId: string,
+): Promise<{ playerId: string | null; openSide?: string | null }> {
   const r = await fetch(`${SERVER}/games/${code}/seat?guestId=${encodeURIComponent(guestId)}`);
-  return r.json() as Promise<{ playerId: string | null }>;
+  return r.json() as Promise<{ playerId: string | null; openSide?: string | null }>;
 }
 
 export interface Connection {
