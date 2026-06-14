@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { attackValue, baseDistance, bearingDeg, inArc, inBullseye, nextFacing, rangeBand } from './arcs';
+import { arcFacings, attackValue, baseDistance, bearingDeg, inArc, inBullseye, nextFacing, rangeBand } from './arcs';
 import { applyEvent, computePending, reduce } from './index';
 import type { GameState, Ship, ShipArc, TurretFacing } from './types';
 
@@ -161,6 +161,55 @@ describe('firing arcs and attack value', () => {
     for (const e of r.events) s = applyEvent(s, e);
     const a2 = s.ships.find((x) => x.id === 'a')!;
     expect(a2.turretArc).toBe('right');
+    expect(attackValue(a2, s.ships.find((x) => x.id === 'd')!)).toBe(2);
+  });
+
+  it('offers the rotate-arc facings and points the turret where chosen', () => {
+    const single = withArcs(0, 0, [{ kind: 'single-turret', value: 2 }], 'front');
+    expect(arcFacings(single)).toEqual(['right', 'rear', 'left']); // any arc but the current
+    const dbl = withArcs(0, 0, [{ kind: 'double-turret', value: 3 }], 'front');
+    expect(arcFacings(dbl)).toEqual(['right']); // the other orientation
+
+    const a: Ship = {
+      ...single,
+      id: 'a',
+      ownerId: 'p',
+      actionBar: ['rotate-arc'],
+      hasMoved: true,
+    };
+    const d: Ship = { ...mk(0, -200), id: 'd', ownerId: 'q' }; // directly behind
+    let s: GameState = {
+      id: 'g',
+      rng: { seed: 's', cursor: 0 },
+      round: 1,
+      phase: 'activation',
+      players: [
+        { id: 'p', name: 'P' },
+        { id: 'q', name: 'Q' },
+      ],
+      ships: [a, d],
+      obstacles: [],
+      pending: [],
+      gameOver: false,
+    };
+    s = { ...s, pending: computePending(s) };
+
+    // rotating to the current facing isn't an offered option → rejected
+    expect(
+      reduce(s, { type: 'PerformAction', playerId: 'p', shipId: 'a', action: 'rotate-arc', facing: 'front' }).rejection,
+    ).toBeTruthy();
+
+    // pointing it to the rear bears on the target behind
+    const r = reduce(s, {
+      type: 'PerformAction',
+      playerId: 'p',
+      shipId: 'a',
+      action: 'rotate-arc',
+      facing: 'rear',
+    });
+    for (const e of r.events) s = applyEvent(s, e);
+    const a2 = s.ships.find((x) => x.id === 'a')!;
+    expect(a2.turretArc).toBe('rear'); // not the cycle's 'right'
     expect(attackValue(a2, s.ships.find((x) => x.id === 'd')!)).toBe(2);
   });
 });

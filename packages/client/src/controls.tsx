@@ -1,6 +1,13 @@
-import type { ActionType, Command, Maneuver, PlayerView } from '@xwing/engine';
+import { arcFacings, type ActionType, type Command, type Maneuver, type PlayerView, type TurretFacing } from '@xwing/engine';
 import { Fragment, type ReactElement } from 'react';
 import { useGame } from './store';
+
+const FACING: Record<TurretFacing, string> = {
+  front: 'front',
+  right: 'right',
+  rear: 'rear',
+  left: 'left',
+};
 
 const nameOf = (view: PlayerView, id: string): string =>
   view.ships.find((s) => s.id === id)?.pilot ?? id;
@@ -157,7 +164,7 @@ export function Controls({
         <div className="grid">
           {p.options.actions.length === 0 && <div className="muted">Stressed — no actions.</div>}
           {p.options.actions
-            .filter((a) => a !== 'lock' && a !== 'jam' && a !== 'coordinate')
+            .filter((a) => a !== 'lock' && a !== 'jam' && a !== 'coordinate' && a !== 'rotate-arc')
             .map((a) => (
               <button
                 key={a}
@@ -167,6 +174,24 @@ export function Controls({
                 }
               >
                 {ACTION[a]}
+              </button>
+            ))}
+          {p.options.actions.includes('rotate-arc') &&
+            arcFacings(ship).map((f) => (
+              <button
+                key={`rot-${f}`}
+                className="btn"
+                onClick={() =>
+                  send({
+                    type: 'PerformAction',
+                    playerId: p.playerId,
+                    shipId: p.shipId,
+                    action: 'rotate-arc',
+                    facing: f,
+                  })
+                }
+              >
+                Rotate arc → {FACING[f]}
               </button>
             ))}
           {p.options.actions.includes('lock') &&

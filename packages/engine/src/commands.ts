@@ -1,4 +1,4 @@
-import type { ActionType, Maneuver, PlayerId, ShipId, SpendKind } from './types';
+import type { ActionType, Maneuver, PlayerId, ShipId, SpendKind, TurretFacing } from './types';
 
 /** Player intent. Validated against `state.pending`; may be rejected. */
 export type Command =
@@ -10,6 +10,8 @@ export type Command =
       shipId: ShipId;
       action: ActionType;
       targetId?: ShipId;
+      /** For rotate-arc: which orientation to point the turret to. */
+      facing?: TurretFacing;
     }
   | { type: 'SkipAction'; playerId: PlayerId; shipId: ShipId }
   | {

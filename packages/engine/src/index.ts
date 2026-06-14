@@ -72,6 +72,7 @@ export {
   inRange,
   nextFacing,
   RANGE_BAND_MM,
+  arcFacings,
   rangeBand,
   shipArcs,
 } from './arcs';

@@ -43,8 +43,10 @@ work.
 **Rules**
 - ☐ Verify obstacle effects against the xwing.life ruleset (asteroid/debris/gas) — audit;
   pairs with the geometry pass.
-- ☐ **Rotate-arc has no "where to" choice** — it cycles today; add a facing/target picker
-  (known deferred item from R4-M3). (`pending.ts`, `reduce.ts`, `controls.tsx`)
+- ✅ **Rotate-arc facing picker.** `arcFacings(ship)` lists the legal target orientations
+  (any arc but the current for a single turret; the other orientation for a double);
+  `PerformAction` carries a `facing`, validated in `reduce` (no facing still cycles, for AI).
+  The HUD offers a button per facing ("Rotate arc → rear") instead of blind cycling.
 - ☐ Multi-lock cards (limit > 1) — re-enable stacking only for cards that grant it (the
   single-lock fix above is the common case).
 

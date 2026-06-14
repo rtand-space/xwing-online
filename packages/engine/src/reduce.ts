@@ -13,7 +13,7 @@ import type { Command } from './commands';
 import { deviceId, mineDetonation, minesTouched, nextBombDetonation } from './devices';
 import { offBoard } from './geometry';
 import type { GameEvent } from './events';
-import { nextFacing } from './arcs';
+import { arcFacings, nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
@@ -30,6 +30,7 @@ import type {
   PendingDecision,
   Ship,
   Speed,
+  TurretFacing,
 } from './types';
 
 export interface ReduceResult {
@@ -77,7 +78,7 @@ function linkOffer(ship: Ship, action: ActionType): GameEvent[] {
 
 /** Token/effect events for a self-targeted action — used both by the normal action
  *  step and by a coordinate's free action. */
-function freeActionEffects(ship: Ship, action: string): GameEvent[] {
+function freeActionEffects(ship: Ship, action: string, facing?: TurretFacing): GameEvent[] {
   switch (action) {
     case 'focus':
       return [{ type: 'TokenGained', shipId: ship.id, kind: 'focus' }];
@@ -88,7 +89,7 @@ function freeActionEffects(ship: Ship, action: string): GameEvent[] {
     case 'reinforce':
       return [{ type: 'TokenGained', shipId: ship.id, kind: 'reinforce' }];
     case 'rotate-arc':
-      return [{ type: 'ArcRotated', shipId: ship.id, to: nextFacing(ship) }];
+      return [{ type: 'ArcRotated', shipId: ship.id, to: facing ?? nextFacing(ship) }];
     case 'reload': {
       const rc = reloadCharge(ship);
       return [...(rc ? [rc] : []), { type: 'TokenGained', shipId: ship.id, kind: 'disarm' }];
@@ -232,7 +233,7 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       if (state.grantedAction?.shipId === ship.id) {
         return {
           events: [
-            ...freeActionEffects(ship, cmd.action),
+            ...freeActionEffects(ship, cmd.action, cmd.facing),
             ...costFor(ship.id, actionDiff(ship, cmd.action)),
             { type: 'GrantResolved' },
           ],
@@ -267,7 +268,9 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       } else if (cmd.action === 'cloak') {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'cloak' });
       } else if (cmd.action === 'rotate-arc') {
-        events.push({ type: 'ArcRotated', shipId: ship.id, to: nextFacing(ship) });
+        // the player chooses which arc to point to; no facing falls back to cycling (AI)
+        if (cmd.facing && !arcFacings(ship).includes(cmd.facing)) return reject('Invalid arc facing');
+        events.push({ type: 'ArcRotated', shipId: ship.id, to: cmd.facing ?? nextFacing(ship) });
       } else if (cmd.action === 'reload') {
         const rc = reloadCharge(ship);
         if (rc) events.push(rc);

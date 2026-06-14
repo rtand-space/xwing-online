@@ -115,6 +115,19 @@ export function hasTurret(s: Ship): boolean {
   return shipArcs(s).some((arc) => arc.kind === 'single-turret' || arc.kind === 'double-turret');
 }
 
+/** The orientations a Rotate Arc may point this turret to (excluding the current one).
+ *  A single turret can pick any of the four arcs; a double turret has two orientations
+ *  (front/rear pair = 'front', left/right pair = 'right'). */
+export function arcFacings(s: Ship): TurretFacing[] {
+  if (!hasTurret(s)) return [];
+  const cur = s.turretArc ?? 'front';
+  if (shipArcs(s).some((arc) => arc.kind === 'double-turret')) {
+    const orient = (f: TurretFacing): TurretFacing => (f === 'front' || f === 'rear' ? 'front' : 'right');
+    return (['front', 'right'] as TurretFacing[]).filter((f) => f !== orient(cur));
+  }
+  return (['front', 'right', 'rear', 'left'] as TurretFacing[]).filter((f) => f !== cur);
+}
+
 /** Next turret orientation for the Rotate Arc action: double turrets toggle their
  *  two opposite arcs; single turrets cycle through the four arcs. */
 export function nextFacing(s: Ship): TurretFacing {
