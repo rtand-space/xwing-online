@@ -113,12 +113,12 @@ function applyCore(state: GameState, e: GameEvent): GameState {
         damageCards: (s.damageCards ?? []).filter((c) => c.id !== e.cardId),
       }));
     case 'ShipMoved':
-      // a bumped ship forfeits its action
+      // a bumped ship keeps its action step but may perform only a red focus
       return mapShip(state, e.shipId, (s) => ({
         ...s,
         pos: e.to,
         hasMoved: true,
-        hasActed: s.hasActed || e.bumped === true,
+        bumped: e.bumped === true,
       }));
     case 'Decloaked':
       return mapShip(state, e.shipId, (s) => ({ ...s, pos: e.to, hasSystemActed: true }));
@@ -278,6 +278,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
           hasActed: false,
           hasEngaged: false,
           hasSystemActed: false,
+          bumped: false,
         })),
       };
     case 'AbilityOffered':

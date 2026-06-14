@@ -8,6 +8,9 @@ export interface Vec {
 /** Square base widths in millimetres. */
 export const BASE_MM: Record<BaseSize, number> = { small: 40, medium: 60, large: 80 };
 
+/** Half the play area; the mat runs from -BOARD_HALF to +BOARD_HALF on each axis. */
+export const BOARD_HALF = 498;
+
 const DEG = Math.PI / 180;
 
 /** Unit heading for an angle measured clockwise from +y (north). */
@@ -18,6 +21,13 @@ export function heading(angleDeg: number): Vec {
 
 export function normalizeAngle(deg: number): number {
   return ((deg % 360) + 360) % 360;
+}
+
+/** True once any part of the ship's base has left the play area. */
+export function offBoard(pos: Position, base: BaseSize): boolean {
+  return basePolygon(pos, base).some(
+    (c) => Math.abs(c.x) > BOARD_HALF || Math.abs(c.y) > BOARD_HALF,
+  );
 }
 
 /** The four world-space corners of a ship's square base. */

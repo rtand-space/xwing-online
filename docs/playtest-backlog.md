@@ -25,16 +25,15 @@ work.
 - ☐ **Multi-ship collision is "weird."** `resolveMovement` backs off by linear lerp; should
   use the "railroad" method (advance along the template until first contact). Affects 2+ ship
   pile-ups. (`movement.ts`)
-- ☐ **Ship leaving the board is not destroyed.** Any part of the base leaving the play area
-  should kill the ship — engine has no board-bounds concept yet (board is ~900mm; client
-  draws ±498). Add bounds to the config/state + a destroy check after movement.
+- ✅ **Ship leaving the board is destroyed.** `BOARD_HALF = 498` + `offBoard(pos, base)` in
+  `geometry.ts`; `ExecuteManeuver` destroys a ship whose base leaves the play area.
+  *(Repositions/SLAM pushing off-board still TODO — they go through the reposition FSM.)*
 - ☐ **Range-0 (bump) attacks.** Overlap reads as range band 1, so a range-0 attack wrongly
   gets the range-1 bonus die and dice mods. Distinguish true range 0 (base contact) and
   forbid the bonus die / mods (and likely the primary attack). (`arcs.ts`, `combat.ts`)
-- ☐ **Bumped ship → only a red focus action** (clarified). A ship that overlaps another ship
-  does **not** lose its action entirely — it may perform only a **red Focus** (stress) action.
-  Today the engine sets `hasActed = bumped`, forfeiting the action; change to offer a single
-  red focus instead. (`apply.ts` `ShipMoved`, `pending.ts` `actionDecision`)
+- ✅ **Bumped ship → only a red focus action.** A bump no longer forfeits the action: a
+  `Ship.bumped` flag (set on `ShipMoved`, reset at round end) makes `actionDecision` offer
+  only `focus`, and `PerformAction` charges it red (gains stress).
 
 ## P1 — rules, core UX, online, legality
 

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createGame, dispatch, resolveMovement, xwing } from './index';
+import { offBoard } from './geometry';
 import type { GameConfig } from './index';
 import type { GameState, Maneuver, Ship } from './types';
 
@@ -54,7 +55,7 @@ describe('movement collisions', () => {
 });
 
 describe('movement wired into activation', () => {
-  it('a bumped ship forfeits its action', () => {
+  it('a bumped ship is offered only a red focus, which stresses it', () => {
     const config: GameConfig = {
       id: 'c',
       seed: 's',
@@ -75,11 +76,43 @@ describe('movement wired into activation', () => {
     expect(g.state.pending[0]!.shipId).toBe('x'); // initiative 1 moves first
     g = dispatch(g, { type: 'ExecuteManeuver', playerId: 'r', shipId: 'x' }).game;
 
-    // x bumped into t, so its action is skipped — control passes straight to t
+    // x bumped into t: it backed off and may now perform only a focus
     const x = g.state.ships.find((s) => s.id === 'x')!;
-    expect(x.hasActed).toBe(true);
+    expect(x.bumped).toBe(true);
     expect(x.pos.y).toBeLessThan(120);
-    expect(g.state.pending[0]!.shipId).toBe('t');
-    expect(g.state.pending[0]!.type).toBe('execute-maneuver');
+    const p = g.state.pending[0]!;
+    expect(p.shipId).toBe('x');
+    expect(p.type).toBe('perform-action');
+    expect(p.type === 'perform-action' && p.options.actions).toEqual(['focus']);
+
+    // performing it is a red action → gains stress
+    g = dispatch(g, { type: 'PerformAction', playerId: 'r', shipId: 'x', action: 'focus' }).game;
+    const x2 = g.state.ships.find((s) => s.id === 'x')!;
+    expect(x2.tokens.some((t) => t.kind === 'focus')).toBe(true);
+    expect(x2.tokens.some((t) => t.kind === 'stress')).toBe(true);
+  });
+
+  it('a ship that flies off the board is destroyed', () => {
+    expect(offBoard({ x: 0, y: 480, angle: 0 }, 'small')).toBe(true); // corner past 498
+    expect(offBoard({ x: 0, y: 400, angle: 0 }, 'small')).toBe(false);
+
+    const config: GameConfig = {
+      id: 'c',
+      seed: 's',
+      players: [
+        { id: 'r', name: 'R' },
+        { id: 'i', name: 'I' },
+      ],
+      ships: [
+        xwing('x', 'r', 1, { x: 0, y: 430, angle: 0 }), // near the top edge, facing out
+        xwing('t', 'i', 2, { x: 300, y: -300, angle: 180 }),
+      ],
+    };
+    let g = createGame(config);
+    g = dispatch(g, { type: 'SetDial', playerId: 'r', shipId: 'x', maneuver: straight(2) }).game;
+    g = dispatch(g, { type: 'SetDial', playerId: 'i', shipId: 't', maneuver: straight(2) }).game;
+    g = dispatch(g, { type: 'ExecuteManeuver', playerId: 'r', shipId: 'x' }).game;
+
+    expect(g.state.ships.find((s) => s.id === 'x')!.hull).toBe(0); // fled the field
   });
 });

@@ -11,6 +11,7 @@ import {
 } from './combat';
 import type { Command } from './commands';
 import { deviceId, mineDetonation, minesTouched, nextBombDetonation } from './devices';
+import { offBoard } from './geometry';
 import type { GameEvent } from './events';
 import { nextFacing } from './arcs';
 import { collides, resolveMovement } from './movement';
@@ -205,6 +206,11 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         if (hasToken(ship, 'deplete'))
           events.push({ type: 'TokenSpent', shipId: ship.id, kind: 'deplete' });
       }
+      // a ship whose base leaves the play area flees the field and is destroyed
+      if (offBoard(move.to, ship.base)) {
+        events.push({ type: 'ShipDestroyed', shipId: ship.id });
+        return { events };
+      }
       events.push(...obstacleMoveEvents(state, ship, move.to));
       // mines the ship moved through detonate (rng continues past any obstacle dice)
       const movedShip = { ...ship, pos: move.to };
@@ -283,9 +289,12 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
         events.push({ type: 'TokenGained', shipId: ship.id, kind: 'lock', targetId: cmd.targetId });
       }
       // a linked follow-up charges the link's difficulty and ends the chain;
-      // a base action charges its own difficulty and offers its link (if any)
+      // a base action charges its own difficulty and offers its link (if any).
+      // a bumped ship's only action is a red focus (gains stress).
       const isLinked = state.linkedAction?.shipId === ship.id;
-      events.push(...costFor(ship.id, isLinked ? state.linkedAction!.difficulty : actionDiff(ship, cmd.action)));
+      const baseDiff =
+        ship.bumped && cmd.action === 'focus' ? 'red' : actionDiff(ship, cmd.action);
+      events.push(...costFor(ship.id, isLinked ? state.linkedAction!.difficulty : baseDiff));
       events.push(...(isLinked ? [{ type: 'LinkResolved' as const }] : linkOffer(ship, cmd.action)));
       const out = appendWindow(state, events, 'onPerformAction', ship.id, events[0]);
       if (isIonized(ship)) out.push(...ionShed(ship));

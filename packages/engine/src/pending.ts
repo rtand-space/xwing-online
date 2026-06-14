@@ -67,12 +67,14 @@ function actionDecision(state: GameState, ship: Ship): PendingDecision {
   const onAsteroid = obstaclesAt(state, ship.pos, ship.base).some((o) => o.kind === 'asteroid');
   const bar =
     isStressed(ship) || onAsteroid
-      ? []
-      : isIonized(ship)
-        ? (['calculate'] as ActionType[])
-        : isCloaked(ship)
-          ? ship.actionBar.filter((a) => a !== 'cloak')
-          : ship.actionBar;
+      ? [] // a stressed ship can't act, nor one on an asteroid (nor a bumped one — red focus)
+      : ship.bumped
+        ? (['focus'] as ActionType[]) // a bump leaves only a red focus
+        : isIonized(ship)
+          ? (['calculate'] as ActionType[])
+          : isCloaked(ship)
+            ? ship.actionBar.filter((a) => a !== 'cloak')
+            : ship.actionBar;
   // a reposition is only offerable with a legal placement; a purple action needs Force
   const actions = bar.filter((a) => {
     if (a === 'boost' || a === 'barrel-roll') return repositionCandidates(state, ship, a).length > 0;

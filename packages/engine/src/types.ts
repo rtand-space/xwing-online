@@ -246,6 +246,8 @@ export interface Ship {
   hasSystemActed?: boolean;
   /** Whether the ship has resolved its device-drop offer this window (reset each phase). */
   hasDropped?: boolean;
+  /** Set when the ship bumped on its last maneuver — it may then perform only a red focus. */
+  bumped?: boolean;
   /** Faceup critical-damage cards the ship is carrying. */
   damageCards?: DamageCard[];
 }
