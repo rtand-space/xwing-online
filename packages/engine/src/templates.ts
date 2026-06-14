@@ -21,63 +21,62 @@ interface Local {
   reverse?: boolean;
 }
 
-function arc(radius: number, phiDeg: number, dir: 1 | -1): Local {
-  const phi = phiDeg * DEG;
+/** A template (or its leading fraction `t`) as a local displacement + heading change. */
+function arcAt(radius: number, phiDeg: number, dir: 1 | -1, t: number): Local {
+  const phi = phiDeg * t * DEG;
   return {
     dx: dir * radius * (1 - Math.cos(phi)),
     dy: radius * Math.sin(phi),
-    drive: dir * phiDeg,
+    drive: dir * phiDeg * t,
     post: 0,
   };
 }
 
-function template(m: Maneuver): Local {
+/** The maneuver's leading fraction `t` (t=1 is the full template). Arcs scale along
+ *  their curve, so collision back-off follows the real path, not a chord. A trailing
+ *  in-place flip (K-turn / Segnor's) only happens once the template is fully traced. */
+function localAt(m: Maneuver, t: number): Local {
+  const flip = (deg: number): number => (t >= 1 ? deg : 0);
   switch (m.bearing) {
     case 'stationary':
       return { dx: 0, dy: 0, drive: 0, post: 0 };
     case 'straight':
-      return { dx: 0, dy: STRAIGHT_MM[m.speed], drive: 0, post: 0 };
+      return { dx: 0, dy: STRAIGHT_MM[m.speed] * t, drive: 0, post: 0 };
     case 'koiogran':
-      return { dx: 0, dy: STRAIGHT_MM[m.speed], drive: 0, post: 180 };
+      return { dx: 0, dy: STRAIGHT_MM[m.speed] * t, drive: 0, post: flip(180) };
     case 'bank-left':
-      return arc(BANK_RADIUS[m.speed], 45, -1);
+      return arcAt(BANK_RADIUS[m.speed], 45, -1, t);
     case 'bank-right':
-      return arc(BANK_RADIUS[m.speed], 45, 1);
+      return arcAt(BANK_RADIUS[m.speed], 45, 1, t);
     case 'turn-left':
-      return arc(TURN_RADIUS[m.speed], 90, -1);
+      return arcAt(TURN_RADIUS[m.speed], 90, -1, t);
     case 'turn-right':
-      return arc(TURN_RADIUS[m.speed], 90, 1);
+      return arcAt(TURN_RADIUS[m.speed], 90, 1, t);
     // Segnor's Loop: bank, then flip 180° in place.
     case 'segnors-loop-left':
-      return { ...arc(BANK_RADIUS[m.speed], 45, -1), post: 180 };
+      return { ...arcAt(BANK_RADIUS[m.speed], 45, -1, t), post: flip(180) };
     case 'segnors-loop-right':
-      return { ...arc(BANK_RADIUS[m.speed], 45, 1), post: 180 };
+      return { ...arcAt(BANK_RADIUS[m.speed], 45, 1, t), post: flip(180) };
     // Tallon Roll: approximated as a hard turn pending full R4 maneuver geometry.
     case 'tallon-roll-left':
-      return arc(TURN_RADIUS[m.speed], 90, -1);
+      return arcAt(TURN_RADIUS[m.speed], 90, -1, t);
     case 'tallon-roll-right':
-      return arc(TURN_RADIUS[m.speed], 90, 1);
+      return arcAt(TURN_RADIUS[m.speed], 90, 1, t);
     // Reverse: slide backward; banks add the bank's turn. Approximate pending R4.
     case 'reverse-straight':
-      return { dx: 0, dy: STRAIGHT_MM[m.speed], drive: 0, post: 0, reverse: true };
+      return { dx: 0, dy: STRAIGHT_MM[m.speed] * t, drive: 0, post: 0, reverse: true };
     case 'reverse-bank-left':
-      return { ...arc(BANK_RADIUS[m.speed], 45, -1), reverse: true };
+      return { ...arcAt(BANK_RADIUS[m.speed], 45, -1, t), reverse: true };
     case 'reverse-bank-right':
-      return { ...arc(BANK_RADIUS[m.speed], 45, 1), reverse: true };
+      return { ...arcAt(BANK_RADIUS[m.speed], 45, 1, t), reverse: true };
   }
 }
 
 const norm360 = (deg: number): number => ((deg % 360) + 360) % 360;
 
-/**
- * Rigid placement: the template seats against the front of the base and the ship
- * is replaced with its rear at the template's end, so the centre advances by the
- * template plus half a base on entry and exit (one full base for a straight move).
- */
-export function applyManeuver(pos: Position, m: Maneuver, base: BaseSize): Position {
-  const l = template(m);
-  // a stationary (0-speed) maneuver doesn't move the ship at all
-  if (l.dx === 0 && l.dy === 0 && l.drive === 0 && l.post === 0) return { ...pos };
+/** Rigid placement of a local template displacement: the template seats against the
+ *  front of the base and the ship's rear ends at the template's end. */
+function place(pos: Position, l: Local, base: BaseSize): Position {
   const half = BASE_MM[base] / 2;
   const a0 = pos.angle * DEG;
   const fwd0 = { x: Math.sin(a0), y: Math.cos(a0) };
@@ -92,14 +91,21 @@ export function applyManeuver(pos: Position, m: Maneuver, base: BaseSize): Posit
   };
 }
 
-const shortestTurn = (from: number, to: number): number => ((to - from + 540) % 360) - 180;
+/**
+ * Full placement: the centre advances by the template plus half a base on entry and
+ * exit (one full base for a straight move). A stationary 0-speed maneuver doesn't move.
+ */
+export function applyManeuver(pos: Position, m: Maneuver, base: BaseSize): Position {
+  const l = localAt(m, 1);
+  if (l.dx === 0 && l.dy === 0 && l.drive === 0 && l.post === 0) return { ...pos };
+  return place(pos, l, base);
+}
 
-/** Intermediate placement (lerp from start to the final placement) — for collision back-off. */
+/** Placement at the leading fraction `t` of the maneuver — for collision back-off
+ *  (the "railroad" method: slide the ship back along the template's actual path). */
 export function pathAt(pos: Position, m: Maneuver, t: number, base: BaseSize): Position {
-  const end = applyManeuver(pos, m, base);
-  return {
-    x: pos.x + (end.x - pos.x) * t,
-    y: pos.y + (end.y - pos.y) * t,
-    angle: norm360(pos.angle + shortestTurn(pos.angle, end.angle) * t),
-  };
+  if (t <= 0) return { ...pos };
+  const l = localAt(m, t);
+  if (l.dx === 0 && l.dy === 0 && l.drive === 0 && l.post === 0) return { ...pos };
+  return place(pos, l, base);
 }

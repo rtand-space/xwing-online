@@ -61,4 +61,15 @@ describe('maneuver templates (rear-of-base seats at the template end)', () => {
     const start: Position = { x: 30, y: -20, angle: 90 };
     expectPos(applyManeuver(start, m(0, 'stationary'), 'large'), start);
   });
+
+  it('pathAt follows the template arc, not the straight chord (railroad back-off)', () => {
+    const turn = m(1, 'turn-right');
+    const full = applyManeuver(origin, turn, 'small');
+    const mid = pathAt(origin, turn, 0.5, 'small');
+    // the heading rotates proportionally either way (half of 90°)
+    expect(mid.angle).toBeCloseTo(full.angle / 2);
+    // but the position bulges along the arc, well past the chord midpoint
+    const chordY = (origin.y + full.y) / 2;
+    expect(mid.y).toBeGreaterThan(chordY + 20);
+  });
 });

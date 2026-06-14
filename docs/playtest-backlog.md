@@ -22,9 +22,10 @@ work.
 - ☐ **Range calculation suspect with medium/large bases / new arcs.** Needs a focused audit
   of `baseDistance`/`rangeBand`/`attackValue` with mixed base sizes and the secondary-weapon
   arcs. Reproduce first. (`arcs.ts`, `geometry.ts`)
-- ☐ **Multi-ship collision is "weird."** `resolveMovement` backs off by linear lerp; should
-  use the "railroad" method (advance along the template until first contact). Affects 2+ ship
-  pile-ups. (`movement.ts`)
+- ✅ **Multi-ship collision (railroad method).** `pathAt` was a straight-chord lerp; now it
+  traces the template's actual arc (`localAt(m, t)` scales the arc/straight by `t`, a trailing
+  K-turn/Segnor's flip only at t=1). Collision back-off slides the ship back along its real
+  curved path, so banked/turned pile-ups resolve correctly. (`templates.ts`)
 - ✅ **Ship leaving the board is destroyed.** `BOARD_HALF = 498` + `offBoard(pos, base)` in
   `geometry.ts`; `ExecuteManeuver` destroys a ship whose base leaves the play area.
   *(Repositions/SLAM pushing off-board still TODO — they go through the reposition FSM.)*
