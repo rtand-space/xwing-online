@@ -133,7 +133,9 @@ export function baseDistance(a: Ship, b: Ship): number {
 
 /** Range band 1/2/3, or null if beyond range 3. */
 export function rangeBand(a: Ship, b: Ship): number | null {
-  const band = Math.floor(baseDistance(a, b) / RANGE_BAND_MM) + 1;
+  const d = baseDistance(a, b);
+  if (d < 1) return 0; // bases touching/overlapping = range 0 (a bump)
+  const band = Math.floor(d / RANGE_BAND_MM) + 1;
   return band <= 3 ? band : null;
 }
 

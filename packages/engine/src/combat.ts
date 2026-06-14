@@ -93,6 +93,7 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onModifyAttack(ctx) {
+    if (ctx.range === 0) return; // at range 0 (a bump) neither ship may modify its dice
     // rerolls resolve before changes
     const lock = ctx.attacker.tokens.find((t) => t.kind === 'lock' && t.targetId === ctx.target.id);
     const blanks = countFace(ctx.attack, 'blank');
@@ -157,6 +158,7 @@ const BUILTINS: Record<AttackWindow, AttackHook> = {
   },
 
   onModifyDefence(ctx) {
+    if (ctx.range === 0) return; // at range 0 (a bump) neither ship may modify its dice
     if (hasToken(ctx.target, 'focus') && countFace(ctx.defence, 'focus') > 0) {
       ctx.defence = ctx.defence.map((f) => (f === 'focus' ? 'evade' : f));
       ctx.events.push({ type: 'TokenSpent', shipId: ctx.target.id, kind: 'focus' });
@@ -255,6 +257,8 @@ export function resolveAttack(
   };
   const registered = gatherAttackHooks(state, attacker, target);
   for (const w of ATTACK_WINDOWS) {
+    // at range 0 (a bump) no dice may be modified — skip the modify windows entirely
+    if (ctx.range === 0 && (w === 'onModifyAttack' || w === 'onModifyDefence')) continue;
     BUILTINS[w](ctx);
     for (const h of registered[w] ?? []) h(ctx);
     hooks[w]?.(ctx);
@@ -342,6 +346,7 @@ function stepOwner(state: GameState, c: CombatState): { ship: Ship; window: Atta
 /** Optional token spends available to whoever owns the current modify step. */
 export function combatSpends(state: GameState, c: CombatState): SpendKind[] {
   if (c.step === 'after-defence') return []; // attacker spent its tokens in the attack step
+  if (c.range === 0) return []; // range 0 (a bump): no dice may be modified
   const ownerId = c.step === 'defence' ? c.targetId : c.attackerId;
   if (lockedDown(state, c, ownerId)) return []; // dice can't be modified
   const ship = state.ships.find((s) => s.id === (c.step === 'attack' ? c.attackerId : c.targetId))!;
@@ -367,7 +372,7 @@ export function combatAbilities(
   c: CombatState,
 ): { xws: string; label: string }[] {
   const { ship: owner, window } = stepOwner(state, c);
-  if (lockedDown(state, c, owner.id)) return []; // dice can't be modified
+  if (c.range === 0 || lockedDown(state, c, owner.id)) return []; // dice can't be modified
   const ctx = makeCtx(state, c);
   const out: { xws: string; label: string }[] = [];
   for (const xws of shipAbilitySources(owner)) {
@@ -433,8 +438,8 @@ export function applyAttackAbilities(
   state: GameState,
   c: CombatState,
 ): { attack: AttackFace[]; events: GameEvent[] } {
-  // a locked-down attacker can't modify its attack dice
-  if (lockedDown(state, c, c.attackerId)) return { attack: [...c.attack], events: [] };
+  // a locked-down attacker (or one at range 0) can't modify its attack dice
+  if (c.range === 0 || lockedDown(state, c, c.attackerId)) return { attack: [...c.attack], events: [] };
   const ctx = makeCtx(state, c);
   for (const h of gatherAttackHooks(state, ctx.attacker, ctx.target).onModifyAttack ?? []) h(ctx);
   return { attack: ctx.attack, events: ctx.events };
@@ -456,8 +461,9 @@ export function rollDefenceStage(
 export function finishCombat(state: GameState, c: CombatState): GameEvent[] {
   const ctx = makeCtx(state, c);
   const reg = gatherAttackHooks(state, ctx.attacker, ctx.target);
-  // a locked-down defender's dice can't be modified (by either side)
-  if (!lockedDown(state, c, c.targetId)) for (const h of reg.onModifyDefence ?? []) h(ctx);
+  // a locked-down defender's dice can't be modified (by either side), nor at range 0
+  if (c.range !== 0 && !lockedDown(state, c, c.targetId))
+    for (const h of reg.onModifyDefence ?? []) h(ctx);
   for (const w of ['onCompare', 'onDealDamage', 'onAfterAttack'] as const) {
     BUILTINS[w](ctx);
     for (const h of reg[w] ?? []) h(ctx);
