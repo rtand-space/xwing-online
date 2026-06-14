@@ -30,9 +30,9 @@ work.
   `geometry.ts`; `ExecuteManeuver` destroys a ship whose base leaves the play area.
   *(Repositions/SLAM pushing off-board still TODO — they go through the reposition FSM.)*
 - ✅ **Range-0 (bump) attacks.** `rangeBand` now returns 0 for touching/overlapping bases.
-  At range 0 there's no range-1 bonus die and **neither ship may modify its dice** (spends,
-  rerolls, and onModify abilities are suppressed in both the atomic and interactive paths).
-  Secondary weapons (min range ≥ 1) aren't offered at range 0; the primary still is.
+  At range 0 the **attacker** gets no range-1 bonus die and may not modify its dice; the
+  **defender modifies normally** (suppression is attacker-side only, in both the atomic and
+  interactive paths). Secondary weapons (min range ≥ 1) aren't offered at range 0; primary is.
 - ✅ **Bumped ship → only a red focus action.** A bump no longer forfeits the action: a
   `Ship.bumped` flag (set on `ShipMoved`, reset at round end) makes `actionDecision` offer
   only `focus`, and `PerformAction` charges it red (gains stress).

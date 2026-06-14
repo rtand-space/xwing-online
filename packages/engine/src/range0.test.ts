@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { combatSpends } from './combat';
 import { rangeBand, resolveAttack } from './index';
-import type { GameState, Ship } from './types';
+import type { CombatState, GameState, Ship } from './types';
 
 const mk = (id: string, ownerId: string, x: number, y: number, extra: Partial<Ship> = {}): Ship => ({
   id,
@@ -63,13 +64,22 @@ describe('range 0 (a bump)', () => {
     expect(attackDice(r1)).toBe(4); // range 1 → +1 bonus die
   });
 
-  it('neither ship may modify its dice at range 0', () => {
-    const ships = [
+  it('the attacker may not modify at range 0, but the defender still can', () => {
+    const state = game([
       mk('a', 'p', 0, 0, { tokens: [{ kind: 'focus' }] }),
       mk('b', 'q', 0, 40, { agility: 3, tokens: [{ kind: 'focus' }] }),
-    ];
-    const ev = resolveAttack(game(ships), 'a', 'b');
-    // no focus is spent by either side
-    expect(ev.some((e) => e.type === 'TokenSpent' && e.kind === 'focus')).toBe(false);
+    ]);
+    const base: Omit<CombatState, 'step' | 'attack' | 'defence'> = {
+      attackerId: 'a',
+      targetId: 'b',
+      range: 0,
+      obstructed: false,
+    };
+    // attacker's modify step: suppressed at range 0
+    expect(combatSpends(state, { ...base, step: 'attack', attack: ['focus'], defence: [] })).toEqual([]);
+    // defender's modify step: still allowed
+    expect(
+      combatSpends(state, { ...base, step: 'defence', attack: [], defence: ['focus'] }),
+    ).toContain('focus');
   });
 });
