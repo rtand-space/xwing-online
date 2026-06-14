@@ -64,8 +64,13 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
   if (n > MAX_SHIPS) errors.push(`At most ${MAX_SHIPS} ships (have ${n}).`);
 
   const factions = new Set<string>();
-  const counts: Record<string, number> = {};
-  const upgradeCounts: Record<string, number> = {};
+  // Uniqueness is by card NAME across pilots AND upgrades — so the same unique pilot,
+  // two of its reprint variants, or a pilot + same-named crew all count together.
+  const limited: Record<string, { count: number; limit: number }> = {};
+  const bumpLimited = (name: string, limit: number): void => {
+    if (limit <= 0) return; // unlimited
+    (limited[name] ??= { count: 0, limit }).count++;
+  };
   let points = 0;
   for (const p of squad.pilots) {
     let pilot;
@@ -77,20 +82,14 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
       continue;
     }
     points += pilot.cost;
-    counts[p.id] = (counts[p.id] ?? 0) + 1;
-    if (pilot.limited > 0 && counts[p.id]! > pilot.limited) {
-      errors.push(`${pilot.name}: limited to ${pilot.limited} per squad.`);
-    }
+    bumpLimited(pilot.name, pilot.limited);
 
     let used = 0;
     for (const x of Object.values(p.upgrades ?? {}).flat()) {
       try {
         const u = getUpgrade(x);
         used += u.cost ?? 0;
-        upgradeCounts[x] = (upgradeCounts[x] ?? 0) + 1;
-        if (u.limited > 0 && upgradeCounts[x]! > u.limited) {
-          errors.push(`${u.name}: limited to ${u.limited} per squad.`);
-        }
+        bumpLimited(u.name, u.limited);
       } catch (e) {
         errors.push((e as Error).message);
       }
@@ -100,6 +99,9 @@ export function validateSquad(squad: XwsSquad): SquadValidation {
     }
   }
 
+  for (const [name, { count, limit }] of Object.entries(limited)) {
+    if (count > limit) errors.push(`${name}: limited to ${limit} per squad.`);
+  }
   if (factions.size > 1) errors.push('All ships must be from one faction.');
   if (points > SQUAD_POINT_CAP) errors.push(`Over the ${SQUAD_POINT_CAP}-point cap (${points}).`);
 

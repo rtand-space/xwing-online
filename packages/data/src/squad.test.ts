@@ -45,6 +45,18 @@ describe('squad validation', () => {
     expect(r.errors.join(' ')).not.toMatch(/one faction/i);
   });
 
+  it('rejects two reprint variants of the same unique pilot (uniqueness is by name)', () => {
+    const r = validateSquad(
+      squad('rebelalliance', [
+        { id: 'lukeskywalker', ship: 't65xwing' },
+        { id: 'lukeskywalker-battleofyavin', ship: 't65xwing' },
+        red,
+      ]),
+    );
+    expect(r.valid).toBe(false);
+    expect(r.errors.join(' ')).toMatch(/Luke Skywalker: limited/i);
+  });
+
   it('rejects mixed factions', () => {
     const r = validateSquad(squad('rebelalliance', [blue, academy, academy]));
     expect(r.valid).toBe(false);

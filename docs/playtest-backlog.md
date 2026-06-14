@@ -48,10 +48,12 @@ work.
 - ☐ Multi-lock cards (limit > 1) — re-enable stacking only for cards that grant it (the
   single-lock fix above is the common case).
 
-**Squad legality** (some may partly exist via `validateSquad`'s `limited` check — confirm)
-- ☐ Unique-pilot overstep tracker (no two of the same unique pilot).
-- ☐ Restricted-list overshoot detection (per-list card caps).
-- ☐ Illegal squads: savable, but blocked from **online** load (sandbox stays permissive).
+**Squad legality**
+- ✅ Unique-pilot / restricted-list caps. `validateSquad` now counts limited cards by **name**
+  across pilots **and** upgrades — so the same unique pilot, two of its reprint variants
+  (Luke / Luke-BoY), or a pilot + same-named crew all count together against the limit.
+- ✅ Illegal squads are **savable as drafts** (the builder Save is no longer gated on validity),
+  but online Host/Join is blocked unless the chosen squad is legal. Sandbox stays permissive.
 - ☐ **Configuration slots leak across ships** — several config upgrades have empty
   `restrictions` in the data, so `upgradeOptions` shows them for any ship with a config slot.
   Needs a config→ship mapping (data-shaped, not a one-liner). (`squad.ts`, generator)

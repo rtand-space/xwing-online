@@ -458,7 +458,7 @@ export function SquadBuilder(): ReactElement {
           </button>
           <button
             className="btn primary"
-            disabled={!name.trim() || !v.valid}
+            disabled={!name.trim()}
             onClick={async () => {
               await save(
                 name.trim(),
@@ -469,7 +469,7 @@ export function SquadBuilder(): ReactElement {
               setEditing(null);
             }}
           >
-            Save squad
+            {v.valid ? 'Save squad' : 'Save draft'}
           </button>
         </div>
       </div>
@@ -532,6 +532,9 @@ export function QuickPlay(): ReactElement {
   const color = useBoardPrefs((s) => s.color);
   const joining = mode === 'join';
   const byId = (id: string) => squads.find((s) => s.id === id);
+  const selected = byId(online);
+  // online play requires a legal squad; sandbox stays permissive
+  const selectedValid = !selected || validateSquad(selected.xws).valid;
 
   useEffect(() => void useSquads.getState().refresh(), []);
 
@@ -563,11 +566,14 @@ export function QuickPlay(): ReactElement {
           onChange={(e) => setCode(e.target.value)}
         />
       )}
+      {selected && !selectedValid && (
+        <div className="reject">That squad isn’t tournament-legal — fix it before playing online.</div>
+      )}
       <button
         className="btn primary"
-        disabled={!byId(online) || (joining && !code.trim())}
+        disabled={!selected || !selectedValid || (joining && !code.trim())}
         onClick={() => {
-          const sq = byId(online)!;
+          const sq = selected!;
           if (joining) {
             void join(code.trim(), sq.xws, color);
             return;
