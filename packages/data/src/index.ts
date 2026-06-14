@@ -32,6 +32,7 @@ export {
   pilotChoices,
   pilotVariant,
   randomObstacles,
+  SEAT_COLORS,
   sideShipInits,
   XWS_FACTION,
 } from './presets';

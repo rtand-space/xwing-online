@@ -847,6 +847,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .swatch {
   width: 26px;
@@ -855,12 +856,6 @@ body {
   border: 2px solid transparent;
   cursor: pointer;
   padding: 0;
-}
-.swatch.teal {
-  background: #3fe0c5;
-}
-.swatch.amber {
-  background: #f7c457;
 }
 .swatch.on {
   border-color: var(--ink);

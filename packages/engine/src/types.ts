@@ -186,6 +186,8 @@ export interface AbilityOffer {
 export interface Player {
   id: PlayerId;
   name: string;
+  /** Display colour (hex) chosen at lobby time; engine ignores it. */
+  color?: string;
 }
 
 export interface Ship {

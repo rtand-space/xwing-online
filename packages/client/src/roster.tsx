@@ -1,8 +1,8 @@
 import { getShip } from '@xwing/data';
 import type { PlayerView, Ship } from '@xwing/engine';
 import type { ReactElement } from 'react';
+import { playerColor } from './colors';
 
-const SIDE = ['#3fe0c5', '#f7c457'];
 const TOKEN: Record<string, string> = {
   focus: '#4ade80',
   evade: '#3fe0c5',
@@ -108,18 +108,21 @@ export function Roster({ view }: { view: PlayerView }): ReactElement {
   const nameOf = (id: string): string => view.ships.find((s) => s.id === id)?.pilot ?? id;
   return (
     <div className="panel rosterPanel">
-      {view.players.map((p, idx) => (
+      {view.players.map((p) => {
+        const color = playerColor(view, p.id);
+        return (
         <div key={p.id} className="rosterSide">
-          <div className="rosterSideHead" style={{ color: SIDE[idx % 2] }}>
+          <div className="rosterSideHead" style={{ color }}>
             {p.name}
           </div>
           {view.ships
             .filter((s) => s.ownerId === p.id)
             .map((s) => (
-              <ShipStatus key={s.id} ship={s} color={SIDE[idx % 2]!} nameOf={nameOf} />
+              <ShipStatus key={s.id} ship={s} color={color} nameOf={nameOf} />
             ))}
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

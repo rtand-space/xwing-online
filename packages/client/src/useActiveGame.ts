@@ -1,4 +1,5 @@
 import type { Command, GameEvent, PlayerView } from '@xwing/engine';
+import { playerColor } from './colors';
 import { useOnline } from './online-store';
 import { currentPlayer, useGame, viewFor } from './store';
 
@@ -23,13 +24,11 @@ export interface ActiveGame {
   leave: () => void;
 }
 
-const SIDE = ['#3fe0c5', '#f7c457'];
 const nameOf = (view: PlayerView | null, id: string | null): string =>
   view?.players.find((p) => p.id === id)?.name ?? id ?? '';
 const colorOf = (view: PlayerView | null, id: string | null): string | null => {
-  if (!view || id == null) return null;
-  const idx = view.players.findIndex((p) => p.id === id);
-  return idx < 0 ? null : (SIDE[idx % 2] ?? null);
+  if (!view || id == null || view.players.findIndex((p) => p.id === id) < 0) return null;
+  return playerColor(view, id);
 };
 
 export function useActiveGame(): ActiveGame {

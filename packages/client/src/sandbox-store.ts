@@ -1,6 +1,7 @@
 import {
   pilotFaction,
   randomObstacles,
+  SEAT_COLORS,
   sideShipInits,
   toShipInit,
   type XwsSquad,
@@ -67,7 +68,7 @@ function makeShip(shipXws: string, pilotXws: string, side: string, id: string, x
       shipXws,
       pilotXws,
       side,
-      { x, y: side === 'rebel' ? -150 : 150, angle: side === 'rebel' ? 0 : 180 },
+      { x, y: side === 'player1' ? -150 : 150, angle: side === 'player1' ? 0 : 180 },
       id,
     ),
   );
@@ -103,9 +104,9 @@ const sideName = (ships: Ship[], side: string): string => {
   const s = ships.find((sh) => sh.ownerId === side);
   return s?.pilotXws
     ? pilotFaction(s.shipType, s.pilotXws)
-    : side === 'rebel'
-      ? 'Rebel'
-      : 'Imperial';
+    : side === 'player1'
+      ? 'Player 1'
+      : 'Player 2';
 };
 
 export const useSandbox = create<SandboxState>((set, get) => ({
@@ -133,8 +134,8 @@ export const useSandbox = create<SandboxState>((set, get) => ({
       id: 'sandbox',
       seed: String(Date.now()),
       players: [
-        { id: 'rebel', name: sideName(ships, 'rebel') },
-        { id: 'imperial', name: sideName(ships, 'imperial') },
+        { id: 'player1', name: sideName(ships, 'player1'), color: SEAT_COLORS.player1 },
+        { id: 'player2', name: sideName(ships, 'player2'), color: SEAT_COLORS.player2 },
       ],
       ships: ships.map(shipToInit),
       obstacles,
@@ -157,7 +158,7 @@ export const useSandbox = create<SandboxState>((set, get) => ({
     set({ ships: [...get().ships, makeShip(shipXws, pilotXws, side, id, x)], selectedId: id });
   },
   addSquad: (squad, side) => {
-    const added = sideShipInits(squad, side as 'rebel' | 'imperial').map((init) =>
+    const added = sideShipInits(squad, side as 'player1' | 'player2').map((init) =>
       initToShip({ ...init, id: `sb-${++counter}` }),
     );
     set({ ships: [...get().ships, ...added], selectedId: added.at(-1)?.id ?? get().selectedId });

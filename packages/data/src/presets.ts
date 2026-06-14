@@ -66,7 +66,8 @@ export const placementOk = (obstacles: Obstacle[]): boolean =>
   obstacles.length > 0 && Object.values(obstacleValidity(obstacles)).every(Boolean);
 
 /** Board seats (player ids). Faction is chosen separately and baked into each ShipInit. */
-export type Side = 'rebel' | 'imperial';
+/** A seat (board position), independent of faction: player1 = bottom, player2 = top. */
+export type Side = 'player1' | 'player2';
 
 export type FactionId =
   | 'rebel'
@@ -222,33 +223,37 @@ export const PRESETS: Preset[] = [
 ];
 
 /** Place a side's ships in a row, facing the centre. */
-function layout(count: number, side: 'rebel' | 'imperial'): Position[] {
+/** player1 deploys at the bottom (facing up); player2 at the top (facing down). */
+function layout(count: number, side: Side): Position[] {
   const spacing = 130;
   const offset = (count - 1) / 2;
-  const y = side === 'rebel' ? -150 : 150;
-  const angle = side === 'rebel' ? 0 : 180;
+  const y = side === 'player1' ? -150 : 150;
+  const angle = side === 'player1' ? 0 : 180;
   return Array.from({ length: count }, (_, i) => ({ x: (i - offset) * spacing, y, angle }));
 }
 
-/** Build a ready-to-play engine config from two squads. */
+/** Default seat colours (hot-seat / preset); online lobbies override per player. */
+export const SEAT_COLORS: Record<Side, string> = { player1: '#3fe0c5', player2: '#f7c457' };
+
+/** Build a ready-to-play engine config from two squads (p1 = bottom, p2 = top). */
 export function buildConfig(
-  rebel: XwsSquad,
-  imperial: XwsSquad,
+  p1: XwsSquad,
+  p2: XwsSquad,
   seed: string,
   id = 'game',
   obstacles: Obstacle[] = randomObstacles(seed),
 ): GameConfig {
   const players: Player[] = [
-    { id: 'rebel', name: factionLabel(rebel.faction) },
-    { id: 'imperial', name: factionLabel(imperial.faction) },
+    { id: 'player1', name: factionLabel(p1.faction), color: SEAT_COLORS.player1 },
+    { id: 'player2', name: factionLabel(p2.faction), color: SEAT_COLORS.player2 },
   ];
   return {
     id,
     seed,
     players,
     ships: [
-      ...squadToShipInits(rebel, 'rebel', layout(rebel.pilots.length, 'rebel')),
-      ...squadToShipInits(imperial, 'imperial', layout(imperial.pilots.length, 'imperial')),
+      ...squadToShipInits(p1, 'player1', layout(p1.pilots.length, 'player1')),
+      ...squadToShipInits(p2, 'player2', layout(p2.pilots.length, 'player2')),
     ],
     obstacles,
   };

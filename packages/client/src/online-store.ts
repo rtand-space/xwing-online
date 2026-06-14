@@ -1,6 +1,7 @@
 import { sideShipInits, type XwsSquad } from '@xwing/data';
 import type { Command, GameEvent, Obstacle, PlayerView } from '@xwing/engine';
 import { create } from 'zustand';
+import { PALETTE } from './colors';
 import { getGuestId } from './identity';
 import { subscribePush } from './push';
 import { type Connection, connect, getSeat, hostGame, joinGame } from './transport';
@@ -36,10 +37,10 @@ interface OnlineStore {
   isHost: boolean;
   rejection: string | null;
   error: string | null;
-  /** Host brings their squad and opens the lobby on the chosen side (defaults to rebel). */
-  host: (squad: XwsSquad, obstacles: Obstacle[], side?: string) => Promise<void>;
-  /** Joiner brings their squad and starts the game on whichever side the host left open. */
-  join: (code: string, squad: XwsSquad) => Promise<void>;
+  /** Host (player1, bottom) brings their squad + colour and opens the lobby. */
+  host: (squad: XwsSquad, obstacles: Obstacle[], color: string) => Promise<void>;
+  /** Joiner (player2, top) brings their squad + colour and starts the game. */
+  join: (code: string, squad: XwsSquad, color: string) => Promise<void>;
   resume: () => Promise<void>;
   send: (command: Command) => void;
   leave: () => void;
@@ -70,14 +71,14 @@ export const useOnline = create<OnlineStore>((set, get) => {
     rejection: null,
     error: null,
 
-    host: async (squad, obstacles, side = 'rebel') => {
+    host: async (squad, obstacles, color) => {
       const guestId = getGuestId();
       const code = randomCode();
       set({
         status: 'connecting',
         code,
         isHost: true,
-        seat: side,
+        seat: 'player1',
         view: null,
         log: [],
         error: null,
@@ -85,18 +86,19 @@ export const useOnline = create<OnlineStore>((set, get) => {
       });
       await hostGame(
         code,
-        side,
-        sideShipInits(squad, side as 'rebel' | 'imperial'),
+        'player1',
+        sideShipInits(squad, 'player1'),
         String(Date.now()),
         guestId,
         obstacles,
+        color,
       );
       remember({ code, isHost: true });
       conn = open(code, guestId);
       void subscribePush(code, guestId);
     },
 
-    join: async (code, squad) => {
+    join: async (code, squad, color) => {
       const guestId = getGuestId();
       set({
         status: 'connecting',
@@ -107,15 +109,15 @@ export const useOnline = create<OnlineStore>((set, get) => {
         error: null,
         rejection: null,
       });
-      // take whichever side the host left open, so the squad lays out on the right end
-      const { openSide } = await getSeat(code, guestId);
-      const side = (openSide ?? 'imperial') as 'rebel' | 'imperial';
-      const res = await joinGame(code, sideShipInits(squad, side), guestId);
+      // joiner takes player2 (top); avoid sharing the host's colour
+      const { hostColor } = await getSeat(code, guestId);
+      const mine = color !== hostColor ? color : (PALETTE.find((c) => c.hex !== hostColor)?.hex ?? color);
+      const res = await joinGame(code, sideShipInits(squad, 'player2'), guestId, mine);
       if (res.error) {
         set({ status: 'error', error: res.error });
         return;
       }
-      set({ seat: res.playerId ?? side });
+      set({ seat: res.playerId ?? 'player2' });
       remember({ code, isHost: false });
       conn = open(code, guestId);
       void subscribePush(code, guestId);

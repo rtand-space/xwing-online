@@ -21,7 +21,7 @@ export function Sandbox(): ReactElement {
   const squads = useSquads((s) => s.squads);
   const game = useGame((s) => s.game);
 
-  const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
+  const [side, setSide] = useState<'player1' | 'player2'>('player1');
   const [faction, setFaction] = useState<FactionId>('rebel');
   const [shipXws, setShipXws] = useState('');
   const [squadId, setSquadId] = useState('');
@@ -64,11 +64,11 @@ export function Sandbox(): ReactElement {
       <div className="section">Sandbox — free play</div>
 
       <div className="segmented">
-        <button className={side === 'rebel' ? 'active' : ''} onClick={() => setSide('rebel')}>
-          Add to red
+        <button className={side === 'player1' ? 'active' : ''} onClick={() => setSide('player1')}>
+          Add to P1
         </button>
-        <button className={side === 'imperial' ? 'active' : ''} onClick={() => setSide('imperial')}>
-          Add to blue
+        <button className={side === 'player2' ? 'active' : ''} onClick={() => setSide('player2')}>
+          Add to P2
         </button>
       </div>
 

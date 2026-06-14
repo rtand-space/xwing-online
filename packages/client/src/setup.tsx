@@ -18,6 +18,7 @@ import {
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
 import { type Pick, newPick, useBuilder } from './builder-store';
+import { PALETTE } from './colors';
 import { useOnline } from './online-store';
 import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
@@ -528,7 +529,7 @@ export function QuickPlay(): ReactElement {
   const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
   const [code, setCode] = useState(initialCode);
   const [online, setOnline] = useState('');
-  const [side, setSide] = useState<'rebel' | 'imperial'>('rebel');
+  const [color, setColor] = useState(PALETTE[0]!.hex);
   const joining = mode === 'join';
   const byId = (id: string) => squads.find((s) => s.id === id);
 
@@ -554,41 +555,38 @@ export function QuickPlay(): ReactElement {
         onChange={setOnline}
         placeholder={squads.length ? 'Choose your squad' : 'No squads yet'}
       />
-      {joining ? (
+      {joining && (
         <input
           className="joinInput"
           placeholder="enter game code"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-      ) : (
-        <div className="colorPick">
-          <span className="muted">Your colour</span>
-          <button
-            className={`swatch teal${side === 'rebel' ? ' on' : ''}`}
-            aria-label="Teal"
-            aria-pressed={side === 'rebel'}
-            onClick={() => setSide('rebel')}
-          />
-          <button
-            className={`swatch amber${side === 'imperial' ? ' on' : ''}`}
-            aria-label="Amber"
-            aria-pressed={side === 'imperial'}
-            onClick={() => setSide('imperial')}
-          />
-        </div>
       )}
+      <div className="colorPick">
+        <span className="muted">Your colour</span>
+        {PALETTE.map((c) => (
+          <button
+            key={c.id}
+            className={`swatch${color === c.hex ? ' on' : ''}`}
+            style={{ background: c.hex }}
+            aria-label={c.id}
+            aria-pressed={color === c.hex}
+            onClick={() => setColor(c.hex)}
+          />
+        ))}
+      </div>
       <button
         className="btn primary"
         disabled={!byId(online) || (joining && !code.trim())}
         onClick={() => {
           const sq = byId(online)!;
           if (joining) {
-            void join(code.trim(), sq.xws);
+            void join(code.trim(), sq.xws, color);
             return;
           }
           const s = seed();
-          useSetup.getState().begin(s, (obs) => void host(sq.xws, obs, side));
+          useSetup.getState().begin(s, (obs) => void host(sq.xws, obs, color));
         }}
       >
         {joining ? 'Join game' : 'Host game'}

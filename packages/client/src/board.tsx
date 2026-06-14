@@ -1,4 +1,5 @@
 import { applyManeuver, BASE_MM, type PlayerView, type Position, type Ship } from '@xwing/engine';
+import { playerColor } from './colors';
 import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
@@ -148,28 +149,26 @@ export interface BoardProps {
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
 export type BoardRenderer = (props: BoardProps) => ReactElement;
 
-const COLORS = ['#3fe0c5', '#f7c457'];
-
 const sideIndex = (view: PlayerView, ship: Ship): number =>
   Math.max(
     0,
     view.players.findIndex((p) => p.id === ship.ownerId),
   );
 
-const colorFor = (view: PlayerView, ship: Ship): string => COLORS[sideIndex(view, ship) % 2]!;
+const colorFor = (view: PlayerView, ship: Ship): string => playerColor(view, ship.ownerId);
 
-/** Per-faction base gradients and soft glow filters — a temporary "miniature" look. */
-function ShipDefs(): ReactElement {
+/** Per-player base gradients and soft glow filters — a temporary "miniature" look. */
+function ShipDefs({ colors }: { colors: string[] }): ReactElement {
   return (
     <defs>
-      {COLORS.map((c, i) => (
+      {colors.map((c, i) => (
         <radialGradient key={`grad${i}`} id={`base${i}`} cx="50%" cy="38%" r="68%">
           <stop offset="0%" stopColor={c} stopOpacity="0.55" />
           <stop offset="70%" stopColor={c} stopOpacity="0.16" />
           <stop offset="100%" stopColor={c} stopOpacity="0.05" />
         </radialGradient>
       ))}
-      {COLORS.map((c, i) => (
+      {colors.map((c, i) => (
         <filter key={`flt${i}`} id={`glow${i}`} x="-60%" y="-60%" width="220%" height="220%">
           <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor={c} floodOpacity="0.55" />
         </filter>
@@ -501,7 +500,7 @@ export const SvgBoard: BoardRenderer = ({
       onPointerUp={dragging ? endDrag : undefined}
     >
       <Starfield />
-      <ShipDefs />
+      <ShipDefs colors={view.players.map((p) => playerColor(view, p.id))} />
       <rect x={-498} y={-498} width={996} height={996} rx={16} className="mat" />
 
       {view.obstacles.map((o) => (

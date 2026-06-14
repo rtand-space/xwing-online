@@ -8,6 +8,7 @@ import type { Env } from './index';
 const LOG_KEY = 'log';
 const SEATS_KEY = 'seats'; // guestId -> side
 const SIDES_KEY = 'sides'; // side -> ShipInit[]
+const COLORS_KEY = 'colors'; // side -> colour hex
 const SEED_KEY = 'seed';
 const OBSTACLES_KEY = 'obstacles';
 const SUBS_KEY = 'subs'; // side -> PushSubscription
@@ -66,36 +67,45 @@ export class GameDO {
         ships,
         seed,
         obstacles,
+        color,
       } = (await req.json()) as {
         guestId: string;
         side: string;
         ships: ShipInit[];
         seed: string;
         obstacles?: Obstacle[];
+        color?: string;
       };
       await this.state.storage.put(SEED_KEY, seed);
       if (obstacles) await this.state.storage.put(OBSTACLES_KEY, obstacles);
       await this.state.storage.put(SIDES_KEY, { [side]: ships });
       await this.state.storage.put(SEATS_KEY, { [host]: side });
+      if (color) await this.state.storage.put(COLORS_KEY, { [side]: color });
       return json({ ok: true, playerId: side });
     }
 
     // Joiner brings the opposing side's ships; assemble + start when both are present.
     if (req.method === 'POST' && sub === 'join') {
-      const { guestId: joiner, ships } = (await req.json()) as {
+      const { guestId: joiner, ships, color } = (await req.json()) as {
         guestId: string;
         ships: ShipInit[];
+        color?: string;
       };
       const seats = await this.seats();
       if (seats[joiner]) return json({ playerId: seats[joiner] });
       const sides = await this.sides();
       const hostSide = Object.keys(sides)[0];
       if (!hostSide) return json({ error: 'No such game' }, 404);
-      const open = hostSide === 'rebel' ? 'imperial' : 'rebel';
+      const open = hostSide === 'player1' ? 'player2' : 'player1';
       sides[open] = ships;
       seats[joiner] = open;
       await this.state.storage.put(SIDES_KEY, sides);
       await this.state.storage.put(SEATS_KEY, seats);
+      if (color) {
+        const colors = (await this.state.storage.get<Record<string, string>>(COLORS_KEY)) ?? {};
+        colors[open] = color;
+        await this.state.storage.put(COLORS_KEY, colors);
+      }
       await this.assembleIfReady(code, sides);
       return json({ playerId: open });
     }
@@ -116,10 +126,9 @@ export class GameDO {
 
     if (req.method === 'GET' && sub === 'seat') {
       const seats = await this.seats();
-      // the side a new joiner would take (opposite the host's), for correct ship layout
+      const colors = (await this.state.storage.get<Record<string, string>>(COLORS_KEY)) ?? {};
       const hostSide = Object.keys(await this.sides())[0];
-      const openSide = hostSide ? (hostSide === 'rebel' ? 'imperial' : 'rebel') : null;
-      return json({ playerId: seats[guestId] ?? null, openSide });
+      return json({ playerId: seats[guestId] ?? null, hostColor: hostSide ? colors[hostSide] : null });
     }
 
     if (req.method === 'POST' && sub === 'commands') {
@@ -142,17 +151,18 @@ export class GameDO {
   /** Once both sides have submitted squads, build the game and notify connected sockets. */
   private async assembleIfReady(code: string, sides: Record<string, ShipInit[]>): Promise<void> {
     if (await this.log()) return;
-    if (!sides.rebel || !sides.imperial) return;
+    if (!sides.player1 || !sides.player2) return;
     const seed = (await this.state.storage.get<string>(SEED_KEY)) ?? 's';
     const obstacles = (await this.state.storage.get<Obstacle[]>(OBSTACLES_KEY)) ?? [];
+    const colors = (await this.state.storage.get<Record<string, string>>(COLORS_KEY)) ?? {};
     const config: GameConfig = {
       id: code,
       seed,
       players: [
-        { id: 'rebel', name: sideFaction(sides.rebel) },
-        { id: 'imperial', name: sideFaction(sides.imperial) },
+        { id: 'player1', name: sideFaction(sides.player1), color: colors.player1 },
+        { id: 'player2', name: sideFaction(sides.player2), color: colors.player2 },
       ],
-      ships: [...sides.rebel, ...sides.imperial],
+      ships: [...sides.player1, ...sides.player2],
       obstacles,
     };
     const log = createLog(config);

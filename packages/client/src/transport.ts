@@ -11,10 +11,11 @@ export async function hostGame(
   seed: string,
   guestId: string,
   obstacles: Obstacle[],
+  color: string,
 ): Promise<{ playerId: string | null }> {
   const r = await fetch(`${SERVER}/games/${code}`, {
     method: 'POST',
-    body: JSON.stringify({ guestId, side, ships, seed, obstacles }),
+    body: JSON.stringify({ guestId, side, ships, seed, obstacles, color }),
   });
   return r.json() as Promise<{ playerId: string | null }>;
 }
@@ -24,10 +25,11 @@ export async function joinGame(
   code: string,
   ships: ShipInit[],
   guestId: string,
+  color: string,
 ): Promise<{ playerId?: string; error?: string }> {
   const r = await fetch(`${SERVER}/games/${code}/join`, {
     method: 'POST',
-    body: JSON.stringify({ guestId, ships }),
+    body: JSON.stringify({ guestId, ships, color }),
   });
   return r.json() as Promise<{ playerId?: string; error?: string }>;
 }
@@ -35,9 +37,9 @@ export async function joinGame(
 export async function getSeat(
   code: string,
   guestId: string,
-): Promise<{ playerId: string | null; openSide?: string | null }> {
+): Promise<{ playerId: string | null; hostColor?: string | null }> {
   const r = await fetch(`${SERVER}/games/${code}/seat?guestId=${encodeURIComponent(guestId)}`);
-  return r.json() as Promise<{ playerId: string | null; openSide?: string | null }>;
+  return r.json() as Promise<{ playerId: string | null; hostColor?: string | null }>;
 }
 
 export interface Connection {
