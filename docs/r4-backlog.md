@@ -192,9 +192,13 @@ Working through the hooks the sweep needs, highest-leverage first.
     so the existing target-select offer can hand them out. A demonstration condition
     (`rattled`, original-named: −1 defence die) proves it end-to-end; roster shows condition
     chips. Specific condition cards register in the sweep (original paraphrases).
-  - ☐ Still to build (lower-leverage): **setup window** (most setup abilities also need
-    repositioning); **"moved through a ship"** triggers (only final placement + bump tracked
-    today). **10 reusable hooks** built so far.
+  - ☑ **Setup window.** `onSetup` fires once at game start (round-1 Planning, ascending
+    initiative) before any dials. `createGame` now `settle()`s the start-of-game cascade
+    (the reduce loop, extracted) so offers appear immediately; resolved setup abilities are
+    tracked in `phaseAbilitiesDone`. Repositioning setup abilities ride the reposition FSM.
+  - ☑ **"Moved through a ship" triggers.** `shipsMovedThrough` samples the path for ships
+    the mover flew over but didn't stop on; `ExecuteManeuver` fires an `onMovedThrough`
+    window for the moving ship. **12 reusable hooks built — R4-M9 framework complete.**
 
 # R4b — secondary weapons · devices · damage deck
 

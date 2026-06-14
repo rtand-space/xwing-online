@@ -1,7 +1,7 @@
 import { applyEvent, EMPTY_STATE } from './apply';
 import type { Command } from './commands';
 import type { GameConfig, GameEvent } from './events';
-import { reduce } from './reduce';
+import { reduce, settle } from './reduce';
 import type { GameState } from './types';
 
 /** Convenience pairing of folded state with its source-of-truth log. */
@@ -11,8 +11,15 @@ export interface Game {
 }
 
 export function createGame(config: GameConfig): Game {
-  const event: GameEvent = { type: 'GameCreated', config };
-  return { state: applyEvent(EMPTY_STATE, event), log: [event] };
+  const created: GameEvent = { type: 'GameCreated', config };
+  let state = applyEvent(EMPTY_STATE, created);
+  // settle the start-of-game cascade so setup-window abilities are offered
+  const log: GameEvent[] = [created];
+  for (const e of settle(state)) {
+    log.push(e);
+    state = applyEvent(state, e);
+  }
+  return { state, log };
 }
 
 export function dispatch(game: Game, cmd: Command): { game: Game; rejection?: string } {

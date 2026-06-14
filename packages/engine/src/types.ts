@@ -161,8 +161,10 @@ export type Phase = 'planning' | 'system' | 'activation' | 'engagement' | 'end';
 
 /** Ability timing windows fired by the phase/combat FSM. */
 export type GameWindow =
+  | 'onSetup' // once at game start, before the first Planning Phase
   | 'afterReveal'
   | 'afterMove'
+  | 'onMovedThrough' // the moving ship passed over (but didn't stop on) another ship
   | 'onPerformAction'
   | 'onRoundEnd'
   // reactive windows fired when an attack resolves:

@@ -14,7 +14,7 @@ import { deviceId, mineDetonation, minesTouched, nextBombDetonation } from './de
 import { offBoard } from './geometry';
 import type { GameEvent } from './events';
 import { arcFacings, nextFacing } from './arcs';
-import { collides, resolveMovement } from './movement';
+import { collides, resolveMovement, shipsMovedThrough } from './movement';
 import { obstacleMoveEvents } from './obstacles';
 import { repositionCandidates, slamCandidates } from './reposition';
 import { autoStep } from './phases';
@@ -228,7 +228,11 @@ function reduceDirect(state: GameState, cmd: Command): ReduceResult {
       );
       // a bump ends the activation, so an ionised ship sheds its ion tokens now
       if (ionized && move.bumped) events.push(...ionShed(ship));
-      return { events: appendWindow(state, events, 'afterMove', ship.id) };
+      // a fly-by (passed over a ship without stopping on it) fires onMovedThrough
+      let out2 = events;
+      if (shipsMovedThrough(state, ship, move.to).length > 0)
+        out2 = appendWindow(state, out2, 'onMovedThrough', ship.id);
+      return { events: appendWindow(state, out2, 'afterMove', ship.id) };
     }
     case 'PerformAction': {
       if (pending.type !== 'perform-action') return reject('Wrong phase');
@@ -579,14 +583,21 @@ function nextPhaseOffer(s: GameState): GameEvent | null {
   if (s.offer || s.combat || s.targetSelect || s.bonusAttack || s.grantOffer || s.grantedAction)
     return null;
   const window =
-    s.phase === 'system' ? 'onSystemPhase' : s.phase === 'engagement' ? 'onEngagementStart' : null;
+    s.phase === 'planning' && s.round === 1
+      ? 'onSetup'
+      : s.phase === 'system'
+        ? 'onSystemPhase'
+        : s.phase === 'engagement'
+          ? 'onEngagementStart'
+          : null;
   if (!window) return null;
   if (window === 'onSystemPhase' && s.pending.some((p) => p.type === 'decloak')) return null;
   const done = s.phaseAbilitiesDone ?? [];
+  const ascending = window === 'onSystemPhase' || window === 'onSetup'; // lowest initiative first
   const order = s.ships
     .filter((sh) => sh.hull > 0 && !done.includes(sh.id))
     .sort((a, b) =>
-      window === 'onSystemPhase'
+      ascending
         ? effectiveInitiative(a) - effectiveInitiative(b) || (a.id < b.id ? -1 : 1)
         : effectiveInitiative(b) - effectiveInitiative(a) || (a.id < b.id ? -1 : 1),
     );
@@ -597,13 +608,11 @@ function nextPhaseOffer(s: GameState): GameEvent | null {
   return null;
 }
 
-export function reduce(state: GameState, cmd: Command): ReduceResult {
-  const direct = reduceDirect(state, cmd);
-  if (direct.rejection) return direct;
-
-  const events = [...direct.events];
+/** Run the automatic cascade (phase-start offers, bomb detonations, phase advances)
+ *  from `state` until the game next needs player input. Returns the events. */
+export function settle(state: GameState): GameEvent[] {
+  const events: GameEvent[] = [];
   let s = state;
-  for (const e of direct.events) s = applyEvent(s, e);
   const push = (es: GameEvent[]): void => {
     for (const e of es) {
       events.push(e);
@@ -629,5 +638,14 @@ export function reduce(state: GameState, cmd: Command): ReduceResult {
     if (!auto) break;
     push(auto);
   }
-  return { events };
+  return events;
+}
+
+export function reduce(state: GameState, cmd: Command): ReduceResult {
+  const direct = reduceDirect(state, cmd);
+  if (direct.rejection) return direct;
+
+  let s = state;
+  for (const e of direct.events) s = applyEvent(s, e);
+  return { events: [...direct.events, ...settle(s)] };
 }

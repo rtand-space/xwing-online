@@ -307,7 +307,7 @@ function applyCore(state: GameState, e: GameEvent): GameState {
       const w = state.offer?.window;
       const sid = state.offer?.shipId;
       const done =
-        (w === 'onSystemPhase' || w === 'onEngagementStart') && sid
+        (w === 'onSetup' || w === 'onSystemPhase' || w === 'onEngagementStart') && sid
           ? [...(state.phaseAbilitiesDone ?? []), sid]
           : state.phaseAbilitiesDone;
       return { ...state, offer: undefined, phaseAbilitiesDone: done };
