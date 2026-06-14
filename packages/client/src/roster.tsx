@@ -3,6 +3,8 @@ import type { PlayerView, Ship } from '@xwing/engine';
 import type { ReactElement } from 'react';
 import { playerColor } from './colors';
 
+const HULL_COLOR = '#e0c878'; // tan-yellow, always
+const SHIELD_COLOR = '#5bc6ff'; // lightning blue, always
 const TOKEN: Record<string, string> = {
   focus: '#4ade80',
   evade: '#3fe0c5',
@@ -45,11 +47,9 @@ function Pips({
 
 function ShipStatus({
   ship,
-  color,
   nameOf,
 }: {
   ship: Ship;
-  color: string;
   nameOf: (id: string) => string;
 }): ReactElement {
   const dead = ship.hull <= 0;
@@ -73,9 +73,9 @@ function ShipStatus({
         <span className="muted">destroyed</span>
       ) : (
         <span className="shipStatusBars">
-          <Pips filled={ship.hull} max={ship.maxHull} color={color} label="hull" />
+          <Pips filled={ship.hull} max={ship.maxHull} color={HULL_COLOR} label="hull" />
           {ship.maxShields > 0 && (
-            <Pips filled={ship.shields} max={ship.maxShields} color="#9bd2ff" label="shields" />
+            <Pips filled={ship.shields} max={ship.maxShields} color={SHIELD_COLOR} label="shields" />
           )}
           {(() => {
             const pools = Object.values(ship.upgradeCharges ?? {});
@@ -118,7 +118,7 @@ export function Roster({ view }: { view: PlayerView }): ReactElement {
           {view.ships
             .filter((s) => s.ownerId === p.id)
             .map((s) => (
-              <ShipStatus key={s.id} ship={s} color={color} nameOf={nameOf} />
+              <ShipStatus key={s.id} ship={s} nameOf={nameOf} />
             ))}
         </div>
         );

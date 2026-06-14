@@ -17,8 +17,8 @@ import {
   XWS_FACTION,
 } from '@xwing/data';
 import { type ReactElement, useEffect, useState } from 'react';
+import { useBoardPrefs } from './board-prefs';
 import { type Pick, newPick, useBuilder } from './builder-store';
-import { PALETTE } from './colors';
 import { useOnline } from './online-store';
 import { useSandbox } from './sandbox-store';
 import { useSetup } from './setup-store';
@@ -529,7 +529,7 @@ export function QuickPlay(): ReactElement {
   const [mode, setMode] = useState<'host' | 'join'>(initialCode ? 'join' : 'host');
   const [code, setCode] = useState(initialCode);
   const [online, setOnline] = useState('');
-  const [color, setColor] = useState(PALETTE[0]!.hex);
+  const color = useBoardPrefs((s) => s.color);
   const joining = mode === 'join';
   const byId = (id: string) => squads.find((s) => s.id === id);
 
@@ -563,19 +563,6 @@ export function QuickPlay(): ReactElement {
           onChange={(e) => setCode(e.target.value)}
         />
       )}
-      <div className="colorPick">
-        <span className="muted">Your colour</span>
-        {PALETTE.map((c) => (
-          <button
-            key={c.id}
-            className={`swatch${color === c.hex ? ' on' : ''}`}
-            style={{ background: c.hex }}
-            aria-label={c.id}
-            aria-pressed={color === c.hex}
-            onClick={() => setColor(c.hex)}
-          />
-        ))}
-      </div>
       <button
         className="btn primary"
         disabled={!byId(online) || (joining && !code.trim())}

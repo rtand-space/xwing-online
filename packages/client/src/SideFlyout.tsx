@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from 'react';
 import { Account } from './Account';
-import { NamesToggle } from './board-prefs';
+import { ColorPicker, NamesToggle } from './board-prefs';
 import { formatEvent } from './log';
 import { Sandbox } from './Sandbox';
 import { useSandbox } from './sandbox-store';
@@ -50,6 +50,7 @@ export function SideFlyout({
           {tab === 'settings' && (
             <div className="panelStack">
               <Account />
+              <ColorPicker />
               <p className="muted">
                 Reduced-motion and colour-blind-safe tokens are already respected.
               </p>
