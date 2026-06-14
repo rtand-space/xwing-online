@@ -19,9 +19,10 @@ work.
 
 ## P0 — correctness (do before more features)
 
-- ☐ **Range calculation suspect with medium/large bases / new arcs.** Needs a focused audit
-  of `baseDistance`/`rangeBand`/`attackValue` with mixed base sizes and the secondary-weapon
-  arcs. Reproduce first. (`arcs.ts`, `geometry.ts`)
+- ✅ **Range "looked wrong" with medium/large bases.** Engine math was correct (edge-to-edge
+  `polygonDistance`); the misleading part was the board's static range *rings*, which can't
+  account for the target's base. Added a precise per-enemy **range badge** (R0–R3) computed by
+  the engine from the active ship to each enemy, so range is read off the number, not the rings.
 - ✅ **Multi-ship collision (railroad method).** `pathAt` was a straight-chord lerp; now it
   traces the template's actual arc (`localAt(m, t)` scales the arc/straight by `t`, a trailing
   K-turn/Segnor's flip only at t=1). Collision back-off slides the ship back along its real

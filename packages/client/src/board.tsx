@@ -1,4 +1,11 @@
-import { applyManeuver, BASE_MM, type PlayerView, type Position, type Ship } from '@xwing/engine';
+import {
+  applyManeuver,
+  BASE_MM,
+  type PlayerView,
+  type Position,
+  rangeBand,
+  type Ship,
+} from '@xwing/engine';
 import { playerColor } from './colors';
 import {
   type MouseEvent as ReactMouseEvent,
@@ -553,6 +560,11 @@ export const SvgBoard: BoardRenderer = ({
         const color = colorFor(view, s);
         const active = s.id === activeId;
         const highlight = highlightIds.includes(s.id);
+        // precise engine range (edge-to-edge) from the active ship to this enemy
+        const rng =
+          arcShip && s.ownerId !== arcShip.ownerId && s.id !== arcShip.id
+            ? rangeBand(arcShip, s)
+            : null;
 
         const tokens = tokenCounts(s);
         const tokenSpan = (tokens.length - 1) * 12;
@@ -602,6 +614,16 @@ export const SvgBoard: BoardRenderer = ({
                 />
                 <text x={0} y={11} textAnchor="middle" className="shipName">
                   {name}
+                </text>
+              </g>
+            )}
+
+            {/* precise range to the active ship (edge-to-edge), top-right of the base */}
+            {rng !== null && (
+              <g transform={`translate(${s.pos.x + w / 2 + 4} ${-s.pos.y + w / 2 + 4})`}>
+                <rect x={-9} y={-8} width={18} height={15} rx={4} className="rangeBadge" />
+                <text x={0} y={3} textAnchor="middle" className="rangeBadgeText">
+                  R{rng}
                 </text>
               </g>
             )}

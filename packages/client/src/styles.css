@@ -875,6 +875,17 @@ body {
     monospace;
   opacity: 0.7;
 }
+.rangeBadge {
+  fill: rgba(8, 10, 20, 0.8);
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1;
+}
+.rangeBadgeText {
+  font:
+    700 10px ui-monospace,
+    monospace;
+  fill: #e9ecf7;
+}
 .tokenCount {
   font:
     700 11px ui-monospace,
