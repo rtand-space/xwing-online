@@ -61,8 +61,11 @@ work.
   Needs a config→ship mapping (data-shaped, not a one-liner). (`squad.ts`, generator)
 
 **Online / experience**
-- ☐ **Own board edge at the bottom of the screen** (you fly "up" toward the opponent) —
-  per-seat board orientation flip.
+- ✅ **Own board edge at the bottom of the screen.** The board flips 180° for the online top
+  seat (player2) via world→screen helpers (`sx`/`sy`/`srot` keyed off a `flip` prop), so each
+  player flies "up" toward the opponent at the top. Position-anchored text (names, range
+  badges, tokens) stays upright; ships/arcs rotate. Hot-seat (shared screen) and sandbox are
+  unflipped. (`useActiveGame.flip` → `App` → `SvgBoard`.)
 - ✅ Colour is decoupled from the seat: host and joiner each pick from an 8-colour palette
   (joiner can't share the host's). Seats renamed `rebel`/`imperial` → `player1`/`player2`
   (player1 = bottom, player2 = top); colours ride on `Player.color` and the board/roster

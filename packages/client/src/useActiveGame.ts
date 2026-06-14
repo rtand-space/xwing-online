@@ -16,6 +16,8 @@ export interface ActiveGame {
   statusLabel: string;
   /** Faction colour of the side currently to act (for nav cues). */
   activeColor: string | null;
+  /** Flip the board so the viewer's own edge is at the bottom (online top seat). */
+  flip: boolean;
   /** Event log, available in local hot-seat only (online gets views, not the log). */
   log: GameEvent[] | null;
   isHost: boolean;
@@ -76,6 +78,8 @@ export function useActiveGame(): ActiveGame {
       unlock: () => undefined,
       statusLabel: status,
       activeColor: colorOf(view, pendingPlayer),
+      // the top seat (player2) sees the board flipped so its edge is at the bottom
+      flip: !!view && view.players[1]?.id === onlineSeat,
       log: onlineLog,
       isHost,
       code,
@@ -104,6 +108,7 @@ export function useActiveGame(): ActiveGame {
         view.gameOver ? 'game over' : `${nameOf(view, cp)}'s turn`
       }`,
       activeColor: colorOf(view, cp),
+      flip: false, // hot-seat is a shared screen
       log: game.log,
       isHost: false,
       code: null,
@@ -123,6 +128,7 @@ export function useActiveGame(): ActiveGame {
     unlock: () => undefined,
     statusLabel: 'No game in progress',
     activeColor: null,
+    flip: false,
     log: null,
     isHost: false,
     code: null,

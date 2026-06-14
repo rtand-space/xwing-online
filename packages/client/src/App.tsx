@@ -101,6 +101,7 @@ export function App(): ReactElement {
           arcShipId={sbEdit && sbShowArcs ? sbSelected : undefined}
           onPick={sbEdit ? sbSelect : undefined}
           showNames={showNames}
+          flip={!sbEdit && ag.flip}
         />
       </div>
 

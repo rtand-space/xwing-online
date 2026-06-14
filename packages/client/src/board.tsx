@@ -151,6 +151,8 @@ export interface BoardProps {
   arcShipId?: string | null;
   /** Show floating pilot-name cards under each ship (off by default — uncluttered). */
   showNames?: boolean;
+  /** Rotate the board 180° so the viewer's own edge is at the bottom (online player2). */
+  flip?: boolean;
 }
 
 /** Swappable renderer contract — a 3D react-three-fiber variant can drop in behind this. */
@@ -463,7 +465,12 @@ export const SvgBoard: BoardRenderer = ({
   onShipMove,
   arcShipId,
   showNames = false,
+  flip = false,
 }) => {
+  // world→screen mapping; flip rotates the board 180° (viewer's edge at the bottom)
+  const sx = (x: number): number => (flip ? -x : x);
+  const sy = (y: number): number => (flip ? y : -y);
+  const srot = (a: number): number => (flip ? a + 180 : a);
   const ships = view.ships.filter((s) => s.hull > 0);
   const previewShip = preview ? ships.find((s) => s.id === preview.shipId) : undefined;
   const engageAttacker =
@@ -513,8 +520,8 @@ export const SvgBoard: BoardRenderer = ({
       {view.obstacles.map((o) => (
         <circle
           key={o.id}
-          cx={o.pos.x}
-          cy={-o.pos.y}
+          cx={sx(o.pos.x)}
+          cy={sy(o.pos.y)}
           r={o.radius}
           className={`obstacle ${o.kind}${invalidObstacleIds.includes(o.id) ? ' invalid' : ''}${placing ? ' draggable' : ''}`}
           onPointerDown={placing ? startDrag(o.id, 'obstacle') : undefined}
@@ -522,7 +529,7 @@ export const SvgBoard: BoardRenderer = ({
       ))}
 
       {(view.devices ?? []).map((d) => (
-        <g key={d.id} transform={`translate(${d.pos.x} ${-d.pos.y})`}>
+        <g key={d.id} transform={`translate(${sx(d.pos.x)} ${sy(d.pos.y)})`}>
           <circle r={13} className={`device ${d.kind}`} />
           <text className="deviceGlyph" textAnchor="middle" dominantBaseline="central">
             {d.kind === 'mine' ? '✸' : '✦'}
@@ -531,14 +538,14 @@ export const SvgBoard: BoardRenderer = ({
       ))}
 
       {arcShip && (
-        <g transform={`translate(${arcShip.pos.x} ${-arcShip.pos.y}) rotate(${arcShip.pos.angle})`}>
+        <g transform={`translate(${sx(arcShip.pos.x)} ${sy(arcShip.pos.y)}) rotate(${srot(arcShip.pos.angle)})`}>
           <CombatArc base={BASE_MM[arcShip.base]} wedges={arcWedges(arcShip)} color={colorFor(view, arcShip)} />
         </g>
       )}
 
       {previewShip && preview && (
         <g
-          transform={`translate(${preview.pos.x} ${-preview.pos.y}) rotate(${preview.pos.angle})`}
+          transform={`translate(${sx(preview.pos.x)} ${sy(preview.pos.y)}) rotate(${srot(preview.pos.angle)})`}
           opacity={0.4}
         >
           <rect
@@ -579,8 +586,8 @@ export const SvgBoard: BoardRenderer = ({
           >
             {active && (
               <circle
-                cx={s.pos.x}
-                cy={-s.pos.y}
+                cx={sx(s.pos.x)}
+                cy={sy(s.pos.y)}
                 r={w / 2 + 14}
                 fill="none"
                 stroke={color}
@@ -589,7 +596,7 @@ export const SvgBoard: BoardRenderer = ({
                 className="activeRing"
               />
             )}
-            <g transform={`translate(${s.pos.x} ${-s.pos.y}) rotate(${s.pos.angle})`}>
+            <g transform={`translate(${sx(s.pos.x)} ${sy(s.pos.y)}) rotate(${srot(s.pos.angle)})`}>
               <ShipBody
                 w={w}
                 color={color}
@@ -603,7 +610,7 @@ export const SvgBoard: BoardRenderer = ({
 
             {/* optional upright pilot-name card below the base (does not rotate) */}
             {showNames && (
-              <g transform={`translate(${s.pos.x} ${-s.pos.y + w / 2 + 6})`}>
+              <g transform={`translate(${sx(s.pos.x)} ${sy(s.pos.y) + w / 2 + 6})`}>
                 <rect
                   x={-(name.length * 3.1 + 6)}
                   y={0}
@@ -620,7 +627,7 @@ export const SvgBoard: BoardRenderer = ({
 
             {/* precise range to the active ship (edge-to-edge), top-right of the base */}
             {rng !== null && (
-              <g transform={`translate(${s.pos.x + w / 2 + 4} ${-s.pos.y + w / 2 + 4})`}>
+              <g transform={`translate(${sx(s.pos.x) + w / 2 + 4} ${sy(s.pos.y) + w / 2 + 4})`}>
                 <rect x={-9} y={-8} width={18} height={15} rx={4} className="rangeBadge" />
                 <text x={0} y={3} textAnchor="middle" className="rangeBadgeText">
                   R{rng}
@@ -634,8 +641,8 @@ export const SvgBoard: BoardRenderer = ({
                 key={kind}
                 kind={kind}
                 n={n}
-                cx={s.pos.x - tokenSpan / 2 + i * 12}
-                cy={-s.pos.y - w / 2 - 12}
+                cx={sx(s.pos.x) - tokenSpan / 2 + i * 12}
+                cy={sy(s.pos.y) - w / 2 - 12}
               />
             ))}
           </g>
